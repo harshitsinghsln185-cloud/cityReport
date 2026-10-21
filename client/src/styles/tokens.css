@@ -1,0 +1,21 @@
+:root {
+  --color-canvas: #F8F7F4;
+  --color-surface: #FFFFFF;
+  --color-ink: #0F172A;
+  --color-muted: #5B6475;
+  --color-primary-navy: #0B2545;
+  --color-accent-emerald: #0F9D7A;
+  --color-premium-gold: #B8913A;
+  --color-border-neutral: #E5E2DA;
+  --color-success: #15803D;
+  --color-warning: #B45309;
+  --color-danger: #B91C1C;
+  --color-info: #1D4ED8;
+
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --radius-card: 12px;
+  --radius-input: 8px;
+  --radius-badge: 9999px;
+}
