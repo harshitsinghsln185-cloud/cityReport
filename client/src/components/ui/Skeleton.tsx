@@ -11,7 +11,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   variant = 'text',
   count = 1,
 }) => {
-  const baseClasses = 'animate-pulse bg-slate-200/80 rounded';
+  const baseClasses = 'animate-pulse bg-[#EDE9FE]/60 rounded';
 
   const variants = {
     text: 'h-4 w-full rounded',

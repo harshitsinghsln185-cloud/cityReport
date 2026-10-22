@@ -31,15 +31,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
       {label && (
         <label
           htmlFor={inputId}
-          className="block text-sm font-medium text-[#0F172A] mb-1.5"
+          className="block text-sm font-medium text-[#1E293B] mb-1.5"
         >
-          {label} {required && <span className="text-red-500">*</span>}
+          {label} {required && <span className="text-[#991B1B]">*</span>}
         </label>
       )}
 
       <div className="relative rounded-lg shadow-sm">
         {leftIcon && (
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#64748B]">
             {leftIcon}
           </div>
         )}
@@ -52,29 +52,29 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
           disabled={disabled}
           aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : helperText ? helperId : undefined}
-          className={`block w-full rounded-lg text-sm bg-white border transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0 disabled:bg-slate-50 disabled:text-slate-500 disabled:cursor-not-allowed ${
+          className={`block w-full rounded-lg text-sm bg-white border transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0 disabled:bg-[#F8F7FC] disabled:text-[#64748B] disabled:cursor-not-allowed ${
             leftIcon ? 'pl-10' : 'pl-3.5'
           } ${rightIcon ? 'pr-10' : 'pr-3.5'} py-2.5 ${
             error
-              ? 'border-red-500 text-red-900 focus:border-red-500 focus:ring-red-200'
-              : 'border-[#E5E2DA] text-[#0F172A] focus:border-[#0B2545] focus:ring-[#0B2545]/20'
+              ? 'border-[#991B1B] text-[#991B1B] focus:border-[#991B1B] focus:ring-[#FEE2E2]'
+              : 'border-[#E2E8F0] text-[#1E293B] focus:border-[#7C3AED] focus:ring-[#A78BFA]/30'
           }`}
           {...props}
         />
 
         {rightIcon && (
-          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-[#64748B]">
             {rightIcon}
           </div>
         )}
       </div>
 
       {error ? (
-        <p id={errorId} role="alert" className="mt-1.5 text-xs text-red-600 font-medium">
+        <p id={errorId} role="alert" className="mt-1.5 text-xs text-[#991B1B] font-medium">
           {error}
         </p>
       ) : helperText ? (
-        <p id={helperId} className="mt-1.5 text-xs text-[#5B6475]">
+        <p id={helperId} className="mt-1.5 text-xs text-[#64748B]">
           {helperText}
         </p>
       ) : null}

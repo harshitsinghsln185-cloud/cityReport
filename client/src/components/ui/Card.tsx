@@ -16,19 +16,19 @@ export const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <div
-      className={`bg-white border border-[#E5E2DA] rounded-xl shadow-sm overflow-hidden ${
-        isInteractive ? 'hover:shadow-md hover:border-slate-300 transition-all cursor-pointer' : ''
+      className={`bg-white border border-[#E2E8F0] rounded-xl shadow-sm overflow-hidden ${
+        isInteractive ? 'hover:shadow-md hover:border-[#7C3AED]/40 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer' : ''
       } ${className}`}
       {...props}
     >
       {header && (
-        <div className="px-6 py-4 border-b border-[#E5E2DA] bg-slate-50/50">
+        <div className="px-6 py-4 border-b border-[#E2E8F0] bg-[#F8F7FC]/80">
           {header}
         </div>
       )}
       <div className="p-6">{children}</div>
       {footer && (
-        <div className="px-6 py-3 border-t border-[#E5E2DA] bg-slate-50/50">
+        <div className="px-6 py-3 border-t border-[#E2E8F0] bg-[#F8F7FC]/80">
           {footer}
         </div>
       )}

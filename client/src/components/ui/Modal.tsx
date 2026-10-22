@@ -49,26 +49,26 @@ export const Modal: React.FC<ModalProps> = ({
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-[#171A3B]/60 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
 
       {/* Modal Dialog Content */}
-      <div className={`relative bg-white rounded-xl shadow-xl border border-[#E5E2DA] w-full ${maxWidth} z-10 overflow-hidden transform transition-all`}>
+      <div className={`relative bg-white rounded-xl shadow-xl border border-[#E2E8F0] w-full ${maxWidth} z-10 overflow-hidden transform transition-all`}>
         {/* Header */}
-        <div className="flex items-start justify-between px-6 pt-5 pb-4 border-b border-[#E5E2DA]">
+        <div className="flex items-start justify-between px-6 pt-5 pb-4 border-b border-[#E2E8F0]">
           <div>
-            <h3 id="modal-title" className="text-lg font-heading font-bold text-[#0F172A]">
+            <h3 id="modal-title" className="text-lg font-heading font-bold text-[#1E293B]">
               {title}
             </h3>
             {description && (
-              <p className="mt-1 text-sm text-[#5B6475]">{description}</p>
+              <p className="mt-1 text-sm text-[#64748B]">{description}</p>
             )}
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+            className="p-1 rounded-lg text-[#64748B] hover:text-[#1E293B] hover:bg-[#EDE9FE]/50 transition-colors"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -82,7 +82,7 @@ export const Modal: React.FC<ModalProps> = ({
 
         {/* Footer */}
         {footer && (
-          <div className="px-6 py-3.5 bg-slate-50 border-t border-[#E5E2DA] flex items-center justify-end gap-3">
+          <div className="px-6 py-3.5 bg-[#F8F7FC] border-t border-[#E2E8F0] flex items-center justify-end gap-3">
             {footer}
           </div>
         )}

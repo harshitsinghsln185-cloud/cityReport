@@ -7,23 +7,42 @@ export default {
   theme: {
     extend: {
       colors: {
+        primary: {
+          DEFAULT: '#7C3AED',
+          hover: '#6D28D9',
+        },
+        indigo: {
+          DEFAULT: '#312E81',
+          dark: '#171A3B',
+        },
+        lavender: '#EDE9FE',
+        dark: '#171A3B',
         brand: {
-          navy: '#0B2545',
-          emerald: '#0F9D7A',
-          gold: '#B8913A',
+          violet: '#7C3AED',
+          indigo: '#312E81',
+          dark: '#171A3B',
+          lavender: '#EDE9FE',
+          navy: '#171A3B', // Backwards-compatible alias for dark surfaces
         },
-        canvas: '#F8F7F4',
+        canvas: '#F8F7FC',
         surface: '#FFFFFF',
-        ink: '#0F172A',
-        muted: '#5B6475',
+        ink: '#1E293B',
+        muted: '#64748B',
+        secondaryText: '#475569',
         border: {
-          neutral: '#E5E2DA',
+          DEFAULT: '#E2E8F0',
+          neutral: '#E2E8F0',
         },
+        focusRing: '#A78BFA',
         status: {
-          success: '#15803D',
-          warning: '#B45309',
-          danger: '#B91C1C',
+          success: '#166534',
+          'success-bg': '#DCFCE7',
           info: '#1D4ED8',
+          'info-bg': '#DBEAFE',
+          warning: '#92400E',
+          'warning-bg': '#FEF3C7',
+          danger: '#991B1B',
+          'danger-bg': '#FEE2E2',
         },
       },
       fontFamily: {

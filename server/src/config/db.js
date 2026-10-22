@@ -16,6 +16,14 @@ export const connectDB = async (uri) => {
   } catch (error) {
     logger.error(`Error connecting to MongoDB: ${error.message}`);
     // In production or test environments, let callers or supervisor decide on retry
-    throw error;
+  }
+};
+
+export const disconnectDB = async () => {
+  try {
+    await mongoose.disconnect();
+    logger.info('MongoDB Disconnected.');
+  } catch (error) {
+    logger.error(`Error disconnecting from MongoDB: ${error.message}`);
   }
 };

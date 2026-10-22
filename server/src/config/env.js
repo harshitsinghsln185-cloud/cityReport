@@ -12,6 +12,11 @@ const envSchema = z.object({
   JWT_REFRESH_SECRET: z.string().min(32).default('default_jwt_refresh_secret_key_minimum_32_characters_for_dev'),
   ACCESS_TOKEN_TTL: z.string().default('15m'),
   REFRESH_TOKEN_TTL: z.string().default('7d'),
+  ADMIN_EMAIL: z.string().email().default('admin@crowdreport.local'),
+  ADMIN_PASSWORD: z.string().default('Admin@123456'),
+  CLOUDINARY_CLOUD_NAME: z.string().default('crowd-report-dev'),
+  CLOUDINARY_API_KEY: z.string().default('123456789012345'),
+  CLOUDINARY_API_SECRET: z.string().default('dev_cloudinary_secret_key_abcdef'),
 });
 
 export const validateEnv = () => {

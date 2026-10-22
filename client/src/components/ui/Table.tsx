@@ -26,9 +26,9 @@ export const Table = <T extends Record<string, any>>({
   className = '',
 }: TableProps<T>) => {
   return (
-    <div className={`w-full overflow-x-auto border border-[#E5E2DA] rounded-xl bg-white shadow-sm ${className}`}>
+    <div className={`w-full overflow-x-auto border border-[#E2E8F0] rounded-xl bg-white shadow-sm ${className}`}>
       <table className="w-full text-left border-collapse text-sm">
-        <thead className="bg-slate-50 border-b border-[#E5E2DA] text-[#5B6475] uppercase text-xs font-semibold tracking-wider sticky top-0 z-10">
+        <thead className="bg-[#F8F7FC] border-b border-[#E2E8F0] text-[#64748B] uppercase text-xs font-semibold tracking-wider sticky top-0 z-10">
           <tr>
             {columns.map((col, idx) => (
               <th
@@ -40,7 +40,7 @@ export const Table = <T extends Record<string, any>>({
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-[#E5E2DA] text-[#0F172A]">
+        <tbody className="divide-y divide-[#E2E8F0] text-[#1E293B]">
           {isLoading ? (
             Array.from({ length: 5 }).map((_, rIdx) => (
               <tr key={rIdx}>
@@ -55,7 +55,7 @@ export const Table = <T extends Record<string, any>>({
             <tr>
               <td
                 colSpan={columns.length}
-                className="py-12 px-4 text-center text-[#5B6475] italic"
+                className="py-12 px-4 text-center text-[#64748B] italic"
               >
                 {emptyMessage}
               </td>
@@ -67,8 +67,8 @@ export const Table = <T extends Record<string, any>>({
                 onClick={() => onRowClick && onRowClick(row)}
                 className={`transition-colors ${
                   onRowClick
-                    ? 'hover:bg-slate-50/80 cursor-pointer'
-                    : 'hover:bg-slate-50/40'
+                    ? 'hover:bg-[#EDE9FE]/20 cursor-pointer'
+                    : 'hover:bg-[#F8F7FC]/60'
                 }`}
               >
                 {columns.map((col, cIdx) => (
