@@ -17,6 +17,11 @@ const envSchema = z.object({
   CLOUDINARY_CLOUD_NAME: z.string().default('crowd-report-dev'),
   CLOUDINARY_API_KEY: z.string().default('123456789012345'),
   CLOUDINARY_API_SECRET: z.string().default('dev_cloudinary_secret_key_abcdef'),
+  AI_PROVIDER: z.string().default('gemini'),
+  AI_API_KEY: z.string().optional().default(''),
+  AI_MODEL: z.string().default('gemini-1.5-flash-8b'),
+  AI_TIMEOUT_MS: z.string().default('4000').transform((val) => parseInt(val, 10)),
+  AI_DAILY_LIMIT: z.string().default('1000').transform((val) => parseInt(val, 10)),
 });
 
 export const validateEnv = () => {

@@ -4,6 +4,7 @@ import { authorize } from '../middleware/authorize.js';
 import { validate } from '../middleware/validate.js';
 import categoryController from '../controllers/category.controller.js';
 import feeSettingsController from '../controllers/feeSettings.controller.js';
+import { getOverview } from '../controllers/adminDashboard.controller.js';
 import {
   createCategorySchema,
   updateCategorySchema,
@@ -15,6 +16,9 @@ const router = Router();
 
 // Require authentication and 'Admin' role for all /api/admin routes
 router.use(authenticate, authorize('Admin'));
+
+// Platform KPI overview
+router.get('/overview', getOverview);
 
 // Base Admin health/status endpoint
 router.get('/status', (req, res) => {
@@ -39,6 +43,12 @@ router.patch(
   categoryController.toggleCategoryStatus
 );
 
+import {
+  markPayoutPaid,
+  listPayouts,
+  listPayments,
+} from '../controllers/adminFinance.controller.js';
+
 // Global Pricing & Fee Calculation Settings
 router.get('/fee-settings', feeSettingsController.getFeeSettings);
 router.put(
@@ -46,5 +56,10 @@ router.put(
   validate(updateFeeSettingsSchema),
   feeSettingsController.updateFeeSettings
 );
+
+// Contractor Payouts & Payments
+router.get('/payouts', listPayouts);
+router.patch('/payouts/:id/mark-paid', markPayoutPaid);
+router.get('/payments', listPayments);
 
 export default router;

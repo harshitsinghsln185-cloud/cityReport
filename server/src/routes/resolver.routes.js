@@ -15,6 +15,8 @@ router.post('/register', uploadResolverFields(), resolverController.register);
 router.get('/me', authenticate, authorize('Resolver', 'Admin'), resolverController.getMe);
 router.patch('/me', authenticate, authorize('Resolver'), resolverController.updateSettings);
 
+import { getResolverEarnings } from '../controllers/resolverFinance.controller.js';
+
 // Guarded: Active contractor tasks authorization check (M4 / M8)
 router.get(
   '/active-check',
@@ -32,5 +34,8 @@ router.get(
     });
   }
 );
+
+// Contractor earnings summary & payouts ledger
+router.get('/earnings', authenticate, authorize('Resolver', 'Admin'), getResolverEarnings);
 
 export default router;

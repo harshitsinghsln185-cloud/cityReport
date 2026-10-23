@@ -11,6 +11,9 @@ export const validate = (schemas = {}) => (req, res, next) => {
     if (schemas.body) {
       req.body = schemas.body.parse(req.body);
     }
+    if (schemas.headers) {
+      schemas.headers.parse(req.headers);
+    }
     next();
   } catch (error) {
     if (error.name === 'ZodError') {

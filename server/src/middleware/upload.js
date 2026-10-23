@@ -73,4 +73,52 @@ export const uploadResolverFields = () => {
   };
 };
 
+export const uploadMultipleImages = (fieldName, maxCount = 5) => {
+  const upload = multerInstance.array(fieldName, maxCount);
+
+  return (req, res, next) => {
+    upload(req, res, (err) => {
+      if (err) {
+        if (err instanceof multer.MulterError) {
+          if (err.code === 'LIMIT_FILE_SIZE') {
+            return next(new AppError('File size exceeds the allowable limit of 5MB.', 400));
+          }
+          if (err.code === 'LIMIT_UNEXPECTED_FILE') {
+            return next(new AppError(`Cannot upload more than ${maxCount} images.`, 400));
+          }
+          return next(new AppError(`Upload error: ${err.message}`, 400));
+        }
+        return next(err);
+      }
+      next();
+    });
+  };
+};
+
+export const uploadResolutionProof = () => {
+  const upload = multerInstance.fields([
+    { name: 'beforeImages', maxCount: 4 },
+    { name: 'afterImages', maxCount: 4 },
+  ]);
+
+  return (req, res, next) => {
+    upload(req, res, (err) => {
+      if (err) {
+        if (err instanceof multer.MulterError) {
+          if (err.code === 'LIMIT_FILE_SIZE') {
+            return next(new AppError('File size exceeds the allowable limit of 5MB.', 400));
+          }
+          if (err.code === 'LIMIT_UNEXPECTED_FILE') {
+            return next(new AppError('Too many files uploaded (maximum 4 before and 4 after images).', 400));
+          }
+          return next(new AppError(`Upload error: ${err.message}`, 400));
+        }
+        return next(err);
+      }
+      next();
+    });
+  };
+};
+
 export default uploadSingleImage;
+

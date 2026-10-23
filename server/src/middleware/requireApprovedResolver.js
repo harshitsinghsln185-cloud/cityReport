@@ -45,6 +45,7 @@ export const requireApprovedResolver = async (req, res, next) => {
     }
 
     req.resolverProfile = profile;
+    req.resolver = profile;
     next();
   } catch (error) {
     next(error);

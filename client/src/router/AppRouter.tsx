@@ -14,10 +14,28 @@ import VerifyEmail from '../pages/auth/VerifyEmail';
 import CategoriesPage from '../pages/admin/Categories';
 import FeeSettingsPage from '../pages/admin/FeeSettings';
 import ResolverRequestsPage from '../pages/admin/ResolverRequests';
+import AdminDashboard from '../pages/admin/Dashboard';
+import AdminIssuesPage from '../pages/admin/Issues';
+import AdminIssueDetailsPage from '../pages/admin/IssueDetails';
+import AdminUsersPage from '../pages/admin/Users';
+import FinanceOverview from '../pages/admin/FinanceOverview';
+import AdminPayments from '../pages/admin/Payments';
+import AdminPayouts from '../pages/admin/Payouts';
+import ResolverEarnings from '../pages/resolver/Earnings';
 import ProfilePage from '../pages/user/Profile';
+import ReportIssue from '../pages/user/ReportIssue';
+import MyIssues from '../pages/user/MyIssues';
+import IssueDetails from '../pages/user/IssueDetails';
+import Checkout from '../pages/user/Checkout';
+import Payments from '../pages/user/Payments';
 import RegisterResolver from '../pages/auth/RegisterResolver';
 import PendingApproval from '../pages/resolver/PendingApproval';
 import ResolverProfilePage from '../pages/resolver/Profile';
+import ResolverDashboard from '../pages/resolver/Dashboard';
+import ResolverAssignmentsPage from '../pages/resolver/Assignments';
+import ResolverTasksPage from '../pages/resolver/Tasks';
+import ResolverTaskDetailsPage from '../pages/resolver/TaskDetails';
+import ResolverCompletedHistoryPage from '../pages/resolver/CompletedHistory';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import StatusBadge from '../components/ui/StatusBadge';
@@ -228,36 +246,23 @@ const router = createBrowserRouter([
       },
       {
         path: 'report-issue',
-        element: (
-          <div className="max-w-3xl mx-auto py-6">
-            <Card>
-              <h2 className="text-xl font-heading font-bold text-[#1E293B] mb-2">Report a Civic Issue</h2>
-              <p className="text-sm text-[#64748B]">Multi-step wizard with Leaflet map pin and quote snapshots implemented in M5.</p>
-            </Card>
-          </div>
-        ),
+        element: <ReportIssue />,
       },
       {
         path: 'issues',
-        element: (
-          <div className="max-w-5xl mx-auto py-6">
-            <Card>
-              <h2 className="text-xl font-heading font-bold text-[#1E293B] mb-2">My Reported Issues</h2>
-              <p className="text-sm text-[#64748B]">Paginated issue list with status filters implemented in M5.</p>
-            </Card>
-          </div>
-        ),
+        element: <MyIssues />,
+      },
+      {
+        path: 'issues/:id',
+        element: <IssueDetails />,
+      },
+      {
+        path: 'checkout/:issueId',
+        element: <Checkout />,
       },
       {
         path: 'payments',
-        element: (
-          <div className="max-w-5xl mx-auto py-6">
-            <Card>
-              <h2 className="text-xl font-heading font-bold text-[#1E293B] mb-2">Payments & Invoices</h2>
-              <p className="text-sm text-[#64748B]">Advance orders, balance payments, and on-demand PDF receipts implemented in M6 & M9.</p>
-            </Card>
-          </div>
-        ),
+        element: <Payments />,
       },
       {
         path: 'notifications',
@@ -286,50 +291,27 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <WelcomePreview
-            role="Resolver"
-            title="Resolver Workspace"
-            description="Manage your territory, accept new assignments, submit photo proof of completed repairs, and track payouts."
-            actions={[
-              { label: 'View Tasks', href: '/resolver/tasks' },
-              { label: 'Check Earnings', href: '/resolver/earnings', variant: 'outline' },
-            ]}
-          />
-        ),
+        element: <ResolverDashboard />,
       },
       {
         path: 'assignments',
-        element: (
-          <div className="max-w-4xl mx-auto py-6">
-            <Card>
-              <h2 className="text-xl font-heading font-bold text-[#1E293B] mb-2">New Task Offers</h2>
-              <p className="text-sm text-[#64748B]">Proximity-based assignments with Accept/Decline triggers implemented in M8.</p>
-            </Card>
-          </div>
-        ),
+        element: <ResolverAssignmentsPage />,
       },
       {
         path: 'tasks',
-        element: (
-          <div className="max-w-4xl mx-auto py-6">
-            <Card>
-              <h2 className="text-xl font-heading font-bold text-[#1E293B] mb-2">Active Tasks in Progress</h2>
-              <p className="text-sm text-[#64748B]">Work execution and before/after photo proof uploader implemented in M8.</p>
-            </Card>
-          </div>
-        ),
+        element: <ResolverTasksPage />,
+      },
+      {
+        path: 'tasks/:id',
+        element: <ResolverTaskDetailsPage />,
+      },
+      {
+        path: 'history',
+        element: <ResolverCompletedHistoryPage />,
       },
       {
         path: 'earnings',
-        element: (
-          <div className="max-w-4xl mx-auto py-6">
-            <Card>
-              <h2 className="text-xl font-heading font-bold text-[#1E293B] mb-2">Contractor Earnings & Payouts</h2>
-              <p className="text-sm text-[#64748B]">Commission breakdown and settlement history implemented in M9.</p>
-            </Card>
-          </div>
-        ),
+        element: <ResolverEarnings />,
       },
       {
         path: 'profile',
@@ -347,28 +329,19 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <WelcomePreview
-            role="Admin"
-            title="Operations Command Center"
-            description="System-wide governance, resolver ID verification, candidate assignment, manual fee quoting, and financial settlements."
-            actions={[
-              { label: 'Manage Issues', href: '/admin/issues' },
-              { label: 'Resolver Requests', href: '/admin/resolvers', variant: 'outline' },
-            ]}
-          />
-        ),
+        element: <AdminDashboard />,
       },
       {
         path: 'issues',
-        element: (
-          <div className="max-w-5xl mx-auto py-6">
-            <Card>
-              <h2 className="text-xl font-heading font-bold text-[#1E293B] mb-2">Master Issue Queue</h2>
-              <p className="text-sm text-[#64748B]">Triage, candidate search via $geoNear, and conditional assignment implemented in M7.</p>
-            </Card>
-          </div>
-        ),
+        element: <AdminIssuesPage />,
+      },
+      {
+        path: 'issues/:id',
+        element: <AdminIssueDetailsPage />,
+      },
+      {
+        path: 'users',
+        element: <AdminUsersPage />,
       },
       {
         path: 'resolvers',
@@ -376,14 +349,23 @@ const router = createBrowserRouter([
       },
       {
         path: 'finance',
-        element: (
-          <div className="max-w-5xl mx-auto py-6">
-            <Card>
-              <h2 className="text-xl font-heading font-bold text-[#1E293B] mb-2">Financial Turnover & CSV Export</h2>
-              <p className="text-sm text-[#64748B]">GMV, platform commission, and CSV streaming implemented in M9.</p>
-            </Card>
-          </div>
-        ),
+        element: <FinanceOverview />,
+      },
+      {
+        path: 'finance/payments',
+        element: <AdminPayments />,
+      },
+      {
+        path: 'payments',
+        element: <AdminPayments />,
+      },
+      {
+        path: 'finance/payouts',
+        element: <AdminPayouts />,
+      },
+      {
+        path: 'payouts',
+        element: <AdminPayouts />,
       },
       {
         path: 'categories',

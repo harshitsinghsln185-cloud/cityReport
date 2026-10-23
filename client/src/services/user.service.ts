@@ -13,6 +13,7 @@ export interface FileAsset {
 }
 
 export interface UserProfile extends AuthUser {
+  _id?: string;
   photo?: FileAsset | null;
   address?: {
     street: string;
@@ -21,6 +22,7 @@ export interface UserProfile extends AuthUser {
     pincode: string;
   };
   isBlocked?: boolean;
+  blockReason?: string | null;
 }
 
 export interface UpdateProfilePayload {
