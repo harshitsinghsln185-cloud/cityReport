@@ -71,4 +71,20 @@ Completely transformed the landing page (`/`) into an interactive civic showcase
 - Touch/mouse drag tested on Before/After slider.
 - Zero broken images or external CDN dependencies.
 
+## [P3: States Directory & Detail Pages] - 2026-10-24
+
+### Summary
+Built the comprehensive nationwide States & Union Territories section across all 36 Indian administrative entities (28 States + 8 UTs):
+- **Static Dataset (`client/src/data/statesData.ts`)**: Structured, authentic regional dataset for all 36 entities without external DB dependency. Includes official capitals, regions (North, South, East, West, Central, Northeast), population, area, districts count, authentic hero blurbs, localized civic priorities (with category, urgency, and description), operational stats (active resolvers, resolved counts, average response SLA, satisfaction rate), 3 state-specific FAQs, and chronological verified activity records.
+- **States Directory Page (`/states`)**: Filter by Region (All, North, South, East, West, Central, Northeast) and Entity Type (All, State, Union Territory), live search by state or capital, sorting by name, resolved count, and resolvers. Features aggregate metrics bar, responsive card grid with token styling, and empty state handler.
+- **Individual State Detail Pages (`/states/:slug`)**: Breadcrumb navigation (`Home > States > {State}`), rich hero banner with geographic metadata and pre-filled report CTA, key stats grid, 3 localized civic priority cards, live recent activity stream with paise-exact values, state-specific FAQ accordion, and previous/next state pagination.
+- **Dynamic SEO**: Dynamic document `<title>`, `<meta name="description">`, and canonical link injection for all 36 states.
+- **Pre-filled Reporting Workflow**: Enabled URL search parameter pre-filling in `ReportIssue.tsx` (`?state=...&category=...`).
+- **Routing**: Connected `/states` and `/states/:slug` into `AppRouter.tsx`.
+
+### Verification
+- `npm run build` in `client/`: Passing (0 errors, 2,212 modules transformed)
+- Tested filters, search, and detail page generation.
+
+
 

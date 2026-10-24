@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   FileText,
   MapPin,
@@ -24,6 +24,9 @@ import QuoteCard from '../../components/QuoteCard';
 
 export const ReportIssue: React.FC = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const prefillState = searchParams.get('state');
+  const prefillCategory = searchParams.get('category');
   const { user } = useAuth();
 
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -39,7 +42,7 @@ export const ReportIssue: React.FC = () => {
     lat: 28.6139,
     lng: 77.209,
     street: user?.address?.street || '',
-    city: user?.address?.city || 'New Delhi',
+    city: prefillState || user?.address?.city || 'New Delhi',
     pincode: user?.address?.pincode || '110001',
     contactNumber: user?.phone || '',
   });
@@ -61,7 +64,16 @@ export const ReportIssue: React.FC = () => {
         const data = await categoryService.getActiveCategories();
         const list = Array.isArray(data) ? data : [];
         setCategories(list);
-        if (list.length > 0 && !formData.category) {
+        if (prefillCategory) {
+          const matched = list.find(
+            (c) => c._id === prefillCategory || c.name.toLowerCase().includes(prefillCategory.toLowerCase())
+          );
+          if (matched) {
+            setFormData((prev) => ({ ...prev, category: matched._id }));
+          } else if (list.length > 0 && !formData.category) {
+            setFormData((prev) => ({ ...prev, category: list[0]._id }));
+          }
+        } else if (list.length > 0 && !formData.category) {
           setFormData((prev) => ({ ...prev, category: list[0]._id }));
         }
       } catch (err: any) {
@@ -71,7 +83,7 @@ export const ReportIssue: React.FC = () => {
       }
     };
     fetchCats();
-  }, []);
+  }, [prefillCategory]);
 
   // Handle Photo Staging
   const handlePhotoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {

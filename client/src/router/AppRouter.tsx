@@ -24,6 +24,8 @@ import AdminPayouts from '../pages/admin/Payouts';
 import AdminQueries from '../pages/admin/Queries';
 import Home from '../pages/public/Home';
 import Services from '../pages/public/Services';
+import StatesDirectory from '../pages/public/StatesDirectory';
+import StateDetail from '../pages/public/StateDetail';
 import About from '../pages/public/About';
 import TrackStatus from '../pages/public/TrackStatus';
 import WriteQuery from '../pages/public/WriteQuery';
@@ -158,6 +160,14 @@ const router = createBrowserRouter([
       {
         path: 'services',
         element: <Services />,
+      },
+      {
+        path: 'states',
+        element: <StatesDirectory />,
+      },
+      {
+        path: 'states/:slug',
+        element: <StateDetail />,
       },
       {
         path: 'about',
