@@ -130,6 +130,34 @@ Redesigned the complete authentication suite, citizen workspace dashboard, multi
 - `npm run build` in `client/`: Passing (0 errors, 2,214 modules transformed)
 - Verified all auth pages, wizard steps, and Before/After slider integration.
 
+## [P6: Resolver Console & Contractor Workflow] - 2026-10-24
+
+### Summary
+Completely transformed the Resolver & Contractor console and field remediation workflow across all 8 dedicated screens and layouts:
+- **Resolver Layout (`client/src/layouts/ResolverLayout.tsx`)**: Upgraded navigation drawer and desktop sidebar with design tokens (`bg-canvas`, `border-border`, `text-ink`, `text-primary`), active route chevron, contractor verification status badge, live pending offer count pill, and responsive slide-out mobile drawer.
+- **Contractor Dashboard (`client/src/pages/resolver/Dashboard.tsx`)**: Ambient hero banner with certified civic network badge, on-duty status chip, 4 KPI metric cards (`font-mono tabular-nums`) for Active Jobs, Dispatched Offers, Completed Repairs, and Total Earnings, an allocated tasks stream with quick on-site actions, and a field toolkit panel with direct routing to territory settings, earnings ledger, and emergency municipal dispatch helpline.
+- **Dispatch Offers Queue (`client/src/pages/resolver/Assignments.tsx`)**: Modern job dispatch cards displaying distance & travel fee estimates, privacy protection shield notice for citizen PII, accept action with inline loader, and decline modal requiring a minimum 5-character audit explanation.
+- **Active Tasks Manager (`client/src/pages/resolver/Tasks.tsx`)**: 3 filter tabs (Active, Accepted, In Progress), unlocked citizen telephone dialer (`tel:`), direct "Start Work On-Site" action, and direct deep-linking to the photographic proof uploader.
+- **Task Details & Field Remediation (`client/src/pages/resolver/TaskDetails.tsx`)**: 
+  - Comprehensive on-site coordination desk with Fraunces serif headings and responsive 2-column layout.
+  - Dynamic status banners: Privacy notice with Accept/Decline for assigned jobs; "Citizen Details Unlocked" banner with "Start Work On-Site" CTA for accepted jobs; interactive `ProofUploader` for in-progress jobs; and verified Before/After photographic comparison showcase with supervisor approval stamps for resolved/closed jobs.
+  - Citizen contact card with unlocked direct telephone dialer (`tel:`) and email.
+  - Site location card with street address, GPS coordinates in font-mono, and external navigation button linking to Google Maps (`https://www.google.com/maps?q=lat,lng`).
+  - Cryptographic milestone audit timeline embedded via `IssueTimeline`.
+  - Clean decline modal with character counter and audit logging.
+- **Photographic Proof Uploader (`client/src/components/ProofUploader.tsx`)**: Upgraded with design tokens, dual upload dropzones (optional before-repair, required after-repair), client-side file format and 5MB size validation, thumbnail preview grid with remove buttons, completion statement text area with character counter, and uploading progress state.
+- **Completed Repairs History (`client/src/pages/resolver/CompletedHistory.tsx`)**: Historical archive of completed repairs featuring verified supervisor approval stamps, completion remarks blockquotes, before/after proof thumbnail galleries, and empty state handler.
+- **Earnings & Disbursements Ledger (`client/src/pages/resolver/Earnings.tsx`)**: Financial console featuring 3 KPI cards (Total Disbursed Earnings, Pending Disbursal, Remediated Tasks) with `tabular-nums` formatting, and a ledger table detailing issue references, gross fees, 10% platform commission, net payouts, disbursement status badges, and transaction dates.
+- **Territory & Profile Settings (`client/src/pages/resolver/Profile.tsx`)**: Quick on-duty/off-duty availability toggle button, interactive Leaflet `MapPicker` showing contractor headquarters and live dynamic coverage radius circle, interactive radius slider (1–50 km), and multi-select trade skills categories with checkboxes.
+- **KYC Verification Tracker (`client/src/pages/resolver/PendingApproval.tsx`)**: Dynamic status tracking view for contractor onboarding with 3 states: Approved (with workspace entry button), Rejected (with administrative feedback display, rejection checklist, and appeal email link), and Pending (with pulse animation, "What happens next?" step guide, and submitted territory snapshot).
+
+### Verification
+- `npm run build` in `client/`: Passing (0 errors, 2,214 modules transformed)
+- Verified telephone dialer links (`tel:`) and Google Maps external navigation.
+- Verified ProofUploader validation and image preview removals.
+- Verified TypeScript strict type check passes with 0 errors.
+
+
 
 
 

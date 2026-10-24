@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import resolverTaskService, { ResolverDashboardData } from '../../services/resolverTask.service';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
+import Badge from '../../components/ui/Badge';
 import StatusBadge from '../../components/ui/StatusBadge';
 import {
   Inbox,
@@ -15,6 +16,7 @@ import {
   MapPin,
   AlertTriangle,
   UserCheck,
+  ShieldCheck,
 } from 'lucide-react';
 
 export const ResolverDashboard: React.FC = () => {
@@ -43,20 +45,6 @@ export const ResolverDashboard: React.FC = () => {
     return '₹' + (paise / 100).toLocaleString('en-IN', { maximumFractionDigits: 2 });
   };
 
-  if (loading && !data) {
-    return (
-      <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 space-y-6">
-        <div className="h-10 w-64 bg-slate-200 animate-pulse rounded-lg" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="h-32 bg-white rounded-xl border border-[#E2E8F0] animate-pulse p-6" />
-          ))}
-        </div>
-        <div className="h-96 bg-white rounded-xl border border-[#E2E8F0] animate-pulse" />
-      </div>
-    );
-  }
-
   const metrics = data?.metrics || {
     assignedOffersCount: 0,
     activeTasksCount: 0,
@@ -66,76 +54,90 @@ export const ResolverDashboard: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 space-y-8">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#EDE9FE] text-[#7C3AED] border border-[#A78BFA]/30">
-              Contractor Operations
-            </span>
+    <div className="max-w-7xl mx-auto space-y-8 pb-12">
+      {/* Header Banner */}
+      <div className="relative overflow-hidden rounded-cardLg bg-gradient-to-r from-dark via-[#141838] to-indigo text-white p-6 sm:p-8 lg:p-10 shadow-modal">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-indigo/30 rounded-full blur-2xl pointer-events-none" />
+
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="space-y-3 max-w-2xl">
+            <div className="flex flex-wrap items-center gap-2">
+              <Badge variant="primary" size="sm" className="bg-white/10 text-lavender border-white/15">
+                Contractor Dispatch Console
+              </Badge>
+              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Certified Municipal Network</span>
+              </span>
+            </div>
+
+            <h1 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight">
+              Contractor Operations Desk
+            </h1>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Review nearby civic dispatch requests, accept jobs within your coverage radius, execute on-site remediation, and submit photographic completion proof for automated escrow settlement.
+            </p>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-[#1E293B]">
-            Resolver Workspace
-          </h1>
-          <p className="text-sm text-[#64748B] mt-0.5">
-            Manage nearby dispatch requests, accept jobs, execute repairs, and submit photographic completion proof
-          </p>
-        </div>
 
-        <div className="flex items-center gap-3">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={fetchSummary}
-            disabled={loading}
-            className="gap-2 text-[#475569] border-[#E2E8F0]"
-          >
-            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-            <span>Refresh Feed</span>
-          </Button>
-
-          <Link to="/resolver/assignments">
-            <Button size="sm" className="gap-2 bg-[#7C3AED] hover:bg-[#6D28D9] text-white">
-              <Inbox className="w-4 h-4" />
-              <span>Job Offers ({metrics.assignedOffersCount})</span>
+          <div className="flex flex-wrap sm:flex-nowrap gap-3 shrink-0">
+            <Button
+              variant="outline"
+              size="md"
+              onClick={fetchSummary}
+              disabled={loading}
+              className="border-white/20 text-white hover:bg-white/10"
+              leftIcon={<RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />}
+            >
+              Refresh Feed
             </Button>
-          </Link>
+
+            <Link to="/resolver/assignments">
+              <Button
+                variant="primary"
+                size="md"
+                leftIcon={<Inbox className="w-4 h-4" />}
+                className="shadow-lg shadow-primary/30"
+              >
+                Review Offers ({metrics.assignedOffersCount})
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
 
       {error && (
-        <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-center justify-between">
+        <div className="p-4 rounded-card bg-red-50 border border-red-200 text-red-900 text-xs flex items-center justify-between animate-fadeIn">
           <div className="flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 shrink-0" />
+            <AlertTriangle className="w-4 h-4 text-red-600 shrink-0" />
             <span>{error}</span>
           </div>
-          <button onClick={fetchSummary} className="text-xs underline font-semibold">
+          <button onClick={fetchSummary} className="text-xs underline font-bold text-red-700">
             Retry
           </button>
         </div>
       )}
 
       {/* KPI Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {/* KPI 1: New Job Offers */}
-        <Card className="relative overflow-hidden border border-[#E2E8F0] hover:border-[#A78BFA] transition-all">
+        <Card className="p-5 border-border hover:border-primary/40 transition-colors shadow-card">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#64748B]">New Assignments</p>
-              <h3 className="text-3xl font-heading font-extrabold text-[#1E293B] mt-1.5">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-secondaryText">New Job Offers</p>
+              <h3 className="text-2xl sm:text-3xl font-heading font-black text-ink mt-1.5 tabular-nums">
                 {metrics.assignedOffersCount}
               </h3>
-              <p className="text-xs text-[#7C3AED] font-medium mt-1">
+              <p className="text-xs text-primary font-semibold mt-1">
                 Awaiting your acceptance
               </p>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-[#EDE9FE] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center shrink-0">
-              <Inbox className="w-6 h-6" />
+            <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center shrink-0">
+              <Inbox className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-4 pt-3 border-t border-[#E2E8F0] flex items-center justify-between">
-            <Link to="/resolver/assignments" className="text-xs font-semibold text-[#7C3AED] hover:underline flex items-center gap-1">
+          <div className="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs">
+            <Link to="/resolver/assignments" className="font-semibold text-primary hover:text-primaryDark flex items-center gap-1 transition-colors">
               <span>Inspect offers</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
@@ -143,123 +145,125 @@ export const ResolverDashboard: React.FC = () => {
         </Card>
 
         {/* KPI 2: Active Tasks */}
-        <Card className="relative overflow-hidden border border-[#E2E8F0] hover:border-[#A78BFA] transition-all">
+        <Card className="p-5 border-border hover:border-indigo/40 transition-colors shadow-card">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#64748B]">Active Jobs</p>
-              <h3 className="text-3xl font-heading font-extrabold text-[#1E293B] mt-1.5">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-secondaryText">Active Jobs</p>
+              <h3 className="text-2xl sm:text-3xl font-heading font-black text-ink mt-1.5 tabular-nums">
                 {metrics.activeTasksCount}
               </h3>
-              <p className="text-xs text-slate-500 font-medium mt-1">
+              <p className="text-xs text-secondaryText font-medium mt-1">
                 Accepted & in progress
               </p>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-[#312E81]/10 text-[#312E81] border border-[#312E81]/20 flex items-center justify-center shrink-0">
-              <Briefcase className="w-6 h-6" />
+            <div className="w-10 h-10 rounded-xl bg-indigo/10 text-indigo border border-indigo/20 flex items-center justify-center shrink-0">
+              <Briefcase className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-4 pt-3 border-t border-[#E2E8F0] flex items-center justify-between">
-            <Link to="/resolver/tasks" className="text-xs font-semibold text-[#7C3AED] hover:underline flex items-center gap-1">
-              <span>View active tasks</span>
+          <div className="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs">
+            <Link to="/resolver/tasks" className="font-semibold text-primary hover:text-primaryDark flex items-center gap-1 transition-colors">
+              <span>View active queue</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </Card>
 
         {/* KPI 3: Completed Repairs */}
-        <Card className="relative overflow-hidden border border-[#E2E8F0] hover:border-[#A78BFA] transition-all">
+        <Card className="p-5 border-border hover:border-emerald-400/40 transition-colors shadow-card">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#64748B]">Completed</p>
-              <h3 className="text-3xl font-heading font-extrabold text-[#1E293B] mt-1.5">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-secondaryText">Completed Repairs</p>
+              <h3 className="text-2xl sm:text-3xl font-heading font-black text-emerald-700 mt-1.5 tabular-nums">
                 {metrics.completedTasksCount}
               </h3>
-              <p className="text-xs text-slate-500 font-medium mt-1">
-                Resolved repairs
+              <p className="text-xs text-secondaryText font-medium mt-1">
+                Verified with photo proof
               </p>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center shrink-0">
-              <CheckCircle2 className="w-6 h-6" />
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center justify-center shrink-0">
+              <CheckCircle2 className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-4 pt-3 border-t border-[#E2E8F0] flex items-center justify-between">
-            <Link to="/resolver/history" className="text-xs font-semibold text-[#7C3AED] hover:underline flex items-center gap-1">
-              <span>View history</span>
+          <div className="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs">
+            <Link to="/resolver/history" className="font-semibold text-primary hover:text-primaryDark flex items-center gap-1 transition-colors">
+              <span>View history archive</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </Card>
 
         {/* KPI 4: Pending Payout */}
-        <Card className="relative overflow-hidden border border-[#E2E8F0] hover:border-[#A78BFA] transition-all">
+        <Card className="p-5 border-border hover:border-purple-400/40 transition-colors shadow-card">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#64748B]">Contractor Balance</p>
-              <h3 className="text-2xl font-heading font-extrabold text-[#1E293B] mt-1.5">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-secondaryText">Pending Payout</p>
+              <h3 className="text-xl sm:text-2xl font-heading font-black text-ink mt-1.5 tabular-nums">
                 {formatRupees(metrics.pendingPayoutPaise)}
               </h3>
-              <p className="text-xs text-slate-500 font-medium mt-1">
-                Pending next settlement
+              <p className="text-xs text-secondaryText font-medium mt-1">
+                Next escrow settlement
               </p>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-violet-50 text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center shrink-0">
-              <DollarSign className="w-6 h-6" />
+            <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-700 border border-purple-200 flex items-center justify-center shrink-0">
+              <DollarSign className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-4 pt-3 border-t border-[#E2E8F0] flex items-center justify-between">
-            <span className="text-xs text-[#64748B]">Lifetime: {formatRupees(metrics.totalEarningsPaise)}</span>
-            <Link to="/resolver/earnings" className="text-xs font-semibold text-[#7C3AED] hover:underline">
+          <div className="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs">
+            <span className="text-muted tabular-nums">Life: {formatRupees(metrics.totalEarningsPaise)}</span>
+            <Link to="/resolver/earnings" className="font-semibold text-primary hover:text-primaryDark transition-colors">
               Ledger
             </Link>
           </div>
         </Card>
       </div>
 
-      {/* Middle Row: Quick Action Hub & Territory Summary */}
+      {/* Middle Row: Recent Assignments & Contractor Tools */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <Card className="lg:col-span-2 border border-[#E2E8F0]">
-          <div className="flex items-center justify-between mb-4">
+        <Card className="lg:col-span-2 shadow-card p-6 space-y-4">
+          <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-heading font-bold text-base text-[#1E293B]">Recent Assignments & Tasks</h3>
-              <p className="text-xs text-[#64748B]">Latest jobs allocated to your territory</p>
+              <h3 className="font-heading font-bold text-base text-ink">Recent Allocated Tasks</h3>
+              <p className="text-xs text-secondaryText">Latest civic jobs dispatched to your coverage radius</p>
             </div>
-            <Link to="/resolver/tasks" className="text-xs font-semibold text-[#7C3AED] hover:underline flex items-center gap-1">
+            <Link to="/resolver/tasks" className="text-xs font-semibold text-primary hover:text-primaryDark flex items-center gap-1 transition-colors">
               <span>All Tasks</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
           {(!data?.recentTasks || data.recentTasks.length === 0) ? (
-            <div className="py-12 text-center text-xs text-[#64748B]">
-              No assigned tasks currently pending. We will notify you when a new issue arises in your coverage radius!
+            <div className="py-12 text-center text-xs text-secondaryText">
+              No assigned tasks currently pending. You will receive real-time notifications when new incidents occur in your coverage radius!
             </div>
           ) : (
             <div className="space-y-3">
               {data.recentTasks.map((task) => (
                 <div
                   key={task._id}
-                  className="p-3.5 rounded-xl border border-[#E2E8F0] hover:border-[#A78BFA] hover:bg-[#F8F7FC] transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                  className="p-4 rounded-card border border-border hover:border-primary/40 hover:bg-canvas transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs"
                 >
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <span className="font-mono text-xs font-bold text-[#7C3AED]">{task.issueCode}</span>
+                  <div className="space-y-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="font-mono text-xs font-bold text-primary bg-primary/10 px-2 py-0.5 rounded border border-primary/20">
+                        {task.issueCode}
+                      </span>
                       <StatusBadge status={task.status} size="sm" />
-                      <span className="text-xs text-[#64748B] flex items-center gap-1">
-                        <Layers className="w-3 h-3 text-[#7C3AED]" />
-                        {task.category?.name || 'Civic Issue'}
+                      <span className="text-xs text-secondaryText flex items-center gap-1">
+                        <Layers className="w-3 h-3 text-primary" />
+                        {task.category?.name || 'Civic Defect'}
                       </span>
                     </div>
-                    <h4 className="font-heading font-bold text-sm text-[#1E293B] line-clamp-1">{task.title}</h4>
-                    <p className="text-xs text-[#64748B] flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-[#7C3AED]" />
-                      <span>{task.address?.city || 'Local area'}</span>
+                    <h4 className="font-heading font-semibold text-sm text-ink truncate">{task.title}</h4>
+                    <p className="text-xs text-secondaryText flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
+                      <span className="truncate">{task.address?.city || 'Local area'}</span>
                     </p>
                   </div>
 
-                  <Link to={`/resolver/tasks/${task._id}`}>
-                    <Button variant="outline" size="sm" className="text-xs gap-1 border-[#E2E8F0] hover:border-[#7C3AED]">
+                  <Link to={`/resolver/tasks/${task._id}`} className="shrink-0">
+                    <Button variant="outline" size="sm" className="text-xs gap-1.5 w-full sm:w-auto">
                       <span>Open Task</span>
-                      <ArrowRight className="w-3 h-3 text-[#7C3AED]" />
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </Button>
                   </Link>
                 </div>
@@ -269,58 +273,58 @@ export const ResolverDashboard: React.FC = () => {
         </Card>
 
         {/* Quick Tools */}
-        <Card className="border border-[#E2E8F0] flex flex-col justify-between">
+        <Card className="shadow-card p-6 flex flex-col justify-between">
           <div>
-            <h3 className="font-heading font-bold text-base text-[#1E293B] mb-1">Contractor Tools</h3>
-            <p className="text-xs text-[#64748B] mb-4">Territory settings and direct queue shortcuts</p>
+            <h3 className="font-heading font-bold text-base text-ink mb-1">Contractor Tools</h3>
+            <p className="text-xs text-secondaryText mb-4">Direct shortcuts to dispatch filters and territory settings</p>
 
             <div className="space-y-3">
               <Link
                 to="/resolver/assignments"
-                className="flex items-center justify-between p-3 rounded-lg border border-[#E2E8F0] hover:bg-[#EDE9FE]/20 hover:border-[#A78BFA] transition-colors"
+                className="flex items-center justify-between p-3.5 rounded-card border border-border hover:bg-primary/5 hover:border-primary/30 transition-all shadow-xs group"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
                     <Inbox className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-[#1E293B]">Review Job Offers</h4>
-                    <p className="text-[11px] text-[#64748B]">{metrics.assignedOffersCount} offers pending review</p>
+                    <h4 className="text-xs font-bold text-ink group-hover:text-primary transition-colors">Review Job Offers</h4>
+                    <p className="text-[11px] text-muted">{metrics.assignedOffersCount} offers pending review</p>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-[#64748B]" />
+                <ArrowRight className="w-4 h-4 text-muted group-hover:text-primary transition-colors" />
               </Link>
 
               <Link
                 to="/resolver/tasks"
-                className="flex items-center justify-between p-3 rounded-lg border border-[#E2E8F0] hover:bg-[#EDE9FE]/20 hover:border-[#A78BFA] transition-colors"
+                className="flex items-center justify-between p-3.5 rounded-card border border-border hover:bg-primary/5 hover:border-primary/30 transition-all shadow-xs group"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-indigo/10 text-indigo flex items-center justify-center shrink-0">
                     <Briefcase className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-[#1E293B]">Active Remediation Jobs</h4>
-                    <p className="text-[11px] text-[#64748B]">Start work or submit proof</p>
+                    <h4 className="text-xs font-bold text-ink group-hover:text-primary transition-colors">Active Remediation Jobs</h4>
+                    <p className="text-[11px] text-muted">Start work or upload photo proof</p>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-[#64748B]" />
+                <ArrowRight className="w-4 h-4 text-muted group-hover:text-primary transition-colors" />
               </Link>
 
               <Link
                 to="/resolver/profile"
-                className="flex items-center justify-between p-3 rounded-lg border border-[#E2E8F0] hover:bg-[#EDE9FE]/20 hover:border-[#A78BFA] transition-colors"
+                className="flex items-center justify-between p-3.5 rounded-card border border-border hover:bg-primary/5 hover:border-primary/30 transition-all shadow-xs group"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
                     <UserCheck className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-[#1E293B]">Coverage Territory & Skills</h4>
-                    <p className="text-[11px] text-[#64748B]">Adjust service radius and availability</p>
+                    <h4 className="text-xs font-bold text-ink group-hover:text-primary transition-colors">Coverage Territory & Radius</h4>
+                    <p className="text-[11px] text-muted">Adjust travel radius & on-duty status</p>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-[#64748B]" />
+                <ArrowRight className="w-4 h-4 text-muted group-hover:text-primary transition-colors" />
               </Link>
             </div>
           </div>

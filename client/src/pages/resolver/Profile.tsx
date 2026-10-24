@@ -4,9 +4,12 @@ import {
   CheckCircle2,
   AlertCircle,
   MapPin,
-  DollarSign,
   RefreshCw,
   Power,
+  ShieldCheck,
+  TrendingUp,
+  Clock,
+  Wrench,
 } from 'lucide-react';
 import resolverService, { ResolverProfile } from '../../services/resolver.service';
 import categoryService, { Category } from '../../services/category.service';
@@ -94,9 +97,9 @@ export const ResolverProfilePage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="max-w-4xl mx-auto py-12 text-center">
-        <RefreshCw className="w-8 h-8 text-[#7C3AED] animate-spin mx-auto mb-3" />
-        <p className="text-sm text-[#64748B]">Loading contractor profile & territory...</p>
+      <div className="max-w-4xl mx-auto py-16 text-center">
+        <RefreshCw className="w-8 h-8 text-primary animate-spin mx-auto mb-3" />
+        <p className="text-sm text-secondaryText">Loading contractor profile & operating territory...</p>
       </div>
     );
   }
@@ -110,14 +113,14 @@ export const ResolverProfilePage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <h1 className="text-2xl font-heading font-bold text-[#1E293B]">
+          <div className="flex items-center gap-2.5 mb-1.5">
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink tracking-tight">
               Contractor Profile & Territory
             </h1>
             <StatusBadge status={profile?.status || 'Approved'} size="sm" />
           </div>
-          <p className="text-sm text-[#64748B]">
-            Configure your active availability, service radius, and qualified skills.
+          <p className="text-sm text-secondaryText">
+            Configure your active on-duty availability, dispatch radius, and authorized trade skills.
           </p>
         </div>
 
@@ -125,89 +128,98 @@ export const ResolverProfilePage: React.FC = () => {
         <button
           type="button"
           onClick={() => setIsAvailable(!isAvailable)}
-          className={`inline-flex items-center gap-2.5 px-4 py-2 rounded-xl text-sm font-semibold border transition-all shadow-xs ${
+          className={`inline-flex items-center gap-2.5 px-4 py-2 rounded-xl text-xs font-semibold border transition-all shadow-xs cursor-pointer select-none ${
             isAvailable
               ? 'bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100'
-              : 'bg-slate-100 text-slate-600 border-slate-300 hover:bg-slate-200'
+              : 'bg-canvas text-secondaryText border-border hover:bg-slate-100'
           }`}
         >
-          <Power className={`w-4 h-4 ${isAvailable ? 'text-emerald-600' : 'text-slate-500'}`} />
-          <span>{isAvailable ? 'Available for Tasks' : 'Unavailable (Off Duty)'}</span>
+          <Power className={`w-4 h-4 ${isAvailable ? 'text-emerald-600' : 'text-secondaryText'}`} />
+          <span>{isAvailable ? 'Available for Jobs (On-Duty)' : 'Unavailable (Off-Duty)'}</span>
         </button>
       </div>
 
       {/* Notifications */}
       {successMessage && (
-        <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-sm flex items-center gap-2.5">
+        <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-xl text-sm flex items-center gap-2.5 shadow-xs">
           <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-          <span>{successMessage}</span>
+          <span className="font-medium">{successMessage}</span>
         </div>
       )}
 
       {errorMessage && (
-        <div className="p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-xl text-sm flex items-center gap-2.5">
+        <div className="p-4 bg-rose-50 border border-rose-200 text-rose-900 rounded-xl text-sm flex items-center gap-2.5 shadow-xs">
           <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
-          <span>{errorMessage}</span>
+          <span className="font-medium">{errorMessage}</span>
         </div>
       )}
 
-      {/* Financial Summary Cards */}
+      {/* Financial & Performance Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card className="p-4">
-          <div className="flex items-center justify-between text-xs text-[#64748B] mb-1">
-            <span>Total Earnings</span>
-            <DollarSign className="w-4 h-4 text-[#7C3AED]" />
+        <Card className="border border-border/80 bg-card rounded-card shadow-card p-5">
+          <div className="flex items-center justify-between text-xs text-secondaryText mb-1.5">
+            <span className="font-medium uppercase tracking-wider text-[11px]">Total Earnings</span>
+            <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center">
+              <TrendingUp className="w-3.5 h-3.5" />
+            </div>
           </div>
-          <div className="text-2xl font-heading font-bold text-[#1E293B]">
-            ₹{((profile?.totalEarningsPaise || 0) / 100).toLocaleString('en-IN')}
+          <div className="text-2xl font-serif font-bold text-ink font-mono tabular-nums">
+            ₹{((profile?.totalEarningsPaise || 0) / 100).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </div>
-          <div className="text-[11px] text-[#64748B] mt-1">Paid out via settlements</div>
+          <div className="text-[11px] text-secondaryText mt-1 flex items-center gap-1">
+            <ShieldCheck className="w-3 h-3 text-emerald-600" />
+            <span>Disbursed via Escrow</span>
+          </div>
         </Card>
 
-        <Card className="p-4">
-          <div className="flex items-center justify-between text-xs text-[#64748B] mb-1">
-            <span>Pending Payout</span>
-            <DollarSign className="w-4 h-4 text-amber-600" />
+        <Card className="border border-border/80 bg-card rounded-card shadow-card p-5">
+          <div className="flex items-center justify-between text-xs text-secondaryText mb-1.5">
+            <span className="font-medium uppercase tracking-wider text-[11px]">Pending Payout</span>
+            <div className="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center">
+              <Clock className="w-3.5 h-3.5" />
+            </div>
           </div>
-          <div className="text-2xl font-heading font-bold text-amber-700">
-            ₹{((profile?.pendingPayoutPaise || 0) / 100).toLocaleString('en-IN')}
+          <div className="text-2xl font-serif font-bold text-amber-800 font-mono tabular-nums">
+            ₹{((profile?.pendingPayoutPaise || 0) / 100).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </div>
-          <div className="text-[11px] text-[#64748B] mt-1">Ready for settlement batch</div>
+          <div className="text-[11px] text-secondaryText mt-1">Pending citizen balance settlement</div>
         </Card>
 
-        <Card className="p-4">
-          <div className="flex items-center justify-between text-xs text-[#64748B] mb-1">
-            <span>Tasks Completed</span>
-            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+        <Card className="border border-border/80 bg-card rounded-card shadow-card p-5">
+          <div className="flex items-center justify-between text-xs text-secondaryText mb-1.5">
+            <span className="font-medium uppercase tracking-wider text-[11px]">Tasks Completed</span>
+            <div className="w-7 h-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+              <CheckCircle2 className="w-3.5 h-3.5" />
+            </div>
           </div>
-          <div className="text-2xl font-heading font-bold text-emerald-700">
+          <div className="text-2xl font-serif font-bold text-ink font-mono tabular-nums">
             {profile?.completedTasksCount || 0}
           </div>
-          <div className="text-[11px] text-[#64748B] mt-1">100% resolution rate</div>
+          <div className="text-[11px] text-secondaryText mt-1">100% photographic proof rate</div>
         </Card>
       </div>
 
       <form onSubmit={handleSave} className="space-y-6">
         {/* Coverage Radius & Map Section */}
-        <Card className="p-6 space-y-5">
-          <div className="border-b border-[#E2E8F0] pb-3 flex items-center justify-between">
+        <Card className="border border-border/80 bg-card rounded-card shadow-card p-6 space-y-5">
+          <div className="border-b border-border pb-3 flex items-center justify-between">
             <div>
-              <h2 className="font-heading font-bold text-base text-[#1E293B]">
+              <h2 className="font-serif font-bold text-base text-ink">
                 Territory & Operating Radius
               </h2>
-              <p className="text-xs text-[#64748B]">
-                Your base is pinned below. Adjust your radius to accept tasks within your commute limit.
+              <p className="text-xs text-secondaryText">
+                Your workshop base is pinned below. Adjust your radius to accept tasks within your commute limit.
               </p>
             </div>
-            <div className="text-xs font-semibold text-[#7C3AED] bg-[#EDE9FE] px-3 py-1 rounded-full border border-[#DDD6FE]">
+            <div className="text-xs font-mono font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
               {serviceRadiusKm} km radius
             </div>
           </div>
 
-          <div className="space-y-2">
-            <div className="flex justify-between text-xs font-semibold text-[#1E293B]">
+          <div className="space-y-2.5">
+            <div className="flex justify-between text-xs font-semibold text-ink">
               <span>Coverage Radius Slider</span>
-              <span className="text-[#7C3AED] font-bold">{serviceRadiusKm} km</span>
+              <span className="text-primary font-mono font-bold">{serviceRadiusKm} km</span>
             </div>
             <input
               type="range"
@@ -216,42 +228,49 @@ export const ResolverProfilePage: React.FC = () => {
               step="1"
               value={serviceRadiusKm}
               onChange={(e) => setServiceRadiusKm(parseInt(e.target.value, 10) || 10)}
-              className="w-full accent-[#7C3AED]"
+              className="w-full accent-primary cursor-pointer"
             />
-            <div className="flex justify-between text-[11px] text-[#64748B]">
+            <div className="flex justify-between text-[11px] font-mono text-secondaryText">
               <span>1 km (Hyperlocal)</span>
-              <span>25 km</span>
-              <span>50 km (Regional)</span>
+              <span>25 km (Urban Sector)</span>
+              <span>50 km (Metropolitan)</span>
             </div>
           </div>
 
-          <div>
-            <div className="flex items-center gap-1.5 text-xs text-[#64748B] mb-2">
-              <MapPin className="w-4 h-4 text-[#7C3AED]" />
-              <span className="font-semibold text-[#1E293B]">Registered Base:</span>
-              <span>{profile?.serviceAddress}</span>
+          <div className="space-y-3">
+            <div className="flex items-center gap-1.5 text-xs text-secondaryText">
+              <MapPin className="w-4 h-4 text-primary" />
+              <span className="font-semibold text-ink">Registered Base:</span>
+              <span className="font-mono text-ink">{profile?.serviceAddress}</span>
             </div>
 
             {/* Map Preview with dynamic circle */}
-            <MapPicker
-              lat={lat}
-              lng={lng}
-              radiusKm={serviceRadiusKm}
-              height="300px"
-              onChange={() => {}} // Base is fixed after registration
-            />
+            <div className="rounded-xl overflow-hidden border border-border">
+              <MapPicker
+                lat={lat}
+                lng={lng}
+                radiusKm={serviceRadiusKm}
+                height="300px"
+                onChange={() => {}} // Base is fixed after registration
+              />
+            </div>
           </div>
         </Card>
 
         {/* Skills & Trade Classifications */}
-        <Card className="p-6 space-y-4">
-          <div className="border-b border-[#E2E8F0] pb-3">
-            <h2 className="font-heading font-bold text-base text-[#1E293B]">
-              Qualified Trade Skills
-            </h2>
-            <p className="text-xs text-[#64748B]">
-              Select which categories of civic issues you are ready to repair.
-            </p>
+        <Card className="border border-border/80 bg-card rounded-card shadow-card p-6 space-y-4">
+          <div className="border-b border-border pb-3 flex items-center justify-between">
+            <div>
+              <h2 className="font-serif font-bold text-base text-ink">
+                Qualified Trade Skills
+              </h2>
+              <p className="text-xs text-secondaryText">
+                Select which civic hazard categories you are certified and equipped to remediate.
+              </p>
+            </div>
+            <div className="text-xs font-mono text-secondaryText">
+              {selectedSkills.length} selected
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -263,19 +282,22 @@ export const ResolverProfilePage: React.FC = () => {
                   onClick={() => handleSkillToggle(cat._id)}
                   className={`p-3.5 rounded-xl border cursor-pointer transition-all flex items-start gap-3 select-none ${
                     isSelected
-                      ? 'border-[#7C3AED] bg-[#EDE9FE]/50 shadow-xs'
-                      : 'border-[#E2E8F0] bg-white hover:border-[#A78BFA] hover:bg-[#F8F7FC]'
+                      ? 'border-primary bg-primary/5 shadow-xs'
+                      : 'border-border bg-card hover:border-primary/40 hover:bg-canvas'
                   }`}
                 >
                   <input
                     type="checkbox"
                     checked={isSelected}
                     onChange={() => {}}
-                    className="w-4 h-4 mt-0.5 accent-[#7C3AED] rounded"
+                    className="w-4 h-4 mt-0.5 accent-primary rounded cursor-pointer"
                   />
-                  <div>
-                    <div className="font-semibold text-sm text-[#1E293B]">{cat.name}</div>
-                    <div className="text-xs text-[#64748B] line-clamp-1">{cat.description}</div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1.5">
+                      <Wrench className="w-3.5 h-3.5 text-primary" />
+                      <div className="font-semibold text-sm text-ink">{cat.name}</div>
+                    </div>
+                    <div className="text-xs text-secondaryText line-clamp-1 mt-0.5">{cat.description}</div>
                   </div>
                 </div>
               );
@@ -290,7 +312,7 @@ export const ResolverProfilePage: React.FC = () => {
             variant="primary"
             isLoading={isSaving}
             leftIcon={<Save className="w-4 h-4" />}
-            className="px-6"
+            className="px-6 text-xs font-semibold shadow-sm"
           >
             Save Territory & Trade Settings
           </Button>
