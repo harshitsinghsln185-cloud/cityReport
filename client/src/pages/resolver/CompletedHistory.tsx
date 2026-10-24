@@ -26,7 +26,7 @@ export const ResolverCompletedHistoryPage: React.FC = () => {
       setLoading(true);
       setError(null);
       const res = await resolverTaskService.listTasks({ status: 'Completed', limit: 50 });
-      setTasks(res.tasks);
+      setTasks(Array.isArray(res?.tasks) ? res.tasks : []);
     } catch (err: any) {
       setError(err?.response?.data?.message || 'Failed to retrieve completed repair history');
     } finally {

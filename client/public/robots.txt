@@ -1,0 +1,11 @@
+# Crowd Report Platform Robots Policy
+User-agent: *
+Allow: /
+Allow: /services
+Allow: /about
+Allow: /track
+Allow: /query
+Disallow: /admin/
+Disallow: /resolver/
+Disallow: /user/
+Disallow: /api/

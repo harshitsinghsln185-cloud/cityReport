@@ -8,6 +8,8 @@ export interface Category {
   baseFeePaise: number;
   isActive: boolean;
   icon: string;
+  estimatedResolutionHours?: number;
+  freeRadiusKm?: number;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -41,8 +43,16 @@ export interface UpdateCategoryPayload {
 export const categoryService = {
   // Public endpoint for active categories
   async getActiveCategories(): Promise<Category[]> {
-    const response = await api.get<{ success: boolean; data: Category[] }>('/categories');
-    return response.data.data;
+    try {
+      const response: any = await api.get('/categories');
+      const payload = response?.data !== undefined ? response.data : response;
+      if (Array.isArray(payload)) return payload;
+      if (Array.isArray(payload?.data)) return payload.data;
+      return [];
+    } catch (err) {
+      console.error('Failed to get active categories:', err);
+      return [];
+    }
   },
 
   // Admin paginated categories
@@ -52,28 +62,43 @@ export const categoryService = {
     search?: string;
     isActive?: boolean | string;
   }): Promise<AdminCategoriesResponse> {
-    const response = await api.get<AdminCategoriesResponse>('/admin/categories', { params });
-    return response.data;
+    const response: any = await api.get('/admin/categories', { params });
+    const list = Array.isArray(response?.data)
+      ? response.data
+      : Array.isArray(response)
+      ? response
+      : [];
+    const meta = response?.meta || {
+      page: params?.page || 1,
+      limit: params?.limit || 20,
+      total: list.length,
+      totalPages: Math.ceil(list.length / (params?.limit || 20)) || 1,
+    };
+    return {
+      success: response?.success ?? true,
+      data: list,
+      meta,
+    };
   },
 
   // Admin create category
   async createCategory(payload: CreateCategoryPayload): Promise<Category> {
-    const response = await api.post<{ success: boolean; data: Category }>('/admin/categories', payload);
-    return response.data.data;
+    const response: any = await api.post('/admin/categories', payload);
+    return response?.data !== undefined ? response.data : response;
   },
 
   // Admin update category
   async updateCategory(id: string, payload: UpdateCategoryPayload): Promise<Category> {
-    const response = await api.put<{ success: boolean; data: Category }>(`/admin/categories/${id}`, payload);
-    return response.data.data;
+    const response: any = await api.put(`/admin/categories/${id}`, payload);
+    return response?.data !== undefined ? response.data : response;
   },
 
   // Admin toggle active status
   async toggleCategoryStatus(id: string, isActive: boolean): Promise<Category> {
-    const response = await api.patch<{ success: boolean; data: Category }>(`/admin/categories/${id}/status`, {
+    const response: any = await api.patch(`/admin/categories/${id}/status`, {
       isActive,
     });
-    return response.data.data;
+    return response?.data !== undefined ? response.data : response;
   },
 };
 

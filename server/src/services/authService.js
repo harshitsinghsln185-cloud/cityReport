@@ -3,10 +3,12 @@ import { RefreshToken } from '../models/RefreshToken.js';
 import { ResolverProfile } from '../models/ResolverProfile.js';
 import tokenService from './tokenService.js';
 import emailService from './emailService.js';
+import notificationService from './notificationService.js';
 import welcomeVerifyTemplate from '../templates/email/welcomeVerify.js';
 import resetPasswordTemplate from '../templates/email/resetPassword.js';
 import { AppError } from '../utils/AppError.js';
 import { env } from '../config/env.js';
+import { logger } from '../utils/logger.js';
 
 export const registerUser = async ({ name, email, phone, password, address }) => {
   const existingUser = await User.findOne({ email });
@@ -33,11 +35,21 @@ export const registerUser = async ({ name, email, phone, password, address }) =>
 
   // Dispatch verification email in background
   const verifyUrl = `${env.CLIENT_URL}/verify-email?token=${rawVerifyToken}`;
-  emailService.sendMail({
-    to: user.email,
-    subject: 'Verify Your Email Address - Crowd Report',
-    html: welcomeVerifyTemplate({ name: user.name, verifyUrl }),
-  });
+  notificationService
+    .notify({
+      recipientId: user._id,
+      title: 'Verify Your Email Address',
+      message: 'Welcome to Crowd Report! Please verify your email address to enable all platform features.',
+      type: 'SYSTEM',
+      link: '/profile',
+      emailOptions: {
+        to: user.email,
+        template: 'welcomeVerify',
+        subject: 'Verify Your Email Address - Crowd Report',
+        html: welcomeVerifyTemplate({ name: user.name, verifyUrl }),
+      },
+    })
+    .catch((err) => logger.warn(`Auth registration notification skipped: ${err.message}`));
 
   return user;
 };
@@ -169,11 +181,20 @@ export const requestPasswordReset = async (email) => {
   await user.save();
 
   const resetUrl = `${env.CLIENT_URL}/reset-password?token=${rawToken}`;
-  emailService.sendMail({
-    to: user.email,
-    subject: 'Reset Your Password - Crowd Report',
-    html: resetPasswordTemplate({ name: user.name, resetUrl }),
-  });
+  notificationService
+    .notify({
+      recipientId: user._id,
+      title: 'Password Reset Requested',
+      message: 'A password reset link has been dispatched to your registered email address.',
+      type: 'SYSTEM',
+      emailOptions: {
+        to: user.email,
+        template: 'resetPassword',
+        subject: 'Reset Your Password - Crowd Report',
+        html: resetPasswordTemplate({ name: user.name, resetUrl }),
+      },
+    })
+    .catch((err) => logger.warn(`Password reset notification skipped: ${err.message}`));
 };
 
 export const resetPassword = async ({ token, newPassword }) => {

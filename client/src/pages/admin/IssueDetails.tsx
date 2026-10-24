@@ -87,7 +87,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
     try {
       setCandidatesLoading(true);
       const res = await adminService.getCandidates(issueId);
-      setCandidates(res);
+      setCandidates(Array.isArray(res) ? res : []);
     } catch (err: any) {
       console.error('Candidate fetch error:', err);
     } finally {

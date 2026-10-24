@@ -48,7 +48,7 @@ export const CategoriesPage: React.FC = () => {
         isActive: statusFilter === '' ? undefined : statusFilter,
         limit: 50,
       });
-      setCategories(res.data);
+      setCategories(Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : []);
     } catch (err: any) {
       setError(err?.response?.data?.message || 'Failed to load categories');
     } finally {

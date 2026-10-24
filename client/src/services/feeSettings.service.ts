@@ -35,17 +35,14 @@ export interface UpdateFeeSettingsPayload {
 export const feeSettingsService = {
   // Fetch singleton fee settings
   async getFeeSettings(): Promise<FeeSettings> {
-    const response = await api.get<{ success: boolean; data: FeeSettings }>('/admin/fee-settings');
-    return response.data.data;
+    const response: any = await api.get('/admin/fee-settings');
+    return response?.data !== undefined ? response.data : response;
   },
 
   // Update global fee parameters
   async updateFeeSettings(payload: UpdateFeeSettingsPayload): Promise<FeeSettings> {
-    const response = await api.put<{ success: boolean; message: string; data: FeeSettings }>(
-      '/admin/fee-settings',
-      payload
-    );
-    return response.data.data;
+    const response: any = await api.put('/admin/fee-settings', payload);
+    return response?.data !== undefined ? response.data : response;
   },
 };
 

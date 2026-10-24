@@ -33,7 +33,7 @@ export const ResolverTasksPage: React.FC = () => {
       setLoading(true);
       setError(null);
       const res = await resolverTaskService.listTasks({ status: activeTab, limit: 50 });
-      setTasks(res.tasks);
+      setTasks(Array.isArray(res?.tasks) ? res.tasks : []);
     } catch (err: any) {
       setError(err?.response?.data?.message || 'Failed to retrieve active tasks');
     } finally {

@@ -55,7 +55,7 @@ export const RegisterResolver: React.FC = () => {
       try {
         setCategoriesLoading(true);
         const data = await categoryService.getActiveCategories();
-        setCategories(data);
+        setCategories(Array.isArray(data) ? data : []);
       } catch (err: any) {
         setErrorMessage('Failed to load civic categories. Please refresh.');
       } finally {

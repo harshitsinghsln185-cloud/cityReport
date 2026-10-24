@@ -14,6 +14,7 @@ import {
   LogOut,
   AlertTriangle,
 } from 'lucide-react';
+import NotificationBell from '../components/NotificationBell';
 
 export const ResolverLayout: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
@@ -177,6 +178,7 @@ export const ResolverLayout: React.FC = () => {
             )}
 
             <div className="flex items-center gap-3">
+              <NotificationBell />
               <div className="w-8 h-8 rounded-full bg-[#EDE9FE] text-[#7C3AED] border border-[#CBD5E1] flex items-center justify-center font-bold text-xs">
                 {user?.name ? user.name.charAt(0).toUpperCase() : 'R'}
               </div>

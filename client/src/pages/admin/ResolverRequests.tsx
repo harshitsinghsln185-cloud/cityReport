@@ -61,9 +61,9 @@ export const ResolverRequestsPage: React.FC = () => {
         limit: 10,
       });
 
-      setResolvers(res.data);
-      setTotalPages(res.meta.totalPages);
-      setTotalCount(res.meta.total);
+      setResolvers(Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : []);
+      setTotalPages(res?.meta?.totalPages || 1);
+      setTotalCount(res?.meta?.total || 0);
     } catch (err: any) {
       setError(err?.response?.data?.message || 'Failed to load resolver applications');
     } finally {

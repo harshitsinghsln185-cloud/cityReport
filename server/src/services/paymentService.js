@@ -9,6 +9,8 @@ import { ResolverProfile } from '../models/ResolverProfile.js';
 import issueService from './issueService.js';
 import invoiceService from './invoiceService.js';
 import emailService from './emailService.js';
+import notificationService from './notificationService.js';
+import emailQueue from './emailQueue.js';
 import advanceReceiptTemplate from '../templates/email/advanceReceipt.js';
 import adminNewIssueTemplate from '../templates/email/adminNewIssue.js';
 import finalReceiptTemplate from '../templates/email/finalReceipt.js';
@@ -317,7 +319,7 @@ export const confirmPayment = async (paymentId, idempotencyKey, userId, external
 
       logger.info(`Successfully confirmed balance payment ${payment.paymentId} for Issue ${issue.issueCode}. Status updated to "Closed".`);
 
-      // Post-transaction background notifications
+      // Post-transaction background in-app alert & email
       (async () => {
         try {
           const citizenUser = await User.findById(userId);
@@ -327,28 +329,36 @@ export const confirmPayment = async (paymentId, idempotencyKey, userId, external
             const pdfBuffer = await invoiceService.generateInvoicePdfBuffer(invoice, issue);
             const trackingUrl = `${process.env.CLIENT_URL || 'http://localhost:5173'}/user/issues/${issue._id}`;
 
-            await emailService.sendMail({
-              to: citizenEmail,
-              subject: `Final Settlement & Invoice - ${issue.issueCode}`,
-              html: finalReceiptTemplate({
-                citizenName: citizenUser?.name || invoice.customerSnapshot?.name || 'Citizen',
-                issueCode: issue.issueCode,
-                issueTitle: issue.title,
-                invoiceNumber: invoice.invoiceNumber,
-                totalAmountFormatted: (totalPaise / 100).toFixed(2),
-                issueUrl: trackingUrl,
-              }),
-              attachments: [
-                {
-                  filename: `Invoice-${invoice.invoiceNumber}.pdf`,
-                  content: pdfBuffer,
-                  contentType: 'application/pdf',
-                },
-              ],
+            await notificationService.notify({
+              recipientId: userId,
+              title: `Final Settlement & Closed: ${issue.issueCode}`,
+              message: `Final balance payment confirmed. Issue ${issue.issueCode} is officially closed. Invoice ${invoice.invoiceNumber} attached.`,
+              type: 'PAYMENT',
+              link: `/user/issues/${issue._id}`,
+              emailOptions: {
+                to: citizenEmail,
+                template: 'finalReceipt',
+                subject: `Final Settlement & Invoice - ${issue.issueCode}`,
+                html: finalReceiptTemplate({
+                  citizenName: citizenUser?.name || invoice.customerSnapshot?.name || 'Citizen',
+                  issueCode: issue.issueCode,
+                  issueTitle: issue.title,
+                  invoiceNumber: invoice.invoiceNumber,
+                  totalAmountFormatted: (totalPaise / 100).toFixed(2),
+                  issueUrl: trackingUrl,
+                }),
+                attachments: [
+                  {
+                    filename: `Invoice-${invoice.invoiceNumber}.pdf`,
+                    content: pdfBuffer,
+                    contentType: 'application/pdf',
+                  },
+                ],
+              },
             });
           }
         } catch (notifyErr) {
-          logger.error(`Error sending balance payment confirmation email: ${notifyErr.message}`, { error: notifyErr });
+          logger.warn(`Failed to dispatch final receipt notification for issue ${issue.issueCode}: ${notifyErr.message}`);
         }
       })();
 
@@ -411,25 +421,33 @@ export const confirmPayment = async (paymentId, idempotencyKey, userId, external
           const pdfBuffer = await invoiceService.generateInvoicePdfBuffer(invoice, issue);
           const trackingUrl = `${process.env.CLIENT_URL || 'http://localhost:5173'}/user/issues/${issue._id}`;
 
-          await emailService.sendMail({
-            to: citizenEmail,
-            subject: `Advance Payment Confirmed - ${issue.issueCode}`,
-            html: advanceReceiptTemplate({
-              name: citizenUser?.name || invoice.customerSnapshot?.name || 'Citizen',
-              issueCode: issue.issueCode,
-              issueTitle: issue.title,
-              invoiceNumber: invoice.invoiceNumber,
-              amountPaidFormatted: (payment.amountPaise / 100).toFixed(2),
-              balanceDueFormatted: ((issue.fee?.balancePaise || 0) / 100).toFixed(2),
-              trackingUrl,
-            }),
-            attachments: [
-              {
-                filename: `Invoice-${invoice.invoiceNumber}.pdf`,
-                content: pdfBuffer,
-                contentType: 'application/pdf',
-              },
-            ],
+          await notificationService.notify({
+            recipientId: userId,
+            title: `Advance Payment Confirmed: ${issue.issueCode}`,
+            message: `Advance payment confirmed for ${issue.issueCode}. Your civic report is now submitted to municipal operations.`,
+            type: 'PAYMENT',
+            link: `/user/issues/${issue._id}`,
+            emailOptions: {
+              to: citizenEmail,
+              template: 'advanceReceipt',
+              subject: `Advance Payment Confirmed - ${issue.issueCode}`,
+              html: advanceReceiptTemplate({
+                name: citizenUser?.name || invoice.customerSnapshot?.name || 'Citizen',
+                issueCode: issue.issueCode,
+                issueTitle: issue.title,
+                invoiceNumber: invoice.invoiceNumber,
+                amountPaidFormatted: (payment.amountPaise / 100).toFixed(2),
+                balanceDueFormatted: ((issue.fee?.balancePaise || 0) / 100).toFixed(2),
+                trackingUrl,
+              }),
+              attachments: [
+                {
+                  filename: `Invoice-${invoice.invoiceNumber}.pdf`,
+                  content: pdfBuffer,
+                  contentType: 'application/pdf',
+                },
+              ],
+            },
           });
         }
 
@@ -438,8 +456,9 @@ export const confirmPayment = async (paymentId, idempotencyKey, userId, external
         const adminIssueUrl = `${process.env.CLIENT_URL || 'http://localhost:5173'}/admin/issues`;
 
         for (const admin of admins) {
-          await emailService.sendMail({
+          await emailQueue.enqueueEmail({
             to: admin.email,
+            template: 'adminNewIssue',
             subject: `New Civic Issue Submitted: ${issue.issueCode}`,
             html: adminNewIssueTemplate({
               adminName: admin.name || 'Admin',
@@ -468,6 +487,23 @@ export const confirmPayment = async (paymentId, idempotencyKey, userId, external
     if (isInternalSession) {
       await session.abortTransaction();
       session.endSession();
+    }
+    // Check if the payment was completed by a concurrent worker in a race condition
+    let completedCheck = await Payment.findOne({ paymentId, status: 'Completed' });
+    if (!completedCheck) {
+      for (let i = 0; i < 6; i++) {
+        await new Promise((r) => setTimeout(r, 50));
+        completedCheck = await Payment.findOne({ paymentId, status: 'Completed' });
+        if (completedCheck) break;
+      }
+    }
+    if (completedCheck) {
+      logger.info(`Concurrent payment completion detected for paymentId ${paymentId}. Returning replay result.`);
+      const invoiceType = completedCheck.type === 'Balance' ? 'Final' : 'Advance';
+      const invoice = await Invoice.findOne({ issue: completedCheck.issue, type: invoiceType });
+      const issue = await Issue.findById(completedCheck.issue);
+      const payout = completedCheck.type === 'Balance' ? await Payout.findOne({ issue: completedCheck.issue }) : null;
+      return { payment: completedCheck, invoice, payout, issue, isReplay: true };
     }
     throw err;
   }

@@ -58,7 +58,8 @@ export const ReportIssue: React.FC = () => {
     const fetchCats = async () => {
       try {
         setCategoriesLoading(true);
-        const list = await categoryService.getActiveCategories();
+        const data = await categoryService.getActiveCategories();
+        const list = Array.isArray(data) ? data : [];
         setCategories(list);
         if (list.length > 0 && !formData.category) {
           setFormData((prev) => ({ ...prev, category: list[0]._id }));

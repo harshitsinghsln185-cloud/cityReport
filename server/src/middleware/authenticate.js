@@ -38,4 +38,29 @@ export const authenticate = asyncHandler(async (req, res, next) => {
   next();
 });
 
+export const optionalAuthenticate = asyncHandler(async (req, res, next) => {
+  let token = req.cookies?.accessToken;
+
+  if (!token && req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
+    token = req.headers.authorization.split(' ')[1];
+  }
+
+  if (!token) {
+    return next();
+  }
+
+  try {
+    const decoded = tokenService.verifyAccessToken(token);
+    const user = await User.findById(decoded.id);
+    if (user && !user.isBlocked) {
+      req.user = user;
+    }
+  } catch {
+    // Continue without req.user for optional authentication
+  }
+
+  next();
+});
+
 export default authenticate;
+

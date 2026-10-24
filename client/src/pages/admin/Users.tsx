@@ -57,7 +57,7 @@ export const AdminUsersPage: React.FC = () => {
         page: meta.page,
         limit: meta.limit,
       });
-      setUsers(res.users);
+      setUsers(Array.isArray(res?.users) ? res.users : []);
       if (res.meta) {
         setMeta((prev) => ({
           ...prev,

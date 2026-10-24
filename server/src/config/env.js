@@ -1,12 +1,17 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { z } from 'zod';
 
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 const envSchema = z.object({
   PORT: z.string().default('5000').transform((val) => parseInt(val, 10)),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-  MONGODB_URI: z.string().default('mongodb://localhost:27017/crowd_report?replicaSet=rs0'),
+  MONGODB_URI: z.string().default('mongodb://127.0.0.1:27017/crowd_report'),
   CLIENT_URL: z.string().default('http://localhost:5173'),
   JWT_ACCESS_SECRET: z.string().min(32).default('default_jwt_access_secret_key_minimum_32_characters_for_dev'),
   JWT_REFRESH_SECRET: z.string().min(32).default('default_jwt_refresh_secret_key_minimum_32_characters_for_dev'),

@@ -4,10 +4,12 @@ import { Category } from '../models/Category.js';
 import { User } from '../models/User.js';
 import feeService from './feeService.js';
 import cloudinaryService from './cloudinaryService.js';
+import notificationService from './notificationService.js';
 import sequence from '../utils/sequence.js';
 import { validateImageBuffer } from '../utils/fileValidation.js';
 import { AppError } from '../utils/AppError.js';
 import { env } from '../config/env.js';
+import { logger } from '../utils/logger.js';
 
 /**
  * Creates a new civic issue reported by a citizen.
@@ -35,6 +37,7 @@ export const createIssue = async ({
   coordinates,
   address,
   files = [],
+  existingImages = [],
   source = 'form',
 }) => {
   const reporter = await User.findById(reporterId);
@@ -105,8 +108,8 @@ export const createIssue = async ({
   });
 
   // 5. Upload attached images to Cloudinary (crowd-report/<env>/issues/<issueId>)
+  const finalImages = Array.isArray(existingImages) ? [...existingImages] : [];
   if (files && files.length > 0) {
-    const uploadedImages = [];
     const uploadFolder = `crowd-report/${env.NODE_ENV}/issues/${issue._id}`;
 
     for (const file of files) {
@@ -118,11 +121,11 @@ export const createIssue = async ({
           format: validation.format,
           access_type: 'public',
         });
-        uploadedImages.push(asset);
+        finalImages.push(asset);
       }
     }
-    issue.images = uploadedImages;
   }
+  issue.images = finalImages;
 
   await issue.save();
 
@@ -139,6 +142,20 @@ export const createIssue = async ({
         ? `Issue created with automated fee quote of ₹${feeSnapshot.totalPaise / 100}.`
         : 'Issue created; routed to admin for manual fee quote (no certified resolver in coverage radius).',
   });
+
+  // 7. Dispatch in-app alert to citizen
+  notificationService
+    .notify({
+      recipientId: reporterId,
+      title: `Issue Reported: ${issue.issueCode}`,
+      message:
+        initialStatus === 'AwaitingAdvance'
+          ? `Your civic issue "${title}" has been recorded. Advance payment of ₹${feeSnapshot.advancePaise / 100} is due.`
+          : `Your civic issue "${title}" has been recorded and routed for administrative fee evaluation.`,
+      type: 'ISSUE',
+      link: `/user/issues/${issue._id}`,
+    })
+    .catch((err) => logger.warn(`Issue created notification skipped: ${err.message}`));
 
   return {
     issue,
@@ -275,6 +292,16 @@ export const cancelIssue = async (issueId, userId) => {
     actorRole: 'User',
     remarks: 'Issue cancelled by citizen.',
   });
+
+  notificationService
+    .notify({
+      recipientId: userId,
+      title: `Issue Cancelled: ${issue.issueCode}`,
+      message: `Your report for "${issue.title}" has been cancelled.`,
+      type: 'ISSUE',
+      link: `/user/issues/${issue._id}`,
+    })
+    .catch((err) => logger.warn(`Issue cancelled notification skipped: ${err.message}`));
 
   return issue;
 };

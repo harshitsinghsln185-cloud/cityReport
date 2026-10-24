@@ -8,6 +8,8 @@ import { ResolverProfile } from '../models/ResolverProfile.js';
 import { IssueTimeline } from '../models/IssueTimeline.js';
 import { User } from '../models/User.js';
 import emailService from './emailService.js';
+import notificationService from './notificationService.js';
+import emailQueue from './emailQueue.js';
 import balanceDueTemplate from '../templates/email/balanceDue.js';
 import payoutPaidTemplate from '../templates/email/payoutPaid.js';
 import { AppError } from '../utils/AppError.js';
@@ -50,29 +52,38 @@ export const verifyResolutionProof = async (issueId, adminId) => {
     remarks: 'Municipal administration verified completion proof and approved balance invoicing',
   });
 
-  // Asynchronously dispatch Balance Due email to citizen
+  // In-app alert & email dispatch to citizen
   (async () => {
     try {
-      if (issue.reporter?.email) {
+      const citizenId = issue.reporter?._id || issue.reporter;
+      if (citizenId) {
         const balanceFormatted = issue.fee?.balancePaise
           ? (issue.fee.balancePaise / 100).toFixed(2)
           : '0.00';
         const issueUrl = `${env.CLIENT_URL || 'http://localhost:5173'}/user/issues/${issue._id}`;
 
-        await emailService.sendMail({
-          to: issue.reporter.email,
-          subject: `Balance Payment Due: ${issue.issueCode}`,
-          html: balanceDueTemplate({
-            citizenName: issue.reporter.name,
-            issueCode: issue.issueCode,
-            issueTitle: issue.title,
-            balanceAmountFormatted: balanceFormatted,
-            issueUrl,
-          }),
+        await notificationService.notify({
+          recipientId: citizenId,
+          title: `Balance Payment Due: ${issue.issueCode}`,
+          message: `Repair proof verified! Please complete balance payment of ₹${balanceFormatted} to close this issue and receive your final invoice.`,
+          type: 'PAYMENT',
+          link: `/user/checkout/${issue._id}`,
+          emailOptions: {
+            to: issue.reporter?.email,
+            template: 'balanceDue',
+            subject: `Balance Payment Due: ${issue.issueCode}`,
+            html: balanceDueTemplate({
+              citizenName: issue.reporter?.name || 'Citizen',
+              issueCode: issue.issueCode,
+              issueTitle: issue.title,
+              balanceAmountFormatted: balanceFormatted,
+              issueUrl,
+            }),
+          },
         });
       }
     } catch (err) {
-      logger.error(`Failed to send balance due notification for ${issue.issueCode}: ${err.message}`);
+      logger.warn(`Failed to send balance due notification for ${issue.issueCode}: ${err.message}`);
     }
   })();
 
@@ -129,6 +140,26 @@ export const requestTaskRework = async (issueId, remarks, adminId) => {
     actorRole: 'Admin',
     remarks: remarks.trim(),
   });
+
+  // In-app alert to resolver contractor
+  (async () => {
+    try {
+      if (issue.assignedResolver) {
+        const resolver = await ResolverProfile.findById(issue.assignedResolver).populate('user', '_id');
+        if (resolver?.user?._id) {
+          await notificationService.notify({
+            recipientId: resolver.user._id,
+            title: `Rework Requested: ${issue.issueCode}`,
+            message: `Municipal supervisor requested remediation rework on ${issue.title}. Remarks: ${remarks.trim()}`,
+            type: 'REWORK',
+            link: `/resolver/tasks/${issue._id}`,
+          });
+        }
+      }
+    } catch (err) {
+      logger.warn(`Failed to dispatch rework requested notification: ${err.message}`);
+    }
+  })();
 
   return issue;
 };
@@ -193,30 +224,38 @@ export const markPayoutPaid = async (payoutId, adminId) => {
     });
   }
 
-  // Asynchronously send notification to resolver contractor
+  // In-app alert & email notification to resolver contractor
   (async () => {
     try {
       const resolver = await ResolverProfile.findById(payout.resolver).populate('user', 'name email');
-      if (resolver?.user?.email) {
+      if (resolver?.user?._id) {
         const issue = payout.issue?.issueCode ? payout.issue : await Issue.findById(payout.issue);
         const earningsUrl = `${env.CLIENT_URL || 'http://localhost:5173'}/resolver/earnings`;
 
-        await emailService.sendMail({
-          to: resolver.user.email,
-          subject: `Payout Disbursed: ₹${(payout.netAmountPaise / 100).toFixed(2)} for ${issue?.issueCode || 'Civic Issue'}`,
-          html: payoutPaidTemplate({
-            resolverName: resolver.user.name,
-            issueCode: issue?.issueCode || 'N/A',
-            grossAmountFormatted: (payout.grossAmountPaise / 100).toFixed(2),
-            commissionFormatted: (payout.commissionPaise / 100).toFixed(2),
-            netAmountFormatted: (payout.netAmountPaise / 100).toFixed(2),
-            payoutId: payout._id.toString(),
-            earningsUrl,
-          }),
+        await notificationService.notify({
+          recipientId: resolver.user._id,
+          title: `Payout Disbursed: ₹${(payout.netAmountPaise / 100).toFixed(2)}`,
+          message: `Settlement funds of ₹${(payout.netAmountPaise / 100).toFixed(2)} for ${issue?.issueCode || 'Civic Issue'} have been disbursed to your account.`,
+          type: 'PAYOUT',
+          link: '/resolver/earnings',
+          emailOptions: {
+            to: resolver.user.email,
+            template: 'payoutPaid',
+            subject: `Payout Disbursed: ₹${(payout.netAmountPaise / 100).toFixed(2)} for ${issue?.issueCode || 'Civic Issue'}`,
+            html: payoutPaidTemplate({
+              resolverName: resolver.user.name,
+              issueCode: issue?.issueCode || 'N/A',
+              grossAmountFormatted: (payout.grossAmountPaise / 100).toFixed(2),
+              commissionFormatted: (payout.commissionPaise / 100).toFixed(2),
+              netAmountFormatted: (payout.netAmountPaise / 100).toFixed(2),
+              payoutId: payout._id.toString(),
+              earningsUrl,
+            }),
+          },
         });
       }
     } catch (err) {
-      logger.error(`Failed to dispatch payout disbursed email: ${err.message}`);
+      logger.warn(`Failed to dispatch payout disbursed alert: ${err.message}`);
     }
   })();
 

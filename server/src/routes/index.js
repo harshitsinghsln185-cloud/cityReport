@@ -14,6 +14,11 @@ import issueRoutes from './issue.routes.js';
 import paymentRoutes from './payment.routes.js';
 import invoiceRoutes from './invoice.routes.js';
 import adminFinanceRoutes from './adminFinance.routes.js';
+import notificationRoutes from './notification.routes.js';
+import chatRoutes from './chat.routes.js';
+import queryRoutes from './query.routes.js';
+import adminQueryRoutes from './adminQuery.routes.js';
+import trackRoutes from './track.routes.js';
 
 const router = Router();
 
@@ -46,11 +51,22 @@ router.use('/payments', paymentRoutes);
 // Immutable Legal Invoices & PDF Streaming
 router.use('/invoices', invoiceRoutes);
 
+// Notifications Feed & Unread Counts
+router.use('/notifications', notificationRoutes);
+
+// AI Chatbot Conversational Reporting
+router.use('/chat', chatRoutes);
+
+// Public Contact Queries & Tracking
+router.use('/queries', queryRoutes);
+router.use('/track', trackRoutes);
+
 // Administration Routes (Admin role required)
 router.use('/admin/issues', adminIssueRoutes);
 router.use('/admin/resolvers', adminResolverRoutes);
 router.use('/admin/users', adminUserRoutes);
 router.use('/admin/finance', adminFinanceRoutes);
+router.use('/admin/queries', adminQueryRoutes);
 router.use('/admin', adminRoutes);
 
 export default router;

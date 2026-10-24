@@ -11,12 +11,13 @@ import {
   Receipt,
   Layers,
   Sliders,
-  MessageSquare,
+  Mail,
   Menu,
   X,
   LogOut,
   Search,
 } from 'lucide-react';
+import NotificationBell from '../components/NotificationBell';
 
 export const AdminLayout: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
@@ -39,7 +40,7 @@ export const AdminLayout: React.FC = () => {
     { name: 'Payout Queue', href: '/admin/payouts', icon: DollarSign },
     { name: 'Categories Manager', href: '/admin/categories', icon: Layers },
     { name: 'Fee Settings', href: '/admin/fee-settings', icon: Sliders },
-    { name: 'Public Queries', href: '/admin/queries', icon: MessageSquare },
+    { name: 'Public Queries', href: '/admin/queries', icon: Mail },
   ];
 
   return (
@@ -158,6 +159,7 @@ export const AdminLayout: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3">
+            <NotificationBell />
             <div className="text-right hidden sm:block">
               <div className="text-xs font-semibold text-[#1E293B]">{user?.name || 'System Admin'}</div>
               <div className="text-[11px] text-[#64748B]">Administrator</div>

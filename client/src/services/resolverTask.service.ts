@@ -1,4 +1,4 @@
-import api, { ApiResponse } from './api';
+import api from './api';
 import { Issue, TimelineEvent } from './issue.service';
 import { FileAsset } from './user.service';
 
@@ -39,41 +39,46 @@ export interface TaskListParams {
 export const resolverTaskService = {
   // Get contractor dashboard summary and overview metrics
   async getDashboardSummary(): Promise<ResolverDashboardData> {
-    const res = await api.get<ApiResponse<ResolverDashboardData>>('/resolver/tasks/summary');
-    return res.data.data!;
+    const res: any = await api.get('/resolver/tasks/summary');
+    return res?.data !== undefined ? res.data : res;
   },
 
   // List assigned tasks with status filter and pagination
   async listTasks(params?: TaskListParams): Promise<{ tasks: Issue[]; meta: any }> {
-    const res = await api.get<ApiResponse<Issue[]>>('/resolver/tasks', { params });
+    const res: any = await api.get('/resolver/tasks', { params });
+    const tasks = Array.isArray(res?.data)
+      ? res.data
+      : Array.isArray(res)
+      ? res
+      : [];
     return {
-      tasks: res.data.data || [],
-      meta: res.data.meta,
+      tasks,
+      meta: res?.meta,
     };
   },
 
   // Get single task details (contact masked if Assigned)
   async getTaskDetails(taskId: string): Promise<TaskDetailsResponse> {
-    const res = await api.get<ApiResponse<TaskDetailsResponse>>(`/resolver/tasks/${taskId}`);
-    return res.data.data!;
+    const res: any = await api.get(`/resolver/tasks/${taskId}`);
+    return res?.data !== undefined ? res.data : res;
   },
 
   // Accept assigned task
   async acceptTask(taskId: string): Promise<Issue> {
-    const res = await api.patch<ApiResponse<Issue>>(`/resolver/tasks/${taskId}/accept`);
-    return res.data.data!;
+    const res: any = await api.patch(`/resolver/tasks/${taskId}/accept`);
+    return res?.data !== undefined ? res.data : res;
   },
 
   // Decline assigned task with mandatory reason
   async rejectTask(taskId: string, reason: string): Promise<Issue> {
-    const res = await api.patch<ApiResponse<Issue>>(`/resolver/tasks/${taskId}/reject`, { reason });
-    return res.data.data!;
+    const res: any = await api.patch(`/resolver/tasks/${taskId}/reject`, { reason });
+    return res?.data !== undefined ? res.data : res;
   },
 
   // Mark task work started (Accepted -> InProgress)
   async startTask(taskId: string): Promise<Issue> {
-    const res = await api.patch<ApiResponse<Issue>>(`/resolver/tasks/${taskId}/start`);
-    return res.data.data!;
+    const res: any = await api.patch(`/resolver/tasks/${taskId}/start`);
+    return res?.data !== undefined ? res.data : res;
   },
 
   // Submit photographic resolution proof (multipart)
@@ -81,7 +86,7 @@ export const resolverTaskService = {
     taskId: string,
     formData: FormData
   ): Promise<{ issue: Issue; resolution: ResolutionProof }> {
-    const res = await api.post<ApiResponse<{ issue: Issue; resolution: ResolutionProof }>>(
+    const res: any = await api.post(
       `/resolver/tasks/${taskId}/resolve`,
       formData,
       {
@@ -90,7 +95,7 @@ export const resolverTaskService = {
         },
       }
     );
-    return res.data.data!;
+    return res?.data !== undefined ? res.data : res;
   },
 };
 

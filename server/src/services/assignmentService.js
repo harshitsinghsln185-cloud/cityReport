@@ -6,6 +6,7 @@ import { IssueTimeline } from '../models/IssueTimeline.js';
 import { User } from '../models/User.js';
 import paymentService from './paymentService.js';
 import emailService from './emailService.js';
+import notificationService from './notificationService.js';
 import issueAssignedTemplate from '../templates/email/issueAssigned.js';
 import issueRejectedTemplate from '../templates/email/issueRejected.js';
 import quoteReadyTemplate from '../templates/email/quoteReady.js';
@@ -164,13 +165,19 @@ export const assignResolver = async (issueId, resolverId, adminId) => {
 
   logger.info(`Admin ${adminId} assigned Issue ${issue.issueCode} to Resolver ${resolver.user?.name}`);
 
-  // Background email dispatch to assigned resolver
-  (async () => {
-    try {
-      if (resolver.user?.email) {
-        const taskUrl = `${process.env.CLIENT_URL || 'http://localhost:5173'}/resolver/tasks`;
-        await emailService.sendMail({
+  // In-app alert & email dispatch to assigned resolver
+  if (resolver.user?._id) {
+    const taskUrl = `${process.env.CLIENT_URL || 'http://localhost:5173'}/resolver/tasks`;
+    notificationService
+      .notify({
+        recipientId: resolver.user._id,
+        title: `New Task Assignment: ${issue.issueCode}`,
+        message: `You have been assigned to ${issue.title} (${issue.address?.street}, ${issue.address?.city}).`,
+        type: 'ASSIGNMENT',
+        link: `/resolver/tasks/${issue._id}`,
+        emailOptions: {
           to: resolver.user.email,
+          template: 'issueAssigned',
           subject: `New Task Assignment: ${issue.issueCode}`,
           html: issueAssignedTemplate({
             resolverName: resolver.user.name,
@@ -181,12 +188,10 @@ export const assignResolver = async (issueId, resolverId, adminId) => {
             priority: issue.finalPriority || issue.suggestedPriority,
             taskUrl,
           }),
-        });
-      }
-    } catch (err) {
-      logger.error(`Error sending issue assignment notification: ${err.message}`);
-    }
-  })();
+        },
+      })
+      .catch((err) => logger.warn(`Issue assignment notification skipped: ${err.message}`));
+  }
 
   return issue;
 };
@@ -275,27 +280,31 @@ export const rejectIssue = async (issueId, reason, adminId) => {
     remarks: `Issue rejected. Reason: ${reason.trim()}${refundPayment ? `. Advance payment of ₹${refundPayment.amountPaise / 100} refunded.` : ''}`,
   });
 
-  // Background email dispatch to citizen
-  (async () => {
-    try {
-      const citizenEmail = issue.reporter?.email;
-      if (citizenEmail) {
-        await emailService.sendMail({
-          to: citizenEmail,
+  // In-app alert & email dispatch to citizen
+  const citizenId = issue.reporter?._id || issue.reporter;
+  if (citizenId) {
+    notificationService
+      .notify({
+        recipientId: citizenId,
+        title: `Issue Report Update: ${issue.issueCode}`,
+        message: `Your issue report was rejected. Reason: ${reason.trim()}`,
+        type: 'ISSUE',
+        link: `/user/issues/${issue._id}`,
+        emailOptions: {
+          to: issue.reporter?.email,
+          template: 'issueRejected',
           subject: `Update on Your Issue Report: ${issue.issueCode} (Rejected)`,
           html: issueRejectedTemplate({
-            name: issue.reporter.name,
+            name: issue.reporter?.name || 'Citizen',
             issueCode: issue.issueCode,
             issueTitle: issue.title,
             reason: reason.trim(),
             refundAmountFormatted: refundPayment ? (refundPayment.amountPaise / 100).toFixed(2) : null,
           }),
-        });
-      }
-    } catch (err) {
-      logger.error(`Error sending issue rejection notification: ${err.message}`);
-    }
-  })();
+        },
+      })
+      .catch((err) => logger.warn(`Issue rejection notification skipped: ${err.message}`));
+  }
 
   return {
     issue,
@@ -359,29 +368,33 @@ export const setManualQuote = async (issueId, quotePaise, adminId) => {
 
   logger.info(`Admin ${adminId} established manual fee quote of ₹${quotePaise / 100} for Issue ${issue.issueCode}`);
 
-  // Background email dispatch to citizen
-  (async () => {
-    try {
-      const citizenEmail = issue.reporter?.email;
-      if (citizenEmail) {
-        const checkoutUrl = `${process.env.CLIENT_URL || 'http://localhost:5173'}/user/checkout/${issue._id}`;
-        await emailService.sendMail({
-          to: citizenEmail,
+  // In-app alert & email dispatch to citizen
+  const citizenId = issue.reporter?._id || issue.reporter;
+  if (citizenId) {
+    const checkoutUrl = `${process.env.CLIENT_URL || 'http://localhost:5173'}/user/checkout/${issue._id}`;
+    notificationService
+      .notify({
+        recipientId: citizenId,
+        title: `Quote Ready: ${issue.issueCode}`,
+        message: `A manual fee quote of ₹${(quotePaise / 100).toFixed(2)} has been prepared for your issue. Please review and pay advance.`,
+        type: 'PAYMENT',
+        link: `/user/checkout/${issue._id}`,
+        emailOptions: {
+          to: issue.reporter?.email,
+          template: 'quoteReady',
           subject: `Quote Ready for Your Civic Issue: ${issue.issueCode}`,
           html: quoteReadyTemplate({
-            name: issue.reporter.name,
+            name: issue.reporter?.name || 'Citizen',
             issueCode: issue.issueCode,
             issueTitle: issue.title,
             totalFeeFormatted: (quotePaise / 100).toFixed(2),
             advanceFeeFormatted: (advancePaise / 100).toFixed(2),
             checkoutUrl,
           }),
-        });
-      }
-    } catch (err) {
-      logger.error(`Error sending manual quote notification: ${err.message}`);
-    }
-  })();
+        },
+      })
+      .catch((err) => logger.warn(`Manual quote notification skipped: ${err.message}`));
+  }
 
   return issue;
 };

@@ -46,7 +46,7 @@ export const AdminIssuesPage: React.FC = () => {
         page: meta.page,
         limit: meta.limit,
       });
-      setIssues(res.issues);
+      setIssues(Array.isArray(res?.issues) ? res.issues : []);
       if (res.meta) {
         setMeta((prev) => ({
           ...prev,

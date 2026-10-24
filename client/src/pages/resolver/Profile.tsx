@@ -38,10 +38,16 @@ export const ResolverProfilePage: React.FC = () => {
         ]);
 
         setProfile(profileData);
-        setCategories(activeCategories);
-        setIsAvailable(profileData.isAvailable);
-        setServiceRadiusKm(profileData.serviceRadiusKm);
-        setSelectedSkills(profileData.skills.map((s) => (typeof s === 'string' ? s : s._id)));
+        setCategories(Array.isArray(activeCategories) ? activeCategories : []);
+        if (profileData) {
+          setIsAvailable(profileData.isAvailable);
+          setServiceRadiusKm(profileData.serviceRadiusKm);
+          setSelectedSkills(
+            Array.isArray(profileData.skills)
+              ? profileData.skills.map((s) => (typeof s === 'string' ? s : s._id))
+              : []
+          );
+        }
       } catch (err: any) {
         setErrorMessage(err?.response?.data?.message || 'Failed to load resolver profile.');
       } finally {

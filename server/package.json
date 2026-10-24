@@ -9,7 +9,10 @@
     "start": "node src/server.js",
     "seed:admin": "node src/seed/seedAdmin.js",
     "seed:defaults": "node src/seed/seedDefaults.js",
-    "lint": "node -e \"console.log('Linting server: passed')\""
+    "lint": "node -e \"console.log('Linting server: passed')\"",
+    "test": "vitest run",
+    "test:security": "vitest run tests/rbac.test.js",
+    "audit": "npm audit"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -29,6 +32,10 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "vitest": "^5.0.5"
+  },
+  "overrides": {
+    "chokidar": "^4.0.3"
   }
 }

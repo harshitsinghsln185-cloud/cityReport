@@ -209,7 +209,106 @@ Description: ${sanitizedDescription}
   }
 };
 
+let simulateAiUnavailable = false;
+export const setSimulateAiUnavailable = (val) => {
+  simulateAiUnavailable = Boolean(val);
+};
+
+/**
+ * Executes a conversational turn with Gemini Function Calling tools.
+ * Gracefully returns { isAvailable: false } when key is missing, daily quota hit, or API errors.
+ *
+ * @param {Object} params
+ * @param {Array<Object>} params.messages - [{ role: 'user'|'assistant', content: string }]
+ * @param {string} params.systemPrompt
+ * @param {Array<Object>} [params.tools=[]] - Function declarations array
+ * @returns {Promise<{ isAvailable: boolean, reply?: string, toolCall?: { name: string, args: Object }, error?: string }>}
+ */
+export const chatWithTools = async ({ messages = [], systemPrompt = '', tools = [] }) => {
+  if (simulateAiUnavailable || !env.AI_API_KEY || env.AI_API_KEY.trim() === '') {
+    return { isAvailable: false, error: 'AI unavailable (no API key or simulated fallback)' };
+  }
+
+  if (!checkDailyQuota()) {
+    logger.warn('[AI QUOTA] Daily quota exceeded for chatbot. Falling back to form-mode.');
+    return { isAvailable: false, error: 'Daily AI quota exceeded' };
+  }
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), env.AI_TIMEOUT_MS);
+
+    const contents = messages.map((m) => ({
+      role: m.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: m.content }],
+    }));
+
+    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${env.AI_MODEL}:generateContent?key=${env.AI_API_KEY}`;
+
+    const requestBody = {
+      systemInstruction: {
+        parts: [{ text: systemPrompt }],
+      },
+      contents,
+      generationConfig: {
+        temperature: 0.2,
+      },
+    };
+
+    if (tools && tools.length > 0) {
+      requestBody.tools = tools;
+    }
+
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      signal: controller.signal,
+      body: JSON.stringify(requestBody),
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      throw new Error(`Gemini API HTTP ${response.status}: ${await response.text()}`);
+    }
+
+    const data = await response.json();
+    const parts = data?.candidates?.[0]?.content?.parts || [];
+
+    let reply = '';
+    let toolCall = null;
+
+    for (const part of parts) {
+      if (part.text) {
+        reply += part.text;
+      }
+      if (part.functionCall) {
+        toolCall = {
+          name: part.functionCall.name,
+          args: part.functionCall.args,
+        };
+      }
+    }
+
+    return {
+      isAvailable: true,
+      reply: reply.trim(),
+      toolCall,
+    };
+  } catch (error) {
+    logger.warn('[AI CHAT FALLBACK] Gemini chat invocation failed. Falling back to deterministic Form-Mode.', {
+      error: error.message,
+    });
+    return {
+      isAvailable: false,
+      error: error.message,
+    };
+  }
+};
+
 export default {
   assessSeverity,
+  chatWithTools,
   sanitizePii,
+  setSimulateAiUnavailable,
 };

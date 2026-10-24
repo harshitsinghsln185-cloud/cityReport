@@ -4,12 +4,15 @@ import { Category } from '../models/Category.js';
 import { validateImageBuffer } from '../utils/fileValidation.js';
 import cloudinaryService from './cloudinaryService.js';
 import emailService from './emailService.js';
+import notificationService from './notificationService.js';
+import emailQueue from './emailQueue.js';
 import resolverRegisteredTemplate from '../templates/email/resolverRegistered.js';
 import adminNewResolverTemplate from '../templates/email/adminNewResolver.js';
 import resolverApprovedTemplate from '../templates/email/resolverApproved.js';
 import resolverRejectedTemplate from '../templates/email/resolverRejected.js';
 import { AppError } from '../utils/AppError.js';
 import { env } from '../config/env.js';
+import { logger } from '../utils/logger.js';
 
 export const registerResolver = async ({
   userId,
@@ -80,27 +83,40 @@ export const registerResolver = async ({
     isAvailable: true,
   });
 
-  // 5. Dispatch confirmation email to contractor
-  emailService.sendMail({
-    to: user.email,
-    subject: 'Resolver Application Received - Crowd Report',
-    html: resolverRegisteredTemplate({
-      name: user.name,
-      portalUrl: `${env.CLIENT_URL}/resolver/pending`,
-    }),
-  });
+  // 5. Dispatch in-app notification & confirmation email to contractor
+  notificationService
+    .notify({
+      recipientId: user._id,
+      title: 'Resolver Application Received',
+      message: 'Your certified resolver application has been received and is pending municipal review.',
+      type: 'VERIFICATION',
+      link: '/resolver/pending',
+      emailOptions: {
+        to: user.email,
+        template: 'resolverRegistered',
+        subject: 'Resolver Application Received - Crowd Report',
+        html: resolverRegisteredTemplate({
+          name: user.name,
+          portalUrl: `${env.CLIENT_URL}/resolver/pending`,
+        }),
+      },
+    })
+    .catch((err) => logger.warn(`Resolver registration notification skipped: ${err.message}`));
 
-  // 6. Dispatch notification email to Administrator
-  emailService.sendMail({
-    to: env.ADMIN_EMAIL,
-    subject: 'Action Required: New Resolver Verification Pending',
-    html: adminNewResolverTemplate({
-      resolverName: user.name,
-      email: user.email,
-      phone: user.phone,
-      reviewUrl: `${env.CLIENT_URL}/admin/resolvers`,
-    }),
-  });
+  // 6. Enqueue notification email to Administrator
+  emailQueue
+    .enqueueEmail({
+      to: env.ADMIN_EMAIL,
+      template: 'adminNewResolver',
+      subject: 'Action Required: New Resolver Verification Pending',
+      html: adminNewResolverTemplate({
+        resolverName: user.name,
+        email: user.email,
+        phone: user.phone,
+        reviewUrl: `${env.CLIENT_URL}/admin/resolvers`,
+      }),
+    })
+    .catch((err) => logger.warn(`Admin new resolver email enqueue skipped: ${err.message}`));
 
   return profile;
 };
@@ -185,16 +201,26 @@ export const approveResolver = async (profileId) => {
     );
   }
 
-  // Dispatch approval notification email
-  if (profile.user?.email) {
-    emailService.sendMail({
-      to: profile.user.email,
-      subject: 'Account Approved - Welcome to Crowd Report Resolver Network',
-      html: resolverApprovedTemplate({
-        name: profile.user.name,
-        dashboardUrl: `${env.CLIENT_URL}/resolver`,
-      }),
-    });
+  // Dispatch approval notification and email
+  if (profile.user?._id) {
+    notificationService
+      .notify({
+        recipientId: profile.user._id,
+        title: 'Resolver Account Approved',
+        message: 'Congratulations! Your resolver application has been approved by municipal administration.',
+        type: 'VERIFICATION',
+        link: '/resolver',
+        emailOptions: {
+          to: profile.user.email,
+          template: 'resolverApproved',
+          subject: 'Account Approved - Welcome to Crowd Report Resolver Network',
+          html: resolverApprovedTemplate({
+            name: profile.user.name,
+            dashboardUrl: `${env.CLIENT_URL}/resolver`,
+          }),
+        },
+      })
+      .catch((err) => logger.warn(`Resolver approval notification skipped: ${err.message}`));
   }
 
   return profile;
@@ -214,17 +240,27 @@ export const rejectResolver = async (profileId, reason) => {
     );
   }
 
-  // Dispatch rejection notification email with mandatory reason
-  if (profile.user?.email) {
-    emailService.sendMail({
-      to: profile.user.email,
-      subject: 'Update on Your Resolver Application - Crowd Report',
-      html: resolverRejectedTemplate({
-        name: profile.user.name,
-        reason,
-        appealsUrl: `${env.CLIENT_URL}/resolver/pending`,
-      }),
-    });
+  // Dispatch rejection notification and email with mandatory reason
+  if (profile.user?._id) {
+    notificationService
+      .notify({
+        recipientId: profile.user._id,
+        title: 'Resolver Application Update',
+        message: `Your resolver application was rejected. Reason: ${reason}`,
+        type: 'VERIFICATION',
+        link: '/resolver/pending',
+        emailOptions: {
+          to: profile.user.email,
+          template: 'resolverRejected',
+          subject: 'Update on Your Resolver Application - Crowd Report',
+          html: resolverRejectedTemplate({
+            name: profile.user.name,
+            reason,
+            appealsUrl: `${env.CLIENT_URL}/resolver/pending`,
+          }),
+        },
+      })
+      .catch((err) => logger.warn(`Resolver rejection notification skipped: ${err.message}`));
   }
 
   return profile;

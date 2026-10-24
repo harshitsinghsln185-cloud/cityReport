@@ -38,9 +38,9 @@ export const MyIssues: React.FC = () => {
         limit: 10,
       });
 
-      setIssues(res.data);
-      setTotalPages(res.meta.totalPages);
-      setTotalCount(res.meta.total);
+      setIssues(Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : []);
+      setTotalPages(res?.meta?.totalPages || 1);
+      setTotalCount(res?.meta?.total || 0);
     } catch (err: any) {
       setError(err?.response?.data?.message || 'Failed to load your issues.');
     } finally {

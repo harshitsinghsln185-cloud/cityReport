@@ -46,19 +46,21 @@ export const FeeSettingsPage: React.FC = () => {
       setLoading(true);
       setError(null);
       const data = await feeSettingsService.getFeeSettings();
-      setFormData({
-        freeKm: data.freeKm,
-        perKmRateRupees: data.perKmRatePaise / 100,
-        minFeeRupees: data.minFeePaise / 100,
-        maxFeeRupees: data.maxFeePaise / 100,
-        commissionPercent: data.commissionPercent,
-        multipliers: {
-          minor: data.multipliers.minor,
-          moderate: data.multipliers.moderate,
-          high: data.multipliers.high,
-          critical: data.multipliers.critical,
-        },
-      });
+      if (data && data.multipliers) {
+        setFormData({
+          freeKm: data.freeKm ?? 5,
+          perKmRateRupees: (data.perKmRatePaise ?? 2000) / 100,
+          minFeeRupees: (data.minFeePaise ?? 30000) / 100,
+          maxFeeRupees: (data.maxFeePaise ?? 1000000) / 100,
+          commissionPercent: data.commissionPercent ?? 15,
+          multipliers: {
+            minor: data.multipliers?.minor ?? 1.0,
+            moderate: data.multipliers?.moderate ?? 1.25,
+            high: data.multipliers?.high ?? 1.5,
+            critical: data.multipliers?.critical ?? 2.0,
+          },
+        });
+      }
     } catch (err: any) {
       setError(err?.response?.data?.message || 'Failed to load global fee settings');
     } finally {

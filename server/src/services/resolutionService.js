@@ -5,6 +5,8 @@ import { ResolverProfile } from '../models/ResolverProfile.js';
 import { User } from '../models/User.js';
 import cloudinaryService from './cloudinaryService.js';
 import emailService from './emailService.js';
+import notificationService from './notificationService.js';
+import emailQueue from './emailQueue.js';
 import resolverAcceptedTemplate from '../templates/email/resolverAccepted.js';
 import assignmentRejectedTemplate from '../templates/email/assignmentRejected.js';
 import issueResolvedTemplate from '../templates/email/issueResolved.js';
@@ -167,27 +169,36 @@ export const acceptTask = async (taskId, resolverId, userId) => {
     remarks: 'Contractor accepted assignment and reviewed incident details.',
   });
 
-  // Dispatch email notification to citizen (asynchronous)
+  // In-app alert & email notification to citizen
   (async () => {
     try {
       const resolver = await ResolverProfile.findById(resolverId).populate('user', 'name phone');
-      if (issue.reporter?.email) {
+      const citizenId = issue.reporter?._id || issue.reporter;
+      if (citizenId) {
         const issueUrl = `${env.CLIENT_URL || 'http://localhost:5173'}/user/issues/${issue._id}`;
-        await emailService.sendMail({
-          to: issue.reporter.email,
-          subject: `Task Accepted: ${issue.issueCode}`,
-          html: resolverAcceptedTemplate({
-            citizenName: issue.reporter.name,
-            issueCode: issue.issueCode,
-            issueTitle: issue.title,
-            resolverName: resolver?.user?.name || 'Assigned Contractor',
-            resolverPhone: resolver?.user?.phone || '',
-            issueUrl,
-          }),
+        await notificationService.notify({
+          recipientId: citizenId,
+          title: `Task Accepted: ${issue.issueCode}`,
+          message: `${resolver?.user?.name || 'Contractor'} has accepted your issue assignment and reviewed incident details.`,
+          type: 'ASSIGNMENT',
+          link: `/user/issues/${issue._id}`,
+          emailOptions: {
+            to: issue.reporter?.email,
+            template: 'resolverAccepted',
+            subject: `Task Accepted: ${issue.issueCode}`,
+            html: resolverAcceptedTemplate({
+              citizenName: issue.reporter?.name || 'Citizen',
+              issueCode: issue.issueCode,
+              issueTitle: issue.title,
+              resolverName: resolver?.user?.name || 'Assigned Contractor',
+              resolverPhone: resolver?.user?.phone || '',
+              issueUrl,
+            }),
+          },
         });
       }
     } catch (err) {
-      logger.error(`Error sending task acceptance notification: ${err.message}`);
+      logger.warn(`Error sending task acceptance notification: ${err.message}`);
     }
   })();
 
@@ -248,8 +259,9 @@ export const rejectAssignment = async (taskId, resolverId, reason, userId) => {
     try {
       const resolver = await ResolverProfile.findById(resolverId).populate('user', 'name');
       const triageUrl = `${env.CLIENT_URL || 'http://localhost:5173'}/admin/issues/${issue._id}`;
-      await emailService.sendMail({
+      await emailQueue.enqueueEmail({
         to: env.ADMIN_EMAIL,
+        template: 'assignmentRejected',
         subject: `Action Required: Assignment Declined for ${issue.issueCode}`,
         html: assignmentRejectedTemplate({
           issueCode: issue.issueCode,
@@ -260,7 +272,7 @@ export const rejectAssignment = async (taskId, resolverId, reason, userId) => {
         }),
       });
     } catch (err) {
-      logger.error(`Error sending assignment decline alert: ${err.message}`);
+      logger.warn(`Error sending assignment decline alert: ${err.message}`);
     }
   })();
 
@@ -432,26 +444,36 @@ export const submitResolutionProof = async ({
       const citizenUrl = `${env.CLIENT_URL || 'http://localhost:5173'}/user/issues/${issue._id}`;
       const adminUrl = `${env.CLIENT_URL || 'http://localhost:5173'}/admin/issues/${issue._id}`;
 
-      // Notify citizen
-      if (issue.reporter?.email) {
-        await emailService.sendMail({
-          to: issue.reporter.email,
-          subject: `Repairs Completed: ${issue.issueCode}`,
-          html: issueResolvedTemplate({
-            recipientName: issue.reporter.name,
-            issueCode: issue.issueCode,
-            issueTitle: issue.title,
-            resolverName: resolver?.user?.name || 'Contractor',
-            remarks,
-            viewUrl: citizenUrl,
-            isCitizen: true,
-          }),
+      // In-app alert and email to citizen
+      const citizenId = issue.reporter?._id || issue.reporter;
+      if (citizenId) {
+        await notificationService.notify({
+          recipientId: citizenId,
+          title: `Repairs Completed: ${issue.issueCode}`,
+          message: `${resolver?.user?.name || 'Contractor'} has uploaded completion proof for ${issue.title}. Verification in progress.`,
+          type: 'ISSUE',
+          link: `/user/issues/${issue._id}`,
+          emailOptions: {
+            to: issue.reporter?.email,
+            template: 'issueResolved',
+            subject: `Repairs Completed: ${issue.issueCode}`,
+            html: issueResolvedTemplate({
+              recipientName: issue.reporter?.name || 'Citizen',
+              issueCode: issue.issueCode,
+              issueTitle: issue.title,
+              resolverName: resolver?.user?.name || 'Contractor',
+              remarks,
+              viewUrl: citizenUrl,
+              isCitizen: true,
+            }),
+          },
         });
       }
 
-      // Notify admin
-      await emailService.sendMail({
+      // Enqueue notification email to admin
+      await emailQueue.enqueueEmail({
         to: env.ADMIN_EMAIL,
+        template: 'issueResolved',
         subject: `Completion Proof Uploaded: ${issue.issueCode}`,
         html: issueResolvedTemplate({
           recipientName: 'Operations Administrator',
@@ -464,7 +486,7 @@ export const submitResolutionProof = async ({
         }),
       });
     } catch (err) {
-      logger.error(`Error sending issue resolution notifications: ${err.message}`);
+      logger.warn(`Error sending issue resolution notifications: ${err.message}`);
     }
   })();
 

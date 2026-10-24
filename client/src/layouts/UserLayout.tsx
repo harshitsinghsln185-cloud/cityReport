@@ -13,6 +13,8 @@ import {
   X,
   LogOut,
 } from 'lucide-react';
+import NotificationBell from '../components/NotificationBell';
+import ChatWidget from '../components/chatbot/ChatWidget';
 
 export const UserLayout: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
@@ -146,14 +148,7 @@ export const UserLayout: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <Link
-              to="/user/notifications"
-              className="relative p-2 text-[#64748B] hover:text-[#1E293B] rounded-full hover:bg-[#EDE9FE]/50 transition-colors"
-              title="Notifications"
-            >
-              <Bell className="w-5 h-5" />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#7C3AED] rounded-full ring-2 ring-white" />
-            </Link>
+            <NotificationBell />
 
             <Link
               to="/user/profile"
@@ -179,6 +174,9 @@ export const UserLayout: React.FC = () => {
           <Outlet />
         </main>
       </div>
+
+      {/* Floating Civic AI Assistant Widget */}
+      <ChatWidget />
     </div>
   );
 };

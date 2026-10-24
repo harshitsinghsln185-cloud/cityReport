@@ -21,6 +21,12 @@ import AdminUsersPage from '../pages/admin/Users';
 import FinanceOverview from '../pages/admin/FinanceOverview';
 import AdminPayments from '../pages/admin/Payments';
 import AdminPayouts from '../pages/admin/Payouts';
+import AdminQueries from '../pages/admin/Queries';
+import Home from '../pages/public/Home';
+import Services from '../pages/public/Services';
+import About from '../pages/public/About';
+import TrackStatus from '../pages/public/TrackStatus';
+import WriteQuery from '../pages/public/WriteQuery';
 import ResolverEarnings from '../pages/resolver/Earnings';
 import ProfilePage from '../pages/user/Profile';
 import ReportIssue from '../pages/user/ReportIssue';
@@ -36,9 +42,11 @@ import ResolverAssignmentsPage from '../pages/resolver/Assignments';
 import ResolverTasksPage from '../pages/resolver/Tasks';
 import ResolverTaskDetailsPage from '../pages/resolver/TaskDetails';
 import ResolverCompletedHistoryPage from '../pages/resolver/CompletedHistory';
+import NotificationsPage from '../pages/shared/Notifications';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import StatusBadge from '../components/ui/StatusBadge';
+import ErrorBoundary from '../components/ui/ErrorBoundary';
 import { ArrowRight, User, Wrench, ShieldAlert } from 'lucide-react';
 
 interface PreviewAction {
@@ -141,56 +149,27 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <PublicLayout />,
+    errorElement: <ErrorBoundary />,
     children: [
       {
         index: true,
-        element: (
-          <WelcomePreview
-            role="Public"
-            title="Crowd Report Platform"
-            description="Civic engagement and issue resolution platform connecting citizens with certified local resolvers under municipal administrative governance."
-            actions={[
-              { label: 'Report an Issue', href: '/user/report-issue' },
-              { label: 'Sign In', href: '/login', variant: 'outline' },
-            ]}
-          />
-        ),
+        element: <Home />,
       },
       {
         path: 'services',
-        element: (
-          <div className="max-w-4xl mx-auto py-12 px-4">
-            <h1 className="text-2xl font-heading font-bold text-[#1E293B] mb-4">Civic Services Directory</h1>
-            <p className="text-[#64748B]">M0 placeholder: Services will be dynamically populated in M2 & M12.</p>
-          </div>
-        ),
+        element: <Services />,
       },
       {
         path: 'about',
-        element: (
-          <div className="max-w-4xl mx-auto py-12 px-4">
-            <h1 className="text-2xl font-heading font-bold text-[#1E293B] mb-4">About Crowd Report</h1>
-            <p className="text-[#64748B]">M0 placeholder: Platform background and municipal partnership details.</p>
-          </div>
-        ),
+        element: <About />,
       },
       {
         path: 'track',
-        element: (
-          <div className="max-w-4xl mx-auto py-12 px-4">
-            <h1 className="text-2xl font-heading font-bold text-[#1E293B] mb-4">Track Status</h1>
-            <p className="text-[#64748B]">M0 placeholder: Public tracking by issue code (CR-YYYY-XXXXXX) implemented in M12.</p>
-          </div>
-        ),
+        element: <TrackStatus />,
       },
       {
         path: 'query',
-        element: (
-          <div className="max-w-4xl mx-auto py-12 px-4">
-            <h1 className="text-2xl font-heading font-bold text-[#1E293B] mb-4">Write a Query</h1>
-            <p className="text-[#64748B]">M0 placeholder: Public inquiry contact form implemented in M12.</p>
-          </div>
-        ),
+        element: <WriteQuery />,
       },
       {
         path: 'login',
@@ -229,6 +208,7 @@ const router = createBrowserRouter([
         <UserLayout />
       </ProtectedRoute>
     ),
+    errorElement: <ErrorBoundary />,
     children: [
       {
         index: true,
@@ -266,14 +246,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'notifications',
-        element: (
-          <div className="max-w-4xl mx-auto py-6">
-            <Card>
-              <h2 className="text-xl font-heading font-bold text-[#1E293B] mb-2">Notifications Feed</h2>
-              <p className="text-sm text-[#64748B]">Real-time notification bell and history implemented in M10.</p>
-            </Card>
-          </div>
-        ),
+        element: <NotificationsPage />,
       },
       {
         path: 'profile',
@@ -288,6 +261,7 @@ const router = createBrowserRouter([
         <ResolverLayout />
       </ProtectedRoute>
     ),
+    errorElement: <ErrorBoundary />,
     children: [
       {
         index: true,
@@ -317,6 +291,10 @@ const router = createBrowserRouter([
         path: 'profile',
         element: <ResolverProfilePage />,
       },
+      {
+        path: 'notifications',
+        element: <NotificationsPage />,
+      },
     ],
   },
   {
@@ -326,6 +304,7 @@ const router = createBrowserRouter([
         <AdminLayout />
       </ProtectedRoute>
     ),
+    errorElement: <ErrorBoundary />,
     children: [
       {
         index: true,
@@ -374,6 +353,14 @@ const router = createBrowserRouter([
       {
         path: 'fee-settings',
         element: <FeeSettingsPage />,
+      },
+      {
+        path: 'queries',
+        element: <AdminQueries />,
+      },
+      {
+        path: 'notifications',
+        element: <NotificationsPage />,
       },
     ],
   },
