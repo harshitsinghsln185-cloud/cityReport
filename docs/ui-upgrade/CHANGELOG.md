@@ -86,5 +86,20 @@ Built the comprehensive nationwide States & Union Territories section across all
 - `npm run build` in `client/`: Passing (0 errors, 2,212 modules transformed)
 - Tested filters, search, and detail page generation.
 
+## [P4: Public Pages Redesign] - 2026-10-24
+
+### Summary
+Redesigned the entire suite of 4 core public pages using the unified design system, variable fonts (`Fraunces` and `Manrope`), and accessible tokens:
+- **Services Directory (`/services`)**: Enhanced category catalog with real-time text search, dynamic category tag filters (Roads, Water & Drainage, Electrical, Sanitation), paise-to-rupee base tariff formatters (`tabular-nums`), turnaround SLA badges, and direct report-issue routing with pre-filled category parameters.
+- **About & Governance (`/about`)**: In-depth narrative comparing the broken traditional municipal reporting status quo (weeks of waiting, zero financial accountability, unvetted laborers) against the Crowd Report standard (paise-exact 50% escrow gate, GPS-tagged Before/After photo proof, 24–48h SLA response guarantee, 7-day citizen re-inspection window). Includes impact counters (12,480+ remediations, 36 states/UTs, 99.4% SLA compliance, ₹0 fund leakage), 3 core architectural pillars, and a certified contractor onboarding banner linking to `/register-resolver`.
+- **Track Status (`/track`)**: Visual 5-step milestone progress stepper (Reported > Quoted > In Progress > Resolved > Verified), uppercase tracking code format validator with quick-copy, printable summary sheet generator (`window.print()`), chronological audit trail with status transitions, and Zero-PII public redaction assurance notice.
+- **Write a Query & Contact (`/query`)**: Clean inquiry form with department dropdown (Escrow, Accreditation, Jurisdiction, Disputes, Support), optional phone number input, authentic Central Civic Secretariat address (Vikas Soudha, Bengaluru), operating hours (Mon–Sat 9AM–6:30PM IST), toll-free helpline numbers (1800-CIVIC-REP), official government email channels, quick self-service FAQ links, and reference ID confirmation card.
+
+### Verification
+- `npm run build` in `client/`: Passing (0 errors, 2,212 modules transformed)
+- Print summary button verified on Track Status.
+- Search and tag filtering verified on Services directory.
+
+
 
 

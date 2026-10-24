@@ -1,14 +1,30 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, AlertCircle, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import {
+  Send,
+  CheckCircle2,
+  AlertCircle,
+  Clock,
+  Phone,
+  Mail,
+  HelpCircle,
+  ShieldCheck,
+  Building,
+} from 'lucide-react';
 import publicService from '../../services/public.service';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
+import SectionHeader from '../../components/ui/SectionHeader';
+import Breadcrumbs from '../../components/ui/Breadcrumbs';
+import Reveal from '../../components/ui/Reveal';
 
 export const WriteQuery: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
+    category: 'General Governance',
     subject: '',
     message: '',
   });
@@ -16,6 +32,15 @@ export const WriteQuery: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successInfo, setSuccessInfo] = useState<{ queryId: string } | null>(null);
+
+  const queryCategories = [
+    'General Governance',
+    'Escrow & Billing Questions',
+    'Contractor Accreditation & Verification',
+    'Ward Jurisdiction Clarification',
+    'Dispute & Rework Audit',
+    'Technical App Support',
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,11 +71,11 @@ export const WriteQuery: React.FC = () => {
       const res = await publicService.submitQuery({
         name: formData.name.trim(),
         email: formData.email.trim(),
-        subject: formData.subject.trim(),
-        message: formData.message.trim(),
+        subject: `[${formData.category}] ${formData.subject.trim()}`,
+        message: formData.phone ? `Phone: ${formData.phone}\n\n${formData.message.trim()}` : formData.message.trim(),
       });
       setSuccessInfo(res);
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', category: 'General Governance', subject: '', message: '' });
     } catch (err: any) {
       setErrorMessage(
         err?.response?.data?.message || 'Failed to submit inquiry. Please try again.'
@@ -61,123 +86,279 @@ export const WriteQuery: React.FC = () => {
   };
 
   return (
-    <div className="py-14 bg-[#F8F7FC] min-h-screen">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-xl mx-auto mb-10">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#7C3AED] bg-[#EDE9FE] px-3 py-1 rounded-full border border-[#DDD6FE]">
-            Contact Administration
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-heading font-extrabold text-[#1E293B] mt-3 mb-2">
-            Write a Query
-          </h1>
-          <p className="text-sm text-[#64748B]">
-            Have a question regarding municipal service coverage, resolver certification, or invoice details? Send our administrative team a direct message.
-          </p>
-        </div>
+    <div className="py-8 sm:py-12 bg-canvas min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Breadcrumb Navigation */}
+        <Breadcrumbs items={[{ label: 'Civic Help Desk & Queries' }]} className="mb-6" />
 
-        {/* Success Card */}
-        {successInfo ? (
-          <Card className="border-emerald-200 bg-emerald-50/50 p-8 text-center animate-in fade-in duration-200">
-            <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4">
-              <CheckCircle2 className="w-8 h-8" />
-            </div>
-            <h3 className="font-heading font-bold text-xl text-emerald-950 mb-2">
-              Inquiry Received Successfully!
-            </h3>
-            <p className="text-sm text-emerald-800 max-w-md mx-auto mb-4 leading-relaxed">
-              Thank you for reaching out. Your query has been logged with reference ID{' '}
-              <span className="font-mono font-bold text-emerald-900">{successInfo.queryId}</span>.
-            </p>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-100/80 text-emerald-900 text-xs font-medium mb-6">
-              <Clock className="w-4 h-4 text-emerald-700" />
-              <span>Estimated Response Window: 24 to 48 hours via email</span>
-            </div>
-            <div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setSuccessInfo(null)}
-              >
-                Send Another Inquiry
-              </Button>
-            </div>
-          </Card>
-        ) : (
-          /* Inquiry Form */
-          <Card className="border-[#E2E8F0] p-6 sm:p-8">
-            {errorMessage && (
-              <div className="mb-6 p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 shrink-0" />
-                <span>{errorMessage}</span>
-              </div>
+        {/* Section Header */}
+        <Reveal>
+          <SectionHeader
+            eyebrow="Civic Liaison Office"
+            eyebrowVariant="violet"
+            title="Write a Query to Administration"
+            subtitle="Have a question regarding municipal ward coverage, contractor accreditation, escrow guarantees, or formal tax invoices? Contact our administrative desk."
+          />
+        </Reveal>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left Column: Form & Success State (7 cols) */}
+          <div className="lg:col-span-7">
+            {successInfo ? (
+              <Reveal>
+                <Card variant="base" className="border-emerald-200 bg-emerald-50/40 p-8 sm:p-10 text-center shadow-subtle">
+                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-xs">
+                    <CheckCircle2 className="w-9 h-9" />
+                  </div>
+                  <h3 className="font-heading font-semibold text-2xl text-emerald-950 mb-2">
+                    Inquiry Received Successfully!
+                  </h3>
+                  <p className="text-xs sm:text-sm text-emerald-800 max-w-md mx-auto mb-4 leading-relaxed">
+                    Your inquiry has been cataloged under administrative reference ID:
+                  </p>
+                  <div className="inline-block bg-white px-4 py-2 rounded-xl border border-emerald-300 font-mono font-bold text-emerald-900 text-base mb-6 shadow-xs">
+                    {successInfo.queryId}
+                  </div>
+                  <div className="flex items-center justify-center gap-2 text-xs font-medium text-emerald-900 mb-8">
+                    <Clock className="w-4 h-4 text-emerald-700" />
+                    <span>Official Response SLA: 24 to 48 business hours via email</span>
+                  </div>
+                  <div>
+                    <Button
+                      variant="primary"
+                      size="sm"
+                      onClick={() => setSuccessInfo(null)}
+                    >
+                      Send Another Inquiry
+                    </Button>
+                  </div>
+                </Card>
+              </Reveal>
+            ) : (
+              <Reveal delay={0.1}>
+                <Card variant="base" className="p-6 sm:p-8 bg-white border-border shadow-subtle">
+                  {errorMessage && (
+                    <div className="mb-6 p-3.5 rounded-card bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2.5">
+                      <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
+
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <Input
+                        label="Full Name *"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="e.g. Radhika Sharma"
+                        required
+                      />
+
+                      <Input
+                        label="Email Address *"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="e.g. radhika@example.com"
+                        required
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <Input
+                        label="Contact Telephone (Optional)"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="+91 98765 43210"
+                      />
+
+                      <div>
+                        <label className="block text-xs font-semibold text-ink mb-1.5">
+                          Query Department / Category *
+                        </label>
+                        <select
+                          value={formData.category}
+                          onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white rounded-lg border border-border focus:outline-none focus-visible:ring-2 focus-visible:ring-primary text-ink cursor-pointer"
+                        >
+                          {queryCategories.map((c) => (
+                            <option key={c} value={c}>
+                              {c}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    <Input
+                      label="Subject Summary *"
+                      value={formData.subject}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                      placeholder="Brief topic of your inquiry"
+                      required
+                    />
+
+                    <div>
+                      <label className="block text-xs font-semibold text-ink mb-1.5">
+                        Detailed Message / Context *
+                      </label>
+                      <textarea
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        rows={5}
+                        placeholder="Provide relevant ward details, reference numbers, or municipal documentation questions..."
+                        maxLength={2000}
+                        required
+                        className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white rounded-xl border border-border focus:outline-none focus-visible:ring-2 focus-visible:ring-primary text-ink placeholder:text-muted transition-all"
+                      />
+                      <div className="text-[11px] text-muted text-right mt-1">
+                        {formData.message.length} / 2000 characters
+                      </div>
+                    </div>
+
+                    <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <p className="text-xs text-muted flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5 text-primary" />
+                        <span>Signed administrative response within 24–48 hours</span>
+                      </p>
+
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        disabled={isSubmitting}
+                        isLoading={isSubmitting}
+                        leftIcon={<Send className="w-4 h-4" />}
+                        className="shadow-sm"
+                      >
+                        Submit Query
+                      </Button>
+                    </div>
+                  </form>
+                </Card>
+              </Reveal>
             )}
+          </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Input
-                  label="Full Name *"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="e.g. Priya Nair"
-                  required
-                />
-
-                <Input
-                  label="Email Address *"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="name@example.com"
-                  required
-                />
-              </div>
-
-              <Input
-                label="Subject *"
-                value={formData.subject}
-                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                placeholder="Brief summary of your question"
-                required
-              />
-
-              <div>
-                <label className="block text-xs font-semibold text-[#1E293B] mb-1.5">
-                  Message / Details *
-                </label>
-                <textarea
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  rows={5}
-                  placeholder="Please provide details regarding your inquiry..."
-                  maxLength={2000}
-                  required
-                  className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white rounded-xl border border-[#E2E8F0] focus:outline-none focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] text-[#1E293B] placeholder:text-[#94A3B8] transition-all"
-                />
-                <div className="text-[11px] text-[#94A3B8] text-right mt-1">
-                  {formData.message.length} / 2000 characters
+          {/* Right Column: Office Location, Helplines & FAQ Quick Links (5 cols) */}
+          <div className="lg:col-span-5 space-y-6">
+            <Reveal delay={0.15}>
+              <Card variant="base" className="p-6 bg-white border-border shadow-subtle space-y-6">
+                <div>
+                  <h3 className="font-heading font-semibold text-base text-ink mb-1">
+                    Central Civic Secretariat
+                  </h3>
+                  <p className="text-xs text-muted">
+                    National Operations & Escalations Office
+                  </p>
                 </div>
-              </div>
 
-              <div className="pt-2 flex items-center justify-between">
-                <p className="text-xs text-[#64748B] flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-[#7C3AED]" />
-                  <span>Responses delivered directly to your email</span>
+                <div className="space-y-4 text-xs">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-lavender text-primary flex items-center justify-center shrink-0 mt-0.5">
+                      <Building className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-ink">Physical Headquarters</p>
+                      <p className="text-secondaryText leading-relaxed">
+                        Crowd Report Civic Coordination Secretariat<br />
+                        4th Floor, Vikas Soudha, Dr. Ambedkar Veedhi<br />
+                        Bengaluru, Karnataka 560001
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                      <Clock className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-ink">Operating Working Hours</p>
+                      <p className="text-secondaryText leading-relaxed">
+                        Monday – Saturday: 09:00 AM – 06:30 PM (IST)<br />
+                        Closed on Gazetted National Public Holidays
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-gold/10 text-gold flex items-center justify-center shrink-0 mt-0.5">
+                      <Phone className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-ink">Emergency Public Helplines</p>
+                      <p className="text-secondaryText leading-relaxed">
+                        Toll-Free Civic Desk: <strong className="text-ink">1800-CIVIC-REP</strong> (1800-248-4273)<br />
+                        Emergency Escalations: <span className="font-mono">+91 80 2200 4800</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-indigo/10 text-indigo flex items-center justify-center shrink-0 mt-0.5">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-ink">Official Email Channels</p>
+                      <p className="text-secondaryText leading-relaxed">
+                        General Inquiries: <a href="mailto:grievances@crowdreport.gov.in" className="text-primary hover:underline">grievances@crowdreport.gov.in</a><br />
+                        Contractor Audits: <a href="mailto:contractors@crowdreport.gov.in" className="text-primary hover:underline">contractors@crowdreport.gov.in</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-border">
+                  <div className="p-3 rounded-lg bg-canvas text-xs text-secondaryText flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>Compliant with Indian Public Grievance Redressal Standards</span>
+                  </div>
+                </div>
+              </Card>
+            </Reveal>
+
+            {/* Quick Self-Serve FAQs */}
+            <Reveal delay={0.2}>
+              <Card variant="base" className="p-6 bg-white border-border shadow-subtle">
+                <div className="flex items-center gap-2 mb-3">
+                  <HelpCircle className="w-4 h-4 text-primary" />
+                  <h4 className="font-heading font-semibold text-sm text-ink">
+                    Need Immediate Answers?
+                  </h4>
+                </div>
+                <p className="text-xs text-muted mb-4">
+                  Check our self-service guides before submitting an inquiry:
                 </p>
-
-                <Button
-                  type="submit"
-                  variant="primary"
-                  disabled={isSubmitting}
-                  className="flex items-center gap-1.5 shadow-sm shadow-[#7C3AED]/20"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>{isSubmitting ? 'Sending...' : 'Submit Inquiry'}</span>
-                </Button>
-              </div>
-            </form>
-          </Card>
-        )}
+                <ul className="space-y-2 text-xs">
+                  <li>
+                    <Link to="/about" className="text-primary hover:underline flex items-center justify-between">
+                      <span>How Does the 50% Escrow Work?</span>
+                      <span>&rarr;</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/services" className="text-primary hover:underline flex items-center justify-between">
+                      <span>Schedule of Rates & Base Tariffs</span>
+                      <span>&rarr;</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/states" className="text-primary hover:underline flex items-center justify-between">
+                      <span>State-Specific Ward Coverage</span>
+                      <span>&rarr;</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/register-resolver" className="text-primary hover:underline flex items-center justify-between">
+                      <span>Resolver Registration Criteria</span>
+                      <span>&rarr;</span>
+                    </Link>
+                  </li>
+                </ul>
+              </Card>
+            </Reveal>
+          </div>
+        </div>
       </div>
     </div>
   );
