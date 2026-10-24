@@ -66,10 +66,10 @@ export const FinanceOverview: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#171A3B]">
+          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink">
             Municipal Finance & Operations Overview
           </h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-secondaryText">
             Real-time financial analytics, platform commission revenue, gross payments, and contractor disbursement liabilities.
           </p>
         </div>
@@ -77,7 +77,7 @@ export const FinanceOverview: React.FC = () => {
           <a
             href={csvDownloadUrl}
             download="finance-overview.csv"
-            className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-violet-700 transition-colors"
+            className="inline-flex items-center gap-2 rounded-card bg-primary px-4 py-2 text-sm font-semibold text-white shadow-card hover:bg-primary/90 transition-colors"
           >
             <Download className="h-4 w-4" />
             Export CSV Stream
@@ -85,7 +85,7 @@ export const FinanceOverview: React.FC = () => {
           <Button
             variant="outline"
             onClick={fetchOverview}
-            className="border-slate-200 text-slate-700 hover:bg-slate-50"
+            className="border-border text-secondaryText hover:bg-canvas"
           >
             <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
           </Button>
@@ -93,39 +93,39 @@ export const FinanceOverview: React.FC = () => {
       </div>
 
       {error && (
-        <div className="rounded-xl bg-red-50 p-4 text-sm text-red-700 border border-red-200">
+        <div className="rounded-card bg-rose-50 p-4 text-sm text-rose-700 border border-rose-200 shadow-sm">
           {error}
         </div>
       )}
 
       {/* Date Filter Bar */}
-      <Card className="border border-slate-200 p-4 shadow-sm bg-slate-50/50">
+      <Card className="border border-border/80 p-4 shadow-card bg-card rounded-card">
         <form onSubmit={handleApplyFilter} className="flex flex-wrap items-center gap-4">
           <div className="flex items-center gap-2">
-            <Calendar className="h-4 w-4 text-slate-400" />
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-600">
+            <Calendar className="h-4 w-4 text-secondaryText" />
+            <span className="text-xs font-bold uppercase tracking-wider text-secondaryText font-mono">
               Filter By Period:
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <label className="text-xs text-slate-500">From:</label>
+            <label className="text-xs text-secondaryText">From:</label>
             <input
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs text-slate-700 focus:border-violet-600 focus:outline-none"
+              className="rounded-card border border-border/80 px-3 py-1.5 text-xs text-ink bg-card focus:ring-2 focus:ring-primary/30 focus:outline-none font-mono"
             />
           </div>
           <div className="flex items-center gap-2">
-            <label className="text-xs text-slate-500">To:</label>
+            <label className="text-xs text-secondaryText">To:</label>
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs text-slate-700 focus:border-violet-600 focus:outline-none"
+              className="rounded-card border border-border/80 px-3 py-1.5 text-xs text-ink bg-card focus:ring-2 focus:ring-primary/30 focus:outline-none font-mono"
             />
           </div>
-          <Button type="submit" size="sm" className="bg-violet-600 text-white hover:bg-violet-700">
+          <Button type="submit" size="sm">
             Apply Filter
           </Button>
           {(startDate || endDate) && (
@@ -139,81 +139,81 @@ export const FinanceOverview: React.FC = () => {
       {/* Primary KPI Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* GMV */}
-        <Card className="border border-violet-100 bg-gradient-to-br from-violet-50/50 to-white p-6 shadow-sm">
+        <Card className="border border-border/80 bg-card p-6 shadow-card rounded-card">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-violet-800">
+            <span className="text-xs font-bold uppercase tracking-wider text-primary font-mono">
               Gross Revenue (GMV)
             </span>
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100 text-violet-600">
+            <div className="flex h-10 w-10 items-center justify-center rounded-card bg-primary/10 text-primary">
               <TrendingUp className="h-5 w-5" />
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-3xl font-black text-slate-900">
+            <span className="text-3xl font-serif font-bold text-ink font-mono tabular-nums">
               {metrics ? `₹${metrics.gmvINR}` : '₹0.00'}
             </span>
           </div>
-          <p className="mt-2 text-xs text-slate-500">
+          <p className="mt-2 text-xs text-secondaryText">
             Total successful advance & balance payments
           </p>
         </Card>
 
         {/* Commission */}
-        <Card className="border border-emerald-100 bg-gradient-to-br from-emerald-50/50 to-white p-6 shadow-sm">
+        <Card className="border border-border/80 bg-card p-6 shadow-card rounded-card">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 font-mono">
               Platform Commission (10%)
             </span>
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600">
+            <div className="flex h-10 w-10 items-center justify-center rounded-card bg-emerald-100 text-emerald-600">
               <ShieldCheck className="h-5 w-5" />
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-3xl font-black text-emerald-700">
+            <span className="text-3xl font-serif font-bold text-emerald-700 font-mono tabular-nums">
               {metrics ? `₹${metrics.commissionEarnedINR}` : '₹0.00'}
             </span>
           </div>
-          <p className="mt-2 text-xs text-slate-500">
+          <p className="mt-2 text-xs text-secondaryText">
             Net municipal platform revenue earned
           </p>
         </Card>
 
         {/* Pending Payouts */}
-        <Card className="border border-amber-100 bg-gradient-to-br from-amber-50/50 to-white p-6 shadow-sm">
+        <Card className="border border-border/80 bg-card p-6 shadow-card rounded-card">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-800">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-800 font-mono">
               Pending Contractor Payouts
             </span>
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-600">
+            <div className="flex h-10 w-10 items-center justify-center rounded-card bg-amber-100 text-amber-600">
               <Clock className="h-5 w-5" />
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-3xl font-black text-amber-700">
+            <span className="text-3xl font-serif font-bold text-amber-700 font-mono tabular-nums">
               {metrics ? `₹${metrics.pendingPayoutsINR}` : '₹0.00'}
             </span>
           </div>
-          <p className="mt-2 text-xs text-slate-500">
+          <p className="mt-2 text-xs text-secondaryText">
             {metrics?.payoutCounts.pending ?? 0} contractor batch payout(s) awaiting disbursal
           </p>
         </Card>
 
         {/* Disbursed Payouts */}
-        <Card className="border border-blue-100 bg-gradient-to-br from-blue-50/50 to-white p-6 shadow-sm">
+        <Card className="border border-border/80 bg-card p-6 shadow-card rounded-card">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-800">
+            <span className="text-xs font-bold uppercase tracking-wider text-primary font-mono">
               Disbursed Payouts
             </span>
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+            <div className="flex h-10 w-10 items-center justify-center rounded-card bg-primary/10 text-primary">
               <CheckCircle2 className="h-5 w-5" />
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-3xl font-black text-blue-900">
+            <span className="text-3xl font-serif font-bold text-ink font-mono tabular-nums">
               {metrics ? `₹${metrics.paidPayoutsINR}` : '₹0.00'}
             </span>
           </div>
-          <p className="mt-2 text-xs text-slate-500">
+          <p className="mt-2 text-xs text-secondaryText">
             {metrics?.payoutCounts.paid ?? 0} completed contractor transfer(s)
           </p>
         </Card>
@@ -221,15 +221,15 @@ export const FinanceOverview: React.FC = () => {
 
       {/* Secondary Metrics: Advance vs Balance Breakout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-6 border border-slate-200 shadow-sm">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+        <Card className="p-6 border border-border/80 bg-card shadow-card rounded-card">
+          <div className="flex items-center justify-between border-b border-border/60 pb-4">
             <div className="flex items-center gap-2">
-              <CreditCard className="h-5 w-5 text-violet-600" />
-              <h3 className="font-bold text-slate-900">Payment Collection Breakdown</h3>
+              <CreditCard className="h-5 w-5 text-primary" />
+              <h3 className="font-serif font-bold text-ink">Payment Collection Breakdown</h3>
             </div>
             <Link
               to="/admin/finance/payments"
-              className="text-xs font-semibold text-violet-600 hover:text-violet-800 flex items-center gap-1"
+              className="text-xs font-semibold text-primary hover:underline flex items-center gap-1"
             >
               View Payments Ledger
               <ArrowRight className="h-3.5 w-3.5" />
@@ -238,14 +238,14 @@ export const FinanceOverview: React.FC = () => {
           <div className="mt-6 space-y-4">
             <div>
               <div className="flex justify-between text-sm mb-1.5 font-medium">
-                <span className="text-slate-600">Advance Payments Collected:</span>
-                <span className="text-slate-900 font-bold">
+                <span className="text-secondaryText">Advance Payments Collected:</span>
+                <span className="text-ink font-bold font-mono tabular-nums">
                   {metrics ? `₹${metrics.advanceCollectedINR}` : '₹0.00'}
                 </span>
               </div>
-              <div className="h-2.5 w-full rounded-full bg-slate-100 overflow-hidden">
+              <div className="h-2.5 w-full rounded-full bg-canvas overflow-hidden border border-border/40">
                 <div
-                  className="h-full bg-indigo-500 rounded-full"
+                  className="h-full bg-primary rounded-full transition-all duration-500"
                   style={{
                     width: metrics?.gmvPaise
                       ? `${(metrics.advanceCollectedPaise / metrics.gmvPaise) * 100}%`
@@ -257,14 +257,14 @@ export const FinanceOverview: React.FC = () => {
 
             <div>
               <div className="flex justify-between text-sm mb-1.5 font-medium">
-                <span className="text-slate-600">Balance Settlements Collected:</span>
-                <span className="text-slate-900 font-bold">
+                <span className="text-secondaryText">Balance Settlements Collected:</span>
+                <span className="text-ink font-bold font-mono tabular-nums">
                   {metrics ? `₹${metrics.balanceCollectedINR}` : '₹0.00'}
                 </span>
               </div>
-              <div className="h-2.5 w-full rounded-full bg-slate-100 overflow-hidden">
+              <div className="h-2.5 w-full rounded-full bg-canvas overflow-hidden border border-border/40">
                 <div
-                  className="h-full bg-emerald-500 rounded-full"
+                  className="h-full bg-emerald-500 rounded-full transition-all duration-500"
                   style={{
                     width: metrics?.gmvPaise
                       ? `${(metrics.balanceCollectedPaise / metrics.gmvPaise) * 100}%`
@@ -276,50 +276,50 @@ export const FinanceOverview: React.FC = () => {
           </div>
         </Card>
 
-        <Card className="p-6 border border-slate-200 shadow-sm">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+        <Card className="p-6 border border-border/80 bg-card shadow-card rounded-card">
+          <div className="flex items-center justify-between border-b border-border/60 pb-4">
             <div className="flex items-center gap-2">
-              <Receipt className="h-5 w-5 text-violet-600" />
-              <h3 className="font-bold text-slate-900">Contractor Payout Status</h3>
+              <Receipt className="h-5 w-5 text-primary" />
+              <h3 className="font-serif font-bold text-ink">Contractor Payout Status</h3>
             </div>
             <Link
               to="/admin/finance/payouts"
-              className="text-xs font-semibold text-violet-600 hover:text-violet-800 flex items-center gap-1"
+              className="text-xs font-semibold text-primary hover:underline flex items-center gap-1"
             >
               Manage Payouts
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
           <div className="mt-6 space-y-4">
-            <div className="flex items-center justify-between p-3 rounded-xl bg-amber-50 border border-amber-100">
+            <div className="flex items-center justify-between p-3.5 rounded-card bg-amber-50 border border-amber-200">
               <div className="flex items-center gap-3">
                 <Clock className="h-5 w-5 text-amber-600" />
                 <div>
                   <div className="text-xs font-semibold text-amber-900">Pending Liabilities</div>
-                  <div className="text-lg font-bold text-amber-900">
+                  <div className="text-lg font-bold text-amber-900 font-mono tabular-nums">
                     {metrics ? `₹${metrics.pendingPayoutsINR}` : '₹0.00'}
                   </div>
                 </div>
               </div>
               <Link
                 to="/admin/finance/payouts?status=Pending"
-                className="rounded-lg bg-amber-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-amber-700"
+                className="rounded-card bg-amber-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-amber-700 shadow-sm"
               >
                 Disburse Now
               </Link>
             </div>
 
-            <div className="flex items-center justify-between p-3 rounded-xl bg-emerald-50 border border-emerald-100">
+            <div className="flex items-center justify-between p-3.5 rounded-card bg-emerald-50 border border-emerald-200">
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="h-5 w-5 text-emerald-600" />
                 <div>
                   <div className="text-xs font-semibold text-emerald-900">Disbursed Funds</div>
-                  <div className="text-lg font-bold text-emerald-900">
+                  <div className="text-lg font-bold text-emerald-900 font-mono tabular-nums">
                     {metrics ? `₹${metrics.paidPayoutsINR}` : '₹0.00'}
                   </div>
                 </div>
               </div>
-              <span className="text-xs font-semibold text-emerald-700">
+              <span className="text-xs font-semibold text-emerald-700 font-mono">
                 {metrics?.payoutCounts.paid ?? 0} transferred
               </span>
             </div>

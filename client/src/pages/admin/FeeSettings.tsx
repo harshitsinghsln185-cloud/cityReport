@@ -168,25 +168,25 @@ export const FeeSettingsPage: React.FC = () => {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-heading font-bold text-[#1E293B] flex items-center gap-2.5">
-          <Sliders className="w-7 h-7 text-[#7C3AED]" />
-          Pricing & Fee Settings
+        <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink flex items-center gap-2.5">
+          <Sliders className="w-7 h-7 text-primary" />
+          Pricing & Schedule of Rates (SOR)
         </h1>
-        <p className="text-sm text-[#475569] mt-1">
+        <p className="text-sm text-secondaryText mt-1">
           Configure baseline distance allowances, clamp thresholds, severity multipliers, and platform commission.
         </p>
       </div>
 
       {/* Notifications */}
       {successMessage && (
-        <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-sm flex items-center gap-2.5">
+        <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-card text-sm flex items-center gap-2.5 shadow-sm">
           <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
           <span>{successMessage}</span>
         </div>
       )}
 
       {error && (
-        <div className="p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-xl text-sm flex items-center gap-2.5">
+        <div className="p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-card text-sm flex items-center gap-2.5 shadow-sm">
           <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
           <span>{error}</span>
         </div>
@@ -197,14 +197,14 @@ export const FeeSettingsPage: React.FC = () => {
         <div className="lg:col-span-7 space-y-6">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* 1. Distance Parameters */}
-            <Card className="p-5">
-              <div className="flex items-center gap-2.5 pb-4 border-b border-[#E2E8F0] mb-4">
-                <MapPin className="w-5 h-5 text-[#7C3AED]" />
+            <Card className="p-6 border-border/80 bg-card shadow-card rounded-card">
+              <div className="flex items-center gap-2.5 pb-4 border-b border-border/60 mb-4">
+                <MapPin className="w-5 h-5 text-primary" />
                 <div>
-                  <h3 className="font-heading font-bold text-[#1E293B] text-base">
+                  <h3 className="font-serif font-bold text-ink text-base">
                     Distance Parameters
                   </h3>
-                  <p className="text-xs text-[#64748B]">
+                  <p className="text-xs text-secondaryText">
                     Define travel allowances and additional distance charges for resolvers.
                   </p>
                 </div>
@@ -212,7 +212,7 @@ export const FeeSettingsPage: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#1E293B] mb-1">
+                  <label className="block text-xs font-semibold text-ink mb-1">
                     Free Distance Allowance (km)
                   </label>
                   <input
@@ -223,20 +223,20 @@ export const FeeSettingsPage: React.FC = () => {
                     onChange={(e) =>
                       setFormData((p) => ({ ...p, freeKm: parseInt(e.target.value, 10) || 0 }))
                     }
-                    className="w-full px-3 py-2 border border-[#E2E8F0] rounded-lg text-sm text-[#1E293B] focus:ring-2 focus:ring-[#A78BFA] focus:outline-none"
+                    className="w-full px-3 py-2 border border-border/80 rounded-card bg-card text-sm text-ink focus:ring-2 focus:ring-primary/30 focus:outline-none font-mono"
                     required
                   />
-                  <p className="text-[11px] text-[#64748B] mt-1">
+                  <p className="text-[11px] text-secondaryText mt-1">
                     First {formData.freeKm} km travel incurs no distance fee.
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#1E293B] mb-1">
+                  <label className="block text-xs font-semibold text-ink mb-1">
                     Rate per Billable km (₹ / km)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#64748B]">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-secondaryText">
                       ₹
                     </span>
                     <input
@@ -250,11 +250,11 @@ export const FeeSettingsPage: React.FC = () => {
                           perKmRateRupees: parseFloat(e.target.value) || 0,
                         }))
                       }
-                      className="w-full pl-7 pr-3 py-2 border border-[#E2E8F0] rounded-lg text-sm text-[#1E293B] focus:ring-2 focus:ring-[#A78BFA] focus:outline-none"
+                      className="w-full pl-7 pr-3 py-2 border border-border/80 rounded-card bg-card text-sm text-ink focus:ring-2 focus:ring-primary/30 focus:outline-none font-mono"
                       required
                     />
                   </div>
-                  <p className="text-[11px] text-[#64748B] mt-1">
+                  <p className="text-[11px] text-secondaryText mt-1 font-mono">
                     Stored as {Math.round(formData.perKmRateRupees * 100)} paise / km.
                   </p>
                 </div>
@@ -262,14 +262,14 @@ export const FeeSettingsPage: React.FC = () => {
             </Card>
 
             {/* 2. Clamp Thresholds */}
-            <Card className="p-5">
-              <div className="flex items-center gap-2.5 pb-4 border-b border-[#E2E8F0] mb-4">
-                <ShieldCheck className="w-5 h-5 text-[#7C3AED]" />
+            <Card className="p-6 border-border/80 bg-card shadow-card rounded-card">
+              <div className="flex items-center gap-2.5 pb-4 border-b border-border/60 mb-4">
+                <ShieldCheck className="w-5 h-5 text-primary" />
                 <div>
-                  <h3 className="font-heading font-bold text-[#1E293B] text-base">
+                  <h3 className="font-serif font-bold text-ink text-base">
                     Clamp Thresholds (Min & Max Bounds)
                   </h3>
-                  <p className="text-xs text-[#64748B]">
+                  <p className="text-xs text-secondaryText">
                     Ensure the calculated quote stays within consumer-friendly safety bounds.
                   </p>
                 </div>
@@ -277,11 +277,11 @@ export const FeeSettingsPage: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#1E293B] mb-1">
+                  <label className="block text-xs font-semibold text-ink mb-1">
                     Minimum Fee Floor (₹)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#64748B]">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-secondaryText">
                       ₹
                     </span>
                     <input
@@ -292,21 +292,21 @@ export const FeeSettingsPage: React.FC = () => {
                       onChange={(e) =>
                         setFormData((p) => ({ ...p, minFeeRupees: parseFloat(e.target.value) || 0 }))
                       }
-                      className="w-full pl-7 pr-3 py-2 border border-[#E2E8F0] rounded-lg text-sm text-[#1E293B] focus:ring-2 focus:ring-[#A78BFA] focus:outline-none"
+                      className="w-full pl-7 pr-3 py-2 border border-border/80 rounded-card bg-card text-sm text-ink focus:ring-2 focus:ring-primary/30 focus:outline-none font-mono"
                       required
                     />
                   </div>
-                  <p className="text-[11px] text-[#64748B] mt-1">
+                  <p className="text-[11px] text-secondaryText mt-1 font-mono">
                     No issue quote will be less than ₹{formData.minFeeRupees}.
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#1E293B] mb-1">
+                  <label className="block text-xs font-semibold text-ink mb-1">
                     Maximum Fee Ceiling (₹)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[#64748B]">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-secondaryText">
                       ₹
                     </span>
                     <input
@@ -317,11 +317,11 @@ export const FeeSettingsPage: React.FC = () => {
                       onChange={(e) =>
                         setFormData((p) => ({ ...p, maxFeeRupees: parseFloat(e.target.value) || 0 }))
                       }
-                      className="w-full pl-7 pr-3 py-2 border border-[#E2E8F0] rounded-lg text-sm text-[#1E293B] focus:ring-2 focus:ring-[#A78BFA] focus:outline-none"
+                      className="w-full pl-7 pr-3 py-2 border border-border/80 rounded-card bg-card text-sm text-ink focus:ring-2 focus:ring-primary/30 focus:outline-none font-mono"
                       required
                     />
                   </div>
-                  <p className="text-[11px] text-[#64748B] mt-1">
+                  <p className="text-[11px] text-secondaryText mt-1 font-mono">
                     No issue quote will exceed ₹{formData.maxFeeRupees}.
                   </p>
                 </div>
@@ -329,14 +329,14 @@ export const FeeSettingsPage: React.FC = () => {
             </Card>
 
             {/* 3. Severity Multipliers */}
-            <Card className="p-5">
-              <div className="flex items-center gap-2.5 pb-4 border-b border-[#E2E8F0] mb-4">
-                <TrendingUp className="w-5 h-5 text-[#7C3AED]" />
+            <Card className="p-6 border-border/80 bg-card shadow-card rounded-card">
+              <div className="flex items-center gap-2.5 pb-4 border-b border-border/60 mb-4">
+                <TrendingUp className="w-5 h-5 text-primary" />
                 <div>
-                  <h3 className="font-heading font-bold text-[#1E293B] text-base">
+                  <h3 className="font-serif font-bold text-ink text-base">
                     AI Severity Multipliers
                   </h3>
-                  <p className="text-xs text-[#64748B]">
+                  <p className="text-xs text-secondaryText">
                     Multipliers applied against the category baseline fee depending on issue criticality.
                   </p>
                 </div>
@@ -359,7 +359,7 @@ export const FeeSettingsPage: React.FC = () => {
                         multipliers: { ...p.multipliers, minor: parseFloat(e.target.value) || 1.0 },
                       }))
                     }
-                    className="w-full px-2.5 py-1.5 border border-[#E2E8F0] rounded-lg text-sm text-[#1E293B] focus:ring-2 focus:ring-[#A78BFA] focus:outline-none"
+                    className="w-full px-2.5 py-1.5 border border-border/80 rounded-card bg-card text-sm text-ink focus:ring-2 focus:ring-primary/30 focus:outline-none font-mono"
                     required
                   />
                 </div>
@@ -383,7 +383,7 @@ export const FeeSettingsPage: React.FC = () => {
                         },
                       }))
                     }
-                    className="w-full px-2.5 py-1.5 border border-[#E2E8F0] rounded-lg text-sm text-[#1E293B] focus:ring-2 focus:ring-[#A78BFA] focus:outline-none"
+                    className="w-full px-2.5 py-1.5 border border-border/80 rounded-card bg-card text-sm text-ink focus:ring-2 focus:ring-primary/30 focus:outline-none font-mono"
                     required
                   />
                 </div>
@@ -404,7 +404,7 @@ export const FeeSettingsPage: React.FC = () => {
                         multipliers: { ...p.multipliers, high: parseFloat(e.target.value) || 1.0 },
                       }))
                     }
-                    className="w-full px-2.5 py-1.5 border border-[#E2E8F0] rounded-lg text-sm text-[#1E293B] focus:ring-2 focus:ring-[#A78BFA] focus:outline-none"
+                    className="w-full px-2.5 py-1.5 border border-border/80 rounded-card bg-card text-sm text-ink focus:ring-2 focus:ring-primary/30 focus:outline-none font-mono"
                     required
                   />
                 </div>
@@ -428,7 +428,7 @@ export const FeeSettingsPage: React.FC = () => {
                         },
                       }))
                     }
-                    className="w-full px-2.5 py-1.5 border border-[#E2E8F0] rounded-lg text-sm text-[#1E293B] focus:ring-2 focus:ring-[#A78BFA] focus:outline-none"
+                    className="w-full px-2.5 py-1.5 border border-border/80 rounded-card bg-card text-sm text-ink focus:ring-2 focus:ring-primary/30 focus:outline-none font-mono"
                     required
                   />
                 </div>
@@ -436,21 +436,21 @@ export const FeeSettingsPage: React.FC = () => {
             </Card>
 
             {/* 4. Platform Commission */}
-            <Card className="p-5">
-              <div className="flex items-center gap-2.5 pb-4 border-b border-[#E2E8F0] mb-4">
-                <Percent className="w-5 h-5 text-[#7C3AED]" />
+            <Card className="p-6 border-border/80 bg-card shadow-card rounded-card">
+              <div className="flex items-center gap-2.5 pb-4 border-b border-border/60 mb-4">
+                <Percent className="w-5 h-5 text-primary" />
                 <div>
-                  <h3 className="font-heading font-bold text-[#1E293B] text-base">
+                  <h3 className="font-serif font-bold text-ink text-base">
                     Platform Commission
                   </h3>
-                  <p className="text-xs text-[#64748B]">
+                  <p className="text-xs text-secondaryText">
                     Percentage deducted from the final settled issue fee for platform operations.
                   </p>
                 </div>
               </div>
 
               <div className="max-w-xs">
-                <label className="block text-xs font-semibold text-[#1E293B] mb-1">
+                <label className="block text-xs font-semibold text-ink mb-1">
                   Commission Percentage (%)
                 </label>
                 <div className="relative">
@@ -466,14 +466,14 @@ export const FeeSettingsPage: React.FC = () => {
                         commissionPercent: parseFloat(e.target.value) || 0,
                       }))
                     }
-                    className="w-full pr-8 pl-3 py-2 border border-[#E2E8F0] rounded-lg text-sm text-[#1E293B] focus:ring-2 focus:ring-[#A78BFA] focus:outline-none"
+                    className="w-full pr-8 pl-3 py-2 border border-border/80 rounded-card bg-card text-sm text-ink focus:ring-2 focus:ring-primary/30 focus:outline-none font-mono"
                     required
                   />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-semibold text-[#64748B]">
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-semibold text-secondaryText">
                     %
                   </span>
                 </div>
-                <p className="text-[11px] text-[#64748B] mt-1">
+                <p className="text-[11px] text-secondaryText mt-1 font-mono">
                   Resolvers will receive {100 - formData.commissionPercent}% of the resolved amount.
                 </p>
               </div>
@@ -495,23 +495,23 @@ export const FeeSettingsPage: React.FC = () => {
 
         {/* Right Column: Live Simulation Preview Widget (5 Columns) */}
         <div className="lg:col-span-5 space-y-4">
-          <Card className="p-5 border-2 border-[#EDE9FE] bg-gradient-to-b from-white to-[#F8F7FC]">
-            <div className="flex items-center gap-2.5 pb-4 border-b border-[#E2E8F0] mb-4">
-              <Calculator className="w-5 h-5 text-[#7C3AED]" />
+          <Card className="p-6 border-2 border-primary/20 bg-card shadow-card rounded-card">
+            <div className="flex items-center gap-2.5 pb-4 border-b border-border/60 mb-4">
+              <Calculator className="w-5 h-5 text-primary" />
               <div>
-                <h3 className="font-heading font-bold text-[#1E293B] text-base">
+                <h3 className="font-serif font-bold text-ink text-base">
                   Live Fee Simulation
                 </h3>
-                <p className="text-xs text-[#64748B]">
+                <p className="text-xs text-secondaryText">
                   Test real-time calculation breakdown against active parameters.
                 </p>
               </div>
             </div>
 
             {/* Simulator Inputs */}
-            <div className="space-y-3.5 mb-5 pb-5 border-b border-[#E2E8F0]">
+            <div className="space-y-3.5 mb-5 pb-5 border-b border-border/60">
               <div>
-                <label className="block text-xs font-semibold text-[#475569] mb-1">
+                <label className="block text-xs font-semibold text-secondaryText mb-1">
                   Sample Category Base Fee (₹)
                 </label>
                 <input
@@ -520,14 +520,14 @@ export const FeeSettingsPage: React.FC = () => {
                   min="0"
                   value={simBaseFeeRupees}
                   onChange={(e) => setSimBaseFeeRupees(parseFloat(e.target.value) || 0)}
-                  className="w-full px-3 py-1.5 border border-[#E2E8F0] rounded-lg text-sm bg-white text-[#1E293B] focus:ring-2 focus:ring-[#A78BFA] focus:outline-none"
+                  className="w-full px-3 py-1.5 border border-border/80 rounded-card text-sm bg-card text-ink focus:ring-2 focus:ring-primary/30 focus:outline-none font-mono"
                 />
               </div>
 
               <div>
-                <div className="flex justify-between text-xs font-semibold text-[#475569] mb-1">
+                <div className="flex justify-between text-xs font-semibold text-secondaryText mb-1">
                   <span>Resolver Distance</span>
-                  <span className="text-[#7C3AED]">{simDistanceKm.toFixed(1)} km</span>
+                  <span className="text-primary font-mono">{simDistanceKm.toFixed(1)} km</span>
                 </div>
                 <input
                   type="range"
@@ -536,12 +536,12 @@ export const FeeSettingsPage: React.FC = () => {
                   step="0.5"
                   value={simDistanceKm}
                   onChange={(e) => setSimDistanceKm(parseFloat(e.target.value))}
-                  className="w-full accent-[#7C3AED]"
+                  className="w-full accent-primary"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#475569] mb-1">
+                <label className="block text-xs font-semibold text-secondaryText mb-1">
                   AI Assessed Severity
                 </label>
                 <div className="grid grid-cols-4 gap-1.5">
@@ -550,10 +550,10 @@ export const FeeSettingsPage: React.FC = () => {
                       key={sev}
                       type="button"
                       onClick={() => setSimSeverity(sev)}
-                      className={`py-1 text-xs font-medium capitalize rounded-md border transition-all ${
+                      className={`py-1 text-xs font-medium capitalize rounded-card border transition-all ${
                         simSeverity === sev
-                          ? 'bg-[#7C3AED] text-white border-[#7C3AED]'
-                          : 'bg-white text-[#475569] border-[#E2E8F0] hover:bg-[#EDE9FE]/50'
+                          ? 'bg-primary text-white border-primary shadow-sm'
+                          : 'bg-card text-secondaryText border-border/80 hover:bg-canvas'
                       }`}
                     >
                       {sev}
@@ -564,10 +564,10 @@ export const FeeSettingsPage: React.FC = () => {
             </div>
 
             {/* Step-by-Step Breakdown */}
-            <div className="space-y-2.5 text-xs text-[#475569]">
+            <div className="space-y-2.5 text-xs text-secondaryText">
               <div className="flex justify-between">
                 <span>Base × Severity Multiplier:</span>
-                <span className="font-semibold text-[#1E293B]">
+                <span className="font-semibold text-ink font-mono tabular-nums">
                   ₹{simBaseFeeRupees} × {formData.multipliers[simSeverity]} = ₹
                   {simulation.baseSeverityRupees.toFixed(2)}
                 </span>
@@ -575,21 +575,21 @@ export const FeeSettingsPage: React.FC = () => {
 
               <div className="flex justify-between">
                 <span>Distance Fee ({simulation.billableKm.toFixed(1)} billable km):</span>
-                <span className="font-semibold text-[#1E293B]">
+                <span className="font-semibold text-ink font-mono tabular-nums">
                   +{simulation.distanceFeeRupees.toFixed(2)}
                 </span>
               </div>
 
-              <div className="flex justify-between pt-2 border-t border-[#E2E8F0]">
+              <div className="flex justify-between pt-2 border-t border-border/60">
                 <span>Unrounded Subtotal:</span>
-                <span className="font-semibold text-[#1E293B]">
+                <span className="font-semibold text-ink font-mono tabular-nums">
                   ₹{simulation.subtotalRupees.toFixed(2)}
                 </span>
               </div>
 
               <div className="flex justify-between">
                 <span>Rounded to nearest ₹10:</span>
-                <span className="font-semibold text-[#1E293B]">
+                <span className="font-semibold text-ink font-mono tabular-nums">
                   ₹{simulation.roundedRupees.toFixed(2)}
                 </span>
               </div>
@@ -601,39 +601,39 @@ export const FeeSettingsPage: React.FC = () => {
               )}
 
               {/* Total Final Quote Box */}
-              <div className="p-4 bg-[#EDE9FE] rounded-xl border border-[#A78BFA]/40 mt-3">
-                <div className="text-[11px] font-semibold text-[#7C3AED] uppercase tracking-wider">
+              <div className="p-4 bg-primary/5 rounded-card border border-primary/20 mt-3">
+                <div className="text-[11px] font-semibold text-primary uppercase tracking-wider">
                   Final Calculated Quote
                 </div>
-                <div className="text-2xl font-heading font-black text-[#312E81] mt-0.5">
+                <div className="text-2xl font-serif font-bold text-ink mt-0.5 font-mono tabular-nums">
                   ₹{simulation.totalRupees.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 mt-3 pt-3 border-t border-[#A78BFA]/30">
+                <div className="grid grid-cols-2 gap-3 mt-3 pt-3 border-t border-border/60">
                   <div>
-                    <div className="text-[11px] text-[#475569]">50% Advance (Now)</div>
-                    <div className="text-sm font-bold text-[#1E293B]">
+                    <div className="text-[11px] text-secondaryText">50% Advance (Now)</div>
+                    <div className="text-sm font-bold text-ink font-mono tabular-nums">
                       ₹{simulation.advanceRupees.toFixed(2)}
                     </div>
                   </div>
                   <div>
-                    <div className="text-[11px] text-[#475569]">50% Balance (Close)</div>
-                    <div className="text-sm font-bold text-[#1E293B]">
+                    <div className="text-[11px] text-secondaryText">50% Balance (Close)</div>
+                    <div className="text-sm font-bold text-ink font-mono tabular-nums">
                       ₹{simulation.balanceRupees.toFixed(2)}
                     </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 mt-2 pt-2 border-t border-[#A78BFA]/30 text-[11px]">
+                <div className="grid grid-cols-2 gap-3 mt-2 pt-2 border-t border-border/60 text-[11px]">
                   <div>
-                    <span className="text-[#475569]">Resolver Payout:</span>{' '}
-                    <strong className="text-emerald-700">
+                    <span className="text-secondaryText">Resolver Payout:</span>{' '}
+                    <strong className="text-emerald-700 font-mono tabular-nums">
                       ₹{simulation.resolverPayoutRupees.toFixed(2)}
                     </strong>
                   </div>
                   <div>
-                    <span className="text-[#475569]">Platform ({formData.commissionPercent}%):</span>{' '}
-                    <strong className="text-[#312E81]">
+                    <span className="text-secondaryText">Platform ({formData.commissionPercent}%):</span>{' '}
+                    <strong className="text-primary font-mono tabular-nums">
                       ₹{simulation.commissionRupees.toFixed(2)}
                     </strong>
                   </div>

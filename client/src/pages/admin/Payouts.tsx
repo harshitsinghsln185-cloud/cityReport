@@ -77,43 +77,43 @@ export const AdminPayouts: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <Link to="/admin/finance" className="text-xs font-semibold text-violet-600 hover:underline">
+            <Link to="/admin/finance" className="text-xs font-semibold text-primary hover:underline font-mono">
               Finance
             </Link>
-            <span className="text-xs text-slate-400">/</span>
-            <span className="text-xs text-slate-600">Payouts</span>
+            <span className="text-xs text-secondaryText">/</span>
+            <span className="text-xs text-secondaryText font-mono">Payouts</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#171A3B] mt-1">
+          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink mt-1">
             Contractor Payouts & Disbursal
           </h1>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-secondaryText">
             Review completed repair compensations, platform commission withholdings, and execute disbursement payouts.
           </p>
         </div>
         <Button
           variant="outline"
           onClick={() => fetchPayouts(pagination.page)}
-          className="self-start sm:self-auto border-slate-200 text-slate-700"
+          className="self-start sm:self-auto border-border text-secondaryText hover:bg-canvas"
         >
           <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
         </Button>
       </div>
 
       {error && (
-        <div className="rounded-xl bg-red-50 p-4 text-sm text-red-700 border border-red-200">
+        <div className="rounded-card bg-rose-50 p-4 text-sm text-rose-700 border border-rose-200 shadow-sm">
           {error}
         </div>
       )}
 
       {successMsg && (
-        <div className="rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800 border border-emerald-200 flex items-center gap-2">
+        <div className="rounded-card bg-emerald-50 p-4 text-sm text-emerald-800 border border-emerald-200 flex items-center gap-2 shadow-sm">
           <CheckCircle2 className="h-4 w-4 text-emerald-600 flex-shrink-0" />
           <span>{successMsg}</span>
         </div>
       )}
 
       {/* Filter Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
+      <div className="flex items-center gap-2 border-b border-border/60 pb-3">
         {['All', 'Pending', 'Paid'].map((st) => (
           <button
             key={st}
@@ -121,10 +121,10 @@ export const AdminPayouts: React.FC = () => {
               setStatusFilter(st);
               setSearchParams(st === 'All' ? {} : { status: st });
             }}
-            className={`rounded-lg px-4 py-2 text-xs font-semibold transition-all ${
+            className={`rounded-card px-4 py-2 text-xs font-semibold transition-all font-mono ${
               statusFilter === st
-                ? 'bg-violet-600 text-white shadow-sm'
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                ? 'bg-primary text-white shadow-card'
+                : 'bg-card border border-border/80 text-secondaryText hover:text-ink hover:bg-canvas'
             }`}
           >
             {st === 'All' ? 'All Payouts' : st === 'Pending' ? 'Pending Disbursal' : 'Disbursed (Paid)'}
@@ -133,11 +133,11 @@ export const AdminPayouts: React.FC = () => {
       </div>
 
       {/* Payouts Table */}
-      <Card className="overflow-hidden border border-slate-200 shadow-sm">
+      <Card className="overflow-hidden border border-border/80 shadow-card rounded-card bg-card">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-slate-200 bg-slate-50 text-[11px] font-bold uppercase tracking-wider text-slate-500">
+              <tr className="border-b border-border/80 bg-canvas text-[11px] font-bold uppercase tracking-wider text-secondaryText font-mono">
                 <th className="py-3.5 px-6">Issue Code</th>
                 <th className="py-3.5 px-6">Contractor</th>
                 <th className="py-3.5 px-6">Gross Fee</th>
@@ -148,49 +148,49 @@ export const AdminPayouts: React.FC = () => {
                 <th className="py-3.5 px-6 text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-sm">
+            <tbody className="divide-y divide-border/60 text-sm">
               {loading && payouts.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="py-12 text-center text-slate-500">
-                    <RefreshCw className="mx-auto h-6 w-6 animate-spin text-violet-500 mb-2" />
+                  <td colSpan={8} className="py-12 text-center text-secondaryText">
+                    <RefreshCw className="mx-auto h-6 w-6 animate-spin text-primary mb-2" />
                     Loading contractor payouts...
                   </td>
                 </tr>
               ) : payouts.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="py-12 text-center text-slate-500">
+                  <td colSpan={8} className="py-12 text-center text-secondaryText">
                     No payouts found matching criteria.
                   </td>
                 </tr>
               ) : (
                 payouts.map((p) => (
-                  <tr key={p._id} className="hover:bg-slate-50/80 transition-colors">
+                  <tr key={p._id} className="hover:bg-canvas/50 transition-colors">
                     <td className="py-4 px-6">
-                      <div className="font-mono text-xs font-bold text-slate-900">
+                      <div className="font-mono text-xs font-bold text-ink">
                         {p.issue?.issueCode || 'N/A'}
                       </div>
-                      <div className="text-xs text-slate-500 truncate max-w-xs mt-0.5">
+                      <div className="text-xs text-secondaryText truncate max-w-xs mt-0.5">
                         {p.issue?.title || 'Repair Task'}
                       </div>
                     </td>
-                    <td className="py-4 px-6 text-xs text-slate-700">
-                      <div className="font-semibold text-slate-900">
+                    <td className="py-4 px-6 text-xs text-ink">
+                      <div className="font-semibold text-ink">
                         {p.resolver?.user?.name || 'Contractor'}
                       </div>
-                      <div className="text-slate-400">{p.resolver?.user?.phone}</div>
+                      <div className="text-secondaryText font-mono">{p.resolver?.user?.phone}</div>
                     </td>
-                    <td className="py-4 px-6 font-medium text-slate-700">
+                    <td className="py-4 px-6 font-medium text-secondaryText font-mono tabular-nums">
                       {formatINR(p.grossAmountPaise)}
                     </td>
-                    <td className="py-4 px-6 text-xs font-medium text-slate-500">
+                    <td className="py-4 px-6 text-xs font-medium text-secondaryText font-mono tabular-nums">
                       -{formatINR(p.commissionPaise)}
                     </td>
-                    <td className="py-4 px-6 font-black text-slate-900">
+                    <td className="py-4 px-6 font-bold text-ink font-mono tabular-nums">
                       {formatINR(p.netAmountPaise)}
                     </td>
                     <td className="py-4 px-6">
                       <span
-                        className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                        className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold font-mono ${
                           p.status === 'Paid'
                             ? 'bg-emerald-100 text-emerald-800'
                             : 'bg-amber-100 text-amber-800'
@@ -199,7 +199,7 @@ export const AdminPayouts: React.FC = () => {
                         {p.status === 'Paid' ? 'Paid / Disbursed' : 'Pending Disbursal'}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-xs text-slate-500">
+                    <td className="py-4 px-6 text-xs text-secondaryText font-mono">
                       {p.paidAt
                         ? new Date(p.paidAt).toLocaleDateString('en-IN', {
                             day: 'numeric',
@@ -214,7 +214,7 @@ export const AdminPayouts: React.FC = () => {
                           size="sm"
                           disabled={processingId === p._id}
                           onClick={() => handleMarkPaid(p._id, p.issue?.issueCode || 'Issue')}
-                          className="bg-emerald-600 text-white hover:bg-emerald-700 flex items-center gap-1.5 ml-auto text-xs py-1"
+                          className="bg-emerald-600 text-white hover:bg-emerald-700 flex items-center gap-1.5 ml-auto text-xs py-1 shadow-sm"
                         >
                           {processingId === p._id ? (
                             <Loader2 className="h-3 w-3 animate-spin" />
@@ -224,7 +224,7 @@ export const AdminPayouts: React.FC = () => {
                           Disburse
                         </Button>
                       ) : (
-                        <span className="text-xs font-semibold text-emerald-600 flex items-center justify-end gap-1">
+                        <span className="text-xs font-semibold text-emerald-600 flex items-center justify-end gap-1 font-mono">
                           <CheckCircle2 className="h-3.5 w-3.5" />
                           Settled
                         </span>
@@ -239,8 +239,8 @@ export const AdminPayouts: React.FC = () => {
 
         {/* Pagination */}
         {pagination.pages > 1 && (
-          <div className="flex items-center justify-between border-t border-slate-200 px-6 py-3.5 bg-slate-50/50">
-            <span className="text-xs text-slate-500">
+          <div className="flex items-center justify-between border-t border-border/60 px-6 py-3.5 bg-canvas/50">
+            <span className="text-xs text-secondaryText font-mono">
               Page {pagination.page} of {pagination.pages} ({pagination.total} total)
             </span>
             <div className="flex items-center gap-2">
@@ -249,7 +249,7 @@ export const AdminPayouts: React.FC = () => {
                 size="sm"
                 disabled={pagination.page <= 1}
                 onClick={() => fetchPayouts(pagination.page - 1)}
-                className="flex items-center gap-1"
+                className="flex items-center gap-1 border-border"
               >
                 <ChevronLeft className="h-4 w-4" />
                 Previous
@@ -259,7 +259,7 @@ export const AdminPayouts: React.FC = () => {
                 size="sm"
                 disabled={pagination.page >= pagination.pages}
                 onClick={() => fetchPayouts(pagination.page + 1)}
-                className="flex items-center gap-1"
+                className="flex items-center gap-1 border-border"
               >
                 Next
                 <ChevronRight className="h-4 w-4" />

@@ -16,6 +16,7 @@ import {
   X,
   LogOut,
   Search,
+  ChevronRight,
 } from 'lucide-react';
 import NotificationBell from '../components/NotificationBell';
 
@@ -32,27 +33,36 @@ export const AdminLayout: React.FC = () => {
 
   const navigation = [
     { name: 'Dashboard', href: '/admin', icon: BarChart3 },
-    { name: 'Issues Manager', href: '/admin/issues', icon: AlertOctagon },
-    { name: 'Resolver Verifications', href: '/admin/resolvers', icon: UserCheck2 },
+    { name: 'Issues Triage', href: '/admin/issues', icon: AlertOctagon },
+    { name: 'Resolver KYC', href: '/admin/resolvers', icon: UserCheck2 },
     { name: 'User Directory', href: '/admin/users', icon: Users },
     { name: 'Finance Overview', href: '/admin/finance', icon: DollarSign },
     { name: 'Payments Ledger', href: '/admin/payments', icon: Receipt },
     { name: 'Payout Queue', href: '/admin/payouts', icon: DollarSign },
-    { name: 'Categories Manager', href: '/admin/categories', icon: Layers },
-    { name: 'Fee Settings', href: '/admin/fee-settings', icon: Sliders },
-    { name: 'Public Queries', href: '/admin/queries', icon: Mail },
+    { name: 'Categories & Tariff', href: '/admin/categories', icon: Layers },
+    { name: 'Fee Schedule (SOR)', href: '/admin/fee-settings', icon: Sliders },
+    { name: 'Public Queries Desk', href: '/admin/queries', icon: Mail },
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8F7FC] flex">
+    <div className="min-h-screen bg-canvas flex">
       {/* Desktop Admin Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 bg-[#171A3B] text-slate-300 border-r border-[#312E81]">
-        <div className="h-16 flex items-center px-6 border-b border-[#312E81]/80 gap-2">
-          <ShieldAlert className="w-7 h-7 text-[#7C3AED]" />
-          <span className="font-heading font-bold text-lg text-white">Operations</span>
+      <aside className="hidden md:flex flex-col w-64 bg-[#0F1123] text-slate-300 border-r border-[#1E2342] shrink-0">
+        <div className="h-16 flex items-center px-6 border-b border-[#1E2342] gap-3">
+          <div className="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center font-serif font-bold text-base shadow-sm">
+            CR
+          </div>
+          <div>
+            <div className="font-serif font-bold text-base text-white tracking-tight leading-tight">
+              Crowd Report
+            </div>
+            <div className="text-[10px] font-mono uppercase tracking-wider text-primary font-semibold">
+              Municipal Secretariat
+            </div>
+          </div>
         </div>
 
-        <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
+        <nav className="flex-1 p-3.5 space-y-1 overflow-y-auto">
           {navigation.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.href;
@@ -60,24 +70,27 @@ export const AdminLayout: React.FC = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   isActive
-                    ? 'bg-[#7C3AED] text-white font-semibold shadow-sm shadow-[#7C3AED]/30'
-                    : 'text-slate-300 hover:bg-[#312E81] hover:text-white'
+                    ? 'bg-primary text-white font-semibold shadow-sm'
+                    : 'text-slate-300 hover:bg-[#1A1F3D] hover:text-white'
                 }`}
               >
-                <Icon className="w-4 h-4" />
-                <span>{item.name}</span>
+                <div className="flex items-center gap-3">
+                  <Icon className="w-4 h-4 shrink-0" />
+                  <span>{item.name}</span>
+                </div>
+                {isActive && <ChevronRight className="w-3.5 h-3.5 text-white/70" />}
               </Link>
             );
           })}
         </nav>
 
-        <div className="p-4 border-t border-[#312E81]">
+        <div className="p-4 border-t border-[#1E2342]">
           <button
             type="button"
             onClick={handleSignOut}
-            className="flex items-center gap-3 px-3 py-2 w-full text-sm font-medium text-rose-400 hover:bg-rose-950/40 rounded-lg transition-colors"
+            className="flex items-center gap-3 px-3 py-2 w-full text-xs font-semibold text-rose-400 hover:bg-rose-950/40 rounded-xl transition-colors cursor-pointer"
           >
             <LogOut className="w-4 h-4" />
             <span>Admin Sign Out</span>
@@ -88,12 +101,12 @@ export const AdminLayout: React.FC = () => {
       {/* Mobile Drawer */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 flex md:hidden">
-          <div className="fixed inset-0 bg-[#171A3B]/60 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
-          <div className="relative flex-1 flex flex-col max-w-xs w-full bg-[#171A3B] shadow-xl text-slate-300">
-            <div className="h-16 flex items-center justify-between px-6 border-b border-[#312E81]">
-              <div className="flex items-center gap-2">
-                <ShieldAlert className="w-7 h-7 text-[#7C3AED]" />
-                <span className="font-heading font-bold text-base text-white">Operations</span>
+          <div className="fixed inset-0 bg-[#0F1123]/70 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
+          <div className="relative flex-1 flex flex-col max-w-xs w-full bg-[#0F1123] shadow-2xl text-slate-300">
+            <div className="h-16 flex items-center justify-between px-6 border-b border-[#1E2342]">
+              <div className="flex items-center gap-2.5">
+                <ShieldAlert className="w-7 h-7 text-primary" />
+                <span className="font-serif font-bold text-base text-white">Operations Desk</span>
               </div>
               <button
                 type="button"
@@ -103,7 +116,7 @@ export const AdminLayout: React.FC = () => {
                 <X className="w-6 h-6" />
               </button>
             </div>
-            <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
+            <nav className="flex-1 p-3.5 space-y-1 overflow-y-auto">
               {navigation.map((item) => {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.href;
@@ -112,10 +125,10 @@ export const AdminLayout: React.FC = () => {
                     key={item.name}
                     to={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium ${
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium ${
                       isActive
-                        ? 'bg-[#7C3AED] text-white font-semibold shadow-sm'
-                        : 'text-slate-300 hover:bg-[#312E81] hover:text-white'
+                        ? 'bg-primary text-white font-semibold shadow-sm'
+                        : 'text-slate-300 hover:bg-[#1A1F3D] hover:text-white'
                     }`}
                   >
                     <Icon className="w-4 h-4" />
@@ -124,11 +137,11 @@ export const AdminLayout: React.FC = () => {
                 );
               })}
             </nav>
-            <div className="p-4 border-t border-[#312E81]">
+            <div className="p-4 border-t border-[#1E2342]">
               <button
                 type="button"
                 onClick={handleSignOut}
-                className="flex items-center gap-3 px-3 py-2 w-full text-sm font-medium text-rose-400 hover:bg-rose-950/40 rounded-lg transition-colors"
+                className="flex items-center gap-3 px-3 py-2 w-full text-xs font-semibold text-rose-400 hover:bg-rose-950/40 rounded-xl transition-colors"
               >
                 <LogOut className="w-4 h-4" />
                 <span>Admin Sign Out</span>
@@ -140,31 +153,34 @@ export const AdminLayout: React.FC = () => {
 
       {/* Main Container */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        <header className="h-16 bg-white border-b border-[#E2E8F0] flex items-center justify-between px-4 sm:px-6 lg:px-8">
+        <header className="h-16 bg-card border-b border-border/80 flex items-center justify-between px-4 sm:px-6 lg:px-8 shrink-0">
           <button
             type="button"
-            className="md:hidden text-[#64748B] hover:text-[#1E293B]"
+            className="md:hidden text-secondaryText hover:text-ink"
             onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Open sidebar menu"
           >
             <Menu className="w-6 h-6" />
           </button>
 
           <div className="relative max-w-md w-full hidden sm:block">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#64748B]" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-secondaryText" />
             <input
               type="text"
-              placeholder="Search issues, codes, users..."
-              className="w-full pl-9 pr-4 py-1.5 text-sm bg-[#F8F7FC] border border-[#E2E8F0] rounded-lg text-[#1E293B] focus:outline-none focus:ring-1 focus:ring-[#7C3AED] focus:border-[#7C3AED]"
+              placeholder="Search issues, tracking codes, users, or resolvers..."
+              className="w-full pl-9 pr-4 py-1.5 text-xs bg-canvas border border-border rounded-xl text-ink placeholder:text-secondaryText focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all"
             />
           </div>
 
           <div className="flex items-center gap-3">
             <NotificationBell />
             <div className="text-right hidden sm:block">
-              <div className="text-xs font-semibold text-[#1E293B]">{user?.name || 'System Admin'}</div>
-              <div className="text-[11px] text-[#64748B]">Administrator</div>
+              <div className="text-xs font-semibold text-ink">{user?.name || 'Operations Officer'}</div>
+              <div className="text-[10px] font-mono uppercase tracking-wider text-primary font-semibold">
+                Secretariat Admin
+              </div>
             </div>
-            <div className="w-8 h-8 rounded-full bg-[#171A3B] text-[#7C3AED] border border-[#7C3AED]/40 flex items-center justify-center font-bold text-xs">
+            <div className="w-8 h-8 rounded-xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center font-bold text-xs font-serif">
               {user?.name ? user.name.charAt(0).toUpperCase() : 'A'}
             </div>
           </div>

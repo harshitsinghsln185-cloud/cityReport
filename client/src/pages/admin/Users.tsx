@@ -130,15 +130,15 @@ export const AdminUsersPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#EDE9FE] text-[#7C3AED] border border-[#A78BFA]/30">
+            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 font-mono">
               Access Governance
             </span>
-            <span className="text-xs text-[#64748B]">Total: {meta.total} registered users</span>
+            <span className="text-xs text-secondaryText font-mono">Total: {meta.total} registered users</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-[#1E293B]">
+          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink">
             User & Account Directory
           </h1>
-          <p className="text-sm text-[#64748B] mt-0.5">
+          <p className="text-sm text-secondaryText mt-0.5">
             Supervise registered citizens, contractors, and platform operators; manage account standing and access suspensions
           </p>
         </div>
@@ -148,7 +148,7 @@ export const AdminUsersPage: React.FC = () => {
           size="sm"
           onClick={fetchUsers}
           disabled={loading}
-          className="gap-2 text-[#475569] border-[#E2E8F0] self-start sm:self-auto"
+          className="gap-2 text-secondaryText border-border hover:bg-canvas self-start sm:self-auto"
         >
           <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
           <span>Refresh</span>
@@ -156,7 +156,7 @@ export const AdminUsersPage: React.FC = () => {
       </div>
 
       {successMessage && (
-        <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm flex items-center justify-between">
+        <div className="p-4 rounded-card bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm flex items-center justify-between shadow-sm">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-emerald-600" />
             <span>{successMessage}</span>
@@ -168,8 +168,8 @@ export const AdminUsersPage: React.FC = () => {
       )}
 
       {/* Role Filter Tabs */}
-      <div className="border-b border-[#E2E8F0]">
-        <div className="flex space-x-2 py-1">
+      <div className="border-b border-border/60 pb-3">
+        <div className="flex flex-wrap gap-2 py-1">
           {[
             { label: 'All Accounts', value: 'All' },
             { label: 'Citizens', value: 'User' },
@@ -179,10 +179,10 @@ export const AdminUsersPage: React.FC = () => {
             <button
               key={tab.value}
               onClick={() => handleRoleTab(tab.value)}
-              className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-colors ${
+              className={`px-3.5 py-2 text-xs font-semibold rounded-card transition-all font-mono ${
                 roleFilter === tab.value
-                  ? 'bg-[#7C3AED] text-white shadow-sm'
-                  : 'text-[#64748B] hover:text-[#1E293B] hover:bg-[#F8F7FC]'
+                  ? 'bg-primary text-white shadow-card'
+                  : 'bg-card border border-border/80 text-secondaryText hover:text-ink hover:bg-canvas'
               }`}
             >
               {tab.label}
@@ -192,16 +192,16 @@ export const AdminUsersPage: React.FC = () => {
       </div>
 
       {/* Search and Standing Filter */}
-      <Card className="border border-[#E2E8F0] p-4">
+      <Card className="border border-border/80 p-4 shadow-card rounded-card bg-card">
         <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row items-center gap-3">
           <div className="relative flex-1 w-full">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#64748B]" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-secondaryText" />
             <input
               type="text"
               placeholder="Search by name, email, or telephone..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 text-xs border border-[#E2E8F0] rounded-lg bg-white text-[#1E293B] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]"
+              className="w-full pl-9 pr-4 py-2 text-xs border border-border/80 rounded-card bg-card text-ink focus:outline-none focus:ring-2 focus:ring-primary/30 font-mono"
             />
           </div>
 
@@ -212,14 +212,14 @@ export const AdminUsersPage: React.FC = () => {
                 setBlockedFilter(e.target.value);
                 setMeta((prev) => ({ ...prev, page: 1 }));
               }}
-              className="px-3 py-2 text-xs border border-[#E2E8F0] rounded-lg bg-white text-[#1E293B] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]"
+              className="px-3 py-2 text-xs border border-border/80 rounded-card bg-card text-ink focus:outline-none focus:ring-2 focus:ring-primary/30 font-mono"
             >
               <option value="">All Account Statuses</option>
               <option value="false">Active Only</option>
               <option value="true">Suspended / Blocked Only</option>
             </select>
 
-            <Button type="submit" size="sm" className="bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs px-4">
+            <Button type="submit" size="sm" className="text-xs px-4">
               Filter
             </Button>
           </div>
@@ -227,11 +227,11 @@ export const AdminUsersPage: React.FC = () => {
       </Card>
 
       {/* Users Table */}
-      <Card className="border border-[#E2E8F0] p-0 overflow-hidden">
+      <Card className="border border-border/80 p-0 overflow-hidden shadow-card rounded-card bg-card">
         {loading ? (
           <div className="p-8 space-y-4">
             {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="h-14 bg-slate-100 animate-pulse rounded-lg" />
+              <div key={i} className="h-14 bg-canvas animate-pulse rounded-card" />
             ))}
           </div>
         ) : error ? (
@@ -241,7 +241,7 @@ export const AdminUsersPage: React.FC = () => {
         ) : users.length === 0 ? (
           <div className="p-12 text-center">
             <EmptyState
-              icon={<Users className="w-8 h-8 text-[#7C3AED]" />}
+              icon={<Users className="w-8 h-8 text-primary" />}
               title="No Users Located"
               description="No user accounts matched the given search query or active filter settings."
             />
@@ -249,7 +249,7 @@ export const AdminUsersPage: React.FC = () => {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
-              <thead className="bg-[#F8F7FC] text-xs font-semibold text-[#64748B] border-b border-[#E2E8F0]">
+              <thead className="bg-canvas text-xs font-semibold text-secondaryText border-b border-border/80 font-mono">
                 <tr>
                   <th className="py-3 px-4">User Details</th>
                   <th className="py-3 px-4">Contact</th>
@@ -259,14 +259,14 @@ export const AdminUsersPage: React.FC = () => {
                   <th className="py-3 px-4 text-right">Access Control</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E8F0]">
+              <tbody className="divide-y divide-border/60">
                 {users.map((u) => {
                   const uid = getUserId(u);
                   const isCurrent = getUserId(currentAdmin) === uid;
                   const isAdminRole = u.role === 'Admin';
 
                   return (
-                    <tr key={uid || u.email} className="hover:bg-[#F8F7FC]/80 transition-colors">
+                    <tr key={uid || u.email} className="hover:bg-canvas/50 transition-colors">
                       {/* Name & Avatar */}
                       <td className="py-3.5 px-4">
                         <div className="flex items-center gap-3">
@@ -274,34 +274,34 @@ export const AdminUsersPage: React.FC = () => {
                             <img
                               src={u.photo.url}
                               alt={u.name}
-                              className="w-9 h-9 rounded-full object-cover border border-[#E2E8F0]"
+                              className="w-9 h-9 rounded-full object-cover border border-border"
                             />
                           ) : (
-                            <div className="w-9 h-9 rounded-full bg-[#312E81] text-white flex items-center justify-center font-bold text-xs">
+                            <div className="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs font-mono shadow-sm">
                               {u.name ? u.name.slice(0, 2).toUpperCase() : 'U'}
                             </div>
                           )}
                           <div>
-                            <div className="font-heading font-bold text-xs text-[#1E293B] flex items-center gap-1.5">
+                            <div className="font-bold text-xs text-ink flex items-center gap-1.5">
                               <span>{u.name}</span>
                               {isCurrent && (
-                                <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-violet-100 text-[#7C3AED]">
+                                <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-primary/10 text-primary font-mono">
                                   You
                                 </span>
                               )}
                             </div>
-                            <div className="text-[11px] text-[#64748B] font-mono">{uid}</div>
+                            <div className="text-[11px] text-secondaryText font-mono">{uid}</div>
                           </div>
                         </div>
                       </td>
 
                       {/* Contact */}
                       <td className="py-3.5 px-4 text-xs">
-                        <div className="flex items-center gap-1 text-[#1E293B]">
-                          <Mail className="w-3 h-3 text-[#7C3AED]" />
+                        <div className="flex items-center gap-1 text-ink font-mono">
+                          <Mail className="w-3 h-3 text-primary" />
                           <span>{u.email}</span>
                         </div>
-                        <div className="flex items-center gap-1 text-[#64748B] mt-0.5">
+                        <div className="flex items-center gap-1 text-secondaryText font-mono mt-0.5">
                           <Phone className="w-3 h-3" />
                           <span>{u.phone || 'No phone'}</span>
                         </div>
@@ -310,11 +310,11 @@ export const AdminUsersPage: React.FC = () => {
                       {/* Role Badge */}
                       <td className="py-3.5 px-4">
                         <span
-                          className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold ${
+                          className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold font-mono ${
                             u.role === 'Admin'
-                              ? 'bg-[#171A3B] text-white'
+                              ? 'bg-slate-900 text-white'
                               : u.role === 'Resolver'
-                              ? 'bg-[#EDE9FE] text-[#7C3AED] border border-[#DDD6FE]'
+                              ? 'bg-primary/10 text-primary border border-primary/20'
                               : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                           }`}
                         >
@@ -325,12 +325,12 @@ export const AdminUsersPage: React.FC = () => {
                       {/* Standing */}
                       <td className="py-3.5 px-4">
                         {u.isBlocked ? (
-                          <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-100 text-rose-700 border border-rose-200">
+                          <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-100 text-rose-700 border border-rose-200 font-mono">
                             <Ban className="w-3 h-3" />
                             <span>Suspended</span>
                           </div>
                         ) : (
-                          <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono">
                             <CheckCircle2 className="w-3 h-3" />
                             <span>Active</span>
                           </div>
@@ -343,19 +343,19 @@ export const AdminUsersPage: React.FC = () => {
                       </td>
 
                       {/* Created At */}
-                      <td className="py-3.5 px-4 text-xs text-[#64748B]">
+                      <td className="py-3.5 px-4 text-xs text-secondaryText font-mono">
                         {u.createdAt ? new Date(u.createdAt).toLocaleDateString('en-IN') : 'N/A'}
                       </td>
 
                       {/* Action */}
                       <td className="py-3.5 px-4 text-right">
                         {isAdminRole ? (
-                          <span className="text-xs text-slate-400 italic">Protected</span>
+                          <span className="text-xs text-secondaryText italic font-mono">Protected</span>
                         ) : isCurrent ? (
-                          <span className="text-xs text-slate-400 italic">Current Session</span>
+                          <span className="text-xs text-secondaryText italic font-mono">Current Session</span>
                         ) : (
                           <Button
-                            variant={u.isBlocked ? 'outline' : 'outline'}
+                            variant="outline"
                             size="sm"
                             onClick={() => openBlockModal(u)}
                             className={`text-xs gap-1.5 ${
@@ -387,7 +387,7 @@ export const AdminUsersPage: React.FC = () => {
         )}
 
         {meta.totalPages > 1 && (
-          <div className="p-4 border-t border-[#E2E8F0]">
+          <div className="p-4 border-t border-border/60 bg-canvas/30">
             <Pagination
               currentPage={meta.page}
               totalPages={meta.totalPages}
@@ -407,21 +407,21 @@ export const AdminUsersPage: React.FC = () => {
           title={targetUser.isBlocked ? 'Reinstate User Account' : 'Suspend User Account'}
         >
           <div className="space-y-4">
-            <p className="text-xs text-[#64748B]">
+            <p className="text-xs text-secondaryText">
               {targetUser.isBlocked ? (
                 <>
-                  Are you sure you wish to unblock <strong className="text-[#1E293B]">{targetUser.name}</strong> ({targetUser.email})? They will immediately regain access to platform services.
+                  Are you sure you wish to unblock <strong className="text-ink">{targetUser.name}</strong> ({targetUser.email})? They will immediately regain access to platform services.
                 </>
               ) : (
                 <>
-                  Are you sure you wish to suspend <strong className="text-[#1E293B]">{targetUser.name}</strong> ({targetUser.email})? Their active sessions will be terminated and subsequent logins blocked.
+                  Are you sure you wish to suspend <strong className="text-ink">{targetUser.name}</strong> ({targetUser.email})? Their active sessions will be terminated and subsequent logins blocked.
                 </>
               )}
             </p>
 
             {!targetUser.isBlocked && (
               <div>
-                <label className="block text-xs font-semibold text-[#1E293B] mb-1">
+                <label className="block text-xs font-semibold text-ink mb-1">
                   Reason for Suspension (required)
                 </label>
                 <textarea
@@ -429,18 +429,18 @@ export const AdminUsersPage: React.FC = () => {
                   value={blockReason}
                   onChange={(e) => setBlockReason(e.target.value)}
                   placeholder="e.g. Terms of service violation, fraudulent report spam, abusive conduct..."
-                  className="w-full p-2.5 text-xs border border-[#E2E8F0] rounded-lg bg-white text-[#1E293B] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]"
+                  className="w-full p-2.5 text-xs border border-border/80 rounded-card bg-card text-ink focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </div>
             )}
 
             {modalError && (
-              <div className="p-3 bg-rose-50 border border-rose-200 rounded-lg text-xs text-rose-700">
+              <div className="p-3 bg-rose-50 border border-rose-200 rounded-card text-xs text-rose-700">
                 {modalError}
               </div>
             )}
 
-            <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0]">
+            <div className="flex justify-end gap-2 pt-2 border-t border-border/60">
               <Button
                 variant="outline"
                 size="sm"

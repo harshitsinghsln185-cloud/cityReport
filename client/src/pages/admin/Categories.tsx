@@ -164,11 +164,11 @@ export const CategoriesPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-heading font-bold text-[#1E293B] flex items-center gap-2.5">
-            <Layers className="w-7 h-7 text-[#7C3AED]" />
+          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink flex items-center gap-2.5">
+            <Layers className="w-7 h-7 text-primary" />
             Civic Issue Categories
           </h1>
-          <p className="text-sm text-[#475569] mt-1">
+          <p className="text-sm text-secondaryText mt-1">
             Manage citizen classification categories, baseline fees in integer paise, and availability.
           </p>
         </div>
@@ -184,28 +184,28 @@ export const CategoriesPage: React.FC = () => {
 
       {/* Flash Messages */}
       {successMessage && (
-        <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-sm flex items-center gap-2.5">
+        <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-card text-sm flex items-center gap-2.5 shadow-sm">
           <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
           <span>{successMessage}</span>
         </div>
       )}
 
       {error && (
-        <div className="p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-xl text-sm flex items-center gap-2.5">
+        <div className="p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-card text-sm flex items-center gap-2.5 shadow-sm">
           <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
           <span>{error}</span>
         </div>
       )}
 
       {/* Filter and Search Bar */}
-      <Card className="p-4">
+      <Card className="p-4 border-border/80 bg-card shadow-card rounded-card">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="w-full sm:w-80 relative">
             <Input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by name, slug or description..."
-              leftIcon={<Search className="w-4 h-4 text-[#64748B]" />}
+              leftIcon={<Search className="w-4 h-4 text-secondaryText" />}
               className="w-full text-sm"
             />
           </div>
@@ -214,7 +214,7 @@ export const CategoriesPage: React.FC = () => {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-3 py-2 bg-white border border-[#E2E8F0] rounded-lg text-sm text-[#1E293B] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]"
+              className="px-3 py-2 bg-card border border-border/80 rounded-card text-sm text-ink focus:outline-none focus:ring-2 focus:ring-primary/30"
             >
               <option value="">All Statuses</option>
               <option value="true">Active Only</option>
@@ -223,7 +223,7 @@ export const CategoriesPage: React.FC = () => {
 
             <button
               onClick={() => fetchCategories()}
-              className="p-2 border border-[#E2E8F0] rounded-lg text-[#64748B] hover:text-[#7C3AED] hover:bg-[#EDE9FE]/50 transition-colors"
+              className="p-2 border border-border/80 rounded-card text-secondaryText hover:text-primary hover:bg-canvas transition-colors"
               title="Refresh"
             >
               <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
@@ -233,10 +233,10 @@ export const CategoriesPage: React.FC = () => {
       </Card>
 
       {/* Categories Table */}
-      <div className="bg-white rounded-xl shadow-sm border border-[#E2E8F0] overflow-hidden">
+      <div className="bg-card rounded-card shadow-card border border-border/80 overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-[#1E293B]">
-            <thead className="bg-[#F8F7FC] border-b border-[#E2E8F0] text-xs font-semibold uppercase tracking-wider text-[#475569]">
+          <table className="w-full text-left text-sm text-ink">
+            <thead className="bg-canvas border-b border-border/80 text-xs font-semibold uppercase tracking-wider text-secondaryText font-mono">
               <tr>
                 <th className="py-3.5 px-4 sm:px-6">Category Details</th>
                 <th className="py-3.5 px-4">Slug</th>
@@ -245,60 +245,60 @@ export const CategoriesPage: React.FC = () => {
                 <th className="py-3.5 px-4 sm:px-6 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E2E8F0]">
+            <tbody className="divide-y divide-border/60">
               {loading ? (
                 <tr>
-                  <td colSpan={5} className="py-12 text-center text-[#64748B]">
+                  <td colSpan={5} className="py-12 text-center text-secondaryText">
                     <div className="flex items-center justify-center gap-2">
-                      <RefreshCw className="w-5 h-5 animate-spin text-[#7C3AED]" />
+                      <RefreshCw className="w-5 h-5 animate-spin text-primary" />
                       <span>Loading categories...</span>
                     </div>
                   </td>
                 </tr>
               ) : categories.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="py-12 text-center text-[#64748B]">
+                  <td colSpan={5} className="py-12 text-center text-secondaryText">
                     No categories found matching your query.
                   </td>
                 </tr>
               ) : (
                 categories.map((cat) => (
-                  <tr key={cat._id} className="hover:bg-[#F8F7FC]/70 transition-colors">
+                  <tr key={cat._id} className="hover:bg-canvas/50 transition-colors">
                     <td className="py-4 px-4 sm:px-6">
                       <div className="flex items-start gap-3">
-                        <div className="w-9 h-9 rounded-lg bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center shrink-0 mt-0.5">
+                        <div className="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5">
                           <Tag className="w-4 h-4" />
                         </div>
                         <div>
-                          <div className="font-semibold text-[#1E293B]">{cat.name}</div>
-                          <div className="text-xs text-[#64748B] mt-0.5 line-clamp-1">
+                          <div className="font-semibold text-ink">{cat.name}</div>
+                          <div className="text-xs text-secondaryText mt-0.5 line-clamp-1">
                             {cat.description}
                           </div>
                         </div>
                       </div>
                     </td>
 
-                    <td className="py-4 px-4 font-mono text-xs text-[#475569]">
-                      <span className="bg-[#EDE9FE]/50 text-[#312E81] px-2 py-0.5 rounded border border-[#E2E8F0]">
+                    <td className="py-4 px-4 font-mono text-xs text-secondaryText">
+                      <span className="bg-canvas text-ink px-2 py-0.5 rounded border border-border/80">
                         {cat.slug}
                       </span>
                     </td>
 
-                    <td className="py-4 px-4 font-semibold text-[#1E293B]">
+                    <td className="py-4 px-4 font-semibold text-ink font-mono tabular-nums">
                       ₹{(cat.baseFeePaise / 100).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
-                      <span className="block text-[11px] font-normal text-[#64748B]">
+                      <span className="block text-[11px] font-normal text-secondaryText font-mono">
                         {cat.baseFeePaise.toLocaleString()} paise
                       </span>
                     </td>
 
                     <td className="py-4 px-4">
                       {cat.isActive ? (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                           Active
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-50 text-rose-700 border border-rose-200">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-50 text-rose-700 border border-rose-200 font-mono">
                           <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
                           Disabled
                         </span>
@@ -309,7 +309,7 @@ export const CategoriesPage: React.FC = () => {
                       <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => handleOpenEditModal(cat)}
-                          className="p-1.5 text-[#64748B] hover:text-[#7C3AED] hover:bg-[#EDE9FE] rounded-lg transition-colors"
+                          className="p-1.5 text-secondaryText hover:text-primary hover:bg-canvas rounded-lg transition-colors"
                           title="Edit Category"
                         >
                           <Edit2 className="w-4 h-4" />
@@ -352,7 +352,7 @@ export const CategoriesPage: React.FC = () => {
       >
         <form onSubmit={handleSubmit} className="space-y-4 pt-2">
           {formError && (
-            <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 rounded-lg text-xs flex items-center gap-2">
+            <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 rounded-card text-xs flex items-center gap-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{formError}</span>
             </div>
@@ -376,18 +376,18 @@ export const CategoriesPage: React.FC = () => {
               required
             />
             {editingCategory && (
-              <p className="text-[11px] text-[#64748B] mt-1">
+              <p className="text-[11px] text-secondaryText mt-1">
                 Slugs cannot be altered after creation to preserve relational integrity.
               </p>
             )}
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#1E293B] mb-1.5">
+            <label className="block text-xs font-semibold text-ink mb-1.5">
               Base Fee (₹ INR)
             </label>
             <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#64748B] text-sm font-semibold">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-secondaryText text-sm font-semibold">
                 ₹
               </span>
               <input
@@ -396,14 +396,14 @@ export const CategoriesPage: React.FC = () => {
                 min="0"
                 value={formData.baseFeeRupees}
                 onChange={(e) => setFormData((prev) => ({ ...prev, baseFeeRupees: e.target.value }))}
-                className="w-full pl-8 pr-4 py-2 border border-[#E2E8F0] rounded-lg text-sm text-[#1E293B] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]"
+                className="w-full pl-8 pr-4 py-2 border border-border/80 rounded-card bg-card text-sm text-ink focus:outline-none focus:ring-2 focus:ring-primary/30 font-mono"
                 placeholder="500"
                 required
               />
             </div>
-            <p className="text-[11px] text-[#64748B] mt-1">
+            <p className="text-[11px] text-secondaryText mt-1 font-mono">
               Stored as{' '}
-              <strong className="text-[#312E81]">
+              <strong className="text-primary">
                 {(parseFloat(formData.baseFeeRupees || '0') * 100).toLocaleString()} paise
               </strong>{' '}
               in MongoDB.
@@ -411,20 +411,20 @@ export const CategoriesPage: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#1E293B] mb-1.5">
+            <label className="block text-xs font-semibold text-ink mb-1.5">
               Description
             </label>
             <textarea
               value={formData.description}
               onChange={(e) => setFormData((prev) => ({ ...prev, description: e.target.value }))}
               rows={3}
-              className="w-full px-3 py-2 border border-[#E2E8F0] rounded-lg text-sm text-[#1E293B] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]"
+              className="w-full px-3 py-2 border border-border/80 rounded-card bg-card text-sm text-ink focus:outline-none focus:ring-2 focus:ring-primary/30"
               placeholder="Describe what kind of civic issues fall under this category..."
               required
             />
           </div>
 
-          <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#E2E8F0]">
+          <div className="flex items-center justify-end gap-3 pt-3 border-t border-border/60">
             <Button
               type="button"
               variant="outline"

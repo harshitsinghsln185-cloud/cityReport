@@ -157,6 +157,65 @@ Completely transformed the Resolver & Contractor console and field remediation w
 - Verified ProofUploader validation and image preview removals.
 - Verified TypeScript strict type check passes with 0 errors.
 
+## [P7: Operations & Admin Console Triage Desk] - 2026-10-24
+
+### Summary
+Overhauled the administrative operations suite and triage desk across all 11 admin management interfaces and shared layout:
+- **Admin Layout (`client/src/layouts/AdminLayout.tsx`)**: Re-engineered with deep slate sidebar (`#0F1123`), active route chevron, distinct `CR` badge branding, system role indicator, top-bar search shortcut, and notification bell counter.
+- **Operations Command Center (`client/src/pages/admin/Dashboard.tsx`)**:
+  - Command center hero banner with quick triage shortcut buttons.
+  - 4 KPI metric cards (`Total Submissions`, `Active Resolvers`, `Pending KYC Reviews`, `Revenue Accrued`) with `font-mono tabular-nums`.
+  - Comprehensive 12-state lifecycle distribution grid with visual count chips.
+  - Administrative utility cards linking directly to Resolver Accreditation, Fee Engine & SOR, and Public Inquiries.
+  - Recent incident submissions table with severity chips, status badges, and quick triage routing.
+- **Master Incident Triage Desk (`client/src/pages/admin/Issues.tsx`)**:
+  - Status filter pills (All, Reported, Quoted, Dispatched, In Progress, Remediated, Closed, Cancelled).
+  - Priority dropdown, search bar with debounce, and responsive tabular list.
+  - Pagination controls and empty state handling.
+- **Incident Investigation & Audit Desk (`client/src/pages/admin/IssueDetails.tsx`)**:
+  - Full design tokens overhaul with Fraunces serif headings.
+  - Integrated `BeforeAfterSlider` directly in contractor completion review card for supervisor visual QA.
+  - Manual contractor dispatch selector filtering available verified contractors in the local territory.
+  - Municipal Financial Ledger table tracking 50% advance escrow, final settlement, and contractor payout disbursement.
+  - Supervisor rework modal with audit reason requirements and incident cancellation modal.
+- **Contractor Accreditation & KYC Desk (`client/src/pages/admin/ResolverRequests.tsx`)**:
+  - Trade specialization and coverage radius metrics.
+  - Cloudinary-signed ID proof viewer modal for government document inspection.
+  - Approval action with confirmation prompt and rejection modal requiring a minimum 10-character reason.
+- **Schedule of Rates (SOR) & Category Engine (`client/src/pages/admin/Categories.tsx`)**:
+  - Base fee formatting in integer paise and rupees with `font-mono tabular-nums`.
+  - Add and Edit Category modal with permanent slug preservation notice.
+  - Live search filter and category active status toggles.
+- **Fee Engine & Pricing Matrix (`client/src/pages/admin/FeeSettings.tsx`)**:
+  - Base rate parameters, per-km travel rate, free travel distance threshold, and min/max clamp bounds.
+  - Severity multipliers matrix (Low 1.0x, Medium 1.25x, High 1.5x, Critical 2.0x).
+  - Platform commission percentage slider (0% to 50%).
+  - Live interactive Pricing Simulation Calculator allowing admins to test fee breakdowns on dummy distance and category inputs.
+- **Municipal Finance Overview (`client/src/pages/admin/FinanceOverview.tsx`)**:
+  - 4 financial KPI cards with `font-mono tabular-nums` (Total Gross Collections, Escrowed Advances, Contractor Payouts Disbursed, Platform Revenue).
+  - Collections vs Disbursements progress bar.
+  - Direct quick-links to Payment Transactions and Contractor Disbursements.
+- **Municipal Payments Ledger (`client/src/pages/admin/Payments.tsx`)**:
+  - Transaction filter pills for payment types (Advance, Balance) and statuses (Pending, Completed, Failed).
+  - Transaction table with Gateway Order IDs, Payment IDs, and formatted rupee amounts.
+- **Contractor Disbursement Desk (`client/src/pages/admin/Payouts.tsx`)**:
+  - Payout status tabs (All, Pending, Paid).
+  - Contractor payout table displaying gross fee, 10% municipal fee commission, and net disbursable amount.
+  - Inline disbursement execution with confirmation dialog.
+- **Citizen Inquiries Desk (`client/src/pages/admin/Queries.tsx`)**:
+  - Inquiries list with status tabs (All, New, Responded).
+  - Response modal allowing municipal operators to draft and email direct replies to citizens.
+- **User & Account Directory (`client/src/pages/admin/Users.tsx`)**:
+  - User directory with role filter tabs (All, Citizen, Resolver, Admin).
+  - Avatar badges, joined dates, and phone numbers.
+  - Account suspension and reinstatement modal with mandatory reason logging.
+
+### Verification
+- `npm run build` in `client/`: Passing (0 errors, 2,214 modules transformed)
+- Verified all 11 admin pages and AdminLayout render cleanly with design tokens.
+- Strict TypeScript compile check: 0 errors.
+
+
 
 
 

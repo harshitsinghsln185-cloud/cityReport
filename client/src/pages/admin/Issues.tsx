@@ -116,21 +116,21 @@ export const AdminIssuesPage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 space-y-6">
+    <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 space-y-6 animate-fadeIn">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#EDE9FE] text-[#7C3AED] border border-[#A78BFA]/30">
+          <div className="flex items-center gap-2 mb-1.5">
+            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
               Operations Triage
             </span>
-            <span className="text-xs text-[#64748B]">Total: {meta.total} reports</span>
+            <span className="text-xs font-mono text-secondaryText">Total: {meta.total} reports</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-[#1E293B]">
+          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink tracking-tight">
             Master Civic Issues Queue
           </h1>
-          <p className="text-sm text-[#64748B] mt-0.5">
-            Evaluate civic reports, override priority levels, assign local certified contractors, and review fees
+          <p className="text-sm text-secondaryText mt-0.5">
+            Evaluate civic reports, override priority levels, assign local certified contractors, and inspect photographic proof
           </p>
         </div>
 
@@ -139,7 +139,7 @@ export const AdminIssuesPage: React.FC = () => {
           size="sm"
           onClick={fetchIssues}
           disabled={loading}
-          className="gap-2 text-[#475569] border-[#E2E8F0] self-start sm:self-auto"
+          className="gap-2 self-start sm:self-auto shadow-xs"
         >
           <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
           <span>Refresh</span>
@@ -147,7 +147,7 @@ export const AdminIssuesPage: React.FC = () => {
       </div>
 
       {/* Filter Tabs */}
-      <div className="border-b border-[#E2E8F0] overflow-x-auto">
+      <div className="border-b border-border overflow-x-auto">
         <div className="flex space-x-2 py-1 min-w-max">
           {statusTabs.map((tab) => {
             const isActive = statusFilter === tab.value;
@@ -155,10 +155,10 @@ export const AdminIssuesPage: React.FC = () => {
               <button
                 key={tab.value}
                 onClick={() => handleFilterChange(tab.value)}
-                className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-colors ${
+                className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-[#7C3AED] text-white shadow-sm'
-                    : 'text-[#64748B] hover:text-[#1E293B] hover:bg-[#F8F7FC]'
+                    ? 'bg-primary text-white shadow-xs'
+                    : 'text-secondaryText hover:text-ink hover:bg-canvas'
                 }`}
               >
                 {tab.label}
@@ -169,28 +169,28 @@ export const AdminIssuesPage: React.FC = () => {
       </div>
 
       {/* Search and Secondary Filters Bar */}
-      <Card className="border border-[#E2E8F0] p-4">
+      <Card className="border border-border/80 bg-card rounded-card shadow-card p-4">
         <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row items-center gap-3">
           <div className="relative flex-1 w-full">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#64748B]" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-secondaryText" />
             <input
               type="text"
               placeholder="Search by code (e.g. CR-), title, street, or city..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 text-xs border border-[#E2E8F0] rounded-lg bg-white text-[#1E293B] focus:outline-none focus:ring-2 focus:ring-[#A78BFA] transition-all"
+              className="w-full pl-9 pr-4 py-2 text-xs border border-border rounded-xl bg-canvas text-ink placeholder:text-secondaryText focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all"
             />
           </div>
 
           <div className="flex items-center gap-2 w-full sm:w-auto">
-            <div className="flex items-center gap-1.5 text-xs text-[#64748B] whitespace-nowrap">
-              <Filter className="w-3.5 h-3.5 text-[#7C3AED]" />
+            <div className="flex items-center gap-1.5 text-xs text-secondaryText whitespace-nowrap">
+              <Filter className="w-3.5 h-3.5 text-primary" />
               <span>Priority:</span>
             </div>
             <select
               value={priorityFilter}
               onChange={handlePriorityChange}
-              className="px-3 py-2 text-xs border border-[#E2E8F0] rounded-lg bg-white text-[#1E293B] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]"
+              className="px-3 py-2 text-xs border border-border rounded-xl bg-canvas text-ink focus:outline-none focus:ring-2 focus:ring-primary/40"
             >
               <option value="All">All Priorities</option>
               <option value="Critical">Critical</option>
@@ -199,7 +199,7 @@ export const AdminIssuesPage: React.FC = () => {
               <option value="Low">Low</option>
             </select>
 
-            <Button type="submit" size="sm" className="bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs px-4">
+            <Button type="submit" size="sm" className="text-xs px-4 shadow-xs">
               Filter
             </Button>
           </div>
@@ -207,21 +207,21 @@ export const AdminIssuesPage: React.FC = () => {
       </Card>
 
       {/* Issues Table */}
-      <Card className="border border-[#E2E8F0] p-0 overflow-hidden">
+      <Card className="border border-border/80 bg-card rounded-card shadow-card p-0 overflow-hidden">
         {loading ? (
           <div className="p-8 space-y-4">
             {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="h-14 bg-slate-100 animate-pulse rounded-lg" />
+              <div key={i} className="h-14 bg-canvas animate-pulse rounded-xl" />
             ))}
           </div>
         ) : error ? (
-          <div className="p-8 text-center text-rose-600 text-sm">
+          <div className="p-8 text-center text-rose-700 text-sm">
             {error}
           </div>
         ) : issues.length === 0 ? (
           <div className="p-12 text-center">
             <EmptyState
-              icon={<AlertOctagon className="w-8 h-8 text-[#7C3AED]" />}
+              icon={<AlertOctagon className="w-8 h-8 text-primary" />}
               title="No Issues Match Your Filter"
               description="Adjust the status tabs, priority filters, or search terms to inspect other records in the registry."
             />
@@ -229,7 +229,7 @@ export const AdminIssuesPage: React.FC = () => {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
-              <thead className="bg-[#F8F7FC] text-xs font-semibold text-[#64748B] border-b border-[#E2E8F0]">
+              <thead className="bg-canvas text-[11px] font-mono uppercase tracking-wider text-secondaryText border-b border-border">
                 <tr>
                   <th className="py-3 px-4">Issue Code & Title</th>
                   <th className="py-3 px-4">Category</th>
@@ -241,41 +241,41 @@ export const AdminIssuesPage: React.FC = () => {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E8F0]">
+              <tbody className="divide-y divide-border/60">
                 {issues.map((issue) => {
                   const effectivePriority = issue.finalPriority || issue.suggestedPriority || 'Medium';
                   const resolverUser = issue.assignedResolver?.user;
 
                   return (
-                    <tr key={issue._id} className="hover:bg-[#F8F7FC]/80 transition-colors">
+                    <tr key={issue._id} className="hover:bg-canvas/50 transition-colors">
                       {/* Code & Title */}
                       <td className="py-3.5 px-4">
-                        <div className="font-heading font-bold text-xs text-[#7C3AED]">
+                        <div className="font-mono font-bold text-xs text-primary">
                           {issue.issueCode}
                         </div>
-                        <div className="text-xs font-medium text-[#1E293B] max-w-xs truncate" title={issue.title}>
+                        <div className="text-xs font-medium text-ink max-w-xs truncate" title={issue.title}>
                           {issue.title}
                         </div>
                       </td>
 
                       {/* Category */}
-                      <td className="py-3.5 px-4 text-xs text-[#475569]">
+                      <td className="py-3.5 px-4 text-xs text-secondaryText">
                         <span className="inline-flex items-center gap-1">
-                          <Layers className="w-3 h-3 text-[#7C3AED]" />
+                          <Layers className="w-3 h-3 text-primary" />
                           {issue.category?.name || 'General Civic'}
                         </span>
                       </td>
 
                       {/* Reporter */}
                       <td className="py-3.5 px-4 text-xs">
-                        <div className="font-medium text-[#1E293B]">{issue.reporter?.name || 'Citizen'}</div>
-                        <div className="text-[11px] text-[#64748B]">{issue.reporter?.phone || issue.reporter?.email}</div>
+                        <div className="font-medium text-ink">{issue.reporter?.name || 'Citizen'}</div>
+                        <div className="text-[11px] font-mono text-secondaryText">{issue.reporter?.phone || issue.reporter?.email}</div>
                       </td>
 
                       {/* Location */}
-                      <td className="py-3.5 px-4 text-xs text-[#475569] max-w-xs">
+                      <td className="py-3.5 px-4 text-xs text-secondaryText max-w-xs">
                         <div className="flex items-center gap-1 truncate" title={`${issue.address?.street}, ${issue.address?.city}`}>
-                          <MapPin className="w-3 h-3 text-[#7C3AED] flex-shrink-0" />
+                          <MapPin className="w-3 h-3 text-primary flex-shrink-0" />
                           <span className="truncate">{issue.address?.city || 'City'}, {issue.address?.street}</span>
                         </div>
                       </td>
@@ -288,17 +288,17 @@ export const AdminIssuesPage: React.FC = () => {
                       {/* Priority */}
                       <td className="py-3.5 px-4">
                         <span
-                          className={`inline-block px-2 py-0.5 rounded text-[11px] font-semibold ${
+                          className={`inline-block px-2 py-0.5 rounded-lg text-[11px] font-semibold ${
                             effectivePriority === 'Critical'
                               ? 'bg-rose-100 text-rose-800 border border-rose-200'
                               : effectivePriority === 'High'
                               ? 'bg-amber-100 text-amber-800 border border-amber-200'
-                              : 'bg-slate-100 text-slate-700 border border-slate-200'
+                              : 'bg-canvas text-secondaryText border border-border'
                           }`}
                         >
                           {effectivePriority}
                           {issue.finalPriority && (
-                            <span className="ml-1 text-[9px] uppercase font-bold text-[#7C3AED]">(Override)</span>
+                            <span className="ml-1 text-[9px] uppercase font-bold text-primary">(Override)</span>
                           )}
                         </span>
                       </td>
@@ -307,13 +307,13 @@ export const AdminIssuesPage: React.FC = () => {
                       <td className="py-3.5 px-4 text-xs">
                         {resolverUser ? (
                           <div className="flex items-center gap-1.5">
-                            <Wrench className="w-3.5 h-3.5 text-[#7C3AED]" />
-                            <span className="font-medium text-[#1E293B] truncate max-w-[120px]">
+                            <Wrench className="w-3.5 h-3.5 text-primary" />
+                            <span className="font-medium text-ink truncate max-w-[120px]">
                               {resolverUser.name}
                             </span>
                           </div>
                         ) : (
-                          <span className="text-slate-400 italic text-[11px]">Unassigned</span>
+                          <span className="text-secondaryText italic text-[11px]">Unassigned</span>
                         )}
                       </td>
 
@@ -323,7 +323,7 @@ export const AdminIssuesPage: React.FC = () => {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="text-xs gap-1 border-[#E2E8F0] hover:border-[#7C3AED] hover:text-[#7C3AED]"
+                            className="text-xs gap-1 shadow-xs"
                           >
                             <span>Inspect</span>
                             <ArrowRight className="w-3 h-3" />
@@ -340,7 +340,7 @@ export const AdminIssuesPage: React.FC = () => {
 
         {/* Pagination Footer */}
         {meta.totalPages > 1 && (
-          <div className="p-4 border-t border-[#E2E8F0]">
+          <div className="p-4 border-t border-border bg-canvas/30">
             <Pagination
               currentPage={meta.page}
               totalPages={meta.totalPages}

@@ -148,21 +148,21 @@ export const ResolverRequestsPage: React.FC = () => {
       header: 'Contractor',
       render: (row) => (
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-[#EDE9FE] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center font-bold text-sm shrink-0">
+          <div className="w-9 h-9 rounded-xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center font-bold text-sm shrink-0 font-serif">
             {row.user?.name ? row.user.name.charAt(0).toUpperCase() : 'R'}
           </div>
           <div>
-            <div className="font-semibold text-sm text-[#1E293B]">
+            <div className="font-semibold text-sm text-ink">
               {row.user?.name || 'Unknown Candidate'}
             </div>
-            <div className="text-xs text-[#64748B] flex items-center gap-2 mt-0.5">
+            <div className="text-xs text-secondaryText flex items-center gap-2 mt-0.5 font-mono">
               <span className="flex items-center gap-1">
-                <Mail className="w-3 h-3 text-[#7C3AED]" />
+                <Mail className="w-3 h-3 text-primary" />
                 {row.user?.email}
               </span>
               {row.user?.phone && (
                 <span className="flex items-center gap-1">
-                  <Phone className="w-3 h-3 text-[#7C3AED]" />
+                  <Phone className="w-3 h-3 text-primary" />
                   {row.user?.phone}
                 </span>
               )}
@@ -179,13 +179,13 @@ export const ResolverRequestsPage: React.FC = () => {
             row.skills.map((s, idx) => (
               <span
                 key={typeof s === 'string' ? s : s._id || idx}
-                className="text-[11px] font-medium px-2 py-0.5 rounded-md bg-[#EDE9FE]/70 text-[#312E81] border border-[#DDD6FE]"
+                className="text-[11px] font-medium px-2 py-0.5 rounded-lg bg-primary/10 text-primary border border-primary/20"
               >
                 {typeof s === 'string' ? 'Trade' : s.name}
               </span>
             ))
           ) : (
-            <span className="text-xs text-[#64748B] italic">No skills listed</span>
+            <span className="text-xs text-secondaryText italic">No skills listed</span>
           )}
         </div>
       ),
@@ -194,11 +194,11 @@ export const ResolverRequestsPage: React.FC = () => {
       header: 'Territory Base',
       render: (row) => (
         <div className="text-xs max-w-[220px]">
-          <div className="font-medium text-[#1E293B] truncate" title={row.serviceAddress}>
+          <div className="font-medium text-ink truncate" title={row.serviceAddress}>
             {row.serviceAddress || 'Address on file'}
           </div>
-          <div className="text-[#64748B] flex items-center gap-1 mt-0.5">
-            <MapPin className="w-3 h-3 text-[#7C3AED] shrink-0" />
+          <div className="text-secondaryText flex items-center gap-1 mt-0.5 font-mono">
+            <MapPin className="w-3 h-3 text-primary shrink-0" />
             <span>{row.serviceRadiusKm} km coverage</span>
           </div>
         </div>
@@ -211,8 +211,8 @@ export const ResolverRequestsPage: React.FC = () => {
     {
       header: 'Applied On',
       render: (row) => (
-        <div className="text-xs text-[#64748B] flex items-center gap-1">
-          <Calendar className="w-3.5 h-3.5 text-[#64748B]" />
+        <div className="text-xs text-secondaryText flex items-center gap-1 font-mono">
+          <Calendar className="w-3.5 h-3.5 text-secondaryText" />
           <span>{row.createdAt ? new Date(row.createdAt).toLocaleDateString('en-IN') : 'N/A'}</span>
         </div>
       ),
@@ -228,6 +228,7 @@ export const ResolverRequestsPage: React.FC = () => {
             onClick={() => handleInspect(row)}
             title="Inspect ID proof and application"
             leftIcon={<Eye className="w-3.5 h-3.5" />}
+            className="text-xs shadow-xs"
           >
             Inspect
           </Button>
@@ -240,7 +241,7 @@ export const ResolverRequestsPage: React.FC = () => {
                 onClick={() => handleApprove(row)}
                 isLoading={actionLoadingId === row._id}
                 title="Approve Contractor"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs shadow-xs"
               >
                 Approve
               </Button>
@@ -249,6 +250,7 @@ export const ResolverRequestsPage: React.FC = () => {
                 size="sm"
                 onClick={() => handleOpenReject(row)}
                 title="Reject with reason"
+                className="text-xs shadow-xs"
               >
                 Reject
               </Button>
@@ -260,20 +262,20 @@ export const ResolverRequestsPage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6">
+    <div className="max-w-7xl mx-auto space-y-6 animate-fadeIn">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <h1 className="text-2xl font-heading font-bold text-[#1E293B]">
-              Resolver Verification Queue
+          <div className="flex items-center gap-2 mb-1.5">
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink tracking-tight">
+              Resolver Accreditation Queue
             </h1>
-            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-[#EDE9FE] text-[#7C3AED] border border-[#DDD6FE]">
+            <span className="text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
               {totalCount} Total
             </span>
           </div>
-          <p className="text-sm text-[#64748B]">
-            Inspect contractor government ID proofs and approve civic trade applications.
+          <p className="text-sm text-secondaryText">
+            Inspect contractor government ID proofs, evaluate trade skills, and manage municipal service accreditation.
           </p>
         </div>
 
@@ -283,6 +285,7 @@ export const ResolverRequestsPage: React.FC = () => {
           onClick={fetchResolvers}
           isLoading={loading}
           leftIcon={<RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />}
+          className="shadow-xs"
         >
           Refresh Queue
         </Button>
@@ -290,24 +293,24 @@ export const ResolverRequestsPage: React.FC = () => {
 
       {/* Notifications */}
       {successMessage && (
-        <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-sm flex items-center gap-2.5">
+        <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-xl text-sm flex items-center gap-2.5 shadow-xs">
           <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-          <span>{successMessage}</span>
+          <span className="font-medium">{successMessage}</span>
         </div>
       )}
 
       {error && (
-        <div className="p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-xl text-sm flex items-center gap-2.5">
+        <div className="p-4 bg-rose-50 border border-rose-200 text-rose-900 rounded-xl text-sm flex items-center gap-2.5 shadow-xs">
           <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
-          <span>{error}</span>
+          <span className="font-medium">{error}</span>
         </div>
       )}
 
       {/* Filters & Tabs */}
-      <Card className="p-4 space-y-4">
+      <Card className="p-4 space-y-4 border border-border/80 bg-card rounded-card shadow-card">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           {/* Status Tabs */}
-          <div className="flex items-center gap-1 bg-[#F8F7FC] p-1 rounded-xl border border-[#E2E8F0] w-fit">
+          <div className="flex items-center gap-1 bg-canvas p-1 rounded-xl border border-border w-fit">
             {(['Pending', 'Approved', 'Rejected', 'All'] as const).map((st) => (
               <button
                 key={st}
@@ -316,10 +319,10 @@ export const ResolverRequestsPage: React.FC = () => {
                   setStatusFilter(st);
                   setPage(1);
                 }}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                   statusFilter === st
-                    ? 'bg-[#7C3AED] text-white shadow-xs'
-                    : 'text-[#64748B] hover:text-[#1E293B]'
+                    ? 'bg-primary text-white shadow-xs'
+                    : 'text-secondaryText hover:text-ink'
                 }`}
               >
                 {st}
@@ -336,19 +339,21 @@ export const ResolverRequestsPage: React.FC = () => {
                 setPage(1);
               }}
               placeholder="Search by name or email..."
-              leftIcon={<Search className="w-4 h-4 text-[#64748B]" />}
+              leftIcon={<Search className="w-4 h-4 text-secondaryText" />}
             />
           </div>
         </div>
       </Card>
 
       {/* Table Section */}
-      <Table<ResolverProfile>
-        columns={columns}
-        data={resolvers}
-        isLoading={loading}
-        emptyMessage="No resolver applications found matching current criteria."
-      />
+      <div className="border border-border/80 rounded-card overflow-hidden shadow-card">
+        <Table<ResolverProfile>
+          columns={columns}
+          data={resolvers}
+          isLoading={loading}
+          emptyMessage="No resolver applications found matching current criteria."
+        />
+      </div>
 
       {/* Pagination */}
       {totalPages > 1 && (
@@ -376,6 +381,7 @@ export const ResolverRequestsPage: React.FC = () => {
                 size="sm"
                 onClick={() => selectedResolver && handleOpenReject(selectedResolver)}
                 leftIcon={<XCircle className="w-4 h-4" />}
+                className="text-xs"
               >
                 Reject Application
               </Button>
@@ -385,13 +391,13 @@ export const ResolverRequestsPage: React.FC = () => {
                 onClick={() => selectedResolver && handleApprove(selectedResolver)}
                 isLoading={actionLoadingId === selectedResolver._id}
                 leftIcon={<CheckCircle2 className="w-4 h-4" />}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs shadow-xs"
               >
                 Approve Contractor
               </Button>
             </div>
           ) : (
-            <Button variant="outline" size="sm" onClick={() => setInspectModalOpen(false)}>
+            <Button variant="outline" size="sm" onClick={() => setInspectModalOpen(false)} className="text-xs">
               Close
             </Button>
           )
@@ -399,29 +405,29 @@ export const ResolverRequestsPage: React.FC = () => {
       >
         {inspectLoading ? (
           <div className="py-12 text-center">
-            <RefreshCw className="w-8 h-8 text-[#7C3AED] animate-spin mx-auto mb-2" />
-            <p className="text-xs text-[#64748B]">Generating authenticated signed URL for ID proof...</p>
+            <RefreshCw className="w-8 h-8 text-primary animate-spin mx-auto mb-2" />
+            <p className="text-xs text-secondaryText">Generating authenticated signed URL for ID proof...</p>
           </div>
         ) : selectedResolver ? (
           <div className="space-y-6 text-sm">
             {/* Candidate Header Snapshot */}
-            <div className="flex items-start justify-between p-4 bg-[#F8F7FC] rounded-xl border border-[#E2E8F0]">
+            <div className="flex items-start justify-between p-4 bg-canvas rounded-xl border border-border">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="font-heading font-bold text-base text-[#1E293B]">
+                  <span className="font-serif font-bold text-base text-ink">
                     {selectedResolver.user?.name}
                   </span>
                   <StatusBadge status={selectedResolver.status} size="sm" />
                 </div>
-                <div className="text-xs text-[#64748B] flex flex-wrap gap-4">
+                <div className="text-xs text-secondaryText flex flex-wrap gap-4 font-mono">
                   <span>Email: {selectedResolver.user?.email}</span>
                   <span>Phone: {selectedResolver.user?.phone || 'N/A'}</span>
                 </div>
               </div>
 
-              <div className="text-right text-xs text-[#64748B]">
+              <div className="text-right text-xs text-secondaryText font-mono">
                 <div>Applied: {selectedResolver.createdAt ? new Date(selectedResolver.createdAt).toLocaleString('en-IN') : 'N/A'}</div>
-                <div className="text-[#7C3AED] font-semibold mt-1">
+                <div className="text-primary font-semibold mt-1">
                   Radius: {selectedResolver.serviceRadiusKm} km
                 </div>
               </div>
@@ -430,39 +436,39 @@ export const ResolverRequestsPage: React.FC = () => {
             {/* Rejection Note if Rejected */}
             {selectedResolver.status === 'Rejected' && selectedResolver.rejectionReason && (
               <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-800">
-                <strong className="block text-rose-900 mb-1">Administrative Rejection Reason:</strong>
-                {selectedResolver.rejectionReason}
+                <strong className="block text-rose-950 mb-1">Administrative Rejection Reason:</strong>
+                <span className="font-mono">{selectedResolver.rejectionReason}</span>
               </div>
             )}
 
             {/* Grid: Territory & Skills */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl border border-[#E2E8F0] space-y-2">
-                <div className="font-semibold text-xs text-[#1E293B] uppercase tracking-wider flex items-center gap-1.5">
-                  <MapPin className="w-4 h-4 text-[#7C3AED]" />
+              <div className="p-4 rounded-xl border border-border bg-card space-y-2">
+                <div className="font-semibold text-xs text-ink uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                  <MapPin className="w-4 h-4 text-primary" />
                   <span>Headquarters & Territory</span>
                 </div>
-                <div className="text-xs text-[#475569]">
-                  <p className="font-medium text-[#1E293B]">{selectedResolver.serviceAddress}</p>
-                  <p className="text-[11px] text-[#64748B] mt-1">
-                    Coordinates: [lng: {selectedResolver.serviceLocation?.coordinates?.[0]?.toFixed(4)}, lat: {selectedResolver.serviceLocation?.coordinates?.[1]?.toFixed(4)}]
+                <div className="text-xs text-secondaryText">
+                  <p className="font-medium text-ink">{selectedResolver.serviceAddress}</p>
+                  <p className="text-[11px] font-mono text-secondaryText mt-1">
+                    Coordinates: [{selectedResolver.serviceLocation?.coordinates?.[0]?.toFixed(4)}, {selectedResolver.serviceLocation?.coordinates?.[1]?.toFixed(4)}]
                   </p>
-                  <p className="text-[11px] text-[#7C3AED] font-semibold mt-1">
+                  <p className="text-[11px] text-primary font-semibold mt-1 font-mono">
                     Operating Coverage: {selectedResolver.serviceRadiusKm} km
                   </p>
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl border border-[#E2E8F0] space-y-2">
-                <div className="font-semibold text-xs text-[#1E293B] uppercase tracking-wider flex items-center gap-1.5">
-                  <Layers className="w-4 h-4 text-[#7C3AED]" />
+              <div className="p-4 rounded-xl border border-border bg-card space-y-2">
+                <div className="font-semibold text-xs text-ink uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                  <Layers className="w-4 h-4 text-primary" />
                   <span>Qualified Skills</span>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {selectedResolver.skills?.map((cat, idx) => (
                     <span
                       key={typeof cat === 'string' ? cat : cat._id || idx}
-                      className="text-xs px-2.5 py-1 rounded-lg bg-[#EDE9FE] text-[#7C3AED] font-medium border border-[#DDD6FE]"
+                      className="text-xs px-2.5 py-1 rounded-lg bg-primary/10 text-primary font-medium border border-primary/20"
                     >
                       {typeof cat === 'string' ? 'Trade' : cat.name}
                     </span>
@@ -474,8 +480,8 @@ export const ResolverRequestsPage: React.FC = () => {
             {/* Government ID Document Box */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-semibold text-[#1E293B] flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-[#7C3AED]" />
+                <label className="text-xs font-semibold text-ink flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-primary" />
                   <span>Government Identification Document</span>
                 </label>
                 {selectedResolver.idProofSignedUrl && (
@@ -483,7 +489,7 @@ export const ResolverRequestsPage: React.FC = () => {
                     href={selectedResolver.idProofSignedUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-xs font-semibold text-[#7C3AED] hover:underline flex items-center gap-1"
+                    className="text-xs font-semibold text-primary hover:underline flex items-center gap-1"
                   >
                     <span>Open Full Document</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -491,7 +497,7 @@ export const ResolverRequestsPage: React.FC = () => {
                 )}
               </div>
 
-              <div className="border border-[#E2E8F0] rounded-xl overflow-hidden bg-slate-50 flex items-center justify-center p-3">
+              <div className="border border-border rounded-xl overflow-hidden bg-canvas flex items-center justify-center p-3">
                 {selectedResolver.idProofSignedUrl ? (
                   <img
                     src={selectedResolver.idProofSignedUrl}
@@ -499,13 +505,13 @@ export const ResolverRequestsPage: React.FC = () => {
                     className="max-h-80 w-auto object-contain rounded-lg shadow-xs"
                   />
                 ) : (
-                  <div className="py-12 text-center text-xs text-[#64748B]">
+                  <div className="py-12 text-center text-xs text-secondaryText">
                     No ID proof file attached or authenticated URL generation failed.
                   </div>
                 )}
               </div>
 
-              <p className="text-[11px] text-[#64748B]">
+              <p className="text-[11px] text-secondaryText">
                 Security Notice: Stored in an authenticated Cloudinary vault. The above document link is cryptographically signed and expires in 10 minutes.
               </p>
             </div>
@@ -526,6 +532,7 @@ export const ResolverRequestsPage: React.FC = () => {
               variant="outline"
               size="sm"
               onClick={() => setRejectModalOpen(false)}
+              className="text-xs"
             >
               Cancel
             </Button>
@@ -535,6 +542,7 @@ export const ResolverRequestsPage: React.FC = () => {
               onClick={handleSubmitReject}
               isLoading={rejectLoading}
               leftIcon={<XCircle className="w-4 h-4" />}
+              className="text-xs shadow-xs"
             >
               Confirm Rejection
             </Button>
@@ -543,13 +551,13 @@ export const ResolverRequestsPage: React.FC = () => {
       >
         <form onSubmit={handleSubmitReject} className="space-y-4 text-sm">
           {rejectError && (
-            <div className="p-3 bg-rose-50 border border-rose-200 text-rose-800 rounded-lg text-xs">
+            <div className="p-3 bg-rose-50 border border-rose-200 text-rose-800 rounded-xl text-xs">
               {rejectError}
             </div>
           )}
 
           <div>
-            <label className="block text-xs font-semibold text-[#1E293B] mb-1.5">
+            <label className="block text-xs font-semibold text-ink mb-1.5">
               Rejection Reason (Visible to candidate, min 10 chars)
             </label>
             <textarea
@@ -557,13 +565,13 @@ export const ResolverRequestsPage: React.FC = () => {
               value={rejectionReason}
               onChange={(e) => setRejectionReason(e.target.value)}
               placeholder="e.g. The uploaded government ID proof image is blurry and unreadable. Please upload a clear color photo or scan of your Aadhaar card or Voter ID."
-              className="w-full text-xs p-3 rounded-xl border border-[#E2E8F0] focus:outline-none focus:ring-2 focus:ring-[#A78BFA] text-[#1E293B]"
+              className="w-full text-xs p-3 rounded-xl border border-border bg-canvas text-ink focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary leading-relaxed"
               required
             />
           </div>
 
-          <p className="text-[11px] text-[#64748B]">
-            This explanation will be permanently recorded and sent via transactional email to <span className="font-semibold text-[#1E293B]">{resolverToReject?.user?.email}</span>.
+          <p className="text-[11px] text-secondaryText">
+            This explanation will be permanently recorded and sent via transactional email to <span className="font-semibold text-ink font-mono">{resolverToReject?.user?.email}</span>.
           </p>
         </form>
       </Modal>

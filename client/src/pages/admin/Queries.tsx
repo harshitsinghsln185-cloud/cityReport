@@ -90,25 +90,25 @@ export const Queries: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-heading font-bold text-[#1E293B]">
+          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink">
             Citizen Inquiries & Queries
           </h1>
-          <p className="text-sm text-[#64748B]">
+          <p className="text-sm text-secondaryText">
             Review public inquiries sent via "Write a Query" and dispatch email responses directly to citizens.
           </p>
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex items-center gap-1.5 p-1 bg-[#EDE9FE]/50 rounded-xl border border-[#DDD6FE]/60">
+        <div className="flex items-center gap-1.5 p-1 bg-card rounded-card border border-border/80 shadow-subtle">
           {(['ALL', 'Pending', 'Replied'] as const).map((tab) => (
             <button
               key={tab}
               type="button"
               onClick={() => setStatusFilter(tab)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              className={`px-3 py-1.5 rounded-card text-xs font-semibold transition-all font-mono ${
                 statusFilter === tab
-                  ? 'bg-[#7C3AED] text-white shadow-xs'
-                  : 'text-[#475569] hover:text-[#1E293B]'
+                  ? 'bg-primary text-white shadow-card'
+                  : 'text-secondaryText hover:text-ink hover:bg-canvas'
               }`}
             >
               {tab === 'ALL' ? 'All Inquiries' : tab}
@@ -118,48 +118,48 @@ export const Queries: React.FC = () => {
       </div>
 
       {/* Table Card */}
-      <Card className="border-[#E2E8F0] p-0 overflow-hidden">
+      <Card className="border-border/80 p-0 overflow-hidden shadow-card rounded-card bg-card">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#F8F7FC] border-b border-[#E2E8F0] text-[#64748B] uppercase font-semibold tracking-wider">
+            <thead className="bg-canvas border-b border-border/80 text-secondaryText uppercase font-semibold tracking-wider font-mono">
               <tr>
-                <th className="py-3 px-4">Citizen</th>
-                <th className="py-3 px-4">Subject & Message</th>
-                <th className="py-3 px-4">Date</th>
-                <th className="py-3 px-4">Status</th>
-                <th className="py-3 px-4 text-right">Action</th>
+                <th className="py-3.5 px-5">Citizen</th>
+                <th className="py-3.5 px-5">Subject & Message</th>
+                <th className="py-3.5 px-5">Date</th>
+                <th className="py-3.5 px-5">Status</th>
+                <th className="py-3.5 px-5 text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E2E8F0]">
+            <tbody className="divide-y divide-border/60">
               {loading ? (
                 <tr>
-                  <td colSpan={5} className="py-12 text-center text-[#64748B]">
+                  <td colSpan={5} className="py-12 text-center text-secondaryText">
                     Loading inquiries...
                   </td>
                 </tr>
               ) : queries.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="py-12 text-center text-[#64748B]">
+                  <td colSpan={5} className="py-12 text-center text-secondaryText">
                     No inquiries found matching current filter.
                   </td>
                 </tr>
               ) : (
                 queries.map((q) => (
-                  <tr key={q._id} className="hover:bg-[#F8F7FC]/80 transition-colors">
-                    <td className="py-3.5 px-4">
-                      <div className="font-semibold text-[#1E293B]">{q.name}</div>
-                      <div className="text-[11px] text-[#64748B]">{q.email}</div>
+                  <tr key={q._id} className="hover:bg-canvas/50 transition-colors">
+                    <td className="py-3.5 px-5">
+                      <div className="font-semibold text-ink">{q.name}</div>
+                      <div className="text-[11px] text-secondaryText font-mono">{q.email}</div>
                     </td>
-                    <td className="py-3.5 px-4 max-w-sm">
-                      <div className="font-semibold text-[#1E293B] truncate">{q.subject}</div>
-                      <p className="text-[11px] text-[#64748B] line-clamp-2 mt-0.5">{q.message}</p>
+                    <td className="py-3.5 px-5 max-w-sm">
+                      <div className="font-semibold text-ink truncate">{q.subject}</div>
+                      <p className="text-[11px] text-secondaryText line-clamp-2 mt-0.5">{q.message}</p>
                     </td>
-                    <td className="py-3.5 px-4 whitespace-nowrap text-[#64748B]">
+                    <td className="py-3.5 px-5 whitespace-nowrap text-secondaryText font-mono">
                       {formatDate(q.createdAt)}
                     </td>
-                    <td className="py-3.5 px-4 whitespace-nowrap">
+                    <td className="py-3.5 px-5 whitespace-nowrap">
                       <span
-                        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider font-mono ${
                           q.status === 'Replied'
                             ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                             : 'bg-amber-50 text-amber-700 border border-amber-200'
@@ -173,7 +173,7 @@ export const Queries: React.FC = () => {
                         <span>{q.status}</span>
                       </span>
                     </td>
-                    <td className="py-3.5 px-4 text-right whitespace-nowrap">
+                    <td className="py-3.5 px-5 text-right whitespace-nowrap">
                       <Button
                         variant={q.status === 'Replied' ? 'outline' : 'primary'}
                         size="sm"
@@ -191,7 +191,7 @@ export const Queries: React.FC = () => {
         </div>
 
         {meta.totalPages > 1 && (
-          <div className="p-4 border-t border-[#E2E8F0]">
+          <div className="p-4 border-t border-border/60 bg-canvas/30">
             <Pagination
               currentPage={meta.page}
               totalPages={meta.totalPages}
@@ -203,25 +203,25 @@ export const Queries: React.FC = () => {
 
       {/* Reply Modal */}
       {activeReplyQuery && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-[#E2E8F0] overflow-hidden flex flex-col max-h-[90vh]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-in fade-in duration-150">
+          <div className="w-full max-w-lg bg-card rounded-card shadow-modal border border-border/80 overflow-hidden flex flex-col max-h-[90vh]">
             {/* Modal Header */}
-            <div className="px-5 py-4 border-b border-[#E2E8F0] flex items-center justify-between bg-[#F8F7FC]">
+            <div className="px-5 py-4 border-b border-border/60 flex items-center justify-between bg-canvas">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-heading font-bold text-sm text-[#1E293B]">
+                  <h3 className="font-serif font-bold text-sm text-ink">
                     {activeReplyQuery.status === 'Replied' ? 'Inquiry Details' : 'Reply to Citizen'}
                   </h3>
-                  <p className="text-xs text-[#64748B]">{activeReplyQuery.email}</p>
+                  <p className="text-xs text-secondaryText font-mono">{activeReplyQuery.email}</p>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setActiveReplyQuery(null)}
-                className="p-1 rounded-lg text-[#64748B] hover:bg-[#E2E8F0] hover:text-[#1E293B]"
+                className="p-1.5 rounded-card text-secondaryText hover:bg-canvas hover:text-ink transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -230,20 +230,20 @@ export const Queries: React.FC = () => {
             {/* Modal Body */}
             <div className="p-5 flex-1 overflow-y-auto space-y-4 text-xs">
               {/* Original Message Card */}
-              <div className="p-3.5 rounded-xl bg-[#F8F7FC] border border-[#E2E8F0] space-y-1.5">
+              <div className="p-4 rounded-card bg-canvas border border-border/80 space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-[#1E293B]">{activeReplyQuery.subject}</span>
-                  <span className="text-[10px] text-[#94A3B8]">
+                  <span className="font-bold text-ink">{activeReplyQuery.subject}</span>
+                  <span className="text-[10px] text-secondaryText font-mono">
                     {formatDate(activeReplyQuery.createdAt)}
                   </span>
                 </div>
-                <p className="text-[#475569] leading-relaxed">{activeReplyQuery.message}</p>
+                <p className="text-secondaryText leading-relaxed">{activeReplyQuery.message}</p>
               </div>
 
               {/* Already Replied View */}
               {activeReplyQuery.status === 'Replied' && (
-                <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-950 space-y-1.5">
-                  <div className="flex items-center justify-between font-bold text-emerald-900">
+                <div className="p-4 rounded-card bg-emerald-50 border border-emerald-200 text-emerald-950 space-y-1.5 shadow-sm">
+                  <div className="flex items-center justify-between font-bold text-emerald-900 font-mono">
                     <span>Dispatched Administrator Reply:</span>
                     <span className="text-[10px] text-emerald-700">
                       {formatDate(activeReplyQuery.repliedAt || undefined)}
@@ -253,7 +253,7 @@ export const Queries: React.FC = () => {
                     {activeReplyQuery.reply}
                   </p>
                   {activeReplyQuery.repliedBy && (
-                    <div className="pt-2 text-[10px] text-emerald-700 border-t border-emerald-200/60">
+                    <div className="pt-2 text-[10px] text-emerald-700 border-t border-emerald-200/60 font-mono">
                       Replied by: {activeReplyQuery.repliedBy.name} ({activeReplyQuery.repliedBy.email})
                     </div>
                   )}
@@ -262,7 +262,7 @@ export const Queries: React.FC = () => {
 
               {/* Reply Form (if pending or editing) */}
               <div>
-                <label className="block text-xs font-semibold text-[#1E293B] mb-1.5">
+                <label className="block text-xs font-semibold text-ink mb-1.5">
                   {activeReplyQuery.status === 'Replied' ? 'Update Response:' : 'Your Response (sent via email):'}
                 </label>
                 <textarea
@@ -270,12 +270,12 @@ export const Queries: React.FC = () => {
                   onChange={(e) => setReplyText(e.target.value)}
                   rows={5}
                   placeholder="Draft your administrative response to the citizen..."
-                  className="w-full p-3 rounded-xl border border-[#E2E8F0] focus:outline-none focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] text-[#1E293B] leading-relaxed"
+                  className="w-full p-3 rounded-card border border-border/80 bg-card focus:outline-none focus:ring-2 focus:ring-primary/30 text-ink leading-relaxed"
                 />
               </div>
 
               {replyError && (
-                <div className="p-2.5 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                <div className="p-2.5 rounded-card bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2">
                   <AlertCircle className="w-4 h-4 shrink-0" />
                   <span>{replyError}</span>
                 </div>
@@ -283,8 +283,8 @@ export const Queries: React.FC = () => {
             </div>
 
             {/* Modal Footer */}
-            <div className="px-5 py-3 border-t border-[#E2E8F0] flex items-center justify-end gap-2 bg-[#F8F7FC]">
-              <Button variant="outline" size="sm" onClick={() => setActiveReplyQuery(null)}>
+            <div className="px-5 py-3.5 border-t border-border/60 flex items-center justify-end gap-2 bg-canvas">
+              <Button variant="outline" size="sm" onClick={() => setActiveReplyQuery(null)} className="border-border">
                 Close
               </Button>
               <Button
