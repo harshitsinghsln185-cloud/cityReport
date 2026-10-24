@@ -4,12 +4,20 @@ import {
   ArrowRight,
   ShieldCheck,
   CheckCircle2,
+  Lock,
+  Clock,
 } from 'lucide-react';
 import Hero from '../../components/public/Hero';
+import LiveTicker from '../../components/public/LiveTicker';
 import HowItWorks from '../../components/public/HowItWorks';
 import ServiceCard from '../../components/public/ServiceCard';
+import BeforeAfterSlider from '../../components/public/BeforeAfterSlider';
+import TestimonialsTrust from '../../components/public/TestimonialsTrust';
+import FaqSection from '../../components/public/FaqSection';
 import categoryService, { Category } from '../../services/category.service';
 import Button from '../../components/ui/Button';
+import SectionHeader from '../../components/ui/SectionHeader';
+import Reveal from '../../components/ui/Reveal';
 
 export const Home: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -34,95 +42,139 @@ export const Home: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* 1. Hero Banner */}
+      {/* 1. Hero Section with Procedural 3D Canvas */}
       <Hero />
 
-      {/* 2. Active Civic Services Grid */}
-      <section className="py-20 bg-[#F8F7FC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-12">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#7C3AED] bg-[#EDE9FE] px-3 py-1 rounded-full border border-[#DDD6FE]">
-                Civic Services
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-heading font-bold text-[#1E293B] mt-3">
-                Supported Public Categories
-              </h2>
-              <p className="text-sm text-[#64748B] mt-1 max-w-xl">
-                Certified municipal categories ready for immediate citizen issue reporting and proximity-based contractor assignment.
-              </p>
-            </div>
+      {/* 2. Live Civic Remediation Ticker & Impact Counter */}
+      <LiveTicker />
 
-            <Link to="/services">
-              <Button variant="outline" size="sm" className="flex items-center gap-1.5">
-                <span>View All Categories</span>
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
+      {/* 3. Active Civic Services Grid */}
+      <section className="py-20 bg-canvas">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <SectionHeader
+              eyebrow="Civic Directory"
+              eyebrowVariant="violet"
+              title="Supported Public Hazard Categories"
+              subtitle="Certified municipal categories ready for immediate citizen reporting, automated tariff computation, and proximity-based contractor assignment."
+              actions={
+                <Link to="/services">
+                  <Button variant="outline" size="sm" rightIcon={<ArrowRight className="w-4 h-4" />}>
+                    View All Categories
+                  </Button>
+                </Link>
+              }
+            />
+          </Reveal>
 
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="h-48 rounded-2xl bg-white border border-[#E2E8F0] p-6 animate-pulse" />
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="h-48 rounded-card bg-white border border-border p-6 animate-pulse" />
               ))}
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {(Array.isArray(categories) ? categories : []).map((cat) => (
-                <ServiceCard key={cat._id} category={cat} />
+              {(Array.isArray(categories) ? categories : []).map((cat, idx) => (
+                <Reveal key={cat._id} delay={idx * 0.05}>
+                  <ServiceCard category={cat} />
+                </Reveal>
               ))}
             </div>
           )}
         </div>
       </section>
 
-      {/* 3. 4-Step Process Flow */}
+      {/* 4. Interactive Showcase: Before/After Image Comparison Slider */}
+      <section className="py-20 bg-white border-y border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <SectionHeader
+              eyebrow="Verifiable Proof"
+              eyebrowVariant="gold"
+              title="Interactive Remediation Showcase"
+              subtitle="Every resolved hazard requires timestamped, geo-tagged Before and After photographic evidence before municipal inspector sign-off and balance disbursement."
+              align="center"
+            />
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <BeforeAfterSlider />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 5. 4-Step Process Flow */}
       <HowItWorks />
 
-      {/* 4. Municipal Trust & Guarantee Banner */}
-      <section className="py-20 bg-gradient-to-r from-[#171A3B] to-[#312E81] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="w-12 h-12 rounded-2xl bg-[#7C3AED] flex items-center justify-center text-white mx-auto mb-4 shadow-lg shadow-[#7C3AED]/30">
-              <ShieldCheck className="w-6 h-6" />
+      {/* 6. Testimonials & Municipal Compliance Seals */}
+      <TestimonialsTrust />
+
+      {/* 7. Frequently Asked Questions (Accordion) */}
+      <FaqSection />
+
+      {/* 8. Municipal Trust & Final High-Contrast Guarantee CTA */}
+      <section className="py-20 bg-gradient-to-br from-dark via-[#141838] to-indigo text-white relative overflow-hidden">
+        {/* Decorative ambient orbs */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-indigo/40 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Reveal>
+            <div className="w-14 h-14 rounded-card bg-primary text-white flex items-center justify-center mx-auto mb-6 shadow-glow">
+              <ShieldCheck className="w-7 h-7" />
             </div>
 
-            <h2 className="text-2xl sm:text-4xl font-heading font-bold mb-4">
-              Our Certified Civic Commitment
+            <h2 className="text-3xl sm:text-5xl font-heading font-bold text-white mb-4 tracking-tight">
+              Ready to Restore Your Neighborhood?
             </h2>
 
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-8">
-              We eliminate non-transparent municipal maintenance delays. Every reported issue receives a binding mathematical fee breakdown, photo proof verification by municipal inspectors, and complete financial accounting.
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10 font-sans">
+              Join thousands of active citizens and resident associations across India holding civic infrastructure to verifiable, escrow-backed standards.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-[#EDE9FE]">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+              <Link to="/user/report-issue">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="w-full sm:w-auto shadow-lg shadow-primary/30 flex items-center justify-center gap-2"
+                >
+                  <span>Report an Issue Now</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+
+              <Link to="/states">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto bg-white/10 text-white border-white/20 hover:bg-white/20"
+                >
+                  <span>Explore States Directory</span>
+                </Button>
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-lavender font-medium">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 <span>Zero Hidden Fees</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>50% Escrow Protection</span>
+                <Lock className="w-4 h-4 text-emerald-400" />
+                <span>50% Advance Escrow Guarantee</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-emerald-400" />
+                <span>48-Hour Standard SLA</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 <span>Before/After Photo Proof</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Certified Local Contractors</span>
-              </div>
             </div>
-
-            <div className="mt-10">
-              <Link to="/user/report-issue">
-                <Button variant="primary" size="lg" className="shadow-lg shadow-[#7C3AED]/40">
-                  <span>Report an Issue Today</span>
-                </Button>
-              </Link>
-            </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>
