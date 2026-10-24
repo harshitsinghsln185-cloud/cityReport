@@ -100,6 +100,37 @@ Redesigned the entire suite of 4 core public pages using the unified design syst
 - Print summary button verified on Track Status.
 - Search and tag filtering verified on Services directory.
 
+## [P5: Auth, User Portal & Reporting Flow] - 2026-10-24
+
+### Summary
+Redesigned the complete authentication suite, citizen workspace dashboard, multi-step incident reporting wizard, and citizen inspection details page:
+- **Split-Screen Auth Layout (`client/src/components/auth/AuthLayout.tsx`)**: Reusable dual-column authentication architecture featuring a left interactive form column with security guarantees and a right branded showcase panel with ambient lighting, verified civic governance badge, 5-star rating, authenticated RWA testimonial quote, and real-time proof counters (12,480+ resolved, 100% photo proof, 24-48h SLA).
+- **Authentication Pages Suite**:
+  - `Login.tsx`: Wrapped in `AuthLayout` with show/hide password toggle, accessible focus rings, role-based navigation routing, and quick links to citizen and contractor onboarding.
+  - `RegisterUser.tsx`: Wrapped in `AuthLayout` with citizen testimonial, clean credentials & address grid with Indian pincode validation, and verified email dispatch confirmation screen.
+  - `RegisterResolver.tsx`: Upgraded 4-step contractor onboarding wizard (Personal Info > Trade Classifications > Geospatial Territory Pin > Government ID Verification) with token-based styling, category SLA pills, radius slider (1–50 km), and interactive Leaflet MapPicker.
+  - `ForgotPassword.tsx` & `ResetPassword.tsx`: Wrapped in `AuthLayout` with password toggle and cryptographic link verification states.
+  - `VerifyEmail.tsx`: Wrapped in `AuthLayout` with authenticated verification success and error states.
+- **Citizen Workspace Dashboard (`client/src/pages/user/UserDashboard.tsx`)**: Built a dedicated executive dashboard for citizens replacing the placeholder `WelcomePreview`. Features a personalized civic desk banner with ward/city chips, 4 real-time KPI metrics cards (Total Reports, Active Remediation, Resolved & Verified, Awaiting Advance), active defects queue with direct inspection links, quick code tracking input, and a 50% escrow protection explainer.
+- **My Reported Issues (`client/src/pages/user/MyIssues.tsx`)**: Upgraded list page with 8 status filter tabs (All, Awaiting Advance, Triage, Assigned, In Progress, Resolved, Balance Due, Closed), live search with clear button, responsive table with monetary quote formatters (`tabular-nums`), and pagination.
+- **Multi-Step Reporting Flow (`client/src/pages/user/ReportIssue.tsx`)**: Polished 4-step wizard:
+  1. *Classification & Details*: Category selector with base tariff and target SLA pills, title, description, and color-coded priority buttons (Low, Medium, High, Critical).
+  2. *Location & Landmark*: Interactive Leaflet `MapPicker` with live coordinates chip and address fields.
+  3. *Evidence Photos*: Up to 5 evidence photos with drag-and-drop staging, thumbnail gallery, and delete buttons.
+  4. *Live Quote Review*: Live Proximity Quote calculation with transparent municipal fee breakdown.
+- **Municipal Fee Breakdown (`client/src/components/QuoteCard.tsx`)**: Transparent SOR breakdown displaying Category Base Rate, Severity Hazard Multiplier badge, Proximity Travel fee (first free km + per-km rate), and a 50% Advance (Escrowed) vs 50% Balance (On Close) split.
+- **Citizen Workmanship Inspection (`client/src/pages/user/IssueDetails.tsx`)**:
+  - Integrated interactive `BeforeAfterSlider` directly on the defect details page when remediation proof is submitted, allowing citizens to drag and visually compare the initial defect against the repaired surface before releasing the balance.
+  - Action Banners for 50% Escrow Advance Pending (with direct checkout routing) and Remediation Complete Balance Due (with invoice settlement routing).
+  - Contractor Completion Statement and verified supervisor badges.
+  - Instant PDF downloads for Advance Tax Receipt (Invoice 1) and Final Settlement Tax Invoice (Invoice 2).
+  - Issue Reopening modal for citizen rework requests prior to payout settlement.
+
+### Verification
+- `npm run build` in `client/`: Passing (0 errors, 2,214 modules transformed)
+- Verified all auth pages, wizard steps, and Before/After slider integration.
+
+
 
 
 

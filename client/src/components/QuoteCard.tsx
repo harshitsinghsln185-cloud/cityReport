@@ -36,81 +36,81 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({
   const billableKm = Math.max(0, fee.distanceKm - fee.freeKm);
 
   return (
-    <Card className={`overflow-hidden border-[#DDD6FE] shadow-sm ${className}`}>
+    <Card className={`overflow-hidden border-border shadow-card ${className}`}>
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#EDE9FE] to-[#F5F3FF] p-4 sm:p-5 border-b border-[#E2E8F0] flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-[#7C3AED] text-white flex items-center justify-center shadow-xs">
+      <div className="bg-gradient-to-r from-primary/10 via-canvas to-primary/5 p-4 sm:p-5 border-b border-border flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shadow-xs shrink-0">
             <Calculator className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="font-heading font-bold text-base text-[#1E293B]">
-              Standard Municipal Civic Quote
+            <h3 className="font-heading font-bold text-sm sm:text-base text-ink">
+              Official Municipal Fee Breakdown
             </h3>
-            <p className="text-xs text-[#64748B]">
-              Transparent, immutable pricing based on certified trade base and dispatch distance.
+            <p className="text-xs text-secondaryText">
+              Pre-approved Schedule of Rates (SOR) pricing with 50% escrow guarantee.
             </p>
           </div>
         </div>
 
-        <div className="text-right">
-          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-white text-[#7C3AED] border border-[#DDD6FE] shadow-xs">
+        <div className="text-right shrink-0">
+          <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-white text-primary border border-primary/20 shadow-xs">
             {fee.isManualQuote ? 'Municipal Custom Quote' : 'Automated Proximity Quote'}
           </span>
         </div>
       </div>
 
       {/* Breakdown Body */}
-      <div className="p-4 sm:p-6 space-y-4 text-sm">
+      <div className="p-4 sm:p-6 space-y-4 text-xs sm:text-sm">
         {/* Line Items */}
-        <div className="space-y-2.5 divide-y divide-[#F1F5F9]">
+        <div className="space-y-3 divide-y divide-border">
           {/* Base Fee */}
           <div className="flex items-center justify-between pt-1">
-            <div className="flex items-center gap-2 text-[#475569]">
-              <span>Category Base Rate</span>
+            <div className="text-secondaryText">
+              <span>Category Standard Base Tariff</span>
             </div>
-            <span className="font-semibold text-[#1E293B]">₹{baseFeeRupees.toLocaleString('en-IN')}</span>
+            <span className="font-bold text-ink tabular-nums">₹{baseFeeRupees.toLocaleString('en-IN')}</span>
           </div>
 
           {/* Severity Multiplier */}
-          <div className="flex items-center justify-between pt-2.5">
-            <div className="flex items-center gap-1.5 text-[#475569]">
-              <Sparkles className="w-4 h-4 text-[#7C3AED]" />
+          <div className="flex items-center justify-between pt-3">
+            <div className="flex items-center gap-1.5 text-secondaryText">
+              <Sparkles className="w-4 h-4 text-primary" />
               <span>Severity Hazard Factor</span>
               {aiAssessment && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#EDE9FE] text-[#7C3AED] font-medium">
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-medium">
                   {aiAssessment.source === 'ai' ? 'AI Evaluated' : 'Rule Matrix'}
                 </span>
               )}
             </div>
-            <span className="font-semibold text-[#7C3AED] bg-[#EDE9FE] px-2 py-0.5 rounded text-xs">
+            <span className="font-bold text-primary bg-primary/10 px-2 py-0.5 rounded text-xs tabular-nums">
               {fee.severityMultiplier.toFixed(1)}x Multiplier
             </span>
           </div>
 
           {/* Distance Fee */}
-          <div className="flex items-center justify-between pt-2.5">
+          <div className="flex items-center justify-between pt-3">
             <div>
-              <div className="flex items-center gap-1.5 text-[#475569]">
-                <MapPin className="w-4 h-4 text-[#7C3AED]" />
-                <span>Contractor Travel ({fee.distanceKm} km)</span>
+              <div className="flex items-center gap-1.5 text-secondaryText">
+                <MapPin className="w-4 h-4 text-primary" />
+                <span>Contractor Travel Proximity ({fee.distanceKm} km)</span>
               </div>
-              <div className="text-[11px] text-[#64748B] pl-5.5">
-                First {fee.freeKm} km free &bull; {billableKm > 0 ? `${billableKm.toFixed(1)} km @ ₹${fee.perKmRatePaise / 100}/km` : 'Within base radius'}
+              <div className="text-[11px] text-muted pl-5.5">
+                First {fee.freeKm} km free &bull; {billableKm > 0 ? `${billableKm.toFixed(1)} km @ ₹${fee.perKmRatePaise / 100}/km` : 'Within standard base radius'}
               </div>
             </div>
-            <span className="font-semibold text-[#1E293B]">
-              {distanceFeeRupees > 0 ? `+₹${distanceFeeRupees.toLocaleString('en-IN')}` : '₹0'}
+            <span className="font-bold text-ink tabular-nums">
+              {distanceFeeRupees > 0 ? `+₹${distanceFeeRupees.toLocaleString('en-IN')}` : '₹0 (Free)'}
             </span>
           </div>
         </div>
 
         {/* AI Hazard Summary if available */}
         {aiAssessment?.reason && (
-          <div className="p-3 bg-[#F8F7FC] border border-[#E2E8F0] rounded-xl text-xs text-[#475569] flex items-start gap-2">
-            <Info className="w-4 h-4 text-[#7C3AED] shrink-0 mt-0.5" />
+          <div className="p-3 bg-canvas border border-border rounded-lg text-xs text-secondaryText flex items-start gap-2">
+            <Info className="w-4 h-4 text-primary shrink-0 mt-0.5" />
             <div>
-              <strong className="text-[#1E293B]">Hazard Assessment: </strong>
+              <strong className="text-ink">Hazard Matrix Assessment: </strong>
               <span>{aiAssessment.reason}</span>
             </div>
           </div>
@@ -118,45 +118,45 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({
 
         {/* Total & 50-50 Split Card */}
         <div className="pt-2">
-          <div className="p-4 rounded-xl bg-[#EDE9FE]/40 border border-[#DDD6FE] space-y-3">
+          <div className="p-4 rounded-card bg-primary/5 border border-primary/20 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="font-heading font-bold text-base text-[#1E293B]">
-                Total Resolution Fee
+              <span className="font-heading font-bold text-sm sm:text-base text-ink">
+                Total Certified Repair Cost
               </span>
-              <span className="text-2xl font-heading font-black text-[#7C3AED]">
+              <span className="text-2xl font-heading font-black text-primary tabular-nums">
                 ₹{totalRupees.toLocaleString('en-IN')}
               </span>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 pt-2 border-t border-[#DDD6FE]/60">
-              <div className="p-2.5 rounded-lg bg-white border border-[#DDD6FE]/60">
-                <div className="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider">
-                  50% Advance (Now)
+            <div className="grid grid-cols-2 gap-3 pt-2 border-t border-primary/15">
+              <div className="p-3 rounded-lg bg-white border border-border shadow-xs">
+                <div className="text-[10px] font-bold text-secondaryText uppercase tracking-wider">
+                  50% Advance (Escrowed)
                 </div>
-                <div className="text-lg font-heading font-bold text-[#1E293B] mt-0.5">
+                <div className="text-lg font-heading font-black text-ink mt-0.5 tabular-nums">
                   ₹{advanceRupees.toLocaleString('en-IN')}
                 </div>
-                <div className="text-[10px] text-[#64748B]">Escrowed until work starts</div>
+                <div className="text-[10px] text-muted mt-0.5">Held safely in escrow</div>
               </div>
 
-              <div className="p-2.5 rounded-lg bg-white border border-[#DDD6FE]/60">
-                <div className="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider">
+              <div className="p-3 rounded-lg bg-white border border-border shadow-xs">
+                <div className="text-[10px] font-bold text-secondaryText uppercase tracking-wider">
                   50% Balance (On Close)
                 </div>
-                <div className="text-lg font-heading font-bold text-[#1E293B] mt-0.5">
+                <div className="text-lg font-heading font-black text-ink mt-0.5 tabular-nums">
                   ₹{balanceRupees.toLocaleString('en-IN')}
                 </div>
-                <div className="text-[10px] text-[#64748B]">Due after verified resolution</div>
+                <div className="text-[10px] text-muted mt-0.5">After photo inspection</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Guarantee Banner */}
-        <div className="text-[11px] text-[#64748B] flex items-center gap-1.5 pt-1">
+        <div className="text-[11px] text-secondaryText flex items-center gap-1.5 pt-1">
           <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
           <span>
-            100% Satisfaction Guarantee: If issue cannot be resolved, advance payment is fully refunded.
+            Citizen Escrow Guarantee: If repairs do not pass photo inspection, the advance is refunded in full.
           </span>
         </div>
 
@@ -167,9 +167,9 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({
               type="button"
               onClick={onPayAdvance}
               disabled={isPaying}
-              className="w-full py-3 px-4 rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-semibold flex items-center justify-center gap-2 shadow-sm transition-all text-sm disabled:opacity-60"
+              className="w-full py-3 px-4 rounded-lg bg-primary hover:bg-primaryDark text-white font-bold flex items-center justify-center gap-2 shadow-xs transition-all text-xs sm:text-sm disabled:opacity-60"
             >
-              <span>{isPaying ? 'Processing...' : `Pay 50% Advance (₹${advanceRupees.toLocaleString('en-IN')})`}</span>
+              <span>{isPaying ? 'Processing...' : `Pay 50% Advance Escrow (₹${advanceRupees.toLocaleString('en-IN')})`}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

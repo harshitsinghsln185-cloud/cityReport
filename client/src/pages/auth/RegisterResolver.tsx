@@ -11,12 +11,14 @@ import {
   AlertCircle,
   ShieldCheck,
   Layers,
+  Clock,
 } from 'lucide-react';
 import categoryService, { Category } from '../../services/category.service';
 import resolverService from '../../services/resolver.service';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import Card from '../../components/ui/Card';
+import Badge from '../../components/ui/Badge';
 import MapPicker from '../../components/MapPicker';
 import ImageUploader from '../../components/ImageUploader';
 
@@ -56,7 +58,7 @@ export const RegisterResolver: React.FC = () => {
         setCategoriesLoading(true);
         const data = await categoryService.getActiveCategories();
         setCategories(Array.isArray(data) ? data : []);
-      } catch (err: any) {
+      } catch {
         setErrorMessage('Failed to load civic categories. Please refresh.');
       } finally {
         setCategoriesLoading(false);
@@ -181,24 +183,27 @@ export const RegisterResolver: React.FC = () => {
 
   const steps = [
     { number: 1, title: 'Personal Info', icon: User },
-    { number: 2, title: 'Skills & Trade', icon: Layers },
+    { number: 2, title: 'Trade Skills', icon: Layers },
     { number: 3, title: 'Territory Pin', icon: MapPin },
     { number: 4, title: 'ID Verification', icon: FileCheck },
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8F7FC] py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-canvas py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto space-y-8">
         {/* Header */}
-        <div className="text-center">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#EDE9FE] text-[#7C3AED] mb-3 shadow-sm border border-[#DDD6FE]">
+        <div className="text-center space-y-2">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10 text-primary mb-2 shadow-xs border border-primary/20">
             <Wrench className="w-6 h-6" />
           </div>
-          <h1 className="text-3xl font-heading font-black text-[#1E293B]">
+          <Badge variant="primary" size="sm" className="font-semibold uppercase tracking-wider">
+            Municipal Contractor Network
+          </Badge>
+          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
             Certified Resolver Onboarding
           </h1>
-          <p className="text-sm text-[#64748B] mt-1 max-w-md mx-auto">
-            Join the municipal contractor network to receive and resolve civic tasks in your neighborhood.
+          <p className="text-xs sm:text-sm text-secondaryText max-w-md mx-auto leading-relaxed">
+            Join the municipal contractor registry to receive nearby civic tasks, escrow payouts, and verified performance ratings.
           </p>
         </div>
 
@@ -211,21 +216,21 @@ export const RegisterResolver: React.FC = () => {
             return (
               <div
                 key={st.number}
-                className={`flex flex-col sm:flex-row items-center gap-2 p-3 rounded-xl border text-xs font-semibold transition-all ${
+                className={`flex flex-col sm:flex-row items-center gap-2 p-3 rounded-card border text-xs font-semibold transition-all ${
                   isCurrent
-                    ? 'border-[#7C3AED] bg-white text-[#7C3AED] shadow-sm'
+                    ? 'border-primary bg-white text-primary shadow-xs ring-1 ring-primary/20'
                     : isCompleted
-                    ? 'border-emerald-300 bg-emerald-50/50 text-emerald-700'
-                    : 'border-[#E2E8F0] bg-white/60 text-[#64748B]'
+                    ? 'border-emerald-300 bg-emerald-50/60 text-emerald-700'
+                    : 'border-border bg-white/70 text-secondaryText'
                 }`}
               >
                 <div
                   className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 ${
                     isCurrent
-                      ? 'bg-[#7C3AED] text-white'
+                      ? 'bg-primary text-white shadow-xs'
                       : isCompleted
                       ? 'bg-emerald-600 text-white'
-                      : 'bg-[#EDE9FE] text-[#7C3AED]'
+                      : 'bg-primary/10 text-primary'
                   }`}
                 >
                   {isCompleted ? <CheckCircle2 className="w-4 h-4" /> : <Icon className="w-3.5 h-3.5" />}
@@ -238,29 +243,29 @@ export const RegisterResolver: React.FC = () => {
 
         {/* Error Notification */}
         {errorMessage && (
-          <div className="p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-xl text-sm flex items-center gap-2.5">
-            <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
+          <div className="p-4 bg-red-50 border border-red-200 text-red-900 rounded-card text-xs flex items-center gap-2.5 animate-fadeIn">
+            <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
             <span>{errorMessage}</span>
           </div>
         )}
 
         {/* Form Container */}
-        <Card className="p-6 sm:p-8">
+        <Card className="p-6 sm:p-10 shadow-card">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Step 1: Personal Credentials */}
             {currentStep === 1 && (
               <div className="space-y-4">
-                <div className="border-b border-[#E2E8F0] pb-3 mb-4">
-                  <h2 className="font-heading font-bold text-lg text-[#1E293B]">
+                <div className="border-b border-border pb-3 mb-4">
+                  <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
                     Step 1: Contractor Credentials
                   </h2>
-                  <p className="text-xs text-[#64748B]">
+                  <p className="text-xs text-secondaryText">
                     Enter your contact details and secure login password.
                   </p>
                 </div>
 
                 <Input
-                  label="Full Legal Name"
+                  label="Full Legal Name (as per Govt ID)"
                   value={formData.name}
                   onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
                   placeholder="e.g. Ramesh Kumar Verma"
@@ -290,6 +295,7 @@ export const RegisterResolver: React.FC = () => {
                   <Input
                     label="Account Password"
                     type="password"
+                    showPasswordToggle
                     value={formData.password}
                     onChange={(e) => setFormData((p) => ({ ...p, password: e.target.value }))}
                     placeholder="Min 8 characters"
@@ -299,6 +305,7 @@ export const RegisterResolver: React.FC = () => {
                   <Input
                     label="Confirm Password"
                     type="password"
+                    showPasswordToggle
                     value={formData.confirmPassword}
                     onChange={(e) => setFormData((p) => ({ ...p, confirmPassword: e.target.value }))}
                     placeholder="Re-enter password"
@@ -311,18 +318,18 @@ export const RegisterResolver: React.FC = () => {
             {/* Step 2: Skill Categories */}
             {currentStep === 2 && (
               <div className="space-y-4">
-                <div className="border-b border-[#E2E8F0] pb-3 mb-4">
-                  <h2 className="font-heading font-bold text-lg text-[#1E293B]">
+                <div className="border-b border-border pb-3 mb-4">
+                  <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
                     Step 2: Skills & Trade Classifications
                   </h2>
-                  <p className="text-xs text-[#64748B]">
-                    Select all civic issue types you are qualified and equipped to repair.
+                  <p className="text-xs text-secondaryText">
+                    Select all civic issue types you and your crew are equipped to repair.
                   </p>
                 </div>
 
                 {categoriesLoading ? (
-                  <div className="py-8 text-center text-sm text-[#64748B]">
-                    Loading active categories...
+                  <div className="py-8 text-center text-xs text-secondaryText">
+                    Loading registered categories...
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -332,27 +339,32 @@ export const RegisterResolver: React.FC = () => {
                         <div
                           key={cat._id}
                           onClick={() => handleSkillToggle(cat._id)}
-                          className={`p-4 rounded-xl border cursor-pointer transition-all flex items-start gap-3 select-none ${
+                          className={`p-4 rounded-card border cursor-pointer transition-all flex items-start gap-3 select-none ${
                             isSelected
-                              ? 'border-[#7C3AED] bg-[#EDE9FE]/50 shadow-sm'
-                              : 'border-[#E2E8F0] bg-white hover:border-[#A78BFA] hover:bg-[#F8F7FC]'
+                              ? 'border-primary bg-primary/5 shadow-xs ring-1 ring-primary/20'
+                              : 'border-border bg-white hover:border-borderHover hover:bg-canvas'
                           }`}
                         >
                           <input
                             type="checkbox"
                             checked={isSelected}
-                            onChange={() => {}} // handled by div click
-                            className="w-4 h-4 mt-0.5 accent-[#7C3AED] rounded"
+                            onChange={() => {}}
+                            className="w-4 h-4 mt-0.5 accent-primary rounded"
                           />
                           <div>
-                            <div className="font-semibold text-sm text-[#1E293B]">
+                            <div className="font-semibold text-xs sm:text-sm text-ink">
                               {cat.name}
                             </div>
-                            <div className="text-xs text-[#64748B] mt-0.5 line-clamp-2">
+                            <div className="text-xs text-secondaryText mt-0.5 line-clamp-2">
                               {cat.description}
                             </div>
-                            <div className="text-[11px] font-medium text-[#7C3AED] mt-1.5">
-                              Base fee: ₹{cat.baseFeePaise / 100}
+                            <div className="text-[11px] font-bold text-primary mt-1.5 flex items-center gap-1">
+                              <span>Base tariff: ₹{(cat.baseFeePaise / 100).toLocaleString('en-IN')}</span>
+                              <span className="text-muted">•</span>
+                              <span className="text-muted font-normal flex items-center gap-1">
+                                <Clock className="w-3 h-3" />
+                                {cat.estimatedResolutionHours || 48}h SLA
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -366,28 +378,28 @@ export const RegisterResolver: React.FC = () => {
             {/* Step 3: Map Pin & Coverage Area */}
             {currentStep === 3 && (
               <div className="space-y-4">
-                <div className="border-b border-[#E2E8F0] pb-3 mb-4">
-                  <h2 className="font-heading font-bold text-lg text-[#1E293B]">
+                <div className="border-b border-border pb-3 mb-4">
+                  <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
                     Step 3: Service Territory & Coverage Radius
                   </h2>
-                  <p className="text-xs text-[#64748B]">
-                    Drop a pin at your operational headquarters and set your maximum travel radius.
+                  <p className="text-xs text-secondaryText">
+                    Drop a pin at your operational headquarters and calibrate your maximum dispatch radius.
                   </p>
                 </div>
 
                 <Input
-                  label="Headquarters / Base Address"
+                  label="Headquarters / Workshop Base Address"
                   value={formData.serviceAddress}
                   onChange={(e) => setFormData((p) => ({ ...p, serviceAddress: e.target.value }))}
-                  placeholder="e.g. Workshop 4, Main Road, Okhla Industrial Area"
+                  placeholder="e.g. Plot 14, Phase II, Okhla Industrial Area"
                   required
                 />
 
-                <div className="space-y-2">
-                  <div className="flex justify-between text-xs font-semibold text-[#1E293B]">
+                <div className="space-y-2 p-4 bg-canvas rounded-card border border-border">
+                  <div className="flex justify-between text-xs font-semibold text-ink">
                     <span>Coverage Radius</span>
-                    <span className="text-[#7C3AED] font-bold">
-                      {formData.serviceRadiusKm} km coverage
+                    <span className="text-primary font-bold">
+                      {formData.serviceRadiusKm} km radius
                     </span>
                   </div>
                   <input
@@ -402,18 +414,18 @@ export const RegisterResolver: React.FC = () => {
                         serviceRadiusKm: parseInt(e.target.value, 10) || 10,
                       }))
                     }
-                    className="w-full accent-[#7C3AED]"
+                    className="w-full accent-primary"
                   />
-                  <div className="flex justify-between text-[11px] text-[#64748B]">
+                  <div className="flex justify-between text-[11px] text-muted">
                     <span>1 km (Hyperlocal)</span>
-                    <span>25 km</span>
-                    <span>50 km (Regional)</span>
+                    <span>25 km (Ward)</span>
+                    <span>50 km (Metropolitan)</span>
                   </div>
                 </div>
 
                 <div className="pt-2">
-                  <label className="block text-xs font-semibold text-[#1E293B] mb-1.5">
-                    Interactive Headquarters Pin (2dsphere)
+                  <label className="block text-xs font-semibold text-ink mb-1.5">
+                    Interactive Headquarters Pin (Geospatial 2dsphere)
                   </label>
                   <MapPicker
                     lat={formData.lat}
@@ -424,8 +436,8 @@ export const RegisterResolver: React.FC = () => {
                     }
                     height="320px"
                   />
-                  <p className="text-[11px] text-[#64748B] mt-1">
-                    Coordinates: {formData.lat.toFixed(5)}, {formData.lng.toFixed(5)}
+                  <p className="text-[11px] text-muted mt-1 tabular-nums">
+                    Lat/Lng: {formData.lat.toFixed(5)}, {formData.lng.toFixed(5)}
                   </p>
                 </div>
               </div>
@@ -434,24 +446,24 @@ export const RegisterResolver: React.FC = () => {
             {/* Step 4: ID Verification */}
             {currentStep === 4 && (
               <div className="space-y-5">
-                <div className="border-b border-[#E2E8F0] pb-3 mb-4">
-                  <h2 className="font-heading font-bold text-lg text-[#1E293B]">
-                    Step 4: Government ID Proof
+                <div className="border-b border-border pb-3 mb-4">
+                  <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
+                    Step 4: Government ID Proof & Credential Verification
                   </h2>
-                  <p className="text-xs text-[#64748B]">
-                    Upload an authentic government identification document (Aadhaar, Voter ID, Trade License). Stored securely with authenticated access.
+                  <p className="text-xs text-secondaryText">
+                    Upload an authentic government identification document (Aadhaar, Voter ID, or Trade License).
                   </p>
                 </div>
 
-                <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl text-amber-900 text-xs flex items-start gap-2.5">
+                <div className="p-4 bg-amber-50 border border-amber-200 rounded-card text-amber-900 text-xs flex items-start gap-2.5">
                   <ShieldCheck className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong>Privacy Guarantee:</strong> Government ID proofs are stored in authenticated Cloudinary vaults and are only accessible by platform administrators through encrypted, 10-minute signed URLs.
+                    <strong>Data Privacy & Escrow Security:</strong> Government ID proofs are stored in authenticated Cloudinary vaults and are only accessible by platform administrators through time-limited cryptographic signed URLs.
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#1E293B] mb-1.5">
+                  <label className="block text-xs font-semibold text-ink mb-1.5">
                     Government ID Document (Required, Max 5MB)
                   </label>
                   <ImageUploader
@@ -468,8 +480,8 @@ export const RegisterResolver: React.FC = () => {
                 </div>
 
                 <div className="pt-2">
-                  <label className="block text-xs font-semibold text-[#1E293B] mb-1.5">
-                    Profile Avatar Photo (Optional)
+                  <label className="block text-xs font-semibold text-ink mb-1.5">
+                    Contractor Profile Photo / Company Logo (Optional)
                   </label>
                   <ImageUploader
                     onUpload={(file) => setPhotoFile(file)}
@@ -481,7 +493,7 @@ export const RegisterResolver: React.FC = () => {
             )}
 
             {/* Navigation Buttons */}
-            <div className="flex items-center justify-between pt-4 border-t border-[#E2E8F0]">
+            <div className="flex items-center justify-between pt-4 border-t border-border">
               {currentStep > 1 ? (
                 <Button
                   type="button"
@@ -492,8 +504,8 @@ export const RegisterResolver: React.FC = () => {
                   Back
                 </Button>
               ) : (
-                <Link to="/login" className="text-xs font-semibold text-[#7C3AED] hover:underline">
-                  Already registered? Sign in
+                <Link to="/login" className="text-xs font-semibold text-primary hover:text-primaryDark transition-colors">
+                  Already registered? Sign In
                 </Link>
               )}
 
@@ -513,7 +525,7 @@ export const RegisterResolver: React.FC = () => {
                   isLoading={loading}
                   disabled={!idProofFile}
                   leftIcon={<ShieldCheck className="w-4 h-4" />}
-                  className="px-6 shadow-sm"
+                  className="px-6 shadow-xs"
                 >
                   Submit Application for Review
                 </Button>

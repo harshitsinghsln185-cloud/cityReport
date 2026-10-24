@@ -12,6 +12,7 @@ import {
   Menu,
   X,
   LogOut,
+  ChevronRight,
 } from 'lucide-react';
 import NotificationBell from '../components/NotificationBell';
 import ChatWidget from '../components/chatbot/ChatWidget';
@@ -28,24 +29,35 @@ export const UserLayout: React.FC = () => {
   };
 
   const navigation = [
-    { name: 'Overview', href: '/user', icon: LayoutDashboard },
-    { name: 'Report Issue', href: '/user/report-issue', icon: PlusCircle },
+    { name: 'Dashboard', href: '/user', icon: LayoutDashboard },
+    { name: 'Report Defect', href: '/user/report-issue', icon: PlusCircle },
     { name: 'My Issues', href: '/user/issues', icon: ListTodo },
-    { name: 'Payments & Invoices', href: '/user/payments', icon: CreditCard },
+    { name: 'Payments & Receipts', href: '/user/payments', icon: CreditCard },
     { name: 'Notifications', href: '/user/notifications', icon: Bell },
-    { name: 'Profile Settings', href: '/user/profile', icon: User },
+    { name: 'Account Settings', href: '/user/profile', icon: User },
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8F7FC] flex">
+    <div className="min-h-screen bg-canvas flex font-body text-ink">
       {/* Desktop Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 bg-white border-r border-[#E2E8F0]">
-        <div className="h-16 flex items-center px-6 border-b border-[#E2E8F0] gap-2">
-          <ShieldCheck className="w-7 h-7 text-[#7C3AED]" />
-          <span className="font-heading font-bold text-lg text-[#1E293B]">Citizen Portal</span>
+      <aside className="hidden md:flex flex-col w-64 bg-white border-r border-border shrink-0 shadow-xs">
+        {/* Brand Header */}
+        <div className="h-16 flex items-center px-6 border-b border-border gap-2.5">
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo to-primary flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
+            <span className="font-heading font-bold text-base text-ink tracking-tight">
+              Crowd Report
+            </span>
+          </Link>
         </div>
 
-        <nav className="flex-1 p-4 space-y-1">
+        {/* Navigation Items */}
+        <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
+          <div className="text-[10px] font-bold text-muted uppercase tracking-wider px-3 mb-2">
+            Citizen Workspace
+          </div>
           {navigation.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.href;
@@ -53,26 +65,40 @@ export const UserLayout: React.FC = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-semibold transition-all ${
                   isActive
-                    ? 'bg-[#EDE9FE] text-[#7C3AED] font-semibold shadow-xs'
-                    : 'text-[#64748B] hover:bg-[#EDE9FE]/40 hover:text-[#1E293B]'
+                    ? 'bg-primary/10 text-primary shadow-xs font-bold'
+                    : 'text-secondaryText hover:bg-canvas hover:text-ink'
                 }`}
               >
-                <Icon className="w-5 h-5" />
-                <span>{item.name}</span>
+                <div className="flex items-center gap-3">
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-primary' : 'text-muted'}`} />
+                  <span>{item.name}</span>
+                </div>
+                {isActive && <ChevronRight className="w-3.5 h-3.5 text-primary" />}
               </Link>
             );
           })}
         </nav>
 
-        <div className="p-4 border-t border-[#E2E8F0]">
+        {/* User Mini Info & Sign Out Footer */}
+        <div className="p-4 border-t border-border space-y-3">
+          <div className="flex items-center gap-3 px-2 py-1">
+            <div className="w-8 h-8 rounded-full bg-primary/10 text-primary font-bold text-xs flex items-center justify-center border border-primary/20 shrink-0">
+              {user?.name?.charAt(0).toUpperCase() || 'C'}
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="text-xs font-bold text-ink truncate">{user?.name || 'Citizen'}</div>
+              <div className="text-[11px] text-muted truncate">{user?.email || ''}</div>
+            </div>
+          </div>
+
           <button
             type="button"
             onClick={handleSignOut}
-            className="flex items-center gap-3 px-3 py-2 w-full text-sm font-medium text-[#991B1B] hover:bg-[#FEE2E2] rounded-lg transition-colors"
+            className="flex items-center gap-2.5 px-3 py-2 w-full text-xs font-semibold text-red-700 hover:bg-red-50 rounded-lg transition-colors"
           >
-            <LogOut className="w-5 h-5" />
+            <LogOut className="w-4 h-4 text-red-600" />
             <span>Sign Out</span>
           </button>
         </div>
@@ -81,17 +107,20 @@ export const UserLayout: React.FC = () => {
       {/* Mobile Sidebar Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 flex md:hidden">
-          <div className="fixed inset-0 bg-[#171A3B]/50 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
-          <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white shadow-xl">
-            <div className="h-16 flex items-center justify-between px-6 border-b border-[#E2E8F0]">
+          <div
+            className="fixed inset-0 bg-dark/50 backdrop-blur-sm"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white shadow-modal">
+            <div className="h-16 flex items-center justify-between px-6 border-b border-border">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-6 h-6 text-[#7C3AED]" />
-                <span className="font-heading font-bold text-base text-[#1E293B]">Citizen Portal</span>
+                <ShieldCheck className="w-6 h-6 text-primary" />
+                <span className="font-heading font-bold text-base text-ink">Citizen Portal</span>
               </div>
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-[#64748B] hover:text-[#1E293B]"
+                className="text-secondaryText hover:text-ink"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -105,25 +134,25 @@ export const UserLayout: React.FC = () => {
                     key={item.name}
                     to={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium ${
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold ${
                       isActive
-                        ? 'bg-[#EDE9FE] text-[#7C3AED] font-semibold'
-                        : 'text-[#64748B] hover:bg-[#EDE9FE]/40 hover:text-[#1E293B]'
+                        ? 'bg-primary/10 text-primary font-bold'
+                        : 'text-secondaryText hover:bg-canvas hover:text-ink'
                     }`}
                   >
-                    <Icon className="w-5 h-5" />
+                    <Icon className="w-4 h-4" />
                     <span>{item.name}</span>
                   </Link>
                 );
               })}
             </nav>
-            <div className="p-4 border-t border-[#E2E8F0]">
+            <div className="p-4 border-t border-border">
               <button
                 type="button"
                 onClick={handleSignOut}
-                className="flex items-center gap-3 px-3 py-2 w-full text-sm font-medium text-[#991B1B] hover:bg-[#FEE2E2] rounded-lg transition-colors"
+                className="flex items-center gap-3 px-3 py-2 w-full text-xs font-semibold text-red-700 hover:bg-red-50 rounded-lg transition-colors"
               >
-                <LogOut className="w-5 h-5" />
+                <LogOut className="w-4 h-4" />
                 <span>Sign Out</span>
               </button>
             </div>
@@ -134,34 +163,35 @@ export const UserLayout: React.FC = () => {
       {/* Main Container */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Top Header */}
-        <header className="h-16 bg-white border-b border-[#E2E8F0] flex items-center justify-between px-4 sm:px-6 lg:px-8">
+        <header className="h-16 bg-white border-b border-border flex items-center justify-between px-4 sm:px-6 lg:px-8 shrink-0">
           <button
             type="button"
-            className="md:hidden text-[#64748B] hover:text-[#1E293B]"
+            className="md:hidden text-secondaryText hover:text-ink"
             onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Open mobile menu"
           >
             <Menu className="w-6 h-6" />
           </button>
 
-          <div className="text-sm text-[#64748B] font-medium hidden sm:block">
-            Welcome back, <span className="font-semibold text-[#1E293B]">{user?.name || 'Citizen'}</span>
+          <div className="text-xs sm:text-sm text-secondaryText font-medium hidden sm:block">
+            Logged in as <span className="font-bold text-ink">{user?.name || 'Citizen'}</span> &bull; {user?.address?.city || 'India'}
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <NotificationBell />
 
             <Link
               to="/user/profile"
-              className="flex items-center gap-2 text-sm font-medium text-[#1E293B] hover:opacity-80 transition-opacity"
+              className="flex items-center gap-2 text-xs font-semibold text-ink hover:text-primary transition-colors"
             >
               {user?.photo?.url ? (
                 <img
                   src={user.photo.url}
                   alt={user.name}
-                  className="w-8 h-8 rounded-full object-cover border border-[#7C3AED]/40"
+                  className="w-8 h-8 rounded-full object-cover border border-primary/30"
                 />
               ) : (
-                <div className="w-8 h-8 rounded-full bg-[#EDE9FE] border border-[#CBD5E1] flex items-center justify-center text-[#7C3AED] font-bold text-xs">
+                <div className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-xs">
                   {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}
                 </div>
               )}
@@ -170,7 +200,7 @@ export const UserLayout: React.FC = () => {
         </header>
 
         {/* Content View */}
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-canvas">
           <Outlet />
         </main>
       </div>

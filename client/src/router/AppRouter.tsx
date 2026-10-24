@@ -1,6 +1,6 @@
-import React from 'react';
 import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
 import { AuthProvider } from '../context/AuthContext';
+import Button from '../components/ui/Button';
 import ProtectedRoute from '../components/ProtectedRoute';
 import PublicLayout from '../layouts/PublicLayout';
 import UserLayout from '../layouts/UserLayout';
@@ -31,6 +31,7 @@ import TrackStatus from '../pages/public/TrackStatus';
 import WriteQuery from '../pages/public/WriteQuery';
 import ResolverEarnings from '../pages/resolver/Earnings';
 import ProfilePage from '../pages/user/Profile';
+import UserDashboard from '../pages/user/UserDashboard';
 import ReportIssue from '../pages/user/ReportIssue';
 import MyIssues from '../pages/user/MyIssues';
 import IssueDetails from '../pages/user/IssueDetails';
@@ -45,107 +46,7 @@ import ResolverTasksPage from '../pages/resolver/Tasks';
 import ResolverTaskDetailsPage from '../pages/resolver/TaskDetails';
 import ResolverCompletedHistoryPage from '../pages/resolver/CompletedHistory';
 import NotificationsPage from '../pages/shared/Notifications';
-import Card from '../components/ui/Card';
-import Button from '../components/ui/Button';
-import StatusBadge from '../components/ui/StatusBadge';
 import ErrorBoundary from '../components/ui/ErrorBoundary';
-import { ArrowRight, User, Wrench, ShieldAlert } from 'lucide-react';
-
-interface PreviewAction {
-  label: string;
-  href: string;
-  variant?: 'primary' | 'secondary' | 'accent' | 'danger' | 'outline' | 'ghost';
-}
-
-interface WelcomePreviewProps {
-  role: string;
-  title: string;
-  description: string;
-  actions?: PreviewAction[];
-}
-
-// M0 Welcome / Dashboard Preview Component
-const WelcomePreview: React.FC<WelcomePreviewProps> = ({ title, description, actions = [] }) => (
-  <div className="max-w-4xl mx-auto py-8">
-    <Card className="mb-8">
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-xs font-semibold px-2.5 py-1 rounded bg-[#EDE9FE] text-[#7C3AED] border border-[#A78BFA]/30">
-              Module M0 Foundation Active (TypeScript)
-            </span>
-            <StatusBadge status="Resolved" size="sm" />
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-[#1E293B] mb-2">
-            {title}
-          </h1>
-          <p className="text-[#64748B] text-sm max-w-xl">
-            {description}
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-3">
-          {actions.map((act) => (
-            <Link key={act.label} to={act.href}>
-              <Button variant={act.variant || 'primary'}>
-                {act.label}
-              </Button>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </Card>
-
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <Link to="/user">
-        <Card isInteractive className="h-full">
-          <div className="w-10 h-10 rounded-lg bg-[#EDE9FE] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center mb-4">
-            <User className="w-5 h-5" />
-          </div>
-          <h3 className="font-heading font-bold text-lg text-[#1E293B] mb-1">Citizen Portal</h3>
-          <p className="text-xs text-[#64748B] mb-4">
-            Report issues, track progress, manage quotes, and pay mock advance/balance.
-          </p>
-          <div className="text-xs font-semibold text-[#7C3AED] flex items-center gap-1">
-            <span>Explore User Layout</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </div>
-        </Card>
-      </Link>
-
-      <Link to="/resolver">
-        <Card isInteractive className="h-full">
-          <div className="w-10 h-10 rounded-lg bg-[#EDE9FE] text-[#312E81] border border-[#DDD6FE] flex items-center justify-center mb-4">
-            <Wrench className="w-5 h-5" />
-          </div>
-          <h3 className="font-heading font-bold text-lg text-[#1E293B] mb-1">Resolver Console</h3>
-          <p className="text-xs text-[#64748B] mb-4">
-            Accept nearby assigned tasks, submit before/after photo proof, and track payouts.
-          </p>
-          <div className="text-xs font-semibold text-[#7C3AED] flex items-center gap-1">
-            <span>Explore Resolver Layout</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </div>
-        </Card>
-      </Link>
-
-      <Link to="/admin">
-        <Card isInteractive className="h-full">
-          <div className="w-10 h-10 rounded-lg bg-[#171A3B] text-[#7C3AED] border border-[#312E81] flex items-center justify-center mb-4">
-            <ShieldAlert className="w-5 h-5" />
-          </div>
-          <h3 className="font-heading font-bold text-lg text-[#1E293B] mb-1">Operations Admin</h3>
-          <p className="text-xs text-[#64748B] mb-4">
-            Verify resolvers, assign tasks, inspect proof, set fee parameters, and manage payouts.
-          </p>
-          <div className="text-xs font-semibold text-[#7C3AED] flex items-center gap-1">
-            <span>Explore Admin Layout</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </div>
-        </Card>
-      </Link>
-    </div>
-  </div>
-);
 
 const router = createBrowserRouter([
   {
@@ -222,17 +123,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <WelcomePreview
-            role="Citizen"
-            title="Citizen Dashboard Overview"
-            description="Track your civic issues, inspect quotes, review resolution proof, and manage payments."
-            actions={[
-              { label: 'Report Issue', href: '/user/report-issue' },
-              { label: 'View My Issues', href: '/user/issues', variant: 'outline' },
-            ]}
-          />
-        ),
+        element: <UserDashboard />,
       },
       {
         path: 'report-issue',

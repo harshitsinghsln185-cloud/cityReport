@@ -7,6 +7,8 @@ import {
   MapPin,
   Eye,
   AlertCircle,
+  X,
+  Filter,
 } from 'lucide-react';
 import issueService, { Issue } from '../../services/issue.service';
 import Card from '../../components/ui/Card';
@@ -59,7 +61,7 @@ export const MyIssues: React.FC = () => {
     {
       header: 'Issue Code',
       render: (row) => (
-        <span className="font-mono font-bold text-xs text-[#7C3AED] bg-[#EDE9FE] px-2 py-1 rounded-md border border-[#DDD6FE]">
+        <span className="font-mono font-bold text-xs text-primary bg-primary/10 px-2 py-1 rounded-md border border-primary/20">
           {row.issueCode}
         </span>
       ),
@@ -68,26 +70,26 @@ export const MyIssues: React.FC = () => {
       header: 'Title & Category',
       render: (row) => (
         <div className="max-w-[260px]">
-          <div className="font-semibold text-sm text-[#1E293B] truncate" title={row.title}>
+          <div className="font-semibold text-xs sm:text-sm text-ink truncate" title={row.title}>
             {row.title}
           </div>
-          <div className="text-xs text-[#64748B] flex items-center gap-1.5 mt-0.5">
-            <span className="font-medium text-[#7C3AED]">{row.category?.name || 'General'}</span>
+          <div className="text-xs text-secondaryText flex items-center gap-1.5 mt-0.5">
+            <span className="font-medium text-primary">{row.category?.name || 'General'}</span>
             <span>&bull;</span>
-            <span className="text-[11px]">{row.suggestedPriority} Priority</span>
+            <span className="text-[11px] text-muted">{row.suggestedPriority} Priority</span>
           </div>
         </div>
       ),
     },
     {
-      header: 'Location',
+      header: 'Ward / Street',
       render: (row) => (
-        <div className="text-xs text-[#475569] max-w-[200px] truncate" title={row.address?.street}>
-          <div className="flex items-center gap-1">
-            <MapPin className="w-3.5 h-3.5 text-[#7C3AED] shrink-0" />
+        <div className="text-xs text-secondaryText max-w-[200px] truncate" title={row.address?.street}>
+          <div className="flex items-center gap-1 text-ink">
+            <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
             <span className="truncate">{row.address?.street || 'N/A'}</span>
           </div>
-          <div className="text-[11px] text-[#64748B] pl-4.5">{row.address?.city}</div>
+          <div className="text-[11px] text-muted pl-4.5">{row.address?.city}</div>
         </div>
       ),
     },
@@ -96,9 +98,9 @@ export const MyIssues: React.FC = () => {
       render: (row) => <StatusBadge status={row.status} size="sm" />,
     },
     {
-      header: 'Fee Quote',
+      header: 'Quote (₹)',
       render: (row) => (
-        <div className="text-xs font-semibold text-[#1E293B]">
+        <div className="text-xs font-bold text-ink tabular-nums">
           {row.fee?.totalPaise ? `₹${(row.fee.totalPaise / 100).toLocaleString('en-IN')}` : 'Pending Quote'}
         </div>
       ),
@@ -106,8 +108,8 @@ export const MyIssues: React.FC = () => {
     {
       header: 'Reported',
       render: (row) => (
-        <div className="text-xs text-[#64748B] flex items-center gap-1">
-          <Calendar className="w-3.5 h-3.5 text-[#64748B]" />
+        <div className="text-xs text-secondaryText flex items-center gap-1">
+          <Calendar className="w-3.5 h-3.5 text-muted" />
           <span>{new Date(row.createdAt).toLocaleDateString('en-IN')}</span>
         </div>
       ),
@@ -118,7 +120,7 @@ export const MyIssues: React.FC = () => {
       render: (row) => (
         <Link to={`/user/issues/${row._id}`}>
           <Button variant="outline" size="sm" leftIcon={<Eye className="w-3.5 h-3.5" />}>
-            View
+            Inspect
           </Button>
         </Link>
       ),
@@ -126,75 +128,76 @@ export const MyIssues: React.FC = () => {
   ];
 
   const statusTabs = [
-    'All',
-    'AwaitingAdvance',
-    'AwaitingQuote',
-    'Submitted',
-    'Assigned',
-    'InProgress',
-    'Resolved',
-    'Closed',
+    { key: 'All', label: 'All Issues' },
+    { key: 'AwaitingAdvance', label: 'Awaiting Advance' },
+    { key: 'Submitted', label: 'Triage' },
+    { key: 'Assigned', label: 'Assigned' },
+    { key: 'InProgress', label: 'In Progress' },
+    { key: 'Resolved', label: 'Resolved' },
+    { key: 'BalanceDue', label: 'Balance Due' },
+    { key: 'Closed', label: 'Closed' },
   ];
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6">
+    <div className="max-w-7xl mx-auto space-y-6 pb-12">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <h1 className="text-2xl font-heading font-bold text-[#1E293B]">
+            <h1 className="text-2xl font-heading font-bold text-ink tracking-tight">
               My Reported Civic Issues
             </h1>
-            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#EDE9FE] text-[#7C3AED] border border-[#DDD6FE]">
+            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 tabular-nums">
               {totalCount} Total
             </span>
           </div>
-          <p className="text-sm text-[#64748B]">
-            Track resolution status, inspect quotes, and review photo proof for all your reported defects.
+          <p className="text-xs sm:text-sm text-secondaryText">
+            Track resolution milestones, inspect contractor quotes, and verify Before/After photo proof for your neighborhood defects.
           </p>
         </div>
 
         <Link to="/user/report-issue">
-          <Button variant="primary" leftIcon={<Plus className="w-4 h-4" />}>
-            Report New Issue
+          <Button variant="primary" leftIcon={<Plus className="w-4 h-4" />} className="shadow-xs">
+            Report New Defect
           </Button>
         </Link>
       </div>
 
-      {/* Notifications */}
+      {/* Error notification */}
       {error && (
-        <div className="p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-xl text-sm flex items-center gap-2.5">
-          <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
+        <div className="p-4 bg-red-50 border border-red-200 text-red-900 rounded-card text-xs flex items-center gap-2.5 animate-fadeIn">
+          <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
           <span>{error}</span>
         </div>
       )}
 
       {/* Filters Card */}
-      <Card className="p-4 space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          {/* Status Tabs */}
-          <div className="flex items-center gap-1 bg-[#F8F7FC] p-1 rounded-xl border border-[#E2E8F0] overflow-x-auto max-w-full">
+      <Card className="p-4 space-y-4 shadow-card">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          {/* Status Tabs with Horizontal Scroll */}
+          <div className="flex items-center gap-1.5 bg-canvas p-1 rounded-xl border border-border overflow-x-auto max-w-full">
+            <Filter className="w-3.5 h-3.5 text-muted ml-2 shrink-0 hidden sm:block" />
             {statusTabs.map((st) => (
               <button
-                key={st}
+                key={st.key}
                 type="button"
                 onClick={() => {
-                  setStatusFilter(st);
+                  setStatusFilter(st.key);
                   setPage(1);
                 }}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
-                  statusFilter === st
-                    ? 'bg-[#7C3AED] text-white shadow-xs'
-                    : 'text-[#64748B] hover:text-[#1E293B]'
+                  statusFilter === st.key
+                    ? 'bg-primary text-white shadow-xs'
+                    : 'text-secondaryText hover:text-ink'
                 }`}
               >
-                {st.replace(/([A-Z])/g, ' $1').trim()}
+                {st.label}
               </button>
             ))}
           </div>
 
           {/* Search Box */}
-          <div className="w-full sm:w-72">
+          <div className="w-full lg:w-72 relative">
             <Input
               value={search}
               onChange={(e) => {
@@ -202,19 +205,33 @@ export const MyIssues: React.FC = () => {
                 setPage(1);
               }}
               placeholder="Search title or issue code..."
-              leftIcon={<Search className="w-4 h-4 text-[#64748B]" />}
+              leftIcon={<Search className="w-4 h-4 text-muted" />}
+              rightIcon={
+                search ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearch('');
+                      setPage(1);
+                    }}
+                    className="text-muted hover:text-ink pointer-events-auto"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                ) : null
+              }
             />
           </div>
         </div>
       </Card>
 
-      {/* Table */}
+      {/* Table (Desktop) / Cards (Mobile) */}
       <Table<Issue>
         columns={columns}
         data={issues}
         isLoading={loading}
         onRowClick={(row) => navigate(`/user/issues/${row._id}`)}
-        emptyMessage="No civic issues found matching the selected filter."
+        emptyMessage="No civic issues found matching the selected filter criteria."
       />
 
       {/* Pagination */}

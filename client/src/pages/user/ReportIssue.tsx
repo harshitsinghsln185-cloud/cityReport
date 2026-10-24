@@ -12,6 +12,9 @@ import {
   Trash2,
   Send,
   Info,
+  CheckCircle2,
+  Clock,
+  ShieldCheck,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import categoryService, { Category } from '../../services/category.service';
@@ -19,6 +22,7 @@ import issueService, { EstimateQuoteResponse } from '../../services/issue.servic
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
+import Badge from '../../components/ui/Badge';
 import MapPicker from '../../components/MapPicker';
 import QuoteCard from '../../components/QuoteCard';
 
@@ -76,7 +80,7 @@ export const ReportIssue: React.FC = () => {
         } else if (list.length > 0 && !formData.category) {
           setFormData((prev) => ({ ...prev, category: list[0]._id }));
         }
-      } catch (err: any) {
+      } catch {
         setErrorMessage('Failed to load civic categories. Please refresh.');
       } finally {
         setCategoriesLoading(false);
@@ -100,7 +104,7 @@ export const ReportIssue: React.FC = () => {
 
     for (const file of newFiles) {
       if (file.size > 5 * 1024 * 1024) {
-        setErrorMessage(`File ${file.name} exceeds 5MB.`);
+        setErrorMessage(`File ${file.name} exceeds 5MB limit.`);
         continue;
       }
       validFiles.push(file);
@@ -225,21 +229,26 @@ export const ReportIssue: React.FC = () => {
   };
 
   const steps = [
-    { number: 1, title: 'Details', icon: FileText },
-    { number: 2, title: 'Location', icon: MapPin },
-    { number: 3, title: 'Photos', icon: Camera },
+    { number: 1, title: 'Classification', icon: FileText },
+    { number: 2, title: 'Map Location', icon: MapPin },
+    { number: 3, title: 'Photo Proof', icon: Camera },
     { number: 4, title: 'Quote Review', icon: Calculator },
   ];
+
+  const selectedCategoryObj = categories.find((c) => c._id === formData.category);
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-12">
       {/* Title */}
-      <div>
-        <h1 className="text-2xl sm:text-3xl font-heading font-bold text-[#1E293B]">
-          Report a Civic Issue
+      <div className="space-y-1">
+        <Badge variant="primary" size="sm" className="font-semibold uppercase tracking-wider">
+          Certified Civic Remediation Flow
+        </Badge>
+        <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
+          Report a Neighborhood Civic Defect
         </h1>
-        <p className="text-sm text-[#64748B] mt-1">
-          Submit local infrastructure concerns for rapid municipal dispatch and certified contractor repair.
+        <p className="text-xs sm:text-sm text-secondaryText leading-relaxed">
+          Submit potholes, streetlight failures, garbage overflows, or drainage issues for rapid municipal dispatch and contractor repair.
         </p>
       </div>
 
@@ -252,24 +261,24 @@ export const ReportIssue: React.FC = () => {
           return (
             <div
               key={st.number}
-              className={`flex items-center gap-2 p-3 rounded-xl border text-xs font-semibold transition-all ${
+              className={`flex flex-col sm:flex-row items-center gap-2 p-3 rounded-card border text-xs font-semibold transition-all ${
                 isCurrent
-                  ? 'border-[#7C3AED] bg-white text-[#7C3AED] shadow-xs'
+                  ? 'border-primary bg-white text-primary shadow-xs ring-1 ring-primary/20'
                   : isCompleted
-                  ? 'border-emerald-300 bg-emerald-50 text-emerald-700'
-                  : 'border-[#E2E8F0] bg-white text-[#64748B]'
+                  ? 'border-emerald-300 bg-emerald-50/70 text-emerald-700'
+                  : 'border-border bg-white/70 text-secondaryText'
               }`}
             >
               <div
                 className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 ${
                   isCurrent
-                    ? 'bg-[#7C3AED] text-white'
+                    ? 'bg-primary text-white shadow-xs'
                     : isCompleted
                     ? 'bg-emerald-600 text-white'
-                    : 'bg-[#EDE9FE] text-[#7C3AED]'
+                    : 'bg-primary/10 text-primary'
                 }`}
               >
-                <Icon className="w-3.5 h-3.5" />
+                {isCompleted ? <CheckCircle2 className="w-4 h-4" /> : <Icon className="w-3.5 h-3.5" />}
               </div>
               <span className="hidden sm:inline">{st.title}</span>
             </div>
@@ -279,46 +288,62 @@ export const ReportIssue: React.FC = () => {
 
       {/* Error notification */}
       {errorMessage && (
-        <div className="p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-xl text-sm flex items-center gap-2.5">
-          <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
+        <div className="p-4 bg-red-50 border border-red-200 text-red-900 rounded-card text-xs flex items-center gap-2.5 animate-fadeIn">
+          <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
           <span>{errorMessage}</span>
         </div>
       )}
 
       {/* Wizard Form */}
-      <Card className="p-6 sm:p-8">
+      <Card className="p-6 sm:p-10 shadow-card">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Step 1: Issue Classification & Details */}
           {currentStep === 1 && (
-            <div className="space-y-4">
-              <div className="border-b border-[#E2E8F0] pb-3 mb-4">
-                <h2 className="font-heading font-bold text-lg text-[#1E293B]">
+            <div className="space-y-5">
+              <div className="border-b border-border pb-3 mb-4">
+                <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
                   Step 1: Civic Classification & Details
                 </h2>
-                <p className="text-xs text-[#64748B]">
-                  Specify the category and nature of the civic issue.
+                <p className="text-xs text-secondaryText">
+                  Select the defect category and describe the observed physical conditions.
                 </p>
               </div>
 
+              {/* Category Selection */}
               <div>
-                <label className="block text-xs font-semibold text-[#1E293B] mb-1.5">
-                  Service Category <span className="text-rose-500">*</span>
+                <label className="block text-xs font-semibold text-ink mb-1.5">
+                  Service Category <span className="text-red-700">*</span>
                 </label>
                 {categoriesLoading ? (
-                  <div className="text-xs text-[#64748B]">Loading categories...</div>
+                  <div className="text-xs text-secondaryText py-2">Loading active municipal categories...</div>
                 ) : (
-                  <select
-                    value={formData.category}
-                    onChange={(e) => setFormData((p) => ({ ...p, category: e.target.value }))}
-                    className="w-full text-xs p-3 rounded-xl border border-[#E2E8F0] bg-white text-[#1E293B] focus:ring-2 focus:ring-[#A78BFA] focus:outline-none"
-                    required
-                  >
-                    {categories.map((c) => (
-                      <option key={c._id} value={c._id}>
-                        {c.name} &bull; Base: ₹{c.baseFeePaise / 100}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="space-y-2">
+                    <select
+                      value={formData.category}
+                      onChange={(e) => setFormData((p) => ({ ...p, category: e.target.value }))}
+                      className="w-full text-xs sm:text-sm p-3 rounded-lg border border-border bg-white text-ink focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none"
+                      required
+                    >
+                      {categories.map((c) => (
+                        <option key={c._id} value={c._id}>
+                          {c.name} &bull; Base: ₹{(c.baseFeePaise / 100).toLocaleString('en-IN')}
+                        </option>
+                      ))}
+                    </select>
+
+                    {selectedCategoryObj && (
+                      <div className="p-3 bg-canvas rounded-lg border border-border text-xs text-secondaryText flex items-center justify-between">
+                        <div>
+                          <span className="font-semibold text-ink">{selectedCategoryObj.name}: </span>
+                          <span>{selectedCategoryObj.description}</span>
+                        </div>
+                        <div className="flex items-center gap-1 font-bold text-primary shrink-0 ml-4">
+                          <Clock className="w-3.5 h-3.5" />
+                          <span>{selectedCategoryObj.estimatedResolutionHours || 48}h Target SLA</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 )}
               </div>
 
@@ -331,38 +356,48 @@ export const ReportIssue: React.FC = () => {
               />
 
               <div>
-                <label className="block text-xs font-semibold text-[#1E293B] mb-1.5">
-                  Detailed Description <span className="text-rose-500">*</span>
+                <label className="block text-xs font-semibold text-ink mb-1.5">
+                  Detailed Description <span className="text-red-700">*</span>
                 </label>
                 <textarea
                   rows={4}
                   value={formData.description}
                   onChange={(e) => setFormData((p) => ({ ...p, description: e.target.value }))}
-                  placeholder="Describe the exact location, visual appearance, and any traffic or pedestrian disruption caused..."
-                  className="w-full text-xs p-3 rounded-xl border border-[#E2E8F0] text-[#1E293B] focus:ring-2 focus:ring-[#A78BFA] focus:outline-none"
+                  placeholder="Describe the exact location, visual dimensions, and any traffic or pedestrian disruption caused..."
+                  className="w-full text-xs sm:text-sm p-3.5 rounded-lg border border-border text-ink bg-white focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none leading-relaxed"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#1E293B] mb-1.5">
+                <label className="block text-xs font-semibold text-ink mb-1.5">
                   Suggested Priority
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  {(['Low', 'Medium', 'High', 'Critical'] as const).map((pr) => (
-                    <button
-                      key={pr}
-                      type="button"
-                      onClick={() => setFormData((p) => ({ ...p, suggestedPriority: pr }))}
-                      className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-all ${
-                        formData.suggestedPriority === pr
-                          ? 'border-[#7C3AED] bg-[#EDE9FE] text-[#7C3AED]'
-                          : 'border-[#E2E8F0] hover:bg-[#F8F7FC] text-[#64748B]'
-                      }`}
-                    >
-                      {pr}
-                    </button>
-                  ))}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                  {(
+                    [
+                      { key: 'Low', label: 'Low', color: 'border-slate-300 text-slate-700' },
+                      { key: 'Medium', label: 'Medium', color: 'border-blue-300 text-blue-700' },
+                      { key: 'High', label: 'High', color: 'border-amber-300 text-amber-800' },
+                      { key: 'Critical', label: 'Critical', color: 'border-red-300 text-red-800' },
+                    ] as const
+                  ).map((pr) => {
+                    const isSelected = formData.suggestedPriority === pr.key;
+                    return (
+                      <button
+                        key={pr.key}
+                        type="button"
+                        onClick={() => setFormData((p) => ({ ...p, suggestedPriority: pr.key }))}
+                        className={`py-2 px-3 rounded-lg border text-xs font-semibold transition-all ${
+                          isSelected
+                            ? 'border-primary bg-primary text-white shadow-xs'
+                            : 'border-border bg-white hover:bg-canvas text-secondaryText'
+                        }`}
+                      >
+                        {pr.label} Priority
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -370,30 +405,31 @@ export const ReportIssue: React.FC = () => {
 
           {/* Step 2: Location Pin & Address */}
           {currentStep === 2 && (
-            <div className="space-y-4">
-              <div className="border-b border-[#E2E8F0] pb-3 mb-4">
-                <h2 className="font-heading font-bold text-lg text-[#1E293B]">
-                  Step 2: Issue Location Pin & Contact
+            <div className="space-y-5">
+              <div className="border-b border-border pb-3 mb-4">
+                <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
+                  Step 2: Issue Location Pin & Landmark
                 </h2>
-                <p className="text-xs text-[#64748B]">
-                  Drop a pin at the exact physical spot of the defect so resolvers can navigate directly.
+                <p className="text-xs text-secondaryText">
+                  Drop a pin at the exact physical spot of the defect so certified contractors can navigate directly without calling for directions.
                 </p>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#1E293B] mb-1.5">
+                <label className="block text-xs font-semibold text-ink mb-1.5">
                   Interactive Map Pin (Click or Drag Marker)
                 </label>
                 <MapPicker
                   lat={formData.lat}
                   lng={formData.lng}
-                  height="280px"
+                  height="300px"
                   onChange={(newLat, newLng) =>
                     setFormData((p) => ({ ...p, lat: newLat, lng: newLng }))
                   }
                 />
-                <div className="text-[11px] text-[#64748B] mt-1">
-                  Coordinates: {formData.lat.toFixed(5)}, {formData.lng.toFixed(5)}
+                <div className="text-[11px] text-muted mt-1 tabular-nums flex items-center justify-between">
+                  <span>Coordinates: {formData.lat.toFixed(5)}, {formData.lng.toFixed(5)}</span>
+                  <span className="text-primary font-medium">Pin placed on OpenStreetMap</span>
                 </div>
               </div>
 
@@ -407,7 +443,7 @@ export const ReportIssue: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <Input
-                  label="City"
+                  label="City / Town"
                   value={formData.city}
                   onChange={(e) => setFormData((p) => ({ ...p, city: e.target.value }))}
                   required
@@ -434,13 +470,13 @@ export const ReportIssue: React.FC = () => {
 
           {/* Step 3: Photos Staging */}
           {currentStep === 3 && (
-            <div className="space-y-4">
-              <div className="border-b border-[#E2E8F0] pb-3 mb-4">
-                <h2 className="font-heading font-bold text-lg text-[#1E293B]">
+            <div className="space-y-5">
+              <div className="border-b border-border pb-3 mb-4">
+                <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
                   Step 3: Upload Evidence Photos (Optional)
                 </h2>
-                <p className="text-xs text-[#64748B]">
-                  Upload up to 5 clear on-site photos to help contractors evaluate required tools and materials.
+                <p className="text-xs text-secondaryText">
+                  Upload up to 5 clear on-site photos. Photos help certified resolvers inspect required materials and arrive equipped.
                 </p>
               </div>
 
@@ -449,13 +485,13 @@ export const ReportIssue: React.FC = () => {
                 {previewUrls.map((url, idx) => (
                   <div
                     key={idx}
-                    className="relative group rounded-xl overflow-hidden border border-[#E2E8F0] h-32 bg-slate-100"
+                    className="relative group rounded-card overflow-hidden border border-border h-36 bg-canvas shadow-xs"
                   >
                     <img src={url} alt={`Evidence ${idx + 1}`} className="w-full h-full object-cover" />
                     <button
                       type="button"
                       onClick={() => handleRemovePhoto(idx)}
-                      className="absolute top-2 right-2 p-1.5 rounded-lg bg-rose-600 text-white shadow-xs hover:bg-rose-700 transition-colors"
+                      className="absolute top-2 right-2 p-1.5 rounded-lg bg-red-600 text-white shadow-xs hover:bg-red-700 transition-colors"
                       title="Remove image"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
@@ -464,7 +500,7 @@ export const ReportIssue: React.FC = () => {
                 ))}
 
                 {selectedPhotos.length < 5 && (
-                  <label className="border-2 border-dashed border-[#DDD6FE] rounded-xl h-32 flex flex-col items-center justify-center p-4 cursor-pointer hover:bg-[#EDE9FE]/20 transition-all text-center">
+                  <label className="border-2 border-dashed border-primary/30 rounded-card h-36 flex flex-col items-center justify-center p-4 cursor-pointer hover:bg-primary/5 transition-all text-center group">
                     <input
                       type="file"
                       accept="image/jpeg,image/png,image/webp"
@@ -472,38 +508,39 @@ export const ReportIssue: React.FC = () => {
                       onChange={handlePhotoSelect}
                       className="hidden"
                     />
-                    <div className="w-8 h-8 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center mb-1">
+                    <div className="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform">
                       <Plus className="w-4 h-4" />
                     </div>
-                    <span className="text-xs font-semibold text-[#7C3AED]">Add Photo</span>
-                    <span className="text-[10px] text-[#64748B]">
-                      {5 - selectedPhotos.length} remaining
+                    <span className="text-xs font-semibold text-primary">Upload Photo</span>
+                    <span className="text-[10px] text-muted">
+                      {5 - selectedPhotos.length} remaining (JPEG, PNG, WebP)
                     </span>
                   </label>
                 )}
               </div>
 
-              <p className="text-[11px] text-[#64748B]">
-                Supported formats: JPEG, PNG, WebP &bull; Maximum file size: 5MB per photo.
-              </p>
+              <div className="p-4 bg-canvas rounded-card border border-border text-xs text-secondaryText flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Zero-PII Privacy: Photos are scanned to blur bystander faces and private number plates before public dispatch.</span>
+              </div>
             </div>
           )}
 
           {/* Step 4: Live Quote Review */}
           {currentStep === 4 && (
-            <div className="space-y-4">
-              <div className="border-b border-[#E2E8F0] pb-3 mb-4">
-                <h2 className="font-heading font-bold text-lg text-[#1E293B]">
-                  Step 4: Fee Quote & Resolution Overview
+            <div className="space-y-5">
+              <div className="border-b border-border pb-3 mb-4">
+                <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
+                  Step 4: Transparent Fee Breakdown & Confirmation
                 </h2>
-                <p className="text-xs text-[#64748B]">
-                  Review the transparent municipal fee breakdown and confirm your report.
+                <p className="text-xs text-secondaryText">
+                  Inspect the proximity quote computed from the SOR schedule and confirm your dispatch request.
                 </p>
               </div>
 
               {quoteLoading ? (
-                <div className="py-12 text-center text-xs text-[#64748B]">
-                  Calculating proximity distance and severity multiplier...
+                <div className="py-12 text-center text-xs text-secondaryText">
+                  Computing contractor proximity distance and municipal fee multiplier...
                 </div>
               ) : quoteEstimate?.hasEligibleResolver && quoteEstimate.fee ? (
                 <QuoteCard
@@ -511,7 +548,7 @@ export const ReportIssue: React.FC = () => {
                   aiAssessment={quoteEstimate.aiAssessment}
                 />
               ) : (
-                <div className="p-6 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 space-y-2">
+                <div className="p-6 rounded-card bg-amber-50 border border-amber-200 text-amber-900 space-y-2">
                   <div className="flex items-center gap-2 font-heading font-bold text-base">
                     <Info className="w-5 h-5 text-amber-600" />
                     <span>Special Handling: Custom Municipal Quote</span>
@@ -524,8 +561,8 @@ export const ReportIssue: React.FC = () => {
             </div>
           )}
 
-          {/* Buttons Navigation */}
-          <div className="flex items-center justify-between pt-4 border-t border-[#E2E8F0]">
+          {/* Navigation Buttons */}
+          <div className="flex items-center justify-between pt-4 border-t border-border">
             {currentStep > 1 ? (
               <Button
                 type="button"
@@ -554,9 +591,9 @@ export const ReportIssue: React.FC = () => {
                 variant="primary"
                 isLoading={isSubmitting}
                 leftIcon={<Send className="w-4 h-4" />}
-                className="px-6"
+                className="px-6 shadow-xs"
               >
-                Confirm & Submit Civic Issue
+                Confirm & Submit Civic Defect
               </Button>
             )}
           </div>

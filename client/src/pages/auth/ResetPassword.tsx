@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import authService from '../../services/auth.service';
-import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
-import { ShieldCheck, Lock, CheckCircle2, AlertCircle } from 'lucide-react';
+import AuthLayout from '../../components/auth/AuthLayout';
+import { Lock, CheckCircle2, AlertCircle, ArrowRight } from 'lucide-react';
 
 export const ResetPassword: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -48,97 +48,89 @@ export const ResetPassword: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-160px)] flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-[#F8F7FC]">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <Link to="/" className="inline-flex items-center gap-2 mb-2">
-          <ShieldCheck className="w-9 h-9 text-[#7C3AED]" />
-          <span className="text-2xl font-heading font-bold text-[#1E293B]">Crowd Report</span>
-        </Link>
-        <h2 className="text-xl font-heading font-bold text-[#1E293B]">
-          Set New Password
-        </h2>
-        <p className="mt-1 text-sm text-[#64748B]">
-          Choose a secure password for your account
-        </p>
-      </div>
-
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <Card className="px-6 py-8 sm:px-10">
-          {isSuccess ? (
-            <div className="text-center py-4">
-              <div className="w-14 h-14 rounded-full bg-[#DCFCE7] text-[#166534] flex items-center justify-center mx-auto mb-4">
-                <CheckCircle2 className="w-8 h-8" />
-              </div>
-              <h3 className="text-lg font-heading font-bold text-[#1E293B] mb-2">
-                Password Reset Complete
-              </h3>
-              <p className="text-sm text-[#64748B] mb-6">
-                Your password has been securely updated. You can now sign in with your new credentials.
-              </p>
-              <Link to="/login">
-                <Button variant="primary" className="w-full">
-                  Sign In
-                </Button>
-              </Link>
+    <AuthLayout
+      title="Create New Password"
+      subtitle="Choose a secure passphrase to safeguard your civic account"
+      badgeText="Credential Renewal"
+    >
+      {isSuccess ? (
+        <div className="text-center py-4 space-y-4">
+          <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center mx-auto shadow-xs">
+            <CheckCircle2 className="w-8 h-8" />
+          </div>
+          <h2 className="font-heading font-bold text-xl text-ink">
+            Password Reset Complete
+          </h2>
+          <p className="text-xs sm:text-sm text-secondaryText leading-relaxed max-w-md mx-auto">
+            Your password has been securely updated. You can now sign in with your new credentials.
+          </p>
+          <div className="pt-2">
+            <Link to="/login" className="block">
+              <Button variant="primary" className="w-full">
+                Sign In to Account
+              </Button>
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <>
+          {(!token || errorMessage) && (
+            <div className="mb-6 p-3.5 rounded-card bg-red-50 border border-red-200 flex items-start gap-2.5 text-xs text-red-900 animate-fadeIn">
+              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />
+              <span className="leading-relaxed">
+                {!token
+                  ? 'No reset token provided. Please open the link sent to your email.'
+                  : errorMessage}
+              </span>
             </div>
-          ) : (
-            <>
-              {(!token || errorMessage) && (
-                <div className="mb-6 p-3 rounded-lg bg-[#FEE2E2] border border-[#FECACA] flex items-start gap-3 text-sm text-[#991B1B]">
-                  <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-                  <span>
-                    {!token
-                      ? 'No reset token provided. Please open the link sent to your email.'
-                      : errorMessage}
-                  </span>
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <Input
-                  label="New Password"
-                  type="password"
-                  required
-                  placeholder="Min 8 characters"
-                  leftIcon={<Lock className="w-4 h-4" />}
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                />
-
-                <Input
-                  label="Confirm New Password"
-                  type="password"
-                  required
-                  placeholder="Re-enter new password"
-                  leftIcon={<Lock className="w-4 h-4" />}
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-
-                <Button
-                  type="submit"
-                  variant="primary"
-                  className="w-full"
-                  isLoading={isLoading}
-                  disabled={!token}
-                >
-                  Update Password
-                </Button>
-              </form>
-
-              <div className="mt-6 pt-6 border-t border-[#E2E8F0] text-center">
-                <Link
-                  to="/login"
-                  className="text-sm font-semibold text-[#7C3AED] hover:text-[#6D28D9] transition-colors"
-                >
-                  Return to Sign In
-                </Link>
-              </div>
-            </>
           )}
-        </Card>
-      </div>
-    </div>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Input
+              label="New Password"
+              type="password"
+              required
+              showPasswordToggle
+              placeholder="Min 8 characters"
+              leftIcon={<Lock className="w-4 h-4 text-muted" />}
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+            />
+
+            <Input
+              label="Confirm New Password"
+              type="password"
+              required
+              showPasswordToggle
+              placeholder="Re-enter new password"
+              leftIcon={<Lock className="w-4 h-4 text-muted" />}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+
+            <Button
+              type="submit"
+              variant="primary"
+              className="w-full mt-2"
+              isLoading={isLoading}
+              disabled={!token}
+              rightIcon={<ArrowRight className="w-4 h-4" />}
+            >
+              Update Password
+            </Button>
+          </form>
+
+          <div className="mt-8 pt-6 border-t border-border text-center">
+            <Link
+              to="/login"
+              className="text-xs font-semibold text-primary hover:text-primaryDark transition-colors"
+            >
+              Return to Sign In
+            </Link>
+          </div>
+        </>
+      )}
+    </AuthLayout>
   );
 };
 
