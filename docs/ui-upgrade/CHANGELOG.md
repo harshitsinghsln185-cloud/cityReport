@@ -16,3 +16,39 @@ Completed comprehensive architecture and UI audit of the Crowd Report platform. 
 - Current branch: `ui-premium`
 - `npm run build` in `client/`: Passing (0 errors)
 - `npm test` in `server/`: Passing (38/38 tests)
+
+## [P1: Design Tokens, Typography & Component Kit] - 2026-10-24
+
+### Summary
+Established the core design system for the premium upgrade. Self-hosted variable typography (`Fraunces Variable` for display/serif headings, `Manrope Variable` for UI/body text), removed render-blocking third-party Google Fonts, defined the restrained color palette (Royal Violet `#7C3AED`, Deep Indigo `#312E81`, Warm Gold `#D97706`, Midnight `#0F1123`), fluid typography clamp tokens, 8px grid spacing, layered shadows, card radii (16px / 24px), universal accessible focus rings (`:focus-visible`), and tabular numbers (`font-variant-numeric: tabular-nums`). Built and upgraded the complete unified component kit in `client/src/components/ui/` with framer-motion micro-interactions, accessible keyboard handling, and SEO preservation.
+
+### Components Built & Upgraded
+- `tokens.css`: Core design tokens for typography, fluid font clamps, restrained colors, layered shadows, and easings.
+- `tailwind.config.js`: Integrated `Manrope Variable` and `Fraunces Variable`, token radii (`rounded-card`, `rounded-cardLg`), layered shadows (`subtle`, `card`, `cardHover`, `modal`, `glow`), and gold accents.
+- `index.css`: Universal accessible `:focus-visible` rings, tabular-nums rule, shimmer keyframe, and card hover lift utility.
+- `Button.tsx`: Micro-lift hover, gold/accent/primary/secondary/outline/ghost variants, accessible focus ring, loading state, icon slots.
+- `Card.tsx`: Base, elevated, stat, glass, and interactive variants with 16-24px radii, hairline borders, and hover lift.
+- `SectionHeader.tsx`: Eyebrow badge pill with accent dot, Fraunces headline, Manrope lead description, alignment controls, and action slot.
+- `Reveal.tsx`: Motion wrapper using `framer-motion` (`whileInView`, `viewport={{ once: true }}`) with `prefers-reduced-motion` fallback.
+- `Breadcrumbs.tsx`: Accessible navigation breadcrumbs with semantic `<nav aria-label="Breadcrumb">` and chevron separators.
+- `Badge.tsx`: Semantic status, region, and UT badges with tabular numbers and optional status dots.
+- `Tabs.tsx`: Accessible tab switcher with pill, segmented, and underline variants with smooth motion transitions.
+- `Accordion.tsx`: Smooth animated disclosure with SEO preservation (DOM-retained) and keyboard accessibility.
+- `Drawer.tsx`: Accessible slide-over panel with motion slide, backdrop blur, focus trap, and Esc key dismiss.
+- `ErrorState.tsx`: Dedicated error UI with retry action, accessible alert role, and clear guidance.
+- `Skeleton.tsx`: Upgraded with shimmer animation and shape variants (`card`, `stat`, `text`, `circle`, `table-row`, `button`).
+- `EmptyState.tsx`: Upgraded with Fraunces heading, soft token colors, and action slot.
+- `Modal.tsx`: Upgraded with glass backdrop blur, smooth scale entrance, and token radii.
+- `Navbar.tsx`: Upgraded public navigation with glassmorphism, active indicator, `/states` link, and mobile drawer.
+- `Footer.tsx`: Upgraded public footer with structured columns, `/states` link, and civic trust badges.
+- `index.ts`: Barrel export for all design system components.
+
+### Packages Added
+- `@fontsource-variable/fraunces`: Self-hosted variable Fraunces font.
+- `@fontsource-variable/manrope`: Self-hosted variable Manrope font.
+- `framer-motion`: Smooth micro-animations, layoutId tab transitions, and scroll reveals.
+
+### Verification
+- `npm run build` in `client/`: Passing (0 errors, self-hosted WOFF2 fonts bundled)
+- Universal keyboard focus visible verified.
+

@@ -17,17 +17,19 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-col items-center justify-center p-8 sm:p-12 text-center rounded-xl bg-white border border-[#E2E8F0] border-dashed ${className}`}>
-      <div className="w-14 h-14 rounded-full bg-[#EDE9FE] flex items-center justify-center text-[#7C3AED] mb-4">
+    <div
+      className={`flex flex-col items-center justify-center p-8 sm:p-12 text-center rounded-card bg-white border border-border border-dashed shadow-xs ${className}`}
+    >
+      <div className="w-14 h-14 rounded-full bg-lavender flex items-center justify-center text-primary mb-4 shadow-xs">
         {icon || <Inbox className="w-7 h-7" />}
       </div>
-      <h3 className="text-base font-heading font-bold text-[#1E293B] mb-1">
+      <h3 className="text-lg font-heading font-semibold text-ink mb-1.5">
         {title}
       </h3>
-      <p className="text-sm text-[#64748B] max-w-sm mb-6">
+      <p className="text-sm text-secondaryText max-w-sm mb-6 leading-relaxed">
         {description}
       </p>
-      {actionButton && <div>{actionButton}</div>}
+      {actionButton && <div className="flex items-center gap-3">{actionButton}</div>}
     </div>
   );
 };

@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import AppRouter from './router/AppRouter';
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/manrope';
 import './index.css';
 import 'leaflet/dist/leaflet.css';
 
