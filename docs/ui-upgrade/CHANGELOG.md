@@ -215,6 +215,37 @@ Overhauled the administrative operations suite and triage desk across all 11 adm
 - Verified all 11 admin pages and AdminLayout render cleanly with design tokens.
 - Strict TypeScript compile check: 0 errors.
 
+## [P8: SEO Meta Tags, Structured Data & Sitemap] - 2026-10-25
+
+### Summary
+Engineered a comprehensive SEO, search discoverability, Open Graph social preview, and structured data architecture across the platform:
+- **Helmet Infrastructure (`client/src/main.tsx` & `package.json`)**: Installed `react-helmet-async` and established `<HelmetProvider>` at the root application tree.
+- **Universal SEO Component (`client/src/components/SEO.tsx`)**: Reusable SEO module injecting dynamic page title, meta description, canonical link, robot directives, OpenGraph tags (`og:title`, `og:description`, `og:image`, `og:site_name`, `og:locale`), Twitter Cards (`summary_large_image`), and JSON-LD structured data.
+- **Social Preview Card Assets (`client/public/images/og-card.png` & `og-card.jpg`)**: Generated high-resolution 16:9 vector-style Open Graph preview banner highlighting nationwide civic infrastructure and 36 states coverage.
+- **Structured Data Integration**:
+  - `Home.tsx`: `GovernmentService` and `Organization` JSON-LD schemas.
+  - `StatesDirectory.tsx`: `BreadcrumbList` and `CollectionPage` JSON-LD schemas.
+  - `StateDetail.tsx`: `BreadcrumbList`, `GovernmentService`, and dynamic `FAQPage` schema generated directly from local municipal FAQs for Google search rich snippets.
+  - `Services.tsx`: `Service` and `BreadcrumbList` JSON-LD schemas.
+  - `About.tsx`: `AboutPage` and `BreadcrumbList` JSON-LD schemas.
+  - `TrackStatus.tsx`, `WriteQuery.tsx`: Contextual title, description, and keywords metadata.
+  - Auth suite (`Login.tsx`, `RegisterUser.tsx`, `RegisterResolver.tsx`, `ForgotPassword.tsx`, `ResetPassword.tsx`): Configured with `robots="noindex, follow"` to prevent indexing of protected form states while preserving link discovery.
+- **Comprehensive XML Sitemap (`client/public/sitemap.xml`)**:
+  - Valid XML namespace conforming to sitemaps.org standards.
+  - Prioritized entries for all core public portals (`/`, `/states`, `/services`, `/about`, `/track`, `/query`).
+  - Indexed all 36 Indian states and union territory URLs (`/states/karnataka`, `/states/delhi`, `/states/maharashtra`, etc.) with `changefreq: weekly` and `priority: 0.85`.
+- **Search Engine Directives (`client/public/robots.txt`)**:
+  - Explicit allowance for `/states` and `/states/`.
+  - Disallowance for administrative, contractor, and user private endpoints.
+  - Direct pointer to `https://crowdreport.in/sitemap.xml`.
+
+### Verification
+- `npm run build` in `client/`: Passing (0 errors, 2,222 modules transformed)
+- Verified all 36 state profile pages covered in `sitemap.xml`
+- Validated JSON-LD schemas and OpenGraph preview tags across all public routes
+- Strict TypeScript compile check: 0 errors
+
+
 
 
 

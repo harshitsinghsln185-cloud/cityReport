@@ -4,6 +4,7 @@ import authService, { RegisterPayload } from '../../services/auth.service';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import AuthLayout from '../../components/auth/AuthLayout';
+import SEO from '../../components/SEO';
 import { Mail, Lock, User, Phone, MapPin, CheckCircle2, AlertCircle, ArrowRight } from 'lucide-react';
 
 export const RegisterUser: React.FC = () => {
@@ -146,6 +147,11 @@ export const RegisterUser: React.FC = () => {
       testimonialAuthor="Ananya Deshmukh"
       testimonialRole="Citizen Representative, Pune Municipal Corp"
     >
+      <SEO
+        title="Citizen Registration"
+        description="Create your citizen account to report municipal defects, track real-time resolution with before/after photos, and verify escrow contractor repairs."
+        robots="noindex, follow"
+      />
       {errorMessage && (
         <div className="mb-6 p-3.5 rounded-card bg-red-50 border border-red-200 flex items-start gap-2.5 text-xs text-red-900 animate-fadeIn">
           <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />

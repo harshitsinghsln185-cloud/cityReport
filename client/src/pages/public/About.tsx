@@ -16,10 +16,49 @@ import Badge from '../../components/ui/Badge';
 import SectionHeader from '../../components/ui/SectionHeader';
 import Breadcrumbs from '../../components/ui/Breadcrumbs';
 import Reveal from '../../components/ui/Reveal';
+import SEO from '../../components/SEO';
 
 export const About: React.FC = () => {
   return (
     <div className="py-8 sm:py-12 bg-canvas min-h-screen">
+      <SEO
+        title="About & Municipal Accountability Architecture"
+        description="Learn how Crowd Report combines mathematical Schedule of Rates (SOR), escrow-backed contractor disbursements, and photographic audit verification to fix urban infrastructure."
+        keywords={[
+          'civic accountability',
+          'municipal workflow',
+          'escrow contractor payments',
+          'photographic audit verification',
+          'civic technology India',
+        ]}
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://crowdreport.in/',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'About',
+                item: 'https://crowdreport.in/about',
+              },
+            ],
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'AboutPage',
+            name: 'About Crowd Report Municipal Governance Platform',
+            description:
+              'Crowd Report is an enterprise civic infrastructure network bridging citizens with verified municipal contractors.',
+          },
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
         <Breadcrumbs items={[{ label: 'About & Workflow' }]} className="mb-6" />

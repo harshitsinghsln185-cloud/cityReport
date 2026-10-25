@@ -19,6 +19,7 @@ import StatusBadge from '../../components/ui/StatusBadge';
 import SectionHeader from '../../components/ui/SectionHeader';
 import Breadcrumbs from '../../components/ui/Breadcrumbs';
 import Reveal from '../../components/ui/Reveal';
+import SEO from '../../components/SEO';
 
 export const TrackStatus: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -113,6 +114,16 @@ export const TrackStatus: React.FC = () => {
 
   return (
     <div className="py-8 sm:py-12 bg-canvas min-h-screen">
+      <SEO
+        title="Track Civic Issue Resolution Status"
+        description="Lookup real-time municipal remediation progress, contractor milestone updates, photographic resolution proof, and tax receipts using your unique issue code."
+        keywords={[
+          'track civic issue',
+          'municipal ticket tracking',
+          'pothole fix status',
+          'civic status check',
+        ]}
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
         <Breadcrumbs items={[{ label: 'Track Issue Status' }]} className="mb-6" />

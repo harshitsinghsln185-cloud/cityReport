@@ -17,6 +17,7 @@ import SectionHeader from '../../components/ui/SectionHeader';
 import Breadcrumbs from '../../components/ui/Breadcrumbs';
 import Reveal from '../../components/ui/Reveal';
 import EmptyState from '../../components/ui/EmptyState';
+import SEO from '../../components/SEO';
 
 export const Services: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -77,6 +78,47 @@ export const Services: React.FC = () => {
 
   return (
     <div className="py-8 sm:py-12 bg-canvas min-h-screen">
+      <SEO
+        title="Civic Services & Schedule of Rates (SOR) Directory"
+        description="Transparent civic remediation services and indicative municipal rates for road repair, streetlight maintenance, drainage restoration, and public hazard fixes."
+        keywords={[
+          'civic services directory',
+          'municipal repair rates',
+          'pothole fixing cost',
+          'drainage restoration',
+          'streetlight replacement',
+        ]}
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://crowdreport.in/',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Services',
+                item: 'https://crowdreport.in/services',
+              },
+            ],
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            name: 'Crowd Report Municipal Services Directory',
+            provider: {
+              '@type': 'Organization',
+              name: 'Crowd Report',
+              url: 'https://crowdreport.in',
+            },
+          },
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
         <Breadcrumbs items={[{ label: 'Civic Services Directory' }]} className="mb-6" />

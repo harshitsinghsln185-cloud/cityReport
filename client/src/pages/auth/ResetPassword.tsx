@@ -4,6 +4,7 @@ import authService from '../../services/auth.service';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import AuthLayout from '../../components/auth/AuthLayout';
+import SEO from '../../components/SEO';
 import { Lock, CheckCircle2, AlertCircle, ArrowRight } from 'lucide-react';
 
 export const ResetPassword: React.FC = () => {
@@ -53,6 +54,11 @@ export const ResetPassword: React.FC = () => {
       subtitle="Choose a secure passphrase to safeguard your civic account"
       badgeText="Credential Renewal"
     >
+      <SEO
+        title="Reset Password"
+        description="Set a new secure password for your Crowd Report account."
+        robots="noindex, nofollow"
+      />
       {isSuccess ? (
         <div className="text-center py-4 space-y-4">
           <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center mx-auto shadow-xs">

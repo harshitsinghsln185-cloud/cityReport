@@ -18,6 +18,7 @@ import categoryService, { Category } from '../../services/category.service';
 import Button from '../../components/ui/Button';
 import SectionHeader from '../../components/ui/SectionHeader';
 import Reveal from '../../components/ui/Reveal';
+import SEO from '../../components/SEO';
 
 export const Home: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -42,6 +43,39 @@ export const Home: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEO
+        title="Civic Issue Reporting & Municipal Resolution Platform"
+        description="Report civic issues, potholes, streetlights, and sanitation hazards. Track verified before-and-after photo proof with escrow-backed municipal contractor dispatch across 36 Indian states."
+        keywords={[
+          'civic issues',
+          'pothole repair',
+          'street light repair',
+          'municipal resolution',
+          'citizen reporting',
+          'escrow contractor dispatch',
+          'India civic portal',
+        ]}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'GovernmentService',
+          name: 'Crowd Report Civic Resolution Platform',
+          serviceType: 'Municipal Issue Reporting and Contractor Remediation',
+          provider: {
+            '@type': 'Organization',
+            name: 'Crowd Report',
+            url: 'https://crowdreport.in',
+            logo: 'https://crowdreport.in/favicon.svg',
+          },
+          areaServed: {
+            '@type': 'Country',
+            name: 'India',
+          },
+          availableChannel: {
+            '@type': 'ServiceChannel',
+            serviceUrl: 'https://crowdreport.in',
+          },
+        }}
+      />
       {/* 1. Hero Section with Procedural 3D Canvas */}
       <Hero />
 

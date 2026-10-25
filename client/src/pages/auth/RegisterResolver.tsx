@@ -21,6 +21,7 @@ import Card from '../../components/ui/Card';
 import Badge from '../../components/ui/Badge';
 import MapPicker from '../../components/MapPicker';
 import ImageUploader from '../../components/ImageUploader';
+import SEO from '../../components/SEO';
 
 export const RegisterResolver: React.FC = () => {
   const navigate = useNavigate();
@@ -190,6 +191,17 @@ export const RegisterResolver: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-canvas py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
+      <SEO
+        title="Municipal Contractor & Resolver Onboarding"
+        description="Join India's certified municipal contractor network. Receive proximity-dispatched civic work orders, guaranteed 50% escrow milestone payouts, and verified credentials."
+        keywords={[
+          'municipal contractor onboarding',
+          'civic resolver registration',
+          'road contractor jobs',
+          'government civic contractor',
+        ]}
+        canonical="https://crowdreport.in/register-resolver"
+      />
       <div className="max-w-3xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center space-y-2">

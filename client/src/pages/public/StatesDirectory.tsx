@@ -17,6 +17,7 @@ import Card from '../../components/ui/Card';
 import Badge from '../../components/ui/Badge';
 import EmptyState from '../../components/ui/EmptyState';
 import Reveal from '../../components/ui/Reveal';
+import SEO from '../../components/SEO';
 
 export const StatesDirectory: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -67,6 +68,45 @@ export const StatesDirectory: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-canvas py-8 sm:py-12">
+      <SEO
+        title="Indian States & Union Territories Civic Directory"
+        description="Explore civic resolution metrics, verified municipal contractor coverage, and infrastructure priorities across all 36 Indian states and union territories."
+        keywords={[
+          'Indian states civic directory',
+          'municipal coverage India',
+          'state civic infrastructure',
+          'resolver network India',
+          'local government works',
+        ]}
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://crowdreport.in/',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'States & Union Territories',
+                item: 'https://crowdreport.in/states',
+              },
+            ],
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            name: 'Indian States & Union Territories Civic Directory',
+            description:
+              'Browse civic hazard resolution metrics and active municipal resolver networks across 36 Indian states and UTs.',
+            url: 'https://crowdreport.in/states',
+          },
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
         <Breadcrumbs items={[{ label: 'States & Union Territories' }]} className="mb-6" />

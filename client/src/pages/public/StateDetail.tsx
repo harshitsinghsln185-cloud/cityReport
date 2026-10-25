@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   MapPin,
@@ -19,6 +19,7 @@ import Button from '../../components/ui/Button';
 import Accordion from '../../components/ui/Accordion';
 import SectionHeader from '../../components/ui/SectionHeader';
 import Reveal from '../../components/ui/Reveal';
+import SEO from '../../components/SEO';
 
 export const StateDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -28,32 +29,10 @@ export const StateDetail: React.FC = () => {
     return getStateBySlug(slug);
   }, [slug]);
 
-  // Dynamic SEO Title & Meta Description update
-  useEffect(() => {
-    if (stateData) {
-      document.title = `${stateData.name} Civic Infrastructure & Hazard Reporting | Crowd Report`;
-      let metaDesc = document.querySelector('meta[name="description"]');
-      if (!metaDesc) {
-        metaDesc = document.createElement('meta');
-        metaDesc.setAttribute('name', 'description');
-        document.head.appendChild(metaDesc);
-      }
-      metaDesc.setAttribute(
-        'content',
-        `Track verified civic hazard resolutions, escrow-backed contractor dispatch, and local public works in ${stateData.name}. ${stateData.heroBlurb}`
-      );
-    } else {
-      document.title = 'State Not Found | Crowd Report';
-    }
-
-    return () => {
-      document.title = 'Crowd Report Platform - Civic Issue Reporting & Resolution';
-    };
-  }, [stateData]);
-
   if (!stateData) {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center p-6 text-center bg-canvas">
+        <SEO title="State Not Found" robots="noindex, nofollow" />
         <div className="w-16 h-16 rounded-full bg-red-100 text-red-700 flex items-center justify-center mb-4">
           <AlertTriangle className="w-8 h-8" />
         </div>
@@ -86,6 +65,71 @@ export const StateDetail: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-canvas py-8 sm:py-12">
+      <SEO
+        title={`${stateData.name} Civic Infrastructure & Hazard Reporting`}
+        description={`Track verified civic hazard resolutions, escrow-backed contractor dispatch, and local public works in ${stateData.name}. ${stateData.heroBlurb}`}
+        keywords={[
+          `${stateData.name} civic issues`,
+          `${stateData.name} road repairs`,
+          `${stateData.name} municipality`,
+          `${stateData.capital} civic portal`,
+          `${stateData.name} contractor dispatch`,
+        ]}
+        canonical={`https://crowdreport.in/states/${stateData.slug}`}
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://crowdreport.in/',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'States & Union Territories',
+                item: 'https://crowdreport.in/states',
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: stateData.name,
+                item: `https://crowdreport.in/states/${stateData.slug}`,
+              },
+            ],
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'GovernmentService',
+            name: `${stateData.name} Civic Remediation Service`,
+            serviceType: 'Municipal Defect Remediation & Escrow Dispatch',
+            areaServed: {
+              '@type': 'AdministrativeArea',
+              name: stateData.name,
+            },
+            provider: {
+              '@type': 'Organization',
+              name: 'Crowd Report',
+              url: 'https://crowdreport.in',
+            },
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: stateData.faqs.map((faq) => ({
+              '@type': 'Question',
+              name: faq.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+              },
+            })),
+          },
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
         <Breadcrumbs

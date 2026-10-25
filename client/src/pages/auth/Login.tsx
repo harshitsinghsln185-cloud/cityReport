@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import AuthLayout from '../../components/auth/AuthLayout';
+import SEO from '../../components/SEO';
 import { Mail, Lock, AlertCircle, ArrowRight } from 'lucide-react';
 
 export const Login: React.FC = () => {
@@ -58,6 +59,11 @@ export const Login: React.FC = () => {
       testimonialAuthor="Dr. Radhika Sen"
       testimonialRole="RWA President, Ward 82 Bengaluru"
     >
+      <SEO
+        title="Sign In"
+        description="Sign in to Crowd Report to file civic reports, monitor active municipal repair tasks, or manage local territory dispatch."
+        robots="noindex, follow"
+      />
       {errorMessage && (
         <div className="mb-6 p-3.5 rounded-card bg-red-50 border border-red-200 flex items-start gap-2.5 text-xs text-red-900 animate-fadeIn">
           <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />

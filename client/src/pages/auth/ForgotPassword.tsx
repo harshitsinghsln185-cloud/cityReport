@@ -4,6 +4,7 @@ import authService from '../../services/auth.service';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import AuthLayout from '../../components/auth/AuthLayout';
+import SEO from '../../components/SEO';
 import { Mail, ArrowLeft, CheckCircle2, AlertCircle, Send } from 'lucide-react';
 
 export const ForgotPassword: React.FC = () => {
@@ -42,6 +43,11 @@ export const ForgotPassword: React.FC = () => {
       testimonialAuthor="Suresh Nayak"
       testimonialRole="Security Auditor, National Civic Standards"
     >
+      <SEO
+        title="Forgot Password"
+        description="Reset your Crowd Report citizen or contractor account password securely."
+        robots="noindex, follow"
+      />
       {isSubmitted ? (
         <div className="text-center py-4 space-y-4">
           <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center mx-auto shadow-xs">

@@ -18,6 +18,7 @@ import Input from '../../components/ui/Input';
 import SectionHeader from '../../components/ui/SectionHeader';
 import Breadcrumbs from '../../components/ui/Breadcrumbs';
 import Reveal from '../../components/ui/Reveal';
+import SEO from '../../components/SEO';
 
 export const WriteQuery: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -87,6 +88,16 @@ export const WriteQuery: React.FC = () => {
 
   return (
     <div className="py-8 sm:py-12 bg-canvas min-h-screen">
+      <SEO
+        title="Citizen Inquiries & Civic Help Desk"
+        description="Direct administrative liaison desk for citizen questions regarding municipal ward coverage, contractor accreditation, escrow guarantees, and formal tax receipts."
+        keywords={[
+          'civic help desk',
+          'municipal inquiries',
+          'contact municipal administration',
+          'citizen query form',
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
         <Breadcrumbs items={[{ label: 'Civic Help Desk & Queries' }]} className="mb-6" />

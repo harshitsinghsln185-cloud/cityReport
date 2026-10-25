@@ -1,6 +1,8 @@
 # Crowd Report Platform Robots Policy
 User-agent: *
 Allow: /
+Allow: /states
+Allow: /states/
 Allow: /services
 Allow: /about
 Allow: /track
@@ -9,3 +11,5 @@ Disallow: /admin/
 Disallow: /resolver/
 Disallow: /user/
 Disallow: /api/
+
+Sitemap: https://crowdreport.in/sitemap.xml
