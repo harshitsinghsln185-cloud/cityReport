@@ -139,14 +139,14 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. 4-Step Process Flow */}
+      {/* 5. 4-Step Process Milestones (Accordion) */}
       <HowItWorks />
 
-      {/* 6. Testimonials & Municipal Compliance Seals */}
-      <TestimonialsTrust />
-
-      {/* 7. Frequently Asked Questions (Accordion) */}
+      {/* 6. Frequently Asked Questions (Accordion) */}
       <FaqSection />
+
+      {/* 7. Testimonials & Municipal Compliance Seals */}
+      <TestimonialsTrust />
 
       {/* 8. Municipal Trust & Final High-Contrast Guarantee CTA */}
       <section className="py-20 bg-gradient-to-br from-dark via-[#141838] to-indigo text-white relative overflow-hidden">
