@@ -19,7 +19,7 @@ const DEFAULT_TITLE = 'Crowd Report — Civic Issue Reporting & Municipal Resolu
 const DEFAULT_DESC =
   'India’s verified civic issue reporting network. Report municipal infrastructure defects, track geotagged photographic remediation proof, and verify escrow-backed contractor resolution across 36 states and union territories.';
 export const BASE_URL = SITE_URL;
-const DEFAULT_OG_IMAGE = `${BASE_URL}/images/og-card.png`;
+const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.jpg`;
 
 export const SEO: React.FC<SEOProps> = ({
   title,
@@ -53,6 +53,9 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:type" content="image/jpeg" />
       <meta property="og:site_name" content="Crowd Report" />
       <meta property="og:locale" content="en_IN" />
 
