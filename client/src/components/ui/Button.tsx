@@ -32,19 +32,19 @@ export const Button: React.FC<ButtonProps> = ({
 
   const variants: Record<NonNullable<ButtonProps['variant']>, string> = {
     primary:
-      'bg-primary text-white hover:bg-primary-hover shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 border border-primary/20',
+      'bg-primary text-white hover:bg-primary-hover shadow-sm hover:shadow-cardHover hover:-translate-y-0.5 active:translate-y-0 border border-primary/20',
     secondary:
-      'bg-lavender text-indigo hover:bg-[#DDD6FE] focus-visible:ring-primary hover:-translate-y-0.5 active:translate-y-0',
+      'bg-primary-light text-primary hover:bg-[#DCE7F5] focus-visible:ring-accent hover:-translate-y-0.5 active:translate-y-0 border border-primary/10',
     accent:
-      'bg-indigo text-white font-semibold hover:bg-dark shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 border border-indigo/20',
+      'bg-accent text-primary font-semibold hover:bg-accent-hover shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 border border-accent/20',
     gold:
-      'bg-gold text-white font-semibold hover:bg-gold-hover shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 border border-gold/20',
+      'bg-accent text-primary font-semibold hover:bg-accent-hover shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 border border-accent/20',
     danger:
-      'bg-red-700 text-white hover:bg-red-800 focus-visible:ring-red-400 shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0',
+      'bg-status-danger text-white hover:bg-[#991B1B] focus-visible:ring-red-400 shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0',
     outline:
-      'border border-border bg-white text-ink hover:bg-canvas hover:border-slate-300 focus-visible:ring-primary hover:-translate-y-0.5 active:translate-y-0 shadow-xs',
+      'border border-border bg-white text-ink hover:bg-canvas hover:border-slate-400 focus-visible:ring-accent hover:-translate-y-0.5 active:translate-y-0 shadow-xs',
     ghost:
-      'bg-transparent text-muted hover:text-ink hover:bg-lavender/50 focus-visible:ring-primary',
+      'bg-transparent text-muted hover:text-ink hover:bg-primary-light/50 focus-visible:ring-accent',
   };
 
   const sizes: Record<NonNullable<ButtonProps['size']>, string> = {

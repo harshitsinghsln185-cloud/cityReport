@@ -47,6 +47,7 @@ import ResolverTaskDetailsPage from '../pages/resolver/TaskDetails';
 import ResolverCompletedHistoryPage from '../pages/resolver/CompletedHistory';
 import NotificationsPage from '../pages/shared/Notifications';
 import ErrorBoundary from '../components/ui/ErrorBoundary';
+import Styleguide from '../pages/dev/Styleguide';
 
 const router = createBrowserRouter([
   {
@@ -106,6 +107,14 @@ const router = createBrowserRouter([
         path: 'verify-email',
         element: <VerifyEmail />,
       },
+      ...(import.meta.env.DEV
+        ? [
+            {
+              path: 'styleguide',
+              element: <Styleguide />,
+            },
+          ]
+        : []),
     ],
   },
   {

@@ -1,46 +1,52 @@
 :root {
-  /* Brand Core (Derived from Royal Violet / Indigo) */
-  --color-primary: #7C3AED;
-  --color-primary-hover: #6D28D9;
-  --color-primary-light: #EDE9FE;
-  --color-indigo: #312E81;
-  --color-dark: #0F1123;
-  --color-dark-surface: #171A3B;
-  --color-lavender: #EDE9FE;
+  /* Section 3 Color Palette - Midnight Navy & Warm Gold on Soft Ivory */
+  --color-primary: #0A1F44;
+  --color-primary-hover: #12306A;
+  --color-primary-light: #EBF1FA;
+  --color-accent: #C8A24A;
+  --color-accent-hover: #B38E37;
+  --color-accent-text-light: #8A6A1F;
+  --color-accent-bg: #FAF4E6;
+  --color-accent-border: #EEDCB2;
 
-  /* Subtle Warm Gold Accent (for verified seals & UT highlights) */
-  --color-gold: #D97706;
-  --color-gold-hover: #B45309;
-  --color-gold-bg: #FEF3C7;
-  --color-gold-border: #FDE68A;
+  /* Legacy aliases mapped gracefully to new palette */
+  --color-indigo: #0A1F44;
+  --color-dark: #06132B;
+  --color-dark-surface: #0A1F44;
+  --color-lavender: #EBF1FA;
+  --color-gold: #C8A24A;
+  --color-gold-hover: #B38E37;
+  --color-gold-bg: #FAF4E6;
+  --color-gold-border: #EEDCB2;
 
   /* Surfaces & Canvas */
-  --color-canvas: #F8F7FC;
+  --color-canvas: #FAF8F3;
   --color-surface: #FFFFFF;
-  --color-surface-subtle: #FAFAFD;
+  --color-surface-alt: #F1EEE6;
+  --color-surface-subtle: #F7F5EE;
   --color-surface-elevated: #FFFFFF;
-  --color-border: #E2E8F0;
-  --color-border-subtle: #EEF2F6;
-  --color-border-dark: rgba(255, 255, 255, 0.08);
+  --color-border: #E7E2D6;
+  --color-border-subtle: #EFECE3;
+  --color-border-dark: rgba(255, 255, 255, 0.12);
 
   /* Typography Colors */
-  --color-ink: #1E293B;
-  --color-text: #1E293B;
-  --color-text-secondary: #475569;
-  --color-text-muted: #64748B;
-  --color-text-inverse: #F8FAFC;
-  --color-muted: #64748B;
-  --color-focus-ring: #A78BFA;
+  --color-ink: #101828;
+  --color-text: #101828;
+  --color-text-secondary: #5B6577;
+  --color-text-muted: #5B6577;
+  --color-text-inverse: #FFFFFF;
+  --color-muted: #5B6577;
+  --color-focus-ring: #C8A24A;
 
-  /* Semantic Status */
-  --color-success: #166534;
-  --color-success-bg: #DCFCE7;
+  /* Semantic Status (WCAG AA Contrast Verified) */
+  --color-success: #0E6E4C;
+  --color-success-bg: #E8F5F0;
   --color-info: #1D4ED8;
-  --color-info-bg: #DBEAFE;
-  --color-warning: #92400E;
-  --color-warning-bg: #FEF3C7;
-  --color-danger: #991B1B;
-  --color-danger-bg: #FEE2E2;
+  --color-info-bg: #EFF6FF;
+  --color-warning: #B54708;
+  --color-warning-bg: #FEF6EE;
+  --color-danger: #B42318;
+  --color-danger-bg: #FEF3F2;
 
   /* Typography Stack */
   --font-heading: 'Fraunces Variable', 'Fraunces', Georgia, serif;

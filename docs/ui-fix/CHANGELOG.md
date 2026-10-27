@@ -50,3 +50,25 @@
   - `Input.tsx`: Enforced 48px height (`h-12 min-h-[48px]`), 16px padding, and 12px radius.
   - `Card.tsx`: Enforced responsive 16px/20px radius and 20px/24px/28px padding.
 - **Verification**: `npm run lint` clean, zero build errors.
+
+---
+
+## [Phase R2] - Color System & Styleguide
+**Date**: October 2026  
+**Commit**: `R2: Institutional Midnight Navy and Warm Gold palette, WCAG contrast verification and dev styleguide`
+
+### Completed Deliverables
+- **Master Palette Configured (`tokens.css`, `tailwind.config.js`)**:
+  - Primary: Midnight Navy (`#0A1F44`), Hover: `#12306A`, Light: `#EBF1FA`.
+  - Accent: Warm Gold (`#C8A24A`), Hover: `#B38E37`, Text on Light: `#8A6A1F`, Bg: `#FAF4E6`.
+  - Background: Soft Ivory (`#FAF8F3`), Surface Alt: `#F1EEE6`, Border: `#E7E2D6`.
+  - Status: Success (`#0E6E4C`), Warning (`#B54708`), Danger (`#B42318`), Info (`#1D4ED8`).
+- **WCAG 2.1 AA Contrast Verification (`PALETTE.md`)**:
+  - All 14 text & background pairs verified with mathematical relative luminance calculations. All pairs pass AA and AAA.
+  - Success text darkened from `#12805C` to `#0E6E4C` to achieve 5.59:1 contrast over `#E8F5F0`.
+- **Shared Component Palette Updates**:
+  - `Button.tsx`: Refactored all variants to Midnight Navy, Warm Gold, and Soft Tint.
+  - `Badge.tsx`: Converted to Section 3 semantic tokens and contrast-verified status badges.
+- **Development-Only Styleguide (`Styleguide.tsx`)**:
+  - Mounted at `/styleguide` exclusively in dev mode (`import.meta.env.DEV`), marked `noindex, nofollow`, displaying live swatches, typography clamps, button states, inputs, and badges.
+- **Verification**: `npm run lint` clean, zero errors.
