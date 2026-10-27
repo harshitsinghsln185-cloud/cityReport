@@ -25,7 +25,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseStyles =
-    'inline-flex items-center justify-center font-medium transition-all duration-150 select-none ' +
+    'inline-flex flex-row items-center justify-center whitespace-nowrap font-medium transition-all duration-150 select-none ' +
     'focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary ' +
     'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:transform-none ' +
     'hover:scale-[1.01] active:scale-[0.98] motion-reduce:hover:scale-100 motion-reduce:hover:translate-y-0';
@@ -75,7 +75,11 @@ export const Button: React.FC<ButtonProps> = ({
       ) : (
         leftIcon && <span className="shrink-0 flex items-center">{leftIcon}</span>
       )}
-      {children && <span className="truncate">{children}</span>}
+      {children && (
+        <span className="inline-flex flex-row items-center gap-1.5 truncate">
+          {children}
+        </span>
+      )}
       {!isLoading && rightIcon && <span className="shrink-0 flex items-center">{rightIcon}</span>}
     </button>
   );

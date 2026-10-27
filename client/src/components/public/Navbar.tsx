@@ -102,22 +102,27 @@ export const Navbar: React.FC = () => {
             </Link>
           )}
 
-          <Link to="/user/report-issue">
+          <Link to="/user/report-issue" className="shrink-0">
             <Button
               variant="primary"
               size="sm"
-              className="flex items-center gap-1.5 shadow-sm shadow-primary/25"
+              leftIcon={<PlusCircle className="w-4 h-4 shrink-0" />}
+              className="shadow-sm shadow-primary/25 whitespace-nowrap"
             >
-              <PlusCircle className="w-4 h-4" />
-              <span>Report an Issue</span>
+              Report an Issue
             </Button>
           </Link>
         </div>
 
         {/* Mobile Hamburger Toggle */}
         <div className="flex lg:hidden items-center gap-2">
-          <Link to="/user/report-issue" className="md:hidden">
-            <Button variant="primary" size="xs" className="px-3 py-1.5">
+          <Link to="/user/report-issue" className="md:hidden shrink-0">
+            <Button
+              variant="primary"
+              size="xs"
+              leftIcon={<PlusCircle className="w-3.5 h-3.5 shrink-0" />}
+              className="px-3 py-1.5 whitespace-nowrap"
+            >
               Report
             </Button>
           </Link>
@@ -204,7 +209,9 @@ export const Navbar: React.FC = () => {
                   variant="primary"
                   size="md"
                   isFullWidth
-                  rightIcon={<ArrowRight className="w-4 h-4" />}
+                  leftIcon={<PlusCircle className="w-4 h-4 shrink-0" />}
+                  rightIcon={<ArrowRight className="w-4 h-4 shrink-0" />}
+                  className="whitespace-nowrap"
                 >
                   Report an Issue
                 </Button>
