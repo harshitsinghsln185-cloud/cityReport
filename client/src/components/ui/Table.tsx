@@ -26,21 +26,21 @@ export const Table = <T extends Record<string, any>>({
   className = '',
 }: TableProps<T>) => {
   return (
-    <div className={`w-full overflow-x-auto border border-[#E2E8F0] rounded-xl bg-white shadow-sm ${className}`}>
+    <div className={`w-full overflow-x-auto border border-border rounded-xl bg-white shadow-subtle ${className}`}>
       <table className="w-full text-left border-collapse text-sm">
-        <thead className="bg-[#F8F7FC] border-b border-[#E2E8F0] text-[#64748B] uppercase text-xs font-semibold tracking-wider sticky top-0 z-10">
+        <thead className="bg-surfaceAlt/90 backdrop-blur-xs border-b border-border text-muted uppercase text-xs font-semibold tracking-wider sticky top-0 z-10">
           <tr>
             {columns.map((col, idx) => (
               <th
                 key={col.header || idx}
-                className={`py-3.5 px-4 ${col.className || ''}`}
+                className={`py-3.5 px-4 font-semibold ${col.className || ''}`}
               >
                 {col.header}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-[#E2E8F0] text-[#1E293B]">
+        <tbody className="divide-y divide-border text-ink">
           {isLoading ? (
             Array.from({ length: 5 }).map((_, rIdx) => (
               <tr key={rIdx}>
@@ -55,7 +55,7 @@ export const Table = <T extends Record<string, any>>({
             <tr>
               <td
                 colSpan={columns.length}
-                className="py-12 px-4 text-center text-[#64748B] italic"
+                className="py-12 px-4 text-center text-muted italic"
               >
                 {emptyMessage}
               </td>
@@ -67,8 +67,8 @@ export const Table = <T extends Record<string, any>>({
                 onClick={() => onRowClick && onRowClick(row)}
                 className={`transition-colors ${
                   onRowClick
-                    ? 'hover:bg-[#EDE9FE]/20 cursor-pointer'
-                    : 'hover:bg-[#F8F7FC]/60'
+                    ? 'hover:bg-primary-light/40 cursor-pointer'
+                    : 'hover:bg-surfaceAlt/50'
                 }`}
               >
                 {columns.map((col, cIdx) => (

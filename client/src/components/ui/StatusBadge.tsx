@@ -1,4 +1,5 @@
 import React from 'react';
+import Badge, { BadgeProps } from './Badge';
 
 export type IssueStatus =
   | 'AwaitingAdvance'
@@ -31,130 +32,40 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
   size = 'md',
   className = '',
 }) => {
-  const configs: Record<string, { text: string; bg: string; textCol: string; dot: string }> = {
-    AwaitingAdvance: {
-      text: 'Awaiting Advance',
-      bg: 'bg-[#FEF3C7]',
-      textCol: 'text-[#92400E]',
-      dot: 'bg-[#92400E]',
-    },
-    AwaitingQuote: {
-      text: 'Awaiting Quote',
-      bg: 'bg-[#FEF3C7]',
-      textCol: 'text-[#92400E]',
-      dot: 'bg-[#92400E]',
-    },
-    Submitted: {
-      text: 'Submitted',
-      bg: 'bg-[#DBEAFE]',
-      textCol: 'text-[#1D4ED8]',
-      dot: 'bg-[#1D4ED8]',
-    },
-    UnderReview: {
-      text: 'Under Review',
-      bg: 'bg-[#DBEAFE]',
-      textCol: 'text-[#1D4ED8]',
-      dot: 'bg-[#1D4ED8]',
-    },
-    Assigned: {
-      text: 'Assigned',
-      bg: 'bg-[#DBEAFE]',
-      textCol: 'text-[#1D4ED8]',
-      dot: 'bg-[#1D4ED8]',
-    },
-    Accepted: {
-      text: 'Accepted',
-      bg: 'bg-[#DBEAFE]',
-      textCol: 'text-[#1D4ED8]',
-      dot: 'bg-[#1D4ED8]',
-    },
-    InProgress: {
-      text: 'In Progress',
-      bg: 'bg-[#DBEAFE]',
-      textCol: 'text-[#1D4ED8]',
-      dot: 'bg-[#1D4ED8]',
-    },
-    Resolved: {
-      text: 'Resolved',
-      bg: 'bg-[#DCFCE7]',
-      textCol: 'text-[#166534]',
-      dot: 'bg-[#166534]',
-    },
-    BalanceDue: {
-      text: 'Balance Due',
-      bg: 'bg-[#FEF3C7]',
-      textCol: 'text-[#92400E]',
-      dot: 'bg-[#92400E]',
-    },
-    Closed: {
-      text: 'Closed',
-      bg: 'bg-[#DCFCE7]',
-      textCol: 'text-[#166534]',
-      dot: 'bg-[#166534]',
-    },
-    Rejected: {
-      text: 'Rejected',
-      bg: 'bg-[#FEE2E2]',
-      textCol: 'text-[#991B1B]',
-      dot: 'bg-[#991B1B]',
-    },
-    Cancelled: {
-      text: 'Cancelled',
-      bg: 'bg-[#FEE2E2]',
-      textCol: 'text-[#991B1B]',
-      dot: 'bg-[#991B1B]',
-    },
-    ReassignNeeded: {
-      text: 'Reassign Needed',
-      bg: 'bg-[#FEF3C7]',
-      textCol: 'text-[#92400E]',
-      dot: 'bg-[#92400E]',
-    },
-    Reopened: {
-      text: 'Reopened',
-      bg: 'bg-[#FEF3C7]',
-      textCol: 'text-[#92400E]',
-      dot: 'bg-[#92400E]',
-    },
-    Pending: {
-      text: 'Pending',
-      bg: 'bg-[#FEF3C7]',
-      textCol: 'text-[#92400E]',
-      dot: 'bg-[#92400E]',
-    },
-    Paid: {
-      text: 'Paid',
-      bg: 'bg-[#DCFCE7]',
-      textCol: 'text-[#166534]',
-      dot: 'bg-[#166534]',
-    },
-    Approved: {
-      text: 'Approved',
-      bg: 'bg-[#DCFCE7]',
-      textCol: 'text-[#166534]',
-      dot: 'bg-[#166534]',
-    },
+  const configs: Record<string, { label: string; variant: NonNullable<BadgeProps['variant']> }> = {
+    AwaitingAdvance: { label: 'Awaiting Advance', variant: 'warning' },
+    AwaitingQuote: { label: 'Awaiting Quote', variant: 'warning' },
+    Submitted: { label: 'Submitted', variant: 'info' },
+    UnderReview: { label: 'Under Review', variant: 'info' },
+    Assigned: { label: 'Assigned', variant: 'info' },
+    Accepted: { label: 'Accepted', variant: 'info' },
+    InProgress: { label: 'In Progress', variant: 'info' },
+    Resolved: { label: 'Resolved', variant: 'success' },
+    BalanceDue: { label: 'Balance Due', variant: 'warning' },
+    Closed: { label: 'Closed', variant: 'success' },
+    Rejected: { label: 'Rejected', variant: 'danger' },
+    Cancelled: { label: 'Cancelled', variant: 'danger' },
+    ReassignNeeded: { label: 'Reassign Needed', variant: 'warning' },
+    Reopened: { label: 'Reopened', variant: 'warning' },
+    Pending: { label: 'Pending', variant: 'warning' },
+    Paid: { label: 'Paid', variant: 'success' },
+    Approved: { label: 'Approved', variant: 'success' },
   };
 
   const config = configs[status] || {
-    text: status,
-    bg: 'bg-[#EDE9FE]',
-    textCol: 'text-[#312E81]',
-    dot: 'bg-[#7C3AED]',
-  };
-
-  const sizeStyles = {
-    sm: 'text-[11px] px-2 py-0.5 gap-1.5',
-    md: 'text-xs px-2.5 py-1 gap-2',
+    label: status.replace(/([A-Z])/g, ' $1').trim(),
+    variant: 'neutral' as const,
   };
 
   return (
-    <span
-      className={`inline-flex items-center font-medium rounded-full ${config.bg} ${config.textCol} ${sizeStyles[size] || sizeStyles.md} ${className}`}
+    <Badge
+      variant={config.variant}
+      size={size}
+      dot
+      className={className}
     >
-      <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${config.dot}`} />
-      <span>{config.text}</span>
-    </span>
+      {config.label}
+    </Badge>
   );
 };
 

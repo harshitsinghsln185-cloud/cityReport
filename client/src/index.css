@@ -119,6 +119,32 @@
     box-shadow: var(--shadow-card-hover);
     border-color: rgba(10, 31, 68, 0.25);
   }
+
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: inherit;
+  }
+
+  /* Sleek institutional scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(10, 31, 68, 0.15);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(10, 31, 68, 0.3);
+  }
 }
 
 @keyframes shimmer {

@@ -105,3 +105,33 @@
 - **Brand Identity Documentation (`LOGO.md`)**:
   - Authored full design rationale, geometric vertices grid, clear-space minimums, minimum digital sizing, and brand misuse rules.
 - **Verification**: `npm run lint` clean, zero errors.
+
+---
+
+## [Phase R4] - Standardized Component Suite and Bug List Remediation
+**Date**: October 2026  
+**Commit**: `R4: Standardized component suite and bug list remediation`
+
+### Completed Deliverables
+- **Navbar Accessibility & Mobile Drawer (Defect 4.1)**:
+  - Added `Escape` key event listener to close drawer immediately.
+  - Implemented automatic body scroll locking (`document.body.style.overflow = 'hidden'`) with guaranteed cleanup on close or component unmount.
+  - Implemented route-change auto-closing (`location.pathname` dependency).
+  - Added dark backdrop overlay with tap-to-dismiss (`bg-dark/40 backdrop-blur-xs`).
+  - Added complete ARIA semantics (`role="dialog"`, `aria-modal="true"`, `aria-label="Mobile Navigation"`, `aria-controls="mobile-nav-drawer"`).
+- **Footer Dark Theme Contrast & Rhythm (Defect 4.2)**:
+  - Replaced low-contrast navy icons on dark surface with high-contrast Warm Gold (`text-gold`).
+  - Replaced generic purple/lavender chips with gold badges (`bg-gold/20 text-gold`).
+  - Cleaned 4px grid rhythm and structured 5-column layout.
+- **Enhanced 3D Card Engine (Defect 4.3)**:
+  - Added optional 3D perspective tilt (`tilt?: boolean`) with max 5-degree rotation and smooth spring return.
+  - Added cursor spotlight radial illumination (`spotlight?: boolean`) following mouse coordinates.
+  - Added touch device detection (`pointer: coarse` / `ontouchstart`) to cleanly disable gyro/tilt effects on mobile devices.
+- **Status Badge System Unification (Defect 4.4)**:
+  - Completely refactored `StatusBadge.tsx` to wrap `Badge.tsx` and use Section 3 contrast-verified tokens.
+  - Eliminated arbitrary hex codes (`#FEF3C7`, `#EDE9FE`, `#DBEAFE`); mapped all 17 issue states to semantic status variants (`success`, `warning`, `danger`, `info`, `neutral`).
+- **Responsive Table Suite (Defect 4.5)**:
+  - Refactored `Table.tsx` with design tokens (`border-border`, `bg-surfaceAlt`, `text-ink`, `text-muted`).
+  - Added sticky header with `backdrop-blur-xs bg-surfaceAlt/90`.
+  - Added `.table-wrapper` and sleek institutional custom scrollbar styles to `index.css`.
+- **Verification**: `npm run lint` clean, zero errors.

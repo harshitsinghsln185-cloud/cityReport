@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'base' | 'elevated' | 'stat' | 'glass' | 'interactive';
@@ -7,6 +7,8 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   isInteractive?: boolean;
   padding?: 'none' | 'sm' | 'md' | 'lg';
   radius?: 'sm' | 'md' | 'card' | 'cardLg';
+  tilt?: boolean;
+  spotlight?: boolean;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -17,10 +19,31 @@ export const Card: React.FC<CardProps> = ({
   isInteractive = false,
   padding = 'md',
   radius = 'card',
+  tilt = false,
+  spotlight = false,
   className = '',
+  onMouseMove,
+  onMouseLeave,
   ...props
 }) => {
-  const shouldBeInteractive = isInteractive || variant === 'interactive';
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [spotlightPos, setSpotlightPos] = useState<{ x: number; y: number; opacity: number }>({
+    x: 0,
+    y: 0,
+    opacity: 0,
+  });
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isTouch =
+        'ontouchstart' in window ||
+        window.matchMedia('(pointer: coarse)').matches;
+      setIsTouchDevice(isTouch);
+    }
+  }, []);
+
+  const shouldBeInteractive = isInteractive || variant === 'interactive' || tilt;
 
   const radiusStyles: Record<NonNullable<CardProps['radius']>, string> = {
     sm: 'rounded-lg',
@@ -48,10 +71,46 @@ export const Card: React.FC<CardProps> = ({
     ? 'card-hover-lift cursor-pointer hover:border-primary/40 focus-visible:ring-2 focus-visible:ring-primary'
     : '';
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (onMouseMove) onMouseMove(e);
+    if (!cardRef.current || isTouchDevice) return;
+
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    if (spotlight) {
+      setSpotlightPos({ x, y, opacity: 1 });
+    }
+
+    if (tilt) {
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      // Max tilt: 5 degrees
+      const rotateX = -((y - centerY) / centerY) * 5;
+      const rotateY = ((x - centerX) / centerX) * 5;
+
+      cardRef.current.style.transform = `perspective(800px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
+    }
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (onMouseLeave) onMouseLeave(e);
+    if (spotlight) {
+      setSpotlightPos((prev) => ({ ...prev, opacity: 0 }));
+    }
+    if (tilt && cardRef.current && !isTouchDevice) {
+      cardRef.current.style.transform = '';
+    }
+  };
+
   return (
     <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       className={`
-        overflow-hidden transition-all duration-200
+        relative overflow-hidden transition-all duration-200
         ${radiusStyles[radius] || radiusStyles.card}
         ${variantStyles[variant] || variantStyles.base}
         ${interactiveStyles}
@@ -59,16 +118,28 @@ export const Card: React.FC<CardProps> = ({
       `.trim()}
       {...props}
     >
+      {/* Spotlight Radial Overlay */}
+      {spotlight && !isTouchDevice && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -inset-px transition-opacity duration-300"
+          style={{
+            opacity: spotlightPos.opacity,
+            background: `radial-gradient(400px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(200, 162, 74, 0.08), transparent 80%)`,
+          }}
+        />
+      )}
+
       {header && (
-        <div className="px-6 py-4 border-b border-border bg-canvas/60">
+        <div className="relative z-10 px-6 py-4 border-b border-border bg-canvas/60">
           {header}
         </div>
       )}
-      <div className={paddingStyles[padding] || paddingStyles.md}>
+      <div className={`relative z-10 ${paddingStyles[padding] || paddingStyles.md}`}>
         {children}
       </div>
       {footer && (
-        <div className="px-6 py-3.5 border-t border-border bg-canvas/60">
+        <div className="relative z-10 px-6 py-3.5 border-t border-border bg-canvas/60">
           {footer}
         </div>
       )}

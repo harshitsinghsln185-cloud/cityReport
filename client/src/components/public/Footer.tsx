@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
           </p>
           <div className="flex flex-wrap gap-2 text-xs">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/80 text-slate-300">
-              <Lock className="w-3.5 h-3.5 text-primary" />
+              <Lock className="w-3.5 h-3.5 text-gold" />
               <span>Paise-Exact Escrow</span>
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/80 text-slate-300">
@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
             <li>
               <Link to="/states" className="text-slate-300 hover:text-white transition-colors font-medium flex items-center gap-1.5">
                 <span>States & UTs</span>
-                <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-primary/20 text-lavender font-bold">36</span>
+                <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-gold/20 text-gold font-bold">36</span>
               </Link>
             </li>
             <li>
@@ -73,7 +73,7 @@ export const Footer: React.FC = () => {
           </h4>
           <ul className="space-y-2.5 text-sm text-slate-400">
             <li>
-              <Link to="/user/report-issue" className="text-lavender hover:text-white transition-colors font-semibold">
+              <Link to="/user/report-issue" className="text-gold hover:text-gold-hover transition-colors font-semibold">
                 Report a Civic Issue
               </Link>
             </li>
