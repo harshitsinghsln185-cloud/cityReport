@@ -176,3 +176,32 @@
   - Fully respects `useReducedMotion()`, instantly displaying target number when user prefers reduced motion.
   - Wired into `About.tsx` impact metrics (12,480+ hazards, 36 States & UTs, 99.4% SLA).
 - **Verification**: `npm run lint` clean, zero errors.
+
+---
+
+## [Phase R7] - States Section Rebuild
+**Date**: October 2026  
+**Commit**: `R7: 36 state landmark banners, zonal directory and interactive cards`
+
+### Completed Deliverables
+- **36 State Landmark Visual Banners (`client/public/states/*.svg`, `generate-state-banners.js`, `landmarks.ts`)**:
+  - Replaced low-contrast placeholder gradient banners across all 36 Indian states and union territories with tailored landmark vector visuals (BUG-26, BUG-29).
+  - Authored automated reproducible generation script `client/scripts/generate-state-banners.js`.
+  - Created typed data dictionary `client/src/data/landmarks.ts` with landmark names, capital cities, and banner paths.
+  - Authored `docs/ui-fix/ASSETS.md` cataloging complete landmark attribution across all 36 jurisdictions.
+- **Zonal Directory & Sticky Navigation (`StatesDirectory.tsx`)**:
+  - Implemented sticky 6-zone switcher bar (`All`, `North`, `South`, `East`, `West`, `Central`, `Northeast`) with live regional counts (BUG-27).
+  - Synced zone selection to URL query parameters (`?zone=...`) via `useSearchParams`.
+  - Implemented zonal grouping layout in default view with authoritative regional headers, descriptions, and jurisdiction counts.
+  - Integrated full search (by state name, capital, or landmark), type filters (State vs UT), and sorting (alphabetical, resolved hazards, active resolvers, fastest SLA).
+- **Interactive State Cards (`StatesDirectory.tsx`, `Card.tsx`)**:
+  - Redesigned state card geometry with 16:10 aspect ratio landmark banner, gradient scrim, floating landmark caption badge, and regional zone pills (BUG-28).
+  - 3-column metric strip (Resolved hazards, Active resolvers, Average SLA) and full 3D perspective tilt + cursor spotlight.
+- **State Detail Page Overhaul (`StateDetail.tsx`)**:
+  - Replaced low-contrast gradient hero with full-bleed landmark banner, deep navy scrim, floating landmark attribution chip, and geographic facts (BUG-26).
+  - 4-metric verification strip: Hazards Remediated, Certified Resolvers, Average Response SLA, and Citizen Satisfaction (post-inspection audit).
+  - Implemented sticky in-page navigation bar with real-time reading progress bar (BUG-30) and active scroll-spy section highlighting (`#overview`, `#priorities`, `#resolvers`, `#activity`, `#faqs`).
+  - Added dedicated Resolver Network section detailing accreditation standards, 50% milestone escrow, and contractor registration CTA.
+  - Added previous and next state navigation links.
+- **Theme Extensions**: Added `navy` variant to both `Button.tsx` and `Badge.tsx`.
+- **Verification**: `npm run build` and `npm run lint` clean, zero TypeScript errors.

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   MapPin,
@@ -10,8 +10,13 @@ import {
   ArrowRight,
   ChevronLeft,
   Calendar,
+  Sparkles,
+  FileCheck2,
+  Lock,
+  ChevronRight,
 } from 'lucide-react';
 import { getStateBySlug, STATES_DATA } from '../../data/statesData';
+import { getStateLandmark } from '../../data/landmarks';
 import Breadcrumbs from '../../components/ui/Breadcrumbs';
 import Card from '../../components/ui/Card';
 import Badge from '../../components/ui/Badge';
@@ -22,6 +27,19 @@ import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
 import { SITE_URL } from '../../config/site';
 
+interface NavSection {
+  id: string;
+  label: string;
+}
+
+const NAV_SECTIONS: NavSection[] = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'priorities', label: 'Civic Priorities' },
+  { id: 'resolvers', label: 'Resolver Network' },
+  { id: 'activity', label: 'Recent Activity' },
+  { id: 'faqs', label: 'FAQs' },
+];
+
 export const StateDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
 
@@ -30,7 +48,39 @@ export const StateDetail: React.FC = () => {
     return getStateBySlug(slug);
   }, [slug]);
 
-  if (!stateData) {
+  const landmarkInfo = useMemo(() => {
+    return slug ? getStateLandmark(slug) : null;
+  }, [slug]);
+
+  const [activeSection, setActiveSection] = useState('overview');
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Scroll listener for reading progress and section spy
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0) {
+        setScrollProgress(Math.min(100, Math.max(0, (window.scrollY / totalScroll) * 100)));
+      }
+
+      // Check active section
+      const sectionElements = NAV_SECTIONS.map((sec) => document.getElementById(sec.id));
+      const scrollPos = window.scrollY + 200;
+
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const el = sectionElements[i];
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveSection(NAV_SECTIONS[i].id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  if (!stateData || !landmarkInfo) {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center p-6 text-center bg-canvas">
         <SEO title="State Not Found" robots="noindex, nofollow" />
@@ -44,7 +94,7 @@ export const StateDetail: React.FC = () => {
           The requested regional slug does not match any of the 36 monitored Indian states or union territories in our database.
         </p>
         <Link to="/states">
-          <Button variant="primary" leftIcon={<ChevronLeft className="w-4 h-4" />}>
+          <Button variant="navy" leftIcon={<ChevronLeft className="w-4 h-4" />}>
             Back to States Directory
           </Button>
         </Link>
@@ -52,7 +102,7 @@ export const StateDetail: React.FC = () => {
     );
   }
 
-  // Find neighbor states for quick navigation
+  // Neighbor states for quick chronological navigation
   const currentIndex = STATES_DATA.findIndex((s) => s.slug === stateData.slug);
   const prevNeighbor = STATES_DATA[(currentIndex - 1 + STATES_DATA.length) % STATES_DATA.length];
   const nextNeighbor = STATES_DATA[(currentIndex + 1) % STATES_DATA.length];
@@ -61,20 +111,30 @@ export const StateDetail: React.FC = () => {
     id: `faq-${i}`,
     title: f.question,
     icon: <ShieldCheck className="w-4 h-4 text-primary" />,
-    content: <p>{f.answer}</p>,
+    content: <p className="text-secondaryText leading-relaxed">{f.answer}</p>,
   }));
 
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const yOffset = -120;
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-canvas py-8 sm:py-12">
+    <div className="min-h-screen bg-canvas">
       <SEO
         title={`${stateData.name} Civic Infrastructure & Hazard Reporting`}
-        description={`Track verified civic hazard resolutions, escrow-backed contractor dispatch, and local public works in ${stateData.name}. ${stateData.heroBlurb}`}
+        description={`Track verified civic hazard resolutions, escrow-backed contractor dispatch, and local public works in ${stateData.name}. Landmark: ${landmarkInfo.landmark}. ${stateData.heroBlurb}`}
         keywords={[
           `${stateData.name} civic issues`,
           `${stateData.name} road repairs`,
           `${stateData.name} municipality`,
           `${stateData.capital} civic portal`,
           `${stateData.name} contractor dispatch`,
+          landmarkInfo.landmark,
         ]}
         canonical={`${SITE_URL}/states/${stateData.slug}`}
         jsonLd={[
@@ -131,144 +191,267 @@ export const StateDetail: React.FC = () => {
           },
         ]}
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb Navigation */}
-        <Breadcrumbs
-          items={[
-            { label: 'States & Union Territories', href: '/states' },
-            { label: stateData.name },
-          ]}
-          className="mb-6"
-        />
 
-        {/* State Hero Banner */}
-        <Reveal>
-          <div className="relative rounded-cardLg overflow-hidden bg-gradient-to-br from-dark via-[#141838] to-indigo text-white p-6 sm:p-10 mb-8 border border-white/10 shadow-card">
-            {/* Ambient Background Gradient Orbs */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-indigo/30 rounded-full blur-3xl pointer-events-none" />
+      {/* Cinematic Landmark Visual Hero Banner */}
+      <section className="relative overflow-hidden bg-navy text-white pt-8 pb-14 sm:pb-20 border-b border-navy-muted">
+        {/* Landmark Background SVG with Scrim */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={landmarkInfo.bannerUrl}
+            alt={landmarkInfo.landmark}
+            className="w-full h-full object-cover opacity-35 object-center scale-105 filter blur-[0.5px]"
+          />
+          {/* Deep Navy Scrim Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent" />
+        </div>
 
-            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-              <div className="max-w-3xl">
-                {/* Region & Type Pills */}
-                <div className="flex items-center gap-2 flex-wrap mb-4">
-                  <Badge
-                    variant={stateData.type === 'Union Territory' ? 'gold' : 'primary'}
-                    size="sm"
-                    className="font-semibold shadow-xs"
-                  >
-                    {stateData.type}
-                  </Badge>
-                  <span className="text-xs text-lavender font-medium bg-white/10 px-2.5 py-0.5 rounded-full border border-white/15">
-                    {stateData.region} Region
-                  </span>
-                  <span className="text-xs text-slate-300 font-medium">
-                    Capital: <strong className="text-white">{stateData.capital}</strong>
-                  </span>
-                  <span className="text-xs text-slate-400">•</span>
-                  <span className="text-xs text-slate-300">
-                    {stateData.districtsCount} Districts
-                  </span>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Breadcrumb Navigation */}
+          <Breadcrumbs
+            items={[
+              { label: 'States & Union Territories', href: '/states' },
+              { label: stateData.name },
+            ]}
+            className="mb-6 text-slate-300"
+          />
+
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+            <div className="max-w-3xl">
+              {/* Region, Type & Landmark Pills */}
+              <div className="flex items-center gap-2 flex-wrap mb-4">
+                <Badge
+                  variant={stateData.type === 'Union Territory' ? 'gold' : 'navy'}
+                  size="sm"
+                  className="font-semibold shadow-xs"
+                >
+                  {stateData.type}
+                </Badge>
+                <span className="text-xs text-lavender font-medium bg-white/10 px-2.5 py-0.5 rounded-full border border-white/15">
+                  {stateData.region} Zone
+                </span>
+                <span className="text-xs text-slate-300 font-medium">
+                  Capital: <strong className="text-white">{stateData.capital}</strong>
+                </span>
+                <span className="text-xs text-slate-400">•</span>
+                <span className="text-xs text-slate-300">
+                  {stateData.districtsCount} Administrative Districts
+                </span>
+              </div>
+
+              {/* Landmark Caption Badge */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/15 border border-gold/40 text-gold text-xs font-medium mb-3">
+                <Sparkles className="w-3.5 h-3.5 text-gold shrink-0" />
+                <span>Landmark: {landmarkInfo.landmark}</span>
+              </div>
+
+              {/* State Heading */}
+              <h1 className="text-3xl sm:text-5xl font-heading font-bold text-white mb-4 tracking-tight leading-tight">
+                {stateData.name}
+              </h1>
+
+              {/* Hero Blurb */}
+              <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-sans max-w-2xl mb-6">
+                {stateData.heroBlurb}
+              </p>
+
+              {/* Geographic Fact Strip */}
+              <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-slate-400">Population:</span>
+                  <strong className="text-white font-semibold tabular-nums">{stateData.population}</strong>
                 </div>
+                <span>•</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-slate-400">Geographic Area:</span>
+                  <strong className="text-white font-semibold tabular-nums">{stateData.area}</strong>
+                </div>
+              </div>
+            </div>
 
-                {/* State Heading */}
-                <h1 className="text-3xl sm:text-5xl font-heading font-bold text-white mb-4 tracking-tight leading-tight">
-                  {stateData.name}
-                </h1>
+            {/* Action Card */}
+            <div className="shrink-0 flex flex-col gap-3 w-full sm:w-auto">
+              <Link to={`/user/report-issue?state=${encodeURIComponent(stateData.name)}`}>
+                <Button
+                  variant="gold"
+                  size="lg"
+                  className="w-full sm:w-auto shadow-lg shadow-gold/20 flex items-center justify-center gap-2 group font-semibold"
+                >
+                  <span>Report Hazard in {stateData.name}</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link to="/register-resolver">
+                <Button
+                  variant="outline"
+                  size="md"
+                  className="w-full sm:w-auto border-white/20 text-white hover:bg-white/10"
+                >
+                  Apply as Ward Contractor
+                </Button>
+              </Link>
 
-                {/* Unique Hero Blurb */}
-                <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-sans max-w-2xl mb-6">
-                  {stateData.heroBlurb}
+              <div className="flex items-center justify-between text-[11px] text-slate-300 px-1 pt-1">
+                <span>50% Escrow Protected</span>
+                <span>•</span>
+                <span>GPS Photo Proof Verified</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sticky In-Page Navigation Bar with Reading Progress */}
+      <nav aria-label="Page Sections Navigation" className="sticky top-16 z-30 bg-surface/95 backdrop-blur-md border-b border-border shadow-xs">
+        {/* Scroll Progress Bar */}
+        <div className="h-0.5 bg-canvas w-full overflow-hidden">
+          <div
+            className="h-full bg-gold transition-all duration-100 ease-out"
+            style={{ width: `${scrollProgress}%` }}
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+          <div className="flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              {NAV_SECTIONS.map((sec) => {
+                const isActive = activeSection === sec.id;
+                return (
+                  <button
+                    key={sec.id}
+                    type="button"
+                    onClick={() => scrollTo(sec.id)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
+                      isActive
+                        ? 'bg-navy text-gold shadow-xs'
+                        : 'text-secondaryText hover:text-ink hover:bg-canvas'
+                    }`}
+                  >
+                    {sec.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="hidden md:flex items-center gap-3 shrink-0 text-xs">
+              <Link
+                to={`/user/report-issue?state=${encodeURIComponent(stateData.name)}`}
+                className="text-primary hover:text-primary-hover font-semibold flex items-center gap-1"
+              >
+                <span>Report Defect</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Main Content Sections */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-16">
+        {/* Section 1: Overview & 4-Metric Strip */}
+        <section id="overview" className="scroll-mt-36">
+          <Reveal>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-5 rounded-card bg-surface border border-border shadow-subtle mb-10">
+              <div className="p-3">
+                <div className="flex items-center gap-2 text-muted text-xs mb-1">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700" />
+                  <span>Hazards Remediated</span>
+                </div>
+                <p className="font-heading font-bold text-ink text-2xl tabular-nums">
+                  {stateData.stats.resolvedIssues.toLocaleString('en-IN')}
                 </p>
-
-                {/* Secondary Geographic Fact Pills */}
-                <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300">
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-muted">Population:</span>
-                    <strong className="text-white font-semibold tabular-nums">{stateData.population}</strong>
-                  </div>
-                  <span>•</span>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-muted">Geographic Area:</span>
-                    <strong className="text-white font-semibold tabular-nums">{stateData.area}</strong>
-                  </div>
-                </div>
+                <p className="text-[11px] text-emerald-700 font-medium mt-0.5">100% Photo-Proof Sealed</p>
               </div>
 
-              {/* Action Button */}
-              <div className="shrink-0 flex flex-col gap-3">
-                <Link to={`/user/report-issue?state=${encodeURIComponent(stateData.name)}`}>
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    className="w-full sm:w-auto shadow-lg shadow-primary/30 flex items-center justify-center gap-2 group"
-                  >
-                    <span>Report an Issue in {stateData.name}</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-
-                <div className="flex items-center justify-between text-xs text-slate-400 px-1">
-                  <span>50% Escrow Protected</span>
-                  <span>•</span>
-                  <span>Photo Proof Guaranteed</span>
+              <div className="p-3 border-l-0 sm:border-l border-border">
+                <div className="flex items-center gap-2 text-muted text-xs mb-1">
+                  <Users className="w-4 h-4 text-indigo" />
+                  <span>Certified Resolvers</span>
                 </div>
+                <p className="font-heading font-bold text-ink text-2xl tabular-nums">
+                  {stateData.stats.activeResolvers}
+                </p>
+                <p className="text-[11px] text-muted mt-0.5">Vetted Ward Contractors</p>
+              </div>
+
+              <div className="p-3 border-t sm:border-t-0 lg:border-l border-border">
+                <div className="flex items-center gap-2 text-muted text-xs mb-1">
+                  <Clock className="w-4 h-4 text-amber-800" />
+                  <span>Average Response SLA</span>
+                </div>
+                <p className="font-heading font-bold text-ink text-2xl tabular-nums">
+                  {stateData.stats.avgResponseHours} Hours
+                </p>
+                <p className="text-[11px] text-muted mt-0.5">From Escrow to On-Site</p>
+              </div>
+
+              <div className="p-3 border-t sm:border-t-0 lg:border-l border-border">
+                <div className="flex items-center gap-2 text-muted text-xs mb-1">
+                  <ShieldCheck className="w-4 h-4 text-emerald-700" />
+                  <span>Citizen Satisfaction</span>
+                </div>
+                <p className="font-heading font-bold text-ink text-2xl tabular-nums">
+                  {stateData.stats.satisfactionRate}%
+                </p>
+                <p className="text-[11px] text-emerald-700 font-medium mt-0.5">Post-Remediation Audits</p>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Regional Geographic & Municipal Brief */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2 p-6 rounded-card bg-surface border border-border shadow-subtle">
+              <h2 className="font-heading font-bold text-xl text-ink mb-3">
+                Civic Infrastructure Profile: {stateData.name}
+              </h2>
+              <p className="text-sm text-secondaryText leading-relaxed mb-4">
+                Operating across {stateData.districtsCount} administrative districts from headquarters in {stateData.capital}, Crowd Report coordinates public works remediation in {stateData.name}. Our decentralized contractor mesh enables wards to resolve road potholes, streetlighting blackouts, garbage backlogs, and water pipe fractures with verified photographic provenance and guaranteed escrow disbursement.
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-3 border-t border-border">
+                <div className="p-3 rounded-lg bg-canvas">
+                  <span className="text-[11px] text-muted block">Regional Capital</span>
+                  <strong className="text-sm text-ink font-semibold">{stateData.capital}</strong>
+                </div>
+                <div className="p-3 rounded-lg bg-canvas">
+                  <span className="text-[11px] text-muted block">Zonal Classification</span>
+                  <strong className="text-sm text-ink font-semibold">{stateData.region} India</strong>
+                </div>
+                <div className="p-3 rounded-lg bg-canvas col-span-2 sm:col-span-1">
+                  <span className="text-[11px] text-muted block">Districts Monitored</span>
+                  <strong className="text-sm text-ink font-semibold">{stateData.districtsCount} Districts</strong>
+                </div>
+              </div>
+            </div>
+
+            {/* Landmark Showcase Card */}
+            <div className="p-6 rounded-card bg-surface border border-border shadow-subtle flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-xs font-semibold text-primary uppercase tracking-wider mb-2">
+                  <Sparkles className="w-3.5 h-3.5 text-gold" />
+                  <span>Featured State Landmark</span>
+                </div>
+                <h3 className="font-heading font-bold text-lg text-ink mb-2">
+                  {landmarkInfo.landmark}
+                </h3>
+                <p className="text-xs text-secondaryText leading-relaxed mb-4">
+                  Symbolic architectural and natural heritage anchor representing {stateData.name}&apos;s civic identity and historical public works traditions.
+                </p>
+              </div>
+
+              <div className="aspect-[16/10] rounded-lg overflow-hidden border border-border bg-navy">
+                <img
+                  src={landmarkInfo.bannerUrl}
+                  alt={landmarkInfo.landmark}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
-        </Reveal>
+        </section>
 
-        {/* Key Stats Bar */}
-        <Reveal delay={0.1}>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-5 rounded-card bg-white border border-border shadow-subtle mb-10">
-            <div className="p-3">
-              <div className="flex items-center gap-2 text-muted text-xs mb-1">
-                <CheckCircle2 className="w-4 h-4 text-primary" />
-                <span>Hazards Remediated</span>
-              </div>
-              <p className="font-heading font-bold text-ink text-2xl tabular-nums">
-                {stateData.stats.resolvedIssues.toLocaleString('en-IN')}
-              </p>
-              <p className="text-[11px] text-emerald-600 font-medium mt-0.5">100% Photo-Proof Sealed</p>
-            </div>
-
-            <div className="p-3 border-l-0 sm:border-l border-border">
-              <div className="flex items-center gap-2 text-muted text-xs mb-1">
-                <Users className="w-4 h-4 text-indigo" />
-                <span>Certified Resolvers</span>
-              </div>
-              <p className="font-heading font-bold text-ink text-2xl tabular-nums">
-                {stateData.stats.activeResolvers}
-              </p>
-              <p className="text-[11px] text-muted mt-0.5">Vetted Ward Contractors</p>
-            </div>
-
-            <div className="p-3 border-t sm:border-t-0 lg:border-l border-border">
-              <div className="flex items-center gap-2 text-muted text-xs mb-1">
-                <Clock className="w-4 h-4 text-gold" />
-                <span>Average Response SLA</span>
-              </div>
-              <p className="font-heading font-bold text-ink text-2xl tabular-nums">
-                {stateData.stats.avgResponseHours} Hours
-              </p>
-              <p className="text-[11px] text-muted mt-0.5">From Quote to On-Site</p>
-            </div>
-
-            <div className="p-3 border-t sm:border-t-0 lg:border-l border-border">
-              <div className="flex items-center gap-2 text-muted text-xs mb-1">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span>Citizen Satisfaction</span>
-              </div>
-              <p className="font-heading font-bold text-ink text-2xl tabular-nums">
-                {stateData.stats.satisfactionRate}%
-              </p>
-              <p className="text-[11px] text-emerald-600 font-medium mt-0.5">Post-Inspection Audits</p>
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Local Civic Priorities Section */}
-        <section className="mb-12">
+        {/* Section 2: Civic Priorities */}
+        <section id="priorities" className="scroll-mt-36">
           <Reveal>
             <SectionHeader
               eyebrow="Key Focus Areas"
@@ -283,7 +466,7 @@ export const StateDetail: React.FC = () => {
               <Reveal key={priority.title} delay={idx * 0.1}>
                 <Card
                   variant="base"
-                  className="h-full flex flex-col justify-between bg-white border-border hover:border-primary/40 hover:shadow-cardHover transition-all duration-200"
+                  className="h-full flex flex-col justify-between bg-surface border-border hover:border-primary/40 hover:shadow-cardHover transition-all duration-200"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-3">
@@ -317,7 +500,7 @@ export const StateDetail: React.FC = () => {
                     to={`/user/report-issue?state=${encodeURIComponent(stateData.name)}&category=${encodeURIComponent(priority.category)}`}
                     className="inline-flex items-center justify-between w-full pt-3 border-t border-border text-xs font-semibold text-primary hover:text-primary-hover group"
                   >
-                    <span>Report {priority.category}</span>
+                    <span>Report {priority.category} Hazard</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Card>
@@ -326,8 +509,71 @@ export const StateDetail: React.FC = () => {
           </div>
         </section>
 
-        {/* Recent State Activity Stream */}
-        <section className="mb-12">
+        {/* Section 3: Resolver Network */}
+        <section id="resolvers" className="scroll-mt-36">
+          <Reveal>
+            <SectionHeader
+              eyebrow="Contractor Mesh"
+              eyebrowVariant="gold"
+              title={`Approved Municipal Resolvers in ${stateData.name}`}
+              subtitle="Local contractor accreditation, municipal license validation, and guaranteed milestone escrow protections."
+            />
+          </Reveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-card bg-surface border border-border shadow-subtle space-y-4">
+              <div className="w-10 h-10 rounded-xl bg-gold/15 text-gold flex items-center justify-center">
+                <FileCheck2 className="w-5 h-5" />
+              </div>
+              <h3 className="font-heading font-bold text-lg text-ink">
+                Verified Trade Accreditation
+              </h3>
+              <p className="text-xs text-secondaryText leading-relaxed">
+                Every active resolver in {stateData.name} must submit proof of valid municipal contractor licenses, GSTIN compliance, and past public works completion certificates.
+              </p>
+              <div className="pt-2 text-xs font-semibold text-primary">
+                ✓ 100% Background Screened
+              </div>
+            </div>
+
+            <div className="p-6 rounded-card bg-surface border border-border shadow-subtle space-y-4">
+              <div className="w-10 h-10 rounded-xl bg-navy text-gold flex items-center justify-center">
+                <Lock className="w-5 h-5" />
+              </div>
+              <h3 className="font-heading font-bold text-lg text-ink">
+                50% Milestone Escrow Guarantee
+              </h3>
+              <p className="text-xs text-secondaryText leading-relaxed">
+                Remediation funds are locked securely in institutional escrow. 50% mobilizes on site arrival; the remaining 50% releases only after citizen-approved GPS photographic inspection.
+              </p>
+              <div className="pt-2 text-xs font-semibold text-primary">
+                ✓ Integer Paise Accounting Audit
+              </div>
+            </div>
+
+            <div className="p-6 rounded-card bg-navy text-white shadow-card space-y-4 flex flex-col justify-between">
+              <div>
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-gold">Join Network</span>
+                <h3 className="font-heading font-bold text-lg text-white mt-1 mb-2">
+                  Are You a Contractor in {stateData.name}?
+                </h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Get certified to receive local ward remediation assignments under standardized municipal Schedule of Rates (SOR).
+                </p>
+              </div>
+
+              <Link to="/register-resolver">
+                <Button variant="gold" size="md" className="w-full flex items-center justify-center gap-2 font-semibold">
+                  <span>Register as Resolver</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: Recent Activity Stream */}
+        <section id="activity" className="scroll-mt-36">
           <Reveal>
             <SectionHeader
               eyebrow="Verified Stream"
@@ -337,14 +583,14 @@ export const StateDetail: React.FC = () => {
             />
           </Reveal>
 
-          <div className="bg-white rounded-card border border-border overflow-hidden shadow-subtle divide-y divide-border">
+          <div className="bg-surface rounded-card border border-border overflow-hidden shadow-subtle divide-y divide-border">
             {stateData.recentActivity.map((act) => (
               <div
                 key={act.id}
                 className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-canvas/50 transition-colors"
               >
                 <div className="flex items-start sm:items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
+                  <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <div>
@@ -380,8 +626,8 @@ export const StateDetail: React.FC = () => {
           </div>
         </section>
 
-        {/* State-Specific FAQ Accordion */}
-        <section className="mb-14">
+        {/* Section 5: State-Specific FAQ Accordion */}
+        <section id="faqs" className="scroll-mt-36">
           <Reveal>
             <SectionHeader
               eyebrow="Local Governance"
@@ -402,7 +648,7 @@ export const StateDetail: React.FC = () => {
         <div className="pt-6 border-t border-border flex items-center justify-between text-xs">
           <Link
             to={`/states/${prevNeighbor.slug}`}
-            className="flex items-center gap-1.5 text-muted hover:text-primary transition-colors font-medium"
+            className="flex items-center gap-1.5 text-secondaryText hover:text-primary transition-colors font-medium"
           >
             <ChevronLeft className="w-4 h-4" />
             <span>Previous: {prevNeighbor.name}</span>
@@ -410,14 +656,14 @@ export const StateDetail: React.FC = () => {
 
           <Link
             to="/states"
-            className="text-muted hover:text-ink font-semibold uppercase tracking-wider"
+            className="text-secondaryText hover:text-ink font-semibold uppercase tracking-wider"
           >
             All 36 States & UTs
           </Link>
 
           <Link
             to={`/states/${nextNeighbor.slug}`}
-            className="flex items-center gap-1.5 text-muted hover:text-primary transition-colors font-medium"
+            className="flex items-center gap-1.5 text-secondaryText hover:text-primary transition-colors font-medium"
           >
             <span>Next: {nextNeighbor.name}</span>
             <ArrowRight className="w-4 h-4" />

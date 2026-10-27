@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" fill="none">
+  <defs>
+    <!-- Sky Atmosphere Gradient -->
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#051E28" />
+      <stop offset="65%" stop-color="#0A1F44" />
+      <stop offset="100%" stop-color="#0A1F44" />
+    </linearGradient>
+
+    <!-- Ambient Glow -->
+    <radialGradient id="sunGlow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#C8A24A" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#0A1F44" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Dark Scrim for Pristine Text Readability -->
+    <linearGradient id="readabilityScrim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0A1F44" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#0A1F44" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#0A1F44" stop-opacity="0.96" />
+    </linearGradient>
+
+    <!-- Structural Grid Pattern -->
+    <pattern id="archGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#C8A24A" stroke-width="0.75" stroke-opacity="0.12" />
+    </pattern>
+  </defs>
+
+  <!-- Sky Canvas -->
+  <rect width="1200" height="675" fill="url(#skyGrad)" />
+  <rect width="1200" height="675" fill="url(#sunGlow)" />
+  <rect width="1200" height="675" fill="url(#archGrid)" />
+
+  <!-- Background Mountain / Horizon Silhouette -->
+  <path d="M0 480 Q 250 420 500 460 T 1000 440 T 1200 470 L 1200 675 L 0 675 Z" fill="#0F3846" fill-opacity="0.6" />
+  <path d="M0 520 Q 300 470 650 510 T 1200 500 L 1200 675 L 0 675 Z" fill="#0A1F44" fill-opacity="0.8" />
+
+  <!-- Architectural Landmark Vector Silhouette (Center Foreground) -->
+  <g transform="translate(600, 360)" text-anchor="middle">
+    <!-- Base Platform -->
+    <rect x="-240" y="80" width="480" height="12" rx="4" fill="#C8A24A" fill-opacity="0.5" />
+    <rect x="-280" y="92" width="560" height="8" rx="2" fill="#0A1F44" />
+
+    <!-- Landmark Silhouette Pillars & Grand Arch -->
+    <path d="M-120 80 L-120 0 Q 0 -60 120 0 L 120 80 Z" fill="#0F3846" fill-opacity="0.85" />
+    <path d="M-60 80 L-60 20 Q 0 -10 60 20 L 60 80 Z" fill="#06132B" />
+
+    <!-- Iconic Central Finial / Dome Dome -->
+    <circle cx="0" cy="-60" r="32" fill="#C8A24A" fill-opacity="0.7" />
+    <polygon points="0,-110 -12,-60 12,-60" fill="#C8A24A" />
+
+    <!-- Flanking Spires / Minarets -->
+    <rect x="-190" y="-40" width="16" height="120" rx="3" fill="#0F3846" />
+    <polygon points="-182,-70 -192,-40 -172,-40" fill="#C8A24A" fill-opacity="0.8" />
+
+    <rect x="174" y="-40" width="16" height="120" rx="3" fill="#0F3846" />
+    <polygon points="182,-70 172,-40 192,-40" fill="#C8A24A" fill-opacity="0.8" />
+  </g>
+
+  <!-- Star / Light Particles -->
+  <circle cx="280" cy="140" r="2" fill="#FAF8F3" fill-opacity="0.6" />
+  <circle cx="850" cy="110" r="2" fill="#FAF8F3" fill-opacity="0.6" />
+  <circle cx="980" cy="190" r="2.5" fill="#C8A24A" fill-opacity="0.8" />
+  <circle cx="150" cy="220" r="1.5" fill="#FAF8F3" fill-opacity="0.4" />
+  <circle cx="420" cy="90" r="2" fill="#C8A24A" fill-opacity="0.7" />
+
+  <!-- Overlay Readability Scrim (Ensures text placed over the hero is 100% readable) -->
+  <rect width="1200" height="675" fill="url(#readabilityScrim)" />
+
+  <!-- Landmark Meta Watermark in Bottom-Right -->
+  <g transform="translate(1160, 635)" text-anchor="end">
+    <text font-family="'Manrope Variable', sans-serif" font-size="12" font-weight="600" fill="#94A3B8" letter-spacing="0.5">
+      Civic Landmark: <tspan fill="#C8A24A">Agatti Coral Lagoon & Turquoise Atolls</tspan>
+    </text>
+    <text y="-18" font-family="'Fraunces Variable', Georgia, serif" font-size="16" font-weight="700" fill="#FAF8F3">
+      Lakshadweep • Kavaratti
+    </text>
+  </g>
+</svg>

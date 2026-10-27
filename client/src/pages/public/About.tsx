@@ -14,7 +14,6 @@ import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
 import SectionHeader from '../../components/ui/SectionHeader';
-import Breadcrumbs from '../../components/ui/Breadcrumbs';
 import Reveal from '../../components/ui/Reveal';
 import PageHero from '../../components/ui/PageHero';
 import AnimatedCounter from '../../components/ui/AnimatedCounter';

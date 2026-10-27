@@ -16,8 +16,6 @@ import publicService, { PublicTrackData } from '../../services/public.service';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import StatusBadge from '../../components/ui/StatusBadge';
-import SectionHeader from '../../components/ui/SectionHeader';
-import Breadcrumbs from '../../components/ui/Breadcrumbs';
 import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
 import PageHero from '../../components/ui/PageHero';

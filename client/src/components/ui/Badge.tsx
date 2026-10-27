@@ -5,6 +5,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
     | 'primary'
     | 'secondary'
     | 'gold'
+    | 'navy'
     | 'success'
     | 'info'
     | 'warning'
@@ -31,6 +32,12 @@ export const Badge: React.FC<BadgeProps> = ({
       text: 'text-primary',
       border: 'border-primary/20',
       dot: 'bg-primary',
+    },
+    navy: {
+      bg: 'bg-navy',
+      text: 'text-white',
+      border: 'border-navy-muted',
+      dot: 'bg-gold',
     },
     secondary: {
       bg: 'bg-surfaceAlt',

@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useMemo, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import {
   Search,
   MapPin,
@@ -9,32 +9,59 @@ import {
   ArrowRight,
   Filter,
   SlidersHorizontal,
+  Compass,
+  Sparkles,
 } from 'lucide-react';
-import { STATES_DATA, RegionType, StateType } from '../../data/statesData';
-import SectionHeader from '../../components/ui/SectionHeader';
-import Breadcrumbs from '../../components/ui/Breadcrumbs';
+import { STATES_DATA, RegionType, StateType, StateData } from '../../data/statesData';
+import { getStateLandmark } from '../../data/landmarks';
 import Card from '../../components/ui/Card';
 import Badge from '../../components/ui/Badge';
+import Button from '../../components/ui/Button';
+import PageHero from '../../components/ui/PageHero';
 import EmptyState from '../../components/ui/EmptyState';
 import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
 import { SITE_URL } from '../../config/site';
 
-export const StatesDirectory: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedRegion, setSelectedRegion] = useState<'All' | RegionType>('All');
-  const [selectedType, setSelectedType] = useState<'All' | StateType>('All');
-  const [sortBy, setSortBy] = useState<'name' | 'resolved' | 'resolvers'>('name');
+const ZONES: { id: 'All' | RegionType; label: string; description: string }[] = [
+  { id: 'All', label: 'All India', description: 'Complete directory of 28 states and 8 union territories' },
+  { id: 'North', label: 'North Zone', description: 'Delhi NCR, Himalayan states, and northern agricultural plains' },
+  { id: 'South', label: 'South Zone', description: 'Peninsular technology hubs, coastal corridors, and urban metros' },
+  { id: 'East', label: 'East Zone', description: 'Ganges basin, eastern seaboard, and mineral-rich industrial belts' },
+  { id: 'West', label: 'West Zone', description: 'Commercial capitals, western ghats, and industrial manufacturing belts' },
+  { id: 'Central', label: 'Central Zone', description: 'Heartland river basins, central plateaus, and transit logistics hubs' },
+  { id: 'Northeast', label: 'Northeast Zone', description: 'Seven sisters and Sikkim across eastern Himalayan biodiversity zones' },
+];
 
-  const regions: ('All' | RegionType)[] = [
-    'All',
-    'North',
-    'South',
-    'East',
-    'West',
-    'Central',
-    'Northeast',
-  ];
+export const StatesDirectory: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialZone = (searchParams.get('zone') as RegionType) || 'All';
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState<'All' | RegionType>(
+    ['North', 'South', 'East', 'West', 'Central', 'Northeast'].includes(initialZone) ? initialZone : 'All'
+  );
+  const [selectedType, setSelectedType] = useState<'All' | StateType>('All');
+  const [sortBy, setSortBy] = useState<'name' | 'resolved' | 'resolvers' | 'sla'>('name');
+
+  // Sync state changes with URL query
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    if (selectedRegion === 'All') {
+      params.delete('zone');
+    } else {
+      params.set('zone', selectedRegion);
+    }
+    setSearchParams(params, { replace: true });
+  }, [selectedRegion]);
+
+  const zoneCounts = useMemo(() => {
+    const counts: Record<string, number> = { All: STATES_DATA.length };
+    STATES_DATA.forEach((s) => {
+      counts[s.region] = (counts[s.region] || 0) + 1;
+    });
+    return counts;
+  }, []);
 
   const types: ('All' | StateType)[] = ['All', 'State', 'Union Territory'];
 
@@ -53,6 +80,9 @@ export const StatesDirectory: React.FC = () => {
       if (sortBy === 'resolvers') {
         return b.stats.activeResolvers - a.stats.activeResolvers;
       }
+      if (sortBy === 'sla') {
+        return a.stats.avgResponseHours - b.stats.avgResponseHours;
+      }
       return a.name.localeCompare(b.name);
     });
   }, [searchQuery, selectedRegion, selectedType, sortBy]);
@@ -67,11 +97,13 @@ export const StatesDirectory: React.FC = () => {
     [filteredStates]
   );
 
+  const isDefaultView = selectedRegion === 'All' && !searchQuery.trim() && selectedType === 'All' && sortBy === 'name';
+
   return (
     <div className="min-h-screen bg-canvas">
       <SEO
         title="Indian States & Union Territories Civic Directory"
-        description="Explore civic resolution metrics, verified municipal contractor coverage, and infrastructure priorities across all 36 Indian states and union territories."
+        description="Explore civic resolution metrics, landmark visual banners, verified municipal contractor coverage, and infrastructure priorities across all 36 Indian states and union territories."
         keywords={[
           'Indian states civic directory',
           'municipal coverage India',
@@ -103,7 +135,7 @@ export const StatesDirectory: React.FC = () => {
             '@type': 'CollectionPage',
             name: 'Indian States & Union Territories Civic Directory',
             description:
-              'Browse civic hazard resolution metrics and active municipal resolver networks across 36 Indian states and UTs.',
+              'Browse civic hazard resolution metrics, state landmark visual banners, and active municipal resolver networks across 36 Indian states and UTs.',
             url: `${SITE_URL}/states`,
           },
         ]}
@@ -117,9 +149,9 @@ export const StatesDirectory: React.FC = () => {
         eyebrow="Nationwide Civic Infrastructure"
         eyebrowIcon={<MapPin className="w-3.5 h-3.5" />}
         title="Monitor Municipal Health Across 36 Indian Regions"
-        description="Access certified resolver networks, localized civic priorities, and audited photographic proof in all 28 states and 8 union territories under standardized Schedule of Rates (SOR)."
+        description="Access certified resolver networks, localized civic priorities, landmark photographic banners, and audited proof in all 28 states and 8 union territories under standardized Schedule of Rates (SOR)."
         primaryAction={
-          <a href="#directory-filters">
+          <a href="#zone-switcher">
             <Button variant="gold" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
               Filter by Zone
             </Button>
@@ -155,25 +187,68 @@ export const StatesDirectory: React.FC = () => {
         }
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12" id="directory-filters">
+      {/* Sticky Zonal Navigation Switcher */}
+      <nav aria-label="Zonal Navigation Switcher" className="sticky top-16 z-30 bg-surface/95 backdrop-blur-md border-b border-border shadow-xs" id="zone-switcher">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+              <span className="text-xs font-semibold text-muted uppercase tracking-wider mr-2 hidden sm:flex items-center gap-1 shrink-0">
+                <Compass className="w-3.5 h-3.5 text-primary" />
+                <span>Zone:</span>
+              </span>
+              {ZONES.map((zone) => {
+                const count = zoneCounts[zone.id] || 0;
+                const isActive = selectedRegion === zone.id;
+                return (
+                  <button
+                    key={zone.id}
+                    type="button"
+                    onClick={() => setSelectedRegion(zone.id)}
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-150 select-none shrink-0 ${
+                      isActive
+                        ? 'bg-navy text-gold shadow-xs ring-1 ring-gold/40'
+                        : 'bg-canvas text-secondaryText hover:text-ink hover:bg-slate-200'
+                    }`}
+                  >
+                    <span>{zone.label}</span>
+                    <span
+                      className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono tabular-nums ${
+                        isActive ? 'bg-gold/20 text-gold' : 'bg-slate-200/80 text-muted'
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
 
+            <div className="hidden lg:flex items-center text-xs text-muted tabular-nums shrink-0">
+              <span className="font-semibold text-ink">{filteredStates.length}</span>
+              <span className="ml-1">of 36 Regions Shown</span>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Quick Highlights Bar */}
-        <Reveal delay={0.1}>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-card bg-white border border-border shadow-subtle mb-8">
+        <Reveal delay={0.05}>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-card bg-surface border border-border shadow-subtle mb-8">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-lavender text-primary flex items-center justify-center shrink-0">
                 <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-xs text-muted">Total Monitored</p>
+                <p className="text-xs text-muted">Regions Active</p>
                 <p className="font-heading font-bold text-ink text-base sm:text-lg tabular-nums">
-                  {filteredStates.length} / 36 Regions
+                  {filteredStates.length} / 36 Pan-India
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
               <div>
@@ -197,13 +272,13 @@ export const StatesDirectory: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gold/10 text-gold flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-gold/10 text-amber-800 flex items-center justify-center shrink-0">
                 <Clock className="w-5 h-5" />
               </div>
               <div>
                 <p className="text-xs text-muted">Response Guarantee</p>
                 <p className="font-heading font-bold text-ink text-base sm:text-lg tabular-nums">
-                  24-48h SLA
+                  24-48h Escrow SLA
                 </p>
               </div>
             </div>
@@ -211,7 +286,7 @@ export const StatesDirectory: React.FC = () => {
         </Reveal>
 
         {/* Filters and Search Bar */}
-        <div className="bg-white p-5 rounded-card border border-border shadow-subtle mb-8 space-y-4">
+        <div className="bg-surface p-5 rounded-card border border-border shadow-subtle mb-8 space-y-4">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             {/* Search Input */}
             <div className="relative flex-1 max-w-lg">
@@ -220,14 +295,14 @@ export const StatesDirectory: React.FC = () => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search state name or capital (e.g. Bengaluru, Assam, Delhi)..."
-                className="w-full pl-10 pr-4 py-2 text-sm rounded-lg border border-border focus:outline-none focus-visible:ring-2 focus-visible:ring-primary bg-canvas/40"
+                placeholder="Search state name, capital, or landmark (e.g. Bengaluru, Assam, Taj)..."
+                className="w-full pl-10 pr-4 py-2.5 text-sm rounded-lg border border-border focus:outline-none focus-visible:ring-2 focus-visible:ring-primary bg-canvas/40"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted hover:text-ink"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted hover:text-ink font-semibold"
                 >
                   Clear
                 </button>
@@ -244,42 +319,23 @@ export const StatesDirectory: React.FC = () => {
                 id="sort-states"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="text-xs font-semibold px-3 py-2 rounded-lg border border-border bg-white text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
+                className="text-xs font-semibold px-3 py-2 rounded-lg border border-border bg-surface text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
               >
                 <option value="name">Alphabetical (A - Z)</option>
                 <option value="resolved">Most Hazards Resolved</option>
                 <option value="resolvers">Most Active Resolvers</option>
+                <option value="sla">Fastest Response SLA</option>
               </select>
             </div>
           </div>
 
-          {/* Region & Type Filter Tabs */}
-          <div className="pt-3 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-            {/* Region Tabs */}
-            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
-              <span className="text-muted font-medium mr-1 flex items-center gap-1 shrink-0">
+          {/* Type Filter Buttons */}
+          <div className="pt-3 border-t border-border flex items-center justify-between gap-3 text-xs flex-wrap">
+            <div className="flex items-center gap-2">
+              <span className="text-muted font-medium flex items-center gap-1">
                 <Filter className="w-3.5 h-3.5" />
-                <span>Region:</span>
+                <span>Jurisdiction Type:</span>
               </span>
-              {regions.map((region) => (
-                <button
-                  key={region}
-                  type="button"
-                  onClick={() => setSelectedRegion(region)}
-                  className={`px-3 py-1 rounded-full text-xs font-medium transition-colors select-none shrink-0 ${
-                    selectedRegion === region
-                      ? 'bg-primary text-white font-semibold'
-                      : 'bg-canvas text-secondaryText hover:text-ink hover:bg-slate-200'
-                  }`}
-                >
-                  {region}
-                </button>
-              ))}
-            </div>
-
-            {/* Type Tabs */}
-            <div className="flex items-center gap-1.5 shrink-0">
-              <span className="text-muted font-medium mr-1">Type:</span>
               {types.map((t) => (
                 <button
                   key={t}
@@ -287,14 +343,29 @@ export const StatesDirectory: React.FC = () => {
                   onClick={() => setSelectedType(t)}
                   className={`px-3 py-1 rounded-full text-xs font-medium transition-colors select-none ${
                     selectedType === t
-                      ? 'bg-indigo text-white font-semibold'
+                      ? 'bg-navy text-white font-semibold shadow-xs'
                       : 'bg-canvas text-secondaryText hover:text-ink hover:bg-slate-200'
                   }`}
                 >
-                  {t === 'All' ? 'All Types' : t === 'State' ? 'States' : 'UTs'}
+                  {t === 'All' ? 'All (36)' : t === 'State' ? 'States (28)' : 'Union Territories (8)'}
                 </button>
               ))}
             </div>
+
+            {(selectedRegion !== 'All' || selectedType !== 'All' || searchQuery) && (
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedRegion('All');
+                  setSelectedType('All');
+                  setSearchQuery('');
+                  setSortBy('name');
+                }}
+                className="text-primary hover:underline text-xs font-semibold"
+              >
+                Reset all filters
+              </button>
+            )}
           </div>
         </div>
 
@@ -311,104 +382,202 @@ export const StatesDirectory: React.FC = () => {
                   setSelectedRegion('All');
                   setSelectedType('All');
                 }}
-                className="px-4 py-2 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary-hover transition-colors"
+                className="px-4 py-2 rounded-lg bg-navy text-gold text-xs font-semibold hover:bg-navy-muted transition-colors"
               >
                 Reset Filters
               </button>
             }
           />
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredStates.map((state, idx) => (
-              <Reveal key={state.slug} delay={(idx % 6) * 0.05}>
-                <Link to={`/states/${state.slug}`} className="block h-full group">
-                  <Card
-                    isInteractive
-                    variant="base"
-                    className="h-full flex flex-col justify-between group-hover:border-primary/40 group-hover:shadow-cardHover transition-all duration-200 bg-white"
-                  >
+        ) : isDefaultView ? (
+          /* Zonal Grouped Layout when viewing All with no search filters */
+          <div className="space-y-12">
+            {ZONES.filter((z) => z.id !== 'All').map((zone) => {
+              const zoneStates = STATES_DATA.filter((s) => s.region === zone.id);
+              if (zoneStates.length === 0) return null;
+
+              return (
+                <section key={zone.id} className="scroll-mt-32" id={`zone-${zone.id.toLowerCase()}`}>
+                  {/* Zonal Section Header */}
+                  <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6 pb-3 border-b border-border">
                     <div>
-                      {/* Card Header with Badges */}
-                      <div className="flex items-start justify-between gap-2 mb-3">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <Badge
-                            variant={state.type === 'Union Territory' ? 'gold' : 'secondary'}
-                            size="sm"
-                          >
-                            {state.type}
-                          </Badge>
-                          <span className="text-[11px] text-muted font-medium bg-canvas px-2 py-0.5 rounded border border-border">
-                            {state.region} Region
-                          </span>
-                        </div>
-                        <span className="text-xs text-muted tabular-nums font-medium">
-                          {state.districtsCount} Districts
+                      <div className="flex items-center gap-2 mb-1">
+                        <Badge variant="navy" size="sm">
+                          {zone.label}
+                        </Badge>
+                        <span className="text-xs font-mono text-muted tabular-nums">
+                          {zoneStates.length} Jurisdictions
                         </span>
                       </div>
-
-                      {/* State Title & Capital */}
-                      <h3 className="font-heading font-semibold text-xl text-ink group-hover:text-primary transition-colors mb-1">
-                        {state.name}
-                      </h3>
-                      <p className="text-xs text-muted flex items-center gap-1 mb-3">
-                        <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
-                        <span>Capital: <strong className="text-secondaryText font-medium">{state.capital}</strong></span>
+                      <h2 className="text-2xl font-heading font-bold text-ink">
+                        {zone.label} Regional Network
+                      </h2>
+                      <p className="text-xs text-secondaryText mt-0.5 max-w-2xl">
+                        {zone.description}
                       </p>
-
-                      {/* Short Blurb */}
-                      <p className="text-xs text-secondaryText leading-relaxed mb-4 line-clamp-2">
-                        {state.heroBlurb}
-                      </p>
-
-                      {/* Key Priority Pills */}
-                      <div className="flex flex-wrap gap-1.5 mb-4">
-                        {state.civicPriorities.slice(0, 2).map((p) => (
-                          <span
-                            key={p.title}
-                            className="text-[10px] px-2 py-0.5 rounded-md bg-canvas text-slate-700 border border-slate-200 font-medium truncate max-w-[200px]"
-                          >
-                            {p.title}
-                          </span>
-                        ))}
-                      </div>
                     </div>
 
-                    {/* Footer Stats & Navigation Link */}
-                    <div>
-                      <div className="pt-3 border-t border-border grid grid-cols-3 gap-2 text-center text-xs mb-3">
-                        <div>
-                          <span className="block font-heading font-bold text-ink tabular-nums">
-                            {state.stats.resolvedIssues.toLocaleString('en-IN')}
-                          </span>
-                          <span className="text-[10px] text-muted">Resolved</span>
-                        </div>
-                        <div>
-                          <span className="block font-heading font-bold text-ink tabular-nums">
-                            {state.stats.activeResolvers}
-                          </span>
-                          <span className="text-[10px] text-muted">Resolvers</span>
-                        </div>
-                        <div>
-                          <span className="block font-heading font-bold text-emerald-600 tabular-nums">
-                            {state.stats.avgResponseHours}h
-                          </span>
-                          <span className="text-[10px] text-muted">Avg SLA</span>
-                        </div>
-                      </div>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedRegion(zone.id)}
+                      className="text-xs text-primary hover:text-primary-hover font-semibold flex items-center gap-1 shrink-0"
+                    >
+                      <span>Focus on {zone.label}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
 
-                      <div className="w-full py-2 px-3 rounded-lg bg-canvas group-hover:bg-lavender/60 text-primary font-semibold text-xs flex items-center justify-between transition-colors">
-                        <span>View State Infrastructure</span>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
-                  </Card>
-                </Link>
-              </Reveal>
-            ))}
+                  {/* Zonal Cards Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {zoneStates.map((state, idx) => (
+                      <StateCard key={state.slug} state={state} idx={idx} />
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
+          </div>
+        ) : (
+          /* Filtered or Sorted Grid */
+          <div>
+            <div className="flex items-center justify-between mb-6">
+              <p className="text-xs font-medium text-secondaryText">
+                Showing <strong className="text-ink font-semibold">{filteredStates.length}</strong> regions
+                {selectedRegion !== 'All' && <span> in <strong>{selectedRegion} Zone</strong></span>}
+                {selectedType !== 'All' && <span> ({selectedType}s)</span>}
+                {searchQuery && <span> matching &ldquo;{searchQuery}&rdquo;</span>}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredStates.map((state, idx) => (
+                <StateCard key={state.slug} state={state} idx={idx} />
+              ))}
+            </div>
           </div>
         )}
       </div>
     </div>
+  );
+};
+
+interface StateCardProps {
+  state: StateData;
+  idx: number;
+}
+
+const StateCard: React.FC<StateCardProps> = ({ state, idx }) => {
+  const landmarkInfo = getStateLandmark(state.slug);
+
+  return (
+    <Reveal delay={(idx % 6) * 0.04}>
+      <Link to={`/states/${state.slug}`} className="block h-full group">
+        <Card
+          isInteractive
+          variant="base"
+          className="h-full flex flex-col justify-between overflow-hidden group-hover:border-primary/40 group-hover:shadow-cardHover transition-all duration-200 bg-surface p-0 border border-border"
+        >
+          <div>
+            {/* 16:10 Landmark Visual Banner */}
+            <div className="relative aspect-[16/10] w-full overflow-hidden bg-navy">
+              <img
+                src={landmarkInfo.bannerUrl}
+                alt={`${state.name} - ${landmarkInfo.landmark}`}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+
+              {/* Scrim Gradient for Readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/30 pointer-events-none" />
+
+              {/* Floating Badges */}
+              <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10">
+                <Badge
+                  variant={state.type === 'Union Territory' ? 'gold' : 'navy'}
+                  size="sm"
+                  className="shadow-sm backdrop-blur-xs"
+                >
+                  {state.type}
+                </Badge>
+                <span className="text-[11px] font-mono font-medium text-white/90 bg-black/40 backdrop-blur-xs px-2 py-0.5 rounded-full border border-white/20">
+                  {state.region} Zone
+                </span>
+              </div>
+
+              {/* Landmark Caption Badge */}
+              <div className="absolute bottom-2.5 left-3 right-3 z-10">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-sm border border-white/20 text-white text-[11px]">
+                  <Sparkles className="w-3 h-3 text-gold shrink-0" />
+                  <span className="truncate font-medium">{landmarkInfo.landmark}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Card Content Body */}
+            <div className="p-5">
+              <div className="flex items-start justify-between gap-2 mb-1.5">
+                <h3 className="font-heading font-bold text-xl text-ink group-hover:text-primary transition-colors">
+                  {state.name}
+                </h3>
+                <span className="text-xs text-muted tabular-nums font-mono font-medium shrink-0 pt-0.5">
+                  {state.districtsCount} Dist.
+                </span>
+              </div>
+
+              <p className="text-xs text-muted flex items-center gap-1 mb-3">
+                <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
+                <span>Capital: <strong className="text-secondaryText font-medium">{state.capital}</strong></span>
+              </p>
+
+              {/* Short Blurb */}
+              <p className="text-xs text-secondaryText leading-relaxed mb-4 line-clamp-2">
+                {state.heroBlurb}
+              </p>
+
+              {/* Priority Tags */}
+              <div className="flex flex-wrap gap-1.5 mb-2">
+                {state.civicPriorities.slice(0, 2).map((p) => (
+                  <span
+                    key={p.title}
+                    className="text-[10px] px-2 py-0.5 rounded-md bg-canvas text-secondaryText border border-border font-medium truncate max-w-[200px]"
+                  >
+                    {p.title}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Card Footer: 3 Key Metrics & Action Button */}
+          <div className="p-5 pt-0">
+            <div className="pt-3 border-t border-border grid grid-cols-3 gap-2 text-center text-xs mb-3">
+              <div>
+                <span className="block font-heading font-bold text-ink tabular-nums">
+                  {state.stats.resolvedIssues.toLocaleString('en-IN')}
+                </span>
+                <span className="text-[10px] text-muted">Resolved</span>
+              </div>
+              <div>
+                <span className="block font-heading font-bold text-ink tabular-nums">
+                  {state.stats.activeResolvers}
+                </span>
+                <span className="text-[10px] text-muted">Resolvers</span>
+              </div>
+              <div>
+                <span className="block font-heading font-bold text-emerald-700 tabular-nums">
+                  {state.stats.avgResponseHours}h
+                </span>
+                <span className="text-[10px] text-muted">Avg SLA</span>
+              </div>
+            </div>
+
+            <div className="w-full py-2.5 px-3 rounded-lg bg-canvas group-hover:bg-lavender/60 text-primary font-semibold text-xs flex items-center justify-between transition-colors">
+              <span>View State Infrastructure</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+        </Card>
+      </Link>
+    </Reveal>
   );
 };
 
