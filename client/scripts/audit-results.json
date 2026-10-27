@@ -1,0 +1,3678 @@
+{
+  "hexColors": {
+    "#141838": [
+      "client/src/components/auth/AuthLayout.tsx:75",
+      "client/src/pages/public/About.tsx:284",
+      "client/src/pages/public/Home.tsx:182",
+      "client/src/pages/resolver/Dashboard.tsx:59"
+    ],
+    "#e2e8f0": [
+      "client/src/components/chatbot/ChatLocationPicker.tsx:44",
+      "client/src/components/chatbot/ChatLocationPicker.tsx:46",
+      "client/src/components/chatbot/ChatLocationPicker.tsx:58",
+      "client/src/components/chatbot/ChatLocationPicker.tsx:68",
+      "client/src/components/chatbot/ChatLocationPicker.tsx:102",
+      "client/src/components/chatbot/ChatWindow.tsx:150",
+      "client/src/components/chatbot/ChatWindow.tsx:259",
+      "client/src/components/chatbot/ChatWindow.tsx:271",
+      "client/src/components/chatbot/ChatWindow.tsx:311",
+      "client/src/components/chatbot/MessageBubble.tsx:82",
+      "client/src/components/ImageUploader.tsx:118",
+      "client/src/components/IssueTimeline.tsx:68",
+      "client/src/components/IssueTimeline.tsx:86",
+      "client/src/components/IssueTimeline.tsx:115",
+      "client/src/components/MapPicker.tsx:122",
+      "client/src/components/MapPicker.tsx:125",
+      "client/src/components/MockCheckout.tsx:93",
+      "client/src/components/MockCheckout.tsx:120",
+      "client/src/components/MockCheckout.tsx:161",
+      "client/src/components/MockCheckout.tsx:180",
+      "client/src/components/ResolverPicker.tsx:51",
+      "client/src/components/ResolverPicker.tsx:87",
+      "client/src/components/ResolverPicker.tsx:104",
+      "client/src/components/ResolverPicker.tsx:132",
+      "client/src/components/ResolverPicker.tsx:156",
+      "client/src/components/ui/ErrorBoundary.tsx:26",
+      "client/src/components/ui/Pagination.tsx:41",
+      "client/src/components/ui/Pagination.tsx:55",
+      "client/src/pages/admin/IssueDetails.tsx:239",
+      "client/src/pages/user/Checkout.tsx:154",
+      "client/src/pages/user/Checkout.tsx:167",
+      "client/src/pages/user/Checkout.tsx:254",
+      "client/src/pages/user/Checkout.tsx:293",
+      "client/src/pages/user/Payments.tsx:144",
+      "client/src/pages/user/Payments.tsx:176",
+      "client/src/pages/user/Payments.tsx:183",
+      "client/src/pages/user/Payments.tsx:223",
+      "client/src/pages/user/Payments.tsx:233",
+      "client/src/pages/user/Payments.tsx:292",
+      "client/src/pages/user/Payments.tsx:331",
+      "client/src/pages/user/Payments.tsx:341",
+      "client/src/pages/user/Profile.tsx:231",
+      "client/src/pages/user/Profile.tsx:261",
+      "client/src/pages/user/Profile.tsx:295"
+    ],
+    "#f8f7fc": [
+      "client/src/components/chatbot/ChatLocationPicker.tsx:46",
+      "client/src/components/chatbot/ChatLocationPicker.tsx:68",
+      "client/src/components/chatbot/ChatLocationPicker.tsx:102",
+      "client/src/components/chatbot/ChatWindow.tsx:195",
+      "client/src/components/chatbot/ChatWindow.tsx:311",
+      "client/src/components/ImageUploader.tsx:118",
+      "client/src/components/IssueTimeline.tsx:115",
+      "client/src/components/MockCheckout.tsx:120",
+      "client/src/components/ResolverPicker.tsx:51",
+      "client/src/components/ui/ErrorBoundary.tsx:25",
+      "client/src/components/ui/Pagination.tsx:41",
+      "client/src/components/ui/Pagination.tsx:55",
+      "client/src/layouts/PublicLayout.tsx:9",
+      "client/src/pages/user/Checkout.tsx:154",
+      "client/src/pages/user/Payments.tsx:151",
+      "client/src/pages/user/Payments.tsx:164",
+      "client/src/pages/user/Payments.tsx:235",
+      "client/src/pages/user/Payments.tsx:343",
+      "client/src/pages/user/Profile.tsx:261",
+      "client/src/router/AppRouter.tsx:280"
+    ],
+    "#ede9fe": [
+      "client/src/components/chatbot/ChatLocationPicker.tsx:48",
+      "client/src/components/chatbot/ChatWindow.tsx:235",
+      "client/src/components/chatbot/ChatWindow.tsx:286",
+      "client/src/components/chatbot/ChatWindow.tsx:296",
+      "client/src/components/chatbot/MessageBubble.tsx:72",
+      "client/src/components/chatbot/QuickReplies.tsx:30",
+      "client/src/components/ImageUploader.tsx:117",
+      "client/src/components/ImageUploader.tsx:118",
+      "client/src/components/ImageUploader.tsx:151",
+      "client/src/components/IssueTimeline.tsx:50",
+      "client/src/components/IssueTimeline.tsx:78",
+      "client/src/components/MapPicker.tsx:73",
+      "client/src/components/MockCheckout.tsx:104",
+      "client/src/components/MockCheckout.tsx:111",
+      "client/src/components/MockCheckout.tsx:153",
+      "client/src/components/ResolverPicker.tsx:52",
+      "client/src/components/ResolverPicker.tsx:86",
+      "client/src/components/ResolverPicker.tsx:91",
+      "client/src/components/ResolverPicker.tsx:150",
+      "client/src/components/ui/ErrorBoundary.tsx:31",
+      "client/src/pages/shared/Notifications.tsx:153",
+      "client/src/pages/shared/Notifications.tsx:267",
+      "client/src/pages/shared/Notifications.tsx:267",
+      "client/src/pages/user/Checkout.tsx:244",
+      "client/src/pages/user/Checkout.tsx:279",
+      "client/src/pages/user/Payments.tsx:150",
+      "client/src/pages/user/Payments.tsx:163",
+      "client/src/pages/user/Payments.tsx:360",
+      "client/src/pages/user/Profile.tsx:170",
+      "client/src/pages/user/Profile.tsx:199"
+    ],
+    "#7c3aed": [
+      "client/src/components/chatbot/ChatLocationPicker.tsx:48",
+      "client/src/components/chatbot/ChatWidget.tsx:33",
+      "client/src/components/chatbot/ChatWidget.tsx:33",
+      "client/src/components/chatbot/ChatWidget.tsx:33",
+      "client/src/components/chatbot/ChatWidget.tsx:44",
+      "client/src/components/chatbot/ChatWindow.tsx:153",
+      "client/src/components/chatbot/ChatWindow.tsx:223",
+      "client/src/components/chatbot/ChatWindow.tsx:235",
+      "client/src/components/chatbot/ChatWindow.tsx:239",
+      "client/src/components/chatbot/ChatWindow.tsx:240",
+      "client/src/components/chatbot/ChatWindow.tsx:241",
+      "client/src/components/chatbot/ChatWindow.tsx:286",
+      "client/src/components/chatbot/ChatWindow.tsx:296",
+      "client/src/components/chatbot/ChatWindow.tsx:311",
+      "client/src/components/chatbot/MessageBubble.tsx:40",
+      "client/src/components/chatbot/MessageBubble.tsx:72",
+      "client/src/components/chatbot/MessageBubble.tsx:81",
+      "client/src/components/chatbot/MessageBubble.tsx:81",
+      "client/src/components/chatbot/MessageBubble.tsx:96",
+      "client/src/components/chatbot/QuickReplies.tsx:29",
+      "client/src/components/chatbot/QuickReplies.tsx:29",
+      "client/src/components/chatbot/QuickReplies.tsx:29",
+      "client/src/components/ImageUploader.tsx:117",
+      "client/src/components/ImageUploader.tsx:131",
+      "client/src/components/ImageUploader.tsx:151",
+      "client/src/components/ImageUploader.tsx:156",
+      "client/src/components/InvoiceButton.tsx:52",
+      "client/src/components/InvoiceButton.tsx:54",
+      "client/src/components/IssueTimeline.tsx:22",
+      "client/src/components/IssueTimeline.tsx:41",
+      "client/src/components/IssueTimeline.tsx:50",
+      "client/src/components/IssueTimeline.tsx:78",
+      "client/src/components/IssueTimeline.tsx:110",
+      "client/src/components/MapPicker.tsx:34",
+      "client/src/components/MapPicker.tsx:71",
+      "client/src/components/MapPicker.tsx:126",
+      "client/src/components/MockCheckout.tsx:97",
+      "client/src/components/MockCheckout.tsx:111",
+      "client/src/components/MockCheckout.tsx:112",
+      "client/src/components/MockCheckout.tsx:122",
+      "client/src/components/MockCheckout.tsx:153",
+      "client/src/components/MockCheckout.tsx:154",
+      "client/src/components/ProtectedRoute.tsx:23",
+      "client/src/components/ResolverPicker.tsx:42",
+      "client/src/components/ResolverPicker.tsx:52",
+      "client/src/components/ResolverPicker.tsx:86",
+      "client/src/components/ResolverPicker.tsx:91",
+      "client/src/components/ResolverPicker.tsx:125",
+      "client/src/components/ResolverPicker.tsx:133",
+      "client/src/components/ResolverPicker.tsx:150",
+      "client/src/components/ResolverPicker.tsx:175",
+      "client/src/components/ui/ErrorBoundary.tsx:31",
+      "client/src/pages/admin/FeeSettings.tsx:159",
+      "client/src/pages/shared/Notifications.tsx:153",
+      "client/src/pages/shared/Notifications.tsx:245",
+      "client/src/pages/user/Checkout.tsx:100",
+      "client/src/pages/user/Checkout.tsx:165",
+      "client/src/pages/user/Checkout.tsx:216",
+      "client/src/pages/user/Checkout.tsx:244",
+      "client/src/pages/user/Checkout.tsx:256",
+      "client/src/pages/user/Checkout.tsx:260",
+      "client/src/pages/user/Checkout.tsx:279",
+      "client/src/pages/user/Payments.tsx:150",
+      "client/src/pages/user/Payments.tsx:163",
+      "client/src/pages/user/Payments.tsx:183",
+      "client/src/pages/user/Payments.tsx:206",
+      "client/src/pages/user/Payments.tsx:242",
+      "client/src/pages/user/Payments.tsx:314",
+      "client/src/pages/user/Payments.tsx:344",
+      "client/src/pages/user/Payments.tsx:350",
+      "client/src/pages/user/Payments.tsx:360",
+      "client/src/pages/user/Profile.tsx:133",
+      "client/src/pages/user/Profile.tsx:170",
+      "client/src/pages/user/Profile.tsx:178",
+      "client/src/pages/user/Profile.tsx:187",
+      "client/src/pages/user/Profile.tsx:199",
+      "client/src/pages/user/Profile.tsx:232",
+      "client/src/pages/user/Profile.tsx:284",
+      "client/src/pages/user/Profile.tsx:296"
+    ],
+    "#1e293b": [
+      "client/src/components/chatbot/ChatLocationPicker.tsx:52",
+      "client/src/components/chatbot/ChatLocationPicker.tsx:58",
+      "client/src/components/chatbot/ChatWidget.tsx:32",
+      "client/src/components/chatbot/ChatWindow.tsx:311",
+      "client/src/components/chatbot/MessageBubble.tsx:29",
+      "client/src/components/chatbot/MessageBubble.tsx:60",
+      "client/src/components/chatbot/MessageBubble.tsx:82",
+      "client/src/components/ImageUploader.tsx:144",
+      "client/src/components/ImageUploader.tsx:154",
+      "client/src/components/IssueTimeline.tsx:89",
+      "client/src/components/MockCheckout.tsx:125",
+      "client/src/components/MockCheckout.tsx:133",
+      "client/src/components/MockCheckout.tsx:156",
+      "client/src/components/MockCheckout.tsx:164",
+      "client/src/components/MockCheckout.tsx:229",
+      "client/src/components/ProtectedRoute.tsx:40",
+      "client/src/components/ProtectedRoute.tsx:44",
+      "client/src/components/ResolverPicker.tsx:43",
+      "client/src/components/ResolverPicker.tsx:55",
+      "client/src/components/ResolverPicker.tsx:67",
+      "client/src/components/ResolverPicker.tsx:122",
+      "client/src/components/ResolverPicker.tsx:132",
+      "client/src/components/ui/ErrorBoundary.tsx:35",
+      "client/src/components/ui/Pagination.tsx:31",
+      "client/src/components/ui/Pagination.tsx:32",
+      "client/src/components/ui/Pagination.tsx:33",
+      "client/src/components/ui/Pagination.tsx:41",
+      "client/src/components/ui/Pagination.tsx:47",
+      "client/src/components/ui/Pagination.tsx:55",
+      "client/src/layouts/PublicLayout.tsx:9",
+      "client/src/pages/admin/IssueDetails.tsx:248",
+      "client/src/pages/shared/Notifications.tsx:156",
+      "client/src/pages/user/Checkout.tsx:112",
+      "client/src/pages/user/Checkout.tsx:142",
+      "client/src/pages/user/Checkout.tsx:157",
+      "client/src/pages/user/Checkout.tsx:249",
+      "client/src/pages/user/Checkout.tsx:275",
+      "client/src/pages/user/Payments.tsx:121",
+      "client/src/pages/user/Payments.tsx:151",
+      "client/src/pages/user/Payments.tsx:164",
+      "client/src/pages/user/Payments.tsx:183",
+      "client/src/pages/user/Payments.tsx:212",
+      "client/src/pages/user/Payments.tsx:236",
+      "client/src/pages/user/Payments.tsx:254",
+      "client/src/pages/user/Payments.tsx:294",
+      "client/src/pages/user/Payments.tsx:320",
+      "client/src/pages/user/Payments.tsx:350",
+      "client/src/pages/user/Profile.tsx:145",
+      "client/src/pages/user/Profile.tsx:196",
+      "client/src/pages/user/Profile.tsx:234",
+      "client/src/pages/user/Profile.tsx:253",
+      "client/src/pages/user/Profile.tsx:298",
+      "client/src/router/AppRouter.tsx:281"
+    ],
+    "#64748b": [
+      "client/src/components/chatbot/ChatLocationPicker.tsx:53",
+      "client/src/components/chatbot/ChatLocationPicker.tsx:58",
+      "client/src/components/chatbot/ChatLocationPicker.tsx:68",
+      "client/src/components/chatbot/ChatWindow.tsx:234",
+      "client/src/components/chatbot/ChatWindow.tsx:286",
+      "client/src/components/chatbot/ChatWindow.tsx:296",
+      "client/src/components/ImageUploader.tsx:158",
+      "client/src/components/IssueTimeline.tsx:61",
+      "client/src/components/IssueTimeline.tsx:97",
+      "client/src/components/IssueTimeline.tsx:106",
+      "client/src/components/MockCheckout.tsx:128",
+      "client/src/components/MockCheckout.tsx:132",
+      "client/src/components/MockCheckout.tsx:157",
+      "client/src/components/MockCheckout.tsx:162",
+      "client/src/components/MockCheckout.tsx:165",
+      "client/src/components/MockCheckout.tsx:172",
+      "client/src/components/MockCheckout.tsx:229",
+      "client/src/components/ProtectedRoute.tsx:24",
+      "client/src/components/ProtectedRoute.tsx:43",
+      "client/src/components/ResolverPicker.tsx:44",
+      "client/src/components/ResolverPicker.tsx:56",
+      "client/src/components/ResolverPicker.tsx:68",
+      "client/src/components/ResolverPicker.tsx:127",
+      "client/src/components/ResolverPicker.tsx:157",
+      "client/src/components/ui/ErrorBoundary.tsx:39",
+      "client/src/components/ui/Pagination.tsx:29",
+      "client/src/pages/admin/IssueDetails.tsx:249",
+      "client/src/pages/shared/Notifications.tsx:160",
+      "client/src/pages/user/Checkout.tsx:101",
+      "client/src/pages/user/Checkout.tsx:113",
+      "client/src/pages/user/Checkout.tsx:145",
+      "client/src/pages/user/Checkout.tsx:156",
+      "client/src/pages/user/Checkout.tsx:160",
+      "client/src/pages/user/Checkout.tsx:161",
+      "client/src/pages/user/Checkout.tsx:164",
+      "client/src/pages/user/Checkout.tsx:168",
+      "client/src/pages/user/Checkout.tsx:175",
+      "client/src/pages/user/Checkout.tsx:180",
+      "client/src/pages/user/Checkout.tsx:254",
+      "client/src/pages/user/Checkout.tsx:266",
+      "client/src/pages/user/Checkout.tsx:285",
+      "client/src/pages/user/Checkout.tsx:293",
+      "client/src/pages/user/Payments.tsx:124",
+      "client/src/pages/user/Payments.tsx:151",
+      "client/src/pages/user/Payments.tsx:164",
+      "client/src/pages/user/Payments.tsx:178",
+      "client/src/pages/user/Payments.tsx:205",
+      "client/src/pages/user/Payments.tsx:211",
+      "client/src/pages/user/Payments.tsx:215",
+      "client/src/pages/user/Payments.tsx:223",
+      "client/src/pages/user/Payments.tsx:247",
+      "client/src/pages/user/Payments.tsx:258",
+      "client/src/pages/user/Payments.tsx:297",
+      "client/src/pages/user/Payments.tsx:313",
+      "client/src/pages/user/Payments.tsx:319",
+      "client/src/pages/user/Payments.tsx:323",
+      "client/src/pages/user/Payments.tsx:331",
+      "client/src/pages/user/Payments.tsx:353",
+      "client/src/pages/user/Payments.tsx:355",
+      "client/src/pages/user/Payments.tsx:367",
+      "client/src/pages/user/Payments.tsx:370",
+      "client/src/pages/user/Profile.tsx:204",
+      "client/src/pages/user/Profile.tsx:237",
+      "client/src/pages/user/Profile.tsx:261",
+      "client/src/pages/user/Profile.tsx:267",
+      "client/src/pages/user/Profile.tsx:277",
+      "client/src/pages/user/Profile.tsx:301",
+      "client/src/router/AppRouter.tsx:282"
+    ],
+    "#475569": [
+      "client/src/components/chatbot/ChatLocationPicker.tsx:70",
+      "client/src/components/chatbot/ChatLocationPicker.tsx:73",
+      "client/src/components/ImageUploader.tsx:143",
+      "client/src/components/IssueTimeline.tsx:108",
+      "client/src/components/IssueTimeline.tsx:115",
+      "client/src/components/MapPicker.tsx:125",
+      "client/src/components/MockCheckout.tsx:149",
+      "client/src/components/ResolverPicker.tsx:128",
+      "client/src/pages/user/Checkout.tsx:181",
+      "client/src/pages/user/Checkout.tsx:273",
+      "client/src/pages/user/Payments.tsx:179",
+      "client/src/pages/user/Payments.tsx:251",
+      "client/src/pages/user/Profile.tsx:146",
+      "client/src/pages/user/Profile.tsx:205"
+    ],
+    "#334155": [
+      "client/src/components/chatbot/ChatWidget.tsx:32"
+    ],
+    "#6d28d9": [
+      "client/src/components/chatbot/ChatWidget.tsx:33",
+      "client/src/components/chatbot/ChatWidget.tsx:33",
+      "client/src/components/chatbot/ChatWindow.tsx:223",
+      "client/src/components/chatbot/QuickReplies.tsx:29",
+      "client/src/components/chatbot/QuickReplies.tsx:30",
+      "client/src/pages/user/Profile.tsx:187"
+    ],
+    "#5b21b6": [
+      "client/src/components/chatbot/ChatWidget.tsx:33"
+    ],
+    "#a78bfa": [
+      "client/src/components/chatbot/ChatWidget.tsx:43",
+      "client/src/components/ImageUploader.tsx:118",
+      "client/src/components/MockCheckout.tsx:111",
+      "client/src/components/ResolverPicker.tsx:87"
+    ],
+    "#171a3b": [
+      "client/src/components/chatbot/ChatWindow.tsx:153",
+      "client/src/components/chatbot/ChatWindow.tsx:159",
+      "client/src/components/ImageUploader.tsx:137",
+      "client/src/components/IssueTimeline.tsx:48",
+      "client/src/components/MockCheckout.tsx:95"
+    ],
+    "#312e81": [
+      "client/src/components/chatbot/ChatWindow.tsx:153",
+      "client/src/components/IssueTimeline.tsx:28",
+      "client/src/components/ResolverPicker.tsx:107"
+    ],
+    "#ddd6fe": [
+      "client/src/components/chatbot/MessageBubble.tsx:72",
+      "client/src/components/chatbot/QuickReplies.tsx:30",
+      "client/src/components/chatbot/QuickReplies.tsx:30",
+      "client/src/components/IssueTimeline.tsx:50",
+      "client/src/components/ResolverPicker.tsx:91",
+      "client/src/components/ResolverPicker.tsx:150",
+      "client/src/components/ui/ErrorBoundary.tsx:31",
+      "client/src/pages/user/Checkout.tsx:244",
+      "client/src/pages/user/Checkout.tsx:279",
+      "client/src/pages/user/Payments.tsx:360"
+    ],
+    "#94a3b8": [
+      "client/src/components/chatbot/MessageBubble.tsx:89"
+    ],
+    "#c4b5fd": [
+      "client/src/components/chatbot/QuickReplies.tsx:30"
+    ],
+    "#cbd5e1": [
+      "client/src/components/IssueTimeline.tsx:79",
+      "client/src/components/ui/Pagination.tsx:41",
+      "client/src/components/ui/Pagination.tsx:55"
+    ],
+    "#ffffff": [
+      "client/src/components/MapPicker.tsx:37",
+      "client/src/components/MapPicker.tsx:43",
+      "client/src/pages/dev/Styleguide.tsx:13",
+      "client/src/pages/dev/Styleguide.tsx:14",
+      "client/src/pages/dev/Styleguide.tsx:16",
+      "client/src/pages/dev/Styleguide.tsx:18",
+      "client/src/pages/dev/Styleguide.tsx:20",
+      "client/src/pages/dev/Styleguide.tsx:21",
+      "client/src/pages/dev/Styleguide.tsx:23",
+      "client/src/pages/dev/Styleguide.tsx:24",
+      "client/src/pages/dev/Styleguide.tsx:25",
+      "client/src/pages/dev/Styleguide.tsx:26",
+      "client/src/pages/dev/Styleguide.tsx:92",
+      "client/src/pages/dev/Styleguide.tsx:95",
+      "client/src/pages/dev/Styleguide.tsx:97",
+      "client/src/pages/dev/Styleguide.tsx:152",
+      "client/src/pages/dev/Styleguide.tsx:155",
+      "client/src/pages/dev/Styleguide.tsx:157",
+      "client/src/pages/dev/Styleguide.tsx:212",
+      "client/src/pages/dev/Styleguide.tsx:215",
+      "client/src/pages/dev/Styleguide.tsx:218"
+    ],
+    "#fee2e2": [
+      "client/src/components/ProtectedRoute.tsx:37"
+    ],
+    "#991b1b": [
+      "client/src/components/ProtectedRoute.tsx:37",
+      "client/src/components/ui/Button.tsx:47"
+    ],
+    "#5b4fe1": [
+      "client/src/components/public/BeforeAfterSlider.tsx:82",
+      "client/src/components/public/BeforeAfterSlider.tsx:82",
+      "client/src/components/public/BeforeAfterSlider.tsx:82",
+      "client/src/components/public/BeforeAfterSlider.tsx:83",
+      "client/src/components/public/FaqSection.tsx:89",
+      "client/src/components/public/FaqSection.tsx:89",
+      "client/src/components/public/FaqSection.tsx:90",
+      "client/src/components/public/FaqSection.tsx:92",
+      "client/src/components/public/Hero.tsx:319",
+      "client/src/components/public/Hero.tsx:319",
+      "client/src/components/public/Hero.tsx:343",
+      "client/src/components/public/Hero.tsx:470",
+      "client/src/components/public/HowItWorks.tsx:24",
+      "client/src/components/public/HowItWorks.tsx:61",
+      "client/src/components/public/HowItWorks.tsx:98",
+      "client/src/components/public/HowItWorks.tsx:135",
+      "client/src/components/public/HowItWorks.tsx:187",
+      "client/src/components/public/HowItWorks.tsx:187",
+      "client/src/components/public/HowItWorks.tsx:188",
+      "client/src/components/public/HowItWorks.tsx:190",
+      "client/src/components/public/ServiceCard.tsx:23",
+      "client/src/components/public/ServiceCard.tsx:23",
+      "client/src/components/public/ServiceCard.tsx:26",
+      "client/src/components/public/ServiceCard.tsx:30",
+      "client/src/components/public/ServiceCard.tsx:30",
+      "client/src/components/public/ServiceCard.tsx:30",
+      "client/src/components/public/ServiceCard.tsx:30",
+      "client/src/components/public/ServiceCard.tsx:38",
+      "client/src/components/public/ServiceCard.tsx:50",
+      "client/src/components/public/ServiceCard.tsx:54",
+      "client/src/components/public/ServiceCard.tsx:61",
+      "client/src/components/public/ServiceCard.tsx:61",
+      "client/src/components/public/ServiceCard.tsx:61",
+      "client/src/components/public/TestimonialsTrust.tsx:70",
+      "client/src/components/public/TestimonialsTrust.tsx:70",
+      "client/src/components/public/TestimonialsTrust.tsx:73",
+      "client/src/components/public/TestimonialsTrust.tsx:90",
+      "client/src/components/public/TestimonialsTrust.tsx:101",
+      "client/src/components/public/TestimonialsTrust.tsx:126",
+      "client/src/components/public/TestimonialsTrust.tsx:126",
+      "client/src/components/public/TestimonialsTrust.tsx:127",
+      "client/src/components/public/TestimonialsTrust.tsx:127",
+      "client/src/components/public/TestimonialsTrust.tsx:136",
+      "client/src/components/public/TestimonialsTrust.tsx:136",
+      "client/src/components/public/TestimonialsTrust.tsx:146",
+      "client/src/components/public/TestimonialsTrust.tsx:146",
+      "client/src/components/ui/Button.tsx:45",
+      "client/src/components/ui/Button.tsx:45",
+      "client/src/components/ui/Button.tsx:45"
+    ],
+    "#0a1f44": [
+      "client/src/components/public/Hero.tsx:198",
+      "client/src/components/public/Hero.tsx:334",
+      "client/src/components/public/Hero.tsx:410",
+      "client/src/components/public/Hero.tsx:410",
+      "client/src/components/public/Hero.tsx:416",
+      "client/src/components/public/Hero.tsx:416",
+      "client/src/components/public/Hero.tsx:422",
+      "client/src/components/public/Hero.tsx:422",
+      "client/src/components/public/Hero.tsx:426",
+      "client/src/components/ui/Logo.tsx:27",
+      "client/src/components/ui/Logo.tsx:28",
+      "client/src/components/ui/Logo.tsx:34",
+      "client/src/pages/dev/Styleguide.tsx:13",
+      "client/src/pages/dev/Styleguide.tsx:15",
+      "client/src/pages/dev/Styleguide.tsx:77",
+      "client/src/pages/dev/Styleguide.tsx:82",
+      "client/src/pages/dev/Styleguide.tsx:93",
+      "client/src/pages/dev/Styleguide.tsx:108",
+      "client/src/pages/dev/Styleguide.tsx:116",
+      "client/src/pages/dev/Styleguide.tsx:137",
+      "client/src/pages/dev/Styleguide.tsx:140",
+      "client/src/pages/dev/Styleguide.tsx:142",
+      "client/src/pages/dev/Styleguide.tsx:168",
+      "client/src/pages/dev/Styleguide.tsx:175",
+      "client/src/pages/dev/Styleguide.tsx:196",
+      "client/src/pages/dev/Styleguide.tsx:199",
+      "client/src/pages/dev/Styleguide.tsx:202",
+      "client/src/pages/dev/Styleguide.tsx:229",
+      "client/src/pages/dev/Styleguide.tsx:232",
+      "client/src/pages/dev/Styleguide.tsx:239"
+    ],
+    "#e2c375": [
+      "client/src/components/public/Hero.tsx:450"
+    ],
+    "#f1f5f9": [
+      "client/src/components/ResolverPicker.tsx:132"
+    ],
+    "#dce7f5": [
+      "client/src/components/ui/Button.tsx:37"
+    ],
+    "#4a3fd0": [
+      "client/src/components/ui/Button.tsx:45"
+    ],
+    "#12306a": [
+      "client/src/components/ui/Logo.tsx:27",
+      "client/src/pages/dev/Styleguide.tsx:14",
+      "client/src/pages/dev/Styleguide.tsx:197",
+      "client/src/pages/dev/Styleguide.tsx:198",
+      "client/src/pages/dev/Styleguide.tsx:230",
+      "client/src/pages/dev/Styleguide.tsx:231"
+    ],
+    "#c8a24a": [
+      "client/src/components/ui/Logo.tsx:28",
+      "client/src/components/ui/Logo.tsx:39",
+      "client/src/components/ui/PageHero.tsx:174",
+      "client/src/components/ui/PageHero.tsx:174",
+      "client/src/components/ui/PageHero.tsx:206",
+      "client/src/components/ui/PageHero.tsx:206",
+      "client/src/components/ui/PageHero.tsx:241",
+      "client/src/components/ui/PageHero.tsx:241",
+      "client/src/pages/dev/Styleguide.tsx:15",
+      "client/src/pages/dev/Styleguide.tsx:79",
+      "client/src/pages/dev/Styleguide.tsx:84",
+      "client/src/pages/dev/Styleguide.tsx:94",
+      "client/src/pages/dev/Styleguide.tsx:99",
+      "client/src/pages/dev/Styleguide.tsx:110",
+      "client/src/pages/dev/Styleguide.tsx:117",
+      "client/src/pages/dev/Styleguide.tsx:138",
+      "client/src/pages/dev/Styleguide.tsx:139",
+      "client/src/pages/dev/Styleguide.tsx:144",
+      "client/src/pages/dev/Styleguide.tsx:153",
+      "client/src/pages/dev/Styleguide.tsx:154",
+      "client/src/pages/dev/Styleguide.tsx:159",
+      "client/src/pages/dev/Styleguide.tsx:169",
+      "client/src/pages/dev/Styleguide.tsx:176",
+      "client/src/pages/dev/Styleguide.tsx:200",
+      "client/src/pages/dev/Styleguide.tsx:204",
+      "client/src/pages/dev/Styleguide.tsx:216",
+      "client/src/pages/dev/Styleguide.tsx:220",
+      "client/src/pages/dev/Styleguide.tsx:233",
+      "client/src/pages/dev/Styleguide.tsx:240"
+    ],
+    "#06132b": [
+      "client/src/components/ui/Logo.tsx:34",
+      "client/src/pages/dev/Styleguide.tsx:78",
+      "client/src/pages/dev/Styleguide.tsx:109"
+    ],
+    "#faf8f3": [
+      "client/src/components/ui/Logo.tsx:42",
+      "client/src/pages/dev/Styleguide.tsx:17",
+      "client/src/pages/dev/Styleguide.tsx:80"
+    ],
+    "#0f1123": [
+      "client/src/layouts/AdminLayout.tsx:50",
+      "client/src/layouts/AdminLayout.tsx:96",
+      "client/src/layouts/AdminLayout.tsx:97"
+    ],
+    "#1e2342": [
+      "client/src/layouts/AdminLayout.tsx:50",
+      "client/src/layouts/AdminLayout.tsx:51",
+      "client/src/layouts/AdminLayout.tsx:81",
+      "client/src/layouts/AdminLayout.tsx:98",
+      "client/src/layouts/AdminLayout.tsx:131"
+    ],
+    "#1a1f3d": [
+      "client/src/layouts/AdminLayout.tsx:68",
+      "client/src/layouts/AdminLayout.tsx:122"
+    ],
+    "#8a6a1f": [
+      "client/src/pages/dev/Styleguide.tsx:16"
+    ],
+    "#101828": [
+      "client/src/pages/dev/Styleguide.tsx:17",
+      "client/src/pages/dev/Styleguide.tsx:18",
+      "client/src/pages/dev/Styleguide.tsx:19",
+      "client/src/pages/dev/Styleguide.tsx:20",
+      "client/src/pages/dev/Styleguide.tsx:22",
+      "client/src/pages/dev/Styleguide.tsx:83",
+      "client/src/pages/dev/Styleguide.tsx:143",
+      "client/src/pages/dev/Styleguide.tsx:203"
+    ],
+    "#f1eee6": [
+      "client/src/pages/dev/Styleguide.tsx:19"
+    ],
+    "#5b6577": [
+      "client/src/pages/dev/Styleguide.tsx:21"
+    ],
+    "#e7e2d6": [
+      "client/src/pages/dev/Styleguide.tsx:22"
+    ],
+    "#0e6e4c": [
+      "client/src/pages/dev/Styleguide.tsx:23"
+    ],
+    "#b54708": [
+      "client/src/pages/dev/Styleguide.tsx:24"
+    ],
+    "#b42318": [
+      "client/src/pages/dev/Styleguide.tsx:25"
+    ],
+    "#1d4ed8": [
+      "client/src/pages/dev/Styleguide.tsx:26"
+    ],
+    "#ebf1fa": [
+      "client/src/pages/dev/Styleguide.tsx:98",
+      "client/src/pages/dev/Styleguide.tsx:158",
+      "client/src/pages/dev/Styleguide.tsx:213",
+      "client/src/pages/dev/Styleguide.tsx:214",
+      "client/src/pages/dev/Styleguide.tsx:219"
+    ],
+    "#181c3f": [
+      "client/src/pages/user/UserDashboard.tsx:71"
+    ]
+  },
+  "linkButtons": [
+    {
+      "file": "client/src/components/ProtectedRoute.tsx",
+      "line": 47
+    },
+    {
+      "file": "client/src/components/ProtectedRoute.tsx",
+      "line": 50
+    },
+    {
+      "file": "client/src/components/public/FaqSection.tsx",
+      "line": 102
+    },
+    {
+      "file": "client/src/components/public/Hero.tsx",
+      "line": 372
+    },
+    {
+      "file": "client/src/components/public/Hero.tsx",
+      "line": 466
+    },
+    {
+      "file": "client/src/components/public/Hero.tsx",
+      "line": 477
+    },
+    {
+      "file": "client/src/components/public/HowItWorks.tsx",
+      "line": 201
+    },
+    {
+      "file": "client/src/components/public/HowItWorks.tsx",
+      "line": 206
+    },
+    {
+      "file": "client/src/components/public/Navbar.tsx",
+      "line": 92
+    },
+    {
+      "file": "client/src/components/public/Navbar.tsx",
+      "line": 98
+    },
+    {
+      "file": "client/src/components/public/Navbar.tsx",
+      "line": 105
+    },
+    {
+      "file": "client/src/components/public/Navbar.tsx",
+      "line": 119
+    },
+    {
+      "file": "client/src/components/ui/ErrorBoundary.tsx",
+      "line": 53
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 104
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 434
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 250
+    },
+    {
+      "file": "client/src/pages/admin/Issues.tsx",
+      "line": 322
+    },
+    {
+      "file": "client/src/pages/auth/ForgotPassword.tsx",
+      "line": 63
+    },
+    {
+      "file": "client/src/pages/auth/RegisterUser.tsx",
+      "line": 125
+    },
+    {
+      "file": "client/src/pages/auth/RegisterUser.tsx",
+      "line": 130
+    },
+    {
+      "file": "client/src/pages/auth/ResetPassword.tsx",
+      "line": 74
+    },
+    {
+      "file": "client/src/pages/auth/VerifyEmail.tsx",
+      "line": 74
+    },
+    {
+      "file": "client/src/pages/auth/VerifyEmail.tsx",
+      "line": 95
+    },
+    {
+      "file": "client/src/pages/auth/VerifyEmail.tsx",
+      "line": 100
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 82
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 300
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 306
+    },
+    {
+      "file": "client/src/pages/public/Home.tsx",
+      "line": 96
+    },
+    {
+      "file": "client/src/pages/public/Home.tsx",
+      "line": 154
+    },
+    {
+      "file": "client/src/pages/public/Home.tsx",
+      "line": 202
+    },
+    {
+      "file": "client/src/pages/public/Home.tsx",
+      "line": 213
+    },
+    {
+      "file": "client/src/pages/public/Services.tsx",
+      "line": 133
+    },
+    {
+      "file": "client/src/pages/public/Services.tsx",
+      "line": 140
+    },
+    {
+      "file": "client/src/pages/public/Services.tsx",
+      "line": 330
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 96
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 274
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 284
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 565
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 161
+    },
+    {
+      "file": "client/src/pages/public/TrackStatus.tsx",
+      "line": 425
+    },
+    {
+      "file": "client/src/pages/public/TrackStatus.tsx",
+      "line": 430
+    },
+    {
+      "file": "client/src/pages/resolver/Assignments.tsx",
+      "line": 273
+    },
+    {
+      "file": "client/src/pages/resolver/CompletedHistory.tsx",
+      "line": 179
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 95
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 263
+    },
+    {
+      "file": "client/src/pages/resolver/PendingApproval.tsx",
+      "line": 131
+    },
+    {
+      "file": "client/src/pages/resolver/PendingApproval.tsx",
+      "line": 185
+    },
+    {
+      "file": "client/src/pages/resolver/PendingApproval.tsx",
+      "line": 274
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 171
+    },
+    {
+      "file": "client/src/pages/resolver/Tasks.tsx",
+      "line": 261
+    },
+    {
+      "file": "client/src/pages/user/Checkout.tsx",
+      "line": 115
+    },
+    {
+      "file": "client/src/pages/user/Checkout.tsx",
+      "line": 121
+    },
+    {
+      "file": "client/src/pages/user/Checkout.tsx",
+      "line": 196
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 100
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 198
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 225
+    },
+    {
+      "file": "client/src/pages/user/MyIssues.tsx",
+      "line": 121
+    },
+    {
+      "file": "client/src/pages/user/MyIssues.tsx",
+      "line": 159
+    },
+    {
+      "file": "client/src/pages/user/Payments.tsx",
+      "line": 129
+    },
+    {
+      "file": "client/src/pages/user/Payments.tsx",
+      "line": 267
+    },
+    {
+      "file": "client/src/pages/user/Payments.tsx",
+      "line": 273
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 100
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 110
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 217
+    },
+    {
+      "file": "client/src/router/AppRouter.tsx",
+      "line": 283
+    }
+  ],
+  "smallText": [
+    {
+      "file": "client/src/components/auth/AuthLayout.tsx",
+      "line": 65,
+      "text": "<div className=\"mt-8 pt-6 border-t border-border flex items-center justify-between text-[11px] text-muted\">"
+    },
+    {
+      "file": "client/src/components/auth/AuthLayout.tsx",
+      "line": 109,
+      "text": "<p className=\"text-[11px] text-slate-400\">{testimonialRole}</p>"
+    },
+    {
+      "file": "client/src/components/auth/AuthLayout.tsx",
+      "line": 118,
+      "text": "<span className=\"text-[11px] text-slate-400\">Resolved</span>"
+    },
+    {
+      "file": "client/src/components/auth/AuthLayout.tsx",
+      "line": 122,
+      "text": "<span className=\"text-[11px] text-slate-400\">Photo Proof</span>"
+    },
+    {
+      "file": "client/src/components/auth/AuthLayout.tsx",
+      "line": 126,
+      "text": "<span className=\"text-[11px] text-slate-400\">Average SLA</span>"
+    },
+    {
+      "file": "client/src/components/chatbot/ChatWindow.tsx",
+      "line": 164,
+      "text": "<span className=\"text-[10px] px-1.5 py-0.2 rounded-full bg-white/15 text-white/90 font-medium\">"
+    },
+    {
+      "file": "client/src/components/chatbot/ChatWindow.tsx",
+      "line": 168,
+      "text": "<p className=\"text-[11px] text-white/70\">Municipal Issue Reporting</p>"
+    },
+    {
+      "file": "client/src/components/chatbot/MessageBubble.tsx",
+      "line": 89,
+      "text": "<span className=\"text-[10px] text-[#94A3B8] mt-1 px-1\">"
+    },
+    {
+      "file": "client/src/components/InvoiceButton.tsx",
+      "line": 60,
+      "text": "{error && <span className=\"text-[10px] text-rose-600 mt-1\">{error}</span>}"
+    },
+    {
+      "file": "client/src/components/IssueTimeline.tsx",
+      "line": 92,
+      "text": "<span className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${getRoleBadgeStyle(event.actorRole)}`}>"
+    },
+    {
+      "file": "client/src/components/IssueTimeline.tsx",
+      "line": 97,
+      "text": "<time className=\"text-[11px] text-[#64748B]\">"
+    },
+    {
+      "file": "client/src/components/IssueTimeline.tsx",
+      "line": 106,
+      "text": "<div className=\"text-[11px] text-[#64748B] flex items-center gap-1.5\">"
+    },
+    {
+      "file": "client/src/components/MapPicker.tsx",
+      "line": 125,
+      "text": "<div className=\"absolute bottom-2.5 left-2.5 z-[1000] bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-[#E2E8F0] text-[11px] font-medium text-[#475569] shadow-sm flex items-center gap-1.5\">"
+    },
+    {
+      "file": "client/src/components/MockCheckout.tsx",
+      "line": 157,
+      "text": "<div className=\"text-[11px] text-[#64748B]\">•••• •••• •••• 4242 (Auto-Authorized)</div>"
+    },
+    {
+      "file": "client/src/components/MockCheckout.tsx",
+      "line": 165,
+      "text": "<div className=\"text-[11px] text-[#64748B]\">Instant Virtual Mandate</div>"
+    },
+    {
+      "file": "client/src/components/MockCheckout.tsx",
+      "line": 172,
+      "text": "<div className=\"text-[11px] text-[#64748B] bg-amber-50/80 border border-amber-200/80 p-3 rounded-lg flex items-start gap-2\">"
+    },
+    {
+      "file": "client/src/components/NotificationBell.tsx",
+      "line": 167,
+      "text": "<span className=\"absolute top-1 right-1 flex h-4 min-w-[16px] px-1 items-center justify-center rounded-full bg-rose-600 text-[10px] font-bold text-white shadow-xs animate-pulse\">"
+    },
+    {
+      "file": "client/src/components/NotificationBell.tsx",
+      "line": 181,
+      "text": "<span className=\"px-2 py-0.5 rounded-full text-[11px] font-bold bg-violet-100 text-violet-700\">"
+    },
+    {
+      "file": "client/src/components/NotificationBell.tsx",
+      "line": 245,
+      "text": "<span className=\"text-[10px] text-slate-400 whitespace-nowrap shrink-0\">"
+    },
+    {
+      "file": "client/src/components/ProofUploader.tsx",
+      "line": 129,
+      "text": "<span className=\"text-[11px] font-normal text-secondaryText\">(Optional, max 4)</span>"
+    },
+    {
+      "file": "client/src/components/ProofUploader.tsx",
+      "line": 141,
+      "text": "<p className=\"text-[11px] text-secondaryText mt-0.5\">JPEG, PNG, WebP up to 5MB</p>"
+    },
+    {
+      "file": "client/src/components/ProofUploader.tsx",
+      "line": 168,
+      "text": "<div className=\"absolute bottom-0 inset-x-0 bg-black/60 text-white text-[10px] px-2 py-0.5 truncate font-mono\">"
+    },
+    {
+      "file": "client/src/components/ProofUploader.tsx",
+      "line": 183,
+      "text": "<span className=\"text-[11px] font-semibold text-rose-600\">* Required (1 to 4)</span>"
+    },
+    {
+      "file": "client/src/components/ProofUploader.tsx",
+      "line": 195,
+      "text": "<p className=\"text-[11px] text-secondaryText mt-0.5\">JPEG, PNG, WebP up to 5MB</p>"
+    },
+    {
+      "file": "client/src/components/ProofUploader.tsx",
+      "line": 222,
+      "text": "<div className=\"absolute bottom-0 inset-x-0 bg-black/60 text-white text-[10px] px-2 py-0.5 truncate font-mono\">"
+    },
+    {
+      "file": "client/src/components/ProofUploader.tsx",
+      "line": 242,
+      "text": "className={`text-[11px] font-mono ${"
+    },
+    {
+      "file": "client/src/components/public/BeforeAfterSlider.tsx",
+      "line": 158,
+      "text": "<span className=\"text-[11px] text-white/90 bg-dark/70 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 hidden sm:inline-flex items-center gap-1.5\">"
+    },
+    {
+      "file": "client/src/components/public/BeforeAfterSlider.tsx",
+      "line": 162,
+      "text": "<span className=\"text-[11px] text-white/80 bg-dark/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 ml-auto\">"
+    },
+    {
+      "file": "client/src/components/public/Footer.tsx",
+      "line": 48,
+      "text": "<span className=\"text-[10px] px-1.5 py-0.2 rounded-full bg-gold/20 text-gold font-bold\">36</span>"
+    },
+    {
+      "file": "client/src/components/public/Hero.tsx",
+      "line": 346,
+      "text": "<span className=\"text-[11px] font-semibold text-lavender tracking-wide uppercase\">"
+    },
+    {
+      "file": "client/src/components/public/Hero.tsx",
+      "line": 497,
+      "text": "<p className=\"text-[11px] text-slate-300\">Geo-tagged evidence</p>"
+    },
+    {
+      "file": "client/src/components/public/Hero.tsx",
+      "line": 505,
+      "text": "<p className=\"text-[11px] text-slate-300\">24-48h municipal dispatch</p>"
+    },
+    {
+      "file": "client/src/components/public/Hero.tsx",
+      "line": 513,
+      "text": "<p className=\"text-[11px] text-slate-300\">Released after verification</p>"
+    },
+    {
+      "file": "client/src/components/public/LiveTicker.tsx",
+      "line": 67,
+      "text": "<span className=\"hidden sm:inline-flex items-center gap-1 text-emerald-700 font-medium bg-emerald-50 px-2 py-0.5 rounded text-[11px]\">"
+    },
+    {
+      "file": "client/src/components/public/TestimonialsTrust.tsx",
+      "line": 83,
+      "text": "<span className=\"text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60\">"
+    },
+    {
+      "file": "client/src/components/public/TestimonialsTrust.tsx",
+      "line": 109,
+      "text": "<p className=\"text-[11px] text-muted truncate\">{t.role}</p>"
+    },
+    {
+      "file": "client/src/components/public/TestimonialsTrust.tsx",
+      "line": 132,
+      "text": "<p className=\"text-[10px] text-muted\">Paise-Exact Escrow Gate</p>"
+    },
+    {
+      "file": "client/src/components/public/TestimonialsTrust.tsx",
+      "line": 142,
+      "text": "<p className=\"text-[10px] text-muted\">Municipal Skills Registry</p>"
+    },
+    {
+      "file": "client/src/components/public/TestimonialsTrust.tsx",
+      "line": 152,
+      "text": "<p className=\"text-[10px] text-muted\">Geo-Tagged & Timestamped</p>"
+    },
+    {
+      "file": "client/src/components/public/TestimonialsTrust.tsx",
+      "line": 162,
+      "text": "<p className=\"text-[10px] text-muted\">India-Wide Coverage</p>"
+    },
+    {
+      "file": "client/src/components/QuoteCard.tsx",
+      "line": 57,
+      "text": "<span className=\"text-[11px] font-bold px-2.5 py-1 rounded-full bg-white text-primary border border-primary/20 shadow-xs\">"
+    },
+    {
+      "file": "client/src/components/QuoteCard.tsx",
+      "line": 81,
+      "text": "<span className=\"text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-medium\">"
+    },
+    {
+      "file": "client/src/components/QuoteCard.tsx",
+      "line": 98,
+      "text": "<div className=\"text-[11px] text-muted pl-5.5\">"
+    },
+    {
+      "file": "client/src/components/QuoteCard.tsx",
+      "line": 133,
+      "text": "<div className=\"text-[10px] font-bold text-secondaryText uppercase tracking-wider\">"
+    },
+    {
+      "file": "client/src/components/QuoteCard.tsx",
+      "line": 139,
+      "text": "<div className=\"text-[10px] text-muted mt-0.5\">Held safely in escrow</div>"
+    },
+    {
+      "file": "client/src/components/QuoteCard.tsx",
+      "line": 143,
+      "text": "<div className=\"text-[10px] font-bold text-secondaryText uppercase tracking-wider\">"
+    },
+    {
+      "file": "client/src/components/QuoteCard.tsx",
+      "line": 149,
+      "text": "<div className=\"text-[10px] text-muted mt-0.5\">After photo inspection</div>"
+    },
+    {
+      "file": "client/src/components/QuoteCard.tsx",
+      "line": 156,
+      "text": "<div className=\"text-[11px] text-secondaryText flex items-center gap-1.5 pt-1\">"
+    },
+    {
+      "file": "client/src/components/ui/Badge.tsx",
+      "line": 95,
+      "text": "sm: 'text-[11px] px-2 py-0.5 gap-1 font-medium',"
+    },
+    {
+      "file": "client/src/components/ui/Logo.tsx",
+      "line": 95,
+      "text": "<div className=\"text-[10px] uppercase font-mono tracking-widest text-gold font-semibold mt-0.5\">"
+    },
+    {
+      "file": "client/src/components/ui/Logo.tsx",
+      "line": 119,
+      "text": "<span className={`text-[10px] uppercase tracking-wider font-semibold leading-tight mt-1 ${isDark ? 'text-gold' : 'text-gold-text'}`}>"
+    },
+    {
+      "file": "client/src/components/ui/PageHero.tsx",
+      "line": 155,
+      "text": "<div className={`text-[11px] mt-0.5 ${isNavy ? 'text-slate-400' : 'text-muted'}`}>"
+    },
+    {
+      "file": "client/src/components/ui/Tabs.tsx",
+      "line": 86,
+      "text": "className={`text-[11px] px-1.5 py-0.2 rounded-full tabular-nums font-semibold ${"
+    },
+    {
+      "file": "client/src/components/ui/Tabs.tsx",
+      "line": 134,
+      "text": "className={`text-[11px] px-1.5 py-0.2 rounded-full tabular-nums font-semibold ${"
+    },
+    {
+      "file": "client/src/components/ui/Tabs.tsx",
+      "line": 192,
+      "text": "className={`text-[11px] px-1.5 py-0.2 rounded-full tabular-nums font-semibold ${"
+    },
+    {
+      "file": "client/src/layouts/AdminLayout.tsx",
+      "line": 170,
+      "text": "<div className=\"text-[10px] font-mono uppercase tracking-wider text-primary font-semibold\">"
+    },
+    {
+      "file": "client/src/layouts/ResolverLayout.tsx",
+      "line": 76,
+      "text": "<div className=\"text-[10px] font-bold text-muted uppercase tracking-wider px-3 mb-2\">"
+    },
+    {
+      "file": "client/src/layouts/ResolverLayout.tsx",
+      "line": 110,
+      "text": "<div className=\"text-[11px] text-muted truncate\">{user?.email || ''}</div>"
+    },
+    {
+      "file": "client/src/layouts/UserLayout.tsx",
+      "line": 53,
+      "text": "<div className=\"text-[10px] font-bold text-muted uppercase tracking-wider px-3 mb-2\">"
+    },
+    {
+      "file": "client/src/layouts/UserLayout.tsx",
+      "line": 87,
+      "text": "<div className=\"text-[11px] text-muted truncate\">{user?.email || ''}</div>"
+    },
+    {
+      "file": "client/src/pages/admin/Categories.tsx",
+      "line": 289,
+      "text": "<span className=\"block text-[11px] font-normal text-secondaryText font-mono\">"
+    },
+    {
+      "file": "client/src/pages/admin/Categories.tsx",
+      "line": 379,
+      "text": "<p className=\"text-[11px] text-secondaryText mt-1\">"
+    },
+    {
+      "file": "client/src/pages/admin/Categories.tsx",
+      "line": 404,
+      "text": "<p className=\"text-[11px] text-secondaryText mt-1 font-mono\">"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 295,
+      "text": "<p className=\"text-[11px] text-secondaryText\">Dispatch, candidate matching, quote approval</p>"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 311,
+      "text": "<p className=\"text-[11px] text-secondaryText\">Inspect credentials & government IDs</p>"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 327,
+      "text": "<p className=\"text-[11px] text-secondaryText\">Citizens, account status & activity</p>"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 343,
+      "text": "<p className=\"text-[11px] text-secondaryText\">Tariffs, resolution targets, icons</p>"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 359,
+      "text": "<p className=\"text-[11px] text-secondaryText\">Per-km rates, severity multipliers, escrow</p>"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 389,
+      "text": "<thead className=\"bg-canvas text-[11px] font-mono uppercase tracking-wider text-secondaryText border-b border-border\">"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 415,
+      "text": "<div className=\"text-[11px] font-mono text-secondaryText\">{issue.reporter?.email}</div>"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 422,
+      "text": "className={`inline-block px-2 py-0.5 rounded-lg text-[11px] font-semibold ${"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 229,
+      "text": "<p className=\"text-[11px] text-secondaryText mt-1\">"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 257,
+      "text": "<p className=\"text-[11px] text-secondaryText mt-1 font-mono\">"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 299,
+      "text": "<p className=\"text-[11px] text-secondaryText mt-1 font-mono\">"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 324,
+      "text": "<p className=\"text-[11px] text-secondaryText mt-1 font-mono\">"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 476,
+      "text": "<p className=\"text-[11px] text-secondaryText mt-1 font-mono\">"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 598,
+      "text": "<div className=\"p-2 bg-amber-50 border border-amber-200 text-amber-800 rounded text-[11px]\">"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 605,
+      "text": "<div className=\"text-[11px] font-semibold text-primary uppercase tracking-wider\">"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 614,
+      "text": "<div className=\"text-[11px] text-secondaryText\">50% Advance (Now)</div>"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 620,
+      "text": "<div className=\"text-[11px] text-secondaryText\">50% Balance (Close)</div>"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 627,
+      "text": "<div className=\"grid grid-cols-2 gap-3 mt-2 pt-2 border-t border-border/60 text-[11px]\">"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 481,
+      "text": "<span className=\"text-[11px] text-secondaryText\">Drag slider left/right to compare</span>"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 537,
+      "text": "<div className=\"text-[10px] text-amber-700 font-mono\">"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 690,
+      "text": "<span className=\"text-secondaryText block text-[11px]\">Full Name</span>"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 695,
+      "text": "<span className=\"text-secondaryText block text-[11px]\">Email Address</span>"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 703,
+      "text": "<span className=\"text-secondaryText block text-[11px]\">Contact Phone</span>"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 726,
+      "text": "<span className=\"text-secondaryText font-mono text-[11px]\">"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 733,
+      "text": "className=\"text-primary hover:underline text-[11px] font-semibold flex items-center gap-1\""
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 751,
+      "text": "<span className=\"text-[10px] font-bold px-2 py-0.5 rounded bg-primary/10 text-primary\">"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 792,
+      "text": "<div className=\"text-[11px] text-secondaryText\">{inv.type} Invoice • <span className=\"font-mono tabular-nums\">{formatRupees(inv.feeBreakdown?.totalPaise || inv.amountPaidPaise)}</span></div>"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 815,
+      "text": "<div className=\"text-[11px] text-secondaryText font-mono\">{p.paymentId}</div>"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 818,
+      "text": "className={`px-2 py-0.5 rounded text-[10px] font-semibold ${"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 867,
+      "text": "<p className=\"text-[11px] text-secondaryText mt-1 font-mono\">"
+    },
+    {
+      "file": "client/src/pages/admin/Issues.tsx",
+      "line": 232,
+      "text": "<thead className=\"bg-canvas text-[11px] font-mono uppercase tracking-wider text-secondaryText border-b border-border\">"
+    },
+    {
+      "file": "client/src/pages/admin/Issues.tsx",
+      "line": 272,
+      "text": "<div className=\"text-[11px] font-mono text-secondaryText\">{issue.reporter?.phone || issue.reporter?.email}</div>"
+    },
+    {
+      "file": "client/src/pages/admin/Issues.tsx",
+      "line": 291,
+      "text": "className={`inline-block px-2 py-0.5 rounded-lg text-[11px] font-semibold ${"
+    },
+    {
+      "file": "client/src/pages/admin/Issues.tsx",
+      "line": 316,
+      "text": "<span className=\"text-secondaryText italic text-[11px]\">Unassigned</span>"
+    },
+    {
+      "file": "client/src/pages/admin/Payments.tsx",
+      "line": 145,
+      "text": "<tr className=\"border-b border-border/80 bg-canvas text-[11px] font-bold uppercase tracking-wider text-secondaryText font-mono\">"
+    },
+    {
+      "file": "client/src/pages/admin/Payouts.tsx",
+      "line": 140,
+      "text": "<tr className=\"border-b border-border/80 bg-canvas text-[11px] font-bold uppercase tracking-wider text-secondaryText font-mono\">"
+    },
+    {
+      "file": "client/src/pages/admin/Queries.tsx",
+      "line": 151,
+      "text": "<div className=\"text-[11px] text-secondaryText font-mono\">{q.email}</div>"
+    },
+    {
+      "file": "client/src/pages/admin/Queries.tsx",
+      "line": 155,
+      "text": "<p className=\"text-[11px] text-secondaryText line-clamp-2 mt-0.5\">{q.message}</p>"
+    },
+    {
+      "file": "client/src/pages/admin/Queries.tsx",
+      "line": 162,
+      "text": "className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider font-mono ${"
+    },
+    {
+      "file": "client/src/pages/admin/Queries.tsx",
+      "line": 236,
+      "text": "<span className=\"text-[10px] text-secondaryText font-mono\">"
+    },
+    {
+      "file": "client/src/pages/admin/Queries.tsx",
+      "line": 248,
+      "text": "<span className=\"text-[10px] text-emerald-700\">"
+    },
+    {
+      "file": "client/src/pages/admin/Queries.tsx",
+      "line": 256,
+      "text": "<div className=\"pt-2 text-[10px] text-emerald-700 border-t border-emerald-200/60 font-mono\">"
+    },
+    {
+      "file": "client/src/pages/admin/ResolverRequests.tsx",
+      "line": 182,
+      "text": "className=\"text-[11px] font-medium px-2 py-0.5 rounded-lg bg-primary/10 text-primary border border-primary/20\""
+    },
+    {
+      "file": "client/src/pages/admin/ResolverRequests.tsx",
+      "line": 453,
+      "text": "<p className=\"text-[11px] font-mono text-secondaryText mt-1\">"
+    },
+    {
+      "file": "client/src/pages/admin/ResolverRequests.tsx",
+      "line": 456,
+      "text": "<p className=\"text-[11px] text-primary font-semibold mt-1 font-mono\">"
+    },
+    {
+      "file": "client/src/pages/admin/ResolverRequests.tsx",
+      "line": 514,
+      "text": "<p className=\"text-[11px] text-secondaryText\">"
+    },
+    {
+      "file": "client/src/pages/admin/ResolverRequests.tsx",
+      "line": 573,
+      "text": "<p className=\"text-[11px] text-secondaryText\">"
+    },
+    {
+      "file": "client/src/pages/admin/Users.tsx",
+      "line": 288,
+      "text": "<span className=\"text-[10px] font-bold px-1.5 py-0.2 rounded bg-primary/10 text-primary font-mono\">"
+    },
+    {
+      "file": "client/src/pages/admin/Users.tsx",
+      "line": 293,
+      "text": "<div className=\"text-[11px] text-secondaryText font-mono\">{uid}</div>"
+    },
+    {
+      "file": "client/src/pages/admin/Users.tsx",
+      "line": 339,
+      "text": "<div className=\"text-[10px] text-rose-600 truncate max-w-xs mt-0.5 italic\" title={u.blockReason}>"
+    },
+    {
+      "file": "client/src/pages/auth/RegisterResolver.tsx",
+      "line": 394,
+      "text": "<div className=\"text-[11px] font-bold text-primary mt-1.5 flex items-center gap-1\">"
+    },
+    {
+      "file": "client/src/pages/auth/RegisterResolver.tsx",
+      "line": 452,
+      "text": "<div className=\"flex justify-between text-[11px] text-muted\">"
+    },
+    {
+      "file": "client/src/pages/auth/RegisterResolver.tsx",
+      "line": 472,
+      "text": "<p className=\"text-[11px] text-muted mt-1 tabular-nums\">"
+    },
+    {
+      "file": "client/src/pages/auth/RegisterUser.tsx",
+      "line": 164,
+      "text": "<div className=\"text-[11px] font-bold text-muted uppercase tracking-wider mb-2.5\">"
+    },
+    {
+      "file": "client/src/pages/auth/RegisterUser.tsx",
+      "line": 211,
+      "text": "<div className=\"text-[11px] font-bold text-muted uppercase tracking-wider mb-2.5\">"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 260,
+      "text": "<p className=\"text-[11px] opacity-80 font-mono mt-0.5\">{s.hex}</p>"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 262,
+      "text": "<p className=\"text-[10px] opacity-75 font-mono\">{s.token}</p>"
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 122,
+      "text": "<p className=\"text-[11px] text-emerald-600 font-medium mt-1\">100% Photo Proof Verified</p>"
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 130,
+      "text": "<p className=\"text-[11px] text-muted mt-1\">Nationwide Geo-Registry</p>"
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 138,
+      "text": "<p className=\"text-[11px] text-emerald-600 font-medium mt-1\">Within 24–48 Hours</p>"
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 146,
+      "text": "<p className=\"text-[11px] text-muted mt-1\">Paise-Exact Escrow Gate</p>"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 294,
+      "text": "<div className=\"flex items-center justify-between text-[11px] text-slate-300 px-1 pt-1\">"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 363,
+      "text": "<p className=\"text-[11px] text-emerald-700 font-medium mt-0.5\">100% Photo-Proof Sealed</p>"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 374,
+      "text": "<p className=\"text-[11px] text-muted mt-0.5\">Vetted Ward Contractors</p>"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 385,
+      "text": "<p className=\"text-[11px] text-muted mt-0.5\">From Escrow to On-Site</p>"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 396,
+      "text": "<p className=\"text-[11px] text-emerald-700 font-medium mt-0.5\">Post-Remediation Audits</p>"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 412,
+      "text": "<span className=\"text-[11px] text-muted block\">Regional Capital</span>"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 416,
+      "text": "<span className=\"text-[11px] text-muted block\">Zonal Classification</span>"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 420,
+      "text": "<span className=\"text-[11px] text-muted block\">Districts Monitored</span>"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 486,
+      "text": "<span className=\"text-[11px] text-muted font-medium bg-canvas px-2 py-0.5 rounded border border-border\">"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 556,
+      "text": "<span className=\"text-[11px] font-semibold uppercase tracking-wider text-gold\">Join Network</span>"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 601,
+      "text": "<span className=\"text-[11px] font-mono text-muted bg-canvas px-1.5 py-0.2 rounded border border-border\">"
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 176,
+      "text": "<div className=\"text-[11px] text-slate-300 font-medium\">Sovereign States</div>"
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 180,
+      "text": "<div className=\"text-[11px] text-slate-300 font-medium\">Union Territories</div>"
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 215,
+      "text": "className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono tabular-nums ${"
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 501,
+      "text": "<span className=\"text-[11px] font-mono font-medium text-white/90 bg-black/40 backdrop-blur-xs px-2 py-0.5 rounded-full border border-white/20\">"
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 508,
+      "text": "<div className=\"inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-sm border border-white/20 text-white text-[11px]\">"
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 541,
+      "text": "className=\"text-[10px] px-2 py-0.5 rounded-md bg-canvas text-secondaryText border border-border font-medium truncate max-w-[200px]\""
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 557,
+      "text": "<span className=\"text-[10px] text-muted\">Resolved</span>"
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 563,
+      "text": "<span className=\"text-[10px] text-muted\">Resolvers</span>"
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 569,
+      "text": "<span className=\"text-[10px] text-muted\">Avg SLA</span>"
+    },
+    {
+      "file": "client/src/pages/public/TrackStatus.tsx",
+      "line": 140,
+      "text": "<span className=\"text-[10px] px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 font-bold\">Live SLA</span>"
+    },
+    {
+      "file": "client/src/pages/public/TrackStatus.tsx",
+      "line": 274,
+      "text": "<span className=\"text-[10px] text-muted hidden sm:inline mt-0.5\">"
+    },
+    {
+      "file": "client/src/pages/public/TrackStatus.tsx",
+      "line": 375,
+      "text": "<span className=\"text-[11px] text-muted flex items-center gap-1 font-mono\">"
+    },
+    {
+      "file": "client/src/pages/public/TrackStatus.tsx",
+      "line": 387,
+      "text": "<div className=\"mt-2 text-[10px] text-muted flex items-center gap-1\">"
+    },
+    {
+      "file": "client/src/pages/public/WriteQuery.tsx",
+      "line": 114,
+      "text": "<span className=\"text-[10px] px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 font-bold\">24-48h SLA</span>"
+    },
+    {
+      "file": "client/src/pages/public/WriteQuery.tsx",
+      "line": 246,
+      "text": "<div className=\"text-[11px] text-muted text-right mt-1\">"
+    },
+    {
+      "file": "client/src/pages/resolver/Assignments.tsx",
+      "line": 220,
+      "text": "<div className=\"flex items-center gap-2 px-3.5 py-2 rounded-lg bg-canvas border border-border text-[11px] text-secondaryText max-w-xl\">"
+    },
+    {
+      "file": "client/src/pages/resolver/Assignments.tsx",
+      "line": 233,
+      "text": "<span className=\"text-[11px] text-emerald-700 font-semibold block mt-0.5\">"
+    },
+    {
+      "file": "client/src/pages/resolver/Assignments.tsx",
+      "line": 311,
+      "text": "<span className=\"text-[11px] text-muted mt-1 block\">"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 127,
+      "text": "<p className=\"text-[11px] font-bold uppercase tracking-wider text-secondaryText\">New Job Offers</p>"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 151,
+      "text": "<p className=\"text-[11px] font-bold uppercase tracking-wider text-secondaryText\">Active Jobs</p>"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 175,
+      "text": "<p className=\"text-[11px] font-bold uppercase tracking-wider text-secondaryText\">Completed Repairs</p>"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 199,
+      "text": "<p className=\"text-[11px] font-bold uppercase tracking-wider text-secondaryText\">Pending Payout</p>"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 292,
+      "text": "<p className=\"text-[11px] text-muted\">{metrics.assignedOffersCount} offers pending review</p>"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 308,
+      "text": "<p className=\"text-[11px] text-muted\">Start work or upload photo proof</p>"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 324,
+      "text": "<p className=\"text-[11px] text-muted\">Adjust travel radius & on-duty status</p>"
+    },
+    {
+      "file": "client/src/pages/resolver/Earnings.tsx",
+      "line": 178,
+      "text": "<tr className=\"border-b border-border bg-canvas/60 text-[11px] font-mono uppercase tracking-wider text-secondaryText\">"
+    },
+    {
+      "file": "client/src/pages/resolver/PendingApproval.tsx",
+      "line": 229,
+      "text": "<div className=\"font-semibold text-ink uppercase tracking-wider text-[11px] font-mono\">"
+    },
+    {
+      "file": "client/src/pages/resolver/PendingApproval.tsx",
+      "line": 239,
+      "text": "<div className=\"text-[11px] text-secondaryText font-mono mt-0.5\">"
+    },
+    {
+      "file": "client/src/pages/resolver/Profile.tsx",
+      "line": 161,
+      "text": "<span className=\"font-medium uppercase tracking-wider text-[11px]\">Total Earnings</span>"
+    },
+    {
+      "file": "client/src/pages/resolver/Profile.tsx",
+      "line": 169,
+      "text": "<div className=\"text-[11px] text-secondaryText mt-1 flex items-center gap-1\">"
+    },
+    {
+      "file": "client/src/pages/resolver/Profile.tsx",
+      "line": 177,
+      "text": "<span className=\"font-medium uppercase tracking-wider text-[11px]\">Pending Payout</span>"
+    },
+    {
+      "file": "client/src/pages/resolver/Profile.tsx",
+      "line": 185,
+      "text": "<div className=\"text-[11px] text-secondaryText mt-1\">Pending citizen balance settlement</div>"
+    },
+    {
+      "file": "client/src/pages/resolver/Profile.tsx",
+      "line": 190,
+      "text": "<span className=\"font-medium uppercase tracking-wider text-[11px]\">Tasks Completed</span>"
+    },
+    {
+      "file": "client/src/pages/resolver/Profile.tsx",
+      "line": 198,
+      "text": "<div className=\"text-[11px] text-secondaryText mt-1\">100% photographic proof rate</div>"
+    },
+    {
+      "file": "client/src/pages/resolver/Profile.tsx",
+      "line": 233,
+      "text": "<div className=\"flex justify-between text-[11px] font-mono text-secondaryText\">"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 231,
+      "text": "<p className=\"text-secondaryText text-[11px] mt-0.5\">"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 276,
+      "text": "<p className=\"text-sky-800 text-[11px] mt-0.5\">"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 418,
+      "text": "<span className=\"inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-full\">"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 435,
+      "text": "<span className=\"text-[11px] text-secondaryText\">({resolution.beforeImages?.length || 0})</span>"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 442,
+      "text": "<div className=\"absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] gap-1\">"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 458,
+      "text": "<span className=\"text-[11px] text-emerald-700\">({resolution.afterImages?.length || 0})</span>"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 464,
+      "text": "<div className=\"absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] gap-1\">"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 498,
+      "text": "<p className=\"text-[11px] text-secondaryText\">Reporter identification & coordinate details</p>"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 506,
+      "text": "<p className=\"text-[11px] text-secondaryText leading-relaxed\">"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 513,
+      "text": "<span className=\"text-secondaryText block text-[11px]\">Reporter Name</span>"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 518,
+      "text": "<span className=\"text-secondaryText block text-[11px] mb-1\">Telephone Dialer</span>"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 528,
+      "text": "<span className=\"text-secondaryText italic text-[11px]\">No contact number attached</span>"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 533,
+      "text": "<span className=\"text-secondaryText block text-[11px]\">Email Address</span>"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 548,
+      "text": "<p className=\"text-[11px] text-secondaryText\">Dispatch destination & GPS routing</p>"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 554,
+      "text": "<span className=\"text-secondaryText block text-[11px] mb-1\">Street Address</span>"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 566,
+      "text": "<div className=\"flex items-center justify-between text-[11px]\">"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 613,
+      "text": "<span className=\"text-[11px] font-mono text-secondaryText mt-1 block\">"
+    },
+    {
+      "file": "client/src/pages/resolver/Tasks.tsx",
+      "line": 207,
+      "text": "<span className=\"text-[11px] text-muted\">Citizen Contact</span>"
+    },
+    {
+      "file": "client/src/pages/shared/Notifications.tsx",
+      "line": 279,
+      "text": "className={`text-[10px] font-bold px-2 py-0.5 rounded-md border uppercase tracking-wider ${getTypeBadge("
+    },
+    {
+      "file": "client/src/pages/shared/Notifications.tsx",
+      "line": 289,
+      "text": "<span className=\"px-1.5 py-0.5 rounded text-[10px] font-bold bg-violet-600 text-white\">"
+    },
+    {
+      "file": "client/src/pages/user/Checkout.tsx",
+      "line": 293,
+      "text": "<div className=\"text-[11px] text-[#64748B] pt-2 border-t border-[#E2E8F0]\">"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 187,
+      "text": "<span className=\"px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/20 uppercase tracking-wider\">"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 214,
+      "text": "<span className=\"px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/20 uppercase tracking-wider\">"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 280,
+      "text": "<div className=\"text-[11px] text-muted uppercase font-bold tracking-wider\">Total Quote</div>"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 285,
+      "text": "<div className=\"text-[11px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full mt-1.5 border border-amber-200 inline-block\">"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 290,
+      "text": "<div className=\"text-[11px] font-bold text-indigo bg-primary/10 px-2.5 py-0.5 rounded-full mt-1.5 border border-primary/20 inline-block\">"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 295,
+      "text": "<div className=\"text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full mt-1.5 border border-emerald-200 inline-block\">"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 321,
+      "text": "className={`font-semibold text-[11px] block truncate ${"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 357,
+      "text": "<span className=\"text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center gap-1.5\">"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 385,
+      "text": "<div className=\"font-bold text-secondaryText uppercase tracking-wider text-[10px]\">"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 441,
+      "text": "<span className=\"text-[11px] text-muted\">Uploaded on reporting</span>"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 482,
+      "text": "<span className=\"text-[11px] text-muted\">Immutable cryptographic record</span>"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 514,
+      "text": "<p className=\"text-[11px] text-secondaryText\">"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 519,
+      "text": "<span className=\"text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200\">"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 549,
+      "text": "<p className=\"text-[11px] text-secondaryText\">"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 554,
+      "text": "<span className=\"text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-900 border border-emerald-200\">"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 615,
+      "text": "<p className=\"text-[11px] text-secondaryText mt-0.5 leading-relaxed\">"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 622,
+      "text": "<div className=\"p-2.5 bg-canvas border border-border rounded-lg text-[11px] text-muted text-center font-medium\">"
+    },
+    {
+      "file": "client/src/pages/user/MyIssues.tsx",
+      "line": 79,
+      "text": "<span className=\"text-[11px] text-muted\">{row.suggestedPriority} Priority</span>"
+    },
+    {
+      "file": "client/src/pages/user/MyIssues.tsx",
+      "line": 92,
+      "text": "<div className=\"text-[11px] text-muted pl-4.5\">{row.address?.city}</div>"
+    },
+    {
+      "file": "client/src/pages/user/Payments.tsx",
+      "line": 247,
+      "text": "<div className=\"text-[11px] text-[#64748B] line-clamp-1 max-w-xs\">"
+    },
+    {
+      "file": "client/src/pages/user/Payments.tsx",
+      "line": 355,
+      "text": "<div className=\"text-[11px] text-[#64748B] line-clamp-1 max-w-xs\">"
+    },
+    {
+      "file": "client/src/pages/user/Payments.tsx",
+      "line": 360,
+      "text": "<span className=\"px-2 py-0.5 rounded text-[11px] font-semibold bg-[#EDE9FE] text-[#7C3AED] border border-[#DDD6FE]\">"
+    },
+    {
+      "file": "client/src/pages/user/Profile.tsx",
+      "line": 267,
+      "text": "<p className=\"text-[11px] text-[#64748B] mt-1\">"
+    },
+    {
+      "file": "client/src/pages/user/ReportIssue.tsx",
+      "line": 430,
+      "text": "<div className=\"text-[11px] text-muted mt-1 tabular-nums flex items-center justify-between\">"
+    },
+    {
+      "file": "client/src/pages/user/ReportIssue.tsx",
+      "line": 515,
+      "text": "<span className=\"text-[10px] text-muted\">"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 135,
+      "text": "<div className=\"text-[11px] text-muted mt-1\">Logged civic incidents</div>"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 148,
+      "text": "<div className=\"text-[11px] text-muted mt-1\">Under contractor repair</div>"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 161,
+      "text": "<div className=\"text-[11px] text-muted mt-1\">Verified with photo proof</div>"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 174,
+      "text": "<div className=\"text-[11px] text-muted mt-1\">50% escrow pending</div>"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 238,
+      "text": "<span className=\"text-[11px] text-muted\">"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 257,
+      "text": "<div className=\"text-[11px] text-muted\">"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 306,
+      "text": "<div className=\"pt-1 flex items-center gap-1.5 text-[11px] font-semibold text-primary\">"
+    }
+  ],
+  "headingFonts": [
+    {
+      "file": "client/src/components/auth/AuthLayout.tsx",
+      "line": 52,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/chatbot/ChatLocationPicker.tsx",
+      "line": 52,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/chatbot/ChatWindow.tsx",
+      "line": 163,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/chatbot/ChatWindow.tsx",
+      "line": 207,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/chatbot/MessageBubble.tsx",
+      "line": 29,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/FeedbackForm.tsx",
+      "line": 60,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/FeedbackForm.tsx",
+      "line": 89,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/MockCheckout.tsx",
+      "line": 101,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/NotificationBell.tsx",
+      "line": 179,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/ProofUploader.tsx",
+      "line": 107,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/ProtectedRoute.tsx",
+      "line": 40,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/public/Hero.tsx",
+      "line": 364,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/public/Hero.tsx",
+      "line": 448,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/QuoteCard.tsx",
+      "line": 47,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/ReopenModal.tsx",
+      "line": 58,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/ResolverPicker.tsx",
+      "line": 67,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/components/ResolverPicker.tsx",
+      "line": 122,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Categories.tsx",
+      "line": 167,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 84,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 132,
+      "tag": "h3",
+      "fontClass": "font-mono"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 156,
+      "tag": "h3",
+      "fontClass": "font-mono"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 178,
+      "tag": "h3",
+      "fontClass": "font-mono"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 209,
+      "tag": "h3",
+      "fontClass": "font-mono"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 235,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 281,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 294,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 310,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 326,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 342,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 358,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 373,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 171,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 204,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 269,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 336,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 443,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/FeeSettings.tsx",
+      "line": 502,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/FinanceOverview.tsx",
+      "line": 69,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/FinanceOverview.tsx",
+      "line": 228,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/FinanceOverview.tsx",
+      "line": 283,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 248,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 330,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 408,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 456,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 477,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 558,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 573,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 598,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 630,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 647,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 685,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 716,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 748,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Issues.tsx",
+      "line": 129,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Payments.tsx",
+      "line": 68,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Payouts.tsx",
+      "line": 86,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Queries.tsx",
+      "line": 93,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Queries.tsx",
+      "line": 215,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/ResolverRequests.tsx",
+      "line": 270,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/admin/Users.tsx",
+      "line": 138,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/auth/ForgotPassword.tsx",
+      "line": 56,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/auth/RegisterResolver.tsx",
+      "line": 292,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/auth/RegisterResolver.tsx",
+      "line": 355,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/auth/RegisterResolver.tsx",
+      "line": 415,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/auth/RegisterResolver.tsx",
+      "line": 483,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/auth/RegisterUser.tsx",
+      "line": 117,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/auth/ResetPassword.tsx",
+      "line": 67,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/auth/VerifyEmail.tsx",
+      "line": 67,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/auth/VerifyEmail.tsx",
+      "line": 88,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 42,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 67,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 127,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 186,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 274,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 280,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 291,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/public/Home.tsx",
+      "line": 193,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/public/Services.tsx",
+      "line": 323,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 90,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 249,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 404,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 433,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 528,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 543,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 557,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 411,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 518,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/Assignments.tsx",
+      "line": 113,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/Assignments.tsx",
+      "line": 200,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/CompletedHistory.tsx",
+      "line": 56,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/CompletedHistory.tsx",
+      "line": 131,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 75,
+      "tag": "h1",
+      "fontClass": "font-black"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 128,
+      "tag": "h3",
+      "fontClass": "font-black"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 152,
+      "tag": "h3",
+      "fontClass": "font-black"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 176,
+      "tag": "h3",
+      "fontClass": "font-black"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 200,
+      "tag": "h3",
+      "fontClass": "font-black"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 225,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 278,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 291,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 307,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 323,
+      "tag": "h4",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/Earnings.tsx",
+      "line": 62,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/Earnings.tsx",
+      "line": 165,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/PendingApproval.tsx",
+      "line": 124,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/PendingApproval.tsx",
+      "line": 145,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/PendingApproval.tsx",
+      "line": 202,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/Profile.tsx",
+      "line": 117,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/Profile.tsx",
+      "line": 207,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/Profile.tsx",
+      "line": 264,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 167,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 332,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 361,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 414,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 478,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 497,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/TaskDetails.tsx",
+      "line": 547,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/Tasks.tsx",
+      "line": 84,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/resolver/Tasks.tsx",
+      "line": 191,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/shared/Notifications.tsx",
+      "line": 156,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/shared/Notifications.tsx",
+      "line": 253,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/Checkout.tsx",
+      "line": 112,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/Checkout.tsx",
+      "line": 142,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/Checkout.tsx",
+      "line": 249,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 96,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 190,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 217,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 263,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 347,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 402,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 413,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 438,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 479,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 511,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 546,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 580,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 612,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/MyIssues.tsx",
+      "line": 147,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/Payments.tsx",
+      "line": 121,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/Payments.tsx",
+      "line": 212,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/Payments.tsx",
+      "line": 294,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/Payments.tsx",
+      "line": 320,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/Profile.tsx",
+      "line": 145,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/Profile.tsx",
+      "line": 196,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/Profile.tsx",
+      "line": 234,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/Profile.tsx",
+      "line": 298,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/ReportIssue.tsx",
+      "line": 247,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/ReportIssue.tsx",
+      "line": 304,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/ReportIssue.tsx",
+      "line": 410,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/ReportIssue.tsx",
+      "line": 475,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/ReportIssue.tsx",
+      "line": 533,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 91,
+      "tag": "h1",
+      "fontClass": "font-black"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 184,
+      "tag": "h2",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 210,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 273,
+      "tag": "h3",
+      "fontClass": "font-bold"
+    },
+    {
+      "file": "client/src/router/AppRouter.tsx",
+      "line": 281,
+      "tag": "h1",
+      "fontClass": "font-bold"
+    }
+  ],
+  "unprovenClaims": [
+    {
+      "file": "client/src/components/auth/AuthLayout.tsx",
+      "line": 26,
+      "match": "escrow",
+      "text": "testimonialQuote = 'The 50% advance escrow and Before/After photo proof eliminated months of traditional municipal follow-up. Our street was repaired in 28 hours.',"
+    },
+    {
+      "file": "client/src/components/auth/AuthLayout.tsx",
+      "line": 68,
+      "match": "Escrow",
+      "text": "<span>Paise-Exact Escrow Gate</span>"
+    },
+    {
+      "file": "client/src/components/auth/AuthLayout.tsx",
+      "line": 117,
+      "match": "12,480",
+      "text": "<span className=\"block font-heading font-bold text-white text-base tabular-nums\">12,480+</span>"
+    },
+    {
+      "file": "client/src/components/auth/AuthLayout.tsx",
+      "line": 125,
+      "match": "24-48h",
+      "text": "<span className=\"block font-heading font-bold text-white text-base tabular-nums\">24-48h</span>"
+    },
+    {
+      "file": "client/src/components/public/FaqSection.tsx",
+      "line": 11,
+      "match": "escrow",
+      "text": "id: 'escrow-protection',"
+    },
+    {
+      "file": "client/src/components/public/FaqSection.tsx",
+      "line": 12,
+      "match": "escrow",
+      "text": "title: 'How does the 50% advance escrow guarantee work?',"
+    },
+    {
+      "file": "client/src/components/public/FaqSection.tsx",
+      "line": 16,
+      "match": "escrow",
+      "text": "When you approve a remediation quote, 50% of the total cost is deposited into an audited civic escrow account, calculated in exact integer paise. The contractor does not receive the final settlement until they complete the physical work on-site, submit verifiable Before/After photo proof with geo-stamps, and the municipal inspector or reporter formally approves the remediation."
+    },
+    {
+      "file": "client/src/components/public/FaqSection.tsx",
+      "line": 16,
+      "match": "municipal inspector",
+      "text": "When you approve a remediation quote, 50% of the total cost is deposited into an audited civic escrow account, calculated in exact integer paise. The contractor does not receive the final settlement until they complete the physical work on-site, submit verifiable Before/After photo proof with geo-stamps, and the municipal inspector or reporter formally approves the remediation."
+    },
+    {
+      "file": "client/src/components/public/FaqSection.tsx",
+      "line": 26,
+      "match": "escrow",
+      "text": "Every service category has a strictly defined SLA window (typically 24 to 48 hours). If a contractor does not accept the assignment or arrive on-site within the window, our proximity-routing engine automatically re-triggers contractor discovery within a 25 km radius. If no alternate certified contractor can be assigned, the escrowed advance is automatically released back to the citizen or public budget."
+    },
+    {
+      "file": "client/src/components/public/FaqSection.tsx",
+      "line": 84,
+      "match": "escrow",
+      "text": "subtitle=\"Straightforward answers about our escrow guarantees, contractor dispatch algorithms, and municipal verification standards.\""
+    },
+    {
+      "file": "client/src/components/public/FaqSection.tsx",
+      "line": 113,
+      "match": "escrow",
+      "text": "<Accordion items={FAQ_ITEMS} defaultOpenId=\"escrow-protection\" />"
+    },
+    {
+      "file": "client/src/components/public/Footer.tsx",
+      "line": 21,
+      "match": "Escrow",
+      "text": "<span>Paise-Exact Escrow</span>"
+    },
+    {
+      "file": "client/src/components/public/Footer.tsx",
+      "line": 105,
+      "match": "escrow",
+      "text": "<Link to=\"/about#escrow\" className=\"hover:text-white transition-colors\">"
+    },
+    {
+      "file": "client/src/components/public/Footer.tsx",
+      "line": 106,
+      "match": "Escrow",
+      "text": "Escrow Guarantee"
+    },
+    {
+      "file": "client/src/components/public/Hero.tsx",
+      "line": 442,
+      "match": "36 States",
+      "text": "<span className=\"text-emerald-300 font-medium hidden sm:inline\">36 States & UTs Live</span>"
+    },
+    {
+      "file": "client/src/components/public/Hero.tsx",
+      "line": 505,
+      "match": "24-48h",
+      "text": "<p className=\"text-[11px] text-slate-300\">24-48h municipal dispatch</p>"
+    },
+    {
+      "file": "client/src/components/public/Hero.tsx",
+      "line": 512,
+      "match": "escrow",
+      "text": "<p className=\"text-xs font-bold text-white leading-tight\">50% escrow protection</p>"
+    },
+    {
+      "file": "client/src/components/public/HowItWorks.tsx",
+      "line": 65,
+      "match": "Escrow",
+      "text": "Automated Quote & Milestone Escrow"
+    },
+    {
+      "file": "client/src/components/public/HowItWorks.tsx",
+      "line": 73,
+      "match": "escrow",
+      "text": "Our pricing engine calculates an integer-exact remediation tariff based on certified municipal Schedule of Rates (SOR). 50% advance is deposited into an audited institutional escrow account before any contractor mobilizes."
+    },
+    {
+      "file": "client/src/components/public/HowItWorks.tsx",
+      "line": 80,
+      "match": "escrow",
+      "text": "<span className=\"text-muted\">Funds locked in escrow; zero contractor risk of non-payment or citizen gouging.</span>"
+    },
+    {
+      "file": "client/src/components/public/HowItWorks.tsx",
+      "line": 139,
+      "match": "Escrow",
+      "text": "Photo Verification & Escrow Settlement"
+    },
+    {
+      "file": "client/src/components/public/HowItWorks.tsx",
+      "line": 147,
+      "match": "escrow",
+      "text": "The contractor uploads high-resolution After photos stamped with real GPS coordinates and timestamp proof. Upon citizen verification and municipal supervisory sign-off, the remaining 50% escrow settles and a GST tax invoice is issued."
+    },
+    {
+      "file": "client/src/components/public/HowItWorks.tsx",
+      "line": 193,
+      "match": "Escrow",
+      "text": "<span className=\"text-sm\">The 4-Stage Escrow Protocol</span>"
+    },
+    {
+      "file": "client/src/components/public/LiveTicker.tsx",
+      "line": 17,
+      "match": "Escrow",
+      "text": "{ id: '3', category: 'Storm Water Drain Unblock', location: 'Andheri East, Mumbai (MH)', timeAgo: '11m ago', status: 'Advance Escrowed', amount: '₹8,900' },"
+    },
+    {
+      "file": "client/src/components/public/LiveTicker.tsx",
+      "line": 82,
+      "match": "12,480",
+      "text": "<span className=\"font-heading font-bold text-ink text-sm tabular-nums\">12,480+</span>"
+    },
+    {
+      "file": "client/src/components/public/LiveTicker.tsx",
+      "line": 87,
+      "match": "36 States",
+      "text": "<span className=\"font-heading font-bold text-ink text-sm tabular-nums\">36 States/UTs</span>"
+    },
+    {
+      "file": "client/src/components/public/LiveTicker.tsx",
+      "line": 92,
+      "match": "99.4",
+      "text": "<span className=\"font-heading font-bold text-ink text-sm tabular-nums\">99.4%</span>"
+    },
+    {
+      "file": "client/src/components/public/TestimonialsTrust.tsx",
+      "line": 24,
+      "match": "escrow",
+      "text": "'We had been sending physical letters to the municipal ward office for 4 months with zero follow-through. Through Crowd Report, the exact geo-tagged coordinates and photo evidence triggered an escrow-backed work order in 6 hours. The contractor completed the concrete culvert in 48 hours.',"
+    },
+    {
+      "file": "client/src/components/public/TestimonialsTrust.tsx",
+      "line": 34,
+      "match": "escrow",
+      "text": "'The 50% advance escrow system is revolutionary. Unlike typical public tenders where funds disappear, our association could see that the money was locked until the municipal inspector approved the Before and After high-resolution photo proof.',"
+    },
+    {
+      "file": "client/src/components/public/TestimonialsTrust.tsx",
+      "line": 34,
+      "match": "municipal inspector",
+      "text": "'The 50% advance escrow system is revolutionary. Unlike typical public tenders where funds disappear, our association could see that the money was locked until the municipal inspector approved the Before and After high-resolution photo proof.',"
+    },
+    {
+      "file": "client/src/components/public/TestimonialsTrust.tsx",
+      "line": 131,
+      "match": "Escrow",
+      "text": "<p className=\"text-xs font-bold text-ink leading-tight\">Escrow Protected</p>"
+    },
+    {
+      "file": "client/src/components/public/TestimonialsTrust.tsx",
+      "line": 132,
+      "match": "Escrow",
+      "text": "<p className=\"text-[10px] text-muted\">Paise-Exact Escrow Gate</p>"
+    },
+    {
+      "file": "client/src/components/public/TestimonialsTrust.tsx",
+      "line": 161,
+      "match": "36 States",
+      "text": "<p className=\"text-xs font-bold text-ink leading-tight\">All 36 States/UTs</p>"
+    },
+    {
+      "file": "client/src/components/QuoteCard.tsx",
+      "line": 51,
+      "match": "escrow",
+      "text": "Pre-approved Schedule of Rates (SOR) pricing with 50% escrow guarantee."
+    },
+    {
+      "file": "client/src/components/QuoteCard.tsx",
+      "line": 134,
+      "match": "Escrow",
+      "text": "50% Advance (Escrowed)"
+    },
+    {
+      "file": "client/src/components/QuoteCard.tsx",
+      "line": 139,
+      "match": "escrow",
+      "text": "<div className=\"text-[10px] text-muted mt-0.5\">Held safely in escrow</div>"
+    },
+    {
+      "file": "client/src/components/QuoteCard.tsx",
+      "line": 159,
+      "match": "Escrow",
+      "text": "Citizen Escrow Guarantee: If repairs do not pass photo inspection, the advance is refunded in full."
+    },
+    {
+      "file": "client/src/components/QuoteCard.tsx",
+      "line": 172,
+      "match": "Escrow",
+      "text": "<span>{isPaying ? 'Processing...' : `Pay 50% Advance Escrow (₹${advanceRupees.toLocaleString('en-IN')})`}</span>"
+    },
+    {
+      "file": "client/src/components/SEO.tsx",
+      "line": 20,
+      "match": "escrow",
+      "text": "'India’s verified civic issue reporting network. Report municipal infrastructure defects, track geotagged photographic remediation proof, and verify escrow-backed contractor resolution across 36 states and union territories.';"
+    },
+    {
+      "file": "client/src/components/SEO.tsx",
+      "line": 20,
+      "match": "36 states",
+      "text": "'India’s verified civic issue reporting network. Report municipal infrastructure defects, track geotagged photographic remediation proof, and verify escrow-backed contractor resolution across 36 states and union territories.';"
+    },
+    {
+      "file": "client/src/components/ui/Logo.tsx",
+      "line": 27,
+      "match": "12306",
+      "text": "fill={isDark ? '#12306A' : '#0A1F44'}"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 88,
+      "match": "Escrow",
+      "text": "Real-time civic operations triage, contractor assignment dispatch, and Escrow fund governance"
+    },
+    {
+      "file": "client/src/pages/admin/Dashboard.tsx",
+      "line": 359,
+      "match": "escrow",
+      "text": "<p className=\"text-[11px] text-secondaryText\">Per-km rates, severity multipliers, escrow</p>"
+    },
+    {
+      "file": "client/src/pages/admin/IssueDetails.tsx",
+      "line": 771,
+      "match": "Escrow",
+      "text": "<span>50% Advance (Escrowed)</span>"
+    },
+    {
+      "file": "client/src/pages/auth/Login.tsx",
+      "line": 58,
+      "match": "escrow",
+      "text": "testimonialQuote=\"The transparent 50% escrow and GPS-tagged photo verification eliminated 6 months of traditional municipal delays. Our Indiranagar street defect was repaired in 28 hours.\""
+    },
+    {
+      "file": "client/src/pages/auth/RegisterResolver.tsx",
+      "line": 198,
+      "match": "escrow",
+      "text": "description=\"Join India's certified municipal contractor network. Receive proximity-dispatched civic work orders, guaranteed 50% escrow milestone payouts, and verified credentials.\""
+    },
+    {
+      "file": "client/src/pages/auth/RegisterResolver.tsx",
+      "line": 216,
+      "match": "escrow",
+      "text": "description=\"Receive proximity-dispatched municipal work orders, guaranteed 50% advance milestone escrow payouts, and verifiable public reputation in your local district.\""
+    },
+    {
+      "file": "client/src/pages/auth/RegisterResolver.tsx",
+      "line": 494,
+      "match": "Escrow",
+      "text": "<strong>Data Privacy & Escrow Security:</strong> Government ID proofs are stored in authenticated Cloudinary vaults and are only accessible by platform administrators through time-limited cryptographic signed URLs."
+    },
+    {
+      "file": "client/src/pages/auth/RegisterUser.tsx",
+      "line": 146,
+      "match": "escrow",
+      "text": "testimonialQuote=\"Crowd Report gave our neighborhood committee direct visibility into municipal repair milestones with zero bureaucracy. Knowing our advance is held in escrow until completion gives absolute peace of mind.\""
+    },
+    {
+      "file": "client/src/pages/auth/RegisterUser.tsx",
+      "line": 152,
+      "match": "escrow",
+      "text": "description=\"Create your citizen account to report municipal defects, track real-time resolution with before/after photos, and verify escrow contractor repairs.\""
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 14,
+      "match": "12306",
+      "text": "{ name: 'Primary Hover', hex: '#12306A', token: '--color-primary-hover', text: '#FFFFFF' },"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 24,
+      "match": "Escrow",
+      "text": "{ name: 'Warning (Escrow Gate)', hex: '#B54708', token: '--color-warning', text: '#FFFFFF' },"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 197,
+      "match": "12306",
+      "text": "<rect x=\"22\" y=\"4\" width=\"14\" height=\"14\" rx=\"3\" fill=\"#12306A\" />"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 198,
+      "match": "12306",
+      "text": "<rect x=\"4\" y=\"22\" width=\"14\" height=\"14\" rx=\"3\" fill=\"#12306A\" />"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 230,
+      "match": "12306",
+      "text": "<rect x=\"22\" y=\"4\" width=\"14\" height=\"14\" rx=\"3\" fill=\"#12306A\" />"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 231,
+      "match": "12306",
+      "text": "<rect x=\"4\" y=\"22\" width=\"14\" height=\"14\" rx=\"3\" fill=\"#12306A\" />"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 281,
+      "match": "Escrow",
+      "text": "Municipal Defect Remediation & Escrow Dispatch"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 287,
+      "match": "36 States",
+      "text": "36 States & Union Territories Coverage"
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 293,
+      "match": "escrow",
+      "text": "Citizens report verified neighborhood defects, inspect contractor cost estimates, and authorize milestone escrow releases. Strict integer paise accounting ensures zero floating-point discrepancies across all financial ledgers."
+    },
+    {
+      "file": "client/src/pages/dev/Styleguide.tsx",
+      "line": 381,
+      "match": "Escrow",
+      "text": "<AlertTriangle className=\"w-3.5 h-3.5\" /> 50% Escrow Pending"
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 28,
+      "match": "escrow",
+      "text": "description=\"Learn how Crowd Report combines mathematical Schedule of Rates (SOR), escrow-backed contractor disbursements, and photographic audit verification to fix urban infrastructure.\""
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 32,
+      "match": "escrow",
+      "text": "'escrow contractor payments',"
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 72,
+      "match": "Escrow",
+      "text": "title=\"Built for Transparency, Backed by Milestone Escrow\""
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 91,
+      "match": "Escrow",
+      "text": "<span className=\"text-xs uppercase tracking-wider font-semibold text-gold\">Escrow Governance Model</span>"
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 119,
+      "match": "12480",
+      "text": "<AnimatedCounter value={12480} suffix=\"+\" />"
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 135,
+      "match": "99.4",
+      "text": "<AnimatedCounter value={99.4} decimals={1} suffix=\"%\" />"
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 146,
+      "match": "Escrow",
+      "text": "<p className=\"text-[11px] text-muted mt-1\">Paise-Exact Escrow Gate</p>"
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 158,
+      "match": "escrow",
+      "text": "subtitle=\"Why civic problem reporting historically stalled, and how our escrow-backed model delivers guaranteed remediation.\""
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 206,
+      "match": "Escrow",
+      "text": "<span><strong>Paise-Exact Escrow:</strong> 50% advance locked in a segregated civic escrow gate until completion. Zero contractor payout without approved verification.</span>"
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 206,
+      "match": "escrow",
+      "text": "<span><strong>Paise-Exact Escrow:</strong> 50% advance locked in a segregated civic escrow gate until completion. Zero contractor payout without approved verification.</span>"
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 258,
+      "match": "Escrow",
+      "text": "Escrow Guarantee"
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 261,
+      "match": "escrow",
+      "text": "All transaction values are calculated in integer paise. The 50% advance remains escrowed until the physical hazard is verified by supervisory inspectors and the citizen reporter."
+    },
+    {
+      "file": "client/src/pages/public/About.tsx",
+      "line": 295,
+      "match": "escrow",
+      "text": "Join our nationwide network of accredited problem solvers. Gain direct access to verified neighborhood repair assignments in your ward, guaranteed advance escrow, and weekly direct-to-bank payouts."
+    },
+    {
+      "file": "client/src/pages/public/Home.tsx",
+      "line": 49,
+      "match": "escrow",
+      "text": "description=\"Report civic issues, potholes, streetlights, and sanitation hazards. Track verified before-and-after photo proof with escrow-backed municipal contractor dispatch across 36 Indian states.\""
+    },
+    {
+      "file": "client/src/pages/public/Home.tsx",
+      "line": 56,
+      "match": "escrow",
+      "text": "'escrow contractor dispatch',"
+    },
+    {
+      "file": "client/src/pages/public/Home.tsx",
+      "line": 134,
+      "match": "municipal inspector",
+      "text": "subtitle=\"Every resolved hazard requires timestamped, geo-tagged Before and After photographic evidence before municipal inspector sign-off and balance disbursement.\""
+    },
+    {
+      "file": "client/src/pages/public/Home.tsx",
+      "line": 146,
+      "match": "municipal inspector",
+      "text": "<span>Double-blind citizen & municipal inspector photo audit</span>"
+    },
+    {
+      "file": "client/src/pages/public/Home.tsx",
+      "line": 150,
+      "match": "escrow",
+      "text": "<span>50% milestone escrow released only upon photo verification</span>"
+    },
+    {
+      "file": "client/src/pages/public/Home.tsx",
+      "line": 198,
+      "match": "thousands",
+      "text": "Join thousands of active citizens and resident associations across India holding civic infrastructure to verifiable, escrow-backed standards."
+    },
+    {
+      "file": "client/src/pages/public/Home.tsx",
+      "line": 198,
+      "match": "escrow",
+      "text": "Join thousands of active citizens and resident associations across India holding civic infrastructure to verifiable, escrow-backed standards."
+    },
+    {
+      "file": "client/src/pages/public/Home.tsx",
+      "line": 231,
+      "match": "Escrow",
+      "text": "<span>50% Advance Escrow Guarantee</span>"
+    },
+    {
+      "file": "client/src/pages/public/Services.tsx",
+      "line": 155,
+      "match": "Escrow",
+      "text": "<span><strong className=\"text-white\">50% Escrow Advance:</strong> Funds locked in advance escrow prior to contractor mobilization.</span>"
+    },
+    {
+      "file": "client/src/pages/public/Services.tsx",
+      "line": 155,
+      "match": "escrow",
+      "text": "<span><strong className=\"text-white\">50% Escrow Advance:</strong> Funds locked in advance escrow prior to contractor mobilization.</span>"
+    },
+    {
+      "file": "client/src/pages/public/Services.tsx",
+      "line": 163,
+      "match": "36 States",
+      "text": "<span><strong className=\"text-white\">Pan-India Coverage:</strong> Standardized Schedule of Rates (SOR) across 36 States &amp; UTs.</span>"
+    },
+    {
+      "file": "client/src/pages/public/Services.tsx",
+      "line": 319,
+      "match": "Escrow",
+      "text": "{/* Civic Escrow & Quality Assurance Notice */}"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 130,
+      "match": "escrow",
+      "text": "description={`Track verified civic hazard resolutions, escrow-backed contractor dispatch, and local public works in ${stateData.name}. Landmark: ${landmarkInfo.landmark}. ${stateData.heroBlurb}`}"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 169,
+      "match": "Escrow",
+      "text": "serviceType: 'Municipal Defect Remediation & Escrow Dispatch',"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 295,
+      "match": "Escrow",
+      "text": "<span>50% Escrow Protected</span>"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 385,
+      "match": "Escrow",
+      "text": "<p className=\"text-[11px] text-muted mt-0.5\">From Escrow to On-Site</p>"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 408,
+      "match": "escrow",
+      "text": "Operating across {stateData.districtsCount} administrative districts from headquarters in {stateData.capital}, Crowd Report coordinates public works remediation in {stateData.name}. Our decentralized contractor mesh enables wards to resolve road potholes, streetlighting blackouts, garbage backlogs, and water pipe fractures with verified photographic provenance and guaranteed escrow disbursement."
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 519,
+      "match": "escrow",
+      "text": "subtitle=\"Local contractor accreditation, municipal license validation, and guaranteed milestone escrow protections.\""
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 535,
+      "match": "Background Screened",
+      "text": "✓ 100% Background Screened"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 544,
+      "match": "Escrow",
+      "text": "50% Milestone Escrow Guarantee"
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 547,
+      "match": "escrow",
+      "text": "Remediation funds are locked securely in institutional escrow. 50% mobilizes on site arrival; the remaining 50% releases only after citizen-approved GPS photographic inspection."
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 582,
+      "match": "escrow",
+      "text": "subtitle=\"Live chronological log of verified contractor submissions, municipal approvals, and settled escrow disbursements.\""
+    },
+    {
+      "file": "client/src/pages/public/StateDetail.tsx",
+      "line": 661,
+      "match": "36 States",
+      "text": "All 36 States & UTs"
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 184,
+      "match": "escrow",
+      "text": "Every jurisdiction operates under the verified 50% milestone escrow protocol and GPS-stamped photo verification standard."
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 281,
+      "match": "24-48h",
+      "text": "24-48h Escrow SLA"
+    },
+    {
+      "file": "client/src/pages/public/StatesDirectory.tsx",
+      "line": 281,
+      "match": "Escrow",
+      "text": "24-48h Escrow SLA"
+    },
+    {
+      "file": "client/src/pages/public/TrackStatus.tsx",
+      "line": 108,
+      "match": "Escrow",
+      "text": "{ label: 'Quoted', desc: '50% Escrow Gate' },"
+    },
+    {
+      "file": "client/src/pages/public/TrackStatus.tsx",
+      "line": 135,
+      "match": "escrow",
+      "text": "description=\"Enter your unique tracking reference code to audit contractor dispatch timestamps, before/after photographic proof, and escrow verification receipts in real time.\""
+    },
+    {
+      "file": "client/src/pages/public/TrackStatus.tsx",
+      "line": 152,
+      "match": "Escrow",
+      "text": "<span>Escrow Release:</span>"
+    },
+    {
+      "file": "client/src/pages/public/TrackStatus.tsx",
+      "line": 199,
+      "match": "municipal inspector",
+      "text": "<span className=\"hidden sm:inline\">Updated automatically upon municipal inspector sign-off</span>"
+    },
+    {
+      "file": "client/src/pages/public/WriteQuery.tsx",
+      "line": 38,
+      "match": "Escrow",
+      "text": "'Escrow & Billing Questions',"
+    },
+    {
+      "file": "client/src/pages/public/WriteQuery.tsx",
+      "line": 92,
+      "match": "escrow",
+      "text": "description=\"Direct administrative liaison desk for citizen questions regarding municipal ward coverage, contractor accreditation, escrow guarantees, and formal tax receipts.\""
+    },
+    {
+      "file": "client/src/pages/public/WriteQuery.tsx",
+      "line": 109,
+      "match": "24-48h",
+      "text": "description=\"Submit formal inquiries regarding ward jurisdiction coverage, contractor accreditation standards, fee tariffs, or commercial tax invoices with guaranteed 24-48h response SLA.\""
+    },
+    {
+      "file": "client/src/pages/public/WriteQuery.tsx",
+      "line": 114,
+      "match": "24-48h",
+      "text": "<span className=\"text-[10px] px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 font-bold\">24-48h SLA</span>"
+    },
+    {
+      "file": "client/src/pages/public/WriteQuery.tsx",
+      "line": 366,
+      "match": "Escrow",
+      "text": "<span>How Does the 50% Escrow Work?</span>"
+    },
+    {
+      "file": "client/src/pages/resolver/Assignments.tsx",
+      "line": 234,
+      "match": "Escrow",
+      "text": "50% Advance Escrowed: {formatRupees(task.fee?.advancePaise)}"
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 79,
+      "match": "escrow",
+      "text": "Review nearby civic dispatch requests, accept jobs within your coverage radius, execute on-site remediation, and submit photographic completion proof for automated escrow settlement."
+    },
+    {
+      "file": "client/src/pages/resolver/Dashboard.tsx",
+      "line": 204,
+      "match": "escrow",
+      "text": "Next escrow settlement"
+    },
+    {
+      "file": "client/src/pages/resolver/Earnings.tsx",
+      "line": 60,
+      "match": "Escrow",
+      "text": "<span className=\"text-xs font-mono text-secondaryText\">Municipal Escrow Settled</span>"
+    },
+    {
+      "file": "client/src/pages/resolver/Earnings.tsx",
+      "line": 66,
+      "match": "escrow",
+      "text": "Audit your net contractor disbursements, escrow clearance pipeline, and municipal platform commission."
+    },
+    {
+      "file": "client/src/pages/resolver/Earnings.tsx",
+      "line": 111,
+      "match": "Escrow",
+      "text": "Transferred directly to your verified bank account via Escrow"
+    },
+    {
+      "file": "client/src/pages/resolver/Profile.tsx",
+      "line": 171,
+      "match": "Escrow",
+      "text": "<span>Disbursed via Escrow</span>"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 191,
+      "match": "Escrow",
+      "text": "50% Escrow Advance Pending"
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 195,
+      "match": "escrow",
+      "text": "To dispatch a certified contractor to your location, please deposit the 50% advance of ₹{(issue.fee.advancePaise / 100).toLocaleString('en-IN')}. Funds remain safely in municipal escrow until on-site work begins."
+    },
+    {
+      "file": "client/src/pages/user/IssueDetails.tsx",
+      "line": 515,
+      "match": "Escrow",
+      "text": "Invoice 1 (50% Escrow Deposited)"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 95,
+      "match": "escrow",
+      "text": "Your municipal governance desk is active. Monitor neighborhood defect dispatches, review 50% advance escrow protections, and inspect Before/After photographic proof."
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 174,
+      "match": "escrow",
+      "text": "<div className=\"text-[11px] text-muted mt-1\">50% escrow pending</div>"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 268,
+      "match": "Escrow",
+      "text": "{/* Right Column (4 cols): Quick Track, Escrow Explainer & Support */}"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 297,
+      "match": "Escrow",
+      "text": "{/* 50% Escrow Guarantee Notice */}"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 301,
+      "match": "Escrow",
+      "text": "<span>Paise-Exact Escrow Gate</span>"
+    },
+    {
+      "file": "client/src/pages/user/UserDashboard.tsx",
+      "line": 304,
+      "match": "escrow",
+      "text": "<strong>50% Advance</strong> is safely locked in municipal escrow and only released to the certified resolver when on-site work begins. <strong>50% Balance</strong> is due only after you inspect and accept the verified Before/After completion photos."
+    }
+  ]
+}

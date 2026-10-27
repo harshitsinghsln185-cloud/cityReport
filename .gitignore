@@ -4,6 +4,7 @@ docs/*
 !docs/ui-upgrade/
 !docs/ui-fix/
 !docs/home-hero/
+!docs/ui-audit/
 AGENT.md
 client/ASSETS.md
 design-source/
