@@ -77,14 +77,14 @@ export const Home: React.FC = () => {
           },
         }}
       />
-      {/* 1. Hero Section with Procedural 3D Canvas */}
+      {/* 1. Interactive Photo Hero with Street Hazard Hotspots */}
       <Hero />
 
       {/* 2. Live Civic Remediation Ticker & Impact Counter */}
       <LiveTicker />
 
       {/* 3. Active Civic Services Grid */}
-      <section className="py-20 bg-canvas">
+      <section id="categories-section" className="py-20 bg-canvas">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
             <SectionHeader
