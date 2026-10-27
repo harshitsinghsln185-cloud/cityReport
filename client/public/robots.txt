@@ -12,4 +12,4 @@ Disallow: /resolver/
 Disallow: /user/
 Disallow: /api/
 
-Sitemap: https://crowdreport.in/sitemap.xml
+Sitemap: http://localhost:5173/sitemap.xml

@@ -18,6 +18,7 @@ import Breadcrumbs from '../../components/ui/Breadcrumbs';
 import Reveal from '../../components/ui/Reveal';
 import EmptyState from '../../components/ui/EmptyState';
 import SEO from '../../components/SEO';
+import { SITE_URL } from '../../config/site';
 
 export const Services: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -97,13 +98,13 @@ export const Services: React.FC = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://crowdreport.in/',
+                item: `${SITE_URL}/`,
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Services',
-                item: 'https://crowdreport.in/services',
+                item: `${SITE_URL}/services`,
               },
             ],
           },
@@ -114,7 +115,7 @@ export const Services: React.FC = () => {
             provider: {
               '@type': 'Organization',
               name: 'Crowd Report',
-              url: 'https://crowdreport.in',
+              url: SITE_URL,
             },
           },
         ]}

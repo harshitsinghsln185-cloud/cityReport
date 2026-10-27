@@ -19,8 +19,10 @@ export const getCookie = (name: string): string | null => {
   return match ? decodeURIComponent(match[3]) : null;
 };
 
+export const API_BASE_URL: string = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/+$/, '');
+
 export const api: AxiosInstance = axios.create({
-  baseURL: '/api',
+  baseURL: API_BASE_URL,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
@@ -42,7 +44,7 @@ export const ensureCsrfToken = async (): Promise<string | null> => {
     const existing = getCookie('XSRF-TOKEN');
     if (existing) return existing;
 
-    const res = await axios.get<ApiResponse<{ csrfToken: string }>>('/api/auth/csrf-token', {
+    const res = await axios.get<ApiResponse<{ csrfToken: string }>>(`${API_BASE_URL}/auth/csrf-token`, {
       withCredentials: true,
     });
     return res.data.data?.csrfToken || null;
@@ -92,7 +94,7 @@ api.interceptors.response.use(
       isRefreshing = true;
 
       try {
-        await axios.post('/api/auth/refresh', {}, { withCredentials: true });
+        await axios.post(`${API_BASE_URL}/auth/refresh`, {}, { withCredentials: true });
         processQueue(null, true);
         return api(originalRequest);
       } catch (refreshErr) {

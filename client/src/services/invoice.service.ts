@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { api, ApiResponse } from './api';
+import { api, ApiResponse, API_BASE_URL } from './api';
 
 export interface InvoiceItem {
   _id: string;
@@ -57,7 +57,7 @@ export const invoiceService = {
 
   downloadPdf: async (invoiceId: string, invoiceNumber?: string): Promise<void> => {
     // Authenticated blob request
-    const response = await axios.get(`/api/invoices/${invoiceId}/pdf`, {
+    const response = await axios.get(`${API_BASE_URL}/invoices/${invoiceId}/pdf`, {
       responseType: 'blob',
       withCredentials: true,
     });

@@ -20,6 +20,7 @@ import Accordion from '../../components/ui/Accordion';
 import SectionHeader from '../../components/ui/SectionHeader';
 import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
+import { SITE_URL } from '../../config/site';
 
 export const StateDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -75,7 +76,7 @@ export const StateDetail: React.FC = () => {
           `${stateData.capital} civic portal`,
           `${stateData.name} contractor dispatch`,
         ]}
-        canonical={`https://crowdreport.in/states/${stateData.slug}`}
+        canonical={`${SITE_URL}/states/${stateData.slug}`}
         jsonLd={[
           {
             '@context': 'https://schema.org',
@@ -85,19 +86,19 @@ export const StateDetail: React.FC = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://crowdreport.in/',
+                item: `${SITE_URL}/`,
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'States & Union Territories',
-                item: 'https://crowdreport.in/states',
+                item: `${SITE_URL}/states`,
               },
               {
                 '@type': 'ListItem',
                 position: 3,
                 name: stateData.name,
-                item: `https://crowdreport.in/states/${stateData.slug}`,
+                item: `${SITE_URL}/states/${stateData.slug}`,
               },
             ],
           },
@@ -113,7 +114,7 @@ export const StateDetail: React.FC = () => {
             provider: {
               '@type': 'Organization',
               name: 'Crowd Report',
-              url: 'https://crowdreport.in',
+              url: SITE_URL,
             },
           },
           {

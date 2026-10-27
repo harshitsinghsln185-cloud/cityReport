@@ -19,6 +19,7 @@ import Button from '../../components/ui/Button';
 import SectionHeader from '../../components/ui/SectionHeader';
 import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
+import { SITE_URL } from '../../config/site';
 
 export const Home: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -63,8 +64,8 @@ export const Home: React.FC = () => {
           provider: {
             '@type': 'Organization',
             name: 'Crowd Report',
-            url: 'https://crowdreport.in',
-            logo: 'https://crowdreport.in/favicon.svg',
+            url: SITE_URL,
+            logo: `${SITE_URL}/favicon.svg`,
           },
           areaServed: {
             '@type': 'Country',
@@ -72,7 +73,7 @@ export const Home: React.FC = () => {
           },
           availableChannel: {
             '@type': 'ServiceChannel',
-            serviceUrl: 'https://crowdreport.in',
+            serviceUrl: SITE_URL,
           },
         }}
       />

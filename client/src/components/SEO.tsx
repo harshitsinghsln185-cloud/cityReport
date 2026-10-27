@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
+import { SITE_URL } from '../config/site';
 
 export interface SEOProps {
   title?: string;
@@ -17,7 +18,7 @@ export interface SEOProps {
 const DEFAULT_TITLE = 'Crowd Report — Civic Issue Reporting & Municipal Resolution Platform';
 const DEFAULT_DESC =
   'India’s verified civic issue reporting network. Report municipal infrastructure defects, track geotagged photographic remediation proof, and verify escrow-backed contractor resolution across 36 states and union territories.';
-const BASE_URL = 'https://crowdreport.in';
+export const BASE_URL = SITE_URL;
 const DEFAULT_OG_IMAGE = `${BASE_URL}/images/og-card.png`;
 
 export const SEO: React.FC<SEOProps> = ({

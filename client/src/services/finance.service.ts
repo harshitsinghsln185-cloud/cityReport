@@ -1,4 +1,4 @@
-import { api, ApiResponse } from './api';
+import { api, ApiResponse, API_BASE_URL } from './api';
 
 export interface FinanceMetrics {
   gmvPaise: number;
@@ -82,7 +82,7 @@ export const financeService = {
     if (params?.startDate) query.append('startDate', params.startDate);
     if (params?.endDate) query.append('endDate', params.endDate);
     const qs = query.toString();
-    return `/api/admin/finance/export.csv${qs ? `?${qs}` : ''}`;
+    return `${API_BASE_URL}/admin/finance/export.csv${qs ? `?${qs}` : ''}`;
   },
 
   listPayments: async (params?: {

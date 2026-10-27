@@ -18,6 +18,7 @@ import Badge from '../../components/ui/Badge';
 import EmptyState from '../../components/ui/EmptyState';
 import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
+import { SITE_URL } from '../../config/site';
 
 export const StatesDirectory: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -87,13 +88,13 @@ export const StatesDirectory: React.FC = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://crowdreport.in/',
+                item: `${SITE_URL}/`,
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'States & Union Territories',
-                item: 'https://crowdreport.in/states',
+                item: `${SITE_URL}/states`,
               },
             ],
           },
@@ -103,7 +104,7 @@ export const StatesDirectory: React.FC = () => {
             name: 'Indian States & Union Territories Civic Directory',
             description:
               'Browse civic hazard resolution metrics and active municipal resolver networks across 36 Indian states and UTs.',
-            url: 'https://crowdreport.in/states',
+            url: `${SITE_URL}/states`,
           },
         ]}
       />

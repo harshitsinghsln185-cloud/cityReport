@@ -17,6 +17,7 @@ import SectionHeader from '../../components/ui/SectionHeader';
 import Breadcrumbs from '../../components/ui/Breadcrumbs';
 import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
+import { SITE_URL } from '../../config/site';
 
 export const About: React.FC = () => {
   return (
@@ -40,13 +41,13 @@ export const About: React.FC = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://crowdreport.in/',
+                item: `${SITE_URL}/`,
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'About',
-                item: 'https://crowdreport.in/about',
+                item: `${SITE_URL}/about`,
               },
             ],
           },

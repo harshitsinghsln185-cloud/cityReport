@@ -22,6 +22,7 @@ import Badge from '../../components/ui/Badge';
 import MapPicker from '../../components/MapPicker';
 import ImageUploader from '../../components/ImageUploader';
 import SEO from '../../components/SEO';
+import { SITE_URL } from '../../config/site';
 
 export const RegisterResolver: React.FC = () => {
   const navigate = useNavigate();
@@ -200,7 +201,7 @@ export const RegisterResolver: React.FC = () => {
           'road contractor jobs',
           'government civic contractor',
         ]}
-        canonical="https://crowdreport.in/register-resolver"
+        canonical={`${SITE_URL}/register-resolver`}
       />
       <div className="max-w-3xl mx-auto space-y-8">
         {/* Header */}
