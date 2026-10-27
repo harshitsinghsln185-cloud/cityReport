@@ -18,4 +18,6 @@ export * from './Pagination';
 export * from './ErrorBoundary';
 export * from './Logo';
 export * from './PageHero';
+export * from './AnimatedCounter';
+
 

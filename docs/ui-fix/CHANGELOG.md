@@ -156,3 +156,23 @@
   - **Query & Liaison Desk (`/query`)**: Deployed `split` variant with administrative liaison contact details, working hours, and SLA response guarantees.
   - **Contractor Accreditation (`/register-resolver`)**: Deployed `split` variant with contractor advance escrow benefits, localized dispatch radius, and KYC requirements.
 - **Verification**: `npm run lint` clean, zero errors.
+
+---
+
+## [Phase R6] - Interactivity & Motion Polish
+**Date**: October 2026  
+**Commit**: `R6: Micro-interactions, hover effects and layout transitions`
+
+### Completed Deliverables
+- **Card Hover Zoom & Lift (`index.css`, `Card.tsx`)**:
+  - Enhanced `.card-hover-lift` with subtle scale zoom (`scale(1.015)` / `translateY(-3px)`) and smooth shadow expansion.
+  - Added strict `prefers-reduced-motion` media override disabling scale/transform while retaining smooth opacity.
+- **Button Micro-Spring & Magnetic Hover (`Button.tsx`)**:
+  - Enforced subtle micro-scale (`hover:scale-[1.01] active:scale-[0.98]`) with `motion-reduce:hover:scale-100` safeguard.
+- **Animated Counter Component (`AnimatedCounter.tsx`)**:
+  - Created reusable `<AnimatedCounter />` using `requestAnimationFrame` with ease-out cubic interpolation.
+  - Triggered on scroll viewport entry via Framer Motion `useInView`.
+  - Supports comma separators, custom prefixes, suffixes, and decimals.
+  - Fully respects `useReducedMotion()`, instantly displaying target number when user prefers reduced motion.
+  - Wired into `About.tsx` impact metrics (12,480+ hazards, 36 States & UTs, 99.4% SLA).
+- **Verification**: `npm run lint` clean, zero errors.

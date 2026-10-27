@@ -16,6 +16,8 @@ import Badge from '../../components/ui/Badge';
 import SectionHeader from '../../components/ui/SectionHeader';
 import Breadcrumbs from '../../components/ui/Breadcrumbs';
 import Reveal from '../../components/ui/Reveal';
+import PageHero from '../../components/ui/PageHero';
+import AnimatedCounter from '../../components/ui/AnimatedCounter';
 import SEO from '../../components/SEO';
 import { SITE_URL } from '../../config/site';
 
@@ -115,15 +117,15 @@ export const About: React.FC = () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-5 rounded-card bg-white border border-border shadow-subtle mb-16">
             <div className="p-4 text-center">
               <p className="font-heading font-bold text-3xl sm:text-4xl text-primary tabular-nums mb-1">
-                12,480+
+                <AnimatedCounter value={12480} suffix="+" />
               </p>
               <p className="text-xs text-muted font-medium">Hazards Remediated</p>
               <p className="text-[11px] text-emerald-600 font-medium mt-1">100% Photo Proof Verified</p>
             </div>
 
             <div className="p-4 text-center border-l-0 sm:border-l border-border">
-              <p className="font-heading font-bold text-3xl sm:text-4xl text-indigo tabular-nums mb-1">
-                36
+              <p className="font-heading font-bold text-3xl sm:text-4xl text-primary tabular-nums mb-1">
+                <AnimatedCounter value={36} />
               </p>
               <p className="text-xs text-muted font-medium">States & UTs Covered</p>
               <p className="text-[11px] text-muted mt-1">Nationwide Geo-Registry</p>
@@ -131,7 +133,7 @@ export const About: React.FC = () => {
 
             <div className="p-4 text-center border-t sm:border-t-0 lg:border-l border-border">
               <p className="font-heading font-bold text-3xl sm:text-4xl text-emerald-600 tabular-nums mb-1">
-                99.4%
+                <AnimatedCounter value={99.4} decimals={1} suffix="%" />
               </p>
               <p className="text-xs text-muted font-medium">Verified SLA Compliance</p>
               <p className="text-[11px] text-emerald-600 font-medium mt-1">Within 24–48 Hours</p>

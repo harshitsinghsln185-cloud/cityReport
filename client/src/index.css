@@ -115,9 +115,15 @@
   }
 
   .card-hover-lift:hover {
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.015);
     box-shadow: var(--shadow-card-hover);
     border-color: rgba(10, 31, 68, 0.25);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-hover-lift:hover {
+      transform: none !important;
+    }
   }
 
   .table-wrapper {
