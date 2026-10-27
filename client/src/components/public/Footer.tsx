@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, CheckCircle2, Lock, Clock } from 'lucide-react';
+import { CheckCircle2, Lock, Clock } from 'lucide-react';
+import Logo from '../ui/Logo';
 
 export const Footer: React.FC = () => {
   return (
@@ -8,11 +9,8 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
         {/* Brand Column (Span 2 on lg) */}
         <div className="lg:col-span-2">
-          <Link to="/" className="flex items-center gap-2.5 text-white font-heading font-bold text-xl mb-4 group inline-flex">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo to-primary flex items-center justify-center text-white shadow-md shadow-primary/20">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <span>Crowd Report</span>
+          <Link to="/" className="mb-4 inline-block group focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg">
+            <Logo variant="horizontal" theme="dark" size="md" subtitle="Civic Infrastructure" />
           </Link>
           <p className="text-sm text-slate-400 leading-relaxed max-w-sm mb-6">
             India's unified civic infrastructure accountability network. Empowering citizens to report local hazards, track verified remediations in real time, and hold municipal contractors to rigorous standards.

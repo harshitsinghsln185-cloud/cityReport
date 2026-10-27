@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ShieldCheck, Menu, X, PlusCircle, ArrowRight } from 'lucide-react';
+import { Menu, X, PlusCircle, ArrowRight } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import Button from '../ui/Button';
+import Logo from '../ui/Logo';
 
 export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
@@ -30,14 +31,9 @@ export const Navbar: React.FC = () => {
         {/* Brand Logo */}
         <Link
           to="/"
-          className="flex items-center gap-2.5 text-ink font-heading font-bold text-xl tracking-tight group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1"
+          className="flex items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1"
         >
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo to-primary flex items-center justify-center text-white shadow-md shadow-primary/20 group-hover:scale-105 transition-transform">
-            <ShieldCheck className="w-5 h-5" />
-          </div>
-          <span className="bg-gradient-to-r from-dark to-indigo bg-clip-text text-transparent font-bold">
-            Crowd Report
-          </span>
+          <Logo variant="horizontal" size="md" />
         </Link>
 
         {/* Desktop Navigation Links */}

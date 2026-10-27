@@ -72,3 +72,36 @@
 - **Development-Only Styleguide (`Styleguide.tsx`)**:
   - Mounted at `/styleguide` exclusively in dev mode (`import.meta.env.DEV`), marked `noindex, nofollow`, displaying live swatches, typography clamps, button states, inputs, and badges.
 - **Verification**: `npm run lint` clean, zero errors.
+
+---
+
+## [Phase R3] - Brand Identity, Logo System & Asset Integration
+**Date**: October 2026  
+**Commit**: `R3: Vector logo design, favicon suite and brand identity replacement`
+
+### Completed Deliverables
+- **Vector Logo System Created (`client/src/assets/logo/`)**:
+  - Concept A: "The Civic Node" (Hexagonal Civic Seal & Trust Keystone) selected.
+  - Master vector assets:
+    - `logo-mark.svg` (48x48 standalone icon)
+    - `logo-horizontal.svg` (240x48 lockup for light backgrounds)
+    - `logo-horizontal-dark.svg` (240x48 lockup for dark surfaces)
+    - `logo-stacked.svg` (160x100 stacked hero lockup)
+    - `logo-monochrome.svg` (single-color dark navy/black)
+    - `logo-reversed.svg` (single-color pure white)
+- **Modular Component (`Logo.tsx`)**:
+  - Created reusable `<Logo />` and `<LogoMark />` components supporting `variant="mark" | "horizontal" | "stacked"`, `theme="light" | "dark"`, `size="sm" | "md" | "lg"`, and custom subtitles.
+- **Brand Identity Integration Across System**:
+  - `Navbar.tsx`: Integrated `Logo variant="horizontal" size="md"` (removed generic `ShieldCheck`).
+  - `Footer.tsx`: Integrated `Logo variant="horizontal" theme="dark" size="md" subtitle="Civic Infrastructure"`.
+  - `UserLayout.tsx`: Integrated `Logo variant="horizontal" size="sm" subtitle="Citizen Portal"` across desktop sidebar and mobile navigation drawer.
+  - `AdminLayout.tsx`: Integrated `Logo variant="horizontal" theme="dark" size="sm" subtitle="Municipal Secretariat"` across desktop sidebar and mobile operations drawer.
+  - `ResolverLayout.tsx`: Integrated `Logo variant="horizontal" size="sm" subtitle="Contractor Console"` across desktop sidebar and mobile contractor drawer.
+- **Favicon, Manifest & Social Share Suite**:
+  - Overwrote outdated 123KB purple favicon with crisp vector `client/public/favicon.svg` using Concept A mark.
+  - Created `client/public/site.webmanifest` with Soft Ivory background and Midnight Navy theme color.
+  - Created `client/public/images/og-card.svg` (1200x630) social share card in Midnight Navy and Warm Gold.
+  - Updated `client/index.html` with complete web manifest, theme-color, and Open Graph metadata.
+- **Brand Identity Documentation (`LOGO.md`)**:
+  - Authored full design rationale, geometric vertices grid, clear-space minimums, minimum digital sizing, and brand misuse rules.
+- **Verification**: `npm run lint` clean, zero errors.

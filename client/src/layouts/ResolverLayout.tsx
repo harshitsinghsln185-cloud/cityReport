@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Logo from '../components/ui/Logo';
 import {
-  Wrench,
   LayoutDashboard,
   Inbox,
   Briefcase,
@@ -66,16 +66,8 @@ export const ResolverLayout: React.FC = () => {
         <aside className="hidden md:flex flex-col w-64 bg-white border-r border-border shrink-0 shadow-xs">
           {/* Brand Header */}
           <div className="h-16 flex items-center px-6 border-b border-border gap-2.5">
-            <Link to="/" className="flex items-center gap-2.5 group">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-dark to-primary flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
-                <Wrench className="w-4 h-4" />
-              </div>
-              <div>
-                <span className="font-heading font-bold text-sm text-ink tracking-tight block">
-                  Resolver Console
-                </span>
-                <span className="text-[10px] text-muted block -mt-0.5">Municipal Contractor</span>
-              </div>
+            <Link to="/" className="flex items-center group">
+              <Logo variant="horizontal" size="sm" subtitle="Contractor Console" />
             </Link>
           </div>
 
@@ -139,10 +131,9 @@ export const ResolverLayout: React.FC = () => {
             />
             <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white shadow-modal">
               <div className="h-16 flex items-center justify-between px-6 border-b border-border">
-                <div className="flex items-center gap-2">
-                  <Wrench className="w-5 h-5 text-primary" />
-                  <span className="font-heading font-bold text-base text-ink">Resolver Console</span>
-                </div>
+                <Link to="/" className="flex items-center group">
+                  <Logo variant="horizontal" size="sm" subtitle="Contractor Console" />
+                </Link>
                 <button
                   type="button"
                   onClick={() => setIsMobileMenuOpen(false)}

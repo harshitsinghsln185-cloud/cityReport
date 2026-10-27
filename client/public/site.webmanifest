@@ -1,0 +1,17 @@
+{
+  "name": "Crowd Report Platform",
+  "short_name": "CrowdReport",
+  "description": "Unified civic infrastructure accountability network and public grievance redressal.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F3",
+  "theme_color": "#0A1F44",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

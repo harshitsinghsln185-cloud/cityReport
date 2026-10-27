@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Logo from '../components/ui/Logo';
 import {
-  ShieldAlert,
   BarChart3,
   AlertOctagon,
   UserCheck2,
@@ -48,18 +48,10 @@ export const AdminLayout: React.FC = () => {
     <div className="min-h-screen bg-canvas flex">
       {/* Desktop Admin Sidebar */}
       <aside className="hidden md:flex flex-col w-64 bg-[#0F1123] text-slate-300 border-r border-[#1E2342] shrink-0">
-        <div className="h-16 flex items-center px-6 border-b border-[#1E2342] gap-3">
-          <div className="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center font-serif font-bold text-base shadow-sm">
-            CR
-          </div>
-          <div>
-            <div className="font-serif font-bold text-base text-white tracking-tight leading-tight">
-              Crowd Report
-            </div>
-            <div className="text-[10px] font-mono uppercase tracking-wider text-primary font-semibold">
-              Municipal Secretariat
-            </div>
-          </div>
+        <div className="h-16 flex items-center px-6 border-b border-[#1E2342]">
+          <Link to="/" className="flex items-center group">
+            <Logo variant="horizontal" theme="dark" size="sm" subtitle="Municipal Secretariat" />
+          </Link>
         </div>
 
         <nav className="flex-1 p-3.5 space-y-1 overflow-y-auto">
@@ -104,10 +96,9 @@ export const AdminLayout: React.FC = () => {
           <div className="fixed inset-0 bg-[#0F1123]/70 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
           <div className="relative flex-1 flex flex-col max-w-xs w-full bg-[#0F1123] shadow-2xl text-slate-300">
             <div className="h-16 flex items-center justify-between px-6 border-b border-[#1E2342]">
-              <div className="flex items-center gap-2.5">
-                <ShieldAlert className="w-7 h-7 text-primary" />
-                <span className="font-serif font-bold text-base text-white">Operations Desk</span>
-              </div>
+              <Link to="/" className="flex items-center group">
+                <Logo variant="horizontal" theme="dark" size="sm" subtitle="Operations Desk" />
+              </Link>
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(false)}

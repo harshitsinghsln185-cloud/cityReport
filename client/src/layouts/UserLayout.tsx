@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Logo from '../components/ui/Logo';
 import {
-  ShieldCheck,
   LayoutDashboard,
   PlusCircle,
   ListTodo,
@@ -43,13 +43,8 @@ export const UserLayout: React.FC = () => {
       <aside className="hidden md:flex flex-col w-64 bg-white border-r border-border shrink-0 shadow-xs">
         {/* Brand Header */}
         <div className="h-16 flex items-center px-6 border-b border-border gap-2.5">
-          <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo to-primary flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <span className="font-heading font-bold text-base text-ink tracking-tight">
-              Crowd Report
-            </span>
+          <Link to="/" className="flex items-center group">
+            <Logo variant="horizontal" size="sm" subtitle="Citizen Portal" />
           </Link>
         </div>
 
@@ -113,10 +108,7 @@ export const UserLayout: React.FC = () => {
           />
           <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white shadow-modal">
             <div className="h-16 flex items-center justify-between px-6 border-b border-border">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-6 h-6 text-primary" />
-                <span className="font-heading font-bold text-base text-ink">Citizen Portal</span>
-              </div>
+              <Logo variant="horizontal" size="sm" subtitle="Citizen Portal" />
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(false)}

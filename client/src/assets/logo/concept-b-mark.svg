@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <!-- Concept B: The Civic Horizon (Interlocking Arcs & Golden Keystone) -->
+  <path d="M8 36C8 27.1634 15.1634 20 24 20C32.8366 20 40 27.1634 40 36H34C34 29.3726 28.6274 24 24 24C19.3726 24 14 29.3726 14 36H8Z" fill="#0A1F44" />
+  <path d="M14 20C14 14.4772 18.4772 10 24 10C29.5228 10 34 14.4772 34 20H28C28 16.6863 25.3137 14 24 14C22.6863 14 20 16.6863 20 20H14Z" fill="#C8A24A" />
+  <polygon points="24,4 28,10 20,10" fill="#C8A24A" />
+  <circle cx="24" cy="36" r="3" fill="#0A1F44" />
+</svg>

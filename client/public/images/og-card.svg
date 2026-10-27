@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" fill="none">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0A1F44"/>
+  
+  <!-- Subtle Architectural Grid Pattern -->
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#12306A" stroke-width="1" stroke-opacity="0.5"/>
+    </pattern>
+    <radialGradient id="glow" cx="20%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#C8A24A" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0A1F44" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  
+  <!-- Border Accent -->
+  <rect x="24" y="24" width="1152" height="582" rx="20" stroke="#C8A24A" stroke-opacity="0.3" stroke-width="2"/>
+
+  <!-- Logo Mark (Civic Node) at (100, 100) -->
+  <g transform="translate(100, 100) scale(2.2)">
+    <path d="M24 4L42 14.5V33.5L24 44L6 33.5V14.5L24 4Z" fill="#12306A" stroke="#C8A24A" stroke-width="1.5" />
+    <path d="M24 12L34 18V30L24 36L14 30V18L24 12Z" fill="#0A1F44" />
+    <path d="M24 16L30 20V28L24 32L18 28V20L24 16Z" fill="#C8A24A" />
+    <circle cx="24" cy="24" r="3" fill="#FAF8F3" />
+  </g>
+
+  <!-- Brand Typography -->
+  <text x="230" y="160" font-family="'Fraunces Variable', Georgia, serif" font-size="54" font-weight="700" fill="#FAF8F3" letter-spacing="-1">Crowd <tspan font-family="'Manrope Variable', sans-serif" font-weight="600" fill="#E2E8F0">Report</tspan></text>
+  <circle cx="585" y="152" r="6" fill="#C8A24A" />
+  <text x="232" y="195" font-family="'Manrope Variable', sans-serif" font-size="16" font-weight="700" fill="#C8A24A" letter-spacing="3">DECENTRALIZED CIVIC INFRASTRUCTURE PLATFORM</text>
+
+  <!-- Main Value Proposition Headline -->
+  <text x="100" y="320" font-family="'Fraunces Variable', Georgia, serif" font-size="52" font-weight="700" fill="#FFFFFF" letter-spacing="-1.5">
+    India's Unified Civic Accountability
+  </text>
+  <text x="100" y="380" font-family="'Fraunces Variable', Georgia, serif" font-size="52" font-weight="700" fill="#C8A24A" letter-spacing="-1.5">
+    &amp; Public Redressal Network.
+  </text>
+
+  <!-- Subtitle -->
+  <text x="100" y="440" font-family="'Manrope Variable', sans-serif" font-size="22" font-weight="400" fill="#94A3B8" letter-spacing="-0.2">
+    Empowering citizens to report municipal hazards, lock verified escrow, and enforce 48h SLA resolution.
+  </text>
+
+  <!-- Trust Badges (Horizontal Row at bottom) -->
+  <g transform="translate(100, 495)">
+    <!-- Badge 1: 36 States -->
+    <rect x="0" y="0" width="280" height="52" rx="12" fill="#12306A" stroke="#244B8E" stroke-width="1"/>
+    <circle cx="26" cy="26" r="6" fill="#C8A24A"/>
+    <text x="44" y="32" font-family="'Manrope Variable', sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">36 States &amp; Union Territories</text>
+
+    <!-- Badge 2: Escrow Exact -->
+    <rect x="305" y="0" width="280" height="52" rx="12" fill="#12306A" stroke="#244B8E" stroke-width="1"/>
+    <circle cx="331" cy="26" r="6" fill="#0E6E4C"/>
+    <text x="349" y="32" font-family="'Manrope Variable', sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Integer Paise Escrow Lock</text>
+
+    <!-- Badge 3: Geo-Proof SLA -->
+    <rect x="610" y="0" width="280" height="52" rx="12" fill="#12306A" stroke="#244B8E" stroke-width="1"/>
+    <circle cx="636" cy="26" r="6" fill="#C8A24A"/>
+    <text x="654" y="32" font-family="'Manrope Variable', sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Geo-Tagged Photo Proof</text>
+  </g>
+</svg>

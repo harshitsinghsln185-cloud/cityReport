@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ShieldCheck, PlusCircle, CheckCircle2, AlertTriangle, AlertCircle, Info, Sparkles, MapPin } from 'lucide-react';
+import { PlusCircle, CheckCircle2, AlertTriangle, AlertCircle, Info, MapPin } from 'lucide-react';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 import Input from '../../components/ui/Input';
@@ -46,6 +46,204 @@ export const Styleguide: React.FC = () => {
             Live interactive reference for palette swatches, typography clamps, button states, inputs, and card elevations. Excluded from production builds.
           </p>
         </div>
+
+        {/* Phase R3: Logo Design Concepts Selection */}
+        <section className="space-y-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-heading font-semibold text-ink">Phase R3: Vector Logo Concepts (Select One)</h2>
+              <p className="text-sm text-muted mt-1">
+                Precision vector SVG brandmarks built on geometric grids. Review below at 16px favicon, 48px mark, and horizontal lockup on Light & Dark surfaces.
+              </p>
+            </div>
+            <Badge variant="gold" size="md">Phase R3 Review</Badge>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Concept A */}
+            <Card variant="base" className="space-y-4 p-5 border-2 hover:border-primary transition-all">
+              <div className="flex items-center justify-between border-b border-border pb-3">
+                <div>
+                  <h3 className="font-heading font-bold text-lg text-ink">Concept A: Civic Node</h3>
+                  <p className="text-xs text-muted">Hexagonal Civic Seal & Trust Keystone</p>
+                </div>
+                <Badge variant="primary" size="sm">Recommended</Badge>
+              </div>
+
+              {/* Horizontal Lockup Light */}
+              <div className="p-4 rounded-xl bg-white border border-border flex items-center justify-center">
+                <svg viewBox="0 0 240 48" className="h-10 w-auto">
+                  <g transform="translate(4, 4)">
+                    <path d="M20 0L38 10V30L20 40L2 30V10L20 0Z" fill="#0A1F44" />
+                    <path d="M20 8L30 14V26L20 32L10 26V14L20 8Z" fill="#06132B" />
+                    <path d="M20 12L26 16V24L20 28L14 24V16L20 12Z" fill="#C8A24A" />
+                    <circle cx="20" cy="20" r="2.5" fill="#FAF8F3" />
+                  </g>
+                  <text x="56" y="31" fontFamily="'Fraunces Variable', Georgia, serif" fontSize="22" fontWeight="700" fill="#0A1F44" letterSpacing="-0.5">Crowd</text>
+                  <text x="135" y="31" fontFamily="'Manrope Variable', sans-serif" fontSize="22" fontWeight="600" fill="#101828" letterSpacing="-0.5">Report</text>
+                  <circle cx="216" cy="28" r="3" fill="#C8A24A" />
+                </svg>
+              </div>
+
+              {/* Horizontal Lockup Dark */}
+              <div className="p-4 rounded-xl bg-primary border border-primary/20 flex items-center justify-center">
+                <svg viewBox="0 0 240 48" className="h-10 w-auto">
+                  <g transform="translate(4, 4)">
+                    <path d="M20 0L38 10V30L20 40L2 30V10L20 0Z" fill="#FFFFFF" />
+                    <path d="M20 8L30 14V26L20 32L10 26V14L20 8Z" fill="#0A1F44" />
+                    <path d="M20 12L26 16V24L20 28L14 24V16L20 12Z" fill="#C8A24A" />
+                    <circle cx="20" cy="20" r="2.5" fill="#FFFFFF" />
+                  </g>
+                  <text x="56" y="31" fontFamily="'Fraunces Variable', Georgia, serif" fontSize="22" fontWeight="700" fill="#FFFFFF" letterSpacing="-0.5">Crowd</text>
+                  <text x="135" y="31" fontFamily="'Manrope Variable', sans-serif" fontSize="22" fontWeight="600" fill="#EBF1FA" letterSpacing="-0.5">Report</text>
+                  <circle cx="216" cy="28" r="3" fill="#C8A24A" />
+                </svg>
+              </div>
+
+              {/* Multi-scale preview (48px and 16px) */}
+              <div className="flex items-center justify-between pt-2 px-1 text-xs text-muted">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono">48px:</span>
+                  <svg viewBox="0 0 40 40" className="w-8 h-8">
+                    <path d="M20 0L38 10V30L20 40L2 30V10L20 0Z" fill="#0A1F44" />
+                    <path d="M20 8L30 14V26L20 32L10 26V14L20 8Z" fill="#06132B" />
+                    <path d="M20 12L26 16V24L20 28L14 24V16L20 12Z" fill="#C8A24A" />
+                  </svg>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono">16px favicon:</span>
+                  <svg viewBox="0 0 40 40" className="w-4 h-4">
+                    <path d="M20 0L38 10V30L20 40L2 30V10L20 0Z" fill="#0A1F44" />
+                    <circle cx="20" cy="20" r="8" fill="#C8A24A" />
+                  </svg>
+                </div>
+              </div>
+            </Card>
+
+            {/* Concept B */}
+            <Card variant="base" className="space-y-4 p-5 border-2 hover:border-primary transition-all">
+              <div className="flex items-center justify-between border-b border-border pb-3">
+                <div>
+                  <h3 className="font-heading font-bold text-lg text-ink">Concept B: Civic Horizon</h3>
+                  <p className="text-xs text-muted">Intersecting Community Arcs & Keystone</p>
+                </div>
+                <Badge variant="outline" size="sm">Modern</Badge>
+              </div>
+
+              {/* Horizontal Lockup Light */}
+              <div className="p-4 rounded-xl bg-white border border-border flex items-center justify-center">
+                <svg viewBox="0 0 240 48" className="h-10 w-auto">
+                  <g transform="translate(4, 4)">
+                    <path d="M4 32C4 23.1634 11.1634 16 20 16C28.8366 16 36 23.1634 36 32H30C30 25.3726 24.6274 20 20 20C15.3726 20 10 25.3726 10 32H4Z" fill="#0A1F44" />
+                    <path d="M10 16C10 10.4772 14.4772 6 20 6C25.5228 6 30 10.4772 30 16H25C25 12.6863 22.3137 10 20 10C17.6863 10 15 12.6863 15 16H10Z" fill="#C8A24A" />
+                    <polygon points="20,0 24,6 16,6" fill="#C8A24A" />
+                    <circle cx="20" cy="32" r="2.5" fill="#0A1F44" />
+                  </g>
+                  <text x="56" y="31" fontFamily="'Fraunces Variable', Georgia, serif" fontSize="22" fontWeight="700" fill="#0A1F44" letterSpacing="-0.5">Crowd</text>
+                  <text x="135" y="31" fontFamily="'Manrope Variable', sans-serif" fontSize="22" fontWeight="600" fill="#101828" letterSpacing="-0.5">Report</text>
+                  <circle cx="216" cy="28" r="3" fill="#C8A24A" />
+                </svg>
+              </div>
+
+              {/* Horizontal Lockup Dark */}
+              <div className="p-4 rounded-xl bg-primary border border-primary/20 flex items-center justify-center">
+                <svg viewBox="0 0 240 48" className="h-10 w-auto">
+                  <g transform="translate(4, 4)">
+                    <path d="M4 32C4 23.1634 11.1634 16 20 16C28.8366 16 36 23.1634 36 32H30C30 25.3726 24.6274 20 20 20C15.3726 20 10 25.3726 10 32H4Z" fill="#FFFFFF" />
+                    <path d="M10 16C10 10.4772 14.4772 6 20 6C25.5228 6 30 10.4772 30 16H25C25 12.6863 22.3137 10 20 10C17.6863 10 15 12.6863 15 16H10Z" fill="#C8A24A" />
+                    <polygon points="20,0 24,6 16,6" fill="#C8A24A" />
+                    <circle cx="20" cy="32" r="2.5" fill="#FFFFFF" />
+                  </g>
+                  <text x="56" y="31" fontFamily="'Fraunces Variable', Georgia, serif" fontSize="22" fontWeight="700" fill="#FFFFFF" letterSpacing="-0.5">Crowd</text>
+                  <text x="135" y="31" fontFamily="'Manrope Variable', sans-serif" fontSize="22" fontWeight="600" fill="#EBF1FA" letterSpacing="-0.5">Report</text>
+                  <circle cx="216" cy="28" r="3" fill="#C8A24A" />
+                </svg>
+              </div>
+
+              {/* Multi-scale preview */}
+              <div className="flex items-center justify-between pt-2 px-1 text-xs text-muted">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono">48px:</span>
+                  <svg viewBox="0 0 40 40" className="w-8 h-8">
+                    <path d="M4 32C4 23.1634 11.1634 16 20 16C28.8366 16 36 23.1634 36 32H30C30 25.3726 24.6274 20 20 20C15.3726 20 10 25.3726 10 32H4Z" fill="#0A1F44" />
+                    <path d="M10 16C10 10.4772 14.4772 6 20 6C25.5228 6 30 10.4772 30 16H25C25 12.6863 22.3137 10 20 10C17.6863 10 15 12.6863 15 16H10Z" fill="#C8A24A" />
+                  </svg>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono">16px favicon:</span>
+                  <svg viewBox="0 0 40 40" className="w-4 h-4">
+                    <circle cx="20" cy="20" r="18" fill="#0A1F44" />
+                    <polygon points="20,8 26,18 14,18" fill="#C8A24A" />
+                  </svg>
+                </div>
+              </div>
+            </Card>
+
+            {/* Concept C */}
+            <Card variant="base" className="space-y-4 p-5 border-2 hover:border-primary transition-all">
+              <div className="flex items-center justify-between border-b border-border pb-3">
+                <div>
+                  <h3 className="font-heading font-bold text-lg text-ink">Concept C: Municipal Grid</h3>
+                  <p className="text-xs text-muted">4-Quadrant Civic Matrix & Proof Check</p>
+                </div>
+                <Badge variant="outline" size="sm">Geometric</Badge>
+              </div>
+
+              {/* Horizontal Lockup Light */}
+              <div className="p-4 rounded-xl bg-white border border-border flex items-center justify-center">
+                <svg viewBox="0 0 240 48" className="h-10 w-auto">
+                  <g transform="translate(4, 4)">
+                    <rect x="4" y="4" width="14" height="14" rx="3" fill="#0A1F44" />
+                    <rect x="22" y="4" width="14" height="14" rx="3" fill="#12306A" />
+                    <rect x="4" y="22" width="14" height="14" rx="3" fill="#12306A" />
+                    <rect x="22" y="22" width="14" height="14" rx="3" fill="#0A1F44" />
+                    <path d="M12 20L18 26L28 12" stroke="#C8A24A" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </g>
+                  <text x="56" y="31" fontFamily="'Fraunces Variable', Georgia, serif" fontSize="22" fontWeight="700" fill="#0A1F44" letterSpacing="-0.5">Crowd</text>
+                  <text x="135" y="31" fontFamily="'Manrope Variable', sans-serif" fontSize="22" fontWeight="600" fill="#101828" letterSpacing="-0.5">Report</text>
+                  <circle cx="216" cy="28" r="3" fill="#C8A24A" />
+                </svg>
+              </div>
+
+              {/* Horizontal Lockup Dark */}
+              <div className="p-4 rounded-xl bg-primary border border-primary/20 flex items-center justify-center">
+                <svg viewBox="0 0 240 48" className="h-10 w-auto">
+                  <g transform="translate(4, 4)">
+                    <rect x="4" y="4" width="14" height="14" rx="3" fill="#FFFFFF" />
+                    <rect x="22" y="4" width="14" height="14" rx="3" fill="#EBF1FA" />
+                    <rect x="4" y="22" width="14" height="14" rx="3" fill="#EBF1FA" />
+                    <rect x="22" y="22" width="14" height="14" rx="3" fill="#FFFFFF" />
+                    <path d="M12 20L18 26L28 12" stroke="#C8A24A" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </g>
+                  <text x="56" y="31" fontFamily="'Fraunces Variable', Georgia, serif" fontSize="22" fontWeight="700" fill="#FFFFFF" letterSpacing="-0.5">Crowd</text>
+                  <text x="135" y="31" fontFamily="'Manrope Variable', sans-serif" fontSize="22" fontWeight="600" fill="#EBF1FA" letterSpacing="-0.5">Report</text>
+                  <circle cx="216" cy="28" r="3" fill="#C8A24A" />
+                </svg>
+              </div>
+
+              {/* Multi-scale preview */}
+              <div className="flex items-center justify-between pt-2 px-1 text-xs text-muted">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono">48px:</span>
+                  <svg viewBox="0 0 40 40" className="w-8 h-8">
+                    <rect x="4" y="4" width="14" height="14" rx="3" fill="#0A1F44" />
+                    <rect x="22" y="4" width="14" height="14" rx="3" fill="#12306A" />
+                    <rect x="4" y="22" width="14" height="14" rx="3" fill="#12306A" />
+                    <rect x="22" y="22" width="14" height="14" rx="3" fill="#0A1F44" />
+                    <path d="M12 20L18 26L28 12" stroke="#C8A24A" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono">16px favicon:</span>
+                  <svg viewBox="0 0 40 40" className="w-4 h-4">
+                    <rect x="2" y="2" width="36" height="36" rx="8" fill="#0A1F44" />
+                    <path d="M10 20L18 28L30 12" stroke="#C8A24A" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </section>
 
         {/* 1. Color Palette Swatches */}
         <section className="space-y-6">
