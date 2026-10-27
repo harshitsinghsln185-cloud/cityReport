@@ -120,22 +120,52 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. Interactive Showcase: Before/After Image Comparison Slider */}
+      {/* 4. Interactive Showcase: Before/After Image Comparison Slider (Split 2-Column) */}
       <section className="py-20 bg-white border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <SectionHeader
-              eyebrow="Verifiable Proof"
-              eyebrowVariant="gold"
-              title="Interactive Remediation Showcase"
-              subtitle="Every resolved hazard requires timestamped, geo-tagged Before and After photographic evidence before municipal inspector sign-off and balance disbursement."
-              align="center"
-            />
-          </Reveal>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column: Heading & Audit Standards */}
+            <div className="lg:col-span-5">
+              <Reveal>
+                <SectionHeader
+                  eyebrow="Verifiable Proof"
+                  eyebrowVariant="gold"
+                  title="Interactive Remediation Showcase"
+                  subtitle="Every resolved hazard requires timestamped, geo-tagged Before and After photographic evidence before municipal inspector sign-off and balance disbursement."
+                  align="left"
+                  className="mb-6"
+                />
 
-          <Reveal delay={0.15}>
-            <BeforeAfterSlider />
-          </Reveal>
+                <div className="space-y-3 pt-2 mb-6">
+                  <div className="flex items-center gap-2.5 text-xs text-secondaryText">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
+                    <span>GPS-stamped EXIF coordinate matching within 50m radius</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-xs text-secondaryText">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
+                    <span>Double-blind citizen & municipal inspector photo audit</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-xs text-secondaryText">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
+                    <span>50% milestone escrow released only upon photo verification</span>
+                  </div>
+                </div>
+
+                <Link to="/track">
+                  <Button variant="outline" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+                    Verify a Repair Ticket
+                  </Button>
+                </Link>
+              </Reveal>
+            </div>
+
+            {/* Right Column: Before/After Slider */}
+            <div className="lg:col-span-7">
+              <Reveal delay={0.15}>
+                <BeforeAfterSlider />
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 

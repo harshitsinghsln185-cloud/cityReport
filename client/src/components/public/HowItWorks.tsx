@@ -8,17 +8,20 @@ import {
   FileCheck2,
   Lock,
   Camera,
+  ArrowRight,
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Accordion, { AccordionItemData } from '../ui/Accordion';
 import SectionHeader from '../ui/SectionHeader';
 import Reveal from '../ui/Reveal';
+import Button from '../ui/Button';
 
 const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
   {
     id: 'step-01',
     title: (
       <div className="flex items-center gap-3 flex-wrap">
-        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-navy text-gold">
+        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-navy text-gold shrink-0">
           Step 01
         </span>
         <span className="font-heading font-semibold text-base text-ink">
@@ -55,7 +58,7 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
     id: 'step-02',
     title: (
       <div className="flex items-center gap-3 flex-wrap">
-        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-navy text-gold">
+        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-navy text-gold shrink-0">
           Step 02
         </span>
         <span className="font-heading font-semibold text-base text-ink">
@@ -92,7 +95,7 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
     id: 'step-03',
     title: (
       <div className="flex items-center gap-3 flex-wrap">
-        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-navy text-gold">
+        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-navy text-gold shrink-0">
           Step 03
         </span>
         <span className="font-heading font-semibold text-base text-ink">
@@ -129,7 +132,7 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
     id: 'step-04',
     title: (
       <div className="flex items-center gap-3 flex-wrap">
-        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-navy text-gold">
+        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-navy text-gold shrink-0">
           Step 04
         </span>
         <span className="font-heading font-semibold text-base text-ink">
@@ -166,21 +169,53 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
 
 export const HowItWorks: React.FC = () => {
   return (
-    <section className="py-20 bg-canvas border-y border-border">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal>
-          <SectionHeader
-            eyebrow="Mathematical Accountability"
-            eyebrowVariant="violet"
-            title="How Crowd Report Solves Civic Hazards"
-            subtitle="From citizen report to photo-verified resolution and contractor disbursement, every milestone is tracked with complete audit transparency."
-            align="center"
-          />
-        </Reveal>
+    <section className="py-20 bg-white border-b border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Left Column: Heading and Process Overview */}
+          <div className="lg:col-span-5 lg:sticky lg:top-24">
+            <Reveal>
+              <SectionHeader
+                eyebrow="Mathematical Accountability"
+                eyebrowVariant="violet"
+                title="How Crowd Report Solves Civic Hazards"
+                subtitle="From citizen report to photo-verified resolution and contractor disbursement, every milestone is tracked with complete audit transparency."
+                align="left"
+                className="mb-6"
+              />
 
-        <Reveal delay={0.15}>
-          <Accordion items={HOW_IT_WORKS_STEPS} defaultOpenId="step-01" />
-        </Reveal>
+              <div className="p-5 rounded-card bg-surfaceAlt border border-border space-y-3 text-xs mb-6">
+                <div className="flex items-center gap-2 font-semibold text-ink">
+                  <Shield className="w-4 h-4 text-primary shrink-0" />
+                  <span>The 4-Stage Escrow Protocol</span>
+                </div>
+                <p className="text-secondaryText leading-relaxed">
+                  Every civic hazard moves strictly through 4 verified gateways. No contractor receives public disbursement until digital photo proof meets municipal inspection standards.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <Link to="/user/report-issue">
+                  <Button variant="primary" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+                    Report a Hazard
+                  </Button>
+                </Link>
+                <Link to="/about">
+                  <Button variant="outline" size="md">
+                    Learn Operating Model
+                  </Button>
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Right Column: Accordion */}
+          <div className="lg:col-span-7">
+            <Reveal delay={0.15}>
+              <Accordion items={HOW_IT_WORKS_STEPS} defaultOpenId="step-01" />
+            </Reveal>
+          </div>
+        </div>
       </div>
     </section>
   );
