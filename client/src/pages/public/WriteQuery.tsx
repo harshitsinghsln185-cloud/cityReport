@@ -19,6 +19,7 @@ import SectionHeader from '../../components/ui/SectionHeader';
 import Breadcrumbs from '../../components/ui/Breadcrumbs';
 import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
+import PageHero from '../../components/ui/PageHero';
 
 export const WriteQuery: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -87,7 +88,7 @@ export const WriteQuery: React.FC = () => {
   };
 
   return (
-    <div className="py-8 sm:py-12 bg-canvas min-h-screen">
+    <div className="bg-canvas min-h-screen">
       <SEO
         title="Citizen Inquiries & Civic Help Desk"
         description="Direct administrative liaison desk for citizen questions regarding municipal ward coverage, contractor accreditation, escrow guarantees, and formal tax receipts."
@@ -98,20 +99,41 @@ export const WriteQuery: React.FC = () => {
           'citizen query form',
         ]}
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb Navigation */}
-        <Breadcrumbs items={[{ label: 'Civic Help Desk & Queries' }]} className="mb-6" />
 
-        {/* Section Header */}
-        <Reveal>
-          <SectionHeader
-            eyebrow="Civic Liaison Office"
-            eyebrowVariant="violet"
-            title="Write a Query to Administration"
-            subtitle="Have a question regarding municipal ward coverage, contractor accreditation, escrow guarantees, or formal tax invoices? Contact our administrative desk."
-          />
-        </Reveal>
+      {/* Institutional Split Page Hero */}
+      <PageHero
+        variant="split"
+        theme="navy"
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Help Desk & Inquiries' }]}
+        eyebrow="Official Civic Liaison Office"
+        eyebrowIcon={<Mail className="w-3.5 h-3.5" />}
+        title="Direct Inquiries to Municipal Secretariat"
+        description="Submit formal inquiries regarding ward jurisdiction coverage, contractor accreditation standards, fee tariffs, or commercial tax invoices with guaranteed 24-48h response SLA."
+        visual={
+          <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Liaison Office Contacts</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 font-bold">24-48h SLA</span>
+            </div>
+            <div className="space-y-3 text-xs text-slate-300">
+              <div className="flex items-center gap-2.5">
+                <Clock className="w-4 h-4 text-gold shrink-0" />
+                <span>Working Hours: Mon – Sat, 9:00 AM – 6:00 PM IST</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Building className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Secretariat: Central Civic Infrastructure Registry</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-blue-400 shrink-0" />
+                <span>Inquiry SLA: Reference ID issued upon submission</span>
+              </div>
+            </div>
+          </div>
+        }
+      />
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Form & Success State (7 cols) */}
           <div className="lg:col-span-7">

@@ -135,3 +135,24 @@
   - Added sticky header with `backdrop-blur-xs bg-surfaceAlt/90`.
   - Added `.table-wrapper` and sleek institutional custom scrollbar styles to `index.css`.
 - **Verification**: `npm run lint` clean, zero errors.
+
+---
+
+## [Phase R5] - Hero Sections Across Every Page
+**Date**: October 2026  
+**Commit**: `R5: Universal hero section component and page deployments`
+
+### Completed Deliverables
+- **Universal PageHero Component (`PageHero.tsx`)**:
+  - Implemented 3 responsive structural variants (`full`, `split`, `compact`).
+  - Integrated theme modes (`navy` institutional dark, `ivory` light, `surface` subtle tint).
+  - Built-in support for breadcrumbs, eyebrow badges with icons, Fraunces serif headings with gold highlights, dual call-to-actions, visual highlight cards, and tabular metrics strips.
+- **Page Deployments (Master Hero Plan Implementation)**:
+  - **Home (`/`)**: Refined `Hero.tsx` with Midnight Navy (`#0A1F44`), Warm Gold accents, gold pill badges, and high-contrast CTA buttons.
+  - **Services Directory (`/services`)**: Deployed `split` variant with certified municipal catalog eyebrow, SOR audited trust card, 50% escrow notice, and direct hazard reporting CTAs.
+  - **States Directory (`/states`)**: Deployed `split` variant with pan-India coverage highlights (28 States, 8 UTs), zone filtering CTA, and municipal coverage metrics.
+  - **About & Governance (`/about`)**: Deployed `split` variant with mathematical governance copy, milestone escrow architecture visual, and secretariat liaison links.
+  - **Track Status (`/track`)**: Deployed `split` variant with public verification ledger details, 48h SLA indicators, and photographic EXIF audit standards.
+  - **Query & Liaison Desk (`/query`)**: Deployed `split` variant with administrative liaison contact details, working hours, and SLA response guarantees.
+  - **Contractor Accreditation (`/register-resolver`)**: Deployed `split` variant with contractor advance escrow benefits, localized dispatch radius, and KYC requirements.
+- **Verification**: `npm run lint` clean, zero errors.

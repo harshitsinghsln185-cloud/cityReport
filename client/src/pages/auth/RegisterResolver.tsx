@@ -23,6 +23,7 @@ import MapPicker from '../../components/MapPicker';
 import ImageUploader from '../../components/ImageUploader';
 import SEO from '../../components/SEO';
 import { SITE_URL } from '../../config/site';
+import PageHero from '../../components/ui/PageHero';
 
 export const RegisterResolver: React.FC = () => {
   const navigate = useNavigate();
@@ -191,7 +192,7 @@ export const RegisterResolver: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-canvas py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-canvas">
       <SEO
         title="Municipal Contractor & Resolver Onboarding"
         description="Join India's certified municipal contractor network. Receive proximity-dispatched civic work orders, guaranteed 50% escrow milestone payouts, and verified credentials."
@@ -203,22 +204,41 @@ export const RegisterResolver: React.FC = () => {
         ]}
         canonical={`${SITE_URL}/register-resolver`}
       />
-      <div className="max-w-3xl mx-auto space-y-8">
-        {/* Header */}
-        <div className="text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10 text-primary mb-2 shadow-xs border border-primary/20">
-            <Wrench className="w-6 h-6" />
+
+      {/* Institutional Split Page Hero */}
+      <PageHero
+        variant="split"
+        theme="navy"
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Contractor Accreditation' }]}
+        eyebrow="Municipal Contractor Accreditation"
+        eyebrowIcon={<Wrench className="w-3.5 h-3.5" />}
+        title="Join the Certified Municipal Resolver Network"
+        description="Receive proximity-dispatched municipal work orders, guaranteed 50% advance milestone escrow payouts, and verifiable public reputation in your local district."
+        visual={
+          <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Contractor Benefits</span>
+              <Badge variant="gold" size="sm">KYC Required</Badge>
+            </div>
+            <div className="space-y-3 text-xs text-slate-300">
+              <div className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                <span><strong className="text-white">50% Advance Lock:</strong> Zero risk of customer non-payment prior to material purchase.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5" />
+                <span><strong className="text-white">Territory Dispatch:</strong> Receive alerts strictly within your selected service radius.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5" />
+                <span><strong className="text-white">Direct Bank Payout:</strong> Automated disbursements upon photo-verified sign-off.</span>
+              </div>
+            </div>
           </div>
-          <Badge variant="primary" size="sm" className="font-semibold uppercase tracking-wider">
-            Municipal Contractor Network
-          </Badge>
-          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
-            Certified Resolver Onboarding
-          </h1>
-          <p className="text-xs sm:text-sm text-secondaryText max-w-md mx-auto leading-relaxed">
-            Join the municipal contractor registry to receive nearby civic tasks, escrow payouts, and verified performance ratings.
-          </p>
-        </div>
+        }
+      />
+
+      <div className="max-w-3xl mx-auto py-10 sm:py-14 px-4 sm:px-6 lg:px-8 space-y-8">
 
         {/* Step Progress Bar */}
         <div className="grid grid-cols-4 gap-2 sm:gap-4">

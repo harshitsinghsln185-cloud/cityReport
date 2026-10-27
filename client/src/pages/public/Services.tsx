@@ -78,7 +78,7 @@ export const Services: React.FC = () => {
   }, [safeCategories, searchQuery, selectedTag]);
 
   return (
-    <div className="py-8 sm:py-12 bg-canvas min-h-screen">
+    <div className="bg-canvas min-h-screen">
       <SEO
         title="Civic Services & Schedule of Rates (SOR) Directory"
         description="Transparent civic remediation services and indicative municipal rates for road repair, streetlight maintenance, drainage restoration, and public hazard fixes."
@@ -120,19 +120,55 @@ export const Services: React.FC = () => {
           },
         ]}
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb Navigation */}
-        <Breadcrumbs items={[{ label: 'Civic Services Directory' }]} className="mb-6" />
 
-        {/* Section Header */}
-        <Reveal>
-          <SectionHeader
-            eyebrow="Certified Municipal Catalog"
-            eyebrowVariant="violet"
-            title="Civic Services & Hazard Remediation Directory"
-            subtitle="Explore all officially recognized municipal maintenance categories, paise-exact base tariffs, standard response SLAs, and direct reporting portals."
-          />
-        </Reveal>
+      {/* Institutional Split Page Hero */}
+      <PageHero
+        variant="split"
+        theme="navy"
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Services Directory' }]}
+        eyebrow="Certified Municipal Catalog"
+        eyebrowIcon={<Wrench className="w-3.5 h-3.5" />}
+        title="Public Infrastructure Repair & Tariff Directory"
+        description="Transparent base tariffs, 48h response SLAs, and direct contractor dispatch for road repairs, streetlights, drainage, and waste management across 36 Indian regions."
+        primaryAction={
+          <Link to="/user/report-issue">
+            <Button variant="gold" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+              Report a Hazard
+            </Button>
+          </Link>
+        }
+        secondaryAction={
+          <Link to="/track">
+            <Button variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10">
+              Track Existing Ticket
+            </Button>
+          </Link>
+        }
+        visual={
+          <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Municipal Service Standards</span>
+              <Badge variant="gold" size="sm">SOR Audited</Badge>
+            </div>
+            <div className="space-y-3 text-xs text-slate-300">
+              <div className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                <span><strong className="text-white">50% Escrow Advance:</strong> Funds locked in advance escrow prior to contractor mobilization.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5" />
+                <span><strong className="text-white">Geotagged Proof:</strong> Verification via GPS-stamped before and after photos.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5" />
+                <span><strong className="text-white">Pan-India Coverage:</strong> Standardized Schedule of Rates (SOR) across 36 States &amp; UTs.</span>
+              </div>
+            </div>
+          </div>
+        }
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
 
         {/* Search & Tag Filter Bar */}
         <div className="bg-white p-5 rounded-card border border-border shadow-subtle mb-8 space-y-4">

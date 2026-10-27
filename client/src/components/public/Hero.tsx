@@ -14,10 +14,18 @@ import Reveal from '../ui/Reveal';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-dark via-[#141838] to-indigo text-white pt-14 pb-20 lg:pt-20 lg:pb-28">
-      {/* Decorative ambient gradient orbs */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-96 h-96 bg-indigo/30 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative overflow-hidden bg-dark text-white pt-14 pb-20 lg:pt-20 lg:pb-28">
+      {/* Decorative ambient gradient orbs & grid */}
+      <div
+        className="absolute inset-0 opacity-15 pointer-events-none"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, #C8A24A 1px, transparent 1px), linear-gradient(to bottom, #C8A24A 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+        }}
+      />
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-primary-hover/30 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-10 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -25,13 +33,13 @@ export const Hero: React.FC = () => {
           <div className="lg:col-span-7 text-left">
             <Reveal direction="down">
               {/* Social Proof & Trust Pill */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-lavender mb-6 backdrop-blur-md">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold/15 border border-gold/30 text-xs font-semibold text-gold mb-6 backdrop-blur-md">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
                 <span>Over 12,000 hazards resolved across 36 states & UTs</span>
-                <span className="w-1 h-1 rounded-full bg-primary" />
+                <span className="w-1 h-1 rounded-full bg-gold" />
                 <span className="text-emerald-300 font-medium hidden sm:inline">100% Escrow Protected</span>
               </div>
             </Reveal>
@@ -40,7 +48,7 @@ export const Hero: React.FC = () => {
             <Reveal delay={0.1}>
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold tracking-tight leading-[1.12] mb-6 text-white">
                 Empowering Citizens,{' '}
-                <span className="bg-gradient-to-r from-lavender via-[#C4B5FD] to-white bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-gold via-[#E2C375] to-white bg-clip-text text-transparent">
                   Restoring Neighborhoods
                 </span>
               </h1>
@@ -58,9 +66,9 @@ export const Hero: React.FC = () => {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-10">
                 <Link to="/user/report-issue">
                   <Button
-                    variant="primary"
+                    variant="gold"
                     size="lg"
-                    className="w-full sm:w-auto shadow-lg shadow-primary/35 flex items-center justify-center gap-2 group"
+                    className="w-full sm:w-auto shadow-lg shadow-gold/20 flex items-center justify-center gap-2 group"
                   >
                     <span>Report an Issue</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

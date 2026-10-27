@@ -21,7 +21,7 @@ import { SITE_URL } from '../../config/site';
 
 export const About: React.FC = () => {
   return (
-    <div className="py-8 sm:py-12 bg-canvas min-h-screen">
+    <div className="bg-canvas min-h-screen">
       <SEO
         title="About & Municipal Accountability Architecture"
         description="Learn how Crowd Report combines mathematical Schedule of Rates (SOR), escrow-backed contractor disbursements, and photographic audit verification to fix urban infrastructure."
@@ -60,24 +60,55 @@ export const About: React.FC = () => {
           },
         ]}
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb Navigation */}
-        <Breadcrumbs items={[{ label: 'About & Workflow' }]} className="mb-6" />
 
-        {/* Hero Section */}
-        <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <Badge variant="primary" size="md" className="mb-4 font-semibold uppercase tracking-wider">
-              Governance & Workflow
-            </Badge>
-            <h1 className="text-3xl sm:text-5xl font-heading font-bold text-ink tracking-tight mb-4 leading-tight">
-              Transforming Municipal Maintenance Through Mathematical Accountability
-            </h1>
-            <p className="text-base sm:text-lg text-secondaryText leading-relaxed font-sans">
-              Crowd Report bridges the divide between active citizens dealing with dangerous neighborhood hazards and certified local contractors operating under transparent, escrow-guaranteed contracts.
-            </p>
+      {/* Institutional Split Page Hero */}
+      <PageHero
+        variant="split"
+        theme="navy"
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About & Governance' }]}
+        eyebrow="Mathematical Civic Governance"
+        eyebrowIcon={<Lock className="w-3.5 h-3.5" />}
+        title="Built for Transparency, Backed by Milestone Escrow"
+        description="Crowd Report bridges the divide between citizens dealing with hazardous neighborhood defects and certified municipal contractors through strict integer paise accounting and double-verified photographic proof."
+        primaryAction={
+          <a href="#operating-model">
+            <Button variant="gold" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+              Read Operating Model
+            </Button>
+          </a>
+        }
+        secondaryAction={
+          <Link to="/query">
+            <Button variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10">
+              Contact Secretariat Desk
+            </Button>
+          </Link>
+        }
+        visual={
+          <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Escrow Governance Model</span>
+              <Badge variant="gold" size="sm">50% Advance</Badge>
+            </div>
+            <div className="space-y-3 text-xs text-slate-300">
+              <div className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                <span><strong className="text-white">Milestone Gate:</strong> Initial 50% mobilization locked before contractor site departure.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5" />
+                <span><strong className="text-white">Audit Protocol:</strong> GPS-stamped before &amp; after comparison by citizen and city admin.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5" />
+                <span><strong className="text-white">Paise Accounting:</strong> Zero floating-point rounding errors across disbursements.</span>
+              </div>
+            </div>
           </div>
-        </Reveal>
+        }
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12" id="operating-model">
 
         {/* Impact Numbers Counter */}
         <Reveal delay={0.1}>

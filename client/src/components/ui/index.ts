@@ -16,3 +16,6 @@ export * from './Input';
 export * from './Table';
 export * from './Pagination';
 export * from './ErrorBoundary';
+export * from './Logo';
+export * from './PageHero';
+

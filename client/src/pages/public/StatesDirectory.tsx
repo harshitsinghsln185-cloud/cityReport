@@ -68,7 +68,7 @@ export const StatesDirectory: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-canvas py-8 sm:py-12">
+    <div className="min-h-screen bg-canvas">
       <SEO
         title="Indian States & Union Territories Civic Directory"
         description="Explore civic resolution metrics, verified municipal contractor coverage, and infrastructure priorities across all 36 Indian states and union territories."
@@ -108,19 +108,54 @@ export const StatesDirectory: React.FC = () => {
           },
         ]}
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb Navigation */}
-        <Breadcrumbs items={[{ label: 'States & Union Territories' }]} className="mb-6" />
 
-        {/* Page Section Header */}
-        <Reveal>
-          <SectionHeader
-            eyebrow="Nationwide Civic Infrastructure"
-            eyebrowVariant="violet"
-            title="Indian States & Union Territories Directory"
-            subtitle="Browse civic hazard resolution metrics, active municipal resolver networks, and local priorities across all 28 states and 8 union territories."
-          />
-        </Reveal>
+      {/* Institutional Split Page Hero */}
+      <PageHero
+        variant="split"
+        theme="navy"
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'States & Union Territories' }]}
+        eyebrow="Nationwide Civic Infrastructure"
+        eyebrowIcon={<MapPin className="w-3.5 h-3.5" />}
+        title="Monitor Municipal Health Across 36 Indian Regions"
+        description="Access certified resolver networks, localized civic priorities, and audited photographic proof in all 28 states and 8 union territories under standardized Schedule of Rates (SOR)."
+        primaryAction={
+          <a href="#directory-filters">
+            <Button variant="gold" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+              Filter by Zone
+            </Button>
+          </a>
+        }
+        secondaryAction={
+          <Link to="/user/report-issue">
+            <Button variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10">
+              Report Local Defect
+            </Button>
+          </Link>
+        }
+        visual={
+          <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Pan-India Jurisdiction</span>
+              <Badge variant="gold" size="sm">36 Total</Badge>
+            </div>
+            <div className="grid grid-cols-2 gap-3 pt-1">
+              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                <div className="text-2xl font-bold font-heading text-white">28</div>
+                <div className="text-[11px] text-slate-300 font-medium">Sovereign States</div>
+              </div>
+              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                <div className="text-2xl font-bold font-heading text-white">8</div>
+                <div className="text-[11px] text-slate-300 font-medium">Union Territories</div>
+              </div>
+            </div>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              Every jurisdiction operates under the verified 50% milestone escrow protocol and GPS-stamped photo verification standard.
+            </p>
+          </div>
+        }
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12" id="directory-filters">
 
         {/* Quick Highlights Bar */}
         <Reveal delay={0.1}>

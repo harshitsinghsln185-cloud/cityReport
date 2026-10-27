@@ -20,6 +20,7 @@ import SectionHeader from '../../components/ui/SectionHeader';
 import Breadcrumbs from '../../components/ui/Breadcrumbs';
 import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
+import PageHero from '../../components/ui/PageHero';
 
 export const TrackStatus: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -113,7 +114,7 @@ export const TrackStatus: React.FC = () => {
   ];
 
   return (
-    <div className="py-8 sm:py-12 bg-canvas min-h-screen">
+    <div className="min-h-screen bg-canvas">
       <SEO
         title="Track Civic Issue Resolution Status"
         description="Lookup real-time municipal remediation progress, contractor milestone updates, photographic resolution proof, and tax receipts using your unique issue code."
@@ -124,20 +125,41 @@ export const TrackStatus: React.FC = () => {
           'civic status check',
         ]}
       />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb Navigation */}
-        <Breadcrumbs items={[{ label: 'Track Issue Status' }]} className="mb-6" />
 
-        {/* Section Header */}
-        <Reveal>
-          <SectionHeader
-            eyebrow="Real-Time Tracking"
-            eyebrowVariant="violet"
-            title="Track Civic Hazard Remediation"
-            subtitle="Enter your tracking reference code to inspect live milestone progression, contractor dispatch status, before/after proof, and escrow verification."
-            align="center"
-          />
-        </Reveal>
+      {/* Institutional Split Page Hero */}
+      <PageHero
+        variant="split"
+        theme="navy"
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Track Issue Status' }]}
+        eyebrow="Public Verification Ledger"
+        eyebrowIcon={<Clock className="w-3.5 h-3.5" />}
+        title="Inspect Live Remediation & Milestone Progress"
+        description="Enter your unique tracking reference code to audit contractor dispatch timestamps, before/after photographic proof, and escrow verification receipts in real time."
+        visual={
+          <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Public Ledger Standards</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 font-bold">Live SLA</span>
+            </div>
+            <div className="space-y-2.5 text-xs text-slate-300">
+              <div className="flex items-center justify-between">
+                <span>Standard Dispatch SLA:</span>
+                <span className="font-semibold text-white">Within 48 Hours</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Verification Method:</span>
+                <span className="font-semibold text-white">Geotagged Camera EXIF</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Escrow Release:</span>
+                <span className="font-semibold text-white">Citizen / Admin Sign-off</span>
+              </div>
+            </div>
+          </div>
+        }
+      />
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
 
         {/* Search Console Card */}
         <Reveal delay={0.1}>
