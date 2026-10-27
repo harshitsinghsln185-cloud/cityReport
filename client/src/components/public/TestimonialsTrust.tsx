@@ -67,11 +67,14 @@ export const TestimonialsTrust: React.FC = () => {
             <Reveal key={t.name} delay={idx * 0.1}>
               <Card
                 variant="base"
-                className="h-full flex flex-col justify-between bg-white border-border hover:shadow-cardHover transition-all duration-200"
+                className="h-full flex flex-col justify-between bg-gradient-to-b from-white via-white to-[#5B4FE1]/5 border border-border hover:border-[#5B4FE1]/50 hover:shadow-cardHover transition-all duration-200 relative overflow-hidden"
               >
+                {/* Decorative top accent hairline */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-navy via-[#5B4FE1] to-gold opacity-80" />
+
                 <div>
                   {/* Star Rating & SLA tag */}
-                  <div className="flex items-center justify-between gap-2 mb-4">
+                  <div className="flex items-center justify-between gap-2 mb-4 pt-1">
                     <div className="flex items-center gap-1 text-gold">
                       {[...Array(t.rating)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
@@ -84,7 +87,7 @@ export const TestimonialsTrust: React.FC = () => {
 
                   {/* Hazard context tag */}
                   <div className="text-xs font-semibold text-primary mb-2 flex items-center gap-1.5">
-                    <Quote className="w-3.5 h-3.5 text-primary/40 shrink-0" />
+                    <Quote className="w-3.5 h-3.5 text-[#5B4FE1] shrink-0" />
                     <span>{t.hazardType}</span>
                   </div>
 
@@ -95,13 +98,13 @@ export const TestimonialsTrust: React.FC = () => {
                 </div>
 
                 <div className="pt-4 border-t border-border flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-lavender text-primary font-heading font-bold flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-navy to-[#5B4FE1] text-white font-heading font-bold flex items-center justify-center shrink-0 shadow-xs">
                     {t.name.charAt(0)}
                   </div>
                   <div className="min-w-0">
                     <p className="font-heading font-semibold text-sm text-ink truncate flex items-center gap-1.5">
                       <span>{t.name}</span>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                     </p>
                     <p className="text-[11px] text-muted truncate">{t.role}</p>
                     <p className="text-[11px] text-slate-400 truncate">{t.location}</p>
@@ -120,8 +123,8 @@ export const TestimonialsTrust: React.FC = () => {
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <div className="p-4 rounded-xl bg-white border border-border flex items-center gap-3 text-left">
-                <div className="w-9 h-9 rounded-lg bg-indigo/10 text-indigo flex items-center justify-center shrink-0">
+              <div className="p-4 rounded-xl bg-gradient-to-br from-white to-[#5B4FE1]/5 border border-border hover:border-[#5B4FE1]/40 transition-all flex items-center gap-3 text-left shadow-xs">
+                <div className="w-9 h-9 rounded-lg bg-[#5B4FE1]/10 text-[#5B4FE1] flex items-center justify-center shrink-0">
                   <ShieldCheck className="w-5 h-5" />
                 </div>
                 <div>
@@ -130,7 +133,7 @@ export const TestimonialsTrust: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-white border border-border flex items-center gap-3 text-left">
+              <div className="p-4 rounded-xl bg-gradient-to-br from-white to-[#5B4FE1]/5 border border-border hover:border-[#5B4FE1]/40 transition-all flex items-center gap-3 text-left shadow-xs">
                 <div className="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
                   <Award className="w-5 h-5" />
                 </div>
@@ -140,7 +143,7 @@ export const TestimonialsTrust: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-white border border-border flex items-center gap-3 text-left">
+              <div className="p-4 rounded-xl bg-gradient-to-br from-white to-[#5B4FE1]/5 border border-border hover:border-[#5B4FE1]/40 transition-all flex items-center gap-3 text-left shadow-xs">
                 <div className="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>

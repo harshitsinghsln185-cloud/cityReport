@@ -86,9 +86,12 @@ export const FaqSection: React.FC = () => {
                 className="mb-6"
               />
 
-              <div className="p-5 rounded-card bg-surfaceAlt border border-border space-y-3 mb-6">
-                <div className="flex items-center gap-2 text-ink font-semibold text-sm">
-                  <HelpCircle className="w-4 h-4 text-primary shrink-0" />
+              <div className="p-6 rounded-card bg-gradient-to-br from-primary-light/60 via-white to-[#5B4FE1]/10 border border-[#5B4FE1]/30 shadow-subtle space-y-3 mb-6 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#5B4FE1]/10 rounded-full blur-2xl pointer-events-none" />
+                <div className="flex items-center gap-2 text-ink font-bold text-sm">
+                  <div className="w-7 h-7 rounded-lg bg-[#5B4FE1] text-white flex items-center justify-center shrink-0 shadow-xs">
+                    <HelpCircle className="w-4 h-4" />
+                  </div>
                   <span>Have a Specific Inquiry?</span>
                 </div>
                 <p className="text-xs text-secondaryText leading-relaxed">
@@ -97,7 +100,7 @@ export const FaqSection: React.FC = () => {
               </div>
 
               <Link to="/query">
-                <Button variant="outline" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+                <Button variant="purple" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
                   Contact Civic Desk
                 </Button>
               </Link>

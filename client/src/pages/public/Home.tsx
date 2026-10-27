@@ -94,7 +94,7 @@ export const Home: React.FC = () => {
               subtitle="Certified municipal categories ready for immediate citizen reporting, automated tariff computation, and proximity-based contractor assignment."
               actions={
                 <Link to="/services">
-                  <Button variant="outline" size="sm" rightIcon={<ArrowRight className="w-4 h-4" />}>
+                  <Button variant="purple" size="sm" rightIcon={<ArrowRight className="w-4 h-4" />}>
                     View All Categories
                   </Button>
                 </Link>
@@ -152,7 +152,7 @@ export const Home: React.FC = () => {
                 </div>
 
                 <Link to="/track">
-                  <Button variant="outline" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+                  <Button variant="purple" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
                     Verify a Repair Ticket
                   </Button>
                 </Link>

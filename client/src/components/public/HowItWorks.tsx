@@ -21,7 +21,7 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
     id: 'step-01',
     title: (
       <div className="flex items-center gap-3 flex-wrap">
-        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-navy text-gold shrink-0">
+        <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-[#5B4FE1] text-white shadow-xs shrink-0">
           Step 01
         </span>
         <span className="font-heading font-semibold text-base text-ink">
@@ -58,7 +58,7 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
     id: 'step-02',
     title: (
       <div className="flex items-center gap-3 flex-wrap">
-        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-navy text-gold shrink-0">
+        <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-[#5B4FE1] text-white shadow-xs shrink-0">
           Step 02
         </span>
         <span className="font-heading font-semibold text-base text-ink">
@@ -95,7 +95,7 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
     id: 'step-03',
     title: (
       <div className="flex items-center gap-3 flex-wrap">
-        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-navy text-gold shrink-0">
+        <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-[#5B4FE1] text-white shadow-xs shrink-0">
           Step 03
         </span>
         <span className="font-heading font-semibold text-base text-ink">
@@ -132,7 +132,7 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
     id: 'step-04',
     title: (
       <div className="flex items-center gap-3 flex-wrap">
-        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-navy text-gold shrink-0">
+        <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-[#5B4FE1] text-white shadow-xs shrink-0">
           Step 04
         </span>
         <span className="font-heading font-semibold text-base text-ink">
@@ -184,10 +184,13 @@ export const HowItWorks: React.FC = () => {
                 className="mb-6"
               />
 
-              <div className="p-5 rounded-card bg-surfaceAlt border border-border space-y-3 text-xs mb-6">
-                <div className="flex items-center gap-2 font-semibold text-ink">
-                  <Shield className="w-4 h-4 text-primary shrink-0" />
-                  <span>The 4-Stage Escrow Protocol</span>
+              <div className="p-6 rounded-card bg-gradient-to-br from-primary-light/60 via-white to-[#5B4FE1]/10 border border-[#5B4FE1]/30 shadow-subtle space-y-3 text-xs mb-6 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#5B4FE1]/10 rounded-full blur-2xl pointer-events-none" />
+                <div className="flex items-center gap-2 font-bold text-ink">
+                  <div className="w-7 h-7 rounded-lg bg-[#5B4FE1] text-white flex items-center justify-center shrink-0 shadow-xs">
+                    <Shield className="w-4 h-4" />
+                  </div>
+                  <span className="text-sm">The 4-Stage Escrow Protocol</span>
                 </div>
                 <p className="text-secondaryText leading-relaxed">
                   Every civic hazard moves strictly through 4 verified gateways. No contractor receives public disbursement until digital photo proof meets municipal inspection standards.
@@ -196,7 +199,7 @@ export const HowItWorks: React.FC = () => {
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Link to="/user/report-issue">
-                  <Button variant="primary" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+                  <Button variant="purple" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
                     Report a Hazard
                   </Button>
                 </Link>

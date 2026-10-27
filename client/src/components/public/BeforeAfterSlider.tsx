@@ -78,15 +78,15 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
           </h3>
         </div>
 
-        <div className="flex items-center gap-3 shrink-0">
-          <span className="text-xs text-secondaryText flex items-center gap-1 font-medium bg-white px-2.5 py-1 rounded-md border border-border">
-            <Calendar className="w-3.5 h-3.5 text-muted" />
-            {date}
+        <div className="flex items-center gap-2.5 shrink-0 flex-wrap sm:flex-nowrap">
+          <span className="text-xs text-[#5B4FE1] bg-[#5B4FE1]/10 border border-[#5B4FE1]/30 px-3 py-1 rounded-full flex flex-row items-center gap-1.5 font-semibold shadow-xs whitespace-nowrap">
+            <Calendar className="w-3.5 h-3.5 text-[#5B4FE1] shrink-0" />
+            <span>{date}</span>
           </span>
-          <Badge variant="success" size="sm">
-            <CheckCircle2 className="w-3 h-3 mr-1" />
-            Verified
-          </Badge>
+          <span className="inline-flex flex-row items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/80 shadow-xs whitespace-nowrap shrink-0">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+            <span>Verified</span>
+          </span>
         </div>
       </div>
 
