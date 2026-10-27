@@ -60,11 +60,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
           aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : helperText ? helperId : undefined}
           className={`
-            block w-full rounded-lg text-xs sm:text-sm bg-white border transition-all duration-150
+            block w-full rounded-xl text-xs sm:text-sm bg-white border transition-all duration-150 h-12 min-h-[48px]
             focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-0 disabled:bg-canvas disabled:text-muted disabled:cursor-not-allowed
-            ${leftIcon ? 'pl-10' : 'pl-3.5'}
-            ${rightIcon || (isPassword && showPasswordToggle) ? 'pr-10' : 'pr-3.5'}
-            py-2.5
+            ${leftIcon ? 'pl-11' : 'pl-4'}
+            ${rightIcon || (isPassword && showPasswordToggle) ? 'pr-11' : 'pr-4'}
+            py-3
             ${
               error
                 ? 'border-red-600 text-red-900 focus:border-red-600 focus-visible:ring-red-200'

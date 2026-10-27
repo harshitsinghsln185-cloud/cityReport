@@ -5,13 +5,27 @@
 @tailwind utilities;
 
 @layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
   html {
     font-family: var(--font-body);
+    font-size: var(--font-size-body);
     background-color: var(--color-canvas);
     color: var(--color-ink);
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -24,12 +38,23 @@
     font-family: var(--font-heading);
     letter-spacing: -0.025em;
     font-weight: 600;
+    line-height: 1.18;
+  }
+
+  /* Optimal reading line-length */
+  p {
+    line-height: 1.6;
   }
 
   /* Universal accessible keyboard focus */
   :focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
+  }
+
+  /* Section 1: Sticky navbar anchor scroll offset */
+  [id] {
+    scroll-margin-top: calc(var(--header-height) + 1.5rem);
   }
 
   /* Default tabular nums in numeric elements */
@@ -39,6 +64,38 @@
 }
 
 @layer utilities {
+  /* Section 1 Container Spec: 1200px max width, 16/24/32px side padding */
+  .container-custom {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-pad-x);
+    padding-right: var(--container-pad-x);
+  }
+
+  /* Wide container variant up to 1280px */
+  .container-wide {
+    width: 100%;
+    max-width: var(--container-wide-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-pad-x);
+    padding-right: var(--container-pad-x);
+  }
+
+  /* Section 1 Section Vertical Rhythm */
+  .section-rhythm {
+    padding-top: var(--section-pad-y);
+    padding-bottom: var(--section-pad-y);
+  }
+
+  /* Section 1 Grid Gap */
+  .grid-cards {
+    display: grid;
+    gap: var(--grid-gap);
+  }
+
   .tabular-nums {
     font-variant-numeric: tabular-nums;
   }
@@ -60,7 +117,7 @@
   .card-hover-lift:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-card-hover);
-    border-color: rgba(124, 58, 237, 0.25);
+    border-color: rgba(10, 31, 68, 0.25);
   }
 }
 

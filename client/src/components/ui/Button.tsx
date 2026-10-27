@@ -48,10 +48,10 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const sizes: Record<NonNullable<ButtonProps['size']>, string> = {
-    xs: 'text-xs px-2 py-1 gap-1 rounded-md font-medium',
-    sm: 'text-xs px-3 py-1.5 gap-1.5 rounded-lg font-medium',
-    md: 'text-sm px-4 py-2 gap-2 rounded-lg font-medium',
-    lg: 'text-base px-6 py-2.5 gap-2.5 rounded-xl font-semibold',
+    xs: 'h-7 text-xs px-2.5 py-1 gap-1 rounded-md font-medium',
+    sm: 'h-9 min-h-[36px] text-xs px-3.5 sm:px-4 gap-1.5 rounded-lg font-medium',
+    md: 'h-11 min-h-[44px] text-sm px-5 sm:px-6 gap-2 rounded-xl font-medium',
+    lg: 'h-12 min-h-[48px] text-base px-6 sm:px-7 gap-2.5 rounded-xl font-semibold',
   };
 
   return (

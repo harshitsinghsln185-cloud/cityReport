@@ -25,8 +25,8 @@ export const Card: React.FC<CardProps> = ({
   const radiusStyles: Record<NonNullable<CardProps['radius']>, string> = {
     sm: 'rounded-lg',
     md: 'rounded-xl',
-    card: 'rounded-card',
-    cardLg: 'rounded-cardLg',
+    card: 'rounded-[16px] lg:rounded-[20px]',
+    cardLg: 'rounded-[20px] lg:rounded-[24px]',
   };
 
   const variantStyles: Record<NonNullable<CardProps['variant']>, string> = {
@@ -39,9 +39,9 @@ export const Card: React.FC<CardProps> = ({
 
   const paddingStyles: Record<NonNullable<CardProps['padding']>, string> = {
     none: 'p-0',
-    sm: 'p-4',
-    md: 'p-6',
-    lg: 'p-8',
+    sm: 'p-4 sm:p-5',
+    md: 'p-5 sm:p-6 lg:p-7',
+    lg: 'p-6 sm:p-8',
   };
 
   const interactiveStyles = shouldBeInteractive

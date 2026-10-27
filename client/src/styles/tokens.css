@@ -46,21 +46,47 @@
   --font-heading: 'Fraunces Variable', 'Fraunces', Georgia, serif;
   --font-body: 'Manrope Variable', 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Fluid Type Clamps */
+  /* Fluid Type Clamps (Body 16-18px with 1.6 line-height, headings 1.1-1.25) */
+  --font-size-body: clamp(1rem, 1.05vw, 1.125rem);
   --font-size-display: clamp(2.25rem, 5vw, 3.75rem);
   --font-size-h1: clamp(1.875rem, 4vw, 2.75rem);
   --font-size-h2: clamp(1.5rem, 3vw, 2.125rem);
   --font-size-h3: clamp(1.25rem, 2vw, 1.5rem);
 
-  /* Geometry & Radii */
+  /* Section 1 Layout & Spacing Spec */
+  --container-max-width: 1200px;
+  --container-wide-max-width: 1280px;
+  --container-pad-x: clamp(1rem, 2.5vw, 2rem); /* 16px mobile, 24px tablet, 32px desktop */
+  --section-pad-y: clamp(4rem, 6.5vw, 7.5rem); /* 64px mobile, 80px tablet, 96-120px desktop */
+  --section-header-gap: clamp(2rem, 3.5vw, 3rem); /* 32px mobile, 40px tablet, 48px desktop */
+  --grid-gap: clamp(1rem, 2vw, 1.5rem); /* 16px mobile, 20px tablet, 24px desktop */
+  --card-pad: clamp(1.25rem, 2vw, 1.75rem); /* 20px mobile, 24px tablet, 24-28px desktop */
+  
+  /* Section 1 Geometry & Radii */
   --radius-xs: 6px;
   --radius-sm: 8px;
+  --radius-button: 12px;
+  --radius-input: 12px;
   --radius-md: 12px;
-  --radius-card: 16px;
+  --radius-card: clamp(16px, 1.5vw, 20px); /* 16px mobile/tablet, 20px desktop */
   --radius-card-lg: 24px;
   --radius-pill: 9999px;
   --radius-badge: 9999px;
-  --radius-input: 10px;
+
+  /* Section 1 Component Heights & Targets */
+  --button-height-md: 44px;
+  --button-pad-x: clamp(1.25rem, 2vw, 1.5rem); /* 20px mobile/tablet, 24px desktop */
+  --input-height: 48px;
+  --header-height: 64px;
+
+  /* Section 1 Stacking & Z-Index Scale */
+  --z-base: 0;
+  --z-card: 1;
+  --z-sticky: 30;
+  --z-header: 40;
+  --z-dropdown: 50;
+  --z-modal: 60;
+  --z-toast: 70;
 
   /* Layered Shadows */
   --shadow-subtle: 0 1px 2px rgba(15, 23, 42, 0.04), 0 2px 4px rgba(15, 23, 42, 0.02);
@@ -68,11 +94,6 @@
   --shadow-card-hover: 0 16px 32px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
   --shadow-modal: 0 24px 48px -12px rgba(15, 23, 42, 0.18), 0 8px 16px -4px rgba(15, 23, 42, 0.06);
   --shadow-glow: 0 0 28px -4px rgba(124, 58, 237, 0.25);
-
-  /* Spacing Grid */
-  --space-unit: 8px;
-  --section-pad-y: clamp(4rem, 8vw, 7rem);
-  --section-pad-x: clamp(1rem, 4vw, 2rem);
 
   /* Animation Easings & Durations */
   --ease-out-smooth: cubic-bezier(0.16, 1, 0.3, 1);
