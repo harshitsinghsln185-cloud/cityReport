@@ -2,5 +2,6 @@
 # Project docs (local only)
 docs/*
 !docs/ui-upgrade/
+!docs/ui-fix/
 AGENT.md
 client/ASSETS.md
