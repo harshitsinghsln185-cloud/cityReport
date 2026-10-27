@@ -9,7 +9,6 @@ import {
   Lock,
 } from 'lucide-react';
 import Button from '../ui/Button';
-import CivicSphereCanvas from './CivicSphereCanvas';
 import Reveal from '../ui/Reveal';
 
 export const Hero: React.FC = () => {
@@ -28,9 +27,9 @@ export const Hero: React.FC = () => {
       <div className="absolute bottom-0 left-10 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="max-w-3xl text-left">
           {/* Left Column: Headline, Copy & CTAs */}
-          <div className="lg:col-span-7 text-left">
+          <div>
             <Reveal direction="down">
               {/* Social Proof & Trust Pill */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold/15 border border-gold/30 text-xs font-semibold text-gold mb-6 backdrop-blur-md">
@@ -130,47 +129,6 @@ export const Hero: React.FC = () => {
                   <div>
                     <p className="text-xs font-bold text-white leading-tight">50% Escrow</p>
                     <p className="text-[10px] text-slate-400">Zero Fund Leakage</p>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Right Column: Procedural 3D Civic Topology Sphere Canvas */}
-          <div className="lg:col-span-5 relative flex items-center justify-center">
-            <Reveal delay={0.2} direction="none" className="w-full max-w-md lg:max-w-none">
-              <div className="relative w-full aspect-square max-w-[420px] mx-auto rounded-cardLg bg-white/[0.03] border border-white/10 backdrop-blur-sm p-4 flex flex-col justify-between overflow-hidden shadow-modal">
-                {/* Canvas Status Header */}
-                <div className="flex items-center justify-between text-xs z-10 px-2 pt-1">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="font-heading font-semibold text-white tracking-wide">
-                      Civic Topology Node Network
-                    </span>
-                  </div>
-                  <span className="text-[11px] text-lavender font-mono">
-                    36 States/UTs Live
-                  </span>
-                </div>
-
-                {/* 3D Canvas */}
-                <div className="w-full h-72 sm:h-80 my-auto">
-                  <CivicSphereCanvas />
-                </div>
-
-                {/* Canvas Status Footer */}
-                <div className="grid grid-cols-3 gap-2 text-center text-[10px] text-slate-300 pt-2 border-t border-white/10 z-10">
-                  <div>
-                    <span className="block font-bold text-white tabular-nums">40 Nodes</span>
-                    <span className="text-slate-400">Real-Time</span>
-                  </div>
-                  <div>
-                    <span className="block font-bold text-white tabular-nums">100% WebGL</span>
-                    <span className="text-slate-400">Procedural 3D</span>
-                  </div>
-                  <div>
-                    <span className="block font-bold text-emerald-400">Active</span>
-                    <span className="text-slate-400">Interactive</span>
                   </div>
                 </div>
               </div>
