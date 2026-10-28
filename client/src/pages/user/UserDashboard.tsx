@@ -112,25 +112,17 @@ export const UserDashboard: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap sm:flex-nowrap gap-3 shrink-0">
-            <Link to="/user/report-issue">
-              <Button
-                variant="primary"
+            <Button to="/user/report-issue" variant="primary"
                 size="md"
                 leftIcon={<Plus className="w-4 h-4" />}
-                className="shadow-lg shadow-primary/30"
-              >
+                className="shadow-lg shadow-primary/30">
                 Report New Defect
               </Button>
-            </Link>
-            <Link to="/user/issues">
-              <Button
-                variant="outline"
+            <Button to="/user/issues" variant="outline"
                 size="md"
-                className="border-white/20 text-white hover:bg-white/10"
-              >
+                className="border-white/20 text-white hover:bg-white/10">
                 My Reported Queue
               </Button>
-            </Link>
           </div>
         </div>
       </div>
@@ -229,11 +221,9 @@ export const UserDashboard: React.FC = () => {
                   Notice a pothole, open manhole, broken streetlight, or garbage overflow in your ward? Submit a report now.
                 </p>
               </div>
-              <Link to="/user/report-issue" className="inline-block">
-                <Button variant="primary" size="sm" leftIcon={<Plus className="w-4 h-4" />}>
+              <Button to="/user/report-issue" variant="primary" size="sm" leftIcon={<Plus className="inline-block w-4 h-4" />}>
                   Report Your First Issue
                 </Button>
-              </Link>
             </Card>
           ) : (
             <div className="space-y-3">

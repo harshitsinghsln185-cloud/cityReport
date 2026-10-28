@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   Plus,
   Search,
@@ -118,11 +118,9 @@ export const MyIssues: React.FC = () => {
       header: 'Action',
       className: 'text-right',
       render: (row) => (
-        <Link to={`/user/issues/${row._id}`}>
-          <Button variant="outline" size="sm" leftIcon={<Eye className="w-3.5 h-3.5" />}>
+        <Button to={`/user/issues/${row._id}`} variant="outline" size="sm" leftIcon={<Eye className="w-3.5 h-3.5" />}>
             Inspect
           </Button>
-        </Link>
       ),
     },
   ];
@@ -156,11 +154,9 @@ export const MyIssues: React.FC = () => {
           </p>
         </div>
 
-        <Link to="/user/report-issue">
-          <Button variant="primary" leftIcon={<Plus className="w-4 h-4" />} className="shadow-xs">
+        <Button to="/user/report-issue" variant="primary" leftIcon={<Plus className="w-4 h-4" />} className="shadow-xs">
             Report New Defect
           </Button>
-        </Link>
       </div>
 
       {/* Error notification */}

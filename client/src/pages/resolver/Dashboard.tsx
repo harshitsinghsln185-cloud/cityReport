@@ -92,16 +92,12 @@ export const ResolverDashboard: React.FC = () => {
               Refresh Feed
             </Button>
 
-            <Link to="/resolver/assignments">
-              <Button
-                variant="primary"
+            <Button to="/resolver/assignments" variant="primary"
                 size="md"
                 leftIcon={<Inbox className="w-4 h-4" />}
-                className="shadow-lg shadow-primary/30"
-              >
+                className="shadow-lg shadow-primary/30">
                 Review Offers ({metrics.assignedOffersCount})
               </Button>
-            </Link>
           </div>
         </div>
       </div>
@@ -260,12 +256,10 @@ export const ResolverDashboard: React.FC = () => {
                     </p>
                   </div>
 
-                  <Link to={`/resolver/tasks/${task._id}`} className="shrink-0">
-                    <Button variant="outline" size="sm" className="text-xs gap-1.5 w-full sm:w-auto">
+                  <Button to={`/resolver/tasks/${task._id}`} variant="outline" size="sm" className="shrink-0 text-xs gap-1.5 w-full sm:w-auto">
                       <span>Open Task</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Button>
-                  </Link>
                 </div>
               ))}
             </div>

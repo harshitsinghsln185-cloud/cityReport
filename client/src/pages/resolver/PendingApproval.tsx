@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Clock,
   AlertTriangle,
@@ -128,11 +128,9 @@ export const PendingApproval: React.FC = () => {
                 Congratulations, your credentials, trade qualifications, and service territory have been verified by municipal operations. You can now accept local repair assignments.
               </p>
             </div>
-            <Link to="/resolver">
-              <Button variant="primary" rightIcon={<ArrowRight className="w-4 h-4" />} className="shadow-sm">
+            <Button to="/resolver" variant="primary" rightIcon={<ArrowRight className="w-4 h-4" />} className="shadow-sm">
                 Enter Resolver Workspace
               </Button>
-            </Link>
           </Card>
         ) : currentStatus === 'Rejected' ? (
           <Card className="p-8 space-y-6 border-rose-300 bg-card rounded-card shadow-card">
@@ -182,11 +180,9 @@ export const PendingApproval: React.FC = () => {
                 <span>Contact Municipal Operations Support</span>
               </a>
 
-              <Link to="/register-resolver">
-                <Button variant="primary" size="sm" className="shadow-xs">
+              <Button to="/register-resolver" variant="primary" size="sm" className="shadow-xs">
                   Submit Corrected Application
                 </Button>
-              </Link>
             </div>
           </Card>
         ) : (
@@ -271,11 +267,9 @@ export const PendingApproval: React.FC = () => {
                 </Button>
 
                 {!user && (
-                  <Link to="/login">
-                    <Button variant="primary" size="sm" className="shadow-xs text-xs">
+                  <Button to="/login" variant="primary" size="sm" className="shadow-xs text-xs">
                       Sign In with Credentials
                     </Button>
-                  </Link>
                 )}
               </div>
             </Card>

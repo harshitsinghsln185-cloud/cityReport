@@ -10,7 +10,6 @@ import {
   Camera,
   ArrowRight,
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import Accordion, { AccordionItemData } from '../ui/Accordion';
 import SectionHeader from '../ui/SectionHeader';
 import Reveal from '../ui/Reveal';
@@ -198,16 +197,12 @@ export const HowItWorks: React.FC = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <Link to="/user/report-issue">
-                  <Button variant="primary" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+                <Button to="/user/report-issue" variant="primary" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
                     Report a Hazard
                   </Button>
-                </Link>
-                <Link to="/about">
-                  <Button variant="outline" size="md">
+                <Button to="/about" variant="outline" size="md">
                     Learn Operating Model
                   </Button>
-                </Link>
               </div>
             </Reveal>
           </div>

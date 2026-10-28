@@ -112,15 +112,11 @@ export const Checkout: React.FC = () => {
         <h2 className="text-xl font-heading font-bold text-ink">Checkout Error</h2>
         <p className="text-sm text-muted max-w-md mx-auto">{error}</p>
         <div className="pt-2 flex justify-center gap-3">
-          <Link to="/user/issues">
-            <Button variant="outline" leftIcon={<ArrowLeft className="w-4 h-4" />}>
+          <Button to="/user/issues" variant="outline" leftIcon={<ArrowLeft className="w-4 h-4" />}>
               Back to My Issues
             </Button>
-          </Link>
           {issue && (
-            <Link to={`/user/issues/${issue._id}`}>
-              <Button variant="primary">View Issue Details</Button>
-            </Link>
+            <Button to={`/user/issues/${issue._id}`} variant="primary">View Issue Details</Button>
           )}
         </div>
       </div>
@@ -193,11 +189,9 @@ export const Checkout: React.FC = () => {
               size="md"
               label={isBalance ? 'Download Final Invoice (PDF)' : 'Download Invoice 1 (PDF)'}
             />
-            <Link to={`/user/issues/${issue._id}`}>
-              <Button variant="outline" size="md">
+            <Button to={`/user/issues/${issue._id}`} variant="outline" size="md">
                 {isBalance ? 'View Closed Report & Rate Contractor' : 'Track Issue Details'}
               </Button>
-            </Link>
           </div>
         </Card>
       </div>

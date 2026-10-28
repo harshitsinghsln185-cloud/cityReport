@@ -89,43 +89,31 @@ export const Navbar: React.FC = () => {
         {/* Action Controls */}
         <div className="hidden md:flex items-center gap-3">
           {isAuthenticated ? (
-            <Link to={getDashboardLink()}>
-              <Button variant="outline" size="sm">
+            <Button to={getDashboardLink()} variant="outline" size="sm">
                 Dashboard
               </Button>
-            </Link>
           ) : (
-            <Link to="/login">
-              <Button variant="ghost" size="sm">
+            <Button to="/login" variant="ghost" size="sm">
                 Sign In
               </Button>
-            </Link>
           )}
 
-          <Link to="/user/report-issue" className="shrink-0">
-            <Button
-              variant="primary"
+          <Button to="/user/report-issue" variant="primary"
               size="sm"
-              leftIcon={<PlusCircle className="w-4 h-4 shrink-0" />}
-              className="shadow-sm shadow-primary/25 whitespace-nowrap"
-            >
+              leftIcon={<PlusCircle className="shrink-0 w-4 h-4 shrink-0" />}
+              className="shadow-sm shadow-primary/25 whitespace-nowrap">
               Report an Issue
             </Button>
-          </Link>
         </div>
 
         {/* Mobile Hamburger Toggle */}
         <div className="flex lg:hidden items-center gap-2">
-          <Link to="/user/report-issue" className="md:hidden shrink-0">
-            <Button
-              variant="primary"
+          <Button to="/user/report-issue" variant="primary"
               size="xs"
-              leftIcon={<PlusCircle className="w-3.5 h-3.5 shrink-0" />}
-              className="px-3 py-1.5 whitespace-nowrap"
-            >
+              leftIcon={<PlusCircle className="md:hidden shrink-0 w-3.5 h-3.5 shrink-0" />}
+              className="px-3 py-1.5 whitespace-nowrap">
               Report
             </Button>
-          </Link>
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -180,42 +168,28 @@ export const Navbar: React.FC = () => {
 
             <div className="pt-3 border-t border-border flex flex-col gap-2 mt-2">
               {isAuthenticated ? (
-                <Link to={getDashboardLink()} onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button variant="outline" size="md" isFullWidth>
+                <Button to={getDashboardLink()} onClick={() => setIsMobileMenuOpen(false)} variant="outline" size="md" isFullWidth>
                     Go to Dashboard
                   </Button>
-                </Link>
               ) : (
                 <div className="grid grid-cols-2 gap-2">
-                  <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button variant="outline" size="md" isFullWidth>
+                  <Button to="/login" onClick={() => setIsMobileMenuOpen(false)} variant="outline" size="md" isFullWidth>
                       Sign In
                     </Button>
-                  </Link>
-                  <Link to="/register" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button variant="secondary" size="md" isFullWidth>
+                  <Button to="/register" onClick={() => setIsMobileMenuOpen(false)} variant="secondary" size="md" isFullWidth>
                       Register
                     </Button>
-                  </Link>
                 </div>
               )}
 
-              <Link
-                to="/user/report-issue"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-1"
-              >
-                <Button
-                  variant="primary"
+              <Button to="/user/report-issue" onClick={() => setIsMobileMenuOpen(false)} variant="primary"
                   size="md"
                   isFullWidth
-                  leftIcon={<PlusCircle className="w-4 h-4 shrink-0" />}
+                  leftIcon={<PlusCircle className="mt-1 w-4 h-4 shrink-0" />}
                   rightIcon={<ArrowRight className="w-4 h-4 shrink-0" />}
-                  className="whitespace-nowrap"
-                >
+                  className="whitespace-nowrap">
                   Report an Issue
                 </Button>
-              </Link>
             </div>
           </div>
         </>

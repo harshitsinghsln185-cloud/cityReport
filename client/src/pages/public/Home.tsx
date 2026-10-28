@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   ShieldCheck,
@@ -93,11 +92,9 @@ export const Home: React.FC = () => {
               title="Supported Public Hazard Categories"
               subtitle="Certified municipal categories ready for immediate citizen reporting, automated tariff computation, and proximity-based contractor assignment."
               actions={
-                <Link to="/services">
-                  <Button variant="purple" size="sm" rightIcon={<ArrowRight className="w-4 h-4" />}>
+                <Button to="/services" variant="purple" size="sm" rightIcon={<ArrowRight className="w-4 h-4" />}>
                     View All Categories
                   </Button>
-                </Link>
               }
             />
           </Reveal>
@@ -151,11 +148,9 @@ export const Home: React.FC = () => {
                   </div>
                 </div>
 
-                <Link to="/track">
-                  <Button variant="purple" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+                <Button to="/track" variant="purple" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
                     Verify a Repair Ticket
                   </Button>
-                </Link>
               </Reveal>
             </div>
 
@@ -199,26 +194,18 @@ export const Home: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-              <Link to="/user/report-issue">
-                <Button
-                  variant="primary"
+              <Button to="/user/report-issue" variant="primary"
                   size="lg"
-                  className="w-full sm:w-auto shadow-lg shadow-primary/30 flex items-center justify-center gap-2"
-                >
+                  className="w-full sm:w-auto shadow-lg shadow-primary/30 flex items-center justify-center gap-2">
                   <span>Report an Issue Now</span>
                   <ArrowRight className="w-4 h-4" />
                 </Button>
-              </Link>
 
-              <Link to="/states">
-                <Button
-                  variant="outline"
+              <Button to="/states" variant="outline"
                   size="lg"
-                  className="w-full sm:w-auto bg-white/10 text-white border-white/20 hover:bg-white/20"
-                >
+                  className="w-full sm:w-auto bg-white/10 text-white border-white/20 hover:bg-white/20">
                   <span>Explore States Directory</span>
                 </Button>
-              </Link>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-lavender font-medium">

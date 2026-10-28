@@ -60,11 +60,9 @@ export const ForgotPassword: React.FC = () => {
             If an account exists with <strong className="text-ink font-semibold">{email}</strong>, we have dispatched a secure password recovery link valid for 1 hour.
           </p>
           <div className="pt-2">
-            <Link to="/login" className="block">
-              <Button variant="primary" className="w-full">
+            <Button to="/login" variant="primary" className="block w-full">
                 Return to Sign In
               </Button>
-            </Link>
           </div>
         </div>
       ) : (

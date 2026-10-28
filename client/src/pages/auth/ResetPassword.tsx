@@ -71,11 +71,9 @@ export const ResetPassword: React.FC = () => {
             Your password has been securely updated. You can now sign in with your new credentials.
           </p>
           <div className="pt-2">
-            <Link to="/login" className="block">
-              <Button variant="primary" className="w-full">
+            <Button to="/login" variant="primary" className="block w-full">
                 Sign In to Account
               </Button>
-            </Link>
           </div>
         </div>
       ) : (

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
 import resolverTaskService from '../../services/resolverTask.service';
 import { Issue } from '../../services/issue.service';
 import Card from '../../components/ui/Card';
@@ -270,11 +269,9 @@ export const ResolverAssignmentsPage: React.FC = () => {
                         )}
                       </Button>
 
-                      <Link to={`/resolver/tasks/${task._id}`}>
-                        <Button variant="ghost" size="sm" className="text-xs p-2 text-muted hover:text-ink">
+                      <Button to={`/resolver/tasks/${task._id}`} variant="ghost" size="sm" className="text-xs p-2 text-muted hover:text-ink">
                           <ArrowRight className="w-4 h-4" />
                         </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>

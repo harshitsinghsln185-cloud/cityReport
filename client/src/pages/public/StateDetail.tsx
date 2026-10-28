@@ -90,11 +90,9 @@ export const StateDetail: React.FC = () => {
         <p className="text-sm text-secondaryText max-w-md mb-6 leading-relaxed">
           The requested regional slug does not match any of the 36 monitored Indian states or union territories in our database.
         </p>
-        <Link to="/states">
-          <Button variant="navy" leftIcon={<ChevronLeft className="w-4 h-4" />}>
+        <Button to="/states" variant="navy" leftIcon={<ChevronLeft className="w-4 h-4" />}>
             Back to States Directory
           </Button>
-        </Link>
       </div>
     );
   }
@@ -268,25 +266,17 @@ export const StateDetail: React.FC = () => {
 
             {/* Action Card */}
             <div className="shrink-0 flex flex-col gap-3 w-full sm:w-auto">
-              <Link to={`/user/report-issue?state=${encodeURIComponent(stateData.name)}`}>
-                <Button
-                  variant="gold"
+              <Button to={`/user/report-issue?state=${encodeURIComponent(stateData.name)}`} variant="gold"
                   size="lg"
-                  className="w-full sm:w-auto shadow-lg shadow-gold/20 flex items-center justify-center gap-2 group font-semibold"
-                >
+                  className="w-full sm:w-auto shadow-lg shadow-gold/20 flex items-center justify-center gap-2 group font-semibold">
                   <span>Report Hazard in {stateData.name}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
-              </Link>
-              <Link to="/register-resolver">
-                <Button
-                  variant="outline"
+              <Button to="/register-resolver" variant="outline"
                   size="md"
-                  className="w-full sm:w-auto border-white/20 text-white hover:bg-white/10"
-                >
+                  className="w-full sm:w-auto border-white/20 text-white hover:bg-white/10">
                   Apply as Ward Contractor
                 </Button>
-              </Link>
 
               <div className="flex items-center justify-between text-[11px] text-slate-300 px-1 pt-1">
                 <span>50% Advance & Milestone Protection</span>
@@ -559,12 +549,10 @@ export const StateDetail: React.FC = () => {
                 </p>
               </div>
 
-              <Link to="/register-resolver">
-                <Button variant="gold" size="md" className="w-full flex items-center justify-center gap-2 font-semibold">
+              <Button to="/register-resolver" variant="gold" size="md" className="w-full flex items-center justify-center gap-2 font-semibold">
                   <span>Register as Resolver</span>
                   <ArrowRight className="w-4 h-4" />
                 </Button>
-              </Link>
             </div>
           </div>
         </section>

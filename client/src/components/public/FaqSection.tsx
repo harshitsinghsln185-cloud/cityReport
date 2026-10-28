@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Accordion, { AccordionItemData } from '../ui/Accordion';
 import SectionHeader from '../ui/SectionHeader';
 import Reveal from '../ui/Reveal';
@@ -98,11 +97,9 @@ export const FaqSection: React.FC = () => {
                 </p>
               </div>
 
-              <Link to="/query">
-                <Button variant="primary" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+              <Button to="/query" variant="primary" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
                   Contact Civic Desk
                 </Button>
-              </Link>
             </Reveal>
           </div>
 

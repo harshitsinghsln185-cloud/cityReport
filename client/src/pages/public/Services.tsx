@@ -130,18 +130,14 @@ export const Services: React.FC = () => {
         title="Public Infrastructure Repair & Tariff Directory"
         description="Transparent base tariffs, 48h response SLAs, and direct contractor dispatch for road repairs, streetlights, drainage, and waste management across 36 Indian regions."
         primaryAction={
-          <Link to="/user/report-issue">
-            <Button variant="gold" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+          <Button to="/user/report-issue" variant="gold" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
               Report a Hazard
             </Button>
-          </Link>
         }
         secondaryAction={
-          <Link to="/track">
-            <Button variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10">
+          <Button to="/track" variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10">
               Track Existing Ticket
             </Button>
-          </Link>
         }
         visual={
           <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
@@ -327,11 +323,9 @@ export const Services: React.FC = () => {
                 If your neighborhood hazard does not fit standard categories, our civic coordination desk will assess the site, classify the trade requirements, and issue an itemized estimate.
               </p>
             </div>
-            <Link to="/query" className="shrink-0">
-              <Button variant="secondary" size="md">
+            <Button to="/query" variant="secondary" size="md" className="shrink-0">
                 Inquire with Civic Desk
               </Button>
-            </Link>
           </div>
         </Reveal>
       </div>

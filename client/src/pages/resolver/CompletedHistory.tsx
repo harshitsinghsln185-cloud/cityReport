@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
 import resolverTaskService from '../../services/resolverTask.service';
 import { Issue } from '../../services/issue.service';
 import Card from '../../components/ui/Card';
@@ -176,12 +175,10 @@ export const ResolverCompletedHistoryPage: React.FC = () => {
 
                   {/* Right Column: Link CTA */}
                   <div className="shrink-0 pt-2 lg:pt-0">
-                    <Link to={`/resolver/tasks/${task._id}`}>
-                      <Button variant="outline" size="sm" className="text-xs gap-1.5 shadow-xs">
+                    <Button to={`/resolver/tasks/${task._id}`} variant="outline" size="sm" className="text-xs gap-1.5 shadow-xs">
                         <span>Inspect Full Proof</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Button>
-                    </Link>
                   </div>
                 </div>
               </Card>

@@ -247,9 +247,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
         <AlertOctagon className="w-12 h-12 text-rose-500 mx-auto mb-4" />
         <h2 className="text-xl font-heading font-bold text-[#1E293B] mb-2">Issue Not Found</h2>
         <p className="text-sm text-[#64748B] mb-6">The requested civic issue record could not be loaded.</p>
-        <Link to="/admin/issues">
-          <Button variant="outline">Return to Master Queue</Button>
-        </Link>
+        <Button to="/admin/issues" variant="outline">Return to Master Queue</Button>
       </div>
     );
   }

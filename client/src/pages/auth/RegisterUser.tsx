@@ -122,16 +122,12 @@ export const RegisterUser: React.FC = () => {
             <strong className="text-ink font-semibold">{formData.email}</strong>. Please check your inbox and confirm your address to start reporting civic issues.
           </p>
           <div className="pt-2 space-y-2.5">
-            <Link to="/login" className="block">
-              <Button variant="primary" className="w-full">
+            <Button to="/login" variant="primary" className="block w-full">
                 Proceed to Sign In
               </Button>
-            </Link>
-            <Link to="/" className="block">
-              <Button variant="ghost" className="w-full">
+            <Button to="/" variant="ghost" className="block w-full">
                 Return to Public Portal
               </Button>
-            </Link>
           </div>
         </div>
       </AuthLayout>

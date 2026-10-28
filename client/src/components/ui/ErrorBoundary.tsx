@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRouteError, isRouteErrorResponse, Link } from 'react-router-dom';
+import { useRouteError, isRouteErrorResponse } from 'react-router-dom';
 import { AlertTriangle, RotateCcw, Home } from 'lucide-react';
 import Button from './Button';
 
@@ -50,15 +50,11 @@ export const ErrorBoundary: React.FC = () => {
             <span>Reload Page</span>
           </Button>
 
-          <Link to="/" className="w-full sm:w-auto">
-            <Button
-              variant="outline"
-              className="w-full flex items-center justify-center gap-2"
-            >
+          <Button to="/" variant="outline"
+              className="w-full sm:w-auto w-full flex items-center justify-center gap-2">
               <Home className="w-4 h-4" />
               <span>Back Home</span>
             </Button>
-          </Link>
         </div>
       </div>
     </div>

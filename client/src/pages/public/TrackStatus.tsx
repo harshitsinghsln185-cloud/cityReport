@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import {
   Search,
   CheckCircle2,
@@ -422,16 +422,12 @@ export const TrackStatus: React.FC = () => {
                 When an issue is reported, our system generates an immutable tracking code starting with <code className="bg-canvas px-1.5 py-0.5 rounded text-primary font-mono font-semibold">CR-2026-</code>. Paste it into the tracker above.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-3 text-xs">
-                <Link to="/user/report-issue">
-                  <Button variant="primary" size="sm">
+                <Button to="/user/report-issue" variant="primary" size="sm">
                     Report a New Hazard
                   </Button>
-                </Link>
-                <Link to="/services">
-                  <Button variant="outline" size="sm">
+                <Button to="/services" variant="outline" size="sm">
                     View Supported Services
                   </Button>
-                </Link>
               </div>
             </div>
           </Reveal>

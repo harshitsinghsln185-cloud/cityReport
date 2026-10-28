@@ -148,11 +148,9 @@ export const StatesDirectory: React.FC = () => {
           </a>
         }
         secondaryAction={
-          <Link to="/user/report-issue">
-            <Button variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10">
+          <Button to="/user/report-issue" variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10">
               Report Local Defect
             </Button>
-          </Link>
         }
         visual={
           <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">

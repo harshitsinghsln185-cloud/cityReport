@@ -126,11 +126,9 @@ export const Payments: React.FC = () => {
           </p>
         </div>
 
-        <Link to="/user/report-issue">
-          <Button variant="primary" leftIcon={<PlusCircle className="w-4 h-4" />}>
+        <Button to="/user/report-issue" variant="primary" leftIcon={<PlusCircle className="w-4 h-4" />}>
             Report New Issue
           </Button>
-        </Link>
       </div>
 
       {error && (
@@ -264,17 +262,13 @@ export const Payments: React.FC = () => {
                       </td>
                       <td className="py-3.5 pl-4 text-right">
                         {p.status === 'Pending' ? (
-                          <Link to={`/user/checkout/${p.issue?._id}`}>
-                            <Button variant="primary" size="sm">
+                          <Button to={`/user/checkout/${p.issue?._id}`} variant="primary" size="sm">
                               Pay Now
                             </Button>
-                          </Link>
                         ) : (
-                          <Link to={`/user/issues/${p.issue?._id}`}>
-                            <Button variant="ghost" size="sm">
+                          <Button to={`/user/issues/${p.issue?._id}`} variant="ghost" size="sm">
                               View Issue
                             </Button>
-                          </Link>
                         )}
                       </td>
                     </tr>

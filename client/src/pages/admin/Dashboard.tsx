@@ -101,12 +101,10 @@ export const AdminDashboard: React.FC = () => {
             <span>Refresh Feed</span>
           </Button>
 
-          <Link to="/admin/issues">
-            <Button size="sm" className="gap-2 shadow-xs">
+          <Button to="/admin/issues" size="sm" className="gap-2 shadow-xs">
               <AlertOctagon className="w-4 h-4" />
               <span>Master Queue</span>
             </Button>
-          </Link>
         </div>
       </div>
 
@@ -431,12 +429,10 @@ export const AdminDashboard: React.FC = () => {
                       </span>
                     </td>
                     <td className="py-3.5 px-4 text-right">
-                      <Link to={`/admin/issues/${issue._id}`}>
-                        <Button variant="outline" size="sm" className="text-xs gap-1.5 shadow-xs">
+                      <Button to={`/admin/issues/${issue._id}`} variant="outline" size="sm" className="text-xs gap-1.5 shadow-xs">
                           <span>Manage</span>
                           <ArrowRight className="w-3 h-3" />
                         </Button>
-                      </Link>
                     </td>
                   </tr>
                 ))}

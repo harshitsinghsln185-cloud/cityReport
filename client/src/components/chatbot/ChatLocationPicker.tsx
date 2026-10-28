@@ -54,7 +54,9 @@ export const ChatLocationPicker: React.FC<ChatLocationPickerProps> = ({
             </div>
           </div>
           <button
+            type="button"
             onClick={onClose}
+            aria-label="Close dialog"
             className="p-1 rounded-lg text-muted hover:bg-slate-100 hover:text-ink transition-colors"
           >
             <X className="w-5 h-5" />

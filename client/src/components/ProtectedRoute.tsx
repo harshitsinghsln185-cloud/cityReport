@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, useLocation, Outlet, Link } from 'react-router-dom';
+import { Navigate, useLocation, Outlet } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import Card from './ui/Card';
 import Button from './ui/Button';
@@ -44,12 +44,8 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
             Your account role (<span className="font-semibold text-ink">{role}</span>) does not have authorization to view this section.
           </p>
           <div className="flex justify-center gap-3">
-            <Link to={role === 'Admin' ? '/admin' : role === 'Resolver' ? '/resolver' : '/user'}>
-              <Button variant="primary">Go to My Dashboard</Button>
-            </Link>
-            <Link to="/">
-              <Button variant="outline">Back to Home</Button>
-            </Link>
+            <Button to={role === 'Admin' ? '/admin' : role === 'Resolver' ? '/resolver' : '/user'} variant="primary">Go to My Dashboard</Button>
+            <Button to="/" variant="outline">Back to Home</Button>
           </div>
         </Card>
       </div>

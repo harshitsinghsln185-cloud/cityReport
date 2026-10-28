@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import authService from '../../services/auth.service';
 import Button from '../../components/ui/Button';
 import AuthLayout from '../../components/auth/AuthLayout';
@@ -71,11 +71,9 @@ export const VerifyEmail: React.FC = () => {
               Your citizen account has been verified. You can now submit neighborhood reports, review certified contractor quotes, and track repair milestones.
             </p>
             <div className="pt-2">
-              <Link to="/login" className="block">
-                <Button variant="primary" className="w-full" rightIcon={<ArrowRight className="w-4 h-4" />}>
+              <Button to="/login" variant="primary" className="block w-full" rightIcon={<ArrowRight className="w-4 h-4" />}>
                   Sign In to Account
                 </Button>
-              </Link>
             </div>
           </div>
         )}
@@ -92,16 +90,12 @@ export const VerifyEmail: React.FC = () => {
               {errorMessage || 'The verification link is invalid, malformed, or has expired after 24 hours.'}
             </p>
             <div className="pt-2 space-y-2.5">
-              <Link to="/login" className="block">
-                <Button variant="primary" className="w-full">
+              <Button to="/login" variant="primary" className="block w-full">
                   Proceed to Sign In
                 </Button>
-              </Link>
-              <Link to="/" className="block">
-                <Button variant="ghost" className="w-full">
+              <Button to="/" variant="ghost" className="block w-full">
                   Return to Home
                 </Button>
-              </Link>
             </div>
           </div>
         )}

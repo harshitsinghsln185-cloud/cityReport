@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   Search,
@@ -369,19 +368,12 @@ export const Hero: React.FC = () => {
                         </p>
 
                         {/* CTA Link to Report Page with Category pre-fill */}
-                        <Link
-                          to={`/user/report-issue?category=${hotspot.categorySlug}`}
-                          className="block"
-                        >
-                          <Button
-                            variant="purple"
+                        <Button to={`/user/report-issue?category=${hotspot.categorySlug}`} variant="purple"
                             size="sm"
-                            className="w-full text-xs flex items-center justify-center gap-1.5 py-1.5"
-                          >
+                            className="block w-full text-xs flex items-center justify-center gap-1.5 py-1.5">
                             <span>Report this issue</span>
                             <ArrowRight className="w-3.5 h-3.5" />
                           </Button>
-                        </Link>
                       </div>
                     )}
                   </div>
@@ -463,27 +455,19 @@ export const Hero: React.FC = () => {
           {/* Primary & Secondary Action Buttons */}
           <Reveal delay={0.3}>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-8">
-              <Link to="/user/report-issue">
-                <Button
-                  variant="accent"
+              <Button to="/user/report-issue" variant="accent"
                   size="lg"
-                  className="w-full sm:w-auto shadow-lg shadow-black/20 flex items-center justify-center gap-2 group text-primary font-bold"
-                >
+                  className="w-full sm:w-auto shadow-lg shadow-black/20 flex items-center justify-center gap-2 group text-primary font-bold">
                   <span>Report an issue</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </Button>
-              </Link>
 
-              <Link to="/track">
-                <Button
-                  variant="outline"
+              <Button to="/track" variant="outline"
                   size="lg"
-                  className="w-full sm:w-auto bg-white/10 text-white border-white/25 hover:bg-white/20 hover:border-white/40 backdrop-blur-sm flex items-center justify-center gap-2"
-                >
+                  className="w-full sm:w-auto bg-white/10 text-white border-white/25 hover:bg-white/20 hover:border-white/40 backdrop-blur-sm flex items-center justify-center gap-2">
                   <Search className="w-4 h-4 text-lavender" />
                   <span>Track status</span>
                 </Button>
-              </Link>
             </div>
           </Reveal>
 

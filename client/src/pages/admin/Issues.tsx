@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import adminService from '../../services/admin.service';
 import { Issue } from '../../services/issue.service';
 import Card from '../../components/ui/Card';
@@ -319,16 +319,12 @@ export const AdminIssuesPage: React.FC = () => {
 
                       {/* Actions */}
                       <td className="py-3.5 px-4 text-right">
-                        <Link to={`/admin/issues/${issue._id}`}>
-                          <Button
-                            variant="outline"
+                        <Button to={`/admin/issues/${issue._id}`} variant="outline"
                             size="sm"
-                            className="text-xs gap-1 shadow-xs"
-                          >
+                            className="text-xs gap-1 shadow-xs">
                             <span>Inspect</span>
                             <ArrowRight className="w-3 h-3" />
                           </Button>
-                        </Link>
                       </td>
                     </tr>
                   );

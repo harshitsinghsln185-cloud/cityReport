@@ -168,9 +168,7 @@ export const ResolverTaskDetailsPage: React.FC = () => {
         <p className="text-sm text-secondaryText mb-6 max-w-md mx-auto">
           The requested task could not be located, or is not allocated to your certified contractor account.
         </p>
-        <Link to="/resolver/tasks">
-          <Button variant="outline">Return to Task Queue</Button>
-        </Link>
+        <Button to="/resolver/tasks" variant="outline">Return to Task Queue</Button>
       </div>
     );
   }

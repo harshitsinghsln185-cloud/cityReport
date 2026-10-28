@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
 import resolverTaskService from '../../services/resolverTask.service';
 import { Issue } from '../../services/issue.service';
 import Card from '../../components/ui/Card';
@@ -258,17 +257,13 @@ export const ResolverTasksPage: React.FC = () => {
                         </Button>
                       )}
 
-                      <Link to={`/resolver/tasks/${task._id}`}>
-                        <Button
-                          variant={task.status === 'InProgress' ? 'primary' : 'outline'}
+                      <Button to={`/resolver/tasks/${task._id}`} variant={task.status === 'InProgress' ? 'primary' : 'outline'}
                           size="sm"
                           className="text-xs gap-1.5 shadow-xs"
                           leftIcon={task.status === 'InProgress' ? <Camera className="w-3.5 h-3.5" /> : undefined}
-                          rightIcon={<ArrowRight className="w-3.5 h-3.5" />}
-                        >
+                          rightIcon={<ArrowRight className="w-3.5 h-3.5" />}>
                           <span>{task.status === 'InProgress' ? 'Upload Photo Proof' : 'View Task'}</span>
                         </Button>
-                      </Link>
                     </div>
                   </div>
                 </div>

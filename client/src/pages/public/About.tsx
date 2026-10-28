@@ -78,11 +78,9 @@ export const About: React.FC = () => {
           </a>
         }
         secondaryAction={
-          <Link to="/query">
-            <Button variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10">
+          <Button to="/query" variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10">
               Contact Secretariat Desk
             </Button>
-          </Link>
         }
         visual={
           <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
@@ -296,17 +294,13 @@ export const About: React.FC = () => {
               </div>
 
               <div className="shrink-0 flex flex-col sm:flex-row gap-3">
-                <Link to="/register-resolver">
-                  <Button variant="primary" size="lg" className="w-full sm:w-auto shadow-lg shadow-primary/30 flex items-center justify-center gap-2">
+                <Button to="/register-resolver" variant="primary" size="lg" className="w-full sm:w-auto shadow-lg shadow-primary/30 flex items-center justify-center gap-2">
                     <span>Apply as Resolver</span>
                     <ArrowRight className="w-4 h-4" />
                   </Button>
-                </Link>
-                <Link to="/query">
-                  <Button variant="outline" size="lg" className="w-full sm:w-auto bg-white/10 text-white border-white/20 hover:bg-white/20">
+                <Button to="/query" variant="outline" size="lg" className="w-full sm:w-auto bg-white/10 text-white border-white/20 hover:bg-white/20">
                     <span>Inquire About Tenders</span>
                   </Button>
-                </Link>
               </div>
             </div>
           </div>

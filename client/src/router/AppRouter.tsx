@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from '../context/AuthContext';
 import Button from '../components/ui/Button';
 import ProtectedRoute from '../components/ProtectedRoute';
@@ -280,9 +280,7 @@ const router = createBrowserRouter([
       <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center bg-canvas">
         <h1 className="text-5xl font-heading font-bold text-ink mb-4">404</h1>
         <p className="text-lg text-muted mb-6">Page not found</p>
-        <Link to="/">
-          <Button variant="primary">Return to Home</Button>
-        </Link>
+        <Button to="/" variant="primary">Return to Home</Button>
       </div>
     ),
   },

@@ -97,11 +97,9 @@ export const IssueDetails: React.FC = () => {
         <p className="text-xs sm:text-sm text-secondaryText max-w-md mx-auto leading-relaxed">
           {error || 'The requested civic issue could not be located or you lack permissions to view this dossier.'}
         </p>
-        <Link to="/user/issues">
-          <Button variant="outline" leftIcon={<ArrowLeft className="w-4 h-4" />}>
+        <Button to="/user/issues" variant="outline" leftIcon={<ArrowLeft className="w-4 h-4" />}>
             Back to My Reported Issues
           </Button>
-        </Link>
       </div>
     );
   }
@@ -195,14 +193,10 @@ export const IssueDetails: React.FC = () => {
               To dispatch a certified contractor to your location, please pay the 50% advance of ₹{(issue.fee.advancePaise / 100).toLocaleString('en-IN')}. The balance is payable upon completed and inspected work.
             </p>
           </div>
-          <Link to={`/user/checkout/${issue._id}`} className="shrink-0">
-            <Button
-              className="bg-white text-primary hover:bg-slate-50 font-bold shadow-xs w-full sm:w-auto"
-              rightIcon={<ArrowRight className="w-4 h-4" />}
-            >
+          <Button to={`/user/checkout/${issue._id}`} className="shrink-0 bg-white text-primary hover:bg-slate-50 font-bold shadow-xs w-full sm:w-auto"
+              rightIcon={<ArrowRight className="w-4 h-4" />}>
               Pay 50% Advance (₹{(issue.fee.advancePaise / 100).toLocaleString('en-IN')})
             </Button>
-          </Link>
         </div>
       )}
 
@@ -222,14 +216,10 @@ export const IssueDetails: React.FC = () => {
               Contractor repair proof has been verified by municipal supervisors. Inspect the Before/After photos below and pay the remaining balance of ₹{(issue.fee.balancePaise / 100).toLocaleString('en-IN')} to close this ticket and download your GST Settlement Invoice.
             </p>
           </div>
-          <Link to={`/user/checkout/${issue._id}`} className="shrink-0">
-            <Button
-              className="bg-white text-primary hover:bg-slate-50 font-bold shadow-xs w-full sm:w-auto"
-              rightIcon={<ArrowRight className="w-4 h-4" />}
-            >
+          <Button to={`/user/checkout/${issue._id}`} className="shrink-0 bg-white text-primary hover:bg-slate-50 font-bold shadow-xs w-full sm:w-auto"
+              rightIcon={<ArrowRight className="w-4 h-4" />}>
               Pay Balance (₹{(issue.fee.balancePaise / 100).toLocaleString('en-IN')})
             </Button>
-          </Link>
         </div>
       )}
 
