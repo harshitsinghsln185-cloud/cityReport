@@ -41,6 +41,14 @@ export const ResolverLayout: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-canvas flex flex-col font-body text-ink">
+      {/* Accessible Skip Link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-navy focus:text-gold focus:rounded-md focus:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent font-semibold text-xs"
+      >
+        Skip to main content
+      </a>
+
       {/* Top Banner if not approved */}
       {!isApproved && (
         <div className="bg-amber-900 text-white px-4 py-2.5 text-xs sm:text-sm font-medium flex items-center justify-between gap-2 shadow-xs shrink-0">
@@ -212,7 +220,7 @@ export const ResolverLayout: React.FC = () => {
             </div>
           </header>
 
-          <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-canvas">
+          <main id="main-content" tabIndex={-1} className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-canvas focus:outline-none">
             <Outlet />
           </main>
         </div>

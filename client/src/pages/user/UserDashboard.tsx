@@ -82,48 +82,48 @@ export const UserDashboard: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto space-y-8 pb-12">
-      {/* Top Welcome Banner */}
-      <div className="relative overflow-hidden rounded-cardLg bg-gradient-to-r from-dark via-[#181C3F] to-indigo text-white p-6 sm:p-8 lg:p-10 shadow-modal">
-        {/* Ambient Gradient Orbs */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-indigo/30 rounded-full blur-2xl pointer-events-none" />
-
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-3 max-w-2xl">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-white/10 text-lavender border border-white/15 backdrop-blur-sm flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Verified Citizen Portal</span>
+      {/* Streamlined High-Density Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6 rounded-card bg-surface border border-border shadow-subtle">
+        <div className="space-y-1">
+          <div className="flex flex-wrap items-center gap-2 mb-1">
+            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Verified Citizen Portal</span>
+            </span>
+            {user?.address?.city && (
+              <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-canvas text-secondaryText border border-border flex items-center gap-1">
+                <MapPin className="w-3 h-3 text-primary" />
+                <span>{user.address.city}, {user.address.state || 'India'}</span>
               </span>
-              {user?.address?.city && (
-                <span className="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-slate-300 border border-white/10 flex items-center gap-1">
-                  <MapPin className="w-3 h-3 text-lavender" />
-                  <span>{user.address.city}, {user.address.state || 'India'}</span>
-                </span>
-              )}
-            </div>
-
-            <h1 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight">
-              Welcome back, {user?.name?.split(' ')[0] || 'Citizen'}
-            </h1>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Your citizen portal is active. Monitor neighborhood defect dispatches, track 50% advance milestone protections, and inspect Before/After photographic proof.
-            </p>
+            )}
           </div>
 
-          <div className="flex flex-wrap sm:flex-nowrap gap-3 shrink-0">
-            <Button to="/user/report-issue" variant="primary"
-                size="md"
-                leftIcon={<Plus className="w-4 h-4" />}
-                className="shadow-lg shadow-primary/30">
-                Report New Defect
-              </Button>
-            <Button to="/user/issues" variant="outline"
-                size="md"
-                className="border-white/20 text-white hover:bg-white/10">
-                My Reported Queue
-              </Button>
-          </div>
+          <h1 className="font-heading font-bold text-xl sm:text-2xl text-ink tracking-tight">
+            Welcome back, {user?.name?.split(' ')[0] || 'Citizen'}
+          </h1>
+          <p className="text-xs text-secondaryText">
+            Track neighborhood defect dispatches, 50% advance milestone protections, and Before/After verification proof.
+          </p>
+        </div>
+
+        <div className="flex items-center gap-3 shrink-0">
+          <Button
+            to="/user/report-issue"
+            variant="gold"
+            size="sm"
+            leftIcon={<Plus className="w-4 h-4" />}
+            className="shadow-xs font-semibold"
+          >
+            Report Defect
+          </Button>
+          <Button
+            to="/user/issues"
+            variant="outline"
+            size="sm"
+            className="shadow-xs"
+          >
+            My Reports ({totalCount})
+          </Button>
         </div>
       </div>
 

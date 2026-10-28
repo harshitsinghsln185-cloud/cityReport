@@ -46,6 +46,14 @@ export const AdminLayout: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-canvas flex">
+      {/* Accessible Skip Link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-navy focus:text-gold focus:rounded-md focus:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent font-semibold text-xs"
+      >
+        Skip to main content
+      </a>
+
       {/* Desktop Admin Sidebar */}
       <aside className="hidden md:flex flex-col w-64 bg-[#0F1123] text-slate-300 border-r border-[#1E2342] shrink-0">
         <div className="h-16 flex items-center px-6 border-b border-[#1E2342]">
@@ -177,7 +185,7 @@ export const AdminLayout: React.FC = () => {
           </div>
         </header>
 
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+        <main id="main-content" tabIndex={-1} className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 focus:outline-none">
           <Outlet />
         </main>
       </div>

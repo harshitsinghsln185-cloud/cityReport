@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
-  <!-- Concept C: The Municipal Grid (4-Quadrant Matrix with Golden Check) -->
-  <rect x="6" y="6" width="16" height="16" rx="4" fill="#0A1F44" />
-  <rect x="26" y="6" width="16" height="16" rx="4" fill="#12306A" />
-  <rect x="6" y="26" width="16" height="16" rx="4" fill="#12306A" />
-  <rect x="26" y="26" width="16" height="16" rx="4" fill="#0A1F44" />
-  <path d="M16 24L22 30L34 16" stroke="#C8A24A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-</svg>

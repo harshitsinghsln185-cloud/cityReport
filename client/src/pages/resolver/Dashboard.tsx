@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import resolverTaskService, { ResolverDashboardData } from '../../services/resolverTask.service';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
-import Badge from '../../components/ui/Badge';
 import StatusBadge from '../../components/ui/StatusBadge';
 import {
   Inbox,
@@ -55,50 +54,48 @@ export const ResolverDashboard: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto space-y-8 pb-12">
-      {/* Header Banner */}
-      <div className="relative overflow-hidden rounded-cardLg bg-gradient-to-r from-dark via-[#141838] to-indigo text-white p-6 sm:p-8 lg:p-10 shadow-modal">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-indigo/30 rounded-full blur-2xl pointer-events-none" />
-
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-3 max-w-2xl">
-            <div className="flex flex-wrap items-center gap-2">
-              <Badge variant="primary" size="sm" className="bg-white/10 text-lavender border-white/15">
-                Contractor Dispatch Console
-              </Badge>
-              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Certified Municipal Network</span>
-              </span>
-            </div>
-
-            <h1 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight">
-              Contractor Operations Desk
-            </h1>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Review nearby civic dispatch requests, accept jobs within your coverage radius, execute on-site repair, and submit photographic completion proof for verified milestone payout.
-            </p>
+      {/* Streamlined High-Density Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6 rounded-card bg-surface border border-border shadow-subtle">
+        <div className="space-y-1">
+          <div className="flex flex-wrap items-center gap-2 mb-1">
+            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Contractor Operations Desk</span>
+            </span>
+            <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+              Verified Resolver Network
+            </span>
           </div>
 
-          <div className="flex flex-wrap sm:flex-nowrap gap-3 shrink-0">
-            <Button
-              variant="outline"
-              size="md"
-              onClick={fetchSummary}
-              disabled={loading}
-              className="border-white/20 text-white hover:bg-white/10"
-              leftIcon={<RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />}
-            >
-              Refresh Feed
-            </Button>
+          <h1 className="font-heading font-bold text-xl sm:text-2xl text-ink tracking-tight">
+            Contractor Operations Desk
+          </h1>
+          <p className="text-xs text-secondaryText">
+            Review nearby civic dispatch requests, accept jobs within your coverage zone, and upload photo proof for milestone payouts.
+          </p>
+        </div>
 
-            <Button to="/resolver/assignments" variant="primary"
-                size="md"
-                leftIcon={<Inbox className="w-4 h-4" />}
-                className="shadow-lg shadow-primary/30">
-                Review Offers ({metrics.assignedOffersCount})
-              </Button>
-          </div>
+        <div className="flex items-center gap-3 shrink-0">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={fetchSummary}
+            disabled={loading}
+            className="shadow-xs"
+            leftIcon={<RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />}
+          >
+            Refresh Feed
+          </Button>
+
+          <Button
+            to="/resolver/assignments"
+            variant="primary"
+            size="sm"
+            leftIcon={<Inbox className="w-4 h-4" />}
+            className="shadow-xs font-semibold"
+          >
+            Review Offers ({metrics.assignedOffersCount})
+          </Button>
         </div>
       </div>
 

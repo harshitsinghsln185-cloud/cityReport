@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
-  <!-- Concept A: Civic Node (Hexagonal Civic Seal & Keystone Pillar) -->
-  <path d="M24 4L42 14.5V33.5L24 44L6 33.5V14.5L24 4Z" fill="#0A1F44" />
-  <path d="M24 12L34 18V30L24 36L14 30V18L24 12Z" fill="#06132B" />
-  <path d="M24 16L30 20V28L24 32L18 28V20L24 16Z" fill="#C8A24A" />
-  <circle cx="24" cy="24" r="3" fill="#FAF8F3" />
-</svg>
