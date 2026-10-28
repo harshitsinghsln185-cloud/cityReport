@@ -103,7 +103,7 @@ export const UserDashboard: React.FC = () => {
               )}
             </div>
 
-            <h1 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight">
+            <h1 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight">
               Welcome back, {user?.name?.split(' ')[0] || 'Citizen'}
             </h1>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
@@ -139,12 +139,12 @@ export const UserDashboard: React.FC = () => {
           <div className="font-heading font-bold text-2xl sm:text-3xl text-ink tabular-nums">
             {totalCount}
           </div>
-          <div className="text-[11px] text-muted mt-1">Logged civic incidents</div>
+          <div className="text-xs text-muted mt-1">Logged civic incidents</div>
         </Card>
 
         <Card className="p-5 border-border hover:border-amber-400/40 transition-colors">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-secondaryText">Active Remediation</span>
+            <span className="text-xs font-semibold text-secondaryText">Active Repair</span>
             <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center border border-amber-200">
               <Clock className="w-4 h-4" />
             </div>
@@ -152,7 +152,7 @@ export const UserDashboard: React.FC = () => {
           <div className="font-heading font-bold text-2xl sm:text-3xl text-amber-700 tabular-nums">
             {inProgressCount}
           </div>
-          <div className="text-[11px] text-muted mt-1">Under contractor repair</div>
+          <div className="text-xs text-muted mt-1">Under contractor repair</div>
         </Card>
 
         <Card className="p-5 border-border hover:border-emerald-400/40 transition-colors">
@@ -165,7 +165,7 @@ export const UserDashboard: React.FC = () => {
           <div className="font-heading font-bold text-2xl sm:text-3xl text-emerald-700 tabular-nums">
             {resolvedCount}
           </div>
-          <div className="text-[11px] text-muted mt-1">Verified with photo proof</div>
+          <div className="text-xs text-muted mt-1">Verified with photo proof</div>
         </Card>
 
         <Card className="p-5 border-border hover:border-accent/40 transition-colors">
@@ -178,7 +178,7 @@ export const UserDashboard: React.FC = () => {
           <div className="font-heading font-bold text-2xl sm:text-3xl text-accent-text tabular-nums">
             {awaitingAdvanceCount}
           </div>
-          <div className="text-[11px] text-muted mt-1">50% advance pending</div>
+          <div className="text-xs text-muted mt-1">50% advance pending</div>
         </Card>
       </div>
 
@@ -240,7 +240,7 @@ export const UserDashboard: React.FC = () => {
                           {issue.issueCode}
                         </span>
                         <StatusBadge status={issue.status} size="sm" />
-                        <span className="text-[11px] text-muted">
+                        <span className="text-xs text-muted">
                           {issue.category?.name || 'General'}
                         </span>
                       </div>
@@ -259,7 +259,7 @@ export const UserDashboard: React.FC = () => {
                       <div className="text-xs font-bold text-ink tabular-nums">
                         {issue.fee?.totalPaise ? `₹${(issue.fee.totalPaise / 100).toLocaleString('en-IN')}` : 'Pending Quote'}
                       </div>
-                      <div className="text-[11px] text-muted">
+                      <div className="text-xs text-muted">
                         {new Date(issue.createdAt).toLocaleDateString('en-IN')}
                       </div>
                     </div>
@@ -308,7 +308,7 @@ export const UserDashboard: React.FC = () => {
             <p className="text-xs text-secondaryText leading-relaxed">
               <strong>50% Advance</strong> initiates repair work with the assigned local resolver. <strong>50% Balance</strong> is due only after you inspect and accept the verified Before/After completion photos.
             </p>
-            <div className="pt-1 flex items-center gap-1.5 text-[11px] font-semibold text-primary">
+            <div className="pt-1 flex items-center gap-1.5 text-xs font-semibold text-primary">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Milestone payments &bull; Transparent photo proof</span>
             </div>

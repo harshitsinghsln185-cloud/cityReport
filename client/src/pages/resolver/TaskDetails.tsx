@@ -226,7 +226,7 @@ export const ResolverTaskDetailsPage: React.FC = () => {
             </div>
             <div>
               <p className="font-semibold text-ink">New Task Assignment Pending Acceptance</p>
-              <p className="text-secondaryText text-[11px] mt-0.5">
+              <p className="text-secondaryText text-xs mt-0.5">
                 Accept this task to unlock the citizen's telephone contact and complete building address for on-site inspection.
               </p>
             </div>
@@ -271,7 +271,7 @@ export const ResolverTaskDetailsPage: React.FC = () => {
             </div>
             <div>
               <p className="font-semibold text-sky-950">Citizen Contact & Address Unlocked</p>
-              <p className="text-sky-800 text-[11px] mt-0.5">
+              <p className="text-sky-800 text-xs mt-0.5">
                 You have accepted this task. Coordinate with the citizen and click &quot;Start Work On-Site&quot; upon arrival.
               </p>
             </div>
@@ -410,10 +410,10 @@ export const ResolverTaskDetailsPage: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="font-serif font-bold text-base text-ink">Verified Completion Proof</h3>
-                    <p className="text-xs text-secondaryText">Submitted photographic evidence of on-site remediation</p>
+                    <p className="text-xs text-secondaryText">Submitted photographic evidence of on-site repair</p>
                   </div>
                 </div>
-                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-full">
+                <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-full">
                   <ShieldCheck className="w-3.5 h-3.5" />
                   Resolution Approved
                 </span>
@@ -430,14 +430,14 @@ export const ResolverTaskDetailsPage: React.FC = () => {
                 <div className="space-y-2">
                   <h4 className="text-xs font-semibold text-ink flex items-center gap-1.5">
                     <span>Before Repair</span>
-                    <span className="text-[11px] text-secondaryText">({resolution.beforeImages?.length || 0})</span>
+                    <span className="text-xs text-secondaryText">({resolution.beforeImages?.length || 0})</span>
                   </h4>
                   {resolution.beforeImages && resolution.beforeImages.length > 0 ? (
                     <div className="grid grid-cols-2 gap-2">
                       {resolution.beforeImages.map((img: any, i: number) => (
                         <a key={i} href={img.url} target="_blank" rel="noopener noreferrer" className="rounded-xl overflow-hidden border border-border aspect-video block group relative">
                           <img src={img.url} alt={`Before ${i + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                          <div className="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] gap-1">
+                          <div className="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs gap-1">
                             <ExternalLink className="w-3 h-3" />
                             <span>View</span>
                           </div>
@@ -453,13 +453,13 @@ export const ResolverTaskDetailsPage: React.FC = () => {
                 <div className="space-y-2">
                   <h4 className="text-xs font-semibold text-emerald-800 flex items-center gap-1.5">
                     <span>After Repair (Proof)</span>
-                    <span className="text-[11px] text-emerald-700">({resolution.afterImages?.length || 0})</span>
+                    <span className="text-xs text-emerald-700">({resolution.afterImages?.length || 0})</span>
                   </h4>
                   <div className="grid grid-cols-2 gap-2">
                     {resolution.afterImages?.map((img: any, i: number) => (
                       <a key={i} href={img.url} target="_blank" rel="noopener noreferrer" className="rounded-xl overflow-hidden border border-emerald-300 aspect-video block group relative">
                         <img src={img.url} alt={`After ${i + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                        <div className="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] gap-1">
+                        <div className="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs gap-1">
                           <ExternalLink className="w-3 h-3" />
                           <span>View Proof</span>
                         </div>
@@ -493,7 +493,7 @@ export const ResolverTaskDetailsPage: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-serif font-bold text-base text-ink">Citizen Contact</h3>
-                <p className="text-[11px] text-secondaryText">Reporter identification & coordinate details</p>
+                <p className="text-xs text-secondaryText">Reporter identification & coordinate details</p>
               </div>
             </div>
 
@@ -501,19 +501,19 @@ export const ResolverTaskDetailsPage: React.FC = () => {
               <div className="p-4 rounded-xl bg-canvas border border-border text-center space-y-2">
                 <Lock className="w-6 h-6 text-secondaryText mx-auto" />
                 <p className="text-xs font-semibold text-ink">Contact Details Protected</p>
-                <p className="text-[11px] text-secondaryText leading-relaxed">
+                <p className="text-xs text-secondaryText leading-relaxed">
                   Citizen telephone number and full street address are shielded until you formally accept this dispatch offer.
                 </p>
               </div>
             ) : (
               <div className="space-y-3.5 text-xs">
                 <div className="p-3 rounded-xl bg-canvas border border-border">
-                  <span className="text-secondaryText block text-[11px]">Reporter Name</span>
+                  <span className="text-secondaryText block text-xs">Reporter Name</span>
                   <span className="font-semibold text-ink text-sm">{task.reporter?.name || 'Citizen'}</span>
                 </div>
 
                 <div className="p-3 rounded-xl bg-canvas border border-border">
-                  <span className="text-secondaryText block text-[11px] mb-1">Telephone Dialer</span>
+                  <span className="text-secondaryText block text-xs mb-1">Telephone Dialer</span>
                   {task.contactNumber || task.reporter?.phone ? (
                     <a
                       href={`tel:${task.contactNumber || task.reporter?.phone}`}
@@ -523,12 +523,12 @@ export const ResolverTaskDetailsPage: React.FC = () => {
                       <span>{task.contactNumber || task.reporter?.phone}</span>
                     </a>
                   ) : (
-                    <span className="text-secondaryText italic text-[11px]">No contact number attached</span>
+                    <span className="text-secondaryText italic text-xs">No contact number attached</span>
                   )}
                 </div>
 
                 <div className="p-3 rounded-xl bg-canvas border border-border">
-                  <span className="text-secondaryText block text-[11px]">Email Address</span>
+                  <span className="text-secondaryText block text-xs">Email Address</span>
                   <span className="font-mono text-ink text-xs">{task.reporter?.email || 'N/A'}</span>
                 </div>
               </div>
@@ -543,13 +543,13 @@ export const ResolverTaskDetailsPage: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-serif font-bold text-base text-ink">Site Location</h3>
-                <p className="text-[11px] text-secondaryText">Dispatch destination & GPS routing</p>
+                <p className="text-xs text-secondaryText">Dispatch destination & GPS routing</p>
               </div>
             </div>
 
             <div className="space-y-3 text-xs">
               <div className="p-3 rounded-xl bg-canvas border border-border">
-                <span className="text-secondaryText block text-[11px] mb-1">Street Address</span>
+                <span className="text-secondaryText block text-xs mb-1">Street Address</span>
                 <p className="text-ink font-medium leading-relaxed">
                   {isAssigned ? (
                     <span>{task.address?.city || 'Local Territory'} (Full street address unlocked upon acceptance)</span>
@@ -561,7 +561,7 @@ export const ResolverTaskDetailsPage: React.FC = () => {
 
               {task.location?.coordinates && (
                 <div className="p-3 rounded-xl bg-canvas border border-border flex flex-col gap-2">
-                  <div className="flex items-center justify-between text-[11px]">
+                  <div className="flex items-center justify-between text-xs">
                     <span className="text-secondaryText">GPS Coordinates</span>
                     <span className="font-mono text-ink">
                       {task.location.coordinates[1]?.toFixed(5)}, {task.location.coordinates[0]?.toFixed(5)}
@@ -608,7 +608,7 @@ export const ResolverTaskDetailsPage: React.FC = () => {
                 className="w-full p-3 text-xs border border-border rounded-xl bg-canvas text-ink focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all leading-relaxed"
                 required
               />
-              <span className="text-[11px] font-mono text-secondaryText mt-1 block">
+              <span className="text-xs font-mono text-secondaryText mt-1 block">
                 Minimum 5 characters ({declineReason.length} entered)
               </span>
             </div>

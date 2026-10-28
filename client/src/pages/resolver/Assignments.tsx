@@ -216,7 +216,7 @@ export const ResolverAssignmentsPage: React.FC = () => {
                     </div>
 
                     {/* Privacy notice banner */}
-                    <div className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-canvas border border-border text-[11px] text-secondaryText max-w-xl">
+                    <div className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-canvas border border-border text-xs text-secondaryText max-w-xl">
                       <Lock className="w-3.5 h-3.5 text-primary shrink-0" />
                       <span>Citizen contact number and full street address are protected and will unlock when accepted.</span>
                     </div>
@@ -226,10 +226,10 @@ export const ResolverAssignmentsPage: React.FC = () => {
                   <div className="flex flex-col sm:flex-row lg:flex-col items-stretch lg:items-end justify-between gap-4 border-t lg:border-t-0 lg:border-l border-border pt-4 lg:pt-0 lg:pl-6 shrink-0">
                     <div className="text-left lg:text-right">
                       <span className="text-xs text-muted block">Contractor Service Fee</span>
-                      <span className="text-2xl font-heading font-black text-ink tabular-nums block mt-0.5">
+                      <span className="text-2xl font-heading font-bold text-ink tabular-nums block mt-0.5">
                         {formatRupees(task.fee?.totalPaise)}
                       </span>
-                      <span className="text-[11px] text-emerald-700 font-semibold block mt-0.5">
+                      <span className="text-xs text-emerald-700 font-semibold block mt-0.5">
                         50% Advance Paid: {formatRupees(task.fee?.advancePaise)}
                       </span>
                     </div>
@@ -305,7 +305,7 @@ export const ResolverAssignmentsPage: React.FC = () => {
                 className="w-full p-3 text-xs rounded-lg border border-border bg-white text-ink focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary leading-relaxed"
                 required
               />
-              <span className="text-[11px] text-muted mt-1 block">
+              <span className="text-xs text-muted mt-1 block">
                 Minimum 5 characters ({declineReason.length} entered)
               </span>
             </div>

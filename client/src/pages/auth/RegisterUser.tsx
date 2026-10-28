@@ -154,7 +154,7 @@ export const RegisterUser: React.FC = () => {
 
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <div className="text-[11px] font-bold text-muted uppercase tracking-wider mb-2.5">
+          <div className="text-xs font-bold text-muted uppercase tracking-wider mb-2.5">
             1. Personal Credentials
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -201,7 +201,7 @@ export const RegisterUser: React.FC = () => {
         </div>
 
         <div className="pt-2 border-t border-border">
-          <div className="text-[11px] font-bold text-muted uppercase tracking-wider mb-2.5">
+          <div className="text-xs font-bold text-muted uppercase tracking-wider mb-2.5">
             2. Residential Ward Address
           </div>
           <div className="space-y-3">

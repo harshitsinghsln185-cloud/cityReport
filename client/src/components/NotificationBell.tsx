@@ -164,7 +164,7 @@ export const NotificationBell: React.FC = () => {
       >
         <Bell className="w-5 h-5" />
         {unreadCount > 0 && (
-          <span className="absolute top-1 right-1 flex h-4 min-w-[16px] px-1 items-center justify-center rounded-full bg-rose-600 text-[10px] font-bold text-white shadow-xs animate-pulse">
+          <span className="absolute top-1 right-1 flex h-4 min-w-[16px] px-1 items-center justify-center rounded-full bg-rose-600 text-xs font-bold text-white shadow-xs animate-pulse">
             {unreadCount > 99 ? '99+' : unreadCount}
           </span>
         )}
@@ -178,7 +178,7 @@ export const NotificationBell: React.FC = () => {
             <div className="flex items-center gap-2">
               <h3 className="font-heading font-bold text-sm text-slate-900">Notifications</h3>
               {unreadCount > 0 && (
-                <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-primary-light text-primary">
+                <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-primary-light text-primary">
                   {unreadCount} new
                 </span>
               )}
@@ -242,7 +242,7 @@ export const NotificationBell: React.FC = () => {
                       >
                         {notif.title}
                       </h4>
-                      <span className="text-[10px] text-slate-400 whitespace-nowrap shrink-0">
+                      <span className="text-xs text-slate-400 whitespace-nowrap shrink-0">
                         {formatTimeAgo(notif.createdAt)}
                       </span>
                     </div>

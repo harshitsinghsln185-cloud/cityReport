@@ -130,7 +130,7 @@ export const MockCheckout: React.FC<MockCheckoutProps> = ({
 
           <div className="text-left sm:text-right">
             <div className="text-xs text-muted">Total Amount Payable</div>
-            <div className="text-2xl font-heading font-black text-ink">
+            <div className="text-2xl font-heading font-bold text-ink">
               ₹{formattedAmount}
             </div>
           </div>
@@ -154,7 +154,7 @@ export const MockCheckout: React.FC<MockCheckoutProps> = ({
               <CreditCard className="w-5 h-5 text-primary" />
               <div>
                 <div className="text-xs font-bold text-ink">Demo Test Card</div>
-                <div className="text-[11px] text-muted">•••• •••• •••• 4242 (Auto-Authorized)</div>
+                <div className="text-xs text-muted">•••• •••• •••• 4242 (Auto-Authorized)</div>
               </div>
             </div>
 
@@ -162,14 +162,14 @@ export const MockCheckout: React.FC<MockCheckoutProps> = ({
               <ShieldCheck className="w-5 h-5 text-muted" />
               <div>
                 <div className="text-xs font-medium text-ink">Simulated UPI / NetBanking</div>
-                <div className="text-[11px] text-muted">Instant Virtual Mandate</div>
+                <div className="text-xs text-muted">Instant Virtual Mandate</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Notice of Simulation */}
-        <div className="text-[11px] text-muted bg-amber-50/80 border border-amber-200/80 p-3 rounded-lg flex items-start gap-2">
+        <div className="text-xs text-muted bg-amber-50/80 border border-amber-200/80 p-3 rounded-lg flex items-start gap-2">
           <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
           <span>
             <strong>Sandbox Notice:</strong> No real currency will be charged. This sandbox simulator verifies atomic database state transitions, PDFKit invoice generation, and idempotency guarantees.

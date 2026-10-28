@@ -54,7 +54,7 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({
         </div>
 
         <div className="text-right shrink-0">
-          <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-white text-primary border border-primary/20 shadow-xs">
+          <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-white text-primary border border-primary/20 shadow-xs">
             {fee.isManualQuote ? 'Municipal Custom Quote' : 'Automated Proximity Quote'}
           </span>
         </div>
@@ -78,7 +78,7 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({
               <Sparkles className="w-4 h-4 text-primary" />
               <span>Severity Hazard Factor</span>
               {aiAssessment && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-medium">
+                <span className="text-xs px-1.5 py-0.5 rounded bg-primary/10 text-primary font-medium">
                   {aiAssessment.source === 'ai' ? 'AI Evaluated' : 'Rule Matrix'}
                 </span>
               )}
@@ -95,7 +95,7 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({
                 <MapPin className="w-4 h-4 text-primary" />
                 <span>Contractor Travel Proximity ({fee.distanceKm} km)</span>
               </div>
-              <div className="text-[11px] text-muted pl-5.5">
+              <div className="text-xs text-muted pl-5.5">
                 First {fee.freeKm} km free &bull; {billableKm > 0 ? `${billableKm.toFixed(1)} km @ ₹${fee.perKmRatePaise / 100}/km` : 'Within standard base radius'}
               </div>
             </div>
@@ -123,37 +123,37 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({
               <span className="font-heading font-bold text-sm sm:text-base text-ink">
                 Total Certified Repair Cost
               </span>
-              <span className="text-2xl font-heading font-black text-primary tabular-nums">
+              <span className="text-2xl font-heading font-bold text-primary tabular-nums">
                 ₹{totalRupees.toLocaleString('en-IN')}
               </span>
             </div>
 
             <div className="grid grid-cols-2 gap-3 pt-2 border-t border-primary/15">
               <div className="p-3 rounded-lg bg-white border border-border shadow-xs">
-                <div className="text-[10px] font-bold text-secondaryText uppercase tracking-wider">
+                <div className="text-xs font-bold text-secondaryText uppercase tracking-wider">
                   50% Advance (Deposit)
                 </div>
-                <div className="text-lg font-heading font-black text-ink mt-0.5 tabular-nums">
+                <div className="text-lg font-heading font-bold text-ink mt-0.5 tabular-nums">
                   ₹{advanceRupees.toLocaleString('en-IN')}
                 </div>
-                <div className="text-[10px] text-muted mt-0.5">To dispatch resolver</div>
+                <div className="text-xs text-muted mt-0.5">To dispatch resolver</div>
               </div>
 
               <div className="p-3 rounded-lg bg-white border border-border shadow-xs">
-                <div className="text-[10px] font-bold text-secondaryText uppercase tracking-wider">
+                <div className="text-xs font-bold text-secondaryText uppercase tracking-wider">
                   50% Balance (On Close)
                 </div>
-                <div className="text-lg font-heading font-black text-ink mt-0.5 tabular-nums">
+                <div className="text-lg font-heading font-bold text-ink mt-0.5 tabular-nums">
                   ₹{balanceRupees.toLocaleString('en-IN')}
                 </div>
-                <div className="text-[10px] text-muted mt-0.5">After photo inspection</div>
+                <div className="text-xs text-muted mt-0.5">After photo inspection</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Guarantee Banner */}
-        <div className="text-[11px] text-secondaryText flex items-center gap-1.5 pt-1">
+        <div className="text-xs text-secondaryText flex items-center gap-1.5 pt-1">
           <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
           <span>
             Milestone Protection: Balance is payable only after photo inspection passes verification.

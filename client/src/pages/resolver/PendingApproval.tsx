@@ -167,7 +167,7 @@ export const PendingApproval: React.FC = () => {
               <ul className="list-disc pl-5 space-y-1">
                 <li>Blurry, cropped, or expired government identity proof.</li>
                 <li>Mismatch between full legal name and uploaded ID documentation.</li>
-                <li>Selected operating territory outside currently supported municipal jurisdiction.</li>
+                <li>Selected operating territory outside currently supported cities or service zones.</li>
               </ul>
             </div>
 
@@ -222,7 +222,7 @@ export const PendingApproval: React.FC = () => {
               {/* Submitted Details Snapshot */}
               {profile && (
                 <div className="border border-border rounded-xl p-4 bg-canvas space-y-3 text-xs">
-                  <div className="font-semibold text-ink uppercase tracking-wider text-[11px] font-mono">
+                  <div className="font-semibold text-ink uppercase tracking-wider text-xs font-mono">
                     Application Summary
                   </div>
 
@@ -232,7 +232,7 @@ export const PendingApproval: React.FC = () => {
                       <div>
                         <span className="font-medium text-ink">Registered Base: </span>
                         <span>{profile.serviceAddress}</span>
-                        <div className="text-[11px] text-secondaryText font-mono mt-0.5">
+                        <div className="text-xs text-secondaryText font-mono mt-0.5">
                           Radius: {profile.serviceRadiusKm} km coverage
                         </div>
                       </div>

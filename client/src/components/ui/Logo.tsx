@@ -92,7 +92,7 @@ export const Logo: React.FC<LogoProps> = ({
             <span className="w-1.5 h-1.5 rounded-full bg-gold" />
           </div>
           {subtitle && (
-            <div className="text-[10px] uppercase font-mono tracking-widest text-gold font-semibold mt-0.5">
+            <div className="text-xs uppercase font-mono tracking-widest text-gold font-semibold mt-0.5">
               {subtitle}
             </div>
           )}
@@ -116,7 +116,7 @@ export const Logo: React.FC<LogoProps> = ({
           <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block translate-y-[-2px]" />
         </div>
         {subtitle && (
-          <span className={`text-[10px] uppercase tracking-wider font-semibold leading-tight mt-1 ${isDark ? 'text-gold' : 'text-gold-text'}`}>
+          <span className={`text-xs uppercase tracking-wider font-semibold leading-tight mt-1 ${isDark ? 'text-gold' : 'text-gold-text'}`}>
             {subtitle}
           </span>
         )}

@@ -167,7 +167,7 @@ export const AdminLayout: React.FC = () => {
             <NotificationBell />
             <div className="text-right hidden sm:block">
               <div className="text-xs font-semibold text-ink">{user?.name || 'Operations Officer'}</div>
-              <div className="text-[10px] font-mono uppercase tracking-wider text-primary font-semibold">
+              <div className="text-xs font-mono uppercase tracking-wider text-primary font-semibold">
                 Secretariat Admin
               </div>
             </div>

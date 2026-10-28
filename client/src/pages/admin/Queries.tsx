@@ -148,18 +148,18 @@ export const Queries: React.FC = () => {
                   <tr key={q._id} className="hover:bg-canvas/50 transition-colors">
                     <td className="py-3.5 px-5">
                       <div className="font-semibold text-ink">{q.name}</div>
-                      <div className="text-[11px] text-secondaryText font-mono">{q.email}</div>
+                      <div className="text-xs text-secondaryText font-mono">{q.email}</div>
                     </td>
                     <td className="py-3.5 px-5 max-w-sm">
                       <div className="font-semibold text-ink truncate">{q.subject}</div>
-                      <p className="text-[11px] text-secondaryText line-clamp-2 mt-0.5">{q.message}</p>
+                      <p className="text-xs text-secondaryText line-clamp-2 mt-0.5">{q.message}</p>
                     </td>
                     <td className="py-3.5 px-5 whitespace-nowrap text-secondaryText font-mono">
                       {formatDate(q.createdAt)}
                     </td>
                     <td className="py-3.5 px-5 whitespace-nowrap">
                       <span
-                        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider font-mono ${
+                        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider font-mono ${
                           q.status === 'Replied'
                             ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                             : 'bg-amber-50 text-amber-700 border border-amber-200'
@@ -233,7 +233,7 @@ export const Queries: React.FC = () => {
               <div className="p-4 rounded-card bg-canvas border border-border/80 space-y-1.5">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-ink">{activeReplyQuery.subject}</span>
-                  <span className="text-[10px] text-secondaryText font-mono">
+                  <span className="text-xs text-secondaryText font-mono">
                     {formatDate(activeReplyQuery.createdAt)}
                   </span>
                 </div>
@@ -245,7 +245,7 @@ export const Queries: React.FC = () => {
                 <div className="p-4 rounded-card bg-emerald-50 border border-emerald-200 text-emerald-950 space-y-1.5 shadow-sm">
                   <div className="flex items-center justify-between font-bold text-emerald-900 font-mono">
                     <span>Dispatched Administrator Reply:</span>
-                    <span className="text-[10px] text-emerald-700">
+                    <span className="text-xs text-emerald-700">
                       {formatDate(activeReplyQuery.repliedAt || undefined)}
                     </span>
                   </div>
@@ -253,7 +253,7 @@ export const Queries: React.FC = () => {
                     {activeReplyQuery.reply}
                   </p>
                   {activeReplyQuery.repliedBy && (
-                    <div className="pt-2 text-[10px] text-emerald-700 border-t border-emerald-200/60 font-mono">
+                    <div className="pt-2 text-xs text-emerald-700 border-t border-emerald-200/60 font-mono">
                       Replied by: {activeReplyQuery.repliedBy.name} ({activeReplyQuery.repliedBy.email})
                     </div>
                   )}

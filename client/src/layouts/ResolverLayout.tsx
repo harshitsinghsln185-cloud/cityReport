@@ -73,7 +73,7 @@ export const ResolverLayout: React.FC = () => {
 
           {/* Navigation Items */}
           <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
-            <div className="text-[10px] font-bold text-muted uppercase tracking-wider px-3 mb-2">
+            <div className="text-xs font-bold text-muted uppercase tracking-wider px-3 mb-2">
               Contractor Queue
             </div>
             {navigation.map((item) => {
@@ -107,7 +107,7 @@ export const ResolverLayout: React.FC = () => {
               </div>
               <div className="min-w-0 flex-1">
                 <div className="text-xs font-bold text-ink truncate">{user?.name || 'Contractor'}</div>
-                <div className="text-[11px] text-muted truncate">{user?.email || ''}</div>
+                <div className="text-xs text-muted truncate">{user?.email || ''}</div>
               </div>
             </div>
 

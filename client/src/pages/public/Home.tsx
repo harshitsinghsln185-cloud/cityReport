@@ -59,7 +59,7 @@ export const Home: React.FC = () => {
           '@context': 'https://schema.org',
           '@type': 'GovernmentService',
           name: 'Crowd Report Civic Resolution Platform',
-          serviceType: 'Municipal Issue Reporting and Contractor Remediation',
+          serviceType: 'Municipal Issue Reporting and Contractor Repair',
           provider: {
             '@type': 'Organization',
             name: 'Crowd Report',
@@ -79,7 +79,7 @@ export const Home: React.FC = () => {
       {/* 1. Interactive Photo Hero with Street Hazard Hotspots */}
       <Hero />
 
-      {/* 2. Live Civic Remediation Ticker & Impact Counter */}
+      {/* 2. Live Civic Repair Ticker & Impact Counter */}
       <LiveTicker />
 
       {/* 3. Active Civic Services Grid */}
@@ -127,7 +127,7 @@ export const Home: React.FC = () => {
                 <SectionHeader
                   eyebrow="Verifiable Proof"
                   eyebrowVariant="gold"
-                  title="Interactive Remediation Showcase"
+                  title="Interactive Repair Showcase"
                   subtitle="Every resolved hazard requires timestamped, geo-tagged Before and After photographic evidence before admin verification sign-off and balance disbursement."
                   align="left"
                   className="mb-6"

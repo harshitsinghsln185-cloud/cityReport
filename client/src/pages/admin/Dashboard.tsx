@@ -231,7 +231,7 @@ export const AdminDashboard: React.FC = () => {
           <div className="flex items-center justify-between mb-4">
             <div>
               <h3 className="font-serif font-bold text-lg text-ink">Lifecycle Status Matrix</h3>
-              <p className="text-xs text-secondaryText">Real-time issue counts across municipal triage and remediation states</p>
+              <p className="text-xs text-secondaryText">Real-time issue counts across municipal triage and repair states</p>
             </div>
             <Link to="/admin/issues" className="text-xs font-semibold text-primary hover:underline flex items-center gap-1">
               <span>View all</span>
@@ -290,7 +290,7 @@ export const AdminDashboard: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-ink group-hover:text-primary transition-colors">Issue Queue & Triage</h4>
-                    <p className="text-[11px] text-secondaryText">Dispatch, candidate matching, quote approval</p>
+                    <p className="text-xs text-secondaryText">Dispatch, candidate matching, quote approval</p>
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-secondaryText group-hover:text-primary transition-colors" />
@@ -306,7 +306,7 @@ export const AdminDashboard: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-ink group-hover:text-primary transition-colors">Resolver KYC Accreditation</h4>
-                    <p className="text-[11px] text-secondaryText">Inspect credentials & government IDs</p>
+                    <p className="text-xs text-secondaryText">Inspect credentials & government IDs</p>
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-secondaryText group-hover:text-primary transition-colors" />
@@ -322,7 +322,7 @@ export const AdminDashboard: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-ink group-hover:text-primary transition-colors">User Directory & Roles</h4>
-                    <p className="text-[11px] text-secondaryText">Citizens, account status & activity</p>
+                    <p className="text-xs text-secondaryText">Citizens, account status & activity</p>
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-secondaryText group-hover:text-primary transition-colors" />
@@ -338,7 +338,7 @@ export const AdminDashboard: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-ink group-hover:text-primary transition-colors">Category Taxonomy & SLA</h4>
-                    <p className="text-[11px] text-secondaryText">Tariffs, resolution targets, icons</p>
+                    <p className="text-xs text-secondaryText">Tariffs, resolution targets, icons</p>
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-secondaryText group-hover:text-primary transition-colors" />
@@ -354,7 +354,7 @@ export const AdminDashboard: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-ink group-hover:text-primary transition-colors">Fee Calculation Engine</h4>
-                    <p className="text-[11px] text-secondaryText">Per-km rates, severity multipliers, milestones</p>
+                    <p className="text-xs text-secondaryText">Per-km rates, severity multipliers, milestones</p>
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-secondaryText group-hover:text-primary transition-colors" />
@@ -384,7 +384,7 @@ export const AdminDashboard: React.FC = () => {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
-              <thead className="bg-canvas text-[11px] font-mono uppercase tracking-wider text-secondaryText border-b border-border">
+              <thead className="bg-canvas text-xs font-mono uppercase tracking-wider text-secondaryText border-b border-border">
                 <tr>
                   <th className="py-3 px-4">Code / Issue</th>
                   <th className="py-3 px-4">Category</th>
@@ -410,14 +410,14 @@ export const AdminDashboard: React.FC = () => {
                     </td>
                     <td className="py-3.5 px-4 text-xs">
                       <div className="font-medium text-ink">{issue.reporter?.name || 'Citizen'}</div>
-                      <div className="text-[11px] font-mono text-secondaryText">{issue.reporter?.email}</div>
+                      <div className="text-xs font-mono text-secondaryText">{issue.reporter?.email}</div>
                     </td>
                     <td className="py-3.5 px-4">
                       <StatusBadge status={issue.status} size="sm" />
                     </td>
                     <td className="py-3.5 px-4">
                       <span
-                        className={`inline-block px-2 py-0.5 rounded-lg text-[11px] font-semibold ${
+                        className={`inline-block px-2 py-0.5 rounded-lg text-xs font-semibold ${
                           (issue.finalPriority || issue.suggestedPriority) === 'Critical'
                             ? 'bg-rose-100 text-rose-800'
                             : (issue.finalPriority || issue.suggestedPriority) === 'High'

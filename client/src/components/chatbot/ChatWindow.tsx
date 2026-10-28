@@ -161,11 +161,11 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
             <div>
               <div className="flex items-center gap-1.5">
                 <h3 className="font-heading font-bold text-sm leading-tight text-white">Civic Assistant</h3>
-                <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-white/15 text-white/90 font-medium">
+                <span className="text-xs px-1.5 py-0.2 rounded-full bg-white/15 text-white/90 font-medium">
                   AI Powered
                 </span>
               </div>
-              <p className="text-[11px] text-white/70">Municipal Issue Reporting</p>
+              <p className="text-xs text-white/70">Municipal Issue Reporting</p>
             </div>
           </div>
 

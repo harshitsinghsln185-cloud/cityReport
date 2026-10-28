@@ -111,7 +111,7 @@ export const WriteQuery: React.FC = () => {
           <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <span className="text-xs uppercase tracking-wider font-semibold text-gold">Liaison Office Contacts</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 font-bold">24-48h SLA</span>
+              <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 font-bold">24-48h SLA</span>
             </div>
             <div className="space-y-3 text-xs text-slate-300">
               <div className="flex items-center gap-2.5">
@@ -243,7 +243,7 @@ export const WriteQuery: React.FC = () => {
                         required
                         className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white rounded-xl border border-border focus:outline-none focus-visible:ring-2 focus-visible:ring-primary text-ink placeholder:text-muted transition-all"
                       />
-                      <div className="text-[11px] text-muted text-right mt-1">
+                      <div className="text-xs text-muted text-right mt-1">
                         {formData.message.length} / 2000 characters
                       </div>
                     </div>

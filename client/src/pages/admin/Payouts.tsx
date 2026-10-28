@@ -137,7 +137,7 @@ export const AdminPayouts: React.FC = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-border/80 bg-canvas text-[11px] font-bold uppercase tracking-wider text-secondaryText font-mono">
+              <tr className="border-b border-border/80 bg-canvas text-xs font-bold uppercase tracking-wider text-secondaryText font-mono">
                 <th className="py-3.5 px-6">Issue Code</th>
                 <th className="py-3.5 px-6">Contractor</th>
                 <th className="py-3.5 px-6">Gross Fee</th>

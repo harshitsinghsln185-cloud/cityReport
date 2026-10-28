@@ -160,7 +160,7 @@ export const StateDetail: React.FC = () => {
           {
             '@context': 'https://schema.org',
             '@type': 'GovernmentService',
-            name: `${stateData.name} Civic Remediation Service`,
+            name: `${stateData.name} Civic Repair Service`,
             serviceType: 'Civic Hazard Reporting & Verified Contractor Dispatch',
             areaServed: {
               '@type': 'AdministrativeArea',
@@ -278,7 +278,7 @@ export const StateDetail: React.FC = () => {
                   Apply as Ward Contractor
                 </Button>
 
-              <div className="flex items-center justify-between text-[11px] text-slate-300 px-1 pt-1">
+              <div className="flex items-center justify-between text-xs text-slate-300 px-1 pt-1">
                 <span>50% Advance & Milestone Protection</span>
                 <span>•</span>
                 <span>GPS Photo Proof Verified</span>
@@ -347,7 +347,7 @@ export const StateDetail: React.FC = () => {
                 <p className="font-heading font-bold text-ink text-2xl truncate">
                   {stateData.capital}
                 </p>
-                <p className="text-[11px] text-muted font-medium mt-0.5">Government Headquarters</p>
+                <p className="text-xs text-muted font-medium mt-0.5">Government Headquarters</p>
               </div>
 
               <div className="p-3 border-l-0 sm:border-l border-border">
@@ -358,7 +358,7 @@ export const StateDetail: React.FC = () => {
                 <p className="font-heading font-bold text-ink text-2xl tabular-nums">
                   {stateData.districtsCount}
                 </p>
-                <p className="text-[11px] text-muted mt-0.5">District Collectorates</p>
+                <p className="text-xs text-muted mt-0.5">District Collectorates</p>
               </div>
 
               <div className="p-3 border-t sm:border-t-0 lg:border-l border-border">
@@ -369,7 +369,7 @@ export const StateDetail: React.FC = () => {
                 <p className="font-heading font-bold text-ink text-2xl tabular-nums">
                   {stateData.population}
                 </p>
-                <p className="text-[11px] text-muted mt-0.5">Census Demographic Estimate</p>
+                <p className="text-xs text-muted mt-0.5">Census Demographic Estimate</p>
               </div>
 
               <div className="p-3 border-t sm:border-t-0 lg:border-l border-border">
@@ -380,7 +380,7 @@ export const StateDetail: React.FC = () => {
                 <p className="font-heading font-bold text-ink text-2xl tabular-nums">
                   {stateData.area}
                 </p>
-                <p className="text-[11px] text-muted mt-0.5">Total State Territory</p>
+                <p className="text-xs text-muted mt-0.5">Total State Territory</p>
               </div>
             </div>
           </Reveal>
@@ -392,19 +392,19 @@ export const StateDetail: React.FC = () => {
                 Civic Infrastructure Profile: {stateData.name}
               </h2>
               <p className="text-sm text-secondaryText leading-relaxed mb-4">
-                Operating across {stateData.districtsCount} administrative districts from headquarters in {stateData.capital}, Crowd Report coordinates public works remediation in {stateData.name}. Our contractor network enables wards to resolve road potholes, streetlighting blackouts, garbage backlogs, and water pipe fractures with verified photographic provenance and milestone payments.
+                Operating across {stateData.districtsCount} administrative districts from headquarters in {stateData.capital}, Crowd Report coordinates public works repair in {stateData.name}. Our contractor network enables wards to resolve road potholes, streetlighting blackouts, garbage backlogs, and water pipe fractures with verified photographic provenance and milestone payments.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-3 border-t border-border">
                 <div className="p-3 rounded-lg bg-canvas">
-                  <span className="text-[11px] text-muted block">Regional Capital</span>
+                  <span className="text-xs text-muted block">Regional Capital</span>
                   <strong className="text-sm text-ink font-semibold">{stateData.capital}</strong>
                 </div>
                 <div className="p-3 rounded-lg bg-canvas">
-                  <span className="text-[11px] text-muted block">Zonal Classification</span>
+                  <span className="text-xs text-muted block">Zonal Classification</span>
                   <strong className="text-sm text-ink font-semibold">{stateData.region} India</strong>
                 </div>
                 <div className="p-3 rounded-lg bg-canvas col-span-2 sm:col-span-1">
-                  <span className="text-[11px] text-muted block">Districts Monitored</span>
+                  <span className="text-xs text-muted block">Districts Monitored</span>
                   <strong className="text-sm text-ink font-semibold">{stateData.districtsCount} Districts</strong>
                 </div>
               </div>
@@ -444,7 +444,7 @@ export const StateDetail: React.FC = () => {
               eyebrow="Key Focus Areas"
               eyebrowVariant="violet"
               title={`Civic Priorities in ${stateData.name}`}
-              subtitle="Targeted remediation focus areas tailored to regional climate, terrain challenges, and urban congestion profiles."
+              subtitle="Targeted repair focus areas tailored to regional climate, terrain challenges, and urban congestion profiles."
             />
           </Reveal>
 
@@ -470,7 +470,7 @@ export const StateDetail: React.FC = () => {
                       >
                         {priority.urgency} Urgency
                       </Badge>
-                      <span className="text-[11px] text-muted font-medium bg-canvas px-2 py-0.5 rounded border border-border">
+                      <span className="text-xs text-muted font-medium bg-canvas px-2 py-0.5 rounded border border-border">
                         {priority.category}
                       </span>
                     </div>
@@ -540,7 +540,7 @@ export const StateDetail: React.FC = () => {
 
             <div className="p-6 rounded-card bg-navy text-white shadow-card space-y-4 flex flex-col justify-between">
               <div>
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-gold">Join Network</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-gold">Join Network</span>
                 <h3 className="font-heading font-bold text-lg text-white mt-1 mb-2">
                   Are You a Contractor in {stateData.name}?
                 </h3>

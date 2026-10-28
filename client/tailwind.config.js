@@ -86,6 +86,7 @@ export default {
         sans: ['"Manrope Variable"', 'Manrope', 'system-ui', '-apple-system', 'sans-serif'],
         body: ['"Manrope Variable"', 'Manrope', 'system-ui', '-apple-system', 'sans-serif'],
         heading: ['"Fraunces Variable"', 'Fraunces', 'Georgia', 'serif'],
+        serif: ['"Fraunces Variable"', 'Fraunces', 'Georgia', 'serif'],
       },
       borderRadius: {
         xl: '12px',

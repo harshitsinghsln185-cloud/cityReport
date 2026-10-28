@@ -175,7 +175,7 @@ export const ProfilePage: React.FC = () => {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <span className="text-3xl font-heading font-black text-primary">
+                <span className="text-3xl font-heading font-bold text-primary">
                   {profile?.name ? profile.name.charAt(0).toUpperCase() : 'U'}
                 </span>
               )}
@@ -264,7 +264,7 @@ export const ProfilePage: React.FC = () => {
                   Verified
                 </span>
               </div>
-              <p className="text-[11px] text-muted mt-1">
+              <p className="text-xs text-muted mt-1">
                 Email cannot be modified directly. Contact administrative support for changes.
               </p>
             </div>

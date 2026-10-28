@@ -464,7 +464,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
 
               {/* Completion Remarks */}
               <div className="mb-5 rounded-card bg-canvas p-3.5 border border-border/80 text-xs">
-                <span className="font-semibold text-ink block mb-1">Contractor Remediation Statement:</span>
+                <span className="font-semibold text-ink block mb-1">Contractor Repair Statement:</span>
                 <p className="text-secondaryText italic">"{(issue.resolution as any).remarks}"</p>
               </div>
 
@@ -476,12 +476,12 @@ export const AdminIssueDetailsPage: React.FC = () => {
                       <span className="h-2 w-2 rounded-full bg-primary" />
                       Interactive Workmanship Comparison
                     </h4>
-                    <span className="text-[11px] text-secondaryText">Drag slider left/right to compare</span>
+                    <span className="text-xs text-secondaryText">Drag slider left/right to compare</span>
                   </div>
                   <BeforeAfterSlider
                     beforeImage={(issue.resolution as any).beforeImages[0].url}
                     afterImage={(issue.resolution as any).afterImages[0].url}
-                    beforeLabel="Before Remediation"
+                    beforeLabel="Before Repair"
                     afterLabel="Remediated Proof"
                     title={issue.title}
                     location={`${issue.address?.city || ''} (${issue.issueCode})`}
@@ -532,7 +532,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
                   <div className="space-y-1.5">
                     {(issue.resolution as any).reworkHistory.map((rh: any, idx: number) => (
                       <div key={idx} className="p-2.5 rounded bg-amber-50 border border-amber-200 text-amber-900">
-                        <div className="text-[10px] text-amber-700 font-mono">
+                        <div className="text-xs text-amber-700 font-mono">
                           Requested on {new Date(rh.requestedAt).toLocaleString('en-IN')}:
                         </div>
                         <p className="mt-0.5 font-medium">{rh.reason}</p>
@@ -685,12 +685,12 @@ export const AdminIssueDetailsPage: React.FC = () => {
 
             <div className="space-y-2.5 text-xs">
               <div>
-                <span className="text-secondaryText block text-[11px]">Full Name</span>
+                <span className="text-secondaryText block text-xs">Full Name</span>
                 <span className="font-semibold text-ink">{issue.reporter?.name || 'Anonymous Citizen'}</span>
               </div>
 
               <div>
-                <span className="text-secondaryText block text-[11px]">Email Address</span>
+                <span className="text-secondaryText block text-xs">Email Address</span>
                 <a href={`mailto:${issue.reporter?.email}`} className="text-primary hover:underline flex items-center gap-1 font-mono">
                   <Mail className="w-3 h-3" />
                   <span>{issue.reporter?.email || 'N/A'}</span>
@@ -698,7 +698,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
               </div>
 
               <div>
-                <span className="text-secondaryText block text-[11px]">Contact Phone</span>
+                <span className="text-secondaryText block text-xs">Contact Phone</span>
                 <a href={`tel:${issue.contactNumber || issue.reporter?.phone}`} className="text-ink font-medium flex items-center gap-1 font-mono">
                   <Phone className="w-3 h-3 text-primary" />
                   <span>{issue.contactNumber || issue.reporter?.phone || 'N/A'}</span>
@@ -721,14 +721,14 @@ export const AdminIssueDetailsPage: React.FC = () => {
 
               {issue.location?.coordinates && (
                 <div className="pt-2 border-t border-border/60 flex items-center justify-between">
-                  <span className="text-secondaryText font-mono text-[11px]">
+                  <span className="text-secondaryText font-mono text-xs">
                     {issue.location.coordinates[1]?.toFixed(5)}, {issue.location.coordinates[0]?.toFixed(5)}
                   </span>
                   <a
                     href={`https://www.google.com/maps?q=${issue.location.coordinates[1]},${issue.location.coordinates[0]}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:underline text-[11px] font-semibold flex items-center gap-1"
+                    className="text-primary hover:underline text-xs font-semibold flex items-center gap-1"
                   >
                     <span>View Map</span>
                     <ExternalLink className="w-3 h-3" />
@@ -746,7 +746,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
                 <h3 className="font-serif font-bold text-sm text-ink">Financial Ledger</h3>
               </div>
               {issue.fee?.isManualQuote && (
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-primary/10 text-primary">
+                <span className="text-xs font-bold px-2 py-0.5 rounded bg-primary/10 text-primary">
                   Manual Quote
                 </span>
               )}
@@ -787,7 +787,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
                     <div key={inv._id} className="p-2.5 rounded-card border border-border/80 flex items-center justify-between bg-canvas/50">
                       <div className="text-xs">
                         <div className="font-mono font-bold text-ink">{inv.invoiceNumber}</div>
-                        <div className="text-[11px] text-secondaryText">{inv.type} Invoice • <span className="font-mono tabular-nums">{formatRupees(inv.feeBreakdown?.totalPaise || inv.amountPaidPaise)}</span></div>
+                        <div className="text-xs text-secondaryText">{inv.type} Invoice • <span className="font-mono tabular-nums">{formatRupees(inv.feeBreakdown?.totalPaise || inv.amountPaidPaise)}</span></div>
                       </div>
                       <InvoiceButton invoiceId={inv._id} invoiceNumber={inv.invoiceNumber} size="sm" />
                     </div>
@@ -810,10 +810,10 @@ export const AdminIssueDetailsPage: React.FC = () => {
                     <div key={p._id} className="p-2.5 rounded-card border border-border/80 flex items-center justify-between text-xs bg-canvas/50">
                       <div>
                         <div className="font-semibold text-ink">{p.type} • <span className="font-mono tabular-nums">{formatRupees(p.amountPaise)}</span></div>
-                        <div className="text-[11px] text-secondaryText font-mono">{p.paymentId}</div>
+                        <div className="text-xs text-secondaryText font-mono">{p.paymentId}</div>
                       </div>
                       <span
-                        className={`px-2 py-0.5 rounded text-[10px] font-semibold ${
+                        className={`px-2 py-0.5 rounded text-xs font-semibold ${
                           p.status === 'Completed'
                             ? 'bg-emerald-100 text-emerald-800'
                             : p.status === 'Refunded'
@@ -862,7 +862,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
                 required
               />
             </div>
-            <p className="text-[11px] text-secondaryText mt-1 font-mono">
+            <p className="text-xs text-secondaryText mt-1 font-mono">
               Advance (50%): ₹{(parseFloat(quoteRupees || '0') * 0.5).toFixed(2)} | Balance (50%): ₹{(parseFloat(quoteRupees || '0') * 0.5).toFixed(2)}
             </p>
           </div>
@@ -915,7 +915,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
               rows={3}
               value={rejectReason}
               onChange={(e) => setRejectReason(e.target.value)}
-              placeholder="e.g. Duplicate report already under remediation; Private property not covered by municipal bylaws..."
+              placeholder="e.g. Duplicate report already under repair; Private property not covered by municipal bylaws..."
               className="w-full p-2.5 text-xs border border-border/80 rounded-card bg-card text-ink focus:outline-none focus:ring-2 focus:ring-primary/30"
               required
             />
@@ -952,7 +952,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
       <Modal
         isOpen={isReworkModalOpen}
         onClose={() => setIsReworkModalOpen(false)}
-        title="Request Remediation Task Rework"
+        title="Request Repair Task Rework"
       >
         <form onSubmit={handleRequestRework} className="space-y-4">
           <div className="p-3 bg-amber-50 border border-amber-200 rounded-card text-xs text-amber-800">

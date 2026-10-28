@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
             <Logo variant="horizontal" theme="dark" size="md" subtitle="Civic Infrastructure" />
           </Link>
           <p className="text-sm text-slate-400 leading-relaxed max-w-sm mb-6">
-            India's unified civic infrastructure accountability network. Empowering citizens to report local hazards, track verified remediations in real time, and hold municipal contractors to rigorous standards.
+            India's unified civic infrastructure accountability network. Empowering citizens to report local hazards, track verified repairs in real time, and hold municipal contractors to rigorous standards.
           </p>
           <div className="flex flex-wrap gap-2 text-xs">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/80 text-slate-300">
@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
             <li>
               <Link to="/states" className="text-slate-300 hover:text-white transition-colors font-medium flex items-center gap-1.5">
                 <span>States & UTs</span>
-                <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-gold/20 text-gold font-bold">36</span>
+                <span className="text-xs px-1.5 py-0.2 rounded-full bg-gold/20 text-gold font-bold">36</span>
               </Link>
             </li>
             <li>

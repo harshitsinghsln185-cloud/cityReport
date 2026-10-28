@@ -152,7 +152,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
             {stat.label}
           </div>
           {stat.hint && (
-            <div className={`text-[11px] mt-0.5 ${isNavy ? 'text-slate-400' : 'text-muted'}`}>
+            <div className={`text-xs mt-0.5 ${isNavy ? 'text-slate-400' : 'text-muted'}`}>
               {stat.hint}
             </div>
           )}

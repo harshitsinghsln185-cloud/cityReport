@@ -80,7 +80,7 @@ export const Services: React.FC = () => {
     <div className="bg-canvas min-h-screen">
       <SEO
         title="Civic Services & Schedule of Rates (SOR) Directory"
-        description="Transparent civic remediation services and indicative municipal rates for road repair, streetlight maintenance, drainage restoration, and public hazard fixes."
+        description="Transparent civic repair services and indicative municipal rates for road repair, streetlight maintenance, drainage restoration, and public hazard fixes."
         keywords={[
           'civic services directory',
           'municipal repair rates',
@@ -279,7 +279,7 @@ export const Services: React.FC = () => {
 
                       <p className="text-xs text-secondaryText leading-relaxed mb-4 line-clamp-3">
                         {cat.description ||
-                          'Certified municipal hazard remediation with geo-proximity contractor dispatch and photo-proof audit.'}
+                          'Certified municipal hazard repair with geo-proximity contractor dispatch and photo-proof audit.'}
                       </p>
                     </div>
 

@@ -72,11 +72,11 @@ export const ResolverDashboard: React.FC = () => {
               </span>
             </div>
 
-            <h1 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight">
+            <h1 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight">
               Contractor Operations Desk
             </h1>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Review nearby civic dispatch requests, accept jobs within your coverage radius, execute on-site remediation, and submit photographic completion proof for verified milestone payout.
+              Review nearby civic dispatch requests, accept jobs within your coverage radius, execute on-site repair, and submit photographic completion proof for verified milestone payout.
             </p>
           </div>
 
@@ -120,8 +120,8 @@ export const ResolverDashboard: React.FC = () => {
         <Card className="p-5 border-border hover:border-primary/40 transition-colors shadow-card">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-wider text-secondaryText">New Job Offers</p>
-              <h3 className="text-2xl sm:text-3xl font-heading font-black text-ink mt-1.5 tabular-nums">
+              <p className="text-xs font-bold uppercase tracking-wider text-secondaryText">New Job Offers</p>
+              <h3 className="text-2xl sm:text-3xl font-heading font-bold text-ink mt-1.5 tabular-nums">
                 {metrics.assignedOffersCount}
               </h3>
               <p className="text-xs text-primary font-semibold mt-1">
@@ -144,8 +144,8 @@ export const ResolverDashboard: React.FC = () => {
         <Card className="p-5 border-border hover:border-indigo/40 transition-colors shadow-card">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-wider text-secondaryText">Active Jobs</p>
-              <h3 className="text-2xl sm:text-3xl font-heading font-black text-ink mt-1.5 tabular-nums">
+              <p className="text-xs font-bold uppercase tracking-wider text-secondaryText">Active Jobs</p>
+              <h3 className="text-2xl sm:text-3xl font-heading font-bold text-ink mt-1.5 tabular-nums">
                 {metrics.activeTasksCount}
               </h3>
               <p className="text-xs text-secondaryText font-medium mt-1">
@@ -168,8 +168,8 @@ export const ResolverDashboard: React.FC = () => {
         <Card className="p-5 border-border hover:border-emerald-400/40 transition-colors shadow-card">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-wider text-secondaryText">Completed Repairs</p>
-              <h3 className="text-2xl sm:text-3xl font-heading font-black text-emerald-700 mt-1.5 tabular-nums">
+              <p className="text-xs font-bold uppercase tracking-wider text-secondaryText">Completed Repairs</p>
+              <h3 className="text-2xl sm:text-3xl font-heading font-bold text-emerald-700 mt-1.5 tabular-nums">
                 {metrics.completedTasksCount}
               </h3>
               <p className="text-xs text-secondaryText font-medium mt-1">
@@ -192,8 +192,8 @@ export const ResolverDashboard: React.FC = () => {
         <Card className="p-5 border-border hover:border-accent/40 transition-colors shadow-card">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-wider text-secondaryText">Pending Payout</p>
-              <h3 className="text-xl sm:text-2xl font-heading font-black text-ink mt-1.5 tabular-nums">
+              <p className="text-xs font-bold uppercase tracking-wider text-secondaryText">Pending Payout</p>
+              <h3 className="text-xl sm:text-2xl font-heading font-bold text-ink mt-1.5 tabular-nums">
                 {formatRupees(metrics.pendingPayoutPaise)}
               </h3>
               <p className="text-xs text-secondaryText font-medium mt-1">
@@ -283,7 +283,7 @@ export const ResolverDashboard: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-ink group-hover:text-primary transition-colors">Review Job Offers</h4>
-                    <p className="text-[11px] text-muted">{metrics.assignedOffersCount} offers pending review</p>
+                    <p className="text-xs text-muted">{metrics.assignedOffersCount} offers pending review</p>
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-muted group-hover:text-primary transition-colors" />
@@ -298,8 +298,8 @@ export const ResolverDashboard: React.FC = () => {
                     <Briefcase className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-ink group-hover:text-primary transition-colors">Active Remediation Jobs</h4>
-                    <p className="text-[11px] text-muted">Start work or upload photo proof</p>
+                    <h4 className="text-xs font-bold text-ink group-hover:text-primary transition-colors">Active Repair Jobs</h4>
+                    <p className="text-xs text-muted">Start work or upload photo proof</p>
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-muted group-hover:text-primary transition-colors" />
@@ -315,7 +315,7 @@ export const ResolverDashboard: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-ink group-hover:text-primary transition-colors">Coverage Territory & Radius</h4>
-                    <p className="text-[11px] text-muted">Adjust travel radius & on-duty status</p>
+                    <p className="text-xs text-muted">Adjust travel radius & on-duty status</p>
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-muted group-hover:text-primary transition-colors" />

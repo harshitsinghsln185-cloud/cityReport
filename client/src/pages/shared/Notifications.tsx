@@ -276,7 +276,7 @@ export const NotificationsPage: React.FC = () => {
                 <div className="space-y-1">
                   <div className="flex flex-wrap items-center gap-2">
                     <span
-                      className={`text-[10px] font-bold px-2 py-0.5 rounded-md border uppercase tracking-wider ${getTypeBadge(
+                      className={`text-xs font-bold px-2 py-0.5 rounded-md border uppercase tracking-wider ${getTypeBadge(
                         notif.type
                       )}`}
                     >
@@ -286,7 +286,7 @@ export const NotificationsPage: React.FC = () => {
                       {formatTimeAgo(notif.createdAt)}
                     </span>
                     {!notif.isRead && (
-                      <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-accent text-navy">
+                      <span className="px-1.5 py-0.5 rounded text-xs font-bold bg-accent text-navy">
                         NEW
                       </span>
                     )}

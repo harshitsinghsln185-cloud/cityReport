@@ -175,7 +175,7 @@ export const ResolverEarnings: React.FC = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-border bg-canvas/60 text-[11px] font-mono uppercase tracking-wider text-secondaryText">
+              <tr className="border-b border-border bg-canvas/60 text-xs font-mono uppercase tracking-wider text-secondaryText">
                 <th className="py-3.5 px-6">Issue Reference</th>
                 <th className="py-3.5 px-6">Gross Service Fee</th>
                 <th className="py-3.5 px-6">Commission (10%)</th>

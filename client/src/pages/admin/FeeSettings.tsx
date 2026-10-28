@@ -226,7 +226,7 @@ export const FeeSettingsPage: React.FC = () => {
                     className="w-full px-3 py-2 border border-border/80 rounded-card bg-card text-sm text-ink focus:ring-2 focus:ring-primary/30 focus:outline-none font-mono"
                     required
                   />
-                  <p className="text-[11px] text-secondaryText mt-1">
+                  <p className="text-xs text-secondaryText mt-1">
                     First {formData.freeKm} km travel incurs no distance fee.
                   </p>
                 </div>
@@ -254,7 +254,7 @@ export const FeeSettingsPage: React.FC = () => {
                       required
                     />
                   </div>
-                  <p className="text-[11px] text-secondaryText mt-1 font-mono">
+                  <p className="text-xs text-secondaryText mt-1 font-mono">
                     Stored as {Math.round(formData.perKmRateRupees * 100)} paise / km.
                   </p>
                 </div>
@@ -296,7 +296,7 @@ export const FeeSettingsPage: React.FC = () => {
                       required
                     />
                   </div>
-                  <p className="text-[11px] text-secondaryText mt-1 font-mono">
+                  <p className="text-xs text-secondaryText mt-1 font-mono">
                     No issue quote will be less than ₹{formData.minFeeRupees}.
                   </p>
                 </div>
@@ -321,7 +321,7 @@ export const FeeSettingsPage: React.FC = () => {
                       required
                     />
                   </div>
-                  <p className="text-[11px] text-secondaryText mt-1 font-mono">
+                  <p className="text-xs text-secondaryText mt-1 font-mono">
                     No issue quote will exceed ₹{formData.maxFeeRupees}.
                   </p>
                 </div>
@@ -473,7 +473,7 @@ export const FeeSettingsPage: React.FC = () => {
                     %
                   </span>
                 </div>
-                <p className="text-[11px] text-secondaryText mt-1 font-mono">
+                <p className="text-xs text-secondaryText mt-1 font-mono">
                   Resolvers will receive {100 - formData.commissionPercent}% of the resolved amount.
                 </p>
               </div>
@@ -595,14 +595,14 @@ export const FeeSettingsPage: React.FC = () => {
               </div>
 
               {simulation.isClamped && (
-                <div className="p-2 bg-amber-50 border border-amber-200 text-amber-800 rounded text-[11px]">
+                <div className="p-2 bg-amber-50 border border-amber-200 text-amber-800 rounded text-xs">
                   Clamp applied: clamped within [₹{formData.minFeeRupees}, ₹{formData.maxFeeRupees}]
                 </div>
               )}
 
               {/* Total Final Quote Box */}
               <div className="p-4 bg-primary/5 rounded-card border border-primary/20 mt-3">
-                <div className="text-[11px] font-semibold text-primary uppercase tracking-wider">
+                <div className="text-xs font-semibold text-primary uppercase tracking-wider">
                   Final Calculated Quote
                 </div>
                 <div className="text-2xl font-serif font-bold text-ink mt-0.5 font-mono tabular-nums">
@@ -611,20 +611,20 @@ export const FeeSettingsPage: React.FC = () => {
 
                 <div className="grid grid-cols-2 gap-3 mt-3 pt-3 border-t border-border/60">
                   <div>
-                    <div className="text-[11px] text-secondaryText">50% Advance (Now)</div>
+                    <div className="text-xs text-secondaryText">50% Advance (Now)</div>
                     <div className="text-sm font-bold text-ink font-mono tabular-nums">
                       ₹{simulation.advanceRupees.toFixed(2)}
                     </div>
                   </div>
                   <div>
-                    <div className="text-[11px] text-secondaryText">50% Balance (Close)</div>
+                    <div className="text-xs text-secondaryText">50% Balance (Close)</div>
                     <div className="text-sm font-bold text-ink font-mono tabular-nums">
                       ₹{simulation.balanceRupees.toFixed(2)}
                     </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 mt-2 pt-2 border-t border-border/60 text-[11px]">
+                <div className="grid grid-cols-2 gap-3 mt-2 pt-2 border-t border-border/60 text-xs">
                   <div>
                     <span className="text-secondaryText">Resolver Payout:</span>{' '}
                     <strong className="text-emerald-700 font-mono tabular-nums">

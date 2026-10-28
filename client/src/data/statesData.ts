@@ -39,7 +39,7 @@ export const STATES_DATA: StateData[] = [
     area: '191,791 km²',
     districtsCount: 31,
     heroBlurb:
-      'Coordinating rapid civic hazard remediation across BBMP wards, Silicon Corridor tech parks, and tier-2 district headquarters with verified photo proof.',
+      'Coordinating rapid civic hazard repair across BBMP wards, Silicon Corridor tech parks, and tier-2 district headquarters with verified photo proof.',
     civicPriorities: [
       {
         title: 'Arterial Road Pothole Sealing',
@@ -51,7 +51,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Stormwater Culvert Unblocking',
         description: 'Pre-monsoon desilting and culvert reconstruction across Raja Kaluve feeder channels to prevent urban flash flooding.',
         urgency: 'High',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
         title: 'High-Density Street Lighting',
@@ -91,10 +91,10 @@ export const STATES_DATA: StateData[] = [
         title: 'Coastal Storm Drain Desilting',
         description: 'Clearing tidal storm drains and micro-canals across North Chennai and OMR coastal stretches before northeast monsoon swells.',
         urgency: 'Critical',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
-        title: 'Water Pipe Rupture Remediation',
+        title: 'Water Pipe Rupture Repair',
         description: 'Immediate restoration of pressurized Metrowater main line fissures to prevent potable water loss.',
         urgency: 'High',
         category: 'Water Infrastructure',
@@ -189,7 +189,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Cyclone Drainage Sump Restoration',
         description: 'Maintaining and clearing electrical backup pumps for storm sumps in Visakhapatnam coastal wards.',
         urgency: 'Critical',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
         title: 'Public Streetlight Pole Replacement',
@@ -277,7 +277,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Monsoon Flooding Manhole Desilting',
         description: 'Deep mechanical desilting of high-capacity storm outfalls across Dadar, Hindmata, and Milan subway catchments.',
         urgency: 'Critical',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
         title: 'Industrial Heavy-Vehicle Pothole Resurfacing',
@@ -423,7 +423,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Public Sanitation Drain Unclogging',
         description: 'Clearing silted masonry drains in high-density urban old city markets.',
         urgency: 'High',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
         title: 'Rural Electrification Pole Straightening',
@@ -509,7 +509,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Industrial Estate Drainage Overflow',
         description: 'Mechanical clearing of factory effluent runoff drains in Focal Point Ludhiana.',
         urgency: 'Critical',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
         title: 'Agricultural Freight Road Resurfacing',
@@ -561,7 +561,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Monsoon Underpass Waterlogging Prevention',
         description: 'Installing and servicing high-output submersible drainage pumps in vulnerable underpasses.',
         urgency: 'Critical',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
         title: 'Open Construction Dust Barrier Enforcement',
@@ -576,7 +576,7 @@ export const STATES_DATA: StateData[] = [
         answer: 'Major arterial road hazards logged in Gurugram are scheduled for overnight repair within 12-24 hours to prevent commute disruptions.',
       },
       {
-        question: 'Can corporate parks or RWAs book group remediation work in Faridabad?',
+        question: 'Can corporate parks or RWAs book group repair work in Faridabad?',
         answer: 'Yes, commercial complexes can trigger multi-hazard work orders with single-invoice GST settlement.',
       },
       {
@@ -659,7 +659,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Urban Valley Drainage Clearing',
         description: 'Preventing flash flood overflows in Dehradun seasonal seasonal rivulets (Rispana and Bindal).',
         urgency: 'Medium',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
     ],
     faqs: [
@@ -707,7 +707,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Tidal Sluice Gate Drainage Desilting',
         description: 'Mechanical clearing of silted lock-gates in East Kolkata wetlands and canal outfalls.',
         urgency: 'High',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
     ],
     faqs: [
@@ -741,7 +741,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Monsoon Flood Drain Channeling',
         description: 'Dredging urban drainage networks across Patna to avoid recurring monsoon waterlogging.',
         urgency: 'Critical',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
         title: 'Inter-District Highway Pothole Repair',
@@ -793,7 +793,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Coastal Storm Surfacing & Drain Clearing',
         description: 'Maintaining unobstructed drainage channels in Puri, Paradeep, and Gopalpur ports.',
         urgency: 'High',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
         title: 'Smart City Solar Streetlight Maintenance',
@@ -879,13 +879,13 @@ export const STATES_DATA: StateData[] = [
     civicPriorities: [
       {
         title: 'Zero-Waste Municipal Litter Containment',
-        description: 'Rapid removal and sanitation remediation of accidental roadside waste accumulation in tier-1 cities.',
+        description: 'Rapid removal and sanitation remediation of roadside waste accumulation in tier-1 cities.',
         urgency: 'Critical',
         category: 'Waste Clearance',
       },
       {
         title: 'Lake Catchment Drainage Sump Maintenance',
-        description: 'Preventing raw sewage inflow into Upper Lake Bhopal via rapid valve and pipe remediation.',
+        description: 'Preventing raw sewage inflow into Upper Lake Bhopal via rapid valve and pipe repair.',
         urgency: 'High',
         category: 'Water Infrastructure',
       },
@@ -933,7 +933,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Monsoon Overflow Culvert Cleaning',
         description: 'Dredging agricultural drainage culverts along state highway junctions.',
         urgency: 'Medium',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
         title: 'Public Borewell Submersible Pump Replacement',
@@ -981,7 +981,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Hillside Drainage Flash Flood Clearing',
         description: 'Clearing silted hillside drains in Guwahati (Zoo Road, Bharalu river basin) to prevent urban flash flooding.',
         urgency: 'Critical',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
         title: 'Highway Fog High-Visibility Signage',
@@ -1061,7 +1061,7 @@ export const STATES_DATA: StateData[] = [
     area: '22,327 km²',
     districtsCount: 16,
     heroBlurb:
-      'Serving civic remediation across Imphal valley avenues, Loktak Lake shores, and essential highway transit corridors.',
+      'Serving civic repair across Imphal valley avenues, Loktak Lake shores, and essential highway transit corridors.',
     civicPriorities: [
       {
         title: 'National Highway Lifeline Pothole Repair',
@@ -1251,7 +1251,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Howrah River Basin Sluice Gate Maintenance',
         description: 'Clearing municipal floodgate channels in Agartala to prevent trans-boundary river flooding.',
         urgency: 'Critical',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
         title: 'Border Highway Pothole Patching',
@@ -1339,7 +1339,7 @@ export const STATES_DATA: StateData[] = [
     area: '1,484 km²',
     districtsCount: 11,
     heroBlurb:
-      'High-speed urban hazard remediation across MCD zones, NDMC diplomatic enclaves, and trans-Yamuna high-density neighborhoods.',
+      'High-speed urban hazard repair across MCD zones, NDMC diplomatic enclaves, and trans-Yamuna high-density neighborhoods.',
     civicPriorities: [
       {
         title: 'Ring Road High-Speed Asphalt Pothole Repair',
@@ -1351,7 +1351,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Monsoon Underpass Pumping & Desilting',
         description: 'Deploying high-discharge mobile pumps at Minto Bridge, Pul Prahladpur, and Zakhira underpasses.',
         urgency: 'Critical',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
         title: 'Winter Anti-Smog Water Mist Sprinkling',
@@ -1397,7 +1397,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Storm Drainage Gutter Silt Removal',
         description: 'Mechanical suction clearing of curb-level storm grates along V3 and V4 sectoral avenues.',
         urgency: 'High',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
         title: 'Heritage Cast-Iron Sector Signage Restoration',
@@ -1443,7 +1443,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Dal Lake Urban Canal Silt Clearance',
         description: 'De-weeding and mechanical desilting of water channels flowing into Dal and Nigeen lakes.',
         urgency: 'High',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
       {
         title: 'Cold-Climate Freeze-Resistant Pipe Repair',
@@ -1541,7 +1541,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Grand Canal Tidal Silt Drainage',
         description: 'Clearing the urban Grand Canal to ensure free flow into the Bay of Bengal.',
         urgency: 'Medium',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
     ],
     faqs: [
@@ -1587,7 +1587,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Island Torrent Drainage Clearing',
         description: 'Clearing steep runoff nullahs across Port Blair during tropical monsoon cloudbursts.',
         urgency: 'High',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
     ],
     faqs: [
@@ -1633,7 +1633,7 @@ export const STATES_DATA: StateData[] = [
         title: 'Beach Coastal Drainage Silt Clearing',
         description: 'Clearing ocean outfalls along Devka and Nagoa beaches.',
         urgency: 'Medium',
-        category: 'Drainage Remediation',
+        category: 'Drainage Repair',
       },
     ],
     faqs: [

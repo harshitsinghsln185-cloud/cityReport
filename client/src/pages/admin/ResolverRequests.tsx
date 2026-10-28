@@ -179,7 +179,7 @@ export const ResolverRequestsPage: React.FC = () => {
             row.skills.map((s, idx) => (
               <span
                 key={typeof s === 'string' ? s : s._id || idx}
-                className="text-[11px] font-medium px-2 py-0.5 rounded-lg bg-primary/10 text-primary border border-primary/20"
+                className="text-xs font-medium px-2 py-0.5 rounded-lg bg-primary/10 text-primary border border-primary/20"
               >
                 {typeof s === 'string' ? 'Trade' : s.name}
               </span>
@@ -450,10 +450,10 @@ export const ResolverRequestsPage: React.FC = () => {
                 </div>
                 <div className="text-xs text-secondaryText">
                   <p className="font-medium text-ink">{selectedResolver.serviceAddress}</p>
-                  <p className="text-[11px] font-mono text-secondaryText mt-1">
+                  <p className="text-xs font-mono text-secondaryText mt-1">
                     Coordinates: [{selectedResolver.serviceLocation?.coordinates?.[0]?.toFixed(4)}, {selectedResolver.serviceLocation?.coordinates?.[1]?.toFixed(4)}]
                   </p>
-                  <p className="text-[11px] text-primary font-semibold mt-1 font-mono">
+                  <p className="text-xs text-primary font-semibold mt-1 font-mono">
                     Operating Coverage: {selectedResolver.serviceRadiusKm} km
                   </p>
                 </div>
@@ -511,7 +511,7 @@ export const ResolverRequestsPage: React.FC = () => {
                 )}
               </div>
 
-              <p className="text-[11px] text-secondaryText">
+              <p className="text-xs text-secondaryText">
                 Security Notice: Stored in an authenticated Cloudinary vault. The above document link is cryptographically signed and expires in 10 minutes.
               </p>
             </div>
@@ -570,7 +570,7 @@ export const ResolverRequestsPage: React.FC = () => {
             />
           </div>
 
-          <p className="text-[11px] text-secondaryText">
+          <p className="text-xs text-secondaryText">
             This explanation will be permanently recorded and sent via transactional email to <span className="font-semibold text-ink font-mono">{resolverToReject?.user?.email}</span>.
           </p>
         </form>

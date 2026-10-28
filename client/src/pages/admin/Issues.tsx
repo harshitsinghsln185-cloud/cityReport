@@ -229,7 +229,7 @@ export const AdminIssuesPage: React.FC = () => {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
-              <thead className="bg-canvas text-[11px] font-mono uppercase tracking-wider text-secondaryText border-b border-border">
+              <thead className="bg-canvas text-xs font-mono uppercase tracking-wider text-secondaryText border-b border-border">
                 <tr>
                   <th className="py-3 px-4">Issue Code & Title</th>
                   <th className="py-3 px-4">Category</th>
@@ -269,7 +269,7 @@ export const AdminIssuesPage: React.FC = () => {
                       {/* Reporter */}
                       <td className="py-3.5 px-4 text-xs">
                         <div className="font-medium text-ink">{issue.reporter?.name || 'Citizen'}</div>
-                        <div className="text-[11px] font-mono text-secondaryText">{issue.reporter?.phone || issue.reporter?.email}</div>
+                        <div className="text-xs font-mono text-secondaryText">{issue.reporter?.phone || issue.reporter?.email}</div>
                       </td>
 
                       {/* Location */}
@@ -288,7 +288,7 @@ export const AdminIssuesPage: React.FC = () => {
                       {/* Priority */}
                       <td className="py-3.5 px-4">
                         <span
-                          className={`inline-block px-2 py-0.5 rounded-lg text-[11px] font-semibold ${
+                          className={`inline-block px-2 py-0.5 rounded-lg text-xs font-semibold ${
                             effectivePriority === 'Critical'
                               ? 'bg-rose-100 text-rose-800 border border-rose-200'
                               : effectivePriority === 'High'
@@ -298,7 +298,7 @@ export const AdminIssuesPage: React.FC = () => {
                         >
                           {effectivePriority}
                           {issue.finalPriority && (
-                            <span className="ml-1 text-[9px] uppercase font-bold text-primary">(Override)</span>
+                            <span className="ml-1 text-xs uppercase font-bold text-primary">(Override)</span>
                           )}
                         </span>
                       </td>
@@ -313,7 +313,7 @@ export const AdminIssuesPage: React.FC = () => {
                             </span>
                           </div>
                         ) : (
-                          <span className="text-secondaryText italic text-[11px]">Unassigned</span>
+                          <span className="text-secondaryText italic text-xs">Unassigned</span>
                         )}
                       </td>
 

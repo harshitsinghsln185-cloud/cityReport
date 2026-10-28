@@ -1,7 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 
+export type CardVariant = 'base' | 'elevated' | 'interactive';
+
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'base' | 'elevated' | 'stat' | 'glass' | 'interactive';
+  variant?: CardVariant | 'stat' | 'glass'; // 'stat' & 'glass' aliased for compatibility
   header?: React.ReactNode;
   footer?: React.ReactNode;
   isInteractive?: boolean;
@@ -43,21 +45,24 @@ export const Card: React.FC<CardProps> = ({
     }
   }, []);
 
-  const shouldBeInteractive = isInteractive || variant === 'interactive' || tilt;
+  const isInteractiveVariant = isInteractive || variant === 'interactive' || tilt;
 
+  // Standard 16px border-radius (rounded-2xl) across variants
   const radiusStyles: Record<NonNullable<CardProps['radius']>, string> = {
-    sm: 'rounded-lg',
+    sm: 'rounded-xl',
     md: 'rounded-xl',
-    card: 'rounded-[16px] lg:rounded-[20px]',
-    cardLg: 'rounded-[20px] lg:rounded-[24px]',
+    card: 'rounded-2xl',
+    cardLg: 'rounded-2xl',
   };
 
-  const variantStyles: Record<NonNullable<CardProps['variant']>, string> = {
-    base: 'bg-white border border-border shadow-subtle',
-    elevated: 'bg-white border border-border shadow-card',
-    stat: 'bg-white border border-border shadow-subtle',
-    glass: 'bg-white/80 backdrop-blur-md border border-white/60 shadow-card',
-    interactive: 'bg-white border border-border shadow-subtle',
+  // Exactly 3 core standardized variants: base, elevated, interactive
+  const variantStyles: Record<string, string> = {
+    base: 'bg-white border border-card-border shadow-xs',
+    elevated: 'bg-white border border-card-border shadow-card',
+    interactive:
+      'bg-white border border-card-border shadow-xs hover:shadow-cardHover hover:-translate-y-0.5 hover:border-primary/25 focus-within:ring-2 focus-within:ring-accent transition-all duration-200 cursor-pointer',
+    stat: 'bg-white border border-card-border shadow-xs',
+    glass: 'bg-white/95 backdrop-blur-md border border-card-border shadow-card',
   };
 
   const paddingStyles: Record<NonNullable<CardProps['padding']>, string> = {
@@ -67,9 +72,10 @@ export const Card: React.FC<CardProps> = ({
     lg: 'p-6 sm:p-8',
   };
 
-  const interactiveStyles = shouldBeInteractive
-    ? 'card-hover-lift cursor-pointer hover:border-primary/40 focus-visible:ring-2 focus-visible:ring-primary'
-    : '';
+  const interactiveStyles =
+    isInteractiveVariant && variant !== 'interactive'
+      ? 'hover:-translate-y-0.5 hover:shadow-cardHover hover:border-primary/25 focus-within:ring-2 focus-within:ring-accent transition-all duration-200 cursor-pointer'
+      : '';
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (onMouseMove) onMouseMove(e);
@@ -86,10 +92,8 @@ export const Card: React.FC<CardProps> = ({
     if (tilt) {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      // Max tilt: 5 degrees
-      const rotateX = -((y - centerY) / centerY) * 5;
-      const rotateY = ((x - centerX) / centerX) * 5;
-
+      const rotateX = -((y - centerY) / centerY) * 4;
+      const rotateY = ((x - centerX) / centerX) * 4;
       cardRef.current.style.transform = `perspective(800px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
     }
   };
@@ -125,13 +129,13 @@ export const Card: React.FC<CardProps> = ({
           className="pointer-events-none absolute -inset-px transition-opacity duration-300"
           style={{
             opacity: spotlightPos.opacity,
-            background: `radial-gradient(400px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(200, 162, 74, 0.08), transparent 80%)`,
+            background: `radial-gradient(400px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(232, 163, 61, 0.08), transparent 80%)`,
           }}
         />
       )}
 
       {header && (
-        <div className="relative z-10 px-6 py-4 border-b border-border bg-canvas/60">
+        <div className="relative z-10 px-6 py-4 border-b border-card-border bg-canvas/60">
           {header}
         </div>
       )}
@@ -139,7 +143,7 @@ export const Card: React.FC<CardProps> = ({
         {children}
       </div>
       {footer && (
-        <div className="relative z-10 px-6 py-3.5 border-t border-border bg-canvas/60">
+        <div className="relative z-10 px-6 py-3.5 border-t border-card-border bg-canvas/60">
           {footer}
         </div>
       )}

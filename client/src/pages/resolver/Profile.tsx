@@ -158,7 +158,7 @@ export const ResolverProfilePage: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Card className="border border-border/80 bg-card rounded-card shadow-card p-5">
           <div className="flex items-center justify-between text-xs text-secondaryText mb-1.5">
-            <span className="font-medium uppercase tracking-wider text-[11px]">Total Earnings</span>
+            <span className="font-medium uppercase tracking-wider text-xs">Total Earnings</span>
             <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center">
               <TrendingUp className="w-3.5 h-3.5" />
             </div>
@@ -166,7 +166,7 @@ export const ResolverProfilePage: React.FC = () => {
           <div className="text-2xl font-serif font-bold text-ink font-mono tabular-nums">
             ₹{((profile?.totalEarningsPaise || 0) / 100).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </div>
-          <div className="text-[11px] text-secondaryText mt-1 flex items-center gap-1">
+          <div className="text-xs text-secondaryText mt-1 flex items-center gap-1">
             <ShieldCheck className="w-3 h-3 text-emerald-600" />
             <span>Direct Bank Disbursement</span>
           </div>
@@ -174,7 +174,7 @@ export const ResolverProfilePage: React.FC = () => {
 
         <Card className="border border-border/80 bg-card rounded-card shadow-card p-5">
           <div className="flex items-center justify-between text-xs text-secondaryText mb-1.5">
-            <span className="font-medium uppercase tracking-wider text-[11px]">Pending Payout</span>
+            <span className="font-medium uppercase tracking-wider text-xs">Pending Payout</span>
             <div className="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center">
               <Clock className="w-3.5 h-3.5" />
             </div>
@@ -182,12 +182,12 @@ export const ResolverProfilePage: React.FC = () => {
           <div className="text-2xl font-serif font-bold text-amber-800 font-mono tabular-nums">
             ₹{((profile?.pendingPayoutPaise || 0) / 100).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </div>
-          <div className="text-[11px] text-secondaryText mt-1">Pending citizen balance settlement</div>
+          <div className="text-xs text-secondaryText mt-1">Pending citizen balance settlement</div>
         </Card>
 
         <Card className="border border-border/80 bg-card rounded-card shadow-card p-5">
           <div className="flex items-center justify-between text-xs text-secondaryText mb-1.5">
-            <span className="font-medium uppercase tracking-wider text-[11px]">Tasks Completed</span>
+            <span className="font-medium uppercase tracking-wider text-xs">Tasks Completed</span>
             <div className="w-7 h-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
               <CheckCircle2 className="w-3.5 h-3.5" />
             </div>
@@ -195,7 +195,7 @@ export const ResolverProfilePage: React.FC = () => {
           <div className="text-2xl font-serif font-bold text-ink font-mono tabular-nums">
             {profile?.completedTasksCount || 0}
           </div>
-          <div className="text-[11px] text-secondaryText mt-1">100% photographic proof rate</div>
+          <div className="text-xs text-secondaryText mt-1">100% photographic proof rate</div>
         </Card>
       </div>
 
@@ -230,7 +230,7 @@ export const ResolverProfilePage: React.FC = () => {
               onChange={(e) => setServiceRadiusKm(parseInt(e.target.value, 10) || 10)}
               className="w-full accent-primary cursor-pointer"
             />
-            <div className="flex justify-between text-[11px] font-mono text-secondaryText">
+            <div className="flex justify-between text-xs font-mono text-secondaryText">
               <span>1 km (Hyperlocal)</span>
               <span>25 km (Urban Sector)</span>
               <span>50 km (Metropolitan)</span>

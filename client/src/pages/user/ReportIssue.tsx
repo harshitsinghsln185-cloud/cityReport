@@ -242,7 +242,7 @@ export const ReportIssue: React.FC = () => {
       {/* Title */}
       <div className="space-y-1">
         <Badge variant="primary" size="sm" className="font-semibold uppercase tracking-wider">
-          Certified Civic Remediation Flow
+          Certified Civic Repair Flow
         </Badge>
         <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
           Report a Neighborhood Civic Defect
@@ -427,7 +427,7 @@ export const ReportIssue: React.FC = () => {
                     setFormData((p) => ({ ...p, lat: newLat, lng: newLng }))
                   }
                 />
-                <div className="text-[11px] text-muted mt-1 tabular-nums flex items-center justify-between">
+                <div className="text-xs text-muted mt-1 tabular-nums flex items-center justify-between">
                   <span>Coordinates: {formData.lat.toFixed(5)}, {formData.lng.toFixed(5)}</span>
                   <span className="text-primary font-medium">Pin placed on OpenStreetMap</span>
                 </div>
@@ -512,7 +512,7 @@ export const ReportIssue: React.FC = () => {
                       <Plus className="w-4 h-4" />
                     </div>
                     <span className="text-xs font-semibold text-primary">Upload Photo</span>
-                    <span className="text-[10px] text-muted">
+                    <span className="text-xs text-muted">
                       {5 - selectedPhotos.length} remaining (JPEG, PNG, WebP)
                     </span>
                   </label>

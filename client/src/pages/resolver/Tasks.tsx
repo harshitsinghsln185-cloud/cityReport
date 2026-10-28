@@ -81,7 +81,7 @@ export const ResolverTasksPage: React.FC = () => {
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
-            Remediation Tasks Queue
+            Repair Tasks Queue
           </h1>
           <p className="text-xs sm:text-sm text-secondaryText">
             Execute repairs within municipal SLA timelines, coordinate with citizens, and upload verifiable completion proof.
@@ -154,7 +154,7 @@ export const ResolverTasksPage: React.FC = () => {
         <Card className="p-12 text-center border-border shadow-card">
           <EmptyState
             icon={<Briefcase className="w-8 h-8 text-primary" />}
-            title="No Active Remediation Tasks"
+            title="No Active Repair Tasks"
             description="You do not currently have any repairs in Accepted or In Progress status. Check the 'Job Offers' tab to accept incoming assignments."
           />
         </Card>
@@ -203,7 +203,7 @@ export const ResolverTasksPage: React.FC = () => {
                         </div>
                         <div>
                           <span className="font-bold text-ink block">{citizen.name || 'Citizen Reporter'}</span>
-                          <span className="text-[11px] text-muted">Citizen Contact</span>
+                          <span className="text-xs text-muted">Citizen Contact</span>
                         </div>
                       </div>
 

@@ -76,7 +76,7 @@ export const MyIssues: React.FC = () => {
           <div className="text-xs text-secondaryText flex items-center gap-1.5 mt-0.5">
             <span className="font-medium text-primary">{row.category?.name || 'General'}</span>
             <span>&bull;</span>
-            <span className="text-[11px] text-muted">{row.suggestedPriority} Priority</span>
+            <span className="text-xs text-muted">{row.suggestedPriority} Priority</span>
           </div>
         </div>
       ),
@@ -89,7 +89,7 @@ export const MyIssues: React.FC = () => {
             <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
             <span className="truncate">{row.address?.street || 'N/A'}</span>
           </div>
-          <div className="text-[11px] text-muted pl-4.5">{row.address?.city}</div>
+          <div className="text-xs text-muted pl-4.5">{row.address?.city}</div>
         </div>
       ),
     },

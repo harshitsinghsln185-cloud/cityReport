@@ -89,12 +89,12 @@ export const IssueTimeline: React.FC<IssueTimelineProps> = ({ timeline = [], cla
                   <span className="font-semibold text-sm text-ink">
                     {event.action.replace(/_/g, ' ')}
                   </span>
-                  <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${getRoleBadgeStyle(event.actorRole)}`}>
+                  <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${getRoleBadgeStyle(event.actorRole)}`}>
                     {event.actor?.name || event.actorRole}
                   </span>
                 </div>
 
-                <time className="text-[11px] text-muted">
+                <time className="text-xs text-muted">
                   {new Date(event.createdAt).toLocaleString('en-IN', {
                     dateStyle: 'medium',
                     timeStyle: 'short',
@@ -103,7 +103,7 @@ export const IssueTimeline: React.FC<IssueTimelineProps> = ({ timeline = [], cla
               </div>
 
               {/* Status Transition */}
-              <div className="text-[11px] text-muted flex items-center gap-1.5">
+              <div className="text-xs text-muted flex items-center gap-1.5">
                 <span>Status transition:</span>
                 <span className="font-medium text-secondaryText">{event.fromStatus}</span>
                 <span>&rarr;</span>

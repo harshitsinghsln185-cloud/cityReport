@@ -126,7 +126,7 @@ export const ProofUploader: React.FC<ProofUploaderProps> = ({ onSubmit, isSubmit
             <div className="flex items-center justify-between">
               <label className="text-xs font-semibold text-ink flex items-center gap-1.5">
                 <span>Before Photos</span>
-                <span className="text-[11px] font-normal text-secondaryText">(Optional, max 4)</span>
+                <span className="text-xs font-normal text-secondaryText">(Optional, max 4)</span>
               </label>
               <span className="text-xs font-mono text-secondaryText">{beforeFiles.length} / 4</span>
             </div>
@@ -138,7 +138,7 @@ export const ProofUploader: React.FC<ProofUploaderProps> = ({ onSubmit, isSubmit
               >
                 <UploadCloud className="w-6 h-6 text-secondaryText group-hover:text-primary mx-auto mb-1 transition-colors" />
                 <p className="text-xs font-semibold text-ink">Add Before Repair Photo</p>
-                <p className="text-[11px] text-secondaryText mt-0.5">JPEG, PNG, WebP up to 5MB</p>
+                <p className="text-xs text-secondaryText mt-0.5">JPEG, PNG, WebP up to 5MB</p>
                 <input
                   ref={beforeInputRef}
                   type="file"
@@ -165,7 +165,7 @@ export const ProofUploader: React.FC<ProofUploaderProps> = ({ onSubmit, isSubmit
                       >
                         <X className="w-3 h-3" />
                       </button>
-                      <div className="absolute bottom-0 inset-x-0 bg-black/60 text-white text-[10px] px-2 py-0.5 truncate font-mono">
+                      <div className="absolute bottom-0 inset-x-0 bg-black/60 text-white text-xs px-2 py-0.5 truncate font-mono">
                         {file.name}
                       </div>
                     </div>
@@ -180,7 +180,7 @@ export const ProofUploader: React.FC<ProofUploaderProps> = ({ onSubmit, isSubmit
             <div className="flex items-center justify-between">
               <label className="text-xs font-semibold text-ink flex items-center gap-1.5">
                 <span>After Photos</span>
-                <span className="text-[11px] font-semibold text-rose-600">* Required (1 to 4)</span>
+                <span className="text-xs font-semibold text-rose-600">* Required (1 to 4)</span>
               </label>
               <span className="text-xs font-mono text-secondaryText">{afterFiles.length} / 4</span>
             </div>
@@ -192,7 +192,7 @@ export const ProofUploader: React.FC<ProofUploaderProps> = ({ onSubmit, isSubmit
               >
                 <UploadCloud className="w-6 h-6 text-primary mx-auto mb-1 group-hover:scale-110 transition-transform" />
                 <p className="text-xs font-semibold text-primary">Upload After Repair Photo</p>
-                <p className="text-[11px] text-secondaryText mt-0.5">JPEG, PNG, WebP up to 5MB</p>
+                <p className="text-xs text-secondaryText mt-0.5">JPEG, PNG, WebP up to 5MB</p>
                 <input
                   ref={afterInputRef}
                   type="file"
@@ -219,7 +219,7 @@ export const ProofUploader: React.FC<ProofUploaderProps> = ({ onSubmit, isSubmit
                       >
                         <X className="w-3 h-3" />
                       </button>
-                      <div className="absolute bottom-0 inset-x-0 bg-black/60 text-white text-[10px] px-2 py-0.5 truncate font-mono">
+                      <div className="absolute bottom-0 inset-x-0 bg-black/60 text-white text-xs px-2 py-0.5 truncate font-mono">
                         {file.name}
                       </div>
                     </div>
@@ -239,7 +239,7 @@ export const ProofUploader: React.FC<ProofUploaderProps> = ({ onSubmit, isSubmit
               <span className="text-rose-600">*</span>
             </label>
             <span
-              className={`text-[11px] font-mono ${
+              className={`text-xs font-mono ${
                 remarks.length < 10 ? 'text-amber-600' : 'text-secondaryText'
               }`}
             >

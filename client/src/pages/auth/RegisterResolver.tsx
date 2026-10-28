@@ -391,7 +391,7 @@ export const RegisterResolver: React.FC = () => {
                             <div className="text-xs text-secondaryText mt-0.5 line-clamp-2">
                               {cat.description}
                             </div>
-                            <div className="text-[11px] font-bold text-primary mt-1.5 flex items-center gap-1">
+                            <div className="text-xs font-bold text-primary mt-1.5 flex items-center gap-1">
                               <span>Base tariff: ₹{(cat.baseFeePaise / 100).toLocaleString('en-IN')}</span>
                               <span className="text-muted">•</span>
                               <span className="text-muted font-normal flex items-center gap-1">
@@ -449,7 +449,7 @@ export const RegisterResolver: React.FC = () => {
                     }
                     className="w-full accent-primary"
                   />
-                  <div className="flex justify-between text-[11px] text-muted">
+                  <div className="flex justify-between text-xs text-muted">
                     <span>1 km (Hyperlocal)</span>
                     <span>25 km (Ward)</span>
                     <span>50 km (Metropolitan)</span>
@@ -469,7 +469,7 @@ export const RegisterResolver: React.FC = () => {
                     }
                     height="320px"
                   />
-                  <p className="text-[11px] text-muted mt-1 tabular-nums">
+                  <p className="text-xs text-muted mt-1 tabular-nums">
                     Lat/Lng: {formData.lat.toFixed(5)}, {formData.lng.toFixed(5)}
                   </p>
                 </div>

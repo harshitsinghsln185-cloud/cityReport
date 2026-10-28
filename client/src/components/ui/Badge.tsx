@@ -92,7 +92,7 @@ export const Badge: React.FC<BadgeProps> = ({
   const current = variantStyles[variant] || variantStyles.neutral;
 
   const sizeStyles: Record<NonNullable<BadgeProps['size']>, string> = {
-    sm: 'text-[11px] px-2 py-0.5 gap-1 font-medium',
+    sm: 'text-xs px-2 py-0.5 gap-1 font-medium',
     md: 'text-xs px-2.5 py-1 gap-1.5 font-medium',
   };
 

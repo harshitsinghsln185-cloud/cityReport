@@ -242,7 +242,7 @@ export const Payments: React.FC = () => {
                           <span>{p.issue?.issueCode || 'Civic Issue'}</span>
                           <ExternalLink className="w-3 h-3" />
                         </Link>
-                        <div className="text-[11px] text-muted line-clamp-1 max-w-xs">
+                        <div className="text-xs text-muted line-clamp-1 max-w-xs">
                           {p.issue?.title || 'Report Details'}
                         </div>
                       </td>
@@ -346,12 +346,12 @@ export const Payments: React.FC = () => {
                           <span>{inv.issue?.issueCode || 'Civic Issue'}</span>
                           <ExternalLink className="w-3 h-3 text-muted" />
                         </Link>
-                        <div className="text-[11px] text-muted line-clamp-1 max-w-xs">
+                        <div className="text-xs text-muted line-clamp-1 max-w-xs">
                           {inv.issue?.title || 'Report Details'}
                         </div>
                       </td>
                       <td className="py-3.5 px-4">
-                        <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-primary-light text-primary border border-primary/20">
+                        <span className="px-2 py-0.5 rounded text-xs font-semibold bg-primary-light text-primary border border-primary/20">
                           {inv.type === 'Advance' ? 'Advance 50%' : 'Final Settlement'}
                         </span>
                       </td>

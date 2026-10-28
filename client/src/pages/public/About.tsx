@@ -116,7 +116,7 @@ export const About: React.FC = () => {
                 36
               </p>
               <p className="text-xs text-muted font-medium">States & UTs Covered</p>
-              <p className="text-[11px] text-muted mt-1">Nationwide Geo-Registry</p>
+              <p className="text-xs text-muted mt-1">Nationwide Geo-Registry</p>
             </div>
 
             <div className="p-4 text-center border-l-0 sm:border-l border-border">
@@ -124,7 +124,7 @@ export const About: React.FC = () => {
                 100%
               </p>
               <p className="text-xs text-muted font-medium">Photo Proof Required</p>
-              <p className="text-[11px] text-emerald-600 font-medium mt-1">Before & After Verified</p>
+              <p className="text-xs text-emerald-600 font-medium mt-1">Before & After Verified</p>
             </div>
 
             <div className="p-4 text-center border-t sm:border-t-0 lg:border-l border-border">
@@ -132,7 +132,7 @@ export const About: React.FC = () => {
                 50 / 50
               </p>
               <p className="text-xs text-muted font-medium">Milestone Split</p>
-              <p className="text-[11px] text-primary font-medium mt-1">Advance & Completion</p>
+              <p className="text-xs text-primary font-medium mt-1">Advance & Completion</p>
             </div>
 
             <div className="p-4 text-center border-t sm:border-t-0 lg:border-l border-border">
@@ -140,7 +140,7 @@ export const About: React.FC = () => {
                 GST
               </p>
               <p className="text-xs text-muted font-medium">Itemized Invoices</p>
-              <p className="text-[11px] text-muted mt-1">Full Tax Breakdown</p>
+              <p className="text-xs text-muted mt-1">Full Tax Breakdown</p>
             </div>
           </div>
         </Reveal>
@@ -152,7 +152,7 @@ export const About: React.FC = () => {
               eyebrow="The Civic Reality"
               eyebrowVariant="violet"
               title="Traditional Bureaucracy vs. The Crowd Report Standard"
-              subtitle="Why civic problem reporting historically stalled, and how our milestone model delivers verified remediation."
+              subtitle="Why civic problem reporting historically stalled, and how our milestone model delivers verified repair."
               align="center"
             />
           </Reveal>

@@ -285,12 +285,12 @@ export const AdminUsersPage: React.FC = () => {
                             <div className="font-bold text-xs text-ink flex items-center gap-1.5">
                               <span>{u.name}</span>
                               {isCurrent && (
-                                <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-primary/10 text-primary font-mono">
+                                <span className="text-xs font-bold px-1.5 py-0.2 rounded bg-primary/10 text-primary font-mono">
                                   You
                                 </span>
                               )}
                             </div>
-                            <div className="text-[11px] text-secondaryText font-mono">{uid}</div>
+                            <div className="text-xs text-secondaryText font-mono">{uid}</div>
                           </div>
                         </div>
                       </td>
@@ -336,7 +336,7 @@ export const AdminUsersPage: React.FC = () => {
                           </div>
                         )}
                         {u.blockReason && (
-                          <div className="text-[10px] text-rose-600 truncate max-w-xs mt-0.5 italic" title={u.blockReason}>
+                          <div className="text-xs text-rose-600 truncate max-w-xs mt-0.5 italic" title={u.blockReason}>
                             Reason: {u.blockReason}
                           </div>
                         )}

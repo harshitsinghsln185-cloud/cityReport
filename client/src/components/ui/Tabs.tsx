@@ -83,7 +83,7 @@ export const Tabs: React.FC<TabsProps> = ({
                 <span>{tab.label}</span>
                 {tab.count !== undefined && (
                   <span
-                    className={`text-[11px] px-1.5 py-0.2 rounded-full tabular-nums font-semibold ${
+                    className={`text-xs px-1.5 py-0.2 rounded-full tabular-nums font-semibold ${
                       isActive ? 'bg-lavender text-primary' : 'bg-slate-200 text-slate-600'
                     }`}
                   >
@@ -131,7 +131,7 @@ export const Tabs: React.FC<TabsProps> = ({
                 <span>{tab.label}</span>
                 {tab.count !== undefined && (
                   <span
-                    className={`text-[11px] px-1.5 py-0.2 rounded-full tabular-nums font-semibold ${
+                    className={`text-xs px-1.5 py-0.2 rounded-full tabular-nums font-semibold ${
                       isActive ? 'bg-lavender text-primary' : 'bg-slate-100 text-slate-600'
                     }`}
                   >
@@ -189,7 +189,7 @@ export const Tabs: React.FC<TabsProps> = ({
             <span>{tab.label}</span>
             {tab.count !== undefined && (
               <span
-                className={`text-[11px] px-1.5 py-0.2 rounded-full tabular-nums font-semibold ${
+                className={`text-xs px-1.5 py-0.2 rounded-full tabular-nums font-semibold ${
                   isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
                 }`}
               >

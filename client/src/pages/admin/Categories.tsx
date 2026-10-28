@@ -286,7 +286,7 @@ export const CategoriesPage: React.FC = () => {
 
                     <td className="py-4 px-4 font-semibold text-ink font-mono tabular-nums">
                       ₹{(cat.baseFeePaise / 100).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
-                      <span className="block text-[11px] font-normal text-secondaryText font-mono">
+                      <span className="block text-xs font-normal text-secondaryText font-mono">
                         {cat.baseFeePaise.toLocaleString()} paise
                       </span>
                     </td>
@@ -376,7 +376,7 @@ export const CategoriesPage: React.FC = () => {
               required
             />
             {editingCategory && (
-              <p className="text-[11px] text-secondaryText mt-1">
+              <p className="text-xs text-secondaryText mt-1">
                 Slugs cannot be altered after creation to preserve relational integrity.
               </p>
             )}
@@ -401,7 +401,7 @@ export const CategoriesPage: React.FC = () => {
                 required
               />
             </div>
-            <p className="text-[11px] text-secondaryText mt-1 font-mono">
+            <p className="text-xs text-secondaryText mt-1 font-mono">
               Stored as{' '}
               <strong className="text-primary">
                 {(parseFloat(formData.baseFeeRupees || '0') * 100).toLocaleString()} paise

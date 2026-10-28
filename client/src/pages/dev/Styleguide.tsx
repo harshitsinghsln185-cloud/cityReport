@@ -257,9 +257,9 @@ export const Styleguide: React.FC = () => {
               >
                 <div>
                   <p className="font-semibold text-xs leading-tight">{s.name}</p>
-                  <p className="text-[11px] opacity-80 font-mono mt-0.5">{s.hex}</p>
+                  <p className="text-xs opacity-80 font-mono mt-0.5">{s.hex}</p>
                 </div>
-                <p className="text-[10px] opacity-75 font-mono">{s.token}</p>
+                <p className="text-xs opacity-75 font-mono">{s.token}</p>
               </div>
             ))}
           </div>

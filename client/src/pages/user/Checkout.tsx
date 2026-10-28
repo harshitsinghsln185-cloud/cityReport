@@ -284,7 +284,7 @@ export const Checkout: React.FC = () => {
               </div>
             </div>
 
-            <div className="text-[11px] text-muted pt-2 border-t border-border">
+            <div className="text-xs text-muted pt-2 border-t border-border">
               Upon advance payment confirmation, an immutable <strong>Invoice 1</strong> PDF receipt will be automatically generated and made available for instant download.
             </div>
           </Card>

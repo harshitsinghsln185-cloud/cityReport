@@ -57,7 +57,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
             </div>
 
             {/* Micro Trust Footer */}
-            <div className="mt-8 pt-6 border-t border-border flex items-center justify-between text-[11px] text-muted">
+            <div className="mt-8 pt-6 border-t border-border flex items-center justify-between text-xs text-muted">
               <span>Encrypted Session</span>
               <span>•</span>
               <span>50% Advance & Milestone Protection</span>
@@ -107,15 +107,15 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
             <div className="relative z-10 grid grid-cols-3 gap-4 pt-6 border-t border-white/10 text-center">
               <div>
                 <span className="block font-heading font-bold text-white text-base tabular-nums">36</span>
-                <span className="text-[11px] text-slate-400">States & UTs</span>
+                <span className="text-xs text-slate-400">States & UTs</span>
               </div>
               <div>
                 <span className="block font-heading font-bold text-emerald-400 text-base tabular-nums">100%</span>
-                <span className="text-[11px] text-slate-400">Photo Proof</span>
+                <span className="text-xs text-slate-400">Photo Proof</span>
               </div>
               <div>
                 <span className="block font-heading font-bold text-white text-base tabular-nums">50 / 50</span>
-                <span className="text-[11px] text-slate-400">Milestone Split</span>
+                <span className="text-xs text-slate-400">Milestone Split</span>
               </div>
             </div>
           </div>

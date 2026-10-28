@@ -182,7 +182,7 @@ export const IssueDetails: React.FC = () => {
         <div className="p-5 bg-gradient-to-r from-primary to-indigo text-white rounded-cardLg shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/20 uppercase tracking-wider">
+              <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-white/20 uppercase tracking-wider">
                 Action Required
               </span>
               <h2 className="text-base sm:text-lg font-heading font-bold text-white">
@@ -205,11 +205,11 @@ export const IssueDetails: React.FC = () => {
         <div className="p-5 bg-gradient-to-r from-indigo to-primary text-white rounded-cardLg shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/20 uppercase tracking-wider">
+              <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-white/20 uppercase tracking-wider">
                 Inspection & Settlement
               </span>
               <h2 className="text-base sm:text-lg font-heading font-bold text-white">
-                Remediation Complete — Balance Due
+                Repair Complete — Balance Due
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-slate-200 max-w-2xl leading-relaxed">
@@ -267,22 +267,22 @@ export const IssueDetails: React.FC = () => {
           </div>
 
           <div className="text-right sm:border-l sm:border-border sm:pl-6 shrink-0 pt-2 sm:pt-0">
-            <div className="text-[11px] text-muted uppercase font-bold tracking-wider">Total Quote</div>
-            <div className="text-2xl sm:text-3xl font-heading font-black text-primary tabular-nums mt-0.5">
+            <div className="text-xs text-muted uppercase font-bold tracking-wider">Total Quote</div>
+            <div className="text-2xl sm:text-3xl font-heading font-bold text-primary tabular-nums mt-0.5">
               {issue.fee?.totalPaise ? `₹${(issue.fee.totalPaise / 100).toLocaleString('en-IN')}` : 'Pending Quote'}
             </div>
             {issue.status === 'AwaitingAdvance' && issue.fee && (
-              <div className="text-[11px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full mt-1.5 border border-amber-200 inline-block">
+              <div className="text-xs font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full mt-1.5 border border-amber-200 inline-block">
                 Advance: ₹{(issue.fee.advancePaise / 100).toLocaleString('en-IN')} Due
               </div>
             )}
             {issue.status === 'BalanceDue' && issue.fee && (
-              <div className="text-[11px] font-bold text-indigo bg-primary/10 px-2.5 py-0.5 rounded-full mt-1.5 border border-primary/20 inline-block">
+              <div className="text-xs font-bold text-indigo bg-primary/10 px-2.5 py-0.5 rounded-full mt-1.5 border border-primary/20 inline-block">
                 Balance: ₹{(issue.fee.balancePaise / 100).toLocaleString('en-IN')} Due
               </div>
             )}
             {issue.status === 'Closed' && (
-              <div className="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full mt-1.5 border border-emerald-200 inline-block">
+              <div className="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full mt-1.5 border border-emerald-200 inline-block">
                 100% Settled & Closed
               </div>
             )}
@@ -308,7 +308,7 @@ export const IssueDetails: React.FC = () => {
                     />
                   </div>
                   <span
-                    className={`font-semibold text-[11px] block truncate ${
+                    className={`font-semibold text-xs block truncate ${
                       status === 'complete'
                         ? 'text-primary'
                         : status === 'cancelled'
@@ -344,7 +344,7 @@ export const IssueDetails: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center gap-1.5">
+              <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 <span>Municipal Geo-Verified</span>
               </span>
@@ -357,7 +357,7 @@ export const IssueDetails: React.FC = () => {
               beforeImage={beforePhotoUrl}
               afterImage={afterPhotoUrl}
               beforeLabel="Reported Defect"
-              afterLabel="Contractor Remediation"
+              afterLabel="Contractor Repair"
               title={issue.title}
               location={`${issue.address?.street}, ${issue.address?.city}`}
               date={
@@ -372,7 +372,7 @@ export const IssueDetails: React.FC = () => {
           {/* Contractor Remarks */}
           {issue.resolution?.remarks && (
             <div className="p-4 bg-canvas rounded-card border border-border text-xs text-ink space-y-1">
-              <div className="font-bold text-secondaryText uppercase tracking-wider text-[10px]">
+              <div className="font-bold text-secondaryText uppercase tracking-wider text-xs">
                 Contractor Completion Statement
               </div>
               <p className="italic text-xs sm:text-sm text-ink leading-relaxed">
@@ -428,7 +428,7 @@ export const IssueDetails: React.FC = () => {
                 <h2 className="font-heading font-bold text-base text-ink">
                   Initial Evidence Photos ({issue.images.length})
                 </h2>
-                <span className="text-[11px] text-muted">Uploaded on reporting</span>
+                <span className="text-xs text-muted">Uploaded on reporting</span>
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -469,7 +469,7 @@ export const IssueDetails: React.FC = () => {
               <h2 className="font-heading font-bold text-base text-ink">
                 Activity & Milestone Audit Log
               </h2>
-              <span className="text-[11px] text-muted">Immutable cryptographic record</span>
+              <span className="text-xs text-muted">Immutable cryptographic record</span>
             </div>
             <IssueTimeline timeline={timeline} />
           </Card>
@@ -501,12 +501,12 @@ export const IssueDetails: React.FC = () => {
                     <h3 className="font-bold text-xs text-ink">
                       Advance Tax Receipt
                     </h3>
-                    <p className="text-[11px] text-secondaryText">
+                    <p className="text-xs text-secondaryText">
                       Invoice 1 (50% Advance Paid)
                     </p>
                   </div>
                 </div>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+                <span className="text-xs font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
                   Paid
                 </span>
               </div>
@@ -536,12 +536,12 @@ export const IssueDetails: React.FC = () => {
                     <h3 className="font-bold text-xs text-ink">
                       Final Settlement Invoice
                     </h3>
-                    <p className="text-[11px] text-secondaryText">
+                    <p className="text-xs text-secondaryText">
                       Invoice 2 (Full Balance Settled)
                     </p>
                   </div>
                 </div>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-900 border border-emerald-200">
+                <span className="text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-900 border border-emerald-200">
                   Settled
                 </span>
               </div>
@@ -602,14 +602,14 @@ export const IssueDetails: React.FC = () => {
                   <h3 className="font-bold text-xs text-ink">
                     Resolution Quality Guarantee
                   </h3>
-                  <p className="text-[11px] text-secondaryText mt-0.5 leading-relaxed">
+                  <p className="text-xs text-secondaryText mt-0.5 leading-relaxed">
                     Has the defect re-emerged or failed inspection? Citizen reopen requests trigger immediate supervisor audit.
                   </p>
                 </div>
               </div>
 
               {issue.payoutStatus === 'Paid' ? (
-                <div className="p-2.5 bg-canvas border border-border rounded-lg text-[11px] text-muted text-center font-medium">
+                <div className="p-2.5 bg-canvas border border-border rounded-lg text-xs text-muted text-center font-medium">
                   🔒 Contractor payout settled. This incident is permanently archived.
                 </div>
               ) : (

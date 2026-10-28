@@ -161,11 +161,11 @@ export const StatesDirectory: React.FC = () => {
             <div className="grid grid-cols-2 gap-3 pt-1">
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
                 <div className="text-2xl font-bold font-heading text-white">28</div>
-                <div className="text-[11px] text-slate-300 font-medium">Sovereign States</div>
+                <div className="text-xs text-slate-300 font-medium">Sovereign States</div>
               </div>
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
                 <div className="text-2xl font-bold font-heading text-white">8</div>
-                <div className="text-[11px] text-slate-300 font-medium">Union Territories</div>
+                <div className="text-xs text-slate-300 font-medium">Union Territories</div>
               </div>
             </div>
             <p className="text-xs text-slate-300 leading-relaxed">
@@ -200,7 +200,7 @@ export const StatesDirectory: React.FC = () => {
                   >
                     <span>{zone.label}</span>
                     <span
-                      className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono tabular-nums ${
+                      className={`text-xs px-1.5 py-0.2 rounded-full font-mono tabular-nums ${
                         isActive ? 'bg-gold/20 text-gold' : 'bg-slate-200/80 text-muted'
                       }`}
                     >
@@ -484,14 +484,14 @@ const StateCard: React.FC<StateCardProps> = ({ state, idx }) => {
                 >
                   {state.type}
                 </Badge>
-                <span className="text-[11px] font-mono font-medium text-white/90 bg-black/40 backdrop-blur-xs px-2 py-0.5 rounded-full border border-white/20">
+                <span className="text-xs font-mono font-medium text-white/90 bg-black/40 backdrop-blur-xs px-2 py-0.5 rounded-full border border-white/20">
                   {state.region} Zone
                 </span>
               </div>
 
               {/* Landmark Caption Badge */}
               <div className="absolute bottom-2.5 left-3 right-3 z-10">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-sm border border-white/20 text-white text-[11px]">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-sm border border-white/20 text-white text-xs">
                   <Sparkles className="w-3 h-3 text-gold shrink-0" />
                   <span className="truncate font-medium">{landmarkInfo.landmark}</span>
                 </div>
@@ -524,7 +524,7 @@ const StateCard: React.FC<StateCardProps> = ({ state, idx }) => {
                 {state.civicPriorities.slice(0, 2).map((p) => (
                   <span
                     key={p.title}
-                    className="text-[10px] px-2 py-0.5 rounded-md bg-canvas text-secondaryText border border-border font-medium truncate max-w-[200px]"
+                    className="text-xs px-2 py-0.5 rounded-md bg-canvas text-secondaryText border border-border font-medium truncate max-w-[200px]"
                   >
                     {p.title}
                   </span>
@@ -540,19 +540,19 @@ const StateCard: React.FC<StateCardProps> = ({ state, idx }) => {
                 <span className="block font-heading font-semibold text-ink text-xs truncate">
                   {state.capital}
                 </span>
-                <span className="text-[10px] text-muted">Capital</span>
+                <span className="text-xs text-muted">Capital</span>
               </div>
               <div>
                 <span className="block font-heading font-bold text-ink text-xs tabular-nums">
                   {state.districtsCount}
                 </span>
-                <span className="text-[10px] text-muted">Districts</span>
+                <span className="text-xs text-muted">Districts</span>
               </div>
               <div>
                 <span className="block font-heading font-semibold text-ink text-xs truncate">
                   {state.population}
                 </span>
-                <span className="text-[10px] text-muted">Population</span>
+                <span className="text-xs text-muted">Population</span>
               </div>
             </div>
 

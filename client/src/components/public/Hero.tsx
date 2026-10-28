@@ -342,7 +342,7 @@ export const Hero: React.FC = () => {
                             <span className="p-1 rounded-md bg-white/10 text-lavender">
                               <IconComponent className="w-4 h-4 text-gold" />
                             </span>
-                            <span className="text-[11px] font-semibold text-lavender tracking-wide uppercase">
+                            <span className="text-xs font-semibold text-lavender tracking-wide uppercase">
                               {hotspot.category}
                             </span>
                           </div>
@@ -478,7 +478,7 @@ export const Hero: React.FC = () => {
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                 <div>
                   <p className="text-xs font-bold text-white leading-tight">Photo & GPS pin</p>
-                  <p className="text-[11px] text-slate-300">Geo-tagged evidence</p>
+                  <p className="text-xs text-slate-300">Geo-tagged evidence</p>
                 </div>
               </div>
 
@@ -486,7 +486,7 @@ export const Hero: React.FC = () => {
                 <Clock className="w-4 h-4 text-primary shrink-0" />
                 <div>
                   <p className="text-xs font-bold text-white leading-tight">Assigned local resolver</p>
-                  <p className="text-[11px] text-slate-300">Verified local dispatch</p>
+                  <p className="text-xs text-slate-300">Verified local dispatch</p>
                 </div>
               </div>
 
@@ -494,7 +494,7 @@ export const Hero: React.FC = () => {
                 <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
                 <div>
                   <p className="text-xs font-bold text-white leading-tight">50% advance and balance</p>
-                  <p className="text-[11px] text-slate-300">Balance paid on completion</p>
+                  <p className="text-xs text-slate-300">Balance paid on completion</p>
                 </div>
               </div>
             </div>

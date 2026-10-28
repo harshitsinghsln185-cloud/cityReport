@@ -137,7 +137,7 @@ export const TrackStatus: React.FC = () => {
           <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <span className="text-xs uppercase tracking-wider font-semibold text-gold">Public Ledger Standards</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 font-bold">Live SLA</span>
+              <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 font-bold">Live SLA</span>
             </div>
             <div className="space-y-2.5 text-xs text-slate-300">
               <div className="flex items-center justify-between">
@@ -220,7 +220,7 @@ export const TrackStatus: React.FC = () => {
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <h3 className="font-heading font-semibold text-base sm:text-lg text-ink">
-                      Remediation Milestone Status
+                      Repair Milestone Status
                     </h3>
                     <p className="text-xs text-muted">
                       Current State: <strong className="text-primary">{trackResult.status}</strong>
@@ -271,7 +271,7 @@ export const TrackStatus: React.FC = () => {
                           >
                             {m.label}
                           </span>
-                          <span className="text-[10px] text-muted hidden sm:inline mt-0.5">
+                          <span className="text-xs text-muted hidden sm:inline mt-0.5">
                             {m.desc}
                           </span>
                         </div>
@@ -372,7 +372,7 @@ export const TrackStatus: React.FC = () => {
                             <span className="text-xs font-bold text-ink uppercase tracking-wider">
                               {item.action?.replace(/_/g, ' ')}
                             </span>
-                            <span className="text-[11px] text-muted flex items-center gap-1 font-mono">
+                            <span className="text-xs text-muted flex items-center gap-1 font-mono">
                               <Calendar className="w-3 h-3 text-slate-400" />
                               {formatDate(item.createdAt)}
                             </span>
@@ -384,7 +384,7 @@ export const TrackStatus: React.FC = () => {
                             </p>
                           )}
 
-                          <div className="mt-2 text-[10px] text-muted flex items-center gap-1">
+                          <div className="mt-2 text-xs text-muted flex items-center gap-1">
                             <span>Status Transition:</span>
                             <span className="font-semibold text-slate-700">{item.fromStatus}</span>
                             <span>&rarr;</span>
