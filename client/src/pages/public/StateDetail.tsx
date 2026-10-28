@@ -12,6 +12,7 @@ import {
   Lock,
   ChevronRight,
   Building2,
+  CheckCircle2,
 } from 'lucide-react';
 import { getStateBySlug, STATES_DATA } from '../../data/statesData';
 import { getStateLandmark } from '../../data/landmarks';
@@ -23,6 +24,7 @@ import Accordion from '../../components/ui/Accordion';
 import SectionHeader from '../../components/ui/SectionHeader';
 import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
+import { BeforeAfterSlider } from '../../components/public/BeforeAfterSlider';
 import { SITE_URL } from '../../config/site';
 
 interface NavSection {
@@ -32,9 +34,10 @@ interface NavSection {
 
 const NAV_SECTIONS: NavSection[] = [
   { id: 'overview', label: 'Overview' },
-  { id: 'priorities', label: 'Civic Priorities' },
-  { id: 'resolvers', label: 'Resolver Network' },
-  { id: 'faqs', label: 'FAQs' },
+  { id: 'priorities', label: 'Wards & Priorities' },
+  { id: 'resolvers', label: 'Local Contractors' },
+  { id: 'showcase', label: 'Before/After Showcase' },
+  { id: 'faqs', label: 'State FAQs' },
 ];
 
 export const StateDetail: React.FC = () => {
@@ -97,10 +100,14 @@ export const StateDetail: React.FC = () => {
     );
   }
 
-  // Neighbor states for quick chronological navigation
-  const currentIndex = STATES_DATA.findIndex((s) => s.slug === stateData.slug);
-  const prevNeighbor = STATES_DATA[(currentIndex - 1 + STATES_DATA.length) % STATES_DATA.length];
-  const nextNeighbor = STATES_DATA[(currentIndex + 1) % STATES_DATA.length];
+  // Zone-filtered neighbor navigation within the same geographic zone
+  const zoneStates = useMemo(() => {
+    return STATES_DATA.filter((s) => s.region === stateData.region);
+  }, [stateData.region]);
+
+  const zoneCurrentIndex = zoneStates.findIndex((s) => s.slug === stateData.slug);
+  const zonePrev = zoneStates[(zoneCurrentIndex - 1 + zoneStates.length) % zoneStates.length];
+  const zoneNext = zoneStates[(zoneCurrentIndex + 1) % zoneStates.length];
 
   const faqAccordionItems = stateData.faqs.map((f, i) => ({
     id: `faq-${i}`,
@@ -557,6 +564,50 @@ export const StateDetail: React.FC = () => {
           </div>
         </section>
 
+        {/* Section 4: Before/After Showcase */}
+        <section id="showcase" className="scroll-mt-36">
+          <Reveal>
+            <SectionHeader
+              eyebrow="Verified Provenance"
+              eyebrowVariant="gold"
+              title={`Verified Repair Showcase in ${stateData.name}`}
+              subtitle={`Every civic work completed across ${stateData.name} requires photographic Before and After proof with GPS coordinates before final sign-off and balance payout.`}
+            />
+          </Reveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-surface p-6 sm:p-8 rounded-card border border-border shadow-subtle">
+            <div className="lg:col-span-5 space-y-4">
+              <Badge variant="navy" size="sm">
+                {stateData.region} Zone Proof
+              </Badge>
+              <h3 className="font-heading font-bold text-xl text-ink">
+                Photographic Evidence Before Final Balance Release
+              </h3>
+              <p className="text-xs text-secondaryText leading-relaxed">
+                Civic repairs conducted in {stateData.name} follow our two-stage inspection protocol. Citizens and admins verify photographic alignment with exact GPS coordinates before the remaining 50% contractor payout is approved.
+              </p>
+              <div className="space-y-2 pt-2 text-xs text-secondaryText">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
+                  <span>Geotagged timestamp matching initial hazard ticket</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
+                  <span>Photo verification sign-off prior to balance payout</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
+                  <span>Permanent public audit trail</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7">
+              <BeforeAfterSlider />
+            </div>
+          </div>
+        </section>
+
         {/* Section 5: State-Specific FAQ Accordion */}
         <section id="faqs" className="scroll-mt-36">
           <Reveal>
@@ -575,29 +626,35 @@ export const StateDetail: React.FC = () => {
           </Reveal>
         </section>
 
-        {/* Regional Navigation Links (Previous & Next States) */}
-        <div className="pt-6 border-t border-border flex items-center justify-between text-xs">
+        {/* Regional Navigation Links (Within Same Geographic Zone) */}
+        <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
           <Link
-            to={`/states/${prevNeighbor.slug}`}
-            className="flex items-center gap-1.5 text-secondaryText hover:text-primary transition-colors font-medium"
+            to={`/states/${zonePrev.slug}`}
+            className="flex items-center gap-2 text-secondaryText hover:text-primary transition-colors font-medium p-2 rounded-lg hover:bg-canvas"
           >
-            <ChevronLeft className="w-4 h-4" />
-            <span>Previous: {prevNeighbor.name}</span>
+            <ChevronLeft className="w-4 h-4 text-primary" />
+            <div className="text-left">
+              <span className="block text-xs text-muted uppercase tracking-wider font-semibold">Prev in {stateData.region} Zone</span>
+              <span className="font-semibold text-ink">{zonePrev.name}</span>
+            </div>
           </Link>
 
           <Link
-            to="/states"
-            className="text-secondaryText hover:text-ink font-semibold uppercase tracking-wider"
+            to={`/states?zone=${stateData.region}`}
+            className="px-4 py-2 rounded-full bg-canvas text-secondaryText hover:text-ink font-semibold uppercase tracking-wider text-xs border border-border hover:border-primary/30 transition-colors"
           >
-            All 36 States & UTs
+            All {zoneStates.length} {stateData.region} States
           </Link>
 
           <Link
-            to={`/states/${nextNeighbor.slug}`}
-            className="flex items-center gap-1.5 text-secondaryText hover:text-primary transition-colors font-medium"
+            to={`/states/${zoneNext.slug}`}
+            className="flex items-center gap-2 text-secondaryText hover:text-primary transition-colors font-medium p-2 rounded-lg hover:bg-canvas"
           >
-            <span>Next: {nextNeighbor.name}</span>
-            <ArrowRight className="w-4 h-4" />
+            <div className="text-right">
+              <span className="block text-xs text-muted uppercase tracking-wider font-semibold">Next in {stateData.region} Zone</span>
+              <span className="font-semibold text-ink">{zoneNext.name}</span>
+            </div>
+            <ArrowRight className="w-4 h-4 text-primary" />
           </Link>
         </div>
       </div>

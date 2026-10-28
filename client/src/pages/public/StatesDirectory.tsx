@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import {
   Search,
@@ -23,6 +23,15 @@ import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
 import { SITE_URL } from '../../config/site';
 
+export const ZONE_STYLES: Record<RegionType, { badge: string }> = {
+  North: { badge: 'bg-[#1D4ED8]/30 text-[#93C5FD] border-[#1D4ED8]/50' },
+  South: { badge: 'bg-[#0E6E4C]/30 text-[#A7F3D0] border-[#0E6E4C]/50' },
+  East: { badge: 'bg-[#B54708]/30 text-[#FDE68A] border-[#B54708]/50' },
+  West: { badge: 'bg-[#0E7490]/30 text-[#A5F3FC] border-[#0E7490]/50' },
+  Central: { badge: 'bg-[#78350F]/30 text-[#FCD34D] border-[#78350F]/50' },
+  Northeast: { badge: 'bg-[#9F1239]/30 text-[#FECDD3] border-[#9F1239]/50' },
+};
+
 const ZONES: { id: 'All' | RegionType; label: string; description: string }[] = [
   { id: 'All', label: 'All India', description: 'Complete directory of 28 states and 8 union territories' },
   { id: 'North', label: 'North Zone', description: 'Delhi NCR, Himalayan states, and northern agricultural plains' },
@@ -38,13 +47,32 @@ export const StatesDirectory: React.FC = () => {
   const initialZone = (searchParams.get('zone') as RegionType) || 'All';
 
   const [searchQuery, setSearchQuery] = useState('');
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const [selectedRegion, setSelectedRegion] = useState<'All' | RegionType>(
     ['North', 'South', 'East', 'West', 'Central', 'Northeast'].includes(initialZone) ? initialZone : 'All'
   );
   const [selectedType, setSelectedType] = useState<'All' | StateType>('All');
   const [sortBy, setSortBy] = useState<'name' | 'districts'>('name');
 
-  // Sync state changes with URL query
+  // Keyboard shortcut '/' to jump to search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === '/') {
+        const target = e.target as HTMLElement;
+        const isInput =
+          target &&
+          (['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName) || target.isContentEditable);
+        if (!isInput) {
+          e.preventDefault();
+          searchInputRef.current?.focus();
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Sync state changes with URL query parameter
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
     if (selectedRegion === 'All') {
@@ -54,6 +82,18 @@ export const StatesDirectory: React.FC = () => {
     }
     setSearchParams(params, { replace: true });
   }, [selectedRegion]);
+
+  // Sync URL query changes to state (back/forward browser nav)
+  useEffect(() => {
+    const zoneFromUrl = searchParams.get('zone') as RegionType | null;
+    if (zoneFromUrl && ['North', 'South', 'East', 'West', 'Central', 'Northeast'].includes(zoneFromUrl)) {
+      if (selectedRegion !== zoneFromUrl) {
+        setSelectedRegion(zoneFromUrl);
+      }
+    } else if (!zoneFromUrl && selectedRegion !== 'All') {
+      setSelectedRegion('All');
+    }
+  }, [searchParams]);
 
   const zoneCounts = useMemo(() => {
     const counts: Record<string, number> = { All: STATES_DATA.length };
@@ -139,7 +179,7 @@ export const StatesDirectory: React.FC = () => {
         eyebrow="Nationwide Civic Infrastructure"
         eyebrowIcon={<MapPin className="w-3.5 h-3.5" />}
         title="Monitor Municipal Health Across 36 Indian Regions"
-        description="Access certified resolver networks, localized civic priorities, landmark photographic banners, and audited proof in all 28 states and 8 union territories under standardized Schedule of Rates (SOR)."
+        description="Access certified resolver networks, localized civic priorities, landmark photographic banners, and verified proof in all 28 states and 8 union territories with standardized pricing lists."
         primaryAction={
           <a href="#zone-switcher">
             <Button variant="gold" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
@@ -155,13 +195,13 @@ export const StatesDirectory: React.FC = () => {
         visual={
           <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Pan-India Jurisdiction</span>
+              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Pan-India Coverage</span>
               <Badge variant="gold" size="sm">36 Total</Badge>
             </div>
             <div className="grid grid-cols-2 gap-3 pt-1">
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
                 <div className="text-2xl font-bold font-heading text-white">28</div>
-                <div className="text-xs text-slate-300 font-medium">Sovereign States</div>
+                <div className="text-xs text-slate-300 font-medium">States</div>
               </div>
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
                 <div className="text-2xl font-bold font-heading text-white">8</div>
@@ -169,7 +209,7 @@ export const StatesDirectory: React.FC = () => {
               </div>
             </div>
             <p className="text-xs text-slate-300 leading-relaxed">
-              Every jurisdiction operates under verified milestone payments (50% advance, 50% balance) and photo verification standards.
+              Every region operates under verified milestone payments (50% advance, 50% balance) and photo verification standards.
             </p>
           </div>
         }
@@ -280,13 +320,14 @@ export const StatesDirectory: React.FC = () => {
             <div className="relative flex-1 max-w-lg">
               <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-muted" />
               <input
+                ref={searchInputRef}
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search state name, capital, or landmark (e.g. Bengaluru, Assam, Taj)..."
-                className="w-full pl-10 pr-4 py-2.5 text-sm rounded-lg border border-border focus:outline-none focus-visible:ring-2 focus-visible:ring-primary bg-canvas/40"
+                className="w-full pl-10 pr-16 py-2.5 text-sm rounded-lg border border-border focus:outline-none focus-visible:ring-2 focus-visible:ring-primary bg-canvas/40"
               />
-              {searchQuery && (
+              {searchQuery ? (
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
@@ -294,6 +335,12 @@ export const StatesDirectory: React.FC = () => {
                 >
                   Clear
                 </button>
+              ) : (
+                <div className="hidden sm:flex items-center absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <kbd className="px-1.5 py-0.5 text-xs font-mono text-muted bg-canvas border border-border rounded shadow-xs" title="Press / to search">
+                    /
+                  </kbd>
+                </div>
               )}
             </div>
 
@@ -484,7 +531,9 @@ const StateCard: React.FC<StateCardProps> = ({ state, idx }) => {
                 >
                   {state.type}
                 </Badge>
-                <span className="text-xs font-mono font-medium text-white/90 bg-black/40 backdrop-blur-xs px-2 py-0.5 rounded-full border border-white/20">
+                <span
+                  className={`text-xs font-mono font-medium backdrop-blur-xs px-2.5 py-0.5 rounded-full border shadow-xs ${ZONE_STYLES[state.region]?.badge || 'bg-black/40 text-white/90 border-white/20'}`}
+                >
                   {state.region} Zone
                 </span>
               </div>
