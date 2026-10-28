@@ -1,49 +1,51 @@
 import React from 'react';
-import { ShieldCheck, Star, CheckCircle2, Quote, Award } from 'lucide-react';
+import { Camera, ShieldCheck, UserCheck, Search, FileText, CheckCircle2 } from 'lucide-react';
 import Card from '../ui/Card';
 import SectionHeader from '../ui/SectionHeader';
 import Reveal from '../ui/Reveal';
 
-interface Testimonial {
-  name: string;
-  role: string;
-  location: string;
-  quote: string;
-  hazardType: string;
-  rating: number;
-  timeToResolve: string;
+interface ProtectionPillar {
+  title: string;
+  description: string;
+  badge: string;
+  icon: React.FC<{ className?: string }>;
 }
 
-const TESTIMONIALS: Testimonial[] = [
+const PROTECTION_PILLARS: ProtectionPillar[] = [
   {
-    name: 'Dr. Radhika Sen',
-    role: 'Resident Welfare Association President',
-    location: 'Indiranagar 2nd Stage, Bengaluru',
-    hazardType: 'Cave-in & Storm Drain Collapse',
-    quote:
-      'We had been sending physical letters to the municipal ward office for 4 months with zero follow-through. Through Crowd Report, the exact geo-tagged coordinates and photo evidence triggered an escrow-backed work order in 6 hours. The contractor completed the concrete culvert in 48 hours.',
-    rating: 5,
-    timeToResolve: 'Resolved in 48h',
+    title: 'Photo & Location Evidence',
+    description:
+      'Every civic report requires geo-tagged physical photos and exact street coordinates, ensuring resolvers dispatch to the precise defect site.',
+    badge: 'Verified Submission',
+    icon: Camera,
   },
   {
-    name: 'Amitabh Mukherjee',
-    role: 'Commercial Market Association Secretary',
-    location: 'Sector 18, Noida, Uttar Pradesh',
-    hazardType: 'Exposed Commercial High-Voltage Cables',
-    quote:
-      'The 50% advance escrow system is revolutionary. Unlike typical public tenders where funds disappear, our association could see that the money was locked until the municipal inspector approved the Before and After high-resolution photo proof.',
-    rating: 5,
-    timeToResolve: 'Resolved in 26h',
+    title: '50% Advance & Completion Balance',
+    description:
+      'Pay 50% advance to initiate contractor mobilization. The remaining 50% balance is payable only after you inspect and accept completion photos.',
+    badge: 'Milestone Payments',
+    icon: ShieldCheck,
   },
   {
-    name: 'Kavitha Ramachandran',
-    role: 'Citizen Reporter & School Trustee',
-    location: 'Anna Nagar West, Chennai',
-    hazardType: 'Hazardous Open Manhole near Primary School',
-    quote:
-      'The speed was astounding. I reported an open manhole at 8:00 AM on my commute. By 11:30 AM, a certified local resolver was on site installing a reinforced cast-iron cover. The tracking code kept our entire neighborhood informed.',
-    rating: 5,
-    timeToResolve: 'Resolved in 3.5h',
+    title: 'Admin Verification Review',
+    description:
+      'Platform administrators examine Before and After photographic proofs and contractor completion notes prior to closing any issue.',
+    badge: 'Photo Verified',
+    icon: UserCheck,
+  },
+  {
+    title: 'Real-Time Status Tracking',
+    description:
+      'Use your unique tracking code to follow every dispatch update, resolver acceptance, on-site arrival, and resolution timestamp.',
+    badge: 'Public Transparency',
+    icon: Search,
+  },
+  {
+    title: 'Itemized GST Invoices',
+    description:
+      'Every paid milestone generates an official, downloadable GST tax invoice with an itemized breakdown of base service fee and travel rate.',
+    badge: 'Audit Trail',
+    icon: FileText,
   },
 ];
 
@@ -53,118 +55,52 @@ export const TestimonialsTrust: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal>
           <SectionHeader
-            eyebrow="Verified Civic Impact"
-            eyebrowVariant="violet"
-            title="Trusted by Citizens, Resident Welfare Associations & Ward Councils"
-            subtitle="Real outcomes from neighborhood leaders who used Crowd Report to eliminate chronic hazards with mathematical transparency."
+            eyebrow="Platform Protection"
+            eyebrowVariant="neutral"
+            title="How We Protect Citizens & Resolvers"
+            subtitle="Every repair on Crowd Report is backed by physical verification, milestone funding, and complete transparency."
             align="center"
           />
         </Reveal>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {TESTIMONIALS.map((t, idx) => (
-            <Reveal key={t.name} delay={idx * 0.1}>
-              <Card
-                variant="base"
-                className="h-full flex flex-col justify-between bg-gradient-to-b from-white via-white to-[#5B4FE1]/5 border border-border hover:border-[#5B4FE1]/50 hover:shadow-cardHover transition-all duration-200 relative overflow-hidden"
-              >
-                {/* Decorative top accent hairline */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-navy via-[#5B4FE1] to-gold opacity-80" />
-
-                <div>
-                  {/* Star Rating & SLA tag */}
-                  <div className="flex items-center justify-between gap-2 mb-4 pt-1">
-                    <div className="flex items-center gap-1 text-gold">
-                      {[...Array(t.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-current" />
-                      ))}
+        {/* Protection Pillars Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {PROTECTION_PILLARS.map((pillar, idx) => {
+            const Icon = pillar.icon;
+            return (
+              <Reveal key={pillar.title} delay={idx * 0.08}>
+                <Card
+                  variant="base"
+                  className="h-full flex flex-col justify-between bg-surface border border-border hover:shadow-cardHover transition-all duration-200 p-6"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-4">
+                      <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <span className="text-xs font-semibold text-primary bg-primary/5 px-2.5 py-1 rounded-full border border-primary/15">
+                        {pillar.badge}
+                      </span>
                     </div>
-                    <span className="text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
-                      {t.timeToResolve}
-                    </span>
-                  </div>
 
-                  {/* Hazard context tag */}
-                  <div className="text-xs font-semibold text-primary mb-2 flex items-center gap-1.5">
-                    <Quote className="w-3.5 h-3.5 text-[#5B4FE1] shrink-0" />
-                    <span>{t.hazardType}</span>
-                  </div>
+                    <h3 className="font-heading font-semibold text-base text-ink mb-2">
+                      {pillar.title}
+                    </h3>
 
-                  {/* Body quote */}
-                  <p className="text-sm text-secondaryText leading-relaxed mb-6 italic">
-                    "{t.quote}"
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-border flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-navy to-[#5B4FE1] text-white font-heading font-bold flex items-center justify-center shrink-0 shadow-xs">
-                    {t.name.charAt(0)}
-                  </div>
-                  <div className="min-w-0">
-                    <p className="font-heading font-semibold text-sm text-ink truncate flex items-center gap-1.5">
-                      <span>{t.name}</span>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <p className="text-xs sm:text-sm text-secondaryText leading-relaxed">
+                      {pillar.description}
                     </p>
-                    <p className="text-[11px] text-muted truncate">{t.role}</p>
-                    <p className="text-[11px] text-slate-400 truncate">{t.location}</p>
                   </div>
-                </div>
-              </Card>
-            </Reveal>
-          ))}
+
+                  <div className="pt-4 mt-4 border-t border-border flex items-center gap-2 text-xs text-muted">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>Standard platform safeguard</span>
+                  </div>
+                </Card>
+              </Reveal>
+            );
+          })}
         </div>
-
-        {/* Civic Technical Governance & Compliance Seals (SVG Only) */}
-        <Reveal delay={0.3}>
-          <div className="pt-10 border-t border-border/80">
-            <p className="text-center text-xs font-semibold uppercase tracking-wider text-muted mb-6">
-              Standards & Civic Governance Compliance
-            </p>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <div className="p-4 rounded-xl bg-gradient-to-br from-white to-[#5B4FE1]/5 border border-border hover:border-[#5B4FE1]/40 transition-all flex items-center gap-3 text-left shadow-xs">
-                <div className="w-9 h-9 rounded-lg bg-[#5B4FE1]/10 text-[#5B4FE1] flex items-center justify-center shrink-0">
-                  <ShieldCheck className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-ink leading-tight">Escrow Protected</p>
-                  <p className="text-[10px] text-muted">Paise-Exact Escrow Gate</p>
-                </div>
-              </div>
-
-              <div className="p-4 rounded-xl bg-gradient-to-br from-white to-[#5B4FE1]/5 border border-border hover:border-[#5B4FE1]/40 transition-all flex items-center gap-3 text-left shadow-xs">
-                <div className="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                  <Award className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-ink leading-tight">Vetted Contractors</p>
-                  <p className="text-[10px] text-muted">Municipal Skills Registry</p>
-                </div>
-              </div>
-
-              <div className="p-4 rounded-xl bg-gradient-to-br from-white to-[#5B4FE1]/5 border border-border hover:border-[#5B4FE1]/40 transition-all flex items-center gap-3 text-left shadow-xs">
-                <div className="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-ink leading-tight">Photo Audited</p>
-                  <p className="text-[10px] text-muted">Geo-Tagged & Timestamped</p>
-                </div>
-              </div>
-
-              <div className="p-4 rounded-xl bg-white border border-border flex items-center gap-3 text-left">
-                <div className="w-9 h-9 rounded-lg bg-gold/10 text-gold flex items-center justify-center shrink-0">
-                  <ShieldCheck className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-ink leading-tight">All 36 States/UTs</p>
-                  <p className="text-[10px] text-muted">India-Wide Coverage</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

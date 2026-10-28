@@ -105,7 +105,7 @@ export const TrackStatus: React.FC = () => {
 
   const milestones = [
     { label: 'Reported', desc: 'GPS Pin & Photos' },
-    { label: 'Quoted', desc: '50% Escrow Gate' },
+    { label: 'Quoted', desc: '50% Advance Due' },
     { label: 'In Progress', desc: 'Contractor On-Site' },
     { label: 'Resolved', desc: 'Before/After Proof' },
     { label: 'Verified', desc: 'Closed & Audited' },
@@ -132,7 +132,7 @@ export const TrackStatus: React.FC = () => {
         eyebrow="Public Verification Ledger"
         eyebrowIcon={<Clock className="w-3.5 h-3.5" />}
         title="Inspect Live Remediation & Milestone Progress"
-        description="Enter your unique tracking reference code to audit contractor dispatch timestamps, before/after photographic proof, and escrow verification receipts in real time."
+        description="Enter your unique tracking reference code to audit contractor dispatch timestamps, before/after photographic proof, and milestone completion receipts in real time."
         visual={
           <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
@@ -149,7 +149,7 @@ export const TrackStatus: React.FC = () => {
                 <span className="font-semibold text-white">Geotagged Camera EXIF</span>
               </div>
               <div className="flex items-center justify-between">
-                <span>Escrow Release:</span>
+                <span>Balance Release:</span>
                 <span className="font-semibold text-white">Citizen / Admin Sign-off</span>
               </div>
             </div>
@@ -196,7 +196,7 @@ export const TrackStatus: React.FC = () => {
 
             <div className="mt-3 flex items-center justify-between text-xs text-muted">
               <span>Format: <code className="text-primary font-mono font-semibold">CR-YYYY-XXXXXX</code></span>
-              <span className="hidden sm:inline">Updated automatically upon municipal inspector sign-off</span>
+              <span className="hidden sm:inline">Updated automatically upon admin verification sign-off</span>
             </div>
           </Card>
         </Reveal>
@@ -341,7 +341,7 @@ export const TrackStatus: React.FC = () => {
                       Audit Trail & Status Transitions
                     </h3>
                     <p className="text-xs text-muted">
-                      Immutable timestamped event records logged by citizens, contractors, and inspectors.
+                      Immutable timestamped event records logged by citizens, contractors, and platform administrators.
                     </p>
                   </div>
                   <div className="w-9 h-9 rounded-xl bg-lavender text-primary flex items-center justify-center">

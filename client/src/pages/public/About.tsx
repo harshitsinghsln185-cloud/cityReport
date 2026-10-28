@@ -16,7 +16,6 @@ import Badge from '../../components/ui/Badge';
 import SectionHeader from '../../components/ui/SectionHeader';
 import Reveal from '../../components/ui/Reveal';
 import PageHero from '../../components/ui/PageHero';
-import AnimatedCounter from '../../components/ui/AnimatedCounter';
 import SEO from '../../components/SEO';
 import { SITE_URL } from '../../config/site';
 
@@ -25,11 +24,11 @@ export const About: React.FC = () => {
     <div className="bg-canvas min-h-screen">
       <SEO
         title="About & Municipal Accountability Architecture"
-        description="Learn how Crowd Report combines mathematical Schedule of Rates (SOR), escrow-backed contractor disbursements, and photographic audit verification to fix urban infrastructure."
+        description="Learn how Crowd Report combines upfront fee estimation, milestone contractor payments, and photographic verification to fix urban infrastructure."
         keywords={[
           'civic accountability',
           'municipal workflow',
-          'escrow contractor payments',
+          'milestone contractor payments',
           'photographic audit verification',
           'civic technology India',
         ]}
@@ -57,7 +56,7 @@ export const About: React.FC = () => {
             '@type': 'AboutPage',
             name: 'About Crowd Report Municipal Governance Platform',
             description:
-              'Crowd Report is an enterprise civic infrastructure network bridging citizens with verified municipal contractors.',
+              'Crowd Report is a civic infrastructure platform connecting citizens with verified local contractors.',
           },
         ]}
       />
@@ -67,10 +66,10 @@ export const About: React.FC = () => {
         variant="split"
         theme="navy"
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About & Governance' }]}
-        eyebrow="Mathematical Civic Governance"
+        eyebrow="Civic Problem Reporting"
         eyebrowIcon={<Lock className="w-3.5 h-3.5" />}
-        title="Built for Transparency, Backed by Milestone Escrow"
-        description="Crowd Report bridges the divide between citizens dealing with hazardous neighborhood defects and certified municipal contractors through strict integer paise accounting and double-verified photographic proof."
+        title="Built for Transparency, Backed by Milestone Payments"
+        description="Crowd Report bridges the divide between citizens dealing with hazardous neighborhood defects and certified local contractors through transparent pricing and double-verified photographic proof."
         primaryAction={
           <a href="#operating-model">
             <Button variant="gold" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
@@ -88,21 +87,21 @@ export const About: React.FC = () => {
         visual={
           <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Escrow Governance Model</span>
+              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Milestone Payment Model</span>
               <Badge variant="gold" size="sm">50% Advance</Badge>
             </div>
             <div className="space-y-3 text-xs text-slate-300">
               <div className="flex items-start gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
-                <span><strong className="text-white">Milestone Gate:</strong> Initial 50% mobilization locked before contractor site departure.</span>
+                <span><strong className="text-white">Milestone Advance:</strong> Initial 50% advance mobilization to start work on site.</span>
               </div>
               <div className="flex items-start gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5" />
-                <span><strong className="text-white">Audit Protocol:</strong> GPS-stamped before &amp; after comparison by citizen and city admin.</span>
+                <span><strong className="text-white">Photo Verification:</strong> Timestamped Before and After photo comparison reviewed by admin.</span>
               </div>
               <div className="flex items-start gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5" />
-                <span><strong className="text-white">Paise Accounting:</strong> Zero floating-point rounding errors across disbursements.</span>
+                <span><strong className="text-white">Direct Payout:</strong> Balance released to verified resolver upon confirmed completion.</span>
               </div>
             </div>
           </div>
@@ -116,34 +115,34 @@ export const About: React.FC = () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-5 rounded-card bg-white border border-border shadow-subtle mb-16">
             <div className="p-4 text-center">
               <p className="font-heading font-bold text-3xl sm:text-4xl text-primary tabular-nums mb-1">
-                <AnimatedCounter value={12480} suffix="+" />
-              </p>
-              <p className="text-xs text-muted font-medium">Hazards Remediated</p>
-              <p className="text-[11px] text-emerald-600 font-medium mt-1">100% Photo Proof Verified</p>
-            </div>
-
-            <div className="p-4 text-center border-l-0 sm:border-l border-border">
-              <p className="font-heading font-bold text-3xl sm:text-4xl text-primary tabular-nums mb-1">
-                <AnimatedCounter value={36} />
+                36
               </p>
               <p className="text-xs text-muted font-medium">States & UTs Covered</p>
               <p className="text-[11px] text-muted mt-1">Nationwide Geo-Registry</p>
             </div>
 
-            <div className="p-4 text-center border-t sm:border-t-0 lg:border-l border-border">
+            <div className="p-4 text-center border-l-0 sm:border-l border-border">
               <p className="font-heading font-bold text-3xl sm:text-4xl text-emerald-600 tabular-nums mb-1">
-                <AnimatedCounter value={99.4} decimals={1} suffix="%" />
+                100%
               </p>
-              <p className="text-xs text-muted font-medium">Verified SLA Compliance</p>
-              <p className="text-[11px] text-emerald-600 font-medium mt-1">Within 24–48 Hours</p>
+              <p className="text-xs text-muted font-medium">Photo Proof Required</p>
+              <p className="text-[11px] text-emerald-600 font-medium mt-1">Before & After Verified</p>
+            </div>
+
+            <div className="p-4 text-center border-t sm:border-t-0 lg:border-l border-border">
+              <p className="font-heading font-bold text-3xl sm:text-4xl text-primary tabular-nums mb-1">
+                50 / 50
+              </p>
+              <p className="text-xs text-muted font-medium">Milestone Split</p>
+              <p className="text-[11px] text-primary font-medium mt-1">Advance & Completion</p>
             </div>
 
             <div className="p-4 text-center border-t sm:border-t-0 lg:border-l border-border">
               <p className="font-heading font-bold text-3xl sm:text-4xl text-gold tabular-nums mb-1">
-                ₹0
+                GST
               </p>
-              <p className="text-xs text-muted font-medium">Unverified Fund Leakage</p>
-              <p className="text-[11px] text-muted mt-1">Paise-Exact Escrow Gate</p>
+              <p className="text-xs text-muted font-medium">Itemized Invoices</p>
+              <p className="text-[11px] text-muted mt-1">Full Tax Breakdown</p>
             </div>
           </div>
         </Reveal>
@@ -155,7 +154,7 @@ export const About: React.FC = () => {
               eyebrow="The Civic Reality"
               eyebrowVariant="violet"
               title="Traditional Bureaucracy vs. The Crowd Report Standard"
-              subtitle="Why civic problem reporting historically stalled, and how our escrow-backed model delivers guaranteed remediation."
+              subtitle="Why civic problem reporting historically stalled, and how our milestone model delivers verified remediation."
               align="center"
             />
           </Reveal>
@@ -203,19 +202,19 @@ export const About: React.FC = () => {
                 <ul className="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
                   <li className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 mt-2" />
-                    <span><strong>Paise-Exact Escrow:</strong> 50% advance locked in a segregated civic escrow gate until completion. Zero contractor payout without approved verification.</span>
+                    <span><strong>Milestone Payments:</strong> 50% advance to initiate repair work; 50% balance payable only after completion photos are submitted and verified.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 mt-2" />
-                    <span><strong>Geo-Tagged Photographic Proof:</strong> Mandatory high-resolution Before and After photos with EXIF timestamp and GPS coordinate matching.</span>
+                    <span><strong>Geo-Tagged Photographic Proof:</strong> Mandatory high-resolution Before and After photos with timestamp and location coordinates.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 mt-2" />
-                    <span><strong>Accredited Resolver Pool:</strong> Every resolver is identity-vetted, holds municipal trade registrations, and operates within a 25 km radius.</span>
+                    <span><strong>Accredited Resolver Pool:</strong> Every resolver is identity-vetted, holds verified trade registrations, and operates within a local service radius.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 mt-2" />
-                    <span><strong>7-Day Inspection Reopen Window:</strong> Citizens have a binding quality review window to dispute or reopen unsatisfactory repairs.</span>
+                    <span><strong>7-Day Inspection Reopen Window:</strong> Citizens have a quality review window to dispute or reopen unsatisfactory repairs before closure.</span>
                   </li>
                 </ul>
               </Card>
@@ -255,10 +254,10 @@ export const About: React.FC = () => {
                   <Lock className="w-6 h-6" />
                 </div>
                 <h3 className="font-heading font-semibold text-lg text-ink mb-2">
-                  Escrow Guarantee
+                  Milestone Guarantee
                 </h3>
                 <p className="text-xs text-secondaryText leading-relaxed">
-                  All transaction values are calculated in integer paise. The 50% advance remains escrowed until the physical hazard is verified by supervisory inspectors and the citizen reporter.
+                  All transaction values are calculated in integer paise. The 50% advance initiates work, and the remaining 50% balance is payable only after physical repair is verified with photographic proof.
                 </p>
               </Card>
             </Reveal>
@@ -269,10 +268,10 @@ export const About: React.FC = () => {
                   <FileText className="w-6 h-6" />
                 </div>
                 <h3 className="font-heading font-semibold text-lg text-ink mb-2">
-                  Deterministic SOR Pricing
+                  Upfront Fee Estimation
                 </h3>
                 <p className="text-xs text-secondaryText leading-relaxed">
-                  Quotes are calculated automatically from official municipal Schedule of Rates (SOR). No contractor haggling, no unexpected surcharges, and instant GST invoices generated.
+                  Quotes are calculated transparently with category base fees and travel distance rates. No contractor haggling, no unexpected surcharges, and instant GST invoices generated.
                 </p>
               </Card>
             </Reveal>
@@ -292,7 +291,7 @@ export const About: React.FC = () => {
                   Are You a Certified Municipal Contractor or Tradesperson?
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Join our nationwide network of accredited problem solvers. Gain direct access to verified neighborhood repair assignments in your ward, guaranteed advance escrow, and weekly direct-to-bank payouts.
+                  Join our nationwide network of accredited problem solvers. Gain direct access to verified neighborhood repair assignments in your ward, guaranteed milestone payouts, and weekly direct-to-bank disbursements.
                 </p>
               </div>
 

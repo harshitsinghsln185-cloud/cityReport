@@ -85,7 +85,7 @@ export const AdminDashboard: React.FC = () => {
             Platform Command Center
           </h1>
           <p className="text-sm text-secondaryText mt-0.5">
-            Real-time civic operations triage, contractor assignment dispatch, and Escrow fund governance
+            Real-time civic operations triage, contractor assignment dispatch, and payment milestone governance
           </p>
         </div>
 
@@ -355,8 +355,8 @@ export const AdminDashboard: React.FC = () => {
                     <Sliders className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-ink group-hover:text-primary transition-colors">Fee Calculation Engine (SOR)</h4>
-                    <p className="text-[11px] text-secondaryText">Per-km rates, severity multipliers, escrow</p>
+                    <h4 className="text-xs font-bold text-ink group-hover:text-primary transition-colors">Fee Calculation Engine</h4>
+                    <p className="text-[11px] text-secondaryText">Per-km rates, severity multipliers, milestones</p>
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-secondaryText group-hover:text-primary transition-colors" />

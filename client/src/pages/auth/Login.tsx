@@ -55,9 +55,6 @@ export const Login: React.FC = () => {
       title="Sign In to Portal"
       subtitle="Access citizen reports, contractor dispatch console, or municipal operations"
       badgeText="Secure Identity Gateway"
-      testimonialQuote="The transparent 50% escrow and GPS-tagged photo verification eliminated 6 months of traditional municipal delays. Our Indiranagar street defect was repaired in 28 hours."
-      testimonialAuthor="Dr. Radhika Sen"
-      testimonialRole="RWA President, Ward 82 Bengaluru"
     >
       <SEO
         title="Sign In"

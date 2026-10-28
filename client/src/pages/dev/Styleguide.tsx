@@ -21,7 +21,7 @@ export const Styleguide: React.FC = () => {
     { name: 'Muted (Secondary)', hex: '#5B6577', token: '--color-muted', text: '#FFFFFF' },
     { name: 'Hairline Border', hex: '#E7E2D6', token: '--color-border', text: '#101828' },
     { name: 'Success (Verified)', hex: '#0E6E4C', token: '--color-success', text: '#FFFFFF' },
-    { name: 'Warning (Escrow Gate)', hex: '#B54708', token: '--color-warning', text: '#FFFFFF' },
+    { name: 'Warning (Advance Due)', hex: '#B54708', token: '--color-warning', text: '#FFFFFF' },
     { name: 'Danger (Critical Hazard)', hex: '#B42318', token: '--color-danger', text: '#FFFFFF' },
     { name: 'Info (In Review)', hex: '#1D4ED8', token: '--color-info', text: '#FFFFFF' },
   ];
@@ -278,7 +278,7 @@ export const Styleguide: React.FC = () => {
             <div>
               <p className="text-xs font-mono text-muted uppercase">H1 (Fraunces Variable - 30px to 44px)</p>
               <h1 className="text-3xl sm:text-4xl font-heading font-bold text-ink">
-                Municipal Defect Remediation & Escrow Dispatch
+                Municipal Defect Remediation & Milestone Dispatch
               </h1>
             </div>
             <div>
@@ -290,7 +290,7 @@ export const Styleguide: React.FC = () => {
             <div>
               <p className="text-xs font-mono text-muted uppercase">Body & Paragraph (Manrope Variable - 16px to 18px, 1.6 line-height)</p>
               <p className="text-base text-secondaryText max-w-prose">
-                Citizens report verified neighborhood defects, inspect contractor cost estimates, and authorize milestone escrow releases. Strict integer paise accounting ensures zero floating-point discrepancies across all financial ledgers.
+                Citizens report verified neighborhood defects, inspect contractor cost estimates, and authorize milestone payments. Strict integer paise accounting ensures zero floating-point discrepancies across all financial ledgers.
               </p>
             </div>
           </Card>
@@ -378,7 +378,7 @@ export const Styleguide: React.FC = () => {
                 <CheckCircle2 className="w-3.5 h-3.5" /> Photo Verified
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-status-warning-bg text-status-warning border border-amber-200">
-                <AlertTriangle className="w-3.5 h-3.5" /> 50% Escrow Pending
+                <AlertTriangle className="w-3.5 h-3.5" /> 50% Advance Pending
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-status-danger-bg text-status-danger border border-red-200">
                 <AlertCircle className="w-3.5 h-3.5" /> Critical Hazard

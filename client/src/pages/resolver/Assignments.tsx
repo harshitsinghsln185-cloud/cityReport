@@ -231,7 +231,7 @@ export const ResolverAssignmentsPage: React.FC = () => {
                         {formatRupees(task.fee?.totalPaise)}
                       </span>
                       <span className="text-[11px] text-emerald-700 font-semibold block mt-0.5">
-                        50% Advance Escrowed: {formatRupees(task.fee?.advancePaise)}
+                        50% Advance Paid: {formatRupees(task.fee?.advancePaise)}
                       </span>
                     </div>
 

@@ -46,14 +46,14 @@ export const Home: React.FC = () => {
     <div className="flex flex-col min-h-screen">
       <SEO
         title="Civic Issue Reporting & Municipal Resolution Platform"
-        description="Report civic issues, potholes, streetlights, and sanitation hazards. Track verified before-and-after photo proof with escrow-backed municipal contractor dispatch across 36 Indian states."
+        description="Report civic issues, potholes, streetlights, and sanitation hazards. Track verified before-and-after photo proof with local contractor dispatch across Indian states."
         keywords={[
           'civic issues',
           'pothole repair',
           'street light repair',
           'municipal resolution',
           'citizen reporting',
-          'escrow contractor dispatch',
+          'verified contractor dispatch',
           'India civic portal',
         ]}
         jsonLd={{
@@ -131,7 +131,7 @@ export const Home: React.FC = () => {
                   eyebrow="Verifiable Proof"
                   eyebrowVariant="gold"
                   title="Interactive Remediation Showcase"
-                  subtitle="Every resolved hazard requires timestamped, geo-tagged Before and After photographic evidence before municipal inspector sign-off and balance disbursement."
+                  subtitle="Every resolved hazard requires timestamped, geo-tagged Before and After photographic evidence before admin verification sign-off and balance disbursement."
                   align="left"
                   className="mb-6"
                 />
@@ -139,15 +139,15 @@ export const Home: React.FC = () => {
                 <div className="space-y-3 pt-2 mb-6">
                   <div className="flex items-center gap-2.5 text-xs text-secondaryText">
                     <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                    <span>GPS-stamped EXIF coordinate matching within 50m radius</span>
+                    <span>Geo-tagged coordinates recorded on submission</span>
                   </div>
                   <div className="flex items-center gap-2.5 text-xs text-secondaryText">
                     <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                    <span>Double-blind citizen & municipal inspector photo audit</span>
+                    <span>Admin review of Before and After photographic proof</span>
                   </div>
                   <div className="flex items-center gap-2.5 text-xs text-secondaryText">
                     <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                    <span>50% milestone escrow released only upon photo verification</span>
+                    <span>50% completion balance released upon verified photo proof</span>
                   </div>
                 </div>
 
@@ -195,7 +195,7 @@ export const Home: React.FC = () => {
             </h2>
 
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10 font-sans">
-              Join thousands of active citizens and resident associations across India holding civic infrastructure to verifiable, escrow-backed standards.
+              Report local road damage, drainage issues, streetlights, and sanitation hazards with verified photo proof and milestone payments.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
@@ -228,11 +228,11 @@ export const Home: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Lock className="w-4 h-4 text-emerald-400" />
-                <span>50% Advance Escrow Guarantee</span>
+                <span>50% Advance & Balance on Completion</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-emerald-400" />
-                <span>48-Hour Standard SLA</span>
+                <span>Tracked Status Updates</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />

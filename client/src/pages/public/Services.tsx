@@ -152,7 +152,7 @@ export const Services: React.FC = () => {
             <div className="space-y-3 text-xs text-slate-300">
               <div className="flex items-start gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
-                <span><strong className="text-white">50% Escrow Advance:</strong> Funds locked in advance escrow prior to contractor mobilization.</span>
+                <span><strong className="text-white">50% Advance Payment:</strong> Advance payment confirmed prior to contractor mobilization.</span>
               </div>
               <div className="flex items-start gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5" />
@@ -316,7 +316,7 @@ export const Services: React.FC = () => {
           </div>
         )}
 
-        {/* Civic Escrow & Quality Assurance Notice */}
+        {/* Civic Milestone & Quality Assurance Notice */}
         <Reveal delay={0.2}>
           <div className="mt-14 p-6 sm:p-8 rounded-card bg-gradient-to-r from-dark to-indigo text-white flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="max-w-2xl text-left">

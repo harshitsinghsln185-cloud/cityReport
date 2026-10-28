@@ -76,7 +76,7 @@ export const ResolverDashboard: React.FC = () => {
               Contractor Operations Desk
             </h1>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Review nearby civic dispatch requests, accept jobs within your coverage radius, execute on-site remediation, and submit photographic completion proof for automated escrow settlement.
+              Review nearby civic dispatch requests, accept jobs within your coverage radius, execute on-site remediation, and submit photographic completion proof for verified milestone payout.
             </p>
           </div>
 
@@ -201,7 +201,7 @@ export const ResolverDashboard: React.FC = () => {
                 {formatRupees(metrics.pendingPayoutPaise)}
               </h3>
               <p className="text-xs text-secondaryText font-medium mt-1">
-                Next escrow settlement
+                Next scheduled payout
               </p>
             </div>
             <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-700 border border-purple-200 flex items-center justify-center shrink-0">

@@ -168,7 +168,7 @@ export const ResolverProfilePage: React.FC = () => {
           </div>
           <div className="text-[11px] text-secondaryText mt-1 flex items-center gap-1">
             <ShieldCheck className="w-3 h-3 text-emerald-600" />
-            <span>Disbursed via Escrow</span>
+            <span>Direct Bank Disbursement</span>
           </div>
         </Card>
 

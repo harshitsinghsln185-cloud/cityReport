@@ -157,7 +157,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         <div className="absolute bottom-4 left-4 right-4 z-10 pointer-events-none flex items-center justify-between">
           <span className="text-[11px] text-white/90 bg-dark/70 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 hidden sm:inline-flex items-center gap-1.5">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Inspector Sealed: {inspectorId}</span>
+            <span>Photo Verified: {inspectorId}</span>
           </span>
           <span className="text-[11px] text-white/80 bg-dark/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 ml-auto">
             Drag slider or use arrow keys

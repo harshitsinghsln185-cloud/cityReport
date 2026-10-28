@@ -62,7 +62,7 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
           Step 02
         </span>
         <span className="font-heading font-semibold text-base text-ink">
-          Automated Quote & Milestone Escrow
+          Automated Quote & Milestone Payments
         </span>
       </div>
     ),
@@ -70,14 +70,14 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
     content: (
       <div className="space-y-3">
         <p className="text-secondaryText leading-relaxed">
-          Our pricing engine calculates an integer-exact remediation tariff based on certified municipal Schedule of Rates (SOR). 50% advance is deposited into an audited institutional escrow account before any contractor mobilizes.
+          Our pricing engine calculates a transparent upfront repair fee based on standard civic rates. A 50% advance is paid before contractor mobilization, with the balance due only after verified completion.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
           <div className="p-3 rounded-lg bg-canvas border border-border flex items-start gap-2 text-xs">
             <Lock className="w-4 h-4 text-primary shrink-0 mt-0.5" />
             <div>
               <strong className="text-ink font-semibold block">50% Advance Protection</strong>
-              <span className="text-muted">Funds locked in escrow; zero contractor risk of non-payment or citizen gouging.</span>
+              <span className="text-muted">Structured milestone split; zero contractor risk of non-payment or arbitrary price gouging.</span>
             </div>
           </div>
           <div className="p-3 rounded-lg bg-canvas border border-border flex items-start gap-2 text-xs">
@@ -136,7 +136,7 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
           Step 04
         </span>
         <span className="font-heading font-semibold text-base text-ink">
-          Photo Verification & Escrow Settlement
+          Photo Verification & Final Settlement
         </span>
       </div>
     ),
@@ -144,7 +144,7 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
     content: (
       <div className="space-y-3">
         <p className="text-secondaryText leading-relaxed">
-          The contractor uploads high-resolution After photos stamped with real GPS coordinates and timestamp proof. Upon citizen verification and municipal supervisory sign-off, the remaining 50% escrow settles and a GST tax invoice is issued.
+          The contractor uploads high-resolution After photos stamped with real GPS coordinates and timestamp proof. Upon citizen verification and administrative sign-off, the remaining 50% balance settles and a tax receipt is issued.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
           <div className="p-3 rounded-lg bg-canvas border border-border flex items-start gap-2 text-xs">
@@ -190,10 +190,10 @@ export const HowItWorks: React.FC = () => {
                   <div className="w-7 h-7 rounded-lg bg-[#5B4FE1] text-white flex items-center justify-center shrink-0 shadow-xs">
                     <Shield className="w-4 h-4" />
                   </div>
-                  <span className="text-sm">The 4-Stage Escrow Protocol</span>
+                  <span className="text-sm">The 4-Stage Resolution Protocol</span>
                 </div>
                 <p className="text-secondaryText leading-relaxed">
-                  Every civic hazard moves strictly through 4 verified gateways. No contractor receives public disbursement until digital photo proof meets municipal inspection standards.
+                  Every civic hazard moves strictly through 4 verified gateways. No contractor receives final disbursement until digital photo proof meets inspection standards.
                 </p>
               </div>
 

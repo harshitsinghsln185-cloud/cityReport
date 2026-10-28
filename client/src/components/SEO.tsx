@@ -17,7 +17,7 @@ export interface SEOProps {
 
 const DEFAULT_TITLE = 'Crowd Report — Civic Issue Reporting & Municipal Resolution Platform';
 const DEFAULT_DESC =
-  'India’s verified civic issue reporting network. Report municipal infrastructure defects, track geotagged photographic remediation proof, and verify escrow-backed contractor resolution across 36 states and union territories.';
+  'India’s verified civic issue reporting network. Report municipal infrastructure defects, track geotagged photographic remediation proof, and verify milestone contractor resolution across 36 states and union territories.';
 export const BASE_URL = SITE_URL;
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.jpg`;
 

@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
           <div className="flex flex-wrap gap-2 text-xs">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/80 text-slate-300">
               <Lock className="w-3.5 h-3.5 text-gold" />
-              <span>Paise-Exact Escrow</span>
+              <span>50/50 Milestone Split</span>
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/80 text-slate-300">
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
@@ -102,8 +102,8 @@ export const Footer: React.FC = () => {
           </h4>
           <ul className="space-y-2.5 text-sm text-slate-400">
             <li>
-              <Link to="/about#escrow" className="hover:text-white transition-colors">
-                Escrow Guarantee
+              <Link to="/about#milestones" className="hover:text-white transition-colors">
+                Milestone Guarantee
               </Link>
             </li>
             <li>

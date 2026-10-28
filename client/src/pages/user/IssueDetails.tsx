@@ -188,11 +188,11 @@ export const IssueDetails: React.FC = () => {
                 Action Required
               </span>
               <h2 className="text-base sm:text-lg font-heading font-bold text-white">
-                50% Escrow Advance Pending
+                50% Advance Payment Pending
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-slate-200 max-w-2xl leading-relaxed">
-              To dispatch a certified contractor to your location, please deposit the 50% advance of ₹{(issue.fee.advancePaise / 100).toLocaleString('en-IN')}. Funds remain safely in municipal escrow until on-site work begins.
+              To dispatch a certified contractor to your location, please pay the 50% advance of ₹{(issue.fee.advancePaise / 100).toLocaleString('en-IN')}. The balance is payable upon completed and inspected work.
             </p>
           </div>
           <Link to={`/user/checkout/${issue._id}`} className="shrink-0">
@@ -375,7 +375,7 @@ export const IssueDetails: React.FC = () => {
                   ? `Completed on ${new Date(issue.resolution.submittedAt).toLocaleDateString('en-IN')}`
                   : 'Completed & Certified'
               }
-              inspectorId={issue.assignedResolver?.user?.name ? `Resolver: ${issue.assignedResolver.user.name}` : 'Certified Inspector'}
+              inspectorId={issue.assignedResolver?.user?.name ? `Resolver: ${issue.assignedResolver.user.name}` : 'Admin Verified'}
             />
           </div>
 
@@ -512,7 +512,7 @@ export const IssueDetails: React.FC = () => {
                       Advance Tax Receipt
                     </h3>
                     <p className="text-[11px] text-secondaryText">
-                      Invoice 1 (50% Escrow Deposited)
+                      Invoice 1 (50% Advance Paid)
                     </p>
                   </div>
                 </div>

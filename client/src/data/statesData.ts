@@ -13,22 +13,6 @@ export interface StateFaq {
   answer: string;
 }
 
-export interface StateStats {
-  activeResolvers: number;
-  resolvedIssues: number;
-  avgResponseHours: number;
-  satisfactionRate: number;
-}
-
-export interface StateActivity {
-  id: string;
-  hazard: string;
-  locality: string;
-  timeAgo: string;
-  status: string;
-  amount: string;
-}
-
 export interface StateData {
   name: string;
   slug: string;
@@ -40,9 +24,7 @@ export interface StateData {
   districtsCount: number;
   heroBlurb: string;
   civicPriorities: CivicPriority[];
-  stats: StateStats;
   faqs: StateFaq[];
-  recentActivity: StateActivity[];
 }
 
 export const STATES_DATA: StateData[] = [
@@ -78,7 +60,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Street Lighting',
       },
     ],
-    stats: { activeResolvers: 248, resolvedIssues: 3840, avgResponseHours: 24, satisfactionRate: 98.7 },
     faqs: [
       {
         question: 'How fast are BBMP pothole reports dispatched to verified contractors in Bengaluru?',
@@ -90,13 +71,8 @@ export const STATES_DATA: StateData[] = [
       },
       {
         question: 'Can Apartment Resident Associations (RWAs) sponsor public road repairs in Karnataka?',
-        answer: 'Yes, RWAs can fund local civic repairs via the 50% escrow gate, receiving an official municipal photo-proof audit and tax invoice on completion.',
+        answer: 'Yes, RWAs can fund local civic repairs via the 50% advance and completion milestone payment, receiving an official photo-verified proof and tax invoice on completion.',
       },
-    ],
-    recentActivity: [
-      { id: 'KA-101', hazard: 'Deep asphalt pothole patch', locality: '100ft Rd, Indiranagar, Bengaluru', timeAgo: '2h ago', status: 'Photo Verified', amount: '₹14,500' },
-      { id: 'KA-102', hazard: 'Collapsed drain grate replaced', locality: 'Jayalakshmipuram, Mysuru', timeAgo: '5h ago', status: 'Closed & Paid', amount: '₹6,200' },
-      { id: 'KA-103', hazard: 'High-mast LED light repair', locality: 'Kadri Hills, Mangaluru', timeAgo: '8h ago', status: 'Advance Escrowed', amount: '₹4,800' },
     ],
   },
   {
@@ -109,7 +85,7 @@ export const STATES_DATA: StateData[] = [
     area: '130,058 km²',
     districtsCount: 38,
     heroBlurb:
-      'Empowering residents across GCC zones, Coimbatore industrial belts, and Madurai historic quarters with transparent escrow-backed public repairs.',
+      'Empowering residents across GCC zones, Coimbatore industrial belts, and Madurai historic quarters with transparent verified public repairs.',
     civicPriorities: [
       {
         title: 'Coastal Storm Drain Desilting',
@@ -130,7 +106,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Walkways & Pavements',
       },
     ],
-    stats: { activeResolvers: 215, resolvedIssues: 3210, avgResponseHours: 26, satisfactionRate: 98.2 },
     faqs: [
       {
         question: 'How are Chennai monsoon waterlogging complaints prioritized?',
@@ -144,11 +119,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Is bilingual support available for Tamil Nadu public reports?',
         answer: 'Yes, public tracking codes, SMS alerts, and inspector receipts are accessible in both Tamil and English.',
       },
-    ],
-    recentActivity: [
-      { id: 'TN-201', hazard: 'Replaced broken stormwater chamber lid', locality: 'T. Nagar, Chennai', timeAgo: '3h ago', status: 'Photo Verified', amount: '₹7,400' },
-      { id: 'TN-202', hazard: 'Water supply line rupture seal', locality: 'Gandhipuram, Coimbatore', timeAgo: '6h ago', status: 'Inspector Approved', amount: '₹11,200' },
-      { id: 'TN-203', hazard: 'Pedestrian walkway curb repair', locality: 'KK Nagar, Madurai', timeAgo: '9h ago', status: 'Closed & Paid', amount: '₹5,500' },
     ],
   },
   {
@@ -182,7 +152,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Waste Clearance',
       },
     ],
-    stats: { activeResolvers: 165, resolvedIssues: 2450, avgResponseHours: 22, satisfactionRate: 99.1 },
     faqs: [
       {
         question: 'How quickly are open manhole emergencies handled in Hyderabad?',
@@ -197,11 +166,6 @@ export const STATES_DATA: StateData[] = [
         answer: 'Rates follow the standard Telangana PWD SOR tables without arbitrary locality markups.',
       },
     ],
-    recentActivity: [
-      { id: 'TG-301', hazard: 'Cast-iron manhole cover installation', locality: 'HITEC City, Hyderabad', timeAgo: '1h ago', status: 'Photo Verified', amount: '₹8,600' },
-      { id: 'TG-302', hazard: 'Dangling power cable bundling', locality: 'Hanamkonda, Warangal', timeAgo: '4h ago', status: 'Closed & Paid', amount: '₹3,900' },
-      { id: 'TG-303', hazard: 'Construction debris removal from buffer', locality: 'Kompally, Medchal', timeAgo: '10h ago', status: 'Inspector Approved', amount: '₹9,400' },
-    ],
   },
   {
     name: 'Andhra Pradesh',
@@ -213,7 +177,7 @@ export const STATES_DATA: StateData[] = [
     area: '162,968 km²',
     districtsCount: 26,
     heroBlurb:
-      'Connecting coastal ports, canal towns, and upland districts to certified local problem solvers with escrow-guaranteed quality.',
+      'Connecting coastal ports, canal towns, and upland districts to certified local problem solvers with verified quality.',
     civicPriorities: [
       {
         title: 'Canal Bank Soil Erosion Restabilization',
@@ -234,7 +198,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Street Lighting',
       },
     ],
-    stats: { activeResolvers: 140, resolvedIssues: 1980, avgResponseHours: 28, satisfactionRate: 97.9 },
     faqs: [
       {
         question: 'How are coastal infrastructure hazards managed during cyclone season in Andhra Pradesh?',
@@ -245,14 +208,9 @@ export const STATES_DATA: StateData[] = [
         answer: 'Yes, any citizen across all 26 districts can pinpoint rural road issues or broken water overhead points with GPS coordinates.',
       },
       {
-        question: 'What payment modes are accepted for AP civic repair escrow?',
-        answer: 'UPI, Net Banking, and corporate bank transfer are supported with instantaneous paise-exact escrow receipting.',
+        question: 'What payment modes are accepted for AP civic repairs?',
+        answer: 'UPI, Net Banking, and corporate bank transfer are supported with instantaneous itemized digital payment receipting.',
       },
-    ],
-    recentActivity: [
-      { id: 'AP-401', hazard: 'Marine-grade pole electrical repair', locality: 'Beach Road, Visakhapatnam', timeAgo: '4h ago', status: 'Photo Verified', amount: '₹6,800' },
-      { id: 'AP-402', hazard: 'Irrigation embankment stone pitch repair', locality: 'Bhimavaram, West Godavari', timeAgo: '7h ago', status: 'Inspector Approved', amount: '₹18,500' },
-      { id: 'AP-403', hazard: 'Marketplace drainage clearance', locality: 'Governorpet, Vijayawada', timeAgo: '12h ago', status: 'Closed & Paid', amount: '₹4,200' },
     ],
   },
   {
@@ -286,7 +244,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Civil Infrastructure',
       },
     ],
-    stats: { activeResolvers: 125, resolvedIssues: 1890, avgResponseHours: 20, satisfactionRate: 99.4 },
     faqs: [
       {
         question: 'How are monsoon landslide warnings linked to road repairs in Idukki and Wayanad?',
@@ -300,11 +257,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Can panchayats access community audit dashboards?',
         answer: 'Panchayat officials have dedicated transparency logins to view Before/After photo records across their local wards.',
       },
-    ],
-    recentActivity: [
-      { id: 'KL-501', hazard: 'Hillside runoff channel clearing', locality: 'Munnar Ghat Road, Idukki', timeAgo: '2h ago', status: 'Photo Verified', amount: '₹12,400' },
-      { id: 'KL-502', hazard: 'Canal waste barrier debris clearing', locality: 'Panampilly Nagar, Kochi', timeAgo: '5h ago', status: 'Closed & Paid', amount: '₹7,800' },
-      { id: 'KL-503', hazard: 'Broken handrail welding on footbridge', locality: 'East Fort, Thiruvananthapuram', timeAgo: '11h ago', status: 'Inspector Approved', amount: '₹5,100' },
     ],
   },
 
@@ -340,7 +292,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Electrical Safety',
       },
     ],
-    stats: { activeResolvers: 320, resolvedIssues: 4620, avgResponseHours: 21, satisfactionRate: 98.5 },
     faqs: [
       {
         question: 'How does Crowd Report operate during Mumbai monsoon red alerts?',
@@ -352,13 +303,8 @@ export const STATES_DATA: StateData[] = [
       },
       {
         question: 'How do Mumbai commercial housing societies report boundary road hazards?',
-        answer: 'Housing societies can report external approach road damage directly on our map and fund repairs using the 50% escrow guarantee.',
+        answer: 'Housing societies can report external approach road damage directly on our map and fund repairs using the 50% advance and completion milestone payment.',
       },
-    ],
-    recentActivity: [
-      { id: 'MH-601', hazard: 'Emergency storm culvert unblocking', locality: 'Hindmata, Dadar, Mumbai', timeAgo: '1h ago', status: 'Photo Verified', amount: '₹18,200' },
-      { id: 'MH-602', hazard: 'High-density asphalt road patch', locality: 'Hinjewadi Phase 1, Pune', timeAgo: '4h ago', status: 'Closed & Paid', amount: '₹16,400' },
-      { id: 'MH-603', hazard: 'Transformer perimeter safety gate', locality: 'Dharampeth, Nagpur', timeAgo: '7h ago', status: 'Inspector Approved', amount: '₹8,900' },
     ],
   },
   {
@@ -392,7 +338,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Street Lighting',
       },
     ],
-    stats: { activeResolvers: 195, resolvedIssues: 2890, avgResponseHours: 23, satisfactionRate: 98.9 },
     faqs: [
       {
         question: 'How are industrial hazard reports verified in Gujarat GIDC estates?',
@@ -400,17 +345,12 @@ export const STATES_DATA: StateData[] = [
       },
       {
         question: 'Can municipal councillors inspect contractor submissions in real time?',
-        answer: 'Yes, local corporators and ward inspectors receive portal access to all live tickets in their jurisdiction.',
+        answer: 'Yes, local corporators and ward administrators receive portal access to all live tickets in their jurisdiction.',
       },
       {
         question: 'What is the average resolution time for street lighting tickets in Ahmedabad?',
         answer: 'Public streetlight outages in Ahmedabad are resolved within an average of 18 hours.',
       },
-    ],
-    recentActivity: [
-      { id: 'GJ-701', hazard: 'BRTS dedicated lane barrier repair', locality: 'Shivranjani, Ahmedabad', timeAgo: '3h ago', status: 'Photo Verified', amount: '₹9,800' },
-      { id: 'GJ-702', hazard: 'Water distribution line valve replacement', locality: 'Adajan, Surat', timeAgo: '6h ago', status: 'Closed & Paid', amount: '₹14,100' },
-      { id: 'GJ-703', hazard: 'Solar streetlight battery bank servicing', locality: 'Alkapuri, Vadodara', timeAgo: '9h ago', status: 'Inspector Approved', amount: '₹6,400' },
     ],
   },
   {
@@ -444,7 +384,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Street Lighting',
       },
     ],
-    stats: { activeResolvers: 48, resolvedIssues: 740, avgResponseHours: 19, satisfactionRate: 99.2 },
     faqs: [
       {
         question: 'How quickly are coastal fallen tree hazards handled after coastal squalls?',
@@ -456,13 +395,8 @@ export const STATES_DATA: StateData[] = [
       },
       {
         question: 'Can boutique hotels and local businesses sponsor beach access path repairs?',
-        answer: 'Yes, private entities can fund municipal public path restorations through our compliant escrow platform.',
+        answer: 'Yes, private entities can fund municipal public path restorations through our milestone payment platform.',
       },
-    ],
-    recentActivity: [
-      { id: 'GA-801', hazard: 'Heritage lantern restoration', locality: 'Fontainhas, Panaji', timeAgo: '2h ago', status: 'Photo Verified', amount: '₹4,800' },
-      { id: 'GA-802', hazard: 'Overhead line tree limb pruning', locality: 'Calangute Main Road, North Goa', timeAgo: '5h ago', status: 'Closed & Paid', amount: '₹3,500' },
-      { id: 'GA-803', hazard: 'Pedestrian boardwalk plank replacement', locality: 'Colva Beach, South Goa', timeAgo: '8h ago', status: 'Inspector Approved', amount: '₹6,200' },
     ],
   },
 
@@ -498,7 +432,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Electrical Safety',
       },
     ],
-    stats: { activeResolvers: 380, resolvedIssues: 5410, avgResponseHours: 30, satisfactionRate: 97.4 },
     faqs: [
       {
         question: 'How does Crowd Report manage contractor dispatch across 75 districts in UP?',
@@ -512,11 +445,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Are quotes verified against the official UP PWD schedule of rates?',
         answer: 'All quotes adhere to UP PWD standard rate schedules with integer-paise precision and no arbitrary markups.',
       },
-    ],
-    recentActivity: [
-      { id: 'UP-901', hazard: 'Highway connector pothole patching', locality: 'Gomti Nagar Extension, Lucknow', timeAgo: '2h ago', status: 'Photo Verified', amount: '₹16,500' },
-      { id: 'UP-902', hazard: 'Market sewer line desilting', locality: 'Civil Lines, Kanpur', timeAgo: '6h ago', status: 'Closed & Paid', amount: '₹9,800' },
-      { id: 'UP-903', hazard: 'Roadside high-voltage transformer barrier', locality: 'Sector 62, Noida', timeAgo: '10h ago', status: 'Inspector Approved', amount: '₹8,200' },
     ],
   },
   {
@@ -550,7 +478,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Street Lighting',
       },
     ],
-    stats: { activeResolvers: 175, resolvedIssues: 2640, avgResponseHours: 27, satisfactionRate: 98.1 },
     faqs: [
       {
         question: 'How are water pipeline leaks prioritized in water-scarce zones like Jodhpur and Bikaner?',
@@ -564,11 +491,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Are heritage conservation guidelines enforced during Jaipur Old City street repairs?',
         answer: 'Yes, contractors working within heritage boundaries must use approved materials that preserve architectural integrity.',
       },
-    ],
-    recentActivity: [
-      { id: 'RJ-1001', hazard: 'Water trunk main crack welded', locality: 'Vaishali Nagar, Jaipur', timeAgo: '3h ago', status: 'Photo Verified', amount: '₹13,400' },
-      { id: 'RJ-1002', hazard: 'Heritage street lamp rewiring', locality: 'Ghanta Ghar, Jodhpur', timeAgo: '7h ago', status: 'Closed & Paid', amount: '₹4,900' },
-      { id: 'RJ-1003', hazard: 'Sand drift clearance on highway shoulder', locality: 'Barmer Bypass, Western Corridor', timeAgo: '11h ago', status: 'Inspector Approved', amount: '₹11,000' },
     ],
   },
   {
@@ -602,7 +524,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Street Lighting',
       },
     ],
-    stats: { activeResolvers: 110, resolvedIssues: 1670, avgResponseHours: 24, satisfactionRate: 98.3 },
     faqs: [
       {
         question: 'How are mandi approach roads repaired during harvest seasons?',
@@ -616,11 +537,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Is Punjabi language tracking available for citizen queries?',
         answer: 'Yes, automated SMS updates and receipt summaries can be generated in Punjabi.',
       },
-    ],
-    recentActivity: [
-      { id: 'PB-1101', hazard: 'Focal Point industrial drain unblocking', locality: 'Focal Point Phase V, Ludhiana', timeAgo: '4h ago', status: 'Photo Verified', amount: '₹12,800' },
-      { id: 'PB-1102', hazard: 'Grain market approach road resurfacing', locality: 'Mandi Road, Khanna', timeAgo: '8h ago', status: 'Closed & Paid', amount: '₹18,200' },
-      { id: 'PB-1103', hazard: 'Heritage corridor streetlamp replacement', locality: 'Heritage Walk, Amritsar', timeAgo: '12h ago', status: 'Inspector Approved', amount: '₹5,400' },
     ],
   },
   {
@@ -654,7 +570,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Public Safety',
       },
     ],
-    stats: { activeResolvers: 145, resolvedIssues: 2190, avgResponseHours: 20, satisfactionRate: 99.0 },
     faqs: [
       {
         question: 'How quickly are Gurugram expressway pothole complaints resolved?',
@@ -662,17 +577,12 @@ export const STATES_DATA: StateData[] = [
       },
       {
         question: 'Can corporate parks or RWAs book group remediation work in Faridabad?',
-        answer: 'Yes, commercial complexes can trigger multi-hazard work orders under escrow with single-invoice GST settlement.',
+        answer: 'Yes, commercial complexes can trigger multi-hazard work orders with single-invoice GST settlement.',
       },
       {
         question: 'Who verifies the Before and After photo proof in Haryana?',
-        answer: 'Municipal engineers from MCG, MCF, or HSVP review photos and coordinate timestamps before releasing final escrow funds.',
+        answer: 'platform administrators from MCG, MCF, or HSVP review photos and coordinate timestamps before releasing final balance payment.',
       },
-    ],
-    recentActivity: [
-      { id: 'HR-1201', hazard: 'Golf Course Extension road pothole repair', locality: 'Sector 56, Gurugram', timeAgo: '2h ago', status: 'Photo Verified', amount: '₹15,400' },
-      { id: 'HR-1202', hazard: 'Submersible underpass pump servicing', locality: 'Neelam Flyover, Faridabad', timeAgo: '5h ago', status: 'Closed & Paid', amount: '₹8,900' },
-      { id: 'HR-1203', hazard: 'Commercial dust barrier installation', locality: 'IMT Manesar', timeAgo: '9h ago', status: 'Inspector Approved', amount: '₹7,200' },
     ],
   },
   {
@@ -706,7 +616,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Walkways & Pavements',
       },
     ],
-    stats: { activeResolvers: 65, resolvedIssues: 920, avgResponseHours: 22, satisfactionRate: 99.3 },
     faqs: [
       {
         question: 'How are emergency rockfalls and landslides prioritized in Himachal?',
@@ -720,11 +629,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Can remote village residents report hazards without high-speed internet?',
         answer: 'Yes, reports can be filed offline in our mobile app and automatically synchronize when network connectivity resumes.',
       },
-    ],
-    recentActivity: [
-      { id: 'HP-1301', hazard: 'Rockfall gabion barrier installation', locality: 'Kalka-Shimla Highway, Solan', timeAgo: '3h ago', status: 'Photo Verified', amount: '₹22,000' },
-      { id: 'HP-1302', hazard: 'Insulated pipeline burst repair', locality: 'Mall Road, Shimla', timeAgo: '6h ago', status: 'Closed & Paid', amount: '₹9,400' },
-      { id: 'HP-1303', hazard: 'Wooden footbridge rail reinforcement', locality: 'Old Manali, Kullu', timeAgo: '10h ago', status: 'Inspector Approved', amount: '₹6,100' },
     ],
   },
   {
@@ -758,7 +662,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Drainage Remediation',
       },
     ],
-    stats: { activeResolvers: 80, resolvedIssues: 1140, avgResponseHours: 25, satisfactionRate: 98.8 },
     faqs: [
       {
         question: 'How are road hazards handled along the Char Dham highway during monsoon?',
@@ -772,11 +675,6 @@ export const STATES_DATA: StateData[] = [
         question: 'How is environmental compliance monitored in sensitive Himalayan zones?',
         answer: 'All contractors must dispose of construction rubble in designated municipal dump sites outside forest boundaries.',
       },
-    ],
-    recentActivity: [
-      { id: 'UK-1401', hazard: 'Retaining parapet wall rebuilding', locality: 'Rishikesh-Badrinath Hwy, Chamoli', timeAgo: '4h ago', status: 'Photo Verified', amount: '₹26,500' },
-      { id: 'UK-1402', hazard: 'Ganga ghat safety chain replacement', locality: 'Har Ki Pauri, Haridwar', timeAgo: '7h ago', status: 'Closed & Paid', amount: '₹5,800' },
-      { id: 'UK-1403', hazard: 'Seasonal rivulet storm drain cleaning', locality: 'Rajpur Road, Dehradun', timeAgo: '11h ago', status: 'Inspector Approved', amount: '₹8,200' },
     ],
   },
 
@@ -812,7 +710,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Drainage Remediation',
       },
     ],
-    stats: { activeResolvers: 230, resolvedIssues: 3340, avgResponseHours: 25, satisfactionRate: 97.8 },
     faqs: [
       {
         question: 'How are road repairs managed around active tram tracks in Kolkata?',
@@ -826,11 +723,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Can residents in North Bengal (Siliguri, Darjeeling, Jalpaiguri) report issues?',
         answer: 'Yes, full coverage is active across all 23 districts from the Himalayas to the Bay of Bengal.',
       },
-    ],
-    recentActivity: [
-      { id: 'WB-1501', hazard: 'Tram-line adjacent road resurfacing', locality: 'College Street, Kolkata', timeAgo: '2h ago', status: 'Photo Verified', amount: '₹14,200' },
-      { id: 'WB-1502', hazard: 'Canal sluice gate silt clearing', locality: 'Salt Lake Sector V, Kolkata', timeAgo: '6h ago', status: 'Closed & Paid', amount: '₹9,600' },
-      { id: 'WB-1503', hazard: 'Tea garden approach road culvert repair', locality: 'Sevoke Road, Siliguri', timeAgo: '9h ago', status: 'Inspector Approved', amount: '₹18,000' },
     ],
   },
   {
@@ -864,7 +756,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Water Infrastructure',
       },
     ],
-    stats: { activeResolvers: 190, resolvedIssues: 2750, avgResponseHours: 29, satisfactionRate: 97.2 },
     faqs: [
       {
         question: 'How are drinking water hand-pump repairs handled in rural Bihar?',
@@ -876,13 +767,8 @@ export const STATES_DATA: StateData[] = [
       },
       {
         question: 'Can panchayat development funds be tracked through the platform?',
-        answer: 'Public projects funded through civic escrow show complete itemized labor and material receipts.',
+        answer: 'Public projects funded through verified milestone payments show complete itemized labor and material receipts.',
       },
-    ],
-    recentActivity: [
-      { id: 'BR-1601', hazard: 'Silt dredging on urban outfall', locality: 'Boring Road, Patna', timeAgo: '3h ago', status: 'Photo Verified', amount: '₹11,500' },
-      { id: 'BR-1602', hazard: 'Community handpump cylinder overhaul', locality: 'Bodh Gaya, Gaya', timeAgo: '7h ago', status: 'Closed & Paid', amount: '₹3,200' },
-      { id: 'BR-1603', hazard: 'Freight highway road shoulder patch', locality: 'Maripur, Muzaffarpur', timeAgo: '11h ago', status: 'Inspector Approved', amount: '₹15,800' },
     ],
   },
   {
@@ -916,7 +802,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Street Lighting',
       },
     ],
-    stats: { activeResolvers: 135, resolvedIssues: 1980, avgResponseHours: 24, satisfactionRate: 98.6 },
     faqs: [
       {
         question: 'How does Odisha handle pre-cyclone preventive civic maintenance?',
@@ -930,11 +815,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Is Odia language support provided for state tickets?',
         answer: 'Yes, SMS alerts, citizen notifications, and contractor briefs are available in Odia.',
       },
-    ],
-    recentActivity: [
-      { id: 'OD-1701', hazard: 'Underground conduit power repair', locality: 'Saheed Nagar, Bhubaneswar', timeAgo: '3h ago', status: 'Photo Verified', amount: '₹8,400' },
-      { id: 'OD-1702', hazard: 'Grand Road storm culvert clearing', locality: 'Bada Danda, Puri', timeAgo: '6h ago', status: 'Closed & Paid', amount: '₹7,100' },
-      { id: 'OD-1703', hazard: 'Industrial corridor streetlight overhaul', locality: 'Civil Township, Rourkela', timeAgo: '10h ago', status: 'Inspector Approved', amount: '₹5,900' },
     ],
   },
   {
@@ -968,7 +848,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Street Lighting',
       },
     ],
-    stats: { activeResolvers: 95, resolvedIssues: 1420, avgResponseHours: 27, satisfactionRate: 97.6 },
     faqs: [
       {
         question: 'How are high-wear mining roads repaired in Dhanbad and Bokaro?',
@@ -982,11 +861,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Are rural tribal block issues handled across Jharkhand?',
         answer: 'Yes, geo-location mapping allows reporters to pinpoint issues on state highways across all 24 districts.',
       },
-    ],
-    recentActivity: [
-      { id: 'JH-1801', hazard: 'Heavy-tonnage road asphalt patch', locality: 'Main Road, Dhanbad', timeAgo: '4h ago', status: 'Photo Verified', amount: '₹19,500' },
-      { id: 'JH-1802', hazard: 'Plateau culvert retaining wall repair', locality: 'Kanke Road, Ranchi', timeAgo: '8h ago', status: 'Closed & Paid', amount: '₹13,200' },
-      { id: 'JH-1803', hazard: 'Township streetlamp electrical servicing', locality: 'Bistupur, Jamshedpur', timeAgo: '12h ago', status: 'Inspector Approved', amount: '₹4,800' },
     ],
   },
 
@@ -1022,7 +896,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Street Lighting',
       },
     ],
-    stats: { activeResolvers: 210, resolvedIssues: 3120, avgResponseHours: 21, satisfactionRate: 99.2 },
     faqs: [
       {
         question: 'Why does Madhya Pradesh have the highest satisfaction ratings for cleanliness issues?',
@@ -1034,13 +907,8 @@ export const STATES_DATA: StateData[] = [
       },
       {
         question: 'How do citizens in Gwalior and Ujjain track civic quotes?',
-        answer: 'Citizens can inspect itemized quotes with full tax breakdown and 50% escrow guarantee directly in the app.',
+        answer: 'Citizens can inspect itemized quotes with full tax breakdown and 50% advance and completion milestone payment directly in the app.',
       },
-    ],
-    recentActivity: [
-      { id: 'MP-1901', hazard: 'Roadside commercial waste rapid clearance', locality: 'Chhappan Dukan, Indore', timeAgo: '1h ago', status: 'Photo Verified', amount: '₹3,200' },
-      { id: 'MP-1902', hazard: 'Sewage diversion pipe repair near lake', locality: 'VIP Road, Bhopal', timeAgo: '4h ago', status: 'Closed & Paid', amount: '₹14,500' },
-      { id: 'MP-1903', hazard: 'Heritage decorative lamp bracket repair', locality: 'Lashkar, Gwalior', timeAgo: '8h ago', status: 'Inspector Approved', amount: '₹5,200' },
     ],
   },
   {
@@ -1074,7 +942,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Water Infrastructure',
       },
     ],
-    stats: { activeResolvers: 85, resolvedIssues: 1210, avgResponseHours: 26, satisfactionRate: 98.0 },
     faqs: [
       {
         question: 'Does Crowd Report operate in Nava Raipur Smart City?',
@@ -1088,11 +955,6 @@ export const STATES_DATA: StateData[] = [
         question: 'What contractors are eligible to work on Bhilai industrial perimeter roads?',
         answer: 'Only contractors holding factory safety certifications and industrial insurance are assigned to plant feeder roads.',
       },
-    ],
-    recentActivity: [
-      { id: 'CG-2001', hazard: 'Drinking water borewell motor replacement', locality: 'Telibandha, Raipur', timeAgo: '3h ago', status: 'Photo Verified', amount: '₹8,500' },
-      { id: 'CG-2002', hazard: 'Industrial feeder road concrete slab repair', locality: 'Sector 6, Bhilai', timeAgo: '7h ago', status: 'Closed & Paid', amount: '₹21,000' },
-      { id: 'CG-2003', hazard: 'Highway stormwater culvert desilting', locality: 'Vyapar Vihar, Bilaspur', timeAgo: '11h ago', status: 'Inspector Approved', amount: '₹6,400' },
     ],
   },
 
@@ -1128,7 +990,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Traffic Infrastructure',
       },
     ],
-    stats: { activeResolvers: 115, resolvedIssues: 1640, avgResponseHours: 24, satisfactionRate: 98.4 },
     faqs: [
       {
         question: 'How are flood emergency repairs handled during Assam monsoon floods?',
@@ -1142,11 +1003,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Are tea garden approach roads covered under our contractor network?',
         answer: 'Yes, local contractors are onboarded across Dibrugarh, Tinsukia, and Jorhat tea belts.',
       },
-    ],
-    recentActivity: [
-      { id: 'AS-2101', hazard: 'Bharalu river feeder drain desilting', locality: 'GS Road, Guwahati', timeAgo: '2h ago', status: 'Photo Verified', amount: '₹9,800' },
-      { id: 'AS-2102', hazard: 'Riverbank boulder rip-rap repair', locality: 'Brahmaputra Bank, Dibrugarh', timeAgo: '6h ago', status: 'Closed & Paid', amount: '₹24,000' },
-      { id: 'AS-2103', hazard: 'Highway solar reflective stud installation', locality: 'Jorhat Bypass', timeAgo: '10h ago', status: 'Inspector Approved', amount: '₹5,200' },
     ],
   },
   {
@@ -1180,7 +1036,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Street Lighting',
       },
     ],
-    stats: { activeResolvers: 35, resolvedIssues: 410, avgResponseHours: 28, satisfactionRate: 98.9 },
     faqs: [
       {
         question: 'How are remote mountain road landslides handled in Arunachal?',
@@ -1192,13 +1047,8 @@ export const STATES_DATA: StateData[] = [
       },
       {
         question: 'Can village councils (Gaon Burahs) verify completed work?',
-        answer: 'Yes, traditional village heads can review physical proof before signing off on public escrow releases.',
+        answer: 'Yes, traditional village heads can review physical proof before signing off on public project signoffs.',
       },
-    ],
-    recentActivity: [
-      { id: 'AR-2201', hazard: 'Rockfall clearing on mountain pass', locality: 'Bhalukpong-Bomdila Hwy, West Kameng', timeAgo: '4h ago', status: 'Photo Verified', amount: '₹31,000' },
-      { id: 'AR-2202', hazard: 'Bailey bridge timber plank replacement', locality: 'Papum Pare Crossing, Itanagar', timeAgo: '8h ago', status: 'Closed & Paid', amount: '₹16,500' },
-      { id: 'AR-2203', hazard: 'Solar village streetlight servicing', locality: 'Ziro Valley, Lower Subansiri', timeAgo: '12h ago', status: 'Inspector Approved', amount: '₹4,900' },
     ],
   },
   {
@@ -1232,11 +1082,10 @@ export const STATES_DATA: StateData[] = [
         category: 'Electrical Safety',
       },
     ],
-    stats: { activeResolvers: 42, resolvedIssues: 530, avgResponseHours: 26, satisfactionRate: 97.5 },
     faqs: [
       {
         question: 'How are essential supply highway repairs expedited in Manipur?',
-        answer: 'NH-2 and NH-37 road defects receive high-priority contractor assignment with rapid escrow disbursement upon inspection.',
+        answer: 'NH-2 and NH-37 road defects receive high-priority contractor assignment with rapid disbursement on completion upon inspection.',
       },
       {
         question: 'Are market vendor associations involved in Imphal municipal tickets?',
@@ -1246,11 +1095,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Does the platform support Meitei Mayek script?',
         answer: 'Yes, interface notifications and ticket summaries support Meitei Mayek rendering.',
       },
-    ],
-    recentActivity: [
-      { id: 'MN-2301', hazard: 'Lifeline highway asphalt patch', locality: 'NH-2 Kangpokpi-Imphal Stretch', timeAgo: '3h ago', status: 'Photo Verified', amount: '₹17,800' },
-      { id: 'MN-2302', hazard: 'Marketplace electric distribution box seal', locality: 'Ima Keithel, Imphal', timeAgo: '7h ago', status: 'Closed & Paid', amount: '₹4,200' },
-      { id: 'MN-2303', hazard: 'Wetland drainage barrier maintenance', locality: 'Sendra, Loktak Lake', timeAgo: '11h ago', status: 'Inspector Approved', amount: '₹8,500' },
     ],
   },
   {
@@ -1284,7 +1128,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Water Infrastructure',
       },
     ],
-    stats: { activeResolvers: 45, resolvedIssues: 580, avgResponseHours: 23, satisfactionRate: 98.7 },
     faqs: [
       {
         question: 'How do materials withstand the intense monsoon rainfall in Meghalaya?',
@@ -1298,11 +1141,6 @@ export const STATES_DATA: StateData[] = [
         question: 'How are traditional village durbars engaged in the verification process?',
         answer: 'Local Dorbar Shnong village councils receive verification copies of Before/After photographic records.',
       },
-    ],
-    recentActivity: [
-      { id: 'ML-2401', hazard: 'High-rainfall channel stone lining', locality: 'Mawkdok Bridge Road, Sohra', timeAgo: '3h ago', status: 'Photo Verified', amount: '₹19,200' },
-      { id: 'ML-2402', hazard: 'Moisture-proof LED street fixture overhaul', locality: 'Laitumkhrah, Shillong', timeAgo: '6h ago', status: 'Closed & Paid', amount: '₹5,600' },
-      { id: 'ML-2403', hazard: 'Springwater conduit pipeline seal', locality: 'Araimile, Tura', timeAgo: '10h ago', status: 'Inspector Approved', amount: '₹7,400' },
     ],
   },
   {
@@ -1336,7 +1174,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Water Infrastructure',
       },
     ],
-    stats: { activeResolvers: 32, resolvedIssues: 420, avgResponseHours: 20, satisfactionRate: 99.5 },
     faqs: [
       {
         question: 'How are vertical pedestrian staircases maintained in Aizawl?',
@@ -1350,11 +1187,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Are quotes calculated in accordance with Mizoram PWD standards?',
         answer: 'Yes, all tariffs follow the official Mizoram Schedule of Rates with terrain carriage differentials included transparently.',
       },
-    ],
-    recentActivity: [
-      { id: 'MZ-2501', hazard: 'Cliffside pedestrian staircase rail weld', locality: 'Bawngkawn, Aizawl', timeAgo: '2h ago', status: 'Photo Verified', amount: '₹4,900' },
-      { id: 'MZ-2502', hazard: 'Slope retaining wall re-mortar', locality: 'Zarkawt, Aizawl', timeAgo: '5h ago', status: 'Closed & Paid', amount: '₹14,500' },
-      { id: 'MZ-2503', hazard: 'Public rainwater cistern filtration clean', locality: 'Bazar Veng, Lunglei', timeAgo: '9h ago', status: 'Inspector Approved', amount: '₹3,800' },
     ],
   },
   {
@@ -1388,7 +1220,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Street Lighting',
       },
     ],
-    stats: { activeResolvers: 38, resolvedIssues: 490, avgResponseHours: 25, satisfactionRate: 98.2 },
     faqs: [
       {
         question: 'How are Kohima-Dimapur highway blockages cleared during rainstorms?',
@@ -1399,14 +1230,9 @@ export const STATES_DATA: StateData[] = [
         answer: 'Yes, local village development boards have portal verification access to inspect proof before funds disburse.',
       },
       {
-        question: 'What is the escrow guarantee for Nagaland civic projects?',
-        answer: 'The 50% advance remains securely held in escrow until photographic proof is validated by municipal engineers.',
+        question: 'What is the payment protection for Nagaland civic projects?',
+        answer: 'The 50% advance remains held until verified completion until photographic proof is validated by platform administrators.',
       },
-    ],
-    recentActivity: [
-      { id: 'NL-2601', hazard: 'Mountain highway slip clearance', locality: 'Zubza Stretch, Kohima-Dimapur Hwy', timeAgo: '3h ago', status: 'Photo Verified', amount: '₹21,500' },
-      { id: 'NL-2602', hazard: 'Community water reservoir crack seal', locality: 'Midland, Dimapur', timeAgo: '7h ago', status: 'Closed & Paid', amount: '₹6,400' },
-      { id: 'NL-2603', hazard: 'Solar street fixture battery servicing', locality: 'High School Colony, Kohima', timeAgo: '11h ago', status: 'Inspector Approved', amount: '₹5,100' },
     ],
   },
   {
@@ -1440,7 +1266,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Street Lighting',
       },
     ],
-    stats: { activeResolvers: 46, resolvedIssues: 620, avgResponseHours: 22, satisfactionRate: 98.4 },
     faqs: [
       {
         question: 'How is urban waterlogging handled in low-lying areas of Agartala?',
@@ -1454,11 +1279,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Is Bengali language communication supported in Tripura?',
         answer: 'Yes, citizen updates, contractor work orders, and SMS notifications are provided in Bengali and English.',
       },
-    ],
-    recentActivity: [
-      { id: 'TR-2701', hazard: 'Howrah river sluice gate desilting', locality: 'Battala, Agartala', timeAgo: '2h ago', status: 'Photo Verified', amount: '₹8,900' },
-      { id: 'TR-2702', hazard: 'Border checkpost road asphalt repair', locality: 'Akhaura Road, West Tripura', timeAgo: '5h ago', status: 'Closed & Paid', amount: '₹13,200' },
-      { id: 'TR-2703', hazard: 'TTAADC village solar light repair', locality: 'Khowai Town', timeAgo: '9h ago', status: 'Inspector Approved', amount: '₹4,700' },
     ],
   },
   {
@@ -1492,7 +1312,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Water Infrastructure',
       },
     ],
-    stats: { activeResolvers: 28, resolvedIssues: 380, avgResponseHours: 18, satisfactionRate: 99.6 },
     faqs: [
       {
         question: 'How are landslides on NH-10 (Sikkim lifeline) prioritized?',
@@ -1506,11 +1325,6 @@ export const STATES_DATA: StateData[] = [
         question: 'How do citizens in North Sikkim report high-altitude civic issues?',
         answer: 'Reports logged in Chungthang, Lachen, or Lachung connect to certified border area contractors.',
       },
-    ],
-    recentActivity: [
-      { id: 'SK-2801', hazard: 'Teesta gorge slope mesh stabilization', locality: 'Rangpo-Singtam Stretch, NH-10', timeAgo: '2h ago', status: 'Photo Verified', amount: '₹28,500' },
-      { id: 'SK-2802', hazard: 'MG Marg cobblestone path restoration', locality: 'MG Marg, Gangtok', timeAgo: '5h ago', status: 'Closed & Paid', amount: '₹5,400' },
-      { id: 'SK-2803', hazard: 'Alpine springwater pipe insulation', locality: 'Ravangla, Namchi District', timeAgo: '8h ago', status: 'Inspector Approved', amount: '₹7,200' },
     ],
   },
 
@@ -1546,7 +1360,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Public Safety',
       },
     ],
-    stats: { activeResolvers: 290, resolvedIssues: 4190, avgResponseHours: 16, satisfactionRate: 98.7 },
     faqs: [
       {
         question: 'How fast are critical potholes repaired on Delhi arterial roads?',
@@ -1558,13 +1371,8 @@ export const STATES_DATA: StateData[] = [
       },
       {
         question: 'Can RWAs in South Delhi or Dwarka sponsor neighborhood park lighting repairs?',
-        answer: 'Yes, registered RWAs can fund community repairs directly through our 50% escrow platform with tax invoices.',
+        answer: 'Yes, registered RWAs can fund community repairs directly through our 50% advance and balance milestone payment with tax invoices.',
       },
-    ],
-    recentActivity: [
-      { id: 'DL-2901', hazard: 'Minto Bridge underpass pump servicing', locality: 'Connaught Place Outskirts, New Delhi', timeAgo: '1h ago', status: 'Photo Verified', amount: '₹14,800' },
-      { id: 'DL-2902', hazard: 'Ring Road flyover joint pothole sealing', locality: 'Lajpat Nagar Flyover, South Delhi', timeAgo: '4h ago', status: 'Closed & Paid', amount: '₹17,200' },
-      { id: 'DL-2903', hazard: 'Public park LED high-mast repair', locality: 'Sector 11, Dwarka', timeAgo: '7h ago', status: 'Inspector Approved', amount: '₹6,500' },
     ],
   },
   {
@@ -1598,7 +1406,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Public Safety',
       },
     ],
-    stats: { activeResolvers: 55, resolvedIssues: 890, avgResponseHours: 14, satisfactionRate: 99.4 },
     faqs: [
       {
         question: 'Why does Chandigarh have the fastest response time in the country?',
@@ -1612,11 +1419,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Can residents report broken tree branches threatening vehicles?',
         answer: 'Yes, horticulture emergency teams respond to fallen or cracked limb tickets within 3 hours.',
       },
-    ],
-    recentActivity: [
-      { id: 'CH-3001', hazard: 'Sector cycle track red-oxide resurfacing', locality: 'Sector 17-18 Dividing Road', timeAgo: '2h ago', status: 'Photo Verified', amount: '₹6,400' },
-      { id: 'CH-3002', hazard: 'Avenue stormwater grate silt vacuum', locality: 'Sector 35-B, Chandigarh', timeAgo: '5h ago', status: 'Closed & Paid', amount: '₹4,100' },
-      { id: 'CH-3003', hazard: 'Heritage roundabout signpost paint', locality: 'Sukhna Lake Approach Roundabout', timeAgo: '8h ago', status: 'Inspector Approved', amount: '₹2,800' },
     ],
   },
   {
@@ -1650,7 +1452,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Water Infrastructure',
       },
     ],
-    stats: { activeResolvers: 90, resolvedIssues: 1280, avgResponseHours: 23, satisfactionRate: 98.5 },
     faqs: [
       {
         question: 'How are winter freeze emergencies handled in Srinagar and Gulmarg?',
@@ -1664,11 +1465,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Can tourists report road or public facility issues?',
         answer: 'Yes, any visitor can use the mobile-friendly web app to report broken guardrails or sanitation issues without app download.',
       },
-    ],
-    recentActivity: [
-      { id: 'JK-3101', hazard: 'Sub-zero frozen pipe replacement', locality: 'Lal Chowk, Srinagar', timeAgo: '3h ago', status: 'Photo Verified', amount: '₹8,200' },
-      { id: 'JK-3102', hazard: 'De-icing salt spread on flyover slope', locality: 'Bikram Chowk Flyover, Jammu', timeAgo: '6h ago', status: 'Closed & Paid', amount: '₹5,500' },
-      { id: 'JK-3103', hazard: 'Dal Lake feeder canal weed removal', locality: 'Boulevard Road, Srinagar', timeAgo: '9h ago', status: 'Inspector Approved', amount: '₹9,800' },
     ],
   },
   {
@@ -1702,7 +1498,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Water Infrastructure',
       },
     ],
-    stats: { activeResolvers: 22, resolvedIssues: 290, avgResponseHours: 20, satisfactionRate: 99.6 },
     faqs: [
       {
         question: 'How do repair materials function in extreme -30°C winter temperatures in Ladakh?',
@@ -1716,11 +1511,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Can solar power outages be reported in remote villages?',
         answer: 'Yes, community solar station faults can be logged with GPS coordinates and verified by village sarpanches.',
       },
-    ],
-    recentActivity: [
-      { id: 'LA-3201', hazard: 'Rotary snow clearance on mountain pass', locality: 'Khardung La Approach, Leh', timeAgo: '3h ago', status: 'Photo Verified', amount: '₹28,000' },
-      { id: 'LA-3202', hazard: 'Glacial melt yura stone repair', locality: 'Diskit, Nubra Valley', timeAgo: '7h ago', status: 'Closed & Paid', amount: '₹12,400' },
-      { id: 'LA-3203', hazard: 'Sub-zero solar battery replacement', locality: 'Main Bazaar, Kargil', timeAgo: '11h ago', status: 'Inspector Approved', amount: '₹7,800' },
     ],
   },
   {
@@ -1754,7 +1544,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Drainage Remediation',
       },
     ],
-    stats: { activeResolvers: 35, resolvedIssues: 540, avgResponseHours: 18, satisfactionRate: 99.1 },
     faqs: [
       {
         question: 'How are heritage French Quarter repairs regulated in Puducherry?',
@@ -1768,11 +1557,6 @@ export const STATES_DATA: StateData[] = [
         question: 'What is the average response time for promenade railing repairs?',
         answer: 'Beach promenade safety hazards are addressed within 24 hours of reporting.',
       },
-    ],
-    recentActivity: [
-      { id: 'PY-3301', hazard: 'Promenade granite seawall paver leveling', locality: 'Goubert Avenue, White Town', timeAgo: '2h ago', status: 'Photo Verified', amount: '₹6,800' },
-      { id: 'PY-3302', hazard: 'Grand Canal urban desilting', locality: 'Rue Suffren Outfall, Puducherry', timeAgo: '5h ago', status: 'Closed & Paid', amount: '₹8,200' },
-      { id: 'PY-3303', hazard: 'French blue enameled signpost restoration', locality: 'Rue Dumas, White Town', timeAgo: '8h ago', status: 'Inspector Approved', amount: '₹3,400' },
     ],
   },
   {
@@ -1806,7 +1590,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Drainage Remediation',
       },
     ],
-    stats: { activeResolvers: 24, resolvedIssues: 320, avgResponseHours: 24, satisfactionRate: 98.8 },
     faqs: [
       {
         question: 'How do island logistics affect material supply for repairs in Port Blair?',
@@ -1820,11 +1603,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Are environmental protection protocols observed near coral reefs?',
         answer: 'Yes, zero runoff into coral zones is mandated with strict sedimentation traps on all coastal jobs.',
       },
-    ],
-    recentActivity: [
-      { id: 'AN-3401', hazard: 'Marine concrete ferry jetty patch', locality: 'Phoenix Bay Jetty, Port Blair', timeAgo: '4h ago', status: 'Photo Verified', amount: '₹14,500' },
-      { id: 'AN-3402', hazard: 'Corrosion-proof wharf streetlight service', locality: 'Aberdeen Bazaar, Port Blair', timeAgo: '7h ago', status: 'Closed & Paid', amount: '₹5,800' },
-      { id: 'AN-3403', hazard: 'Island nullah storm clearance', locality: 'Havelock Island Ferry Road', timeAgo: '11h ago', status: 'Inspector Approved', amount: '₹8,400' },
     ],
   },
   {
@@ -1858,7 +1636,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Drainage Remediation',
       },
     ],
-    stats: { activeResolvers: 28, resolvedIssues: 390, avgResponseHours: 21, satisfactionRate: 98.6 },
     faqs: [
       {
         question: 'Does Crowd Report cover all three regions of the merged Union Territory?',
@@ -1866,17 +1643,12 @@ export const STATES_DATA: StateData[] = [
       },
       {
         question: 'Can manufacturing units in Silvassa sponsor external access road repairs?',
-        answer: 'Yes, industrial units can fund external public road repairs through the 50% escrow guarantee with full GST tax invoicing.',
+        answer: 'Yes, industrial units can fund external public road repairs through the 50% advance and completion milestone payment with full GST tax invoicing.',
       },
       {
         question: 'How are coastal fort heritage repairs supervised in Daman and Diu?',
         answer: 'Public works adjacent to Portuguese heritage walls are inspected in consultation with the local tourism and archaeology departments.',
       },
-    ],
-    recentActivity: [
-      { id: 'DN-3501', hazard: 'Industrial estate access road patch', locality: 'Piparia Industrial Estate, Silvassa', timeAgo: '3h ago', status: 'Photo Verified', amount: '₹12,400' },
-      { id: 'DN-3502', hazard: 'Coastal fort seawall railing repair', locality: 'Moti Daman Fort Promenade', timeAgo: '6h ago', status: 'Closed & Paid', amount: '₹7,100' },
-      { id: 'DN-3503', hazard: 'Beach access storm culvert clear', locality: 'Nagoa Beach Road, Diu', timeAgo: '10h ago', status: 'Inspector Approved', amount: '₹5,200' },
     ],
   },
   {
@@ -1910,7 +1682,6 @@ export const STATES_DATA: StateData[] = [
         category: 'Waste Clearance',
       },
     ],
-    stats: { activeResolvers: 16, resolvedIssues: 190, avgResponseHours: 16, satisfactionRate: 99.7 },
     faqs: [
       {
         question: 'How are coral reefs protected during public works in Lakshadweep?',
@@ -1924,11 +1695,6 @@ export const STATES_DATA: StateData[] = [
         question: 'Are all inhabited islands of Lakshadweep covered?',
         answer: 'Yes, local resolver coverage is active across all 10 inhabited islands including Agatti, Kavaratti, and Minicoy.',
       },
-    ],
-    recentActivity: [
-      { id: 'LD-3601', hazard: 'Jetty landing concrete steps resurfacing', locality: 'Main Jetty, Kavaratti', timeAgo: '2h ago', status: 'Photo Verified', amount: '₹7,500' },
-      { id: 'LD-3602', hazard: 'Community desalination tap pipeline seal', locality: 'Airport Road, Agatti', timeAgo: '5h ago', status: 'Closed & Paid', amount: '₹3,900' },
-      { id: 'LD-3603', hazard: 'Lagoon edge barrier debris removal', locality: 'Village Shore, Minicoy', timeAgo: '9h ago', status: 'Inspector Approved', amount: '₹4,200' },
     ],
   },
 ];

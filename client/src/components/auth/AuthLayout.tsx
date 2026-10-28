@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import {
   ShieldCheck,
   CheckCircle2,
-  Star,
-  Quote,
 } from 'lucide-react';
 import Badge from '../ui/Badge';
 
@@ -23,9 +21,6 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
   title,
   subtitle = 'Citizens, certified resolvers, and municipal operators',
   badgeText = 'Certified Civic Network',
-  testimonialQuote = 'The 50% advance escrow and Before/After photo proof eliminated months of traditional municipal follow-up. Our street was repaired in 28 hours.',
-  testimonialAuthor = 'Dr. Radhika Sen',
-  testimonialRole = 'RWA President, Indiranagar Bengaluru',
 }) => {
   return (
     <div className="min-h-screen bg-canvas flex flex-col justify-center py-6 sm:py-12">
@@ -65,65 +60,62 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
             <div className="mt-8 pt-6 border-t border-border flex items-center justify-between text-[11px] text-muted">
               <span>Encrypted Session</span>
               <span>•</span>
-              <span>Paise-Exact Escrow Gate</span>
+              <span>50% Advance & Milestone Protection</span>
               <span>•</span>
               <span>Zero-PII Privacy</span>
             </div>
           </div>
 
-          {/* Right Column: Branded Testimonial & Showcase Panel (Desktop) */}
+          {/* Right Column: Branded Showcase Panel (Desktop) */}
           <div className="hidden lg:flex lg:col-span-6 bg-gradient-to-br from-dark via-[#141838] to-indigo text-white p-12 flex-col justify-between relative overflow-hidden">
             {/* Ambient Background Gradient Orbs */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-72 h-72 bg-indigo/40 rounded-full blur-3xl pointer-events-none" />
 
-            {/* Top Showcase Stats */}
+            {/* Top Showcase Header */}
             <div className="relative z-10 flex items-center justify-between">
               <span className="text-xs font-semibold text-lavender flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/15 backdrop-blur-sm">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Verified Public Governance</span>
+                <span>Civic Infrastructure Platform</span>
               </span>
 
-              <div className="flex items-center gap-1 text-gold">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                ))}
-              </div>
+              <span className="text-xs text-slate-300 font-medium">Pan-India Network</span>
             </div>
 
-            {/* Testimonial Quote in Middle */}
-            <div className="relative z-10 my-8 bg-white/[0.04] p-6 rounded-card border border-white/10 backdrop-blur-sm">
-              <Quote className="w-8 h-8 text-primary/60 mb-3" />
-              <p className="text-sm text-slate-200 leading-relaxed italic mb-6">
-                "{testimonialQuote}"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/30 text-lavender font-heading font-bold flex items-center justify-center shrink-0 border border-white/20">
-                  {testimonialAuthor.charAt(0)}
-                </div>
-                <div>
-                  <p className="font-heading font-semibold text-sm text-white flex items-center gap-1.5">
-                    <span>{testimonialAuthor}</span>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                  </p>
-                  <p className="text-[11px] text-slate-400">{testimonialRole}</p>
-                </div>
-              </div>
+            {/* Platform Safeguards Showcase */}
+            <div className="relative z-10 my-8 bg-white/[0.04] p-6 rounded-card border border-white/10 backdrop-blur-sm space-y-4">
+              <h3 className="font-heading font-semibold text-base text-white">
+                How Crowd Report Protects Every Issue
+              </h3>
+              <ul className="space-y-3 text-xs text-slate-200">
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span><strong>Photo & Location Verification:</strong> Geo-tagged evidence required for every reported street hazard.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span><strong>50% Milestone Payments:</strong> 50% advance to start work; balance payable only upon inspected completion.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span><strong>Admin Review:</strong> Independent inspection of Before and After photographic proofs before ticket closure.</span>
+                </li>
+              </ul>
             </div>
 
             {/* Bottom Proof Metrics */}
             <div className="relative z-10 grid grid-cols-3 gap-4 pt-6 border-t border-white/10 text-center">
               <div>
-                <span className="block font-heading font-bold text-white text-base tabular-nums">12,480+</span>
-                <span className="text-[11px] text-slate-400">Resolved</span>
+                <span className="block font-heading font-bold text-white text-base tabular-nums">36</span>
+                <span className="text-[11px] text-slate-400">States & UTs</span>
               </div>
               <div>
                 <span className="block font-heading font-bold text-emerald-400 text-base tabular-nums">100%</span>
                 <span className="text-[11px] text-slate-400">Photo Proof</span>
               </div>
               <div>
-                <span className="block font-heading font-bold text-white text-base tabular-nums">24-48h</span>
-                <span className="text-[11px] text-slate-400">Average SLA</span>
+                <span className="block font-heading font-bold text-white text-base tabular-nums">50 / 50</span>
+                <span className="text-[11px] text-slate-400">Milestone Split</span>
               </div>
             </div>
           </div>

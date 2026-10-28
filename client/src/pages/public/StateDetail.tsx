@@ -3,17 +3,15 @@ import { useParams, Link } from 'react-router-dom';
 import {
   MapPin,
   Users,
-  CheckCircle2,
-  Clock,
   ShieldCheck,
   AlertTriangle,
   ArrowRight,
   ChevronLeft,
-  Calendar,
   Sparkles,
   FileCheck2,
   Lock,
   ChevronRight,
+  Building2,
 } from 'lucide-react';
 import { getStateBySlug, STATES_DATA } from '../../data/statesData';
 import { getStateLandmark } from '../../data/landmarks';
@@ -36,7 +34,6 @@ const NAV_SECTIONS: NavSection[] = [
   { id: 'overview', label: 'Overview' },
   { id: 'priorities', label: 'Civic Priorities' },
   { id: 'resolvers', label: 'Resolver Network' },
-  { id: 'activity', label: 'Recent Activity' },
   { id: 'faqs', label: 'FAQs' },
 ];
 
@@ -127,7 +124,7 @@ export const StateDetail: React.FC = () => {
     <div className="min-h-screen bg-canvas">
       <SEO
         title={`${stateData.name} Civic Infrastructure & Hazard Reporting`}
-        description={`Track verified civic hazard resolutions, escrow-backed contractor dispatch, and local public works in ${stateData.name}. Landmark: ${landmarkInfo.landmark}. ${stateData.heroBlurb}`}
+        description={`Track verified civic hazard resolutions, local contractor dispatch, and public works in ${stateData.name}. Landmark: ${landmarkInfo.landmark}. ${stateData.heroBlurb}`}
         keywords={[
           `${stateData.name} civic issues`,
           `${stateData.name} road repairs`,
@@ -166,7 +163,7 @@ export const StateDetail: React.FC = () => {
             '@context': 'https://schema.org',
             '@type': 'GovernmentService',
             name: `${stateData.name} Civic Remediation Service`,
-            serviceType: 'Municipal Defect Remediation & Escrow Dispatch',
+            serviceType: 'Civic Hazard Reporting & Verified Contractor Dispatch',
             areaServed: {
               '@type': 'AdministrativeArea',
               name: stateData.name,
@@ -292,7 +289,7 @@ export const StateDetail: React.FC = () => {
               </Link>
 
               <div className="flex items-center justify-between text-[11px] text-slate-300 px-1 pt-1">
-                <span>50% Escrow Protected</span>
+                <span>50% Advance & Milestone Protection</span>
                 <span>•</span>
                 <span>GPS Photo Proof Verified</span>
               </div>
@@ -354,46 +351,46 @@ export const StateDetail: React.FC = () => {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-5 rounded-card bg-surface border border-border shadow-subtle mb-10">
               <div className="p-3">
                 <div className="flex items-center gap-2 text-muted text-xs mb-1">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-700" />
-                  <span>Hazards Remediated</span>
+                  <Building2 className="w-4 h-4 text-primary" />
+                  <span>Administrative Capital</span>
                 </div>
-                <p className="font-heading font-bold text-ink text-2xl tabular-nums">
-                  {stateData.stats.resolvedIssues.toLocaleString('en-IN')}
+                <p className="font-heading font-bold text-ink text-2xl truncate">
+                  {stateData.capital}
                 </p>
-                <p className="text-[11px] text-emerald-700 font-medium mt-0.5">100% Photo-Proof Sealed</p>
+                <p className="text-[11px] text-muted font-medium mt-0.5">Government Headquarters</p>
               </div>
 
               <div className="p-3 border-l-0 sm:border-l border-border">
                 <div className="flex items-center gap-2 text-muted text-xs mb-1">
-                  <Users className="w-4 h-4 text-indigo" />
-                  <span>Certified Resolvers</span>
+                  <MapPin className="w-4 h-4 text-indigo" />
+                  <span>Administrative Districts</span>
                 </div>
                 <p className="font-heading font-bold text-ink text-2xl tabular-nums">
-                  {stateData.stats.activeResolvers}
+                  {stateData.districtsCount}
                 </p>
-                <p className="text-[11px] text-muted mt-0.5">Vetted Ward Contractors</p>
+                <p className="text-[11px] text-muted mt-0.5">District Collectorates</p>
               </div>
 
               <div className="p-3 border-t sm:border-t-0 lg:border-l border-border">
                 <div className="flex items-center gap-2 text-muted text-xs mb-1">
-                  <Clock className="w-4 h-4 text-amber-800" />
-                  <span>Average Response SLA</span>
+                  <Users className="w-4 h-4 text-emerald-700" />
+                  <span>Estimated Population</span>
                 </div>
                 <p className="font-heading font-bold text-ink text-2xl tabular-nums">
-                  {stateData.stats.avgResponseHours} Hours
+                  {stateData.population}
                 </p>
-                <p className="text-[11px] text-muted mt-0.5">From Escrow to On-Site</p>
+                <p className="text-[11px] text-muted mt-0.5">Census Demographic Estimate</p>
               </div>
 
               <div className="p-3 border-t sm:border-t-0 lg:border-l border-border">
                 <div className="flex items-center gap-2 text-muted text-xs mb-1">
-                  <ShieldCheck className="w-4 h-4 text-emerald-700" />
-                  <span>Citizen Satisfaction</span>
+                  <ShieldCheck className="w-4 h-4 text-gold" />
+                  <span>Geographic Area</span>
                 </div>
                 <p className="font-heading font-bold text-ink text-2xl tabular-nums">
-                  {stateData.stats.satisfactionRate}%
+                  {stateData.area}
                 </p>
-                <p className="text-[11px] text-emerald-700 font-medium mt-0.5">Post-Remediation Audits</p>
+                <p className="text-[11px] text-muted mt-0.5">Total State Territory</p>
               </div>
             </div>
           </Reveal>
@@ -405,7 +402,7 @@ export const StateDetail: React.FC = () => {
                 Civic Infrastructure Profile: {stateData.name}
               </h2>
               <p className="text-sm text-secondaryText leading-relaxed mb-4">
-                Operating across {stateData.districtsCount} administrative districts from headquarters in {stateData.capital}, Crowd Report coordinates public works remediation in {stateData.name}. Our decentralized contractor mesh enables wards to resolve road potholes, streetlighting blackouts, garbage backlogs, and water pipe fractures with verified photographic provenance and guaranteed escrow disbursement.
+                Operating across {stateData.districtsCount} administrative districts from headquarters in {stateData.capital}, Crowd Report coordinates public works remediation in {stateData.name}. Our contractor network enables wards to resolve road potholes, streetlighting blackouts, garbage backlogs, and water pipe fractures with verified photographic provenance and milestone payments.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-3 border-t border-border">
                 <div className="p-3 rounded-lg bg-canvas">
@@ -516,7 +513,7 @@ export const StateDetail: React.FC = () => {
               eyebrow="Contractor Mesh"
               eyebrowVariant="gold"
               title={`Approved Municipal Resolvers in ${stateData.name}`}
-              subtitle="Local contractor accreditation, municipal license validation, and guaranteed milestone escrow protections."
+              subtitle="Local contractor accreditation, valid license verification, and milestone payment protections."
             />
           </Reveal>
 
@@ -529,10 +526,10 @@ export const StateDetail: React.FC = () => {
                 Verified Trade Accreditation
               </h3>
               <p className="text-xs text-secondaryText leading-relaxed">
-                Every active resolver in {stateData.name} must submit proof of valid municipal contractor licenses, GSTIN compliance, and past public works completion certificates.
+                Every active resolver in {stateData.name} must submit proof of valid trade licenses, GSTIN compliance, and past repair experience.
               </p>
               <div className="pt-2 text-xs font-semibold text-primary">
-                ✓ 100% Background Screened
+                ✓ Document & Identity Verified
               </div>
             </div>
 
@@ -541,13 +538,13 @@ export const StateDetail: React.FC = () => {
                 <Lock className="w-5 h-5" />
               </div>
               <h3 className="font-heading font-bold text-lg text-ink">
-                50% Milestone Escrow Guarantee
+                50% Advance & Balance Milestone
               </h3>
               <p className="text-xs text-secondaryText leading-relaxed">
-                Remediation funds are locked securely in institutional escrow. 50% mobilizes on site arrival; the remaining 50% releases only after citizen-approved GPS photographic inspection.
+                50% advance payment initiates repair work with the assigned resolver; the remaining 50% balance is payable only after photo inspection confirms satisfactory completion.
               </p>
               <div className="pt-2 text-xs font-semibold text-primary">
-                ✓ Integer Paise Accounting Audit
+                ✓ Itemized GST Invoices
               </div>
             </div>
 
@@ -558,7 +555,7 @@ export const StateDetail: React.FC = () => {
                   Are You a Contractor in {stateData.name}?
                 </h3>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Get certified to receive local ward remediation assignments under standardized municipal Schedule of Rates (SOR).
+                  Get certified to receive local ward repair assignments with upfront itemized fee estimates.
                 </p>
               </div>
 
@@ -569,60 +566,6 @@ export const StateDetail: React.FC = () => {
                 </Button>
               </Link>
             </div>
-          </div>
-        </section>
-
-        {/* Section 4: Recent Activity Stream */}
-        <section id="activity" className="scroll-mt-36">
-          <Reveal>
-            <SectionHeader
-              eyebrow="Verified Stream"
-              eyebrowVariant="gold"
-              title={`Recent Remediations in ${stateData.name}`}
-              subtitle="Live chronological log of verified contractor submissions, municipal approvals, and settled escrow disbursements."
-            />
-          </Reveal>
-
-          <div className="bg-surface rounded-card border border-border overflow-hidden shadow-subtle divide-y divide-border">
-            {stateData.recentActivity.map((act) => (
-              <div
-                key={act.id}
-                className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-canvas/50 transition-colors"
-              >
-                <div className="flex items-start sm:items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
-                    <CheckCircle2 className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-heading font-semibold text-sm text-ink">
-                        {act.hazard}
-                      </span>
-                      <span className="text-[11px] font-mono text-muted bg-canvas px-1.5 py-0.2 rounded border border-border">
-                        {act.id}
-                      </span>
-                    </div>
-                    <p className="text-xs text-muted flex items-center gap-1 mt-0.5">
-                      <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
-                      <span>{act.locality}</span>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between sm:justify-end gap-4 shrink-0 text-xs">
-                  <span className="font-heading font-semibold text-ink tabular-nums">
-                    {act.amount}
-                  </span>
-                  <Badge variant="success" size="sm">
-                    {act.status}
-                  </Badge>
-                  <span className="text-muted flex items-center gap-1 tabular-nums font-mono">
-                    <Calendar className="w-3.5 h-3.5 text-slate-400" />
-                    {act.timeAgo}
-                  </span>
-                </div>
-              </div>
-            ))}
           </div>
         </section>
 

@@ -42,7 +42,7 @@ export const StatesDirectory: React.FC = () => {
     ['North', 'South', 'East', 'West', 'Central', 'Northeast'].includes(initialZone) ? initialZone : 'All'
   );
   const [selectedType, setSelectedType] = useState<'All' | StateType>('All');
-  const [sortBy, setSortBy] = useState<'name' | 'resolved' | 'resolvers' | 'sla'>('name');
+  const [sortBy, setSortBy] = useState<'name' | 'districts'>('name');
 
   // Sync state changes with URL query
   useEffect(() => {
@@ -74,26 +74,16 @@ export const StatesDirectory: React.FC = () => {
       const matchesType = selectedType === 'All' || state.type === selectedType;
       return matchesSearch && matchesRegion && matchesType;
     }).sort((a, b) => {
-      if (sortBy === 'resolved') {
-        return b.stats.resolvedIssues - a.stats.resolvedIssues;
-      }
-      if (sortBy === 'resolvers') {
-        return b.stats.activeResolvers - a.stats.activeResolvers;
-      }
-      if (sortBy === 'sla') {
-        return a.stats.avgResponseHours - b.stats.avgResponseHours;
+      if (sortBy === 'districts') {
+        return b.districtsCount - a.districtsCount;
       }
       return a.name.localeCompare(b.name);
     });
   }, [searchQuery, selectedRegion, selectedType, sortBy]);
 
-  // Aggregate stats across filtered dataset
-  const totalResolved = useMemo(
-    () => filteredStates.reduce((acc, curr) => acc + curr.stats.resolvedIssues, 0),
-    [filteredStates]
-  );
-  const totalResolvers = useMemo(
-    () => filteredStates.reduce((acc, curr) => acc + curr.stats.activeResolvers, 0),
+  // Aggregate factual counts across filtered dataset
+  const totalDistricts = useMemo(
+    () => filteredStates.reduce((acc, curr) => acc + curr.districtsCount, 0),
     [filteredStates]
   );
 
@@ -181,7 +171,7 @@ export const StatesDirectory: React.FC = () => {
               </div>
             </div>
             <p className="text-xs text-slate-300 leading-relaxed">
-              Every jurisdiction operates under the verified 50% milestone escrow protocol and GPS-stamped photo verification standard.
+              Every jurisdiction operates under verified milestone payments (50% advance, 50% balance) and photo verification standards.
             </p>
           </div>
         }
@@ -252,9 +242,9 @@ export const StatesDirectory: React.FC = () => {
                 <CheckCircle2 className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-xs text-muted">Hazards Remediated</p>
+                <p className="text-xs text-muted">Jurisdictions Listed</p>
                 <p className="font-heading font-bold text-ink text-base sm:text-lg tabular-nums">
-                  {totalResolved.toLocaleString('en-IN')}+
+                  {filteredStates.length} States & UTs
                 </p>
               </div>
             </div>
@@ -264,9 +254,9 @@ export const StatesDirectory: React.FC = () => {
                 <Users className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-xs text-muted">Active Resolvers</p>
+                <p className="text-xs text-muted">Administrative Units</p>
                 <p className="font-heading font-bold text-ink text-base sm:text-lg tabular-nums">
-                  {totalResolvers.toLocaleString('en-IN')} Certified
+                  {totalDistricts} Districts
                 </p>
               </div>
             </div>
@@ -276,9 +266,9 @@ export const StatesDirectory: React.FC = () => {
                 <Clock className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-xs text-muted">Response Guarantee</p>
+                <p className="text-xs text-muted">Zonal Coverage</p>
                 <p className="font-heading font-bold text-ink text-base sm:text-lg tabular-nums">
-                  24-48h Escrow SLA
+                  6 Regional Zones
                 </p>
               </div>
             </div>
@@ -322,9 +312,7 @@ export const StatesDirectory: React.FC = () => {
                 className="text-xs font-semibold px-3 py-2 rounded-lg border border-border bg-surface text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
               >
                 <option value="name">Alphabetical (A - Z)</option>
-                <option value="resolved">Most Hazards Resolved</option>
-                <option value="resolvers">Most Active Resolvers</option>
-                <option value="sla">Fastest Response SLA</option>
+                <option value="districts">Districts (Most First)</option>
               </select>
             </div>
           </div>
@@ -547,26 +535,26 @@ const StateCard: React.FC<StateCardProps> = ({ state, idx }) => {
             </div>
           </div>
 
-          {/* Card Footer: 3 Key Metrics & Action Button */}
+          {/* Card Footer: 3 Factual Metrics & Action Button */}
           <div className="p-5 pt-0">
             <div className="pt-3 border-t border-border grid grid-cols-3 gap-2 text-center text-xs mb-3">
               <div>
-                <span className="block font-heading font-bold text-ink tabular-nums">
-                  {state.stats.resolvedIssues.toLocaleString('en-IN')}
+                <span className="block font-heading font-semibold text-ink text-xs truncate">
+                  {state.capital}
                 </span>
-                <span className="text-[10px] text-muted">Resolved</span>
+                <span className="text-[10px] text-muted">Capital</span>
               </div>
               <div>
-                <span className="block font-heading font-bold text-ink tabular-nums">
-                  {state.stats.activeResolvers}
+                <span className="block font-heading font-bold text-ink text-xs tabular-nums">
+                  {state.districtsCount}
                 </span>
-                <span className="text-[10px] text-muted">Resolvers</span>
+                <span className="text-[10px] text-muted">Districts</span>
               </div>
               <div>
-                <span className="block font-heading font-bold text-emerald-700 tabular-nums">
-                  {state.stats.avgResponseHours}h
+                <span className="block font-heading font-semibold text-ink text-xs truncate">
+                  {state.population}
                 </span>
-                <span className="text-[10px] text-muted">Avg SLA</span>
+                <span className="text-[10px] text-muted">Population</span>
               </div>
             </div>
 

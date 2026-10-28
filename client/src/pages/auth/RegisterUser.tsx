@@ -143,13 +143,10 @@ export const RegisterUser: React.FC = () => {
       title="Create Citizen Account"
       subtitle="Report civic defects, inspect transparent contractor quotes, and track photo proof"
       badgeText="Citizen Registration"
-      testimonialQuote="Crowd Report gave our neighborhood committee direct visibility into municipal repair milestones with zero bureaucracy. Knowing our advance is held in escrow until completion gives absolute peace of mind."
-      testimonialAuthor="Ananya Deshmukh"
-      testimonialRole="Citizen Representative, Pune Municipal Corp"
     >
       <SEO
         title="Citizen Registration"
-        description="Create your citizen account to report municipal defects, track real-time resolution with before/after photos, and verify escrow contractor repairs."
+        description="Create your citizen account to report municipal defects, track real-time resolution with before/after photos, and verify contractor repairs."
         robots="noindex, follow"
       />
       {errorMessage && (

@@ -57,13 +57,13 @@ export const ResolverEarnings: React.FC = () => {
             <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
               Contractor Finance
             </span>
-            <span className="text-xs font-mono text-secondaryText">Municipal Escrow Settled</span>
+            <span className="text-xs font-mono text-secondaryText">Direct Bank Settlements</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink tracking-tight">
             Earnings & Disbursements Ledger
           </h1>
           <p className="mt-1 text-sm text-secondaryText">
-            Audit your net contractor disbursements, escrow clearance pipeline, and municipal platform commission.
+            Audit your net contractor disbursements, payment clearance pipeline, and platform commission.
           </p>
         </div>
 
@@ -108,7 +108,7 @@ export const ResolverEarnings: React.FC = () => {
             </span>
           </div>
           <p className="mt-2 text-xs text-secondaryText">
-            Transferred directly to your verified bank account via Escrow
+            Transferred directly to your verified bank account upon verification
           </p>
         </Card>
 

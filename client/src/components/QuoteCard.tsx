@@ -45,10 +45,10 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({
           </div>
           <div>
             <h3 className="font-heading font-bold text-sm sm:text-base text-ink">
-              Official Municipal Fee Breakdown
+              Official Repair Fee Breakdown
             </h3>
             <p className="text-xs text-secondaryText">
-              Pre-approved Schedule of Rates (SOR) pricing with 50% escrow guarantee.
+              Transparent upfront pricing with 50% advance and balance on completion.
             </p>
           </div>
         </div>
@@ -131,12 +131,12 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({
             <div className="grid grid-cols-2 gap-3 pt-2 border-t border-primary/15">
               <div className="p-3 rounded-lg bg-white border border-border shadow-xs">
                 <div className="text-[10px] font-bold text-secondaryText uppercase tracking-wider">
-                  50% Advance (Escrowed)
+                  50% Advance (Deposit)
                 </div>
                 <div className="text-lg font-heading font-black text-ink mt-0.5 tabular-nums">
                   ₹{advanceRupees.toLocaleString('en-IN')}
                 </div>
-                <div className="text-[10px] text-muted mt-0.5">Held safely in escrow</div>
+                <div className="text-[10px] text-muted mt-0.5">To dispatch resolver</div>
               </div>
 
               <div className="p-3 rounded-lg bg-white border border-border shadow-xs">
@@ -156,7 +156,7 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({
         <div className="text-[11px] text-secondaryText flex items-center gap-1.5 pt-1">
           <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
           <span>
-            Citizen Escrow Guarantee: If repairs do not pass photo inspection, the advance is refunded in full.
+            Milestone Protection: Balance is payable only after photo inspection passes verification.
           </span>
         </div>
 
@@ -169,7 +169,7 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({
               disabled={isPaying}
               className="w-full py-3 px-4 rounded-lg bg-primary hover:bg-primaryDark text-white font-bold flex items-center justify-center gap-2 shadow-xs transition-all text-xs sm:text-sm disabled:opacity-60"
             >
-              <span>{isPaying ? 'Processing...' : `Pay 50% Advance Escrow (₹${advanceRupees.toLocaleString('en-IN')})`}</span>
+              <span>{isPaying ? 'Processing...' : `Pay 50% Advance (₹${advanceRupees.toLocaleString('en-IN')})`}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

@@ -35,7 +35,7 @@ export const WriteQuery: React.FC = () => {
 
   const queryCategories = [
     'General Governance',
-    'Escrow & Billing Questions',
+    'Billing & Payment Questions',
     'Contractor Accreditation & Verification',
     'Ward Jurisdiction Clarification',
     'Dispute & Rework Audit',
@@ -89,7 +89,7 @@ export const WriteQuery: React.FC = () => {
     <div className="bg-canvas min-h-screen">
       <SEO
         title="Citizen Inquiries & Civic Help Desk"
-        description="Direct administrative liaison desk for citizen questions regarding municipal ward coverage, contractor accreditation, escrow guarantees, and formal tax receipts."
+        description="Direct administrative liaison desk for citizen questions regarding municipal ward coverage, contractor accreditation, milestone payments, and formal tax receipts."
         keywords={[
           'civic help desk',
           'municipal inquiries',
@@ -363,7 +363,7 @@ export const WriteQuery: React.FC = () => {
                 <ul className="space-y-2 text-xs">
                   <li>
                     <Link to="/about" className="text-primary hover:underline flex items-center justify-between">
-                      <span>How Does the 50% Escrow Work?</span>
+                      <span>How Do the 50% Milestone Payments Work?</span>
                       <span>&rarr;</span>
                     </Link>
                   </li>

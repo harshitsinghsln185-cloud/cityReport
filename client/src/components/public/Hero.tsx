@@ -439,7 +439,7 @@ export const Hero: React.FC = () => {
               </span>
               <span>Civic issue reporting & resolution</span>
               <span className="w-1 h-1 rounded-full bg-gold" />
-              <span className="text-emerald-300 font-medium hidden sm:inline">36 States & UTs Live</span>
+              <span className="text-emerald-300 font-medium hidden sm:inline">Pan-India Coverage</span>
             </div>
           </Reveal>
 
@@ -502,15 +502,15 @@ export const Hero: React.FC = () => {
                 <Clock className="w-4 h-4 text-primary shrink-0" />
                 <div>
                   <p className="text-xs font-bold text-white leading-tight">Assigned local resolver</p>
-                  <p className="text-[11px] text-slate-300">24-48h municipal dispatch</p>
+                  <p className="text-[11px] text-slate-300">Verified local dispatch</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
                 <div>
-                  <p className="text-xs font-bold text-white leading-tight">50% escrow protection</p>
-                  <p className="text-[11px] text-slate-300">Released after verification</p>
+                  <p className="text-xs font-bold text-white leading-tight">50% advance and balance</p>
+                  <p className="text-[11px] text-slate-300">Balance paid on completion</p>
                 </div>
               </div>
             </div>

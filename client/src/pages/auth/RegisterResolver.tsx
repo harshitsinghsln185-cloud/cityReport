@@ -195,7 +195,7 @@ export const RegisterResolver: React.FC = () => {
     <div className="min-h-screen bg-canvas">
       <SEO
         title="Municipal Contractor & Resolver Onboarding"
-        description="Join India's certified municipal contractor network. Receive proximity-dispatched civic work orders, guaranteed 50% escrow milestone payouts, and verified credentials."
+        description="Join India's certified municipal contractor network. Receive proximity-dispatched civic work orders, guaranteed 50% advance milestone payouts, and verified credentials."
         keywords={[
           'municipal contractor onboarding',
           'civic resolver registration',
@@ -213,7 +213,7 @@ export const RegisterResolver: React.FC = () => {
         eyebrow="Municipal Contractor Accreditation"
         eyebrowIcon={<Wrench className="w-3.5 h-3.5" />}
         title="Join the Certified Municipal Resolver Network"
-        description="Receive proximity-dispatched municipal work orders, guaranteed 50% advance milestone escrow payouts, and verifiable public reputation in your local district."
+        description="Receive proximity-dispatched municipal work orders, guaranteed 50% advance milestone payouts, and verifiable public reputation in your local district."
         visual={
           <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
@@ -491,7 +491,7 @@ export const RegisterResolver: React.FC = () => {
                 <div className="p-4 bg-amber-50 border border-amber-200 rounded-card text-amber-900 text-xs flex items-start gap-2.5">
                   <ShieldCheck className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong>Data Privacy & Escrow Security:</strong> Government ID proofs are stored in authenticated Cloudinary vaults and are only accessible by platform administrators through time-limited cryptographic signed URLs.
+                    <strong>Data Privacy & Storage Security:</strong> Government ID proofs are stored in authenticated Cloudinary vaults and are only accessible by platform administrators through time-limited cryptographic signed URLs.
                   </div>
                 </div>
 

@@ -26,38 +26,53 @@ export const UserDashboard: React.FC = () => {
   const [recentIssues, setRecentIssues] = useState<Issue[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [trackingInput, setTrackingInput] = useState<string>('');
+  const [counts, setCounts] = useState({
+    total: 0,
+    inProgress: 0,
+    resolved: 0,
+    awaitingAdvance: 0,
+  });
 
   useEffect(() => {
     let isMounted = true;
-    const fetchRecent = async () => {
+    const fetchDashboardData = async () => {
       try {
         setLoading(true);
-        const res = await issueService.list({ limit: 5 });
-        const list = Array.isArray(res?.data) ? res.data : Array.isArray(res) ? res : [];
-        if (isMounted) setRecentIssues(list);
+        // Fetch recent issues and real counts from server pagination metadata
+        const [recentRes, inProgRes, resolvedRes, advanceRes] = await Promise.all([
+          issueService.list({ limit: 5 }),
+          issueService.list({ status: 'InProgress', limit: 1 }),
+          issueService.list({ status: 'Closed', limit: 1 }),
+          issueService.list({ status: 'AwaitingAdvance', limit: 1 }),
+        ]);
+
+        if (isMounted) {
+          const list = Array.isArray(recentRes?.data) ? recentRes.data : Array.isArray(recentRes) ? recentRes : [];
+          setRecentIssues(list);
+          setCounts({
+            total: recentRes?.meta?.total ?? list.length,
+            inProgress: inProgRes?.meta?.total ?? 0,
+            resolved: resolvedRes?.meta?.total ?? 0,
+            awaitingAdvance: advanceRes?.meta?.total ?? 0,
+          });
+        }
       } catch (err) {
         console.error('Failed to load citizen issues:', err);
       } finally {
         if (isMounted) setLoading(false);
       }
     };
-    fetchRecent();
+    fetchDashboardData();
     return () => {
       isMounted = false;
     };
   }, []);
 
-  // Compute metrics from issues
-  const totalCount = recentIssues.length;
-  const inProgressCount = recentIssues.filter(
-    (i) => i.status === 'InProgress' || i.status === 'Assigned' || i.status === 'Accepted'
-  ).length;
-  const resolvedCount = recentIssues.filter(
-    (i) => i.status === 'Resolved' || i.status === 'BalanceDue' || i.status === 'Closed'
-  ).length;
-  const awaitingAdvanceCount = recentIssues.filter(
-    (i) => i.status === 'AwaitingAdvance' || i.status === 'AwaitingQuote'
-  ).length;
+  // Compute metrics from real server counts
+  const totalCount = counts.total;
+  const inProgressCount = counts.inProgress;
+  const resolvedCount = counts.resolved;
+  const awaitingAdvanceCount = counts.awaitingAdvance;
 
   const handleTrackSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,7 +107,7 @@ export const UserDashboard: React.FC = () => {
               Welcome back, {user?.name?.split(' ')[0] || 'Citizen'}
             </h1>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Your municipal governance desk is active. Monitor neighborhood defect dispatches, review 50% advance escrow protections, and inspect Before/After photographic proof.
+              Your citizen portal is active. Monitor neighborhood defect dispatches, track 50% advance milestone protections, and inspect Before/After photographic proof.
             </p>
           </div>
 
@@ -171,7 +186,7 @@ export const UserDashboard: React.FC = () => {
           <div className="font-heading font-bold text-2xl sm:text-3xl text-purple-700 tabular-nums">
             {awaitingAdvanceCount}
           </div>
-          <div className="text-[11px] text-muted mt-1">50% escrow pending</div>
+          <div className="text-[11px] text-muted mt-1">50% advance pending</div>
         </Card>
       </div>
 
@@ -265,7 +280,7 @@ export const UserDashboard: React.FC = () => {
           )}
         </div>
 
-        {/* Right Column (4 cols): Quick Track, Escrow Explainer & Support */}
+        {/* Right Column (4 cols): Quick Track, Milestone Explainer & Support */}
         <div className="lg:col-span-4 space-y-6">
           {/* Quick Track Card */}
           <Card className="p-5 sm:p-6 space-y-4">
@@ -294,18 +309,18 @@ export const UserDashboard: React.FC = () => {
             </form>
           </Card>
 
-          {/* 50% Escrow Guarantee Notice */}
+          {/* 50% Advance & Milestone Protection Notice */}
           <Card className="p-5 sm:p-6 bg-gradient-to-br from-primary/5 via-canvas to-primary/10 border-primary/20 space-y-3">
             <div className="flex items-center gap-2 text-primary font-heading font-bold text-sm">
               <ShieldCheck className="w-5 h-5 text-primary" />
-              <span>Paise-Exact Escrow Gate</span>
+              <span>50% Advance & Milestone Protection</span>
             </div>
             <p className="text-xs text-secondaryText leading-relaxed">
-              <strong>50% Advance</strong> is safely locked in municipal escrow and only released to the certified resolver when on-site work begins. <strong>50% Balance</strong> is due only after you inspect and accept the verified Before/After completion photos.
+              <strong>50% Advance</strong> initiates repair work with the assigned local resolver. <strong>50% Balance</strong> is due only after you inspect and accept the verified Before/After completion photos.
             </p>
             <div className="pt-1 flex items-center gap-1.5 text-[11px] font-semibold text-primary">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Zero risk &bull; Guaranteed contractor SLA</span>
+              <span>Milestone payments &bull; Transparent photo proof</span>
             </div>
           </Card>
 

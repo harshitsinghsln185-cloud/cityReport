@@ -768,7 +768,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
                 <span className="font-mono tabular-nums">{formatRupees(issue.fee?.totalPaise)}</span>
               </div>
               <div className="flex justify-between text-xs text-primary font-medium">
-                <span>50% Advance (Escrowed)</span>
+                <span>50% Advance (Paid)</span>
                 <span className="font-mono tabular-nums">{formatRupees(issue.fee?.advancePaise)}</span>
               </div>
               <div className="flex justify-between text-xs text-secondaryText">
