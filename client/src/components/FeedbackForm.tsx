@@ -51,7 +51,7 @@ export const FeedbackForm: React.FC<FeedbackFormProps> = ({
 
   if (submitted) {
     return (
-      <Card className="border border-violet-100 bg-gradient-to-br from-violet-50/50 to-white p-6 shadow-sm">
+      <Card className="border border-card-border bg-gradient-to-br from-primary-light/30 to-white p-6 shadow-sm">
         <div className="flex items-start gap-4">
           <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
             <CheckCircle2 className="h-6 w-6" />
@@ -73,7 +73,7 @@ export const FeedbackForm: React.FC<FeedbackFormProps> = ({
               <span className="ml-2 text-sm font-semibold text-slate-700">{rating} of 5 Stars</span>
             </div>
             {comments && (
-              <p className="mt-3 rounded-md bg-white/80 p-3 text-sm italic text-slate-700 border border-violet-100">
+              <p className="mt-3 rounded-md bg-white/80 p-3 text-sm italic text-slate-700 border border-card-border">
                 "{comments}"
               </p>
             )}
@@ -84,9 +84,9 @@ export const FeedbackForm: React.FC<FeedbackFormProps> = ({
   }
 
   return (
-    <Card className="border border-violet-100 p-6 shadow-sm">
+    <Card className="border border-card-border p-6 shadow-sm">
       <div className="mb-4">
-        <h3 className="text-lg font-bold text-slate-900">Rate Contractor Remediation Quality</h3>
+        <h3 className="text-lg font-bold text-slate-900">Rate Contractor Repair Quality</h3>
         <p className="text-sm text-slate-600">
           How satisfied are you with the verified resolution of this civic issue?
         </p>
@@ -121,7 +121,7 @@ export const FeedbackForm: React.FC<FeedbackFormProps> = ({
                 />
               </button>
             ))}
-            <span className="ml-3 text-sm font-semibold text-violet-900">
+            <span className="ml-3 text-sm font-semibold text-primary">
               {hoverRating || rating === 5
                 ? '5 - Outstanding Work'
                 : (hoverRating || rating) === 4
@@ -146,7 +146,7 @@ export const FeedbackForm: React.FC<FeedbackFormProps> = ({
             value={comments}
             onChange={(e) => setComments(e.target.value)}
             placeholder="Share any feedback about the repair workmanship, timeliness, or cleanup..."
-            className="w-full rounded-lg border border-slate-300 p-3 text-sm focus:border-violet-600 focus:outline-none focus:ring-1 focus:ring-violet-600"
+            className="w-full rounded-lg border border-slate-300 p-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
           />
           <div className="mt-1 text-right text-xs text-slate-400">
             {comments.length} / 1000 characters
@@ -155,8 +155,9 @@ export const FeedbackForm: React.FC<FeedbackFormProps> = ({
 
         <Button
           type="submit"
+          variant="primary"
           disabled={loading}
-          className="bg-violet-600 text-white hover:bg-violet-700 flex items-center justify-center gap-2"
+          className="flex items-center justify-center gap-2"
         >
           {loading ? (
             <>

@@ -34,17 +34,17 @@ export const Button: React.FC<ButtonProps> = ({
     primary:
       'bg-primary text-white hover:bg-primary-hover shadow-sm hover:shadow-cardHover hover:-translate-y-0.5 active:translate-y-0 border border-primary/20',
     secondary:
-      'bg-primary-light text-primary hover:bg-[#DCE7F5] focus-visible:ring-accent hover:-translate-y-0.5 active:translate-y-0 border border-primary/10',
+      'bg-primary-light text-primary hover:bg-slate-200 focus-visible:ring-accent hover:-translate-y-0.5 active:translate-y-0 border border-primary/10',
     accent:
       'bg-accent text-primary font-semibold hover:bg-accent-hover shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 border border-accent/20',
     gold:
       'bg-accent text-primary font-semibold hover:bg-accent-hover shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 border border-accent/20',
     navy:
-      'bg-navy text-gold hover:bg-navy-muted font-semibold shadow-sm hover:shadow-cardHover hover:-translate-y-0.5 active:translate-y-0 border border-gold/30',
+      'bg-navy text-gold hover:bg-navy-light font-semibold shadow-sm hover:shadow-cardHover hover:-translate-y-0.5 active:translate-y-0 border border-gold/30',
     purple:
-      'bg-[#5B4FE1] text-white hover:bg-[#4A3FD0] font-semibold shadow-sm hover:shadow-cardHover hover:-translate-y-0.5 active:translate-y-0 border border-[#5B4FE1]/30 focus-visible:ring-[#5B4FE1]',
+      'bg-primary text-white hover:bg-primary-hover font-semibold shadow-sm hover:shadow-cardHover hover:-translate-y-0.5 active:translate-y-0 border border-primary/20',
     danger:
-      'bg-status-danger text-white hover:bg-[#991B1B] focus-visible:ring-red-400 shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0',
+      'bg-status-danger text-white hover:bg-red-800 focus-visible:ring-red-400 shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0',
     outline:
       'border border-border bg-white text-ink hover:bg-canvas hover:border-slate-400 focus-visible:ring-accent hover:-translate-y-0.5 active:translate-y-0 shadow-xs',
     ghost:

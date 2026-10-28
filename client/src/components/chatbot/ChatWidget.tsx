@@ -29,8 +29,8 @@ export const ChatWidget: React.FC = () => {
           aria-label={isOpen ? 'Close Civic AI Assistant' : 'Open Civic AI Assistant'}
           className={`relative group w-14 h-14 rounded-full flex items-center justify-center text-white shadow-xl transition-all duration-300 transform active:scale-90 ${
             isOpen
-              ? 'bg-[#1E293B] hover:bg-[#334155] shadow-slate-900/20 rotate-90'
-              : 'bg-gradient-to-tr from-[#6D28D9] to-[#7C3AED] hover:from-[#5B21B6] hover:to-[#6D28D9] shadow-[#7C3AED]/35 hover:shadow-[#7C3AED]/50 hover:scale-105'
+              ? 'bg-ink hover:bg-slate-800 shadow-slate-900/20 rotate-90'
+              : 'bg-gradient-to-tr from-primary to-primary-hover shadow-primary/30 hover:shadow-primary/45 hover:scale-105'
           }`}
         >
           {isOpen ? (
@@ -40,9 +40,9 @@ export const ChatWidget: React.FC = () => {
               <MessageSquareText className="w-6 h-6 transition-transform group-hover:scale-110" />
               {/* Subtle pulsing AI indicator */}
               <span className="absolute -top-1 -right-1 flex h-4 w-4">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#A78BFA] opacity-75" />
-                <span className="relative inline-flex rounded-full h-4 w-4 bg-[#7C3AED] border-2 border-white items-center justify-center">
-                  <Sparkles className="w-2.5 h-2.5 text-white" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+                <span className="relative inline-flex rounded-full h-4 w-4 bg-accent border-2 border-white items-center justify-center">
+                  <Sparkles className="w-2.5 h-2.5 text-navy" />
                 </span>
               </span>
             </>

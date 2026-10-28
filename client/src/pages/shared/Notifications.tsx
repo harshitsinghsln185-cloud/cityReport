@@ -41,11 +41,11 @@ const formatTimeAgo = (dateString: string): string => {
 const getNotificationIcon = (type: string) => {
   switch (type) {
     case 'PAYMENT':
-      return <CreditCard className="w-5 h-5 text-violet-600" />;
+      return <CreditCard className="w-5 h-5 text-primary" />;
     case 'PAYOUT':
       return <DollarSign className="w-5 h-5 text-emerald-600" />;
     case 'ASSIGNMENT':
-      return <Wrench className="w-5 h-5 text-indigo-600" />;
+      return <Wrench className="w-5 h-5 text-primary" />;
     case 'REWORK':
       return <RotateCcw className="w-5 h-5 text-amber-600" />;
     case 'VERIFICATION':
@@ -60,11 +60,11 @@ const getNotificationIcon = (type: string) => {
 const getTypeBadge = (type: string) => {
   switch (type) {
     case 'PAYMENT':
-      return 'bg-violet-50 text-violet-700 border-violet-200';
+      return 'bg-primary-light text-primary border-primary/20';
     case 'PAYOUT':
       return 'bg-emerald-50 text-emerald-700 border-emerald-200';
     case 'ASSIGNMENT':
-      return 'bg-indigo-50 text-indigo-700 border-indigo-200';
+      return 'bg-primary-light text-primary border-primary/20';
     case 'REWORK':
       return 'bg-amber-50 text-amber-700 border-amber-200';
     case 'VERIFICATION':
@@ -150,14 +150,14 @@ export const NotificationsPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="p-2 rounded-xl bg-[#EDE9FE] text-[#7C3AED]">
+            <span className="p-2 rounded-xl bg-primary-light text-primary">
               <Bell className="w-5 h-5" />
             </span>
-            <h1 className="text-2xl font-heading font-bold text-[#1E293B]">
+            <h1 className="text-2xl font-heading font-bold text-ink">
               Notification Center
             </h1>
           </div>
-          <p className="text-sm text-[#64748B]">
+          <p className="text-sm text-muted">
             All updates regarding your civic reports, quote evaluations, and settlements.
           </p>
         </div>
@@ -212,7 +212,7 @@ export const NotificationsPage: React.FC = () => {
             >
               <span>Unread</span>
               {unreadCount > 0 && (
-                <span className="w-2 h-2 rounded-full bg-violet-600" />
+                <span className="w-2 h-2 rounded-full bg-accent" />
               )}
             </button>
           </div>
@@ -223,7 +223,7 @@ export const NotificationsPage: React.FC = () => {
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="text-xs font-medium rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-slate-700 focus:outline-none focus:ring-1 focus:ring-violet-600"
+              className="text-xs font-medium rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-slate-700 focus:outline-none focus:ring-1 focus:ring-primary"
             >
               <option value="ALL">All Categories</option>
               <option value="ISSUE">Civic Issues</option>
@@ -242,7 +242,7 @@ export const NotificationsPage: React.FC = () => {
       <Card className="divide-y divide-slate-100 overflow-hidden">
         {loading ? (
           <div className="py-20 text-center text-slate-400">
-            <RefreshCw className="w-7 h-7 text-[#7C3AED] animate-spin mx-auto mb-3" />
+            <RefreshCw className="w-7 h-7 text-primary animate-spin mx-auto mb-3" />
             <p className="text-sm font-medium">Loading notifications...</p>
           </div>
         ) : notifications.length === 0 ? (
@@ -264,7 +264,7 @@ export const NotificationsPage: React.FC = () => {
             <div
               key={notif._id}
               className={`p-5 flex flex-col sm:flex-row sm:items-start justify-between gap-4 transition-colors ${
-                !notif.isRead ? 'bg-[#EDE9FE]/20 hover:bg-[#EDE9FE]/30' : 'hover:bg-slate-50'
+                !notif.isRead ? 'bg-primary-light/40 hover:bg-primary-light/60' : 'hover:bg-slate-50'
               }`}
             >
               <div className="flex items-start gap-3.5">
@@ -286,7 +286,7 @@ export const NotificationsPage: React.FC = () => {
                       {formatTimeAgo(notif.createdAt)}
                     </span>
                     {!notif.isRead && (
-                      <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-violet-600 text-white">
+                      <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-accent text-navy">
                         NEW
                       </span>
                     )}

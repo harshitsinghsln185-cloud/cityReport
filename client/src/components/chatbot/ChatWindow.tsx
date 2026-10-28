@@ -147,16 +147,16 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
       <div
         role="dialog"
         aria-label="Civic AI Assistant"
-        className="fixed bottom-20 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[390px] h-[560px] max-h-[85vh] bg-white rounded-2xl shadow-2xl border border-[#E2E8F0] flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-200"
+        className="fixed bottom-20 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[390px] h-[560px] max-h-[85vh] bg-white rounded-2xl shadow-2xl border border-card-border flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-200"
       >
         {/* Header */}
-        <div className="px-4 py-3 bg-gradient-to-r from-[#171A3B] via-[#312E81] to-[#7C3AED] text-white flex items-center justify-between shadow-xs">
+        <div className="px-4 py-3 bg-gradient-to-r from-[#071329] via-primary to-primary-hover text-white flex items-center justify-between shadow-xs">
           <div className="flex items-center gap-2.5">
             <div className="relative">
               <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
                 <Bot className="w-4 h-4 text-white" />
               </div>
-              <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-[#171A3B]" />
+              <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-primary" />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
@@ -192,7 +192,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
         {/* Message Feed */}
         <div
           aria-live="polite"
-          className="flex-1 overflow-y-auto px-4 py-3 space-y-1 bg-[#F8F7FC] scroll-smooth"
+          className="flex-1 overflow-y-auto px-4 py-3 space-y-1 bg-canvas scroll-smooth"
         >
           {session?.messages?.map((msg, i) => (
             <MessageBubble key={msg._id || i} message={msg} />
@@ -220,7 +220,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
                     onClose();
                     navigate(`/user/checkout/${submittedResult.issue._id}`);
                   }}
-                  className="w-full mt-2 py-2 px-3 bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs font-semibold rounded-lg shadow-sm flex items-center justify-center gap-1.5 transition-all"
+                  className="w-full mt-2 py-2 px-3 bg-accent hover:bg-accent-hover text-navy text-xs font-semibold rounded-lg shadow-sm flex items-center justify-center gap-1.5 transition-all"
                 >
                   <span>Proceed to Advance Payment</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -231,14 +231,14 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
 
           {/* Loading Indicator */}
           {isLoading && (
-            <div className="flex items-center gap-2 text-xs text-[#64748B] py-2 px-2">
-              <div className="w-6 h-6 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center animate-pulse">
+            <div className="flex items-center gap-2 text-xs text-muted py-2 px-2">
+              <div className="w-6 h-6 rounded-full bg-primary-light text-primary flex items-center justify-center animate-pulse">
                 <Sparkles className="w-3.5 h-3.5" />
               </div>
               <div className="flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] animate-bounce" />
-                <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] animate-bounce [animation-delay:0.15s]" />
-                <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] animate-bounce [animation-delay:0.3s]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" />
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce [animation-delay:0.15s]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce [animation-delay:0.3s]" />
               </div>
             </div>
           )}
@@ -268,7 +268,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
         {/* Footer Input */}
         <form
           onSubmit={handleSend}
-          className="p-3 bg-white border-t border-[#E2E8F0] flex items-center gap-2"
+          className="p-3 bg-white border-t border-card-border flex items-center gap-2"
         >
           <input
             type="file"
@@ -283,7 +283,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
             onClick={() => fileInputRef.current?.click()}
             title="Attach Photo"
             disabled={isLoading || isSubmitting || session?.state === 'SUBMITTED'}
-            className="p-2 rounded-xl text-[#64748B] hover:text-[#7C3AED] hover:bg-[#EDE9FE] transition-colors disabled:opacity-40"
+            className="p-2 rounded-xl text-muted hover:text-primary hover:bg-primary-light transition-colors disabled:opacity-40"
           >
             <Paperclip className="w-4 h-4" />
           </button>
@@ -293,7 +293,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
             onClick={() => setIsLocationModalOpen(true)}
             title="Pin Location on Map"
             disabled={isLoading || isSubmitting || session?.state === 'SUBMITTED'}
-            className="p-2 rounded-xl text-[#64748B] hover:text-[#7C3AED] hover:bg-[#EDE9FE] transition-colors disabled:opacity-40"
+            className="p-2 rounded-xl text-muted hover:text-primary hover:bg-primary-light transition-colors disabled:opacity-40"
           >
             <MapPin className="w-4 h-4" />
           </button>
@@ -308,7 +308,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
             }
             disabled={isLoading || isSubmitting || session?.state === 'SUBMITTED'}
             maxLength={500}
-            className="flex-1 px-3 py-2 text-xs bg-[#F8F7FC] rounded-xl border border-[#E2E8F0] focus:outline-none focus:border-[#7C3AED] focus:bg-white transition-all text-[#1E293B] disabled:opacity-60"
+            className="flex-1 px-3 py-2 text-xs bg-canvas rounded-xl border border-card-border focus:outline-none focus:border-primary focus:bg-white transition-all text-ink disabled:opacity-60"
           />
 
           <Button

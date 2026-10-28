@@ -23,7 +23,7 @@ export const MapPicker: React.FC<MapPickerProps> = ({
   const markerRef = useRef<L.Marker | null>(null);
   const circleRef = useRef<L.Circle | null>(null);
 
-  // Custom stylish pin icon matching Royal Indigo theme
+  // Custom pin icon matching primary navy & accent gold theme
   const createPinIcon = () => {
     return L.divIcon({
       className: 'custom-map-marker',
@@ -31,16 +31,16 @@ export const MapPicker: React.FC<MapPickerProps> = ({
         <div style="
           width: 32px;
           height: 32px;
-          background: #7C3AED;
+          background: #0A1F44;
           border-radius: 50% 50% 50% 0;
           transform: rotate(-45deg);
           border: 3px solid #FFFFFF;
-          box-shadow: 0 4px 10px rgba(124, 58, 237, 0.4);
+          box-shadow: 0 4px 10px rgba(10, 31, 68, 0.35);
           display: flex;
           align-items: center;
           justify-content: center;
         ">
-          <div style="width: 10px; height: 10px; background: #FFFFFF; border-radius: 50%;"></div>
+          <div style="width: 10px; height: 10px; background: #E8A33D; border-radius: 50%;"></div>
         </div>
       `,
       iconSize: [32, 32],
@@ -68,9 +68,9 @@ export const MapPicker: React.FC<MapPickerProps> = ({
     // Coverage Radius Circle
     const circle = L.circle([lat, lng], {
       radius: radiusKm * 1000,
-      color: '#7C3AED',
+      color: '#0A1F44',
       weight: 2,
-      fillColor: '#EDE9FE',
+      fillColor: '#EBF1FA',
       fillOpacity: 0.35,
     }).addTo(map);
     circleRef.current = circle;
@@ -119,12 +119,12 @@ export const MapPicker: React.FC<MapPickerProps> = ({
   }, [lat, lng, radiusKm]);
 
   return (
-    <div className="relative rounded-xl overflow-hidden border border-[#E2E8F0] shadow-sm">
+    <div className="relative rounded-xl overflow-hidden border border-card-border shadow-sm">
       <div ref={mapContainerRef} style={{ height, width: '100%' }} />
       {!isReadOnly && (
-        <div className="absolute bottom-2.5 left-2.5 z-[1000] bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-[#E2E8F0] text-[11px] font-medium text-[#475569] shadow-sm flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[#7C3AED] animate-pulse" />
-          <span>Click anywhere on the map or drag the purple pin to set headquarters</span>
+        <div className="absolute bottom-2.5 left-2.5 z-[1000] bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-card-border text-xs font-medium text-secondaryText shadow-sm flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <span>Click anywhere on the map or drag the pin to set headquarters</span>
         </div>
       )}
     </div>

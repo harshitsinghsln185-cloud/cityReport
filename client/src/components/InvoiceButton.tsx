@@ -49,15 +49,15 @@ export const InvoiceButton: React.FC<InvoiceButtonProps> = ({
           downloading ? (
             <RefreshCw className="w-3.5 h-3.5 animate-spin" />
           ) : size === 'sm' ? (
-            <FileText className="w-3.5 h-3.5 text-[#7C3AED]" />
+            <FileText className="w-3.5 h-3.5 text-primary" />
           ) : (
-            <Download className="w-4 h-4 text-[#7C3AED]" />
+            <Download className="w-4 h-4 text-primary" />
           )
         }
       >
         {downloading ? 'Downloading...' : label || (invoiceNumber ? `Invoice ${invoiceNumber}` : 'Download Invoice PDF')}
       </Button>
-      {error && <span className="text-[10px] text-rose-600 mt-1">{error}</span>}
+      {error && <span className="text-xs text-danger mt-1">{error}</span>}
     </div>
   );
 };

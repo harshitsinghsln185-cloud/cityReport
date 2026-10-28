@@ -130,7 +130,7 @@ export const ProfilePage: React.FC = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="flex items-center gap-3 text-[#7C3AED]">
+        <div className="flex items-center gap-3 text-primary">
           <RefreshCw className="w-6 h-6 animate-spin" />
           <span className="font-medium text-sm">Loading your profile...</span>
         </div>
@@ -142,8 +142,8 @@ export const ProfilePage: React.FC = () => {
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-heading font-bold text-[#1E293B]">Profile Settings</h1>
-        <p className="text-sm text-[#475569] mt-1">
+        <h1 className="text-2xl font-heading font-bold text-ink">Profile Settings</h1>
+        <p className="text-sm text-secondaryText mt-1">
           Manage your personal information, contact address, and account avatar.
         </p>
       </div>
@@ -167,7 +167,7 @@ export const ProfilePage: React.FC = () => {
       <Card className="p-6">
         <div className="flex flex-col sm:flex-row items-center gap-6">
           <div className="relative group">
-            <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-[#7C3AED]/30 shadow-md bg-[#EDE9FE] flex items-center justify-center">
+            <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-md bg-primary-light flex items-center justify-center">
               {profile?.photo?.url ? (
                 <img
                   src={profile.photo.url}
@@ -175,7 +175,7 @@ export const ProfilePage: React.FC = () => {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <span className="text-3xl font-heading font-black text-[#7C3AED]">
+                <span className="text-3xl font-heading font-black text-primary">
                   {profile?.name ? profile.name.charAt(0).toUpperCase() : 'U'}
                 </span>
               )}
@@ -184,7 +184,7 @@ export const ProfilePage: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsPhotoModalOpen(true)}
-              className="absolute -bottom-1 -right-1 p-2 bg-[#7C3AED] text-white rounded-xl shadow-lg hover:bg-[#6D28D9] transition-transform active:scale-95"
+              className="absolute -bottom-1 -right-1 p-2 bg-primary text-white rounded-xl shadow-lg hover:bg-primary-hover transition-transform active:scale-95"
               title="Change Profile Photo"
             >
               <Camera className="w-4 h-4" />
@@ -193,16 +193,16 @@ export const ProfilePage: React.FC = () => {
 
           <div className="text-center sm:text-left flex-1">
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-              <h2 className="text-xl font-heading font-bold text-[#1E293B]">
+              <h2 className="text-xl font-heading font-bold text-ink">
                 {profile?.name}
               </h2>
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#EDE9FE] text-[#7C3AED] w-fit mx-auto sm:mx-0">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary-light text-primary border border-primary/20 w-fit mx-auto sm:mx-0">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 {profile?.role || 'Citizen'}
               </span>
             </div>
-            <p className="text-sm text-[#64748B] mt-1">{profile?.email}</p>
-            <p className="text-xs text-[#475569] mt-2">
+            <p className="text-sm text-muted mt-1">{profile?.email}</p>
+            <p className="text-xs text-secondaryText mt-2">
               Member since{' '}
               {profile?.createdAt
                 ? new Date(profile.createdAt).toLocaleDateString('en-IN', {
@@ -228,13 +228,13 @@ export const ProfilePage: React.FC = () => {
       <form onSubmit={handleUpdateProfile} className="space-y-6">
         {/* Contact Info */}
         <Card className="p-6">
-          <div className="flex items-center gap-2.5 pb-4 border-b border-[#E2E8F0] mb-5">
-            <User className="w-5 h-5 text-[#7C3AED]" />
+          <div className="flex items-center gap-2.5 pb-4 border-b border-border mb-5">
+            <User className="w-5 h-5 text-primary" />
             <div>
-              <h3 className="font-heading font-bold text-base text-[#1E293B]">
+              <h3 className="font-heading font-bold text-base text-ink">
                 Personal & Contact Information
               </h3>
-              <p className="text-xs text-[#64748B]">
+              <p className="text-xs text-muted">
                 Primary contact credentials for notifications and task coordination.
               </p>
             </div>
@@ -250,7 +250,7 @@ export const ProfilePage: React.FC = () => {
             />
 
             <div>
-              <label className="block text-xs font-semibold text-[#1E293B] mb-1.5">
+              <label className="block text-xs font-semibold text-ink mb-1.5">
                 Email Address
               </label>
               <div className="relative">
@@ -258,13 +258,13 @@ export const ProfilePage: React.FC = () => {
                   type="email"
                   value={profile?.email || ''}
                   disabled
-                  className="w-full px-3 py-2 bg-[#F8F7FC] border border-[#E2E8F0] rounded-lg text-sm text-[#64748B] cursor-not-allowed"
+                  className="w-full px-3 py-2 bg-canvas border border-border rounded-lg text-sm text-muted cursor-not-allowed"
                 />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                   Verified
                 </span>
               </div>
-              <p className="text-[11px] text-[#64748B] mt-1">
+              <p className="text-[11px] text-muted mt-1">
                 Email cannot be modified directly. Contact administrative support for changes.
               </p>
             </div>
@@ -274,14 +274,14 @@ export const ProfilePage: React.FC = () => {
               value={formData.phone}
               onChange={(e) => setFormData((p) => ({ ...p, phone: e.target.value }))}
               placeholder="10-digit mobile number"
-              leftIcon={<Phone className="w-4 h-4 text-[#64748B]" />}
+              leftIcon={<Phone className="w-4 h-4 text-muted" />}
               required
             />
 
             <div className="flex flex-col justify-end">
               <Link
                 to="/forgot-password"
-                className="text-xs font-semibold text-[#7C3AED] hover:underline flex items-center gap-1.5 py-2.5"
+                className="text-xs font-semibold text-primary hover:underline flex items-center gap-1.5 py-2.5"
               >
                 <KeyRound className="w-4 h-4" />
                 Change or reset password
@@ -292,13 +292,13 @@ export const ProfilePage: React.FC = () => {
 
         {/* Address Details */}
         <Card className="p-6">
-          <div className="flex items-center gap-2.5 pb-4 border-b border-[#E2E8F0] mb-5">
-            <MapPin className="w-5 h-5 text-[#7C3AED]" />
+          <div className="flex items-center gap-2.5 pb-4 border-b border-border mb-5">
+            <MapPin className="w-5 h-5 text-primary" />
             <div>
-              <h3 className="font-heading font-bold text-base text-[#1E293B]">
+              <h3 className="font-heading font-bold text-base text-ink">
                 Residential / Service Address
               </h3>
-              <p className="text-xs text-[#64748B]">
+              <p className="text-xs text-muted">
                 Default address used when submitting civic reports in your neighborhood.
               </p>
             </div>

@@ -193,7 +193,7 @@ export const ResolverDashboard: React.FC = () => {
         </Card>
 
         {/* KPI 4: Pending Payout */}
-        <Card className="p-5 border-border hover:border-purple-400/40 transition-colors shadow-card">
+        <Card className="p-5 border-border hover:border-accent/40 transition-colors shadow-card">
           <div className="flex items-start justify-between">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-wider text-secondaryText">Pending Payout</p>
@@ -204,7 +204,7 @@ export const ResolverDashboard: React.FC = () => {
                 Next scheduled payout
               </p>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-700 border border-purple-200 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-accent-light text-accent-text border border-accent/30 flex items-center justify-center shrink-0">
               <DollarSign className="w-5 h-5" />
             </div>
           </div>

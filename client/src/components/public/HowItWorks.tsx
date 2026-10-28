@@ -21,7 +21,7 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
     id: 'step-01',
     title: (
       <div className="flex items-center gap-3 flex-wrap">
-        <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-[#5B4FE1] text-white shadow-xs shrink-0">
+        <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-primary text-white shadow-xs shrink-0">
           Step 01
         </span>
         <span className="font-heading font-semibold text-base text-ink">
@@ -58,7 +58,7 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
     id: 'step-02',
     title: (
       <div className="flex items-center gap-3 flex-wrap">
-        <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-[#5B4FE1] text-white shadow-xs shrink-0">
+        <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-primary text-white shadow-xs shrink-0">
           Step 02
         </span>
         <span className="font-heading font-semibold text-base text-ink">
@@ -95,7 +95,7 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
     id: 'step-03',
     title: (
       <div className="flex items-center gap-3 flex-wrap">
-        <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-[#5B4FE1] text-white shadow-xs shrink-0">
+        <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-primary text-white shadow-xs shrink-0">
           Step 03
         </span>
         <span className="font-heading font-semibold text-base text-ink">
@@ -132,7 +132,7 @@ const HOW_IT_WORKS_STEPS: AccordionItemData[] = [
     id: 'step-04',
     title: (
       <div className="flex items-center gap-3 flex-wrap">
-        <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-[#5B4FE1] text-white shadow-xs shrink-0">
+        <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-primary text-white shadow-xs shrink-0">
           Step 04
         </span>
         <span className="font-heading font-semibold text-base text-ink">
@@ -177,17 +177,17 @@ export const HowItWorks: React.FC = () => {
             <Reveal>
               <SectionHeader
                 eyebrow="Mathematical Accountability"
-                eyebrowVariant="violet"
+                eyebrowVariant="primary"
                 title="How Crowd Report Solves Civic Hazards"
                 subtitle="From citizen report to photo-verified resolution and contractor disbursement, every milestone is tracked with complete audit transparency."
                 align="left"
                 className="mb-6"
               />
 
-              <div className="p-6 rounded-card bg-gradient-to-br from-primary-light/60 via-white to-[#5B4FE1]/10 border border-[#5B4FE1]/30 shadow-subtle space-y-3 text-xs mb-6 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-[#5B4FE1]/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="p-6 rounded-card bg-gradient-to-br from-primary-light/60 via-white to-primary-light/30 border border-primary/20 shadow-subtle space-y-3 text-xs mb-6 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
                 <div className="flex items-center gap-2 font-bold text-ink">
-                  <div className="w-7 h-7 rounded-lg bg-[#5B4FE1] text-white flex items-center justify-center shrink-0 shadow-xs">
+                  <div className="w-7 h-7 rounded-lg bg-primary text-white flex items-center justify-center shrink-0 shadow-xs">
                     <Shield className="w-4 h-4" />
                   </div>
                   <span className="text-sm">The 4-Stage Resolution Protocol</span>
@@ -199,7 +199,7 @@ export const HowItWorks: React.FC = () => {
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Link to="/user/report-issue">
-                  <Button variant="purple" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+                  <Button variant="primary" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
                     Report a Hazard
                   </Button>
                 </Link>

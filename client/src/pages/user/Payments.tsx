@@ -118,10 +118,10 @@ export const Payments: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-heading font-bold text-[#1E293B]">
+          <h1 className="text-2xl font-heading font-bold text-ink">
             Payments & Invoices
           </h1>
-          <p className="text-sm text-[#64748B]">
+          <p className="text-sm text-muted">
             Review all transaction records, advance deposits, and download official PDF service invoices.
           </p>
         </div>
@@ -141,14 +141,14 @@ export const Payments: React.FC = () => {
       )}
 
       {/* Navigation Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#E2E8F0] pb-2">
+      <div className="flex items-center gap-2 border-b border-border pb-2">
         <button
           type="button"
           onClick={() => setActiveTab('payments')}
           className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
             activeTab === 'payments'
-              ? 'bg-[#EDE9FE] text-[#7C3AED]'
-              : 'text-[#64748B] hover:text-[#1E293B] hover:bg-[#F8F7FC]'
+              ? 'bg-primary text-white shadow-xs'
+              : 'text-muted hover:text-ink hover:bg-canvas'
           }`}
         >
           <CreditCard className="w-4 h-4" />
@@ -160,8 +160,8 @@ export const Payments: React.FC = () => {
           onClick={() => setActiveTab('invoices')}
           className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
             activeTab === 'invoices'
-              ? 'bg-[#EDE9FE] text-[#7C3AED]'
-              : 'text-[#64748B] hover:text-[#1E293B] hover:bg-[#F8F7FC]'
+              ? 'bg-primary text-white shadow-xs'
+              : 'text-muted hover:text-ink hover:bg-canvas'
           }`}
         >
           <FileText className="w-4 h-4" />
@@ -173,14 +173,14 @@ export const Payments: React.FC = () => {
       {activeTab === 'payments' && (
         <Card className="p-6 space-y-4">
           {/* Filter Bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-[#E2E8F0]">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-border">
             <div className="flex items-center gap-2 w-full sm:w-auto">
-              <Filter className="w-4 h-4 text-[#64748B]" />
-              <span className="text-xs font-semibold text-[#475569]">Status:</span>
+              <Filter className="w-4 h-4 text-muted" />
+              <span className="text-xs font-semibold text-secondaryText">Status:</span>
               <select
                 value={paymentStatus}
                 onChange={(e) => setPaymentStatus(e.target.value)}
-                className="text-xs border border-[#E2E8F0] rounded-lg px-2.5 py-1.5 bg-white text-[#1E293B] focus:ring-1 focus:ring-[#7C3AED]"
+                className="text-xs border border-border rounded-lg px-2.5 py-1.5 bg-white text-ink focus:ring-1 focus:ring-accent"
               >
                 <option value="All">All Transactions</option>
                 <option value="Completed">Success</option>
@@ -202,17 +202,17 @@ export const Payments: React.FC = () => {
 
           {/* Table */}
           {loadingPayments ? (
-            <div className="py-12 text-center text-sm text-[#64748B]">
-              <RefreshCw className="w-6 h-6 text-[#7C3AED] animate-spin mx-auto mb-2" />
+            <div className="py-12 text-center text-sm text-muted">
+              <RefreshCw className="w-6 h-6 text-primary animate-spin mx-auto mb-2" />
               <span>Loading transaction ledger...</span>
             </div>
           ) : payments.length === 0 ? (
             <div className="py-12 text-center space-y-3">
-              <CreditCard className="w-10 h-10 text-[#64748B] mx-auto opacity-40" />
-              <h3 className="font-heading font-bold text-base text-[#1E293B]">
+              <CreditCard className="w-10 h-10 text-muted mx-auto opacity-40" />
+              <h3 className="font-heading font-bold text-base text-ink">
                 No Payment Transactions Found
               </h3>
-              <p className="text-xs text-[#64748B] max-w-sm mx-auto">
+              <p className="text-xs text-muted max-w-sm mx-auto">
                 Payments initiated for advance deposits or final settlements will appear here.
               </p>
             </div>
@@ -220,7 +220,7 @@ export const Payments: React.FC = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="border-b border-[#E2E8F0] text-[#64748B] font-semibold uppercase tracking-wider">
+                  <tr className="border-b border-border text-muted font-semibold uppercase tracking-wider">
                     <th className="pb-3 pr-4">Order ID</th>
                     <th className="pb-3 px-4">Issue Code / Title</th>
                     <th className="pb-3 px-4">Type</th>
@@ -230,32 +230,32 @@ export const Payments: React.FC = () => {
                     <th className="pb-3 pl-4 text-right">Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#E2E8F0]">
+                <tbody className="divide-y divide-border">
                   {payments.map((p) => (
-                    <tr key={p._id} className="hover:bg-[#F8F7FC] transition-colors">
-                      <td className="py-3.5 pr-4 font-mono font-bold text-[#1E293B]">
+                    <tr key={p._id} className="hover:bg-canvas transition-colors">
+                      <td className="py-3.5 pr-4 font-mono font-bold text-ink">
                         {p.paymentId}
                       </td>
                       <td className="py-3.5 px-4">
                         <Link
                           to={`/user/issues/${p.issue?._id}`}
-                          className="font-medium text-[#7C3AED] hover:underline flex items-center gap-1"
+                          className="font-medium text-primary hover:underline flex items-center gap-1"
                         >
                           <span>{p.issue?.issueCode || 'Civic Issue'}</span>
                           <ExternalLink className="w-3 h-3" />
                         </Link>
-                        <div className="text-[11px] text-[#64748B] line-clamp-1 max-w-xs">
+                        <div className="text-[11px] text-muted line-clamp-1 max-w-xs">
                           {p.issue?.title || 'Report Details'}
                         </div>
                       </td>
-                      <td className="py-3.5 px-4 font-semibold text-[#475569]">
+                      <td className="py-3.5 px-4 font-semibold text-secondaryText">
                         {p.type}
                       </td>
-                      <td className="py-3.5 px-4 font-bold text-[#1E293B]">
+                      <td className="py-3.5 px-4 font-bold text-ink">
                         ₹{(p.amountPaise / 100).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                       </td>
                       <td className="py-3.5 px-4">{getStatusBadge(p.status)}</td>
-                      <td className="py-3.5 px-4 text-[#64748B]">
+                      <td className="py-3.5 px-4 text-muted">
                         {new Date(p.createdAt).toLocaleDateString('en-IN', {
                           day: '2-digit',
                           month: 'short',
@@ -289,12 +289,12 @@ export const Payments: React.FC = () => {
       {/* Tab 2: Invoices View */}
       {activeTab === 'invoices' && (
         <Card className="p-6 space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
+          <div className="flex items-center justify-between pb-3 border-b border-border">
             <div>
-              <h3 className="font-heading font-bold text-sm text-[#1E293B]">
+              <h3 className="font-heading font-bold text-sm text-ink">
                 Official Receipts & Service Invoices
               </h3>
-              <p className="text-xs text-[#64748B]">
+              <p className="text-xs text-muted">
                 Immutable tax-exempt civic receipts generated dynamically via PDFKit.
               </p>
             </div>
@@ -310,17 +310,17 @@ export const Payments: React.FC = () => {
           </div>
 
           {loadingInvoices ? (
-            <div className="py-12 text-center text-sm text-[#64748B]">
-              <RefreshCw className="w-6 h-6 text-[#7C3AED] animate-spin mx-auto mb-2" />
+            <div className="py-12 text-center text-sm text-muted">
+              <RefreshCw className="w-6 h-6 text-primary animate-spin mx-auto mb-2" />
               <span>Loading invoice registry...</span>
             </div>
           ) : invoices.length === 0 ? (
             <div className="py-12 text-center space-y-3">
-              <FileText className="w-10 h-10 text-[#64748B] mx-auto opacity-40" />
-              <h3 className="font-heading font-bold text-base text-[#1E293B]">
+              <FileText className="w-10 h-10 text-muted mx-auto opacity-40" />
+              <h3 className="font-heading font-bold text-base text-ink">
                 No Invoices Generated Yet
               </h3>
-              <p className="text-xs text-[#64748B] max-w-sm mx-auto">
+              <p className="text-xs text-muted max-w-sm mx-auto">
                 Once you complete advance payment for reported civic issues, your invoices will appear here.
               </p>
             </div>
@@ -328,7 +328,7 @@ export const Payments: React.FC = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="border-b border-[#E2E8F0] text-[#64748B] font-semibold uppercase tracking-wider">
+                  <tr className="border-b border-border text-muted font-semibold uppercase tracking-wider">
                     <th className="pb-3 pr-4">Invoice No.</th>
                     <th className="pb-3 px-4">Issue Code / Title</th>
                     <th className="pb-3 px-4">Type</th>
@@ -338,36 +338,36 @@ export const Payments: React.FC = () => {
                     <th className="pb-3 pl-4 text-right">PDF Receipt</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#E2E8F0]">
+                <tbody className="divide-y divide-border">
                   {invoices.map((inv) => (
-                    <tr key={inv._id} className="hover:bg-[#F8F7FC] transition-colors">
-                      <td className="py-3.5 pr-4 font-mono font-bold text-[#7C3AED]">
+                    <tr key={inv._id} className="hover:bg-canvas transition-colors">
+                      <td className="py-3.5 pr-4 font-mono font-bold text-primary">
                         {inv.invoiceNumber}
                       </td>
                       <td className="py-3.5 px-4">
                         <Link
                           to={`/user/issues/${inv.issue?._id}`}
-                          className="font-medium text-[#1E293B] hover:text-[#7C3AED] flex items-center gap-1"
+                          className="font-medium text-ink hover:text-primary flex items-center gap-1"
                         >
                           <span>{inv.issue?.issueCode || 'Civic Issue'}</span>
-                          <ExternalLink className="w-3 h-3 text-[#64748B]" />
+                          <ExternalLink className="w-3 h-3 text-muted" />
                         </Link>
-                        <div className="text-[11px] text-[#64748B] line-clamp-1 max-w-xs">
+                        <div className="text-[11px] text-muted line-clamp-1 max-w-xs">
                           {inv.issue?.title || 'Report Details'}
                         </div>
                       </td>
                       <td className="py-3.5 px-4">
-                        <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-[#EDE9FE] text-[#7C3AED] border border-[#DDD6FE]">
+                        <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-primary-light text-primary border border-primary/20">
                           {inv.type === 'Advance' ? 'Advance 50%' : 'Final Settlement'}
                         </span>
                       </td>
                       <td className="py-3.5 px-4 font-bold text-emerald-700">
                         ₹{(inv.amountPaidPaise / 100).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                       </td>
-                      <td className="py-3.5 px-4 text-[#64748B]">
+                      <td className="py-3.5 px-4 text-muted">
                         ₹{(inv.balanceDuePaise / 100).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                       </td>
-                      <td className="py-3.5 px-4 text-[#64748B]">
+                      <td className="py-3.5 px-4 text-muted">
                         {new Date(inv.createdAt).toLocaleDateString('en-IN', {
                           day: '2-digit',
                           month: 'short',

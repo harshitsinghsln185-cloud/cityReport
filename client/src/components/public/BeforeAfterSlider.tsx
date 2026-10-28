@@ -79,8 +79,8 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         </div>
 
         <div className="flex items-center gap-2.5 shrink-0 flex-wrap sm:flex-nowrap">
-          <span className="text-xs text-[#5B4FE1] bg-[#5B4FE1]/10 border border-[#5B4FE1]/30 px-3 py-1 rounded-full flex flex-row items-center gap-1.5 font-semibold shadow-xs whitespace-nowrap">
-            <Calendar className="w-3.5 h-3.5 text-[#5B4FE1] shrink-0" />
+          <span className="text-xs text-primary bg-primary-light border border-primary/20 px-3 py-1 rounded-full flex flex-row items-center gap-1.5 font-semibold shadow-xs whitespace-nowrap">
+            <Calendar className="w-3.5 h-3.5 text-primary shrink-0" />
             <span>{date}</span>
           </span>
           <span className="inline-flex flex-row items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/80 shadow-xs whitespace-nowrap shrink-0">

@@ -37,7 +37,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         const itemText = line.substring(2);
         return (
           <div key={idx} className="flex items-start gap-1.5 ml-1 my-0.5">
-            <span className="text-[#7C3AED] font-bold">•</span>
+            <span className="text-primary font-bold">•</span>
             <span>{renderInlineStyles(itemText)}</span>
           </div>
         );
@@ -57,7 +57,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
     return parts.map((part, i) => {
       if (part.startsWith('**') && part.endsWith('**')) {
         return (
-          <strong key={i} className={isUser ? 'font-bold text-white' : 'font-bold text-[#1E293B]'}>
+          <strong key={i} className={isUser ? 'font-bold text-white' : 'font-bold text-ink'}>
             {part.slice(2, -2)}
           </strong>
         );
@@ -69,7 +69,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
   return (
     <div className={`flex items-end gap-2 my-2 ${isUser ? 'justify-end' : 'justify-start'}`}>
       {!isUser && (
-        <div className="w-7 h-7 rounded-full bg-[#EDE9FE] border border-[#DDD6FE] flex items-center justify-center text-[#7C3AED] shrink-0 mb-1">
+        <div className="w-7 h-7 rounded-full bg-primary-light border border-primary/20 flex items-center justify-center text-primary shrink-0 mb-1">
           <Bot className="w-4 h-4" />
         </div>
       )}
@@ -78,22 +78,22 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         <div
           className={`px-3.5 py-2.5 rounded-2xl text-[13.5px] leading-relaxed shadow-sm transition-all ${
             isUser
-              ? 'bg-[#7C3AED] text-white rounded-br-xs shadow-[#7C3AED]/15'
-              : 'bg-white text-[#1E293B] border border-[#E2E8F0] rounded-bl-xs'
+              ? 'bg-primary text-white rounded-br-xs'
+              : 'bg-white text-ink border border-card-border rounded-bl-xs'
           }`}
         >
           {renderFormattedText(message.content)}
         </div>
 
         {message.timestamp && (
-          <span className="text-[10px] text-[#94A3B8] mt-1 px-1">
+          <span className="text-xs text-muted mt-1 px-1">
             {formatTime(message.timestamp)}
           </span>
         )}
       </div>
 
       {isUser && (
-        <div className="w-7 h-7 rounded-full bg-[#7C3AED] flex items-center justify-center text-white shrink-0 mb-1">
+        <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white shrink-0 mb-1">
           <UserIcon className="w-4 h-4" />
         </div>
       )}

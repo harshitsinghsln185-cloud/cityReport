@@ -20,8 +20,8 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   if (isLoading) {
     return (
       <div className="min-h-[50vh] flex flex-col items-center justify-center p-8 text-center">
-        <Loader2 className="w-8 h-8 animate-spin text-[#7C3AED] mb-3" />
-        <p className="text-sm font-medium text-[#64748B]">Verifying authentication...</p>
+        <Loader2 className="w-8 h-8 animate-spin text-primary mb-3" />
+        <p className="text-sm font-medium text-muted">Verifying authentication...</p>
       </div>
     );
   }
@@ -34,14 +34,14 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     return (
       <div className="max-w-md mx-auto py-16 px-4">
         <Card className="text-center p-8">
-          <div className="w-12 h-12 rounded-full bg-[#FEE2E2] text-[#991B1B] flex items-center justify-center mx-auto mb-4">
+          <div className="w-12 h-12 rounded-full bg-danger-light text-danger flex items-center justify-center mx-auto mb-4">
             <ShieldAlert className="w-6 h-6" />
           </div>
-          <h2 className="text-xl font-heading font-bold text-[#1E293B] mb-2">
+          <h2 className="text-xl font-heading font-bold text-ink mb-2">
             403 - Access Denied
           </h2>
-          <p className="text-sm text-[#64748B] mb-6">
-            Your account role (<span className="font-semibold text-[#1E293B]">{role}</span>) does not have authorization to view this section.
+          <p className="text-sm text-muted mb-6">
+            Your account role (<span className="font-semibold text-ink">{role}</span>) does not have authorization to view this section.
           </p>
           <div className="flex justify-center gap-3">
             <Link to={role === 'Admin' ? '/admin' : role === 'Resolver' ? '/resolver' : '/user'}>

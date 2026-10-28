@@ -3,21 +3,21 @@
   --color-primary: #0A1F44;
   --color-primary-hover: #12306A;
   --color-primary-light: #EBF1FA;
-  --color-accent: #C8A24A;
-  --color-accent-hover: #B38E37;
+  --color-accent: #E8A33D;
+  --color-accent-hover: #D4922F;
   --color-accent-text-light: #8A6A1F;
-  --color-accent-bg: #FAF4E6;
-  --color-accent-border: #EEDCB2;
+  --color-accent-bg: #FDF6E9;
+  --color-accent-border: #F2D399;
 
   /* Legacy aliases mapped gracefully to new palette */
   --color-indigo: #0A1F44;
   --color-dark: #06132B;
   --color-dark-surface: #0A1F44;
   --color-lavender: #EBF1FA;
-  --color-gold: #C8A24A;
-  --color-gold-hover: #B38E37;
-  --color-gold-bg: #FAF4E6;
-  --color-gold-border: #EEDCB2;
+  --color-gold: #E8A33D;
+  --color-gold-hover: #D4922F;
+  --color-gold-bg: #FDF6E9;
+  --color-gold-border: #F2D399;
 
   /* Surfaces & Canvas */
   --color-canvas: #FAF8F3;
@@ -36,17 +36,29 @@
   --color-text-muted: #5B6577;
   --color-text-inverse: #FFFFFF;
   --color-muted: #5B6577;
-  --color-focus-ring: #C8A24A;
+  --color-focus-ring: #E8A33D;
 
   /* Semantic Status (WCAG AA Contrast Verified) */
   --color-success: #0E6E4C;
-  --color-success-bg: #E8F5F0;
+  --color-success-bg: #E8F5EE;
+  --color-success-border: #A3D9C0;
   --color-info: #1D4ED8;
   --color-info-bg: #EFF6FF;
+  --color-info-border: #BFDBFE;
   --color-warning: #B54708;
-  --color-warning-bg: #FEF6EE;
+  --color-warning-bg: #FFF7ED;
+  --color-warning-border: #FED7AA;
   --color-danger: #B42318;
-  --color-danger-bg: #FEF3F2;
+  --color-danger-bg: #FEF2F2;
+  --color-danger-border: #FECACA;
+
+  /* Zonal Colors */
+  --color-zone-north: #1D4ED8;
+  --color-zone-south: #0E6E4C;
+  --color-zone-east: #B54708;
+  --color-zone-west: #0E7490;
+  --color-zone-central: #78350F;
+  --color-zone-northeast: #9F1239;
 
   /* Typography Stack */
   --font-heading: 'Fraunces Variable', 'Fraunces', Georgia, serif;
@@ -99,7 +111,7 @@
   --shadow-card: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
   --shadow-card-hover: 0 16px 32px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
   --shadow-modal: 0 24px 48px -12px rgba(15, 23, 42, 0.18), 0 8px 16px -4px rgba(15, 23, 42, 0.06);
-  --shadow-glow: 0 0 28px -4px rgba(124, 58, 237, 0.25);
+  --shadow-glow: 0 0 28px -4px rgba(232, 163, 61, 0.25);
 
   /* Animation Easings & Durations */
   --ease-out-smooth: cubic-bezier(0.16, 1, 0.3, 1);

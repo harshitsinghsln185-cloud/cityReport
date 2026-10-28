@@ -176,14 +176,14 @@ export const UserDashboard: React.FC = () => {
           <div className="text-[11px] text-muted mt-1">Verified with photo proof</div>
         </Card>
 
-        <Card className="p-5 border-border hover:border-purple-400/40 transition-colors">
+        <Card className="p-5 border-border hover:border-accent/40 transition-colors">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-semibold text-secondaryText">Awaiting Advance</span>
-            <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-700 flex items-center justify-center border border-purple-200">
+            <div className="w-8 h-8 rounded-lg bg-accent-light text-accent-text flex items-center justify-center border border-accent/30">
               <CreditCard className="w-4 h-4" />
             </div>
           </div>
-          <div className="font-heading font-bold text-2xl sm:text-3xl text-purple-700 tabular-nums">
+          <div className="font-heading font-bold text-2xl sm:text-3xl text-accent-text tabular-nums">
             {awaitingAdvanceCount}
           </div>
           <div className="text-[11px] text-muted mt-1">50% advance pending</div>

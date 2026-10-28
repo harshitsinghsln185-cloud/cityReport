@@ -277,11 +277,11 @@ const router = createBrowserRouter([
   {
     path: '*',
     element: (
-      <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center bg-[#F8F7FC]">
-        <h1 className="text-5xl font-heading font-bold text-[#1E293B] mb-4">404</h1>
-        <p className="text-lg text-[#64748B] mb-6">Page not found</p>
+      <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center bg-canvas">
+        <h1 className="text-5xl font-heading font-bold text-ink mb-4">404</h1>
+        <p className="text-lg text-muted mb-6">Page not found</p>
         <Link to="/">
-          <Button>Return to Home</Button>
+          <Button variant="primary">Return to Home</Button>
         </Link>
       </div>
     ),

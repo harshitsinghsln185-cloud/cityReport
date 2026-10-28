@@ -34,11 +34,11 @@ const formatTimeAgo = (dateString: string): string => {
 const getNotificationIcon = (type: string) => {
   switch (type) {
     case 'PAYMENT':
-      return <CreditCard className="w-4 h-4 text-violet-600" />;
+      return <CreditCard className="w-4 h-4 text-primary" />;
     case 'PAYOUT':
       return <DollarSign className="w-4 h-4 text-emerald-600" />;
     case 'ASSIGNMENT':
-      return <Wrench className="w-4 h-4 text-indigo-600" />;
+      return <Wrench className="w-4 h-4 text-primary" />;
     case 'REWORK':
       return <RotateCcw className="w-4 h-4 text-amber-600" />;
     case 'VERIFICATION':
@@ -160,7 +160,7 @@ export const NotificationBell: React.FC = () => {
         type="button"
         onClick={toggleOpen}
         aria-label="View notifications"
-        className="relative p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-violet-500/30"
+        className="relative p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20"
       >
         <Bell className="w-5 h-5" />
         {unreadCount > 0 && (
@@ -178,7 +178,7 @@ export const NotificationBell: React.FC = () => {
             <div className="flex items-center gap-2">
               <h3 className="font-heading font-bold text-sm text-slate-900">Notifications</h3>
               {unreadCount > 0 && (
-                <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-violet-100 text-violet-700">
+                <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-primary-light text-primary">
                   {unreadCount} new
                 </span>
               )}
@@ -189,7 +189,7 @@ export const NotificationBell: React.FC = () => {
                 type="button"
                 onClick={handleMarkAllRead}
                 disabled={markingAll}
-                className="text-xs font-semibold text-violet-600 hover:text-violet-700 flex items-center gap-1 hover:underline disabled:opacity-50"
+                className="text-xs font-semibold text-primary hover:text-primary-hover flex items-center gap-1 hover:underline disabled:opacity-50"
               >
                 {markingAll ? (
                   <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -205,7 +205,7 @@ export const NotificationBell: React.FC = () => {
           <div className="max-h-96 overflow-y-auto divide-y divide-slate-100">
             {loading ? (
               <div className="py-12 text-center text-slate-400">
-                <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2 text-violet-600" />
+                <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2 text-primary" />
                 <p className="text-xs">Loading alerts...</p>
               </div>
             ) : recentNotifications.length === 0 ? (
@@ -222,7 +222,7 @@ export const NotificationBell: React.FC = () => {
                   key={notif._id}
                   onClick={() => handleNotificationClick(notif)}
                   className={`p-3.5 flex items-start gap-3 hover:bg-slate-50 cursor-pointer transition-colors relative ${
-                    !notif.isRead ? 'bg-violet-50/40' : ''
+                    !notif.isRead ? 'bg-primary-light/40' : ''
                   }`}
                 >
                   {/* Category icon */}
@@ -253,7 +253,7 @@ export const NotificationBell: React.FC = () => {
 
                   {/* Unread indicator dot */}
                   {!notif.isRead && (
-                    <span className="w-2 h-2 rounded-full bg-violet-600 shrink-0 mt-2" />
+                    <span className="w-2 h-2 rounded-full bg-accent shrink-0 mt-2" />
                   )}
                 </div>
               ))
@@ -265,7 +265,7 @@ export const NotificationBell: React.FC = () => {
             <Link
               to={viewAllUrl}
               onClick={() => setIsOpen(false)}
-              className="text-xs font-semibold text-violet-600 hover:text-violet-700 inline-flex items-center gap-1 hover:underline"
+              className="text-xs font-semibold text-primary hover:text-primary-hover inline-flex items-center gap-1 hover:underline"
             >
               <span>View all notifications</span>
               <ChevronRight className="w-3.5 h-3.5" />

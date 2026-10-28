@@ -156,7 +156,7 @@ export const FeeSettingsPage: React.FC = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="flex items-center gap-3 text-[#7C3AED]">
+        <div className="flex items-center gap-3 text-primary">
           <RefreshCw className="w-6 h-6 animate-spin" />
           <span className="font-medium">Loading pricing parameters...</span>
         </div>

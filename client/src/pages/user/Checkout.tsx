@@ -97,8 +97,8 @@ export const Checkout: React.FC = () => {
   if (loading) {
     return (
       <div className="max-w-3xl mx-auto py-16 text-center">
-        <RefreshCw className="w-8 h-8 text-[#7C3AED] animate-spin mx-auto mb-3" />
-        <p className="text-sm text-[#64748B]">Preparing payment order and fee snapshot...</p>
+        <RefreshCw className="w-8 h-8 text-primary animate-spin mx-auto mb-3" />
+        <p className="text-sm text-muted">Preparing payment order and fee snapshot...</p>
       </div>
     );
   }
@@ -109,8 +109,8 @@ export const Checkout: React.FC = () => {
         <div className="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mx-auto">
           <AlertCircle className="w-6 h-6" />
         </div>
-        <h2 className="text-xl font-heading font-bold text-[#1E293B]">Checkout Error</h2>
-        <p className="text-sm text-[#64748B] max-w-md mx-auto">{error}</p>
+        <h2 className="text-xl font-heading font-bold text-ink">Checkout Error</h2>
+        <p className="text-sm text-muted max-w-md mx-auto">{error}</p>
         <div className="pt-2 flex justify-center gap-3">
           <Link to="/user/issues">
             <Button variant="outline" leftIcon={<ArrowLeft className="w-4 h-4" />}>
@@ -139,10 +139,10 @@ export const Checkout: React.FC = () => {
           </div>
 
           <div className="space-y-1">
-            <h1 className="text-2xl font-heading font-bold text-[#1E293B]">
+            <h1 className="text-2xl font-heading font-bold text-ink">
               {isBalance ? 'Balance Settlement Successful!' : 'Advance Payment Successful!'}
             </h1>
-            <p className="text-sm text-[#64748B]">
+            <p className="text-sm text-muted">
               Your civic issue report has officially transitioned to{' '}
               <span className="font-semibold text-emerald-700">
                 {isBalance ? 'Closed' : 'Submitted'}
@@ -151,34 +151,34 @@ export const Checkout: React.FC = () => {
             </p>
           </div>
 
-          <div className="p-4 bg-[#F8F7FC] rounded-xl border border-[#E2E8F0] text-xs text-left space-y-2 max-w-md mx-auto">
+          <div className="p-4 bg-canvas rounded-xl border border-border text-xs text-left space-y-2 max-w-md mx-auto">
             <div className="flex justify-between">
-              <span className="text-[#64748B]">Issue Code:</span>
-              <span className="font-mono font-bold text-[#1E293B]">{issue.issueCode}</span>
+              <span className="text-muted">Issue Code:</span>
+              <span className="font-mono font-bold text-ink">{issue.issueCode}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-[#64748B]">Order Ref:</span>
-              <span className="font-mono text-[#64748B]">{completedData.paymentId}</span>
+              <span className="text-muted">Order Ref:</span>
+              <span className="font-mono text-muted">{completedData.paymentId}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-[#64748B]">Invoice Generated:</span>
-              <span className="font-mono font-bold text-[#7C3AED]">{completedData.invoiceNumber}</span>
+              <span className="text-muted">Invoice Generated:</span>
+              <span className="font-mono font-bold text-primary">{completedData.invoiceNumber}</span>
             </div>
-            <div className="flex justify-between pt-1 border-t border-[#E2E8F0]">
-              <span className="text-[#64748B]">Amount Settled:</span>
+            <div className="flex justify-between pt-1 border-t border-border">
+              <span className="text-muted">Amount Settled:</span>
               <span className="font-bold text-emerald-700">
                 ₹{(amountPaise / 100).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
               </span>
             </div>
             {isBalance ? (
               <div className="flex justify-between">
-                <span className="text-[#64748B]">Remaining Balance:</span>
+                <span className="text-muted">Remaining Balance:</span>
                 <span className="font-bold text-slate-800">₹0.00 (Fully Settled)</span>
               </div>
             ) : (
               <div className="flex justify-between">
-                <span className="text-[#64748B]">Remaining Balance (Upon Closure):</span>
-                <span className="font-medium text-[#475569]">
+                <span className="text-muted">Remaining Balance (Upon Closure):</span>
+                <span className="font-medium text-secondaryText">
                   ₹{((issue.fee?.balancePaise || 0) / 100).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                 </span>
               </div>
@@ -213,7 +213,7 @@ export const Checkout: React.FC = () => {
       <div className="flex items-center justify-between">
         <Link
           to={`/user/issues/${issue._id}`}
-          className="text-xs font-semibold text-[#7C3AED] hover:underline flex items-center gap-1.5"
+          className="text-xs font-semibold text-primary hover:underline flex items-center gap-1.5"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Issue Details</span>
@@ -241,48 +241,48 @@ export const Checkout: React.FC = () => {
           <Card className="p-6 space-y-5">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="font-mono text-xs font-bold text-[#7C3AED] bg-[#EDE9FE] px-2 py-0.5 rounded border border-[#DDD6FE]">
+                <span className="font-mono text-xs font-bold text-primary bg-primary-light px-2 py-0.5 rounded border border-primary/20">
                   {issue.issueCode}
                 </span>
                 <StatusBadge status={issue.status} size="sm" />
               </div>
-              <h2 className="text-lg font-heading font-bold text-[#1E293B]">
+              <h2 className="text-lg font-heading font-bold text-ink">
                 {issue.title}
               </h2>
             </div>
 
-            <div className="text-xs text-[#64748B] space-y-2 border-y border-[#E2E8F0] py-3">
+            <div className="text-xs text-muted space-y-2 border-y border-border py-3">
               <div className="flex items-center gap-2">
-                <Layers className="w-3.5 h-3.5 text-[#7C3AED]" />
+                <Layers className="w-3.5 h-3.5 text-primary" />
                 <span>Category: {issue.category?.name || 'General Civic'}</span>
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#7C3AED]" />
+                <MapPin className="w-3.5 h-3.5 text-primary" />
                 <span>
                   {issue.address?.street}, {issue.address?.city}
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Calendar className="w-3.5 h-3.5 text-[#64748B]" />
+                <Calendar className="w-3.5 h-3.5 text-muted" />
                 <span>Reported on {new Date(issue.createdAt).toLocaleDateString('en-IN')}</span>
               </div>
             </div>
 
             {/* Financial Ledger Itemization */}
             <div className="space-y-2.5 text-xs">
-              <div className="flex justify-between text-[#475569]">
+              <div className="flex justify-between text-secondaryText">
                 <span>Total Quoted Service Fee:</span>
-                <span className="font-semibold text-[#1E293B]">
+                <span className="font-semibold text-ink">
                   ₹{(totalPaise / 100).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                 </span>
               </div>
-              <div className="flex justify-between text-[#7C3AED] font-bold bg-[#EDE9FE]/50 p-2.5 rounded-lg border border-[#DDD6FE]">
+              <div className="flex justify-between text-primary font-bold bg-primary-light/40 p-2.5 rounded-lg border border-primary/20">
                 <span>Advance Payable Now (50%):</span>
                 <span>
                   ₹{(amountPaise / 100).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                 </span>
               </div>
-              <div className="flex justify-between text-[#64748B] pt-1">
+              <div className="flex justify-between text-muted pt-1">
                 <span>Balance Due Upon Resolution:</span>
                 <span>
                   ₹{(balancePaise / 100).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
@@ -290,7 +290,7 @@ export const Checkout: React.FC = () => {
               </div>
             </div>
 
-            <div className="text-[11px] text-[#64748B] pt-2 border-t border-[#E2E8F0]">
+            <div className="text-[11px] text-muted pt-2 border-t border-border">
               Upon advance payment confirmation, an immutable <strong>Invoice 1</strong> PDF receipt will be automatically generated and made available for instant download.
             </div>
           </Card>

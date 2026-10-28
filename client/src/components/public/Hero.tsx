@@ -316,7 +316,7 @@ export const Hero: React.FC = () => {
                       <span
                         className={`
                           relative flex items-center justify-center w-4 h-4 rounded-full
-                          ${isActive ? 'bg-[#5B4FE1] ring-4 ring-[#5B4FE1]/30' : 'bg-gold ring-2 ring-white/90 shadow-md'}
+                          ${isActive ? 'bg-accent ring-4 ring-accent/30' : 'bg-gold ring-2 ring-white/90 shadow-md'}
                           transition-colors duration-200
                         `}
                       >
@@ -340,7 +340,7 @@ export const Hero: React.FC = () => {
                         {/* Card Header with Icon, Category & Close */}
                         <div className="flex items-start justify-between gap-2 mb-2 pb-2 border-b border-white/10">
                           <div className="flex items-center gap-2">
-                            <span className="p-1 rounded-md bg-[#5B4FE1]/20 text-lavender">
+                            <span className="p-1 rounded-md bg-white/10 text-lavender">
                               <IconComponent className="w-4 h-4 text-gold" />
                             </span>
                             <span className="text-[11px] font-semibold text-lavender tracking-wide uppercase">
@@ -465,9 +465,9 @@ export const Hero: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-8">
               <Link to="/user/report-issue">
                 <Button
-                  variant="purple"
+                  variant="accent"
                   size="lg"
-                  className="w-full sm:w-auto shadow-lg shadow-[#5B4FE1]/20 flex items-center justify-center gap-2 group"
+                  className="w-full sm:w-auto shadow-lg shadow-black/20 flex items-center justify-center gap-2 group text-primary font-bold"
                 >
                   <span>Report an issue</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

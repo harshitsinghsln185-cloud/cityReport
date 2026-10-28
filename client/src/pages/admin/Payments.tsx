@@ -197,7 +197,7 @@ export const AdminPayments: React.FC = () => {
                           p.type === 'Advance'
                             ? 'bg-blue-50 text-blue-700 border border-blue-200'
                             : p.type === 'Balance'
-                            ? 'bg-violet-50 text-primary border border-primary/20'
+                            ? 'bg-primary-light text-primary border border-primary/20'
                             : 'bg-slate-100 text-slate-700'
                         }`}
                       >

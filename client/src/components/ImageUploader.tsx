@@ -114,8 +114,8 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
         onClick={() => !isLoading && fileInputRef.current?.click()}
         className={`relative border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition-all ${
           dragOver
-            ? 'border-[#7C3AED] bg-[#EDE9FE]/40'
-            : 'border-[#E2E8F0] bg-[#F8F7FC] hover:bg-[#EDE9FE]/20 hover:border-[#A78BFA]'
+            ? 'border-primary bg-primary-light/60'
+            : 'border-card-border bg-canvas hover:bg-primary-light/30 hover:border-primary/40'
         } ${isLoading ? 'pointer-events-none opacity-60' : ''}`}
       >
         <input
@@ -128,34 +128,34 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
 
         {activeDisplayUrl ? (
           <div className="flex flex-col items-center">
-            <div className="relative group w-32 h-32 rounded-xl overflow-hidden shadow-md border-2 border-[#7C3AED]/30">
+            <div className="relative group w-32 h-32 rounded-xl overflow-hidden shadow-md border-2 border-primary/20">
               <img
                 src={activeDisplayUrl}
                 alt="Upload preview"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-[#171A3B]/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-white text-xs font-semibold">
+              <div className="absolute inset-0 bg-primary/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-white text-xs font-semibold">
                 Click to Change
               </div>
             </div>
 
             {selectedFile && (
-              <div className="mt-3 text-xs text-[#475569]">
-                <span className="font-semibold text-[#1E293B]">{selectedFile.name}</span> (
+              <div className="mt-3 text-xs text-secondaryText">
+                <span className="font-semibold text-ink">{selectedFile.name}</span> (
                 {(selectedFile.size / 1024).toFixed(1)} KB)
               </div>
             )}
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center py-4">
-            <div className="w-12 h-12 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center mb-3">
+            <div className="w-12 h-12 rounded-full bg-primary-light text-primary flex items-center justify-center mb-3">
               <UploadCloud className="w-6 h-6" />
             </div>
-            <p className="text-sm font-semibold text-[#1E293B]">
+            <p className="text-sm font-semibold text-ink">
               Drag and drop your image here, or{' '}
-              <span className="text-[#7C3AED] underline">browse</span>
+              <span className="text-primary underline">browse</span>
             </p>
-            <p className="text-xs text-[#64748B] mt-1">
+            <p className="text-xs text-muted mt-1">
               Supported: JPEG, PNG, WebP • Up to {maxSizeMB}MB
             </p>
           </div>

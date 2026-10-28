@@ -26,8 +26,8 @@ export const QuickReplies: React.FC<QuickRepliesProps> = ({ options = [], onSele
             onClick={() => onSelect(option)}
             className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-150 active:scale-95 disabled:opacity-50 disabled:pointer-events-none ${
               isHighlight
-                ? 'bg-[#7C3AED] text-white hover:bg-[#6D28D9] shadow-sm shadow-[#7C3AED]/20 border border-[#7C3AED]'
-                : 'bg-[#EDE9FE]/70 text-[#6D28D9] hover:bg-[#DDD6FE] border border-[#DDD6FE]/80 hover:border-[#C4B5FD]'
+                ? 'bg-primary text-white hover:bg-primary-hover shadow-sm border border-primary'
+                : 'bg-primary-light text-primary hover:bg-primary-light/80 border border-primary/20'
             }`}
           >
             {isHighlight && <Sparkles className="w-3 h-3 text-white/90" />}

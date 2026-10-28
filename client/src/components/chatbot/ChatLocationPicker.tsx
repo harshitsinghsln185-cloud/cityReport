@@ -41,21 +41,21 @@ export const ChatLocationPicker: React.FC<ChatLocationPickerProps> = ({
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-150">
-      <div className="w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-[#E2E8F0] overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-card-border overflow-hidden flex flex-col max-h-[90vh]">
         {/* Header */}
-        <div className="px-5 py-4 border-b border-[#E2E8F0] flex items-center justify-between bg-[#F8F7FC]">
+        <div className="px-5 py-4 border-b border-card-border flex items-center justify-between bg-canvas">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-primary-light text-primary flex items-center justify-center">
               <MapPin className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-heading font-bold text-sm text-[#1E293B]">Pin Issue Location</h3>
-              <p className="text-xs text-[#64748B]">Click map or drag the purple pin to set location</p>
+              <h3 className="font-heading font-bold text-sm text-ink">Pin Issue Location</h3>
+              <p className="text-xs text-muted">Click map or drag the pin to set location</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-[#64748B] hover:bg-[#E2E8F0]/70 hover:text-[#1E293B] transition-colors"
+            className="p-1 rounded-lg text-muted hover:bg-slate-100 hover:text-ink transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -65,12 +65,12 @@ export const ChatLocationPicker: React.FC<ChatLocationPickerProps> = ({
         <div className="p-4 flex-1 overflow-y-auto space-y-3">
           <MapPicker lat={lat} lng={lng} onChange={handleMapChange} height="220px" radiusKm={3} />
 
-          <div className="grid grid-cols-2 gap-2 text-xs text-[#64748B] bg-[#F8F7FC] p-2.5 rounded-lg border border-[#E2E8F0]">
+          <div className="grid grid-cols-2 gap-2 text-xs text-muted bg-canvas p-2.5 rounded-lg border border-card-border">
             <div>
-              <span className="font-medium text-[#475569]">Latitude:</span> {lat.toFixed(5)}
+              <span className="font-medium text-secondaryText">Latitude:</span> {lat.toFixed(5)}
             </div>
             <div>
-              <span className="font-medium text-[#475569]">Longitude:</span> {lng.toFixed(5)}
+              <span className="font-medium text-secondaryText">Longitude:</span> {lng.toFixed(5)}
             </div>
           </div>
 
@@ -99,7 +99,7 @@ export const ChatLocationPicker: React.FC<ChatLocationPickerProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="px-5 py-3 border-t border-[#E2E8F0] flex items-center justify-end gap-2 bg-[#F8F7FC]">
+        <div className="px-5 py-3 border-t border-card-border flex items-center justify-end gap-2 bg-canvas">
           <Button variant="outline" size="sm" onClick={onClose}>
             Cancel
           </Button>

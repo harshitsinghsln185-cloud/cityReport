@@ -39,21 +39,21 @@ export const ResolverPicker: React.FC<ResolverPickerProps> = ({
   if (isLoading) {
     return (
       <div className="py-12 flex flex-col items-center justify-center text-center">
-        <Loader2 className="w-8 h-8 text-[#7C3AED] animate-spin mb-3" />
-        <p className="text-sm font-medium text-[#1E293B]">Searching certified candidates...</p>
-        <p className="text-xs text-[#64748B] mt-1">Executing geospatial proximity query within coverage boundaries</p>
+        <Loader2 className="w-8 h-8 text-primary animate-spin mb-3" />
+        <p className="text-sm font-medium text-ink">Searching certified candidates...</p>
+        <p className="text-xs text-muted mt-1">Executing geospatial proximity query within coverage boundaries</p>
       </div>
     );
   }
 
   if (!candidates || candidates.length === 0) {
     return (
-      <div className="p-8 text-center bg-[#F8F7FC] border border-dashed border-[#E2E8F0] rounded-xl">
-        <div className="w-12 h-12 rounded-full bg-[#EDE9FE] text-[#7C3AED] mx-auto flex items-center justify-center mb-3">
+      <div className="p-8 text-center bg-canvas border border-dashed border-border rounded-xl">
+        <div className="w-12 h-12 rounded-full bg-primary-light text-primary mx-auto flex items-center justify-center mb-3">
           <AlertCircle className="w-6 h-6" />
         </div>
-        <h4 className="text-base font-semibold text-[#1E293B] mb-1">No Matching Candidates Found</h4>
-        <p className="text-xs text-[#64748B] max-w-md mx-auto mb-4">
+        <h4 className="text-base font-semibold text-ink mb-1">No Matching Candidates Found</h4>
+        <p className="text-xs text-muted max-w-md mx-auto mb-4">
           There are currently no approved and available resolvers with category qualification located within their defined service radius of this issue.
         </p>
       </div>
@@ -64,8 +64,8 @@ export const ResolverPicker: React.FC<ResolverPickerProps> = ({
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-base font-heading font-bold text-[#1E293B]">Eligible Candidate Resolvers</h3>
-          <p className="text-xs text-[#64748B]">
+          <h3 className="text-base font-heading font-bold text-ink">Eligible Candidate Resolvers</h3>
+          <p className="text-xs text-muted">
             Found {candidates.length} contractor{candidates.length > 1 ? 's' : ''} qualified for this category within service territory
           </p>
         </div>
@@ -83,12 +83,12 @@ export const ResolverPicker: React.FC<ResolverPickerProps> = ({
               key={resolver._id}
               className={`relative transition-all duration-200 border ${
                 isAssigned
-                  ? 'border-[#7C3AED] bg-[#EDE9FE]/20 shadow-sm'
-                  : 'border-[#E2E8F0] hover:border-[#A78BFA] hover:shadow-sm'
+                  ? 'border-primary bg-primary-light/30 shadow-sm'
+                  : 'border-border hover:border-primary/40 hover:shadow-sm'
               }`}
             >
               {isAssigned && (
-                <div className="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#EDE9FE] text-[#7C3AED] border border-[#DDD6FE]">
+                <div className="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary-light text-primary border border-primary/20">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   Currently Assigned
                 </div>
@@ -101,10 +101,10 @@ export const ResolverPicker: React.FC<ResolverPickerProps> = ({
                     <img
                       src={user.photo.url}
                       alt={user.name || 'Resolver'}
-                      className="w-12 h-12 rounded-xl object-cover border border-[#E2E8F0]"
+                      className="w-12 h-12 rounded-xl object-cover border border-border"
                     />
                   ) : (
-                    <div className="w-12 h-12 rounded-xl bg-[#312E81] text-white flex items-center justify-center font-heading font-bold text-base shadow-sm">
+                    <div className="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center font-heading font-bold text-base shadow-sm">
                       {user.name ? user.name.slice(0, 2).toUpperCase() : 'RC'}
                     </div>
                   )}
@@ -119,18 +119,18 @@ export const ResolverPicker: React.FC<ResolverPickerProps> = ({
                 {/* Details */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-1.5">
-                    <h4 className="font-heading font-bold text-sm text-[#1E293B] truncate">
+                    <h4 className="font-heading font-bold text-sm text-ink truncate">
                       {user.name || 'Unnamed Contractor'}
                     </h4>
-                    <ShieldCheck className="w-4 h-4 text-[#7C3AED] flex-shrink-0" />
+                    <ShieldCheck className="w-4 h-4 text-primary flex-shrink-0" />
                   </div>
-                  <p className="text-xs text-[#64748B] truncate">{user.email || 'No email'}</p>
-                  <p className="text-xs text-[#475569] mt-0.5">{user.phone || 'No phone'}</p>
+                  <p className="text-xs text-muted truncate">{user.email || 'No email'}</p>
+                  <p className="text-xs text-secondaryText mt-0.5">{user.phone || 'No phone'}</p>
 
                   {/* Badges / Metrics */}
                   <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#F1F5F9] text-[#1E293B] font-medium border border-[#E2E8F0]">
-                      <MapPin className="w-3 h-3 text-[#7C3AED]" />
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surfaceAlt text-ink font-medium border border-border">
+                      <MapPin className="w-3 h-3 text-primary" />
                       {cand.distanceKm} km away
                     </span>
 
@@ -147,14 +147,14 @@ export const ResolverPicker: React.FC<ResolverPickerProps> = ({
                       {cand.activeTasksCount} active task{cand.activeTasksCount === 1 ? '' : 's'}
                     </span>
 
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#EDE9FE] text-[#7C3AED] font-medium border border-[#DDD6FE]">
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-primary-light text-primary font-medium border border-primary/20">
                       Radius: {resolver.serviceRadiusKm} km
                     </span>
                   </div>
 
                   {/* Actions */}
-                  <div className="mt-4 pt-3 border-t border-[#E2E8F0] flex items-center justify-between">
-                    <div className="text-xs text-[#64748B] truncate max-w-[180px]">
+                  <div className="mt-4 pt-3 border-t border-border flex items-center justify-between">
+                    <div className="text-xs text-muted truncate max-w-[180px]">
                       {resolver.serviceAddress || 'Local coverage'}
                     </div>
 
@@ -172,7 +172,7 @@ export const ResolverPicker: React.FC<ResolverPickerProps> = ({
                         </>
                       ) : isAssigned ? (
                         <>
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#7C3AED]" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
                           Assigned
                         </>
                       ) : (

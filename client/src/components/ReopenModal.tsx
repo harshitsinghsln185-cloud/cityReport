@@ -90,7 +90,7 @@ export const ReopenModal: React.FC<ReopenModalProps> = ({
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               placeholder="Detail what is wrong with the repair (e.g. pothole sinkhole recurring, street drain still blocked, uneven curb)..."
-              className="w-full rounded-lg border border-slate-300 p-3 text-sm focus:border-violet-600 focus:outline-none focus:ring-1 focus:ring-violet-600"
+              className="w-full rounded-lg border border-slate-300 p-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
 

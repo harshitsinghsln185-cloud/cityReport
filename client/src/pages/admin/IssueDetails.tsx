@@ -819,7 +819,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
                           p.status === 'Completed'
                             ? 'bg-emerald-100 text-emerald-800'
                             : p.status === 'Refunded'
-                            ? 'bg-violet-100 text-primary'
+                            ? 'bg-primary-light text-primary'
                             : 'bg-amber-100 text-amber-800'
                         }`}
                       >

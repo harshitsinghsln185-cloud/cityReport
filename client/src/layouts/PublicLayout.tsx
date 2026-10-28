@@ -6,7 +6,7 @@ import ChatWidget from '../components/chatbot/ChatWidget';
 
 export const PublicLayout: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8F7FC] text-[#1E293B]">
+    <div className="min-h-screen flex flex-col bg-canvas text-ink">
       {/* Top Navigation Bar */}
       <Navbar />
 

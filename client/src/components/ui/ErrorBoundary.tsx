@@ -22,21 +22,21 @@ export const ErrorBoundary: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F7FC] flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-2xl border border-[#E2E8F0] shadow-xl p-8 text-center">
+    <div className="min-h-screen bg-canvas flex items-center justify-center p-4">
+      <div className="max-w-md w-full bg-white rounded-2xl border border-card-border shadow-xl p-8 text-center">
         <div className="w-16 h-16 rounded-2xl bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center mx-auto mb-5 shadow-xs">
           <AlertTriangle className="w-8 h-8" />
         </div>
 
-        <span className="text-xs font-semibold uppercase tracking-wider text-[#7C3AED] bg-[#EDE9FE] px-3 py-1 rounded-full border border-[#DDD6FE]">
+        <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary-light px-3 py-1 rounded-full border border-primary/20">
           Application Notice
         </span>
 
-        <h1 className="text-2xl font-heading font-extrabold text-[#1E293B] mt-4 mb-2">
+        <h1 className="text-2xl font-heading font-extrabold text-ink mt-4 mb-2">
           {title}
         </h1>
 
-        <p className="text-sm text-[#64748B] mb-6 leading-relaxed">
+        <p className="text-sm text-muted mb-6 leading-relaxed">
           {message}
         </p>
 
