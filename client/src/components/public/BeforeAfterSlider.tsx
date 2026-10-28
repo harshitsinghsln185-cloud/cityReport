@@ -1,5 +1,5 @@
-import React, { useState, useRef, useCallback } from 'react';
-import { ShieldCheck, CheckCircle2, MapPin, Calendar, Sliders } from 'lucide-react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { CheckCircle2, MapPin, Calendar, Sliders } from 'lucide-react';
 import Badge from '../ui/Badge';
 
 export interface BeforeAfterSliderProps {
@@ -18,7 +18,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
   beforeImage = '/images/showcase/before-pothole.jpg',
   afterImage = '/images/showcase/after-pothole.jpg',
   beforeLabel = 'Reported Hazard',
-  afterLabel = 'Remediated & Verified',
+  afterLabel = 'Repaired & Verified',
   title = 'Critical Asphalt Pothole & Road Resurfacing',
   location = 'Indiranagar Main Rd, Ward 112',
   date = 'Resolved in 28 hours',
@@ -27,6 +27,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
 }) => {
   const [sliderPosition, setSliderPosition] = useState<number>(50);
   const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [showTouchHint, setShowTouchHint] = useState<boolean>(true);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleMove = useCallback((clientX: number) => {
@@ -35,7 +36,15 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
     const x = clientX - rect.left;
     const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
     setSliderPosition(percentage);
+    setShowTouchHint(false);
   }, []);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true);
+    if (e.touches.length > 0) {
+      handleMove(e.touches[0].clientX);
+    }
+  };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (e.touches.length > 0) {
@@ -53,11 +62,19 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
       setSliderPosition((prev) => Math.max(0, prev - 5));
+      setShowTouchHint(false);
     } else if (e.key === 'ArrowRight') {
       e.preventDefault();
       setSliderPosition((prev) => Math.min(100, prev + 5));
+      setShowTouchHint(false);
     }
   };
+
+  // Hide touch hint after 4 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => setShowTouchHint(false), 4000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className={`w-full max-w-4xl mx-auto ${className}`}>
@@ -94,18 +111,23 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
       <div
         ref={containerRef}
         role="slider"
-        aria-label="Before and after remediation comparison slider"
+        aria-label="Drag to compare before and after repair"
         aria-valuenow={Math.round(sliderPosition)}
         aria-valuemin={0}
         aria-valuemax={100}
         tabIndex={0}
         onKeyDown={handleKeyDown}
-        onMouseDown={() => setIsDragging(true)}
+        onMouseDown={() => {
+          setIsDragging(true);
+          setShowTouchHint(false);
+        }}
         onMouseUp={() => setIsDragging(false)}
         onMouseLeave={() => setIsDragging(false)}
         onMouseMove={handleMouseMove}
+        onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
-        className="relative w-full aspect-[16/9] rounded-cardLg overflow-hidden select-none cursor-ew-resize border border-border shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        onTouchEnd={() => setIsDragging(false)}
+        className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden select-none cursor-ew-resize border border-card-border shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         {/* Background: After Image (Full width) */}
         <img
@@ -133,14 +155,14 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
           style={{ left: `${sliderPosition}%` }}
         >
           {/* Circular Grab Handle */}
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white text-indigo border-2 border-primary shadow-modal flex items-center justify-center transition-transform hover:scale-110">
+          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-white text-navy border-2 border-primary shadow-2xl flex items-center justify-center transition-transform hover:scale-110 active:scale-95">
             <Sliders className="w-4 h-4 text-primary rotate-90" />
           </div>
         </div>
 
         {/* Floating Before Tag */}
         <div className="absolute top-4 left-4 z-10 pointer-events-none">
-          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-dark/80 text-white backdrop-blur-md border border-white/20 shadow-xs">
+          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-ink/80 text-white backdrop-blur-md border border-white/20 shadow-xs">
             {beforeLabel}
           </span>
         </div>
@@ -148,19 +170,28 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         {/* Floating After Tag */}
         <div className="absolute top-4 right-4 z-10 pointer-events-none">
           <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primary/90 text-white backdrop-blur-md border border-white/20 shadow-xs flex items-center gap-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
             <span>{afterLabel}</span>
           </span>
         </div>
 
+        {/* Animated Touch Drag Hint on First View */}
+        {showTouchHint && (
+          <div className="absolute inset-x-0 bottom-14 z-20 pointer-events-none flex justify-center animate-pulse">
+            <span className="bg-navy/90 text-white text-xs px-3.5 py-1.5 rounded-full shadow-lg border border-accent/40 backdrop-blur-sm">
+              ⇄ Drag handle or use arrow keys
+            </span>
+          </div>
+        )}
+
         {/* Bottom Inspector Signature Tag */}
         <div className="absolute bottom-4 left-4 right-4 z-10 pointer-events-none flex items-center justify-between">
-          <span className="text-xs text-white/90 bg-dark/70 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 hidden sm:inline-flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+          <span className="text-xs text-white/90 bg-navy/70 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 hidden sm:inline-flex items-center gap-1.5">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
             <span>Photo Verified: {inspectorId}</span>
           </span>
-          <span className="text-xs text-white/80 bg-dark/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 ml-auto">
-            Drag slider or use arrow keys
+          <span className="text-xs text-white/80 bg-navy/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 ml-auto">
+            Use arrow keys or touch drag
           </span>
         </div>
       </div>

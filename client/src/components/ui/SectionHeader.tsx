@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface SectionHeaderProps {
   eyebrow?: React.ReactNode;
-  eyebrowVariant?: 'primary' | 'navy' | 'violet' | 'gold' | 'neutral';
+  eyebrowVariant?: 'primary' | 'navy' | 'violet' | 'gold' | 'accent' | 'neutral';
   title: React.ReactNode;
   titleAs?: 'h1' | 'h2' | 'h3' | 'h4';
   subtitle?: React.ReactNode;
@@ -26,6 +26,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
     navy: 'bg-primary-light text-primary border-primary/20',
     violet: 'bg-primary-light text-primary border-primary/20',
     gold: 'bg-accent-light text-accent-text border-accent-border',
+    accent: 'bg-accent-light text-accent-text border-accent-border',
     neutral: 'bg-slate-100 text-slate-700 border-slate-200',
   };
 
@@ -34,6 +35,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
     navy: 'bg-primary',
     violet: 'bg-primary',
     gold: 'bg-accent',
+    accent: 'bg-accent',
     neutral: 'bg-slate-400',
   };
 
