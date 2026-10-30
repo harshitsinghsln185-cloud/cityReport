@@ -5,6 +5,8 @@ docs/*
 !docs/ui-fix/
 !docs/home-hero/
 !docs/ui-audit/
+!docs/state-banners/
 AGENT.md
 client/ASSETS.md
 design-source/
+client/design-source/
