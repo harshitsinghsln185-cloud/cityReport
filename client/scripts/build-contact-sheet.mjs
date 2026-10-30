@@ -328,3 +328,4 @@ const fullHtml = `<!DOCTYPE html>
 fs.mkdirSync(path.dirname(targetHtml), { recursive: true });
 fs.writeFileSync(targetHtml, fullHtml, 'utf8');
 console.log('Contact sheet written to', targetHtml);
+

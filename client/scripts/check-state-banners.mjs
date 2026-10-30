@@ -117,3 +117,4 @@ if (passedCount !== totalCount) {
 } else {
   process.exit(0);
 }
+

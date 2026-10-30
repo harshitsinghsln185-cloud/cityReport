@@ -82,3 +82,4 @@ export function getStateBanner(slug: string): StateBanner | null {
     cardSrc: src800Webp || src1600Webp
   };
 }
+

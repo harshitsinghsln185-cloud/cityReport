@@ -81,3 +81,4 @@ for (const file of files) {
 
 console.log('--------------------------------------------------------------------------------');
 console.log('Image optimization complete.');
+
