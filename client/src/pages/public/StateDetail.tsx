@@ -271,25 +271,25 @@ export const StateDetail: React.FC = () => {
               </p>
 
               {/* Hero Blurb Description */}
-              <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans max-w-2xl mb-4">
+              <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans max-w-xl text-balance mb-4">
                 {stateData.heroBlurb}
               </p>
 
-              {/* Famous Places Row */}
+              {/* Famous Places 2x2 Grid (2 in one row, 2 in next row) */}
               {landmarkInfo.places && landmarkInfo.places.length > 0 && (
                 <div className="mb-6">
                   <div className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-2">
                     Famous Heritage & Regional Places:
                   </div>
-                  <div className="flex flex-wrap items-center gap-2">
-                    {landmarkInfo.places.map((place) => (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-lg">
+                    {landmarkInfo.places.slice(0, 4).map((place) => (
                       <span
                         key={place.name}
-                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 hover:bg-white/15 backdrop-blur-xs border border-white/15 text-xs text-slate-100 transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 backdrop-blur-xs border border-white/15 text-xs text-slate-100 transition-colors"
                       >
                         <Sparkles className="w-3 h-3 text-gold shrink-0" />
-                        <span className="font-medium">{place.name}</span>
-                        <span className="text-[10px] text-slate-400">({place.kind})</span>
+                        <span className="font-medium truncate">{place.name}</span>
+                        <span className="text-[10px] text-slate-400 shrink-0">({place.kind})</span>
                       </span>
                     ))}
                   </div>
@@ -297,7 +297,7 @@ export const StateDetail: React.FC = () => {
               )}
 
               {/* Primary and Secondary Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-4">
                 <Button
                   to={`/user/report-issue?state=${encodeURIComponent(stateData.name)}`}
                   variant="gold"
@@ -316,36 +316,71 @@ export const StateDetail: React.FC = () => {
                   Apply as Ward Contractor
                 </Button>
               </div>
-
-              {/* Verified Geographic Fact Strip */}
-              <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300 pt-2 border-t border-white/10">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-slate-400">Districts:</span>
-                  <strong className="text-white font-semibold tabular-nums">{stateData.districtsCount} Administrative Wards</strong>
-                </div>
-                <span>•</span>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-slate-400">Population:</span>
-                  <strong className="text-white font-semibold tabular-nums">{stateData.population}</strong>
-                </div>
-                <span>•</span>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-slate-400">Area:</span>
-                  <strong className="text-white font-semibold tabular-nums">{stateData.area}</strong>
-                </div>
-              </div>
             </div>
           </div>
         </div>
 
         {/* Right Landmark Caption Chip */}
-        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8 z-20 pointer-events-auto">
+        <div className="absolute bottom-10 right-4 sm:bottom-14 sm:right-8 z-20 pointer-events-auto">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy/85 hover:bg-navy backdrop-blur-md border border-white/20 text-xs text-white shadow-lg transition-colors">
             <Camera className="w-3.5 h-3.5 text-gold shrink-0" />
             <span className="font-medium tracking-wide">{landmarkInfo.landmark}</span>
           </div>
         </div>
       </section>
+
+      {/* Floating Overlapping 4-Metric Card (Half on Hero, Half Below, Styled in Translucent Amber/Gold) */}
+      <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-11 mb-2">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 p-3 sm:p-3.5 rounded-2xl bg-[#0A1F44]/90 hover:bg-[#0A1F44]/95 backdrop-blur-md border border-gold/50 shadow-xl shadow-navy/40 transition-colors">
+          {/* Capital */}
+          <div className="p-2 sm:p-2.5">
+            <div className="flex items-center gap-1.5 text-gold text-[11px] font-semibold uppercase tracking-wider mb-0.5">
+              <Building2 className="w-3.5 h-3.5 text-gold shrink-0" />
+              <span>Capital</span>
+            </div>
+            <p className="font-heading font-bold text-white text-lg sm:text-xl truncate">
+              {stateData.capital}
+            </p>
+            <p className="text-[10px] text-slate-300 font-medium">Headquarters</p>
+          </div>
+
+          {/* Districts */}
+          <div className="p-2 sm:p-2.5 border-l-0 sm:border-l border-gold/20">
+            <div className="flex items-center gap-1.5 text-gold text-[11px] font-semibold uppercase tracking-wider mb-0.5">
+              <MapPin className="w-3.5 h-3.5 text-gold shrink-0" />
+              <span>Districts</span>
+            </div>
+            <p className="font-heading font-bold text-white text-lg sm:text-xl tabular-nums">
+              {stateData.districtsCount}
+            </p>
+            <p className="text-[10px] text-slate-300 font-medium">Collectorates</p>
+          </div>
+
+          {/* Population */}
+          <div className="p-2 sm:p-2.5 border-t sm:border-t-0 lg:border-l border-gold/20">
+            <div className="flex items-center gap-1.5 text-gold text-[11px] font-semibold uppercase tracking-wider mb-0.5">
+              <Users className="w-3.5 h-3.5 text-gold shrink-0" />
+              <span>Population</span>
+            </div>
+            <p className="font-heading font-bold text-white text-lg sm:text-xl tabular-nums">
+              {stateData.population}
+            </p>
+            <p className="text-[10px] text-slate-300 font-medium">Census Estimate</p>
+          </div>
+
+          {/* Area */}
+          <div className="p-2 sm:p-2.5 border-t sm:border-t-0 lg:border-l border-gold/20">
+            <div className="flex items-center gap-1.5 text-gold text-[11px] font-semibold uppercase tracking-wider mb-0.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-gold shrink-0" />
+              <span>Area</span>
+            </div>
+            <p className="font-heading font-bold text-white text-lg sm:text-xl tabular-nums">
+              {stateData.area}
+            </p>
+            <p className="text-[10px] text-slate-300 font-medium">State Territory</p>
+          </div>
+        </div>
+      </div>
 
       {/* Sticky In-Page Navigation Bar with Reading Progress */}
       <nav aria-label="Page Sections Navigation" className="sticky top-16 z-30 bg-surface/95 backdrop-blur-md border-b border-border shadow-xs">
@@ -394,56 +429,8 @@ export const StateDetail: React.FC = () => {
 
       {/* Main Content Sections */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-16">
-        {/* Section 1: Overview & 4-Metric Strip */}
+        {/* Section 1: Overview & Regional Brief */}
         <section id="overview" className="scroll-mt-36">
-          <Reveal>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-5 rounded-card bg-surface border border-border shadow-subtle mb-10">
-              <div className="p-3">
-                <div className="flex items-center gap-2 text-muted text-xs mb-1">
-                  <Building2 className="w-4 h-4 text-primary" />
-                  <span>Administrative Capital</span>
-                </div>
-                <p className="font-heading font-bold text-ink text-2xl truncate">
-                  {stateData.capital}
-                </p>
-                <p className="text-xs text-muted font-medium mt-0.5">Government Headquarters</p>
-              </div>
-
-              <div className="p-3 border-l-0 sm:border-l border-border">
-                <div className="flex items-center gap-2 text-muted text-xs mb-1">
-                  <MapPin className="w-4 h-4 text-indigo" />
-                  <span>Administrative Districts</span>
-                </div>
-                <p className="font-heading font-bold text-ink text-2xl tabular-nums">
-                  {stateData.districtsCount}
-                </p>
-                <p className="text-xs text-muted mt-0.5">District Collectorates</p>
-              </div>
-
-              <div className="p-3 border-t sm:border-t-0 lg:border-l border-border">
-                <div className="flex items-center gap-2 text-muted text-xs mb-1">
-                  <Users className="w-4 h-4 text-emerald-700" />
-                  <span>Estimated Population</span>
-                </div>
-                <p className="font-heading font-bold text-ink text-2xl tabular-nums">
-                  {stateData.population}
-                </p>
-                <p className="text-xs text-muted mt-0.5">Census Demographic Estimate</p>
-              </div>
-
-              <div className="p-3 border-t sm:border-t-0 lg:border-l border-border">
-                <div className="flex items-center gap-2 text-muted text-xs mb-1">
-                  <ShieldCheck className="w-4 h-4 text-gold" />
-                  <span>Geographic Area</span>
-                </div>
-                <p className="font-heading font-bold text-ink text-2xl tabular-nums">
-                  {stateData.area}
-                </p>
-                <p className="text-xs text-muted mt-0.5">Total State Territory</p>
-              </div>
-            </div>
-          </Reveal>
-
           {/* Regional Geographic & Municipal Brief */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 p-6 rounded-card bg-surface border border-border shadow-subtle">
@@ -673,7 +660,7 @@ export const StateDetail: React.FC = () => {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="max-w-4xl ml-auto">
+            <div className="max-w-4xl mr-auto">
               <Accordion items={faqAccordionItems} defaultOpenId="faq-0" />
             </div>
           </Reveal>
