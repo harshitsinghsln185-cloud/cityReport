@@ -8,6 +8,7 @@
     "generate:sitemap": "node scripts/generate-sitemap.js",
     "build": "npm run generate:sitemap && tsc -b && vite build",
     "preview": "vite preview",
+    "states:images": "node scripts/optimize-states.mjs",
     "lint": "tsc --noEmit"
   },
   "dependencies": {
