@@ -10,10 +10,8 @@ import {
   Filter,
   SlidersHorizontal,
   Compass,
-  Sparkles,
 } from 'lucide-react';
 import { STATES_DATA, RegionType, StateType, StateData } from '../../data/statesData';
-import { getStateLandmark } from '../../data/landmarks';
 import Card from '../../components/ui/Card';
 import Badge from '../../components/ui/Badge';
 import Button from '../../components/ui/Button';
@@ -24,12 +22,12 @@ import SEO from '../../components/SEO';
 import { SITE_URL } from '../../config/site';
 
 export const ZONE_STYLES: Record<RegionType, { badge: string }> = {
-  North: { badge: 'bg-[#1D4ED8]/30 text-[#93C5FD] border-[#1D4ED8]/50' },
-  South: { badge: 'bg-[#0E6E4C]/30 text-[#A7F3D0] border-[#0E6E4C]/50' },
-  East: { badge: 'bg-[#B54708]/30 text-[#FDE68A] border-[#B54708]/50' },
-  West: { badge: 'bg-[#0E7490]/30 text-[#A5F3FC] border-[#0E7490]/50' },
-  Central: { badge: 'bg-[#78350F]/30 text-[#FCD34D] border-[#78350F]/50' },
-  Northeast: { badge: 'bg-[#9F1239]/30 text-[#FECDD3] border-[#9F1239]/50' },
+  North: { badge: 'bg-blue-50 text-blue-700 border-blue-200' },
+  South: { badge: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
+  East: { badge: 'bg-amber-50 text-amber-800 border-amber-200' },
+  West: { badge: 'bg-cyan-50 text-cyan-700 border-cyan-200' },
+  Central: { badge: 'bg-yellow-50 text-yellow-800 border-yellow-200' },
+  Northeast: { badge: 'bg-rose-50 text-rose-700 border-rose-200' },
 };
 
 const ZONES: { id: 'All' | RegionType; label: string; description: string }[] = [
@@ -460,7 +458,7 @@ export const StatesDirectory: React.FC = () => {
                   </div>
 
                   {/* Zonal Cards Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
                     {zoneStates.map((state, idx) => (
                       <StateCard key={state.slug} state={state} idx={idx} />
                     ))}
@@ -481,7 +479,7 @@ export const StatesDirectory: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
               {filteredStates.map((state, idx) => (
                 <StateCard key={state.slug} state={state} idx={idx} />
               ))}
@@ -499,116 +497,57 @@ interface StateCardProps {
 }
 
 const StateCard: React.FC<StateCardProps> = ({ state, idx }) => {
-  const landmarkInfo = getStateLandmark(state.slug);
-
   return (
-    <Reveal delay={(idx % 6) * 0.04}>
+    <Reveal delay={(idx % 8) * 0.03}>
       <Link to={`/states/${state.slug}`} className="block h-full group">
         <Card
           isInteractive
           variant="base"
-          className="h-full flex flex-col justify-between overflow-hidden group-hover:border-primary/40 group-hover:shadow-cardHover transition-all duration-200 bg-surface p-0 border border-border"
+          className="h-full flex flex-col justify-between rounded-2xl bg-surface border border-border p-5 hover:border-primary/40 hover:shadow-cardHover transition-all duration-200"
         >
           <div>
-            {/* 16:10 Landmark Visual Banner */}
-            <div className="relative aspect-[16/10] w-full overflow-hidden bg-navy">
-              <img
-                src={landmarkInfo.bannerUrl}
-                alt={`${state.name} - ${landmarkInfo.landmark}`}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
-              />
-
-              {/* Scrim Gradient for Readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/30 pointer-events-none" />
-
-              {/* Floating Badges */}
-              <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10">
-                <Badge
-                  variant={state.type === 'Union Territory' ? 'gold' : 'navy'}
-                  size="sm"
-                  className="shadow-sm backdrop-blur-xs"
-                >
-                  {state.type}
-                </Badge>
-                <span
-                  className={`text-xs font-mono font-medium backdrop-blur-xs px-2.5 py-0.5 rounded-full border shadow-xs ${ZONE_STYLES[state.region]?.badge || 'bg-black/40 text-white/90 border-white/20'}`}
-                >
-                  {state.region} Zone
-                </span>
-              </div>
-
-              {/* Landmark Caption Badge */}
-              <div className="absolute bottom-2.5 left-3 right-3 z-10">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-sm border border-white/20 text-white text-xs">
-                  <Sparkles className="w-3 h-3 text-gold shrink-0" />
-                  <span className="truncate font-medium">{landmarkInfo.landmark}</span>
-                </div>
-              </div>
+            {/* Top Row: Region Zone & Type Badges */}
+            <div className="flex items-center justify-between gap-2 mb-3">
+              <span
+                className={`text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full border ${
+                  ZONE_STYLES[state.region]?.badge || 'bg-slate-100 text-slate-700 border-slate-200'
+                }`}
+              >
+                {state.region} Zone
+              </span>
+              <span className="text-[11px] font-medium text-muted bg-canvas px-2 py-0.5 rounded border border-border">
+                {state.type === 'Union Territory' ? 'UT' : 'State'}
+              </span>
             </div>
 
-            {/* Card Content Body */}
-            <div className="p-5">
-              <div className="flex items-start justify-between gap-2 mb-1.5">
-                <h3 className="font-heading font-bold text-xl text-ink group-hover:text-primary transition-colors">
-                  {state.name}
-                </h3>
-                <span className="text-xs text-muted tabular-nums font-mono font-medium shrink-0 pt-0.5">
-                  {state.districtsCount} Dist.
-                </span>
-              </div>
+            {/* State Name */}
+            <h3 className="font-heading font-bold text-lg text-ink group-hover:text-primary transition-colors mb-1.5 leading-snug">
+              {state.name}
+            </h3>
 
-              <p className="text-xs text-muted flex items-center gap-1 mb-3">
-                <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
-                <span>Capital: <strong className="text-secondaryText font-medium">{state.capital}</strong></span>
-              </p>
+            {/* Capital */}
+            <p className="text-xs text-muted flex items-center gap-1.5 mb-2.5">
+              <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
+              <span>
+                Capital: <strong className="text-secondaryText font-semibold">{state.capital}</strong>
+              </span>
+            </p>
 
-              {/* Short Blurb */}
-              <p className="text-xs text-secondaryText leading-relaxed mb-4 line-clamp-2">
-                {state.heroBlurb}
-              </p>
-
-              {/* Priority Tags */}
-              <div className="flex flex-wrap gap-1.5 mb-2">
-                {state.civicPriorities.slice(0, 2).map((p) => (
-                  <span
-                    key={p.title}
-                    className="text-xs px-2 py-0.5 rounded-md bg-canvas text-secondaryText border border-border font-medium truncate max-w-[200px]"
-                  >
-                    {p.title}
-                  </span>
-                ))}
-              </div>
-            </div>
+            {/* Short Detail Blurb */}
+            <p className="text-xs text-secondaryText leading-relaxed line-clamp-2 mb-4">
+              {state.heroBlurb}
+            </p>
           </div>
 
-          {/* Card Footer: 3 Factual Metrics & Action Button */}
-          <div className="p-5 pt-0">
-            <div className="pt-3 border-t border-border grid grid-cols-3 gap-2 text-center text-xs mb-3">
-              <div>
-                <span className="block font-heading font-semibold text-ink text-xs truncate">
-                  {state.capital}
-                </span>
-                <span className="text-xs text-muted">Capital</span>
-              </div>
-              <div>
-                <span className="block font-heading font-bold text-ink text-xs tabular-nums">
-                  {state.districtsCount}
-                </span>
-                <span className="text-xs text-muted">Districts</span>
-              </div>
-              <div>
-                <span className="block font-heading font-semibold text-ink text-xs truncate">
-                  {state.population}
-                </span>
-                <span className="text-xs text-muted">Population</span>
-              </div>
-            </div>
-
-            <div className="w-full py-2.5 px-3 rounded-lg bg-canvas group-hover:bg-lavender/60 text-primary font-semibold text-xs flex items-center justify-between transition-colors">
-              <span>View State Infrastructure</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </div>
+          {/* Footer: District count & View Details action */}
+          <div className="pt-3 border-t border-border flex items-center justify-between mt-auto">
+            <span className="text-xs font-mono font-medium text-muted">
+              {state.districtsCount} Districts
+            </span>
+            <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:text-primary-hover group-hover:translate-x-0.5 transition-all">
+              <span>View Details</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </span>
           </div>
         </Card>
       </Link>

@@ -12,7 +12,6 @@ import Hero from '../../components/public/Hero';
 import LiveTicker from '../../components/public/LiveTicker';
 import HowItWorks from '../../components/public/HowItWorks';
 import ServiceCard from '../../components/public/ServiceCard';
-import LiveMap from '../../components/public/LiveMap';
 import BeforeAfterSlider from '../../components/public/BeforeAfterSlider';
 import TestimonialsTrust from '../../components/public/TestimonialsTrust';
 import FaqSection from '../../components/public/FaqSection';
@@ -174,7 +173,7 @@ export const Home: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {(Array.isArray(categories) ? categories : []).map((cat, idx) => (
                 <Reveal key={cat._id} delay={idx * 0.05}>
-                  <ServiceCard category={cat} />
+                  <ServiceCard category={cat} index={idx} />
                 </Reveal>
               ))}
             </div>
@@ -182,31 +181,7 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 4: Dark Navy Container Live Map (#0A1F44) */}
-      <section className="py-20 bg-[#0A1F44] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <Reveal>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-xs font-semibold text-accent mb-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Real-Time Civic Activity</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-3">
-                Pan-India Civic Resolution Map
-              </h2>
-              <p className="text-sm text-slate-300 leading-relaxed">
-                Explore active resolution work, verified contractor dispatch pins, and local ward coverage zones across India.
-              </p>
-            </Reveal>
-          </div>
-
-          <Reveal delay={0.1}>
-            <LiveMap />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* SECTION 5: Ivory Canvas How It Works Scroll Story (#FAF8F3) */}
+      {/* How It Works Section */}
       <HowItWorks />
 
       {/* SECTION 6: White Surface Before/After Slider (#FFFFFF) */}

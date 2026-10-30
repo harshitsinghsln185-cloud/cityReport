@@ -1,105 +1,182 @@
 import React from 'react';
-import { Camera, ShieldCheck, UserCheck, Search, FileText, CheckCircle2 } from 'lucide-react';
-import Card from '../ui/Card';
+import {
+  Camera,
+  ShieldCheck,
+  Search,
+  UserCheck,
+  FileText,
+} from 'lucide-react';
 import SectionHeader from '../ui/SectionHeader';
 import Reveal from '../ui/Reveal';
 
 interface ProtectionPillar {
+  stepNum: number;
   title: string;
   description: string;
   badge: string;
+  proof: string;
   icon: React.FC<{ className?: string }>;
 }
 
 const PROTECTION_PILLARS: ProtectionPillar[] = [
   {
+    stepNum: 1,
     title: 'Photo & Location Evidence',
     description:
-      'Every civic report requires geo-tagged physical photos and exact street coordinates, ensuring resolvers dispatch to the precise defect site.',
+      'Every civic report requires geo-tagged physical photos and precise street coordinates for accurate resolver dispatch.',
     badge: 'Verified Submission',
+    proof: 'Geo-tagged EXIF coordinates',
     icon: Camera,
   },
   {
-    title: '50% Advance & Completion Balance',
+    stepNum: 2,
+    title: '50% Milestone Advance',
     description:
-      'Pay 50% advance to initiate contractor mobilization. The remaining 50% balance is payable only after you inspect and accept completion photos.',
+      'Initial advance funds contractor mobilization, held safely in platform escrow until physical work commences.',
     badge: 'Milestone Payments',
+    proof: 'Escrow payment protection',
     icon: ShieldCheck,
   },
   {
-    title: 'Admin Verification Review',
-    description:
-      'Platform administrators examine Before and After photographic proofs and contractor completion notes prior to closing any issue.',
-    badge: 'Photo Verified',
-    icon: UserCheck,
-  },
-  {
+    stepNum: 3,
     title: 'Real-Time Status Tracking',
     description:
-      'Use your unique tracking code to follow every dispatch update, resolver acceptance, on-site arrival, and resolution timestamp.',
+      'Follow every dispatch milestone, contractor arrival, and repair progress with an immutable public tracking code.',
     badge: 'Public Transparency',
+    proof: 'Live dispatch timeline',
     icon: Search,
   },
   {
+    stepNum: 4,
+    title: 'Admin Verification Review',
+    description:
+      'Platform administrators examine dual-angle Before and After photo evidence before signing off on resolution.',
+    badge: 'Photo Verified',
+    proof: 'Dual photo audit',
+    icon: UserCheck,
+  },
+  {
+    stepNum: 5,
     title: 'Itemized GST Invoices',
     description:
-      'Every paid milestone generates an official, downloadable GST tax invoice with an itemized breakdown of base service fee and travel rate.',
+      'Final completion balance releases an official downloadable GST tax invoice with an itemized breakdown of all fees.',
     badge: 'Audit Trail',
+    proof: 'GST tax compliant invoice',
     icon: FileText,
   },
 ];
 
 export const TestimonialsTrust: React.FC = () => {
   return (
-    <section className="py-20 bg-canvas border-b border-border">
+    <section className="py-20 bg-canvas border-b border-border overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal>
           <SectionHeader
-            eyebrow="Platform Protection"
-            eyebrowVariant="neutral"
+            eyebrow="Protection Protocol"
+            eyebrowVariant="primary"
             title="How We Protect Citizens & Resolvers"
             subtitle="Every repair on Crowd Report is backed by physical verification, milestone funding, and complete transparency."
             align="center"
+            className="mb-14 sm:mb-16"
           />
         </Reveal>
 
-        {/* Protection Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {PROTECTION_PILLARS.map((pillar, idx) => {
-            const Icon = pillar.icon;
-            return (
-              <Reveal key={pillar.title} delay={idx * 0.08}>
-                <Card
-                  variant="base"
-                  className="h-full flex flex-col justify-between bg-surface border border-border hover:shadow-cardHover transition-all duration-200 p-6"
-                >
-                  <div>
-                    <div className="flex items-center justify-between gap-2 mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                        <Icon className="w-5 h-5" />
+        {/* Desktop & Tablet: Horizontal Dashed Pipeline */}
+        <div className="hidden md:block relative">
+          {/* Dashed Connecting Line running through centers of all circles */}
+          <div
+            className="absolute top-10 sm:top-12 left-[10%] right-[10%] h-0.5 border-t-2 border-dashed border-accent/60 z-0 pointer-events-none"
+            aria-hidden="true"
+          />
+
+          <div className="grid grid-cols-5 gap-3 lg:gap-6 relative z-10">
+            {PROTECTION_PILLARS.map((pillar, idx) => {
+              const Icon = pillar.icon;
+
+              return (
+                <Reveal key={pillar.title} delay={idx * 0.08}>
+                  <div className="flex flex-col items-center text-center group">
+                    {/* Circle Node with Floating Step Number */}
+                    <div className="relative mb-5">
+                      {/* Outer Cream/Gold Ring */}
+                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-accent-light border-2 border-accent/40 shadow-sm flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                        {/* Inner Dark Navy Circle */}
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-navy text-white flex items-center justify-center shadow-inner group-hover:bg-navy-light transition-colors">
+                          <Icon className="w-6 h-6 sm:w-7 sm:h-7" />
+                        </div>
                       </div>
-                      <span className="text-xs font-semibold text-primary bg-primary/5 px-2.5 py-1 rounded-full border border-primary/15">
-                        {pillar.badge}
-                      </span>
+
+                      {/* Floating Step Number Badge at Top-Right */}
+                      <div className="absolute -top-0.5 -right-0.5 sm:top-0 sm:right-0 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-navy border-2 border-white text-accent flex items-center justify-center text-[10px] sm:text-xs font-mono font-bold shadow-xs">
+                        0{pillar.stepNum}
+                      </div>
                     </div>
 
-                    <h3 className="font-heading font-semibold text-base text-ink mb-2">
+                    {/* Step Title */}
+                    <h3 className="font-heading font-bold text-sm sm:text-base text-ink mb-2 min-h-[44px] flex items-center justify-center leading-snug">
                       {pillar.title}
                     </h3>
 
-                    <p className="text-xs sm:text-sm text-secondaryText leading-relaxed">
+                    {/* Step Description */}
+                    <p className="text-xs text-secondaryText leading-relaxed mb-3 max-w-[210px] mx-auto">
                       {pillar.description}
                     </p>
-                  </div>
 
-                  <div className="pt-4 mt-4 border-t border-border flex items-center gap-2 text-xs text-muted">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                    <span>Standard platform safeguard</span>
+                    {/* Safeguard Badge */}
+                    <span className="inline-block text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/60 mt-auto">
+                      {pillar.badge}
+                    </span>
                   </div>
-                </Card>
-              </Reveal>
-            );
-          })}
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Mobile View: Vertical Dashed Pipeline */}
+        <div className="md:hidden relative">
+          {/* Vertical Dashed Line running through circle centers */}
+          <div
+            className="absolute top-10 bottom-10 left-10 w-0.5 border-l-2 border-dashed border-accent/60 z-0 pointer-events-none"
+            aria-hidden="true"
+          />
+
+          <div className="space-y-7 relative z-10">
+            {PROTECTION_PILLARS.map((pillar, idx) => {
+              const Icon = pillar.icon;
+
+              return (
+                <Reveal key={pillar.title} delay={idx * 0.06}>
+                  <div className="flex items-start gap-4">
+                    {/* Circle Node with Floating Step Number */}
+                    <div className="relative shrink-0">
+                      <div className="w-20 h-20 rounded-full bg-accent-light border-2 border-accent/40 shadow-sm flex items-center justify-center">
+                        <div className="w-14 h-14 rounded-full bg-navy text-white flex items-center justify-center shadow-inner">
+                          <Icon className="w-6 h-6" />
+                        </div>
+                      </div>
+                      <div className="absolute top-0 right-0 w-6 h-6 rounded-full bg-navy border-2 border-white text-accent flex items-center justify-center text-[10px] font-mono font-bold shadow-xs">
+                        0{pillar.stepNum}
+                      </div>
+                    </div>
+
+                    {/* Text Details */}
+                    <div className="flex-1 pt-1">
+                      <h3 className="font-heading font-bold text-base text-ink mb-1">
+                        {pillar.title}
+                      </h3>
+                      <p className="text-xs text-secondaryText leading-relaxed mb-2">
+                        {pillar.description}
+                      </p>
+                      <span className="inline-block text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/60">
+                        {pillar.proof}
+                      </span>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

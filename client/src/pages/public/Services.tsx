@@ -1,16 +1,13 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
 import {
   Search,
   Wrench,
-  Clock,
-  MapPin,
   ArrowRight,
   Filter,
   Sparkles,
 } from 'lucide-react';
 import categoryService, { Category } from '../../services/category.service';
-import Card from '../../components/ui/Card';
+import ServiceCard from '../../components/public/ServiceCard';
 import Badge from '../../components/ui/Badge';
 import Button from '../../components/ui/Button';
 import PageHero from '../../components/ui/PageHero';
@@ -248,67 +245,11 @@ export const Services: React.FC = () => {
           />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((cat, idx) => {
-              const baseFeeInr = ((cat.baseFeePaise || 0) / 100).toLocaleString('en-IN', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              });
-
-              return (
-                <Reveal key={cat._id} delay={(idx % 6) * 0.05}>
-                  <Card
-                    isInteractive
-                    variant="base"
-                    className="h-full flex flex-col justify-between group hover:border-primary/40 hover:shadow-cardHover transition-all duration-200 bg-white"
-                  >
-                    <div>
-                      {/* Top Badges */}
-                      <div className="flex items-start justify-between gap-3 mb-4">
-                        <div className="w-11 h-11 rounded-xl bg-lavender text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-xs">
-                          <Wrench className="w-5 h-5" />
-                        </div>
-                        <Badge variant="gold" size="sm" className="font-semibold shadow-xs">
-                          From ₹{baseFeeInr}
-                        </Badge>
-                      </div>
-
-                      {/* Title & Description */}
-                      <h3 className="font-heading font-semibold text-lg text-ink mb-2 group-hover:text-primary transition-colors">
-                        {cat.name}
-                      </h3>
-
-                      <p className="text-xs text-secondaryText leading-relaxed mb-4 line-clamp-3">
-                        {cat.description ||
-                          'Certified municipal hazard repair with geo-proximity contractor dispatch and photo-proof audit.'}
-                      </p>
-                    </div>
-
-                    <div>
-                      {/* SLA and Radius Meta */}
-                      <div className="pt-3.5 border-t border-border grid grid-cols-2 gap-2 text-xs text-muted mb-4 font-medium">
-                        <div className="flex items-center gap-1.5">
-                          <Clock className="w-3.5 h-3.5 text-primary shrink-0" />
-                          <span className="tabular-nums">Within {cat.estimatedResolutionHours || 48}h SLA</span>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
-                          <span className="tabular-nums">{cat.freeRadiusKm || 5} km Free Base</span>
-                        </div>
-                      </div>
-
-                      {/* Direct Reporting CTA Link */}
-                      <Link
-                        to={`/user/report-issue?category=${encodeURIComponent(cat._id)}`}
-                        className="inline-flex items-center justify-between w-full px-3.5 py-2.5 rounded-lg bg-canvas group-hover:bg-lavender/60 text-primary text-xs font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                      >
-                        <span>Report This Hazard</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </div>
-                  </Card>
-                </Reveal>
-              );
-            })}
+            {filtered.map((cat, idx) => (
+              <Reveal key={cat._id} delay={(idx % 6) * 0.05}>
+                <ServiceCard category={cat} index={idx} />
+              </Reveal>
+            ))}
           </div>
         )}
 
