@@ -13,9 +13,11 @@ import {
   ChevronRight,
   Building2,
   CheckCircle2,
+  Camera,
 } from 'lucide-react';
 import { getStateBySlug, STATES_DATA } from '../../data/statesData';
 import { getStateLandmark } from '../../data/landmarks';
+import { getStateBanner } from '../../lib/stateBanner';
 import Breadcrumbs from '../../components/ui/Breadcrumbs';
 import Card from '../../components/ui/Card';
 import Badge from '../../components/ui/Badge';
@@ -50,6 +52,10 @@ export const StateDetail: React.FC = () => {
 
   const landmarkInfo = useMemo(() => {
     return slug ? getStateLandmark(slug) : null;
+  }, [slug]);
+
+  const banner = useMemo(() => {
+    return slug ? getStateBanner(slug) : null;
   }, [slug]);
 
   const [activeSection, setActiveSection] = useState('overview');
@@ -195,33 +201,52 @@ export const StateDetail: React.FC = () => {
       />
 
       {/* Cinematic Landmark Visual Hero Banner */}
-      <section className="relative overflow-hidden bg-navy text-white pt-8 pb-14 sm:pb-20 border-b border-navy-muted">
-        {/* Landmark Background SVG with Scrim */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={landmarkInfo.bannerUrl}
-            alt={landmarkInfo.landmark}
-            className="w-full h-full object-cover opacity-35 object-center scale-105 filter blur-[0.5px]"
-          />
-          {/* Deep Navy Scrim Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70" />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent" />
+      <section className="relative overflow-hidden bg-navy text-white min-h-[560px] md:min-h-[460px] lg:min-h-[520px] flex flex-col justify-between border-b border-navy-muted">
+        {/* Background Banner with AVIF / WebP picture or graceful fallback */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          {banner ? (
+            <picture className="w-full h-full block">
+              {banner.sources.map((src) => (
+                <source key={src.type} type={src.type} srcSet={src.srcSet} sizes="100vw" />
+              ))}
+              <img
+                src={banner.src}
+                alt={landmarkInfo.bannerAlt || landmarkInfo.landmark}
+                width={banner.width}
+                height={banner.height}
+                // @ts-expect-error - fetchpriority is supported in modern browsers
+                fetchpriority="high"
+                decoding="async"
+                className="w-full h-full object-cover object-right md:object-center transform md:scale-100 md:hover:scale-[1.03] transition-transform duration-1000 ease-out motion-reduce:transform-none"
+              />
+            </picture>
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-navy via-[#11244E] to-[#1e3a8a] relative">
+              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#FAF8F3_1px,transparent_1px)] [background-size:16px_16px]" />
+            </div>
+          )}
+
+          {/* Left-focused Navy Scrim Overlay (Calm left 40% for text, open right for landmark) */}
+          <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-navy/95 md:bg-gradient-to-r md:from-navy md:via-navy/85 md:to-transparent md:w-[68%]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent opacity-80" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb Navigation */}
-          <Breadcrumbs
-            items={[
-              { label: 'States & Union Territories', href: '/states' },
-              { label: stateData.name },
-            ]}
-            className="mb-6 text-slate-300"
-          />
+        {/* Content container */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 w-full flex-1 flex flex-col justify-between">
+          <div>
+            {/* Breadcrumb Navigation */}
+            <Breadcrumbs
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'States', href: '/states' },
+                { label: stateData.name },
+              ]}
+              className="mb-5 text-slate-300"
+            />
 
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div className="max-w-3xl">
-              {/* Region, Type & Landmark Pills */}
-              <div className="flex items-center gap-2 flex-wrap mb-4">
+              {/* Type and Region Chips */}
+              <div className="flex items-center gap-2 flex-wrap mb-3.5">
                 <Badge
                   variant={stateData.type === 'Union Territory' ? 'gold' : 'navy'}
                   size="sm"
@@ -232,65 +257,92 @@ export const StateDetail: React.FC = () => {
                 <span className="text-xs text-lavender font-medium bg-white/10 px-2.5 py-0.5 rounded-full border border-white/15">
                   {stateData.region} Zone
                 </span>
-                <span className="text-xs text-slate-300 font-medium">
-                  Capital: <strong className="text-white">{stateData.capital}</strong>
-                </span>
-                <span className="text-xs text-slate-400">•</span>
-                <span className="text-xs text-slate-300">
-                  {stateData.districtsCount} Administrative Districts
-                </span>
               </div>
 
-              {/* Landmark Caption Badge */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/15 border border-gold/40 text-gold text-xs font-medium mb-3">
-                <Sparkles className="w-3.5 h-3.5 text-gold shrink-0" />
-                <span>Landmark: {landmarkInfo.landmark}</span>
-              </div>
-
-              {/* State Heading */}
-              <h1 className="text-3xl sm:text-5xl font-heading font-bold text-white mb-4 tracking-tight leading-tight">
+              {/* State Name Heading */}
+              <h1 className="text-3xl sm:text-5xl font-heading font-semibold text-white mb-2 tracking-tight leading-tight">
                 {stateData.name}
               </h1>
 
-              {/* Hero Blurb */}
-              <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-sans max-w-2xl mb-6">
+              {/* Capital City Line with MapPin Icon */}
+              <p className="text-sm sm:text-base text-amber-200 font-medium flex items-center gap-1.5 mb-3">
+                <MapPin className="w-4 h-4 text-gold shrink-0" />
+                <span>Capital: <strong className="text-white font-semibold">{stateData.capital}</strong></span>
+              </p>
+
+              {/* Hero Blurb Description */}
+              <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans max-w-2xl mb-4">
                 {stateData.heroBlurb}
               </p>
 
-              {/* Geographic Fact Strip */}
-              <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300">
+              {/* Famous Places Row */}
+              {landmarkInfo.places && landmarkInfo.places.length > 0 && (
+                <div className="mb-6">
+                  <div className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-2">
+                    Famous Heritage & Regional Places:
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {landmarkInfo.places.map((place) => (
+                      <span
+                        key={place.name}
+                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 hover:bg-white/15 backdrop-blur-xs border border-white/15 text-xs text-slate-100 transition-colors"
+                      >
+                        <Sparkles className="w-3 h-3 text-gold shrink-0" />
+                        <span className="font-medium">{place.name}</span>
+                        <span className="text-[10px] text-slate-400">({place.kind})</span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Primary and Secondary Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6">
+                <Button
+                  to={`/user/report-issue?state=${encodeURIComponent(stateData.name)}`}
+                  variant="gold"
+                  size="lg"
+                  className="w-full sm:w-auto shadow-lg shadow-gold/20 flex items-center justify-center gap-2 group font-semibold"
+                >
+                  <span>Report an issue in {stateData.name}</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                <Button
+                  to="/register-resolver"
+                  variant="outline"
+                  size="md"
+                  className="w-full sm:w-auto border-white/25 text-white hover:bg-white/10"
+                >
+                  Apply as Ward Contractor
+                </Button>
+              </div>
+
+              {/* Verified Geographic Fact Strip */}
+              <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300 pt-2 border-t border-white/10">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-slate-400">Districts:</span>
+                  <strong className="text-white font-semibold tabular-nums">{stateData.districtsCount} Administrative Wards</strong>
+                </div>
+                <span>•</span>
                 <div className="flex items-center gap-1.5">
                   <span className="text-slate-400">Population:</span>
                   <strong className="text-white font-semibold tabular-nums">{stateData.population}</strong>
                 </div>
                 <span>•</span>
                 <div className="flex items-center gap-1.5">
-                  <span className="text-slate-400">Geographic Area:</span>
+                  <span className="text-slate-400">Area:</span>
                   <strong className="text-white font-semibold tabular-nums">{stateData.area}</strong>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Action Card */}
-            <div className="shrink-0 flex flex-col gap-3 w-full sm:w-auto">
-              <Button to={`/user/report-issue?state=${encodeURIComponent(stateData.name)}`} variant="gold"
-                  size="lg"
-                  className="w-full sm:w-auto shadow-lg shadow-gold/20 flex items-center justify-center gap-2 group font-semibold">
-                  <span>Report Hazard in {stateData.name}</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              <Button to="/register-resolver" variant="outline"
-                  size="md"
-                  className="w-full sm:w-auto border-white/20 text-white hover:bg-white/10">
-                  Apply as Ward Contractor
-                </Button>
-
-              <div className="flex items-center justify-between text-xs text-slate-300 px-1 pt-1">
-                <span>50% Advance & Milestone Protection</span>
-                <span>•</span>
-                <span>GPS Photo Proof Verified</span>
-              </div>
-            </div>
+        {/* Right Landmark Caption Chip */}
+        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8 z-20 pointer-events-auto">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy/85 hover:bg-navy backdrop-blur-md border border-white/20 text-xs text-white shadow-lg transition-colors">
+            <Camera className="w-3.5 h-3.5 text-gold shrink-0" />
+            <span className="font-medium tracking-wide">{landmarkInfo.landmark}</span>
           </div>
         </div>
       </section>
@@ -434,10 +486,11 @@ export const StateDetail: React.FC = () => {
 
               <div className="aspect-[16/10] rounded-lg overflow-hidden border border-border bg-navy">
                 <img
-                  src={landmarkInfo.bannerUrl}
-                  alt={landmarkInfo.landmark}
+                  src={banner?.cardSrc || banner?.src || landmarkInfo.bannerUrl}
+                  alt={landmarkInfo.bannerAlt || landmarkInfo.landmark}
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
