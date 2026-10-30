@@ -9,6 +9,9 @@ import {
   FileText,
   Briefcase,
   ChevronRight,
+  MapPin,
+  Camera,
+  ShieldCheck,
 } from 'lucide-react';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
@@ -106,118 +109,62 @@ export const About: React.FC = () => {
         }
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12" id="operating-model">
-
-        {/* Impact Numbers Counter */}
+            {/* Floating 4-Metric Glass Card (Styled in StateDetail Translucent Gold Glassmorphism) */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-11 mb-8" id="operating-model">
         <Reveal delay={0.1}>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-5 rounded-card bg-white border border-border shadow-subtle mb-16">
-            <div className="p-4 text-center">
-              <p className="font-heading font-bold text-3xl sm:text-4xl text-primary tabular-nums mb-1">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 p-3 sm:p-3.5 rounded-2xl bg-accent/30 hover:bg-accent/35 backdrop-blur-xl border border-accent/50 shadow-xl shadow-navy/20 transition-all">
+            {/* States & UTs Covered */}
+            <div className="p-2 sm:p-2.5">
+              <div className="flex items-center gap-1.5 text-navy/90 text-[11px] font-bold uppercase tracking-wider mb-0.5">
+                <MapPin className="w-3.5 h-3.5 text-navy shrink-0" />
+                <span>States & UTs Covered</span>
+              </div>
+              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
                 36
               </p>
-              <p className="text-xs text-muted font-medium">States & UTs Covered</p>
-              <p className="text-xs text-muted mt-1">Nationwide Geo-Registry</p>
+              <p className="text-[10px] text-navy/75 font-semibold">Nationwide Geo-Registry</p>
             </div>
 
-            <div className="p-4 text-center border-l-0 sm:border-l border-border">
-              <p className="font-heading font-bold text-3xl sm:text-4xl text-emerald-600 tabular-nums mb-1">
+            {/* Photo Proof Required */}
+            <div className="p-2 sm:p-2.5 border-l-0 sm:border-l border-navy/20">
+              <div className="flex items-center gap-1.5 text-navy/90 text-[11px] font-bold uppercase tracking-wider mb-0.5">
+                <Camera className="w-3.5 h-3.5 text-navy shrink-0" />
+                <span>Photo Proof Required</span>
+              </div>
+              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
                 100%
               </p>
-              <p className="text-xs text-muted font-medium">Photo Proof Required</p>
-              <p className="text-xs text-emerald-600 font-medium mt-1">Before & After Verified</p>
+              <p className="text-[10px] text-navy/75 font-semibold">Before & After Verified</p>
             </div>
 
-            <div className="p-4 text-center border-t sm:border-t-0 lg:border-l border-border">
-              <p className="font-heading font-bold text-3xl sm:text-4xl text-primary tabular-nums mb-1">
+            {/* Milestone Split */}
+            <div className="p-2 sm:p-2.5 border-t sm:border-t-0 lg:border-l border-navy/20">
+              <div className="flex items-center gap-1.5 text-navy/90 text-[11px] font-bold uppercase tracking-wider mb-0.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-navy shrink-0" />
+                <span>Milestone Split</span>
+              </div>
+              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
                 50 / 50
               </p>
-              <p className="text-xs text-muted font-medium">Milestone Split</p>
-              <p className="text-xs text-primary font-medium mt-1">Advance & Completion</p>
+              <p className="text-[10px] text-navy/75 font-semibold">Advance & Completion</p>
             </div>
 
-            <div className="p-4 text-center border-t sm:border-t-0 lg:border-l border-border">
-              <p className="font-heading font-bold text-3xl sm:text-4xl text-gold tabular-nums mb-1">
+            {/* Itemized Invoices */}
+            <div className="p-2 sm:p-2.5 border-t sm:border-t-0 lg:border-l border-navy/20">
+              <div className="flex items-center gap-1.5 text-navy/90 text-[11px] font-bold uppercase tracking-wider mb-0.5">
+                <FileText className="w-3.5 h-3.5 text-navy shrink-0" />
+                <span>Itemized Invoices</span>
+              </div>
+              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
                 GST
               </p>
-              <p className="text-xs text-muted font-medium">Itemized Invoices</p>
-              <p className="text-xs text-muted mt-1">Full Tax Breakdown</p>
+              <p className="text-[10px] text-navy/75 font-semibold">Full Tax Breakdown</p>
             </div>
           </div>
         </Reveal>
+      </div>
 
-        {/* Problem vs Solution Comparison */}
-        <section className="mb-16">
-          <Reveal>
-            <SectionHeader
-              eyebrow="The Civic Reality"
-              eyebrowVariant="violet"
-              title="Traditional Bureaucracy vs. The Crowd Report Standard"
-              subtitle="Why civic problem reporting historically stalled, and how our milestone model delivers verified repair."
-              align="center"
-            />
-          </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* The Broken Status Quo */}
-            <Reveal delay={0.1}>
-              <Card variant="base" className="h-full bg-red-50/40 border-red-200/80 p-6 sm:p-8">
-                <div className="flex items-center gap-2.5 text-red-700 font-heading font-bold text-lg mb-4">
-                  <div className="w-9 h-9 rounded-xl bg-red-100 flex items-center justify-center shrink-0">
-                    <AlertTriangle className="w-5 h-5 text-red-700" />
-                  </div>
-                  <span>The Traditional Reporting Impasse</span>
-                </div>
-                <ul className="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
-                  <li className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0 mt-2" />
-                    <span><strong>Endless Waiting:</strong> Physical letters and unmonitored complaint registers sit unaddressed for months without status feedback.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0 mt-2" />
-                    <span><strong>No Fiscal Accountability:</strong> Public municipal maintenance funds are disbursed on paper without proof that work was physically executed on site.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0 mt-2" />
-                    <span><strong>Unvetted Workers:</strong> Random ad-hoc laborers dispatched with non-standard materials and zero structural warranties.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0 mt-2" />
-                    <span><strong>No Recourse:</strong> If a pothole caves in 2 weeks later, citizens have no mechanism to reopen tickets or claim rework.</span>
-                  </li>
-                </ul>
-              </Card>
-            </Reveal>
-
-            {/* The Crowd Report Solution */}
-            <Reveal delay={0.2}>
-              <Card variant="base" className="h-full bg-emerald-50/40 border-emerald-200/80 p-6 sm:p-8">
-                <div className="flex items-center gap-2.5 text-emerald-900 font-heading font-bold text-lg mb-4">
-                  <div className="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center shrink-0">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-700" />
-                  </div>
-                  <span>The Crowd Report Solution</span>
-                </div>
-                <ul className="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
-                  <li className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 mt-2" />
-                    <span><strong>Milestone Payments:</strong> 50% advance to initiate repair work; 50% balance payable only after completion photos are submitted and verified.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 mt-2" />
-                    <span><strong>Geo-Tagged Photographic Proof:</strong> Mandatory high-resolution Before and After photos with timestamp and location coordinates.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 mt-2" />
-                    <span><strong>Accredited Resolver Pool:</strong> Every resolver is identity-vetted, holds verified trade registrations, and operates within a local service radius.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 mt-2" />
-                    <span><strong>7-Day Inspection Reopen Window:</strong> Citizens have a quality review window to dispute or reopen unsatisfactory repairs before closure.</span>
-                  </li>
-                </ul>
-              </Card>
-            </Reveal>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         </section>
 
         {/* 4 Pillars of Architecture */}

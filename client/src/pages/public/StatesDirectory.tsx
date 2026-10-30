@@ -258,55 +258,55 @@ export const StatesDirectory: React.FC = () => {
       </nav>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        {/* Quick Highlights Bar */}
+        {/* Quick Highlights Bar (Styled in StateDetail Translucent Gold Glassmorphism) */}
         <Reveal delay={0.05}>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-card bg-surface border border-border shadow-subtle mb-8">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-lavender text-primary flex items-center justify-center shrink-0">
-                <MapPin className="w-5 h-5" />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 p-3 sm:p-3.5 rounded-2xl bg-accent/30 hover:bg-accent/35 backdrop-blur-xl border border-accent/50 shadow-xl shadow-navy/20 transition-all mb-8">
+            {/* Regions Active */}
+            <div className="p-2 sm:p-2.5">
+              <div className="flex items-center gap-1.5 text-navy/90 text-[11px] font-bold uppercase tracking-wider mb-0.5">
+                <MapPin className="w-3.5 h-3.5 text-navy shrink-0" />
+                <span>Regions Active</span>
               </div>
-              <div>
-                <p className="text-xs text-muted">Regions Active</p>
-                <p className="font-heading font-bold text-ink text-base sm:text-lg tabular-nums">
-                  {filteredStates.length} / 36 Pan-India
-                </p>
-              </div>
+              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
+                {filteredStates.length} / 36 Pan-India
+              </p>
+              <p className="text-[10px] text-navy/75 font-semibold">Jurisdictions Listed</p>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
-                <CheckCircle2 className="w-5 h-5" />
+            {/* Jurisdictions Listed */}
+            <div className="p-2 sm:p-2.5 border-l-0 sm:border-l border-navy/20">
+              <div className="flex items-center gap-1.5 text-navy/90 text-[11px] font-bold uppercase tracking-wider mb-0.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-navy shrink-0" />
+                <span>Jurisdictions</span>
               </div>
-              <div>
-                <p className="text-xs text-muted">Jurisdictions Listed</p>
-                <p className="font-heading font-bold text-ink text-base sm:text-lg tabular-nums">
-                  {filteredStates.length} States & UTs
-                </p>
-              </div>
+              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
+                {filteredStates.length} States & UTs
+              </p>
+              <p className="text-[10px] text-navy/75 font-semibold">Administrative Units</p>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-indigo/10 text-indigo flex items-center justify-center shrink-0">
-                <Users className="w-5 h-5" />
+            {/* Administrative Units */}
+            <div className="p-2 sm:p-2.5 border-t sm:border-t-0 lg:border-l border-navy/20">
+              <div className="flex items-center gap-1.5 text-navy/90 text-[11px] font-bold uppercase tracking-wider mb-0.5">
+                <Users className="w-3.5 h-3.5 text-navy shrink-0" />
+                <span>Districts</span>
               </div>
-              <div>
-                <p className="text-xs text-muted">Administrative Units</p>
-                <p className="font-heading font-bold text-ink text-base sm:text-lg tabular-nums">
-                  {totalDistricts} Districts
-                </p>
-              </div>
+              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
+                {totalDistricts} Districts
+              </p>
+              <p className="text-[10px] text-navy/75 font-semibold">Administrative Units</p>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gold/10 text-amber-800 flex items-center justify-center shrink-0">
-                <Clock className="w-5 h-5" />
+            {/* Zonal Coverage */}
+            <div className="p-2 sm:p-2.5 border-t sm:border-t-0 lg:border-l border-navy/20">
+              <div className="flex items-center gap-1.5 text-navy/90 text-[11px] font-bold uppercase tracking-wider mb-0.5">
+                <Clock className="w-3.5 h-3.5 text-navy shrink-0" />
+                <span>Zonal Coverage</span>
               </div>
-              <div>
-                <p className="text-xs text-muted">Zonal Coverage</p>
-                <p className="font-heading font-bold text-ink text-base sm:text-lg tabular-nums">
-                  6 Regional Zones
-                </p>
-              </div>
+              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
+                6 Regional Zones
+              </p>
+              <p className="text-[10px] text-navy/75 font-semibold">Decentralized Governance</p>
             </div>
           </div>
         </Reveal>
