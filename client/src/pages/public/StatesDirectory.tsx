@@ -213,54 +213,10 @@ export const StatesDirectory: React.FC = () => {
         }
       />
 
-      {/* Sticky Zonal Navigation Switcher */}
-      <nav aria-label="Zonal Navigation Switcher" className="sticky top-16 z-30 bg-surface/95 backdrop-blur-md border-b border-border shadow-xs" id="zone-switcher">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
-              <span className="text-xs font-semibold text-muted uppercase tracking-wider mr-2 hidden sm:flex items-center gap-1 shrink-0">
-                <Compass className="w-3.5 h-3.5 text-primary" />
-                <span>Zone:</span>
-              </span>
-              {ZONES.map((zone) => {
-                const count = zoneCounts[zone.id] || 0;
-                const isActive = selectedRegion === zone.id;
-                return (
-                  <button
-                    key={zone.id}
-                    type="button"
-                    onClick={() => setSelectedRegion(zone.id)}
-                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-150 select-none shrink-0 ${
-                      isActive
-                        ? 'bg-navy text-gold shadow-xs ring-1 ring-gold/40'
-                        : 'bg-canvas text-secondaryText hover:text-ink hover:bg-slate-200'
-                    }`}
-                  >
-                    <span>{zone.label}</span>
-                    <span
-                      className={`text-xs px-1.5 py-0.2 rounded-full font-mono tabular-nums ${
-                        isActive ? 'bg-gold/20 text-gold' : 'bg-slate-200/80 text-muted'
-                      }`}
-                    >
-                      {count}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="hidden lg:flex items-center text-xs text-muted tabular-nums shrink-0">
-              <span className="font-semibold text-ink">{filteredStates.length}</span>
-              <span className="ml-1">of 36 Regions Shown</span>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        {/* Quick Highlights Bar (Styled in StateDetail Translucent Gold Glassmorphism) */}
+      {/* Floating Overlapping 4-Metric Card (Half on Hero, Half Below, Styled in Translucent Yellow/Gold) */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-11 mb-2">
         <Reveal delay={0.05}>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 p-3 sm:p-3.5 rounded-2xl bg-accent/30 hover:bg-accent/35 backdrop-blur-xl border border-accent/50 shadow-xl shadow-navy/20 transition-all mb-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 p-3 sm:p-3.5 rounded-2xl bg-accent/30 hover:bg-accent/35 backdrop-blur-xl border border-accent/50 shadow-xl shadow-navy/20 transition-all">
             {/* Regions Active */}
             <div className="p-2 sm:p-2.5">
               <div className="flex items-center gap-1.5 text-navy/90 text-[11px] font-bold uppercase tracking-wider mb-0.5">
@@ -310,7 +266,53 @@ export const StatesDirectory: React.FC = () => {
             </div>
           </div>
         </Reveal>
+      </div>
 
+      {/* Sticky Zonal Navigation Switcher */}
+      <nav aria-label="Zonal Navigation Switcher" className="sticky top-16 z-30 bg-surface/95 backdrop-blur-md border-b border-border shadow-xs" id="zone-switcher">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+              <span className="text-xs font-semibold text-muted uppercase tracking-wider mr-2 hidden sm:flex items-center gap-1 shrink-0">
+                <Compass className="w-3.5 h-3.5 text-primary" />
+                <span>Zone:</span>
+              </span>
+              {ZONES.map((zone) => {
+                const count = zoneCounts[zone.id] || 0;
+                const isActive = selectedRegion === zone.id;
+                return (
+                  <button
+                    key={zone.id}
+                    type="button"
+                    onClick={() => setSelectedRegion(zone.id)}
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-150 select-none shrink-0 ${
+                      isActive
+                        ? 'bg-navy text-gold shadow-xs ring-1 ring-gold/40'
+                        : 'bg-canvas text-secondaryText hover:text-ink hover:bg-slate-200'
+                    }`}
+                  >
+                    <span>{zone.label}</span>
+                    <span
+                      className={`text-xs px-1.5 py-0.2 rounded-full font-mono tabular-nums ${
+                        isActive ? 'bg-gold/20 text-gold' : 'bg-slate-200/80 text-muted'
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="hidden lg:flex items-center text-xs text-muted tabular-nums shrink-0">
+              <span className="font-semibold text-ink">{filteredStates.length}</span>
+              <span className="ml-1">of 36 Regions Shown</span>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Filters and Search Bar */}
         <div className="bg-surface p-5 rounded-card border border-border shadow-subtle mb-8 space-y-4">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">

@@ -109,8 +109,8 @@ export const About: React.FC = () => {
         }
       />
 
-            {/* Floating 4-Metric Glass Card (Styled in StateDetail Translucent Gold Glassmorphism) */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-11 mb-8" id="operating-model">
+      {/* Floating Overlapping 4-Metric Card (Half on Hero, Half Below, Styled in Translucent Yellow/Gold) */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-11 mb-2" id="operating-model">
         <Reveal delay={0.1}>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 p-3 sm:p-3.5 rounded-2xl bg-accent/30 hover:bg-accent/35 backdrop-blur-xl border border-accent/50 shadow-xl shadow-navy/20 transition-all">
             {/* States & UTs Covered */}
@@ -164,7 +164,81 @@ export const About: React.FC = () => {
         </Reveal>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+        {/* Problem vs Solution Comparison */}
+        <section className="mb-16">
+          <Reveal>
+            <SectionHeader
+              eyebrow="The Civic Reality"
+              eyebrowVariant="violet"
+              title="Traditional Bureaucracy vs. The Crowd Report Standard"
+              subtitle="Why civic problem reporting historically stalled, and how our milestone model delivers verified repair."
+              align="center"
+            />
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* The Broken Status Quo */}
+            <Reveal delay={0.1}>
+              <Card variant="base" className="h-full bg-red-50/40 border-red-200/80 p-6 sm:p-8">
+                <div className="flex items-center gap-2.5 text-red-700 font-heading font-bold text-lg mb-4">
+                  <div className="w-9 h-9 rounded-xl bg-red-100 flex items-center justify-center shrink-0">
+                    <AlertTriangle className="w-5 h-5 text-red-700" />
+                  </div>
+                  <span>The Traditional Reporting Impasse</span>
+                </div>
+                <ul className="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0 mt-2" />
+                    <span><strong>Endless Waiting:</strong> Physical letters and unmonitored complaint registers sit unaddressed for months without status feedback.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0 mt-2" />
+                    <span><strong>No Fiscal Accountability:</strong> Public municipal maintenance funds are disbursed on paper without proof that work was physically executed on site.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0 mt-2" />
+                    <span><strong>Unvetted Workers:</strong> Random ad-hoc laborers dispatched with non-standard materials and zero structural warranties.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0 mt-2" />
+                    <span><strong>No Recourse:</strong> If a pothole caves in 2 weeks later, citizens have no mechanism to reopen tickets or claim rework.</span>
+                  </li>
+                </ul>
+              </Card>
+            </Reveal>
+
+            {/* The Crowd Report Solution */}
+            <Reveal delay={0.2}>
+              <Card variant="base" className="h-full bg-emerald-50/40 border-emerald-200/80 p-6 sm:p-8">
+                <div className="flex items-center gap-2.5 text-emerald-900 font-heading font-bold text-lg mb-4">
+                  <div className="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center shrink-0">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-700" />
+                  </div>
+                  <span>The Crowd Report Solution</span>
+                </div>
+                <ul className="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 mt-2" />
+                    <span><strong>Milestone Payments:</strong> 50% advance to initiate repair work; 50% balance payable only after completion photos are submitted and verified.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 mt-2" />
+                    <span><strong>Geo-Tagged Photographic Proof:</strong> Mandatory high-resolution Before and After photos with timestamp and location coordinates.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 mt-2" />
+                    <span><strong>Accredited Resolver Pool:</strong> Every resolver is identity-vetted, holds verified trade registrations, and operates within a local service radius.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 mt-2" />
+                    <span><strong>7-Day Inspection Reopen Window:</strong> Citizens have a quality review window to dispute or reopen unsatisfactory repairs before closure.</span>
+                  </li>
+                </ul>
+              </Card>
+            </Reveal>
+          </div>
         </section>
 
         {/* 4 Pillars of Architecture */}
