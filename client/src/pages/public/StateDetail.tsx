@@ -330,54 +330,54 @@ export const StateDetail: React.FC = () => {
       </section>
 
       {/* Floating Overlapping 4-Metric Card (Half on Hero, Half Below, Styled in Translucent Yellow/Gold) */}
-      <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-11 mb-2">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 p-3 sm:p-3.5 rounded-2xl bg-accent/85 hover:bg-accent/90 backdrop-blur-md border border-white/30 shadow-xl shadow-navy/20 transition-all">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-11 mb-2">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 p-3 sm:p-3.5 rounded-2xl bg-accent/30 hover:bg-accent/35 backdrop-blur-xl border border-accent/50 shadow-xl shadow-navy/20 transition-all">
           {/* Capital */}
           <div className="p-2 sm:p-2.5">
-            <div className="flex items-center gap-1.5 text-navy/85 text-[11px] font-bold uppercase tracking-wider mb-0.5">
+            <div className="flex items-center gap-1.5 text-navy/90 text-[11px] font-bold uppercase tracking-wider mb-0.5">
               <Building2 className="w-3.5 h-3.5 text-navy shrink-0" />
               <span>Capital</span>
             </div>
             <p className="font-heading font-bold text-navy text-lg sm:text-xl truncate">
               {stateData.capital}
             </p>
-            <p className="text-[10px] text-navy/70 font-medium">Headquarters</p>
+            <p className="text-[10px] text-navy/75 font-semibold">Headquarters</p>
           </div>
 
           {/* Districts */}
-          <div className="p-2 sm:p-2.5 border-l-0 sm:border-l border-navy/15">
-            <div className="flex items-center gap-1.5 text-navy/85 text-[11px] font-bold uppercase tracking-wider mb-0.5">
+          <div className="p-2 sm:p-2.5 border-l-0 sm:border-l border-navy/20">
+            <div className="flex items-center gap-1.5 text-navy/90 text-[11px] font-bold uppercase tracking-wider mb-0.5">
               <MapPin className="w-3.5 h-3.5 text-navy shrink-0" />
               <span>Districts</span>
             </div>
             <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums">
               {stateData.districtsCount}
             </p>
-            <p className="text-[10px] text-navy/70 font-medium">Collectorates</p>
+            <p className="text-[10px] text-navy/75 font-semibold">Collectorates</p>
           </div>
 
           {/* Population */}
-          <div className="p-2 sm:p-2.5 border-t sm:border-t-0 lg:border-l border-navy/15">
-            <div className="flex items-center gap-1.5 text-navy/85 text-[11px] font-bold uppercase tracking-wider mb-0.5">
+          <div className="p-2 sm:p-2.5 border-t sm:border-t-0 lg:border-l border-navy/20">
+            <div className="flex items-center gap-1.5 text-navy/90 text-[11px] font-bold uppercase tracking-wider mb-0.5">
               <Users className="w-3.5 h-3.5 text-navy shrink-0" />
               <span>Population</span>
             </div>
             <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums">
               {stateData.population}
             </p>
-            <p className="text-[10px] text-navy/70 font-medium">Census Estimate</p>
+            <p className="text-[10px] text-navy/75 font-semibold">Census Estimate</p>
           </div>
 
           {/* Area */}
-          <div className="p-2 sm:p-2.5 border-t sm:border-t-0 lg:border-l border-navy/15">
-            <div className="flex items-center gap-1.5 text-navy/85 text-[11px] font-bold uppercase tracking-wider mb-0.5">
+          <div className="p-2 sm:p-2.5 border-t sm:border-t-0 lg:border-l border-navy/20">
+            <div className="flex items-center gap-1.5 text-navy/90 text-[11px] font-bold uppercase tracking-wider mb-0.5">
               <ShieldCheck className="w-3.5 h-3.5 text-navy shrink-0" />
               <span>Area</span>
             </div>
             <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums">
               {stateData.area}
             </p>
-            <p className="text-[10px] text-navy/70 font-medium">State Territory</p>
+            <p className="text-[10px] text-navy/75 font-semibold">State Territory</p>
           </div>
         </div>
       </div>
