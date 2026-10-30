@@ -1,0 +1,290 @@
+{
+  "karnataka": {
+    "slug": "karnataka",
+    "name": "Karnataka",
+    "capital": "Bengaluru",
+    "landmark": "Vidhana Soudha & Hampi",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Karnataka, India, showing Vidhana Soudha and Hampi and the landscape typical of Karnataka (granite boulder hills and lush Deccan greenery). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Vidhana Soudha and Hampi stone chariot bathed in warm golden light with granite hills in the background."
+  },
+  "tamil-nadu": {
+    "slug": "tamil-nadu",
+    "name": "Tamil Nadu",
+    "capital": "Chennai",
+    "landmark": "Shore Temple & Meenakshi Gopuram",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Tamil Nadu, India, showing Shore Temple and Meenakshi Gopuram and the landscape typical of Tamil Nadu (coromandel coastal waters and coconut palms). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "The stone gopuram of Shore Temple at Mamallapuram beside the Bay of Bengal coastline at dusk."
+  },
+  "telangana": {
+    "slug": "telangana",
+    "name": "Telangana",
+    "capital": "Hyderabad",
+    "landmark": "Charminar & Golconda Fort",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Telangana, India, showing Charminar and Golconda Fort and the landscape typical of Telangana (Deccan plateau rock formations and urban lakes). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Charminar minarets and Golconda granite fortress bastions glowing in warm evening sunset light."
+  },
+  "andhra-pradesh": {
+    "slug": "andhra-pradesh",
+    "name": "Andhra Pradesh",
+    "capital": "Amaravati",
+    "landmark": "Tirumala Hills & Eastern Ghats",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Andhra Pradesh, India, showing Tirumala Hills and Eastern Ghats and the landscape typical of Andhra Pradesh (Eastern Ghats forested hills and river fertile plains). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Tirumala hill shrine amidst green Eastern Ghats ridges and Krishna river water vistas."
+  },
+  "kerala": {
+    "slug": "kerala",
+    "name": "Kerala",
+    "capital": "Thiruvananthapuram",
+    "landmark": "Alleppey Backwaters & Western Ghats",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Kerala, India, showing Alleppey Backwaters and Western Ghats and the landscape typical of Kerala (calm emerald backwaters, palm trees, and misty Western Ghats). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Traditional wooden houseboat gliding along calm palm-fringed backwaters of Alleppey in soft sunset light."
+  },
+  "maharashtra": {
+    "slug": "maharashtra",
+    "name": "Maharashtra",
+    "capital": "Mumbai",
+    "landmark": "Gateway of India & Sahyadri Range",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Maharashtra, India, showing Gateway of India and Sahyadri Range and the landscape typical of Maharashtra (Arabian sea coastal waters and rugged Sahyadri backdrop). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Gateway of India standing grandly beside Mumbai harbour with Arabian Sea waves at golden hour."
+  },
+  "gujarat": {
+    "slug": "gujarat",
+    "name": "Gujarat",
+    "capital": "Gandhinagar",
+    "landmark": "Statue of Unity & Sabarmati Riverfront",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Gujarat, India, showing Statue of Unity and Sabarmati Riverfront and the landscape typical of Gujarat (serene river banks, semi-arid plains, and distant hill ranges). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Statue of Unity overlooking the calm Narmada river waters and lush Satpura mountain ridges."
+  },
+  "goa": {
+    "slug": "goa",
+    "name": "Goa",
+    "capital": "Panaji",
+    "landmark": "Basilica of Bom Jesus & Arabian Coastline",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Goa, India, showing Basilica of Bom Jesus and Arabian Coastline and the landscape typical of Goa (white sand beaches, coconut palm groves, and red laterite coastline). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Baroque Basilica of Bom Jesus stone facade amidst swaying coconut palms and Arabian sea shores."
+  },
+  "uttar-pradesh": {
+    "slug": "uttar-pradesh",
+    "name": "Uttar Pradesh",
+    "capital": "Lucknow",
+    "landmark": "Taj Mahal & Varanasi Ghats",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Uttar Pradesh, India, showing Taj Mahal and Varanasi Ghats and the landscape typical of Uttar Pradesh (broad river banks, morning haze, and Indo-Gangetic fertile plains). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "The white marble dome of the Taj Mahal overlooking Yamuna river reflections in warm morning mist."
+  },
+  "rajasthan": {
+    "slug": "rajasthan",
+    "name": "Rajasthan",
+    "capital": "Jaipur",
+    "landmark": "Hawa Mahal & Amber Fort",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Rajasthan, India, showing Hawa Mahal and Amber Fort and the landscape typical of Rajasthan (arid Aravalli ridges, golden sand, and historic palace courtyards). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Intricate sandstone facade of Hawa Mahal and Amber Fort bastions glowing against golden desert hills."
+  },
+  "punjab": {
+    "slug": "punjab",
+    "name": "Punjab",
+    "capital": "Chandigarh",
+    "landmark": "Golden Temple Sanctum",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Punjab, India, showing Golden Temple Sanctum and the landscape typical of Punjab (vast lush agricultural fields and sacred holy pool reflections). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Harmandir Sahib Golden Temple shimmering over the sacred water pool under warm dusk sky."
+  },
+  "haryana": {
+    "slug": "haryana",
+    "name": "Haryana",
+    "capital": "Chandigarh",
+    "landmark": "Surajkund & Urban Tech Corridors",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Haryana, India, showing Surajkund and Urban Tech Corridors and the landscape typical of Haryana (green wheat fields, Aravalli foothills, and calm historic water reservoirs). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Stone amphitheatre of Surajkund sun pool beside green Aravalli forest trails in evening light."
+  },
+  "himachal-pradesh": {
+    "slug": "himachal-pradesh",
+    "name": "Himachal Pradesh",
+    "capital": "Shimla",
+    "landmark": "Himalayan Ridge & Pine Valleys",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Himachal Pradesh, India, showing Himalayan Ridge and Pine Valleys and the landscape typical of Himachal Pradesh (snow peaks, dense pine forests, and steep mountain valleys). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Christ Church on the Shimla Ridge with snow-capped Himalayan ranges in the crisp evening horizon."
+  },
+  "uttarakhand": {
+    "slug": "uttarakhand",
+    "name": "Uttarakhand",
+    "capital": "Dehradun",
+    "landmark": "Rishikesh Laxman Jhula & Garhwal Peaks",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Uttarakhand, India, showing Rishikesh Laxman Jhula and Garhwal Peaks and the landscape typical of Uttarakhand (rushing turquoise glacial rivers, deodar valleys, and alpine Himalayan crags). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Ancient Kedarnath stone shrine standing resiliently against towering snow-covered Garhwal Himalayan peaks."
+  },
+  "west-bengal": {
+    "slug": "west-bengal",
+    "name": "West Bengal",
+    "capital": "Kolkata",
+    "landmark": "Howrah Bridge & Victoria Memorial",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of West Bengal, India, showing Howrah Bridge and Victoria Memorial and the landscape typical of West Bengal (broad river waters, lush mangrove delta, and colonial civic monuments). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Iconic steel cantilever Howrah Bridge spanning the Hooghly river with vintage ferry boats at sunset."
+  },
+  "bihar": {
+    "slug": "bihar",
+    "name": "Bihar",
+    "capital": "Patna",
+    "landmark": "Mahabodhi Temple Spire, Bodh Gaya",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Bihar, India, showing Mahabodhi Temple Spire, Bodh Gaya and the landscape typical of Bihar (broad sacred rivers, fertile Gangetic plains, and ancient brick monastic gardens). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Mahabodhi Temple towering stone spire rising gracefully amidst serene Bodh Gaya monastery gardens."
+  },
+  "odisha": {
+    "slug": "odisha",
+    "name": "Odisha",
+    "capital": "Bhubaneswar",
+    "landmark": "Konark Sun Temple Chariot Wheel",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Odisha, India, showing Konark Sun Temple Chariot Wheel and the landscape typical of Odisha (Bay of Bengal coastline, casuarina trees, and red sandstone temple spires). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Stone carved chariot wheel of Konark Sun Temple bathed in golden maritime coastal sunlight."
+  },
+  "jharkhand": {
+    "slug": "jharkhand",
+    "name": "Jharkhand",
+    "capital": "Ranchi",
+    "landmark": "Hundru Falls & Chota Nagpur Hills",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Jharkhand, India, showing Hundru Falls and Chota Nagpur Hills and the landscape typical of Jharkhand (Chota Nagpur plateau cliffs, sal forests, and sparkling river waterfalls). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Hundru waterfall cascading down rugged granite rock plateaus surrounded by dense green sal forests."
+  },
+  "madhya-pradesh": {
+    "slug": "madhya-pradesh",
+    "name": "Madhya Pradesh",
+    "capital": "Bhopal",
+    "landmark": "Sanchi Stupa Torana & Gwalior Fort",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Madhya Pradesh, India, showing Sanchi Stupa Torana and Gwalior Fort and the landscape typical of Madhya Pradesh (Vindhya sandstone ridges, teak forests, and ancient Buddhist heritage). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Great Stupa at Sanchi with its carved stone torana gates standing atop serene hilltop greenery."
+  },
+  "chhattisgarh": {
+    "slug": "chhattisgarh",
+    "name": "Chhattisgarh",
+    "capital": "Raipur",
+    "landmark": "Chitrakote Horseshoe Falls & Sal Forests",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Chhattisgarh, India, showing Chitrakote Horseshoe Falls and Sal Forests and the landscape typical of Chhattisgarh (dense tribal forest canopies, river canyons, and broad thunderous waterfalls). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Horseshoe cascade of Chitrakote Falls over the Indravati river framed by thick deciduous sal woods."
+  },
+  "assam": {
+    "slug": "assam",
+    "name": "Assam",
+    "capital": "Dispur",
+    "landmark": "Kaziranga Plains & Brahmaputra River",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Assam, India, showing Kaziranga Plains and Brahmaputra River and the landscape typical of Assam (wide Brahmaputra floodplains, lush emerald tea gardens, and rolling misty hills). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Vast green grasslands of Kaziranga with majestic one-horned rhinos beside the mighty Brahmaputra river."
+  },
+  "arunachal-pradesh": {
+    "slug": "arunachal-pradesh",
+    "name": "Arunachal Pradesh",
+    "capital": "Itanagar",
+    "landmark": "Tawang Monastery & Sela Pass",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Arunachal Pradesh, India, showing Tawang Monastery and Sela Pass and the landscape typical of Arunachal Pradesh (high Himalayan snow ridges, Buddhist prayer flags, and deep pine gorges). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Historic yellow-roofed Tawang Monastery overlooking snow-capped Eastern Himalayan alpine mountain ranges."
+  },
+  "manipur": {
+    "slug": "manipur",
+    "name": "Manipur",
+    "capital": "Imphal",
+    "landmark": "Loktak Lake & Floating Phumdis",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Manipur, India, showing Loktak Lake and Floating Phumdis and the landscape typical of Manipur (circular wetland floating rings, calm freshwater, and gentle amphitheatre hills). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Floating circular phumdi islands on serene Loktak Lake under golden sunset skies with surrounding green hills."
+  },
+  "meghalaya": {
+    "slug": "meghalaya",
+    "name": "Meghalaya",
+    "capital": "Shillong",
+    "landmark": "Living Root Bridges & Cherrapunji Cascades",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Meghalaya, India, showing Living Root Bridges and Cherrapunji Cascades and the landscape typical of Meghalaya (subtropical cloud forests, dramatic canyon cliffs, and roaring waterfalls). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Ancient bio-engineered living tree root bridge spanning a clear turquoise rainforest river in Cherrapunji."
+  },
+  "mizoram": {
+    "slug": "mizoram",
+    "name": "Mizoram",
+    "capital": "Aizawl",
+    "landmark": "Phawngpui Blue Mountain Ridges",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Mizoram, India, showing Phawngpui Blue Mountain Ridges and the landscape typical of Mizoram (steep parallel hill ranges, lush bamboo thickets, and mist-filled valleys). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Rolling blue mountain ridges of Phawngpui blanketed in morning cloud inversions and bamboo woods."
+  },
+  "nagaland": {
+    "slug": "nagaland",
+    "name": "Nagaland",
+    "capital": "Kohima",
+    "landmark": "Hornbill Kisama Heritage & Dzukou Valley",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Nagaland, India, showing Hornbill Kisama Heritage and Dzukou Valley and the landscape typical of Nagaland (emerald terraced ridges, wooden tribal architecture, and rolling mountain trails). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Traditional Naga carved morung gatehouse at Kisama set against the verdant Japfu mountain range."
+  },
+  "tripura": {
+    "slug": "tripura",
+    "name": "Tripura",
+    "capital": "Agartala",
+    "landmark": "Ujjayanta Palace & Neermahal Water Palace",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Tripura, India, showing Ujjayanta Palace and Neermahal Water Palace and the landscape typical of Tripura (peaceful lake waters, white palatial domes, and lush bamboo hills). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Neermahal water palace rising gracefully out of the shimmering waters of Rudrasagar Lake at dusk."
+  },
+  "sikkim": {
+    "slug": "sikkim",
+    "name": "Sikkim",
+    "capital": "Gangtok",
+    "landmark": "Mount Kanchenjunga & Rumtek Monastery",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Sikkim, India, showing Mount Kanchenjunga and Rumtek Monastery and the landscape typical of Sikkim (high Himalayan snow pinnacles, Tibetan prayer flags, and terraced rhododendron slopes). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Golden stupa of Rumtek Monastery standing before the majestic snow peaks of Mount Kanchenjunga."
+  },
+  "delhi": {
+    "slug": "delhi",
+    "name": "Delhi (NCT)",
+    "capital": "New Delhi",
+    "landmark": "India Gate & National Secretariat",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Delhi, India, showing India Gate and National Secretariat and the landscape typical of Delhi (wide ceremonial avenues, historic red sandstone monuments, and calm evening sky). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Monumental sandstone arch of India Gate along tree-lined Kartavya Path illuminated at dusk."
+  },
+  "chandigarh": {
+    "slug": "chandigarh",
+    "name": "Chandigarh",
+    "capital": "Chandigarh",
+    "landmark": "Le Corbusier Open Hand Monument",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Chandigarh, India, showing Le Corbusier Open Hand Monument and the landscape typical of Chandigarh (modernist geometric concrete architecture, green park avenues, and Shivalik mountain backdrop). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Le Corbusier Open Hand metal monument against Shivalik foothills and Sukhna Lake water reflections."
+  },
+  "jammu-and-kashmir": {
+    "slug": "jammu-and-kashmir",
+    "name": "Jammu and Kashmir",
+    "capital": "Srinagar / Jammu",
+    "landmark": "Dal Lake Shikara & Pir Panjal Range",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Jammu and Kashmir, India, showing Dal Lake Shikara and Pir Panjal Range and the landscape typical of Jammu and Kashmir (calm lake reflections, chinar trees, and towering alpine snow ridges). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Traditional wooden shikara boat floating on glassy Dal Lake reflecting snow-tipped Pir Panjal mountains."
+  },
+  "ladakh": {
+    "slug": "ladakh",
+    "name": "Ladakh",
+    "capital": "Leh",
+    "landmark": "Pangong Tso & High-Altitude Passes",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Ladakh, India, showing Pangong Tso and High-Altitude Passes and the landscape typical of Ladakh (high-altitude cold desert, stark granite mountains, and whitewashed stupas). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Deep turquoise waters of Pangong Tso lake meeting rugged barren brown mountain ridges under blue sky."
+  },
+  "puducherry": {
+    "slug": "puducherry",
+    "name": "Puducherry",
+    "capital": "Puducherry",
+    "landmark": "French Quarter Promenade & Beach",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Puducherry, India, showing French Quarter Promenade and Beach and the landscape typical of Puducherry (coastal seaside boulevard, bougainvillea over colonial stone arches, and ocean breeze). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Pastel yellow colonial French mansions and rocky seaside promenade facing the azure Bay of Bengal."
+  },
+  "andaman-and-nicobar-islands": {
+    "slug": "andaman-and-nicobar-islands",
+    "name": "Andaman and Nicobar Islands",
+    "capital": "Port Blair",
+    "landmark": "Cellular Jail & Radhanagar Coral Coast",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Andaman and Nicobar Islands, India, showing Cellular Jail and Radhanagar Coral Coast and the landscape typical of Andaman and Nicobar Islands (tropical coral beaches, ancient mahua trees, and crystal blue ocean). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Powder white sand and crescent turquoise waters of Radhanagar beach framed by tropical island rainforest."
+  },
+  "dadra-and-nagar-haveli-and-daman-and-diu": {
+    "slug": "dadra-and-nagar-haveli-and-daman-and-diu",
+    "name": "Dadra and Nagar Haveli and Daman and Diu",
+    "capital": "Daman",
+    "landmark": "Historic Diu Fort & Coastal Ramparts",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Dadra and Nagar Haveli and Daman and Diu, India, showing Historic Diu Fort and Coastal Ramparts and the landscape typical of Dadra and Nagar Haveli and Daman and Diu (ancient Portuguese coastal ramparts, sea rocks, and quiet coastal roads). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Weathered stone cannons and bastions of Diu Fort overlooking the crashing waves of the Arabian Sea."
+  },
+  "lakshadweep": {
+    "slug": "lakshadweep",
+    "name": "Lakshadweep",
+    "capital": "Kavaratti",
+    "landmark": "Agatti Coral Lagoon & Turquoise Atolls",
+    "prompt": "Photorealistic, cinematic wide photograph in 16:9 landscape of Lakshadweep, India, showing Agatti Coral Lagoon and Turquoise Atolls and the landscape typical of Lakshadweep (coral lagoons, shallow turquoise water, white coral beaches, and coconut palms). Golden-hour light, 35mm lens, shallow depth of field, natural colour grading, high dynamic range, crisp detail. Composition: the landmark and scenery sit in the RIGHT 55 percent of the frame. The LEFT 40 percent is calm (sky, soft haze, water or open land) so text can be placed over it. Keep the top 12 percent calm. Palette leans navy-teal shadows, warm amber light, soft ivory highlights. Do not copy any photograph exactly. Use accurate, believable architecture and scenery of the place. Strict exclusions: no text, no readable signs, no logos, no flags, no watermark, no close-up faces, no distorted people or buildings, no cartoon, illustration or 3D-render look, no oversaturated colours.",
+    "alt": "Crystal clear aquamarine lagoon reef surrounded by pristine white sand banks and coconut palm atolls."
+  }
+}
