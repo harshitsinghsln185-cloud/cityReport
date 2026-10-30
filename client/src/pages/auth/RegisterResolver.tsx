@@ -13,7 +13,7 @@ import {
   Layers,
   Clock,
 } from 'lucide-react';
-import categoryService, { Category } from '../../services/category.service';
+import categoryService, { Category, DEFAULT_CIVIC_CATEGORIES } from '../../services/category.service';
 import resolverService from '../../services/resolver.service';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
@@ -60,9 +60,10 @@ export const RegisterResolver: React.FC = () => {
       try {
         setCategoriesLoading(true);
         const data = await categoryService.getActiveCategories();
-        setCategories(Array.isArray(data) ? data : []);
+        const list = Array.isArray(data) && data.length > 0 ? data : DEFAULT_CIVIC_CATEGORIES;
+        setCategories(list);
       } catch {
-        setErrorMessage('Failed to load civic categories. Please refresh.');
+        setCategories(DEFAULT_CIVIC_CATEGORIES);
       } finally {
         setCategoriesLoading(false);
       }

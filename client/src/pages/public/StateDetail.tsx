@@ -673,7 +673,7 @@ export const StateDetail: React.FC = () => {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl ml-auto">
               <Accordion items={faqAccordionItems} defaultOpenId="faq-0" />
             </div>
           </Reveal>

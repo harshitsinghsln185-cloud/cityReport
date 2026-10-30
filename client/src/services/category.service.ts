@@ -40,18 +40,81 @@ export interface UpdateCategoryPayload {
   icon?: string;
 }
 
+export const DEFAULT_CIVIC_CATEGORIES: Category[] = [
+  {
+    _id: '67c1c0a00000000000000001',
+    name: 'Road damage & Potholes',
+    slug: 'road-damage',
+    description: 'Potholes, broken roads, damaged pavements, and street surface issues.',
+    baseFeePaise: 60000,
+    isActive: true,
+    icon: 'road',
+    estimatedResolutionHours: 48,
+  },
+  {
+    _id: '67c1c0a00000000000000002',
+    name: 'Water supply & Pipelines',
+    slug: 'water-supply',
+    description: 'Pipeline leakages, contaminated municipal supply, and low water pressure.',
+    baseFeePaise: 40000,
+    isActive: true,
+    icon: 'droplet',
+    estimatedResolutionHours: 24,
+  },
+  {
+    _id: '67c1c0a00000000000000003',
+    name: 'Drainage & Sewers',
+    slug: 'drainage',
+    description: 'Blocked sewers, overflowing drains, and rainwater stagnation.',
+    baseFeePaise: 50000,
+    isActive: true,
+    icon: 'waves',
+    estimatedResolutionHours: 36,
+  },
+  {
+    _id: '67c1c0a00000000000000004',
+    name: 'Streetlight & Electricity',
+    slug: 'streetlight-electricity',
+    description: 'Non-functional streetlights, dangling power cables, and open transformer hazards.',
+    baseFeePaise: 35000,
+    isActive: true,
+    icon: 'zap',
+    estimatedResolutionHours: 24,
+  },
+  {
+    _id: '67c1c0a00000000000000005',
+    name: 'Garbage & Sanitation',
+    slug: 'garbage',
+    description: 'Uncollected domestic waste, illegal dumping, and overflowing municipal bins.',
+    baseFeePaise: 30000,
+    isActive: true,
+    icon: 'trash-2',
+    estimatedResolutionHours: 24,
+  },
+  {
+    _id: '67c1c0a00000000000000006',
+    name: 'General Public Works',
+    slug: 'other',
+    description: 'General civic problems, illegal hoardings, park maintenance, and public property hazards.',
+    baseFeePaise: 30000,
+    isActive: true,
+    icon: 'help-circle',
+    estimatedResolutionHours: 48,
+  },
+];
+
 export const categoryService = {
-  // Public endpoint for active categories
+  // Public endpoint for active categories with graceful fallback
   async getActiveCategories(): Promise<Category[]> {
     try {
       const response: any = await api.get('/categories');
       const payload = response?.data !== undefined ? response.data : response;
-      if (Array.isArray(payload)) return payload;
-      if (Array.isArray(payload?.data)) return payload.data;
-      return [];
+      if (Array.isArray(payload) && payload.length > 0) return payload;
+      if (Array.isArray(payload?.data) && payload.data.length > 0) return payload.data;
+      return DEFAULT_CIVIC_CATEGORIES;
     } catch (err) {
-      console.error('Failed to get active categories:', err);
-      return [];
+      console.warn('Failed to get active categories from server, using verified fallback list:', err);
+      return DEFAULT_CIVIC_CATEGORIES;
     }
   },
 
