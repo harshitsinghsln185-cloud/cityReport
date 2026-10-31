@@ -10,9 +10,9 @@ import {
   Filter,
   SlidersHorizontal,
   Compass,
+  Building2,
 } from 'lucide-react';
 import { STATES_DATA, RegionType, StateType, StateData } from '../../data/statesData';
-import Card from '../../components/ui/Card';
 import Badge from '../../components/ui/Badge';
 import Button from '../../components/ui/Button';
 import PageHero from '../../components/ui/PageHero';
@@ -502,56 +502,39 @@ const StateCard: React.FC<StateCardProps> = ({ state, idx }) => {
   return (
     <Reveal delay={(idx % 8) * 0.03}>
       <Link to={`/states/${state.slug}`} className="block h-full group">
-        <Card
-          isInteractive
-          variant="base"
-          className="h-full flex flex-col justify-between rounded-2xl bg-surface border border-border p-5 hover:border-primary/40 hover:shadow-cardHover transition-all duration-200"
-        >
+        <div className="h-full flex flex-col justify-between rounded-2xl bg-white border border-slate-200/90 p-5 hover:border-slate-300 hover:shadow-cardHover transition-all duration-200">
           <div>
-            {/* Top Row: Region Zone & Type Badges */}
-            <div className="flex items-center justify-between gap-2 mb-3">
-              <span
-                className={`text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full border ${
-                  ZONE_STYLES[state.region]?.badge || 'bg-slate-100 text-slate-700 border-slate-200'
-                }`}
-              >
-                {state.region} Zone
-              </span>
-              <span className="text-[11px] font-medium text-muted bg-canvas px-2 py-0.5 rounded border border-border">
-                {state.type === 'Union Territory' ? 'UT' : 'State'}
-              </span>
+            {/* Top Row: Building Icon + Round Arrow */}
+            <div className="flex items-center justify-between mb-3.5">
+              <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-100 flex items-center justify-center shrink-0">
+                <Building2 className="w-4 h-4" />
+              </div>
+              <div className="w-7 h-7 rounded-full bg-slate-100 text-slate-400 group-hover:bg-primary group-hover:text-white transition-all flex items-center justify-center shrink-0">
+                <ArrowRight className="w-3.5 h-3.5" />
+              </div>
             </div>
 
             {/* State Name */}
-            <h3 className="font-heading font-bold text-lg text-ink group-hover:text-primary transition-colors mb-1.5 leading-snug">
+            <h3 className="font-heading font-extrabold text-base sm:text-lg text-slate-900 group-hover:text-primary transition-colors tracking-tight mb-1 leading-snug">
               {state.name}
             </h3>
 
-            {/* Capital */}
-            <p className="text-xs text-muted flex items-center gap-1.5 mb-2.5">
-              <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
-              <span>
-                Capital: <strong className="text-secondaryText font-semibold">{state.capital}</strong>
-              </span>
-            </p>
-
-            {/* Short Detail Blurb */}
-            <p className="text-xs text-secondaryText leading-relaxed line-clamp-2 mb-4">
-              {state.heroBlurb}
+            {/* Short Detail Subtitle (Reduced details as requested) */}
+            <p className="text-xs text-slate-500 leading-relaxed line-clamp-1 mb-4" title={state.heroBlurb}>
+              Capital: {state.capital} &bull; {state.heroBlurb}
             </p>
           </div>
 
-          {/* Footer: District count & View Details action */}
-          <div className="pt-3 border-t border-border flex items-center justify-between mt-auto">
-            <span className="text-xs font-mono font-medium text-muted">
-              {state.districtsCount} Districts
+          {/* Bottom Badges */}
+          <div className="flex items-center gap-2 mt-auto">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200/60">
+              {state.districtsCount}+ Districts
             </span>
-            <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:text-primary-hover group-hover:translate-x-0.5 transition-all">
-              <span>View Details</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200/60">
+              {state.region} Zone
             </span>
           </div>
-        </Card>
+        </div>
       </Link>
     </Reveal>
   );
