@@ -47,21 +47,21 @@ export const Button: React.FC<ButtonProps> = ({
   // Standardized variants matching Section 3: primary, accent, secondary, outline, ghost, danger
   const variants: Record<string, string> = {
     primary:
-      'bg-primary text-white hover:bg-primary-hover shadow-sm hover:shadow-cardHover border border-primary/20',
+      'bg-accent text-navy font-bold hover:bg-accent-hover shadow-sm hover:shadow border border-accent/30',
     accent:
-      'bg-accent text-navy font-semibold hover:bg-accent-hover shadow-sm hover:shadow border border-accent/20',
+      'bg-accent text-navy font-bold hover:bg-accent-hover shadow-sm hover:shadow border border-accent/30',
     gold:
-      'bg-accent text-navy font-semibold hover:bg-accent-hover shadow-sm hover:shadow border border-accent/20',
+      'bg-accent text-navy font-bold hover:bg-accent-hover shadow-sm hover:shadow border border-accent/30',
     navy:
-      'bg-primary text-white hover:bg-primary-hover font-semibold shadow-sm hover:shadow-cardHover border border-primary/20',
+      'bg-accent text-navy font-bold hover:bg-accent-hover shadow-sm hover:shadow border border-accent/30',
     purple:
-      'bg-primary text-white hover:bg-primary-hover font-semibold shadow-sm hover:shadow-cardHover border border-primary/20',
+      'bg-accent text-navy font-bold hover:bg-accent-hover shadow-sm hover:shadow border border-accent/30',
     secondary:
-      'bg-canvas text-primary hover:bg-[#F2EDE2] border border-card-border shadow-xs',
+      'bg-canvas text-navy font-semibold hover:bg-[#F2EDE2] border border-card-border shadow-xs',
     outline:
-      'border border-primary/30 bg-transparent text-primary hover:bg-primary-light hover:border-primary shadow-xs',
+      'border border-accent/60 bg-transparent text-navy font-semibold hover:bg-accent hover:border-accent shadow-xs',
     ghost:
-      'bg-transparent text-primary hover:bg-primary-light/60',
+      'bg-transparent text-navy font-semibold hover:bg-accent/15',
     danger:
       'bg-status-danger text-white hover:bg-red-800 shadow-sm hover:shadow',
   };

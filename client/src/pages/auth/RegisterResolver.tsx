@@ -549,7 +549,7 @@ export const RegisterResolver: React.FC = () => {
                 <Button
                   type="button"
                   variant="primary"
-                  className="h-12 px-6 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-primary/20 hover:shadow-lg transition-all"
+                  className="h-12 px-6 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-accent/25 hover:shadow-lg transition-all"
                   onClick={handleNext}
                   rightIcon={<ArrowRight className="w-4 h-4" />}
                 >
@@ -562,7 +562,7 @@ export const RegisterResolver: React.FC = () => {
                   isLoading={loading}
                   disabled={!idProofFile}
                   leftIcon={<ShieldCheck className="w-4 h-4" />}
-                  className="h-12 px-6 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-primary/20 hover:shadow-lg transition-all"
+                  className="h-12 px-6 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-accent/25 hover:shadow-lg transition-all"
                 >
                   Submit Application for Review
                 </Button>

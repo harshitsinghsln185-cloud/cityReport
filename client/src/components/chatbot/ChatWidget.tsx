@@ -30,7 +30,7 @@ export const ChatWidget: React.FC = () => {
           className={`relative group w-14 h-14 rounded-full flex items-center justify-center text-white shadow-xl transition-all duration-300 transform active:scale-90 ${
             isOpen
               ? 'bg-ink hover:bg-slate-800 shadow-slate-900/20 rotate-90'
-              : 'bg-gradient-to-tr from-primary to-primary-hover shadow-primary/30 hover:shadow-primary/45 hover:scale-105'
+              : 'bg-gradient-to-tr from-accent via-accent to-accent-hover text-navy shadow-accent/40 hover:shadow-accent/60 hover:scale-105'
           }`}
         >
           {isOpen ? (

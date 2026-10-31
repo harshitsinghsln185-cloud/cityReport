@@ -26,11 +26,11 @@ export const QuickReplies: React.FC<QuickRepliesProps> = ({ options = [], onSele
             onClick={() => onSelect(option)}
             className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-150 active:scale-95 disabled:opacity-50 disabled:pointer-events-none ${
               isHighlight
-                ? 'bg-primary text-white hover:bg-primary-hover shadow-sm border border-primary'
-                : 'bg-primary-light text-primary hover:bg-primary-light/80 border border-primary/20'
+                ? 'bg-accent text-navy font-bold hover:bg-accent-hover shadow-sm border border-accent/40'
+                : 'bg-accent/15 text-navy hover:bg-accent/25 border border-accent/30 font-semibold'
             }`}
           >
-            {isHighlight && <Sparkles className="w-3 h-3 text-white/90" />}
+            {isHighlight && <Sparkles className="w-3 h-3 text-navy" />}
             <span>{option}</span>
           </button>
         );

@@ -264,7 +264,7 @@ export const Services: React.FC = () => {
                 If your neighborhood hazard does not fit standard categories, our civic coordination desk will assess the site, classify the trade requirements, and issue an itemized estimate.
               </p>
             </div>
-            <Button to="/query" variant="secondary" size="md" className="shrink-0">
+            <Button to="/query" variant="primary" size="md" className="shrink-0">
                 Inquire with Civic Desk
               </Button>
           </div>

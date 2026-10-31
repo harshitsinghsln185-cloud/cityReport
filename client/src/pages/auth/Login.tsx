@@ -152,7 +152,7 @@ export const Login: React.FC = () => {
             <Button
               type="submit"
               variant="primary"
-              className="w-full h-12 rounded-xl mt-3 font-semibold text-sm sm:text-base shadow-md shadow-primary/20 hover:shadow-lg transition-all"
+              className="w-full h-12 rounded-xl mt-3 font-bold text-sm sm:text-base shadow-md shadow-accent/25 hover:shadow-lg transition-all"
               isLoading={isLoading}
               rightIcon={<ArrowRight className="w-4 h-4" />}
             >
@@ -167,18 +167,18 @@ export const Login: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setActiveModal('user')}
-                className="w-full h-12 px-4 rounded-xl bg-primary/10 hover:bg-primary/15 text-primary font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer border border-primary/20 shadow-xs hover:shadow"
+                className="w-full h-12 px-4 rounded-xl bg-accent text-navy hover:bg-accent-hover font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer border border-accent/40 shadow-xs hover:shadow"
               >
-                <User className="w-4 h-4 shrink-0 text-primary" />
+                <User className="w-4 h-4 shrink-0 text-navy" />
                 <span>Register as Citizen</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setActiveModal('resolver')}
-                className="w-full h-12 px-4 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-800 font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer border border-slate-200 shadow-xs hover:shadow"
+                className="w-full h-12 px-4 rounded-xl bg-accent/20 hover:bg-accent/30 text-navy font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer border border-accent/40 shadow-xs hover:shadow"
               >
-                <Wrench className="w-4 h-4 text-primary shrink-0" />
+                <Wrench className="w-4 h-4 text-navy shrink-0" />
                 <span>Apply as Resolver</span>
               </button>
             </div>

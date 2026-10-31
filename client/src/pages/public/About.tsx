@@ -315,7 +315,7 @@ export const About: React.FC = () => {
               </div>
 
               <div className="shrink-0 flex flex-col sm:flex-row gap-3">
-                <Button to="/register-resolver" variant="primary" size="lg" className="w-full sm:w-auto shadow-lg shadow-primary/30 flex items-center justify-center gap-2">
+                <Button to="/register-resolver" variant="primary" size="lg" className="w-full sm:w-auto shadow-lg shadow-black/20 flex items-center justify-center gap-2 font-bold text-navy">
                     <span>Apply as Resolver</span>
                     <ArrowRight className="w-4 h-4" />
                   </Button>

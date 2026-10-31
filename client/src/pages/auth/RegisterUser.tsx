@@ -249,7 +249,7 @@ export const RegisterUser: React.FC = () => {
         <Button
           type="submit"
           variant="primary"
-          className="w-full h-12 rounded-xl text-base font-bold shadow-md shadow-primary/20 hover:shadow-lg transition-all mt-4"
+          className="w-full h-12 rounded-xl text-base font-bold shadow-md shadow-accent/25 hover:shadow-lg transition-all mt-4"
           isLoading={isLoading}
           rightIcon={<ArrowRight className="w-4 h-4" />}
         >

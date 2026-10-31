@@ -162,7 +162,7 @@ export const RegisterUserModal: React.FC<RegisterUserModalProps> = ({
             <Button
               type="button"
               variant="primary"
-              className="w-full h-12 rounded-xl text-base font-bold shadow-md shadow-primary/20 hover:shadow-lg transition-all"
+              className="w-full h-12 rounded-xl text-base font-bold shadow-md shadow-accent/25 hover:shadow-lg transition-all"
               onClick={() => {
                 handleClose();
                 if (onSwitchToLogin) onSwitchToLogin();
@@ -302,7 +302,7 @@ export const RegisterUserModal: React.FC<RegisterUserModalProps> = ({
             <Button
               type="submit"
               variant="primary"
-              className="w-full h-12 rounded-xl shadow-md shadow-primary/20 font-bold text-base hover:shadow-lg transition-all"
+              className="w-full h-12 rounded-xl shadow-md shadow-accent/25 font-bold text-base hover:shadow-lg transition-all"
               isLoading={isLoading}
               rightIcon={<ArrowRight className="w-4 h-4" />}
             >

@@ -101,7 +101,7 @@ export const Navbar: React.FC = () => {
           <Button to="/user/report-issue" variant="primary"
               size="sm"
               leftIcon={<PlusCircle className="shrink-0 w-4 h-4 shrink-0" />}
-              className="shadow-sm shadow-primary/25 whitespace-nowrap">
+              className="shadow-sm shadow-accent/25 whitespace-nowrap">
               Report an Issue
             </Button>
         </div>

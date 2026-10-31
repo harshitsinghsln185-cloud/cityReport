@@ -248,7 +248,7 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
             <Button
               type="button"
               variant="primary"
-              className="w-full h-12 rounded-xl text-base font-bold shadow-md shadow-primary/20 hover:shadow-lg transition-all"
+              className="w-full h-12 rounded-xl text-base font-bold shadow-md shadow-accent/25 hover:shadow-lg transition-all"
               onClick={() => {
                 handleClose();
                 if (onSwitchToLogin) onSwitchToLogin();
@@ -560,7 +560,7 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
               <Button
                 type="button"
                 variant="primary"
-                className="h-12 px-6 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-primary/20 hover:shadow-lg transition-all"
+                className="h-12 px-6 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-accent/25 hover:shadow-lg transition-all"
                 onClick={handleNext}
                 rightIcon={<ArrowRight className="w-4 h-4" />}
               >
@@ -570,7 +570,7 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
               <Button
                 type="button"
                 variant="primary"
-                className="h-12 px-6 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-primary/20 hover:shadow-lg transition-all"
+                className="h-12 px-6 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-accent/25 hover:shadow-lg transition-all"
                 onClick={handleSubmit}
                 isLoading={loading}
                 rightIcon={<CheckCircle2 className="w-4 h-4" />}

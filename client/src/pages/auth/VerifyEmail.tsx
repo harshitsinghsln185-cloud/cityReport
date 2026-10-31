@@ -71,7 +71,7 @@ export const VerifyEmail: React.FC = () => {
               Your citizen account has been verified. You can now submit neighborhood reports, review certified contractor quotes, and track repair milestones.
             </p>
             <div className="pt-2">
-              <Button to="/login" variant="primary" className="block w-full h-12 rounded-xl text-base font-bold shadow-md shadow-primary/20 hover:shadow-lg transition-all" rightIcon={<ArrowRight className="w-4 h-4" />}>
+              <Button to="/login" variant="primary" className="block w-full h-12 rounded-xl text-base font-bold shadow-md shadow-accent/25 hover:shadow-lg transition-all" rightIcon={<ArrowRight className="w-4 h-4" />}>
                   Sign In to Account
                 </Button>
             </div>
@@ -90,7 +90,7 @@ export const VerifyEmail: React.FC = () => {
               {errorMessage || 'The verification link is invalid, malformed, or has expired after 24 hours.'}
             </p>
             <div className="pt-2 space-y-2.5">
-              <Button to="/login" variant="primary" className="block w-full h-12 rounded-xl text-base font-bold shadow-md shadow-primary/20 hover:shadow-lg transition-all">
+              <Button to="/login" variant="primary" className="block w-full h-12 rounded-xl text-base font-bold shadow-md shadow-accent/25 hover:shadow-lg transition-all">
                   Proceed to Sign In
                 </Button>
               <Button to="/" variant="ghost" className="block w-full h-10 rounded-xl text-sm font-semibold">
