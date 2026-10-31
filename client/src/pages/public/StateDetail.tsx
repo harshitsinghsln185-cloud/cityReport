@@ -260,7 +260,7 @@ export const StateDetail: React.FC = () => {
               </div>
 
               {/* State Name Heading */}
-              <h1 className="text-3xl sm:text-5xl font-heading font-semibold text-white mb-2 tracking-tight leading-tight">
+              <h1 className="text-3xl sm:text-5xl font-heading font-extrabold text-white mb-2 tracking-tight leading-[1.12]">
                 {stateData.name}
               </h1>
 
@@ -338,7 +338,7 @@ export const StateDetail: React.FC = () => {
               <Building2 className="w-3.5 h-3.5 text-navy shrink-0" />
               <span>Capital</span>
             </div>
-            <p className="font-heading font-bold text-navy text-lg sm:text-xl truncate">
+            <p className="font-heading font-extrabold tracking-tight text-navy text-lg sm:text-xl truncate">
               {stateData.capital}
             </p>
             <p className="text-[10px] text-navy/75 font-semibold">Headquarters</p>
@@ -350,7 +350,7 @@ export const StateDetail: React.FC = () => {
               <MapPin className="w-3.5 h-3.5 text-navy shrink-0" />
               <span>Districts</span>
             </div>
-            <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums">
+            <p className="font-heading font-extrabold tracking-tight text-navy text-lg sm:text-xl tabular-nums">
               {stateData.districtsCount}
             </p>
             <p className="text-[10px] text-navy/75 font-semibold">Collectorates</p>
@@ -362,7 +362,7 @@ export const StateDetail: React.FC = () => {
               <Users className="w-3.5 h-3.5 text-navy shrink-0" />
               <span>Population</span>
             </div>
-            <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums">
+            <p className="font-heading font-extrabold tracking-tight text-navy text-lg sm:text-xl tabular-nums">
               {stateData.population}
             </p>
             <p className="text-[10px] text-navy/75 font-semibold">Census Estimate</p>
@@ -374,7 +374,7 @@ export const StateDetail: React.FC = () => {
               <ShieldCheck className="w-3.5 h-3.5 text-navy shrink-0" />
               <span>Area</span>
             </div>
-            <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums">
+            <p className="font-heading font-extrabold tracking-tight text-navy text-lg sm:text-xl tabular-nums">
               {stateData.area}
             </p>
             <p className="text-[10px] text-navy/75 font-semibold">State Territory</p>

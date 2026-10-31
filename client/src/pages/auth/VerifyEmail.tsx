@@ -64,7 +64,7 @@ export const VerifyEmail: React.FC = () => {
             <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center mx-auto shadow-xs">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="font-heading font-bold text-xl text-ink">
+            <h3 className="font-heading font-extrabold tracking-tight text-xl text-ink">
               Email Successfully Authenticated!
             </h3>
             <p className="text-xs sm:text-sm text-secondaryText leading-relaxed max-w-md mx-auto">
@@ -83,7 +83,7 @@ export const VerifyEmail: React.FC = () => {
             <div className="w-14 h-14 rounded-2xl bg-red-50 border border-red-200 text-red-700 flex items-center justify-center mx-auto shadow-xs">
               <XCircle className="w-8 h-8" />
             </div>
-            <h3 className="font-heading font-bold text-xl text-ink">
+            <h3 className="font-heading font-extrabold tracking-tight text-xl text-ink">
               Verification Link Invalid
             </h3>
             <p className="text-xs sm:text-sm text-secondaryText leading-relaxed max-w-md mx-auto">

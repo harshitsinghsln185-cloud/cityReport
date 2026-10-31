@@ -104,10 +104,10 @@ export const PageHero: React.FC<PageHeroProps> = ({
   // Title rendering with optional gold highlight
   const titleEl = (
     <h1
-      className={`font-heading font-bold tracking-tight ${
+      className={`font-heading font-extrabold tracking-tight ${
         variant === 'compact'
           ? 'text-2xl sm:text-3xl lg:text-4xl'
-          : 'text-3xl sm:text-4xl lg:text-5xl leading-[1.15]'
+          : 'text-3xl sm:text-4xl lg:text-5xl leading-[1.12]'
       } ${isNavy ? 'text-white' : 'text-ink'}`}
     >
       {title}

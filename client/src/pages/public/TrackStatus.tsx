@@ -219,7 +219,7 @@ export const TrackStatus: React.FC = () => {
               <Card variant="base" className="p-6 sm:p-8 bg-white border-border shadow-subtle">
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <h3 className="font-heading font-semibold text-base sm:text-lg text-ink">
+                    <h3 className="font-heading font-extrabold text-base sm:text-lg text-ink tracking-tight">
                       Repair Milestone Status
                     </h3>
                     <p className="text-xs text-muted">
@@ -301,7 +301,7 @@ export const TrackStatus: React.FC = () => {
                       </button>
                       <StatusBadge status={trackResult.status} size="sm" />
                     </div>
-                    <h2 className="text-xl sm:text-2xl font-heading font-semibold text-ink">
+                    <h2 className="text-xl sm:text-2xl font-heading font-extrabold text-ink tracking-tight">
                       {trackResult.title}
                     </h2>
                   </div>
@@ -337,7 +337,7 @@ export const TrackStatus: React.FC = () => {
               <Card variant="base" className="p-6 sm:p-8 bg-white border-border shadow-subtle">
                 <div className="flex items-center justify-between mb-8">
                   <div>
-                    <h3 className="font-heading font-semibold text-lg text-ink">
+                    <h3 className="font-heading font-extrabold text-lg text-ink tracking-tight">
                       Audit Trail & Status Transitions
                     </h3>
                     <p className="text-xs text-muted">
@@ -415,7 +415,7 @@ export const TrackStatus: React.FC = () => {
               <div className="w-14 h-14 rounded-full bg-lavender text-primary flex items-center justify-center mx-auto mb-4 shadow-xs">
                 <Search className="w-7 h-7" />
               </div>
-              <h3 className="font-heading font-semibold text-lg text-ink mb-2">
+              <h3 className="font-heading font-extrabold text-lg text-ink mb-2 tracking-tight">
                 Have an Issue Tracking Reference?
               </h3>
               <p className="text-xs sm:text-sm text-secondaryText max-w-md mx-auto mb-6 leading-relaxed">

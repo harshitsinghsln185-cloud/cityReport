@@ -107,7 +107,7 @@ export const Home: React.FC = () => {
                   Pan-India Coverage
                 </span>
               </div>
-              <h2 className="font-heading font-bold text-2xl text-ink">
+              <h2 className="font-heading font-extrabold text-2xl text-ink tracking-tight">
                 Select Your State or Territory
               </h2>
             </div>
@@ -249,7 +249,7 @@ export const Home: React.FC = () => {
               <ShieldCheck className="w-7 h-7" />
             </div>
 
-            <h2 className="text-3xl sm:text-5xl font-heading font-bold text-white mb-4 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-white mb-4 tracking-tight leading-[1.12]">
               Ready to Restore Your Neighborhood?
             </h2>
 

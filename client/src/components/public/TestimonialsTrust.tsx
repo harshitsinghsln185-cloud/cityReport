@@ -113,7 +113,7 @@ export const TestimonialsTrust: React.FC = () => {
                     </div>
 
                     {/* Step Title */}
-                    <h3 className="font-heading font-bold text-sm sm:text-base text-ink mb-2 min-h-[44px] flex items-center justify-center leading-snug">
+                    <h3 className="font-heading font-extrabold text-sm sm:text-base text-ink mb-2 min-h-[44px] flex items-center justify-center leading-snug tracking-tight">
                       {pillar.title}
                     </h3>
 
@@ -162,7 +162,7 @@ export const TestimonialsTrust: React.FC = () => {
 
                     {/* Text Details */}
                     <div className="flex-1 pt-1">
-                      <h3 className="font-heading font-bold text-base text-ink mb-1">
+                      <h3 className="font-heading font-extrabold text-base text-ink mb-1 tracking-tight">
                         {pillar.title}
                       </h3>
                       <p className="text-xs text-secondaryText leading-relaxed mb-2">

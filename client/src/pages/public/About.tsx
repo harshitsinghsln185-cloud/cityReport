@@ -119,7 +119,7 @@ export const About: React.FC = () => {
                 <MapPin className="w-3.5 h-3.5 text-navy shrink-0" />
                 <span>States & UTs Covered</span>
               </div>
-              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
+              <p className="font-heading font-extrabold tracking-tight text-navy text-lg sm:text-xl tabular-nums truncate">
                 36
               </p>
               <p className="text-[10px] text-navy/75 font-semibold">Nationwide Geo-Registry</p>
@@ -131,7 +131,7 @@ export const About: React.FC = () => {
                 <Camera className="w-3.5 h-3.5 text-navy shrink-0" />
                 <span>Photo Proof Required</span>
               </div>
-              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
+              <p className="font-heading font-extrabold tracking-tight text-navy text-lg sm:text-xl tabular-nums truncate">
                 100%
               </p>
               <p className="text-[10px] text-navy/75 font-semibold">Before & After Verified</p>
@@ -143,7 +143,7 @@ export const About: React.FC = () => {
                 <ShieldCheck className="w-3.5 h-3.5 text-navy shrink-0" />
                 <span>Milestone Split</span>
               </div>
-              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
+              <p className="font-heading font-extrabold tracking-tight text-navy text-lg sm:text-xl tabular-nums truncate">
                 50 / 50
               </p>
               <p className="text-[10px] text-navy/75 font-semibold">Advance & Completion</p>
@@ -155,7 +155,7 @@ export const About: React.FC = () => {
                 <FileText className="w-3.5 h-3.5 text-navy shrink-0" />
                 <span>Itemized Invoices</span>
               </div>
-              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
+              <p className="font-heading font-extrabold tracking-tight text-navy text-lg sm:text-xl tabular-nums truncate">
                 GST
               </p>
               <p className="text-[10px] text-navy/75 font-semibold">Full Tax Breakdown</p>
@@ -182,7 +182,7 @@ export const About: React.FC = () => {
             {/* The Broken Status Quo */}
             <Reveal delay={0.1}>
               <Card variant="base" className="h-full bg-red-50/40 border-red-200/80 p-6 sm:p-8">
-                <div className="flex items-center gap-2.5 text-red-700 font-heading font-bold text-lg mb-4">
+                <div className="flex items-center gap-2.5 text-red-700 font-heading font-extrabold text-lg mb-4 tracking-tight">
                   <div className="w-9 h-9 rounded-xl bg-red-100 flex items-center justify-center shrink-0">
                     <AlertTriangle className="w-5 h-5 text-red-700" />
                   </div>
@@ -212,7 +212,7 @@ export const About: React.FC = () => {
             {/* The Crowd Report Solution */}
             <Reveal delay={0.2}>
               <Card variant="base" className="h-full bg-emerald-50/40 border-emerald-200/80 p-6 sm:p-8">
-                <div className="flex items-center gap-2.5 text-emerald-900 font-heading font-bold text-lg mb-4">
+                <div className="flex items-center gap-2.5 text-emerald-900 font-heading font-extrabold text-lg mb-4 tracking-tight">
                   <div className="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center shrink-0">
                     <CheckCircle2 className="w-5 h-5 text-emerald-700" />
                   </div>
@@ -258,7 +258,7 @@ export const About: React.FC = () => {
                 <div className="w-12 h-12 rounded-xl bg-lavender text-primary flex items-center justify-center mb-4 shadow-xs">
                   <Award className="w-6 h-6" />
                 </div>
-                <h3 className="font-heading font-semibold text-lg text-ink mb-2">
+                <h3 className="font-heading font-extrabold tracking-tight text-lg text-ink mb-2">
                   Accredited Resolver Network
                 </h3>
                 <p className="text-xs text-secondaryText leading-relaxed">
@@ -272,7 +272,7 @@ export const About: React.FC = () => {
                 <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 shadow-xs">
                   <Lock className="w-6 h-6" />
                 </div>
-                <h3 className="font-heading font-semibold text-lg text-ink mb-2">
+                <h3 className="font-heading font-extrabold tracking-tight text-lg text-ink mb-2">
                   Milestone Guarantee
                 </h3>
                 <p className="text-xs text-secondaryText leading-relaxed">
@@ -286,7 +286,7 @@ export const About: React.FC = () => {
                 <div className="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center mb-4 shadow-xs">
                   <FileText className="w-6 h-6" />
                 </div>
-                <h3 className="font-heading font-semibold text-lg text-ink mb-2">
+                <h3 className="font-heading font-extrabold tracking-tight text-lg text-ink mb-2">
                   Upfront Fee Estimation
                 </h3>
                 <p className="text-xs text-secondaryText leading-relaxed">
@@ -306,7 +306,7 @@ export const About: React.FC = () => {
                   <Briefcase className="w-3.5 h-3.5 text-primary" />
                   <span>Contractor & Resolver Portal</span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-heading font-bold text-white mb-3 tracking-tight">
+                <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-white mb-3 tracking-tight leading-[1.15]">
                   Are You a Certified Municipal Contractor or Tradesperson?
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">

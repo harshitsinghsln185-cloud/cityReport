@@ -90,7 +90,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
               {location}
             </span>
           </div>
-          <h3 className="font-heading font-semibold text-lg sm:text-xl text-ink">
+          <h3 className="font-heading font-extrabold tracking-tight text-lg sm:text-xl text-ink">
             {title}
           </h3>
         </div>

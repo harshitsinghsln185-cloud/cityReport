@@ -81,7 +81,7 @@ export const AdminDashboard: React.FC = () => {
             </span>
             <span className="text-xs font-mono text-secondaryText">Live Civic Network</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-heading font-extrabold text-ink tracking-tight">
             Platform Command Center
           </h1>
           <p className="text-sm text-secondaryText mt-0.5">
@@ -127,7 +127,7 @@ export const AdminDashboard: React.FC = () => {
           <div className="flex items-start justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-secondaryText">Needs Assignment</p>
-              <h3 className="text-3xl font-heading font-bold text-ink mt-1.5 font-mono tabular-nums">
+              <h3 className="text-3xl font-heading font-extrabold tracking-tight text-ink mt-1.5 font-mono tabular-nums">
                 {metrics.needsAssignment}
               </h3>
               <p className="text-xs text-primary font-medium mt-1">
@@ -151,7 +151,7 @@ export const AdminDashboard: React.FC = () => {
           <div className="flex items-start justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-secondaryText">Active Work</p>
-              <h3 className="text-3xl font-heading font-bold text-ink mt-1.5 font-mono tabular-nums">
+              <h3 className="text-3xl font-heading font-extrabold tracking-tight text-ink mt-1.5 font-mono tabular-nums">
                 {metrics.activeIssues}
               </h3>
               <p className="text-xs text-secondaryText font-medium mt-1">
@@ -173,7 +173,7 @@ export const AdminDashboard: React.FC = () => {
           <div className="flex items-start justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-secondaryText">Contractors</p>
-              <h3 className="text-3xl font-heading font-bold text-ink mt-1.5 font-mono tabular-nums">
+              <h3 className="text-3xl font-heading font-extrabold tracking-tight text-ink mt-1.5 font-mono tabular-nums">
                 {metrics.approvedResolvers}
               </h3>
               <p className="text-xs text-secondaryText font-medium mt-1">
@@ -204,7 +204,7 @@ export const AdminDashboard: React.FC = () => {
           <div className="flex items-start justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-secondaryText">Gross Volume</p>
-              <h3 className="text-2xl font-heading font-bold text-ink mt-1.5 font-mono tabular-nums">
+              <h3 className="text-2xl font-heading font-extrabold tracking-tight text-ink mt-1.5 font-mono tabular-nums">
                 {formatRupees(metrics.totalGrossVolumePaise)}
               </h3>
               <p className="text-xs text-secondaryText font-medium mt-1">
@@ -230,7 +230,7 @@ export const AdminDashboard: React.FC = () => {
         <Card className="lg:col-span-2 border border-border/80 bg-card rounded-card shadow-card p-6">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="font-heading font-bold text-lg text-ink">Lifecycle Status Matrix</h3>
+              <h3 className="font-heading font-extrabold text-lg text-ink tracking-tight">Lifecycle Status Matrix</h3>
               <p className="text-xs text-secondaryText">Real-time issue counts across municipal triage and repair states</p>
             </div>
             <Link to="/admin/issues" className="text-xs font-semibold text-primary hover:underline flex items-center gap-1">

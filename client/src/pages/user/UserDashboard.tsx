@@ -98,7 +98,7 @@ export const UserDashboard: React.FC = () => {
             )}
           </div>
 
-          <h1 className="font-heading font-bold text-xl sm:text-2xl text-ink tracking-tight">
+          <h1 className="font-heading font-extrabold text-xl sm:text-2xl text-ink tracking-tight">
             Welcome back, {user?.name?.split(' ')[0] || 'Citizen'}
           </h1>
           <p className="text-xs text-secondaryText">
@@ -136,7 +136,7 @@ export const UserDashboard: React.FC = () => {
               <FileText className="w-4 h-4" />
             </div>
           </div>
-          <div className="font-heading font-bold text-2xl sm:text-3xl text-ink tabular-nums">
+          <div className="font-heading font-extrabold tracking-tight text-2xl sm:text-3xl text-ink tabular-nums">
             {totalCount}
           </div>
           <div className="text-xs text-muted mt-1">Logged civic incidents</div>
@@ -149,7 +149,7 @@ export const UserDashboard: React.FC = () => {
               <Clock className="w-4 h-4" />
             </div>
           </div>
-          <div className="font-heading font-bold text-2xl sm:text-3xl text-amber-700 tabular-nums">
+          <div className="font-heading font-extrabold tracking-tight text-2xl sm:text-3xl text-amber-700 tabular-nums">
             {inProgressCount}
           </div>
           <div className="text-xs text-muted mt-1">Under contractor repair</div>
@@ -162,7 +162,7 @@ export const UserDashboard: React.FC = () => {
               <CheckCircle2 className="w-4 h-4" />
             </div>
           </div>
-          <div className="font-heading font-bold text-2xl sm:text-3xl text-emerald-700 tabular-nums">
+          <div className="font-heading font-extrabold tracking-tight text-2xl sm:text-3xl text-emerald-700 tabular-nums">
             {resolvedCount}
           </div>
           <div className="text-xs text-muted mt-1">Verified with photo proof</div>
@@ -175,7 +175,7 @@ export const UserDashboard: React.FC = () => {
               <CreditCard className="w-4 h-4" />
             </div>
           </div>
-          <div className="font-heading font-bold text-2xl sm:text-3xl text-accent-text tabular-nums">
+          <div className="font-heading font-extrabold tracking-tight text-2xl sm:text-3xl text-accent-text tabular-nums">
             {awaitingAdvanceCount}
           </div>
           <div className="text-xs text-muted mt-1">50% advance pending</div>

@@ -257,7 +257,7 @@ export const Services: React.FC = () => {
         <Reveal delay={0.2}>
           <div className="mt-14 p-6 sm:p-8 rounded-card bg-gradient-to-r from-dark to-indigo text-white flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="max-w-2xl text-left">
-              <h4 className="font-heading font-bold text-lg mb-1.5 text-white">
+              <h4 className="font-heading font-extrabold text-lg sm:text-xl mb-1.5 text-white tracking-tight leading-[1.15]">
                 Need a Custom Municipal Remediation or Ward Assessment?
               </h4>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">

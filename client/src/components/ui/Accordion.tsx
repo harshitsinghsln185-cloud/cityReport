@@ -63,7 +63,7 @@ export const Accordion: React.FC<AccordionProps> = ({
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => toggle(item.id)}
-                className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left font-heading font-medium text-base text-ink hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary select-none"
+                className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left font-heading font-semibold tracking-tight text-base text-ink hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary select-none"
               >
                 <span className="flex items-center gap-2.5">
                   {item.icon && <span className="text-primary shrink-0">{item.icon}</span>}

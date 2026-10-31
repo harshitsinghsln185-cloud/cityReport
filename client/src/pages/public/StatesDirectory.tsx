@@ -198,11 +198,11 @@ export const StatesDirectory: React.FC = () => {
             </div>
             <div className="grid grid-cols-2 gap-3 pt-1">
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="text-2xl font-bold font-heading text-white">28</div>
+                <div className="text-2xl sm:text-3xl font-extrabold font-heading tracking-tight text-white">28</div>
                 <div className="text-xs text-slate-300 font-medium">States</div>
               </div>
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="text-2xl font-bold font-heading text-white">8</div>
+                <div className="text-2xl sm:text-3xl font-extrabold font-heading tracking-tight text-white">8</div>
                 <div className="text-xs text-slate-300 font-medium">Union Territories</div>
               </div>
             </div>
@@ -223,7 +223,7 @@ export const StatesDirectory: React.FC = () => {
                 <MapPin className="w-3.5 h-3.5 text-navy shrink-0" />
                 <span>Regions Active</span>
               </div>
-              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
+              <p className="font-heading font-extrabold tracking-tight text-navy text-lg sm:text-xl tabular-nums truncate">
                 {filteredStates.length} / 36 Pan-India
               </p>
               <p className="text-[10px] text-navy/75 font-semibold">Jurisdictions Listed</p>
@@ -235,7 +235,7 @@ export const StatesDirectory: React.FC = () => {
                 <CheckCircle2 className="w-3.5 h-3.5 text-navy shrink-0" />
                 <span>Jurisdictions</span>
               </div>
-              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
+              <p className="font-heading font-extrabold tracking-tight text-navy text-lg sm:text-xl tabular-nums truncate">
                 {filteredStates.length} States & UTs
               </p>
               <p className="text-[10px] text-navy/75 font-semibold">Administrative Units</p>
@@ -247,7 +247,7 @@ export const StatesDirectory: React.FC = () => {
                 <Users className="w-3.5 h-3.5 text-navy shrink-0" />
                 <span>Districts</span>
               </div>
-              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
+              <p className="font-heading font-extrabold tracking-tight text-navy text-lg sm:text-xl tabular-nums truncate">
                 {totalDistricts} Districts
               </p>
               <p className="text-[10px] text-navy/75 font-semibold">Administrative Units</p>
@@ -259,7 +259,7 @@ export const StatesDirectory: React.FC = () => {
                 <Clock className="w-3.5 h-3.5 text-navy shrink-0" />
                 <span>Zonal Coverage</span>
               </div>
-              <p className="font-heading font-bold text-navy text-lg sm:text-xl tabular-nums truncate">
+              <p className="font-heading font-extrabold tracking-tight text-navy text-lg sm:text-xl tabular-nums truncate">
                 6 Regional Zones
               </p>
               <p className="text-[10px] text-navy/75 font-semibold">Decentralized Governance</p>

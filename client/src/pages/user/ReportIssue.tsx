@@ -244,7 +244,7 @@ export const ReportIssue: React.FC = () => {
         <Badge variant="primary" size="sm" className="font-semibold uppercase tracking-wider">
           Certified Civic Repair Flow
         </Badge>
-        <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-heading font-extrabold text-ink tracking-tight">
           Report a Neighborhood Civic Defect
         </h1>
         <p className="text-xs sm:text-sm text-secondaryText leading-relaxed">
@@ -301,7 +301,7 @@ export const ReportIssue: React.FC = () => {
           {currentStep === 1 && (
             <div className="space-y-5">
               <div className="border-b border-border pb-3 mb-4">
-                <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
+                <h2 className="font-heading font-extrabold text-base sm:text-lg text-ink tracking-tight">
                   Step 1: Civic Classification & Details
                 </h2>
                 <p className="text-xs text-secondaryText">
@@ -407,7 +407,7 @@ export const ReportIssue: React.FC = () => {
           {currentStep === 2 && (
             <div className="space-y-5">
               <div className="border-b border-border pb-3 mb-4">
-                <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
+                <h2 className="font-heading font-extrabold text-base sm:text-lg text-ink tracking-tight">
                   Step 2: Issue Location Pin & Landmark
                 </h2>
                 <p className="text-xs text-secondaryText">
@@ -472,7 +472,7 @@ export const ReportIssue: React.FC = () => {
           {currentStep === 3 && (
             <div className="space-y-5">
               <div className="border-b border-border pb-3 mb-4">
-                <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
+                <h2 className="font-heading font-extrabold text-base sm:text-lg text-ink tracking-tight">
                   Step 3: Upload Evidence Photos (Optional)
                 </h2>
                 <p className="text-xs text-secondaryText">
@@ -530,7 +530,7 @@ export const ReportIssue: React.FC = () => {
           {currentStep === 4 && (
             <div className="space-y-5">
               <div className="border-b border-border pb-3 mb-4">
-                <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
+                <h2 className="font-heading font-extrabold text-base sm:text-lg text-ink tracking-tight">
                   Step 4: Transparent Fee Breakdown & Confirmation
                 </h2>
                 <p className="text-xs text-secondaryText">

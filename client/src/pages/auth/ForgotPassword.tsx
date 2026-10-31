@@ -53,7 +53,7 @@ export const ForgotPassword: React.FC = () => {
           <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center mx-auto shadow-xs">
             <CheckCircle2 className="w-8 h-8" />
           </div>
-          <h2 className="font-heading font-bold text-xl text-ink">
+          <h2 className="font-heading font-extrabold tracking-tight text-xl text-ink">
             Check Your Inbox
           </h2>
           <p className="text-xs sm:text-sm text-secondaryText leading-relaxed max-w-md mx-auto">

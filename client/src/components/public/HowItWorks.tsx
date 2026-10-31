@@ -20,7 +20,7 @@ const STEP_ITEMS: AccordionItemData[] = [
         <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-primary-light text-primary border border-primary/20 shrink-0">
           Step 01
         </span>
-        <span className="font-heading font-semibold text-base text-ink">
+        <span className="font-heading font-bold text-base text-ink tracking-tight">
           Report with Photo &amp; GPS Pin
         </span>
       </span>
@@ -56,7 +56,7 @@ const STEP_ITEMS: AccordionItemData[] = [
         <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-primary-light text-primary border border-primary/20 shrink-0">
           Step 02
         </span>
-        <span className="font-heading font-semibold text-base text-ink">
+        <span className="font-heading font-bold text-base text-ink tracking-tight">
           Geo-Matched Contractor Assigned
         </span>
       </span>
@@ -92,7 +92,7 @@ const STEP_ITEMS: AccordionItemData[] = [
         <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-primary-light text-primary border border-primary/20 shrink-0">
           Step 03
         </span>
-        <span className="font-heading font-semibold text-base text-ink">
+        <span className="font-heading font-bold text-base text-ink tracking-tight">
           50% Advance to Start Work
         </span>
       </span>
@@ -128,7 +128,7 @@ const STEP_ITEMS: AccordionItemData[] = [
         <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-primary-light text-primary border border-primary/20 shrink-0">
           Step 04
         </span>
-        <span className="font-heading font-semibold text-base text-ink">
+        <span className="font-heading font-bold text-base text-ink tracking-tight">
           Photo-Verified Completion &amp; Balance
         </span>
       </span>

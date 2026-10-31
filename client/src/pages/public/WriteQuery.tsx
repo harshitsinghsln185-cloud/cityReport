@@ -143,7 +143,7 @@ export const WriteQuery: React.FC = () => {
                   <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-xs">
                     <CheckCircle2 className="w-9 h-9" />
                   </div>
-                  <h3 className="font-heading font-semibold text-2xl text-emerald-950 mb-2">
+                  <h3 className="font-heading font-extrabold text-2xl text-emerald-950 mb-2 tracking-tight">
                     Inquiry Received Successfully!
                   </h3>
                   <p className="text-xs sm:text-sm text-emerald-800 max-w-md mx-auto mb-4 leading-relaxed">
@@ -264,7 +264,7 @@ export const WriteQuery: React.FC = () => {
             <Reveal delay={0.15}>
               <Card variant="base" className="p-6 bg-white border-border shadow-subtle space-y-6">
                 <div>
-                  <h3 className="font-heading font-semibold text-base text-ink mb-1">
+                  <h3 className="font-heading font-extrabold text-base text-ink mb-1 tracking-tight">
                     Central Civic Secretariat
                   </h3>
                   <p className="text-xs text-muted">
@@ -341,7 +341,7 @@ export const WriteQuery: React.FC = () => {
               <Card variant="base" className="p-6 bg-white border-border shadow-subtle">
                 <div className="flex items-center gap-2 mb-3">
                   <HelpCircle className="w-4 h-4 text-primary" />
-                  <h4 className="font-heading font-semibold text-sm text-ink">
+                  <h4 className="font-heading font-bold text-sm text-ink tracking-tight">
                     Need Immediate Answers?
                   </h4>
                 </div>

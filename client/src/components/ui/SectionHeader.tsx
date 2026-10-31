@@ -61,7 +61,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
           </div>
         )}
 
-        <TitleTag className="font-heading text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-ink leading-tight">
+        <TitleTag className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-ink leading-[1.15]">
           {title}
         </TitleTag>
 
