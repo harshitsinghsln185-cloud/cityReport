@@ -431,9 +431,9 @@ export const Hero: React.FC = () => {
             </div>
           </Reveal>
 
-          {/* Plain, Direct H1 Headline in Fraunces Variable */}
+          {/* Plain, Direct H1 Headline in Plus Jakarta Sans */}
           <Reveal delay={0.1}>
-            <h1 className="text-3xl sm:text-5xl lg:text-5xl font-heading font-bold tracking-tight leading-[1.14] mb-5 text-white">
+            <h1 className="text-3xl sm:text-5xl lg:text-5xl font-heading font-extrabold tracking-tight leading-[1.14] mb-5 text-white">
               Civic problems,{' '}
               <span className="bg-gradient-to-r from-accent via-[#F2D399] to-white bg-clip-text text-transparent">
                 resolved with verified proof.

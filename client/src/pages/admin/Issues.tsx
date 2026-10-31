@@ -126,7 +126,7 @@ export const AdminIssuesPage: React.FC = () => {
             </span>
             <span className="text-xs font-mono text-secondaryText">Total: {meta.total} reports</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
             Master Civic Issues Queue
           </h1>
           <p className="text-sm text-secondaryText mt-0.5">

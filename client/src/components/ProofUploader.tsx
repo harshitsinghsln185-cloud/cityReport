@@ -104,7 +104,7 @@ export const ProofUploader: React.FC<ProofUploaderProps> = ({ onSubmit, isSubmit
           <ImageIcon className="w-4 h-4" />
         </div>
         <div>
-          <h3 className="font-serif font-bold text-base text-ink">Submit Resolution Proof</h3>
+          <h3 className="font-heading font-bold text-base text-ink">Submit Resolution Proof</h3>
           <p className="text-xs text-secondaryText">
             Upload photographic evidence of completed repair work for citizen inspection and administration sign-off
           </p>

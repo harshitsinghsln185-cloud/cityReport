@@ -114,7 +114,7 @@ export const ResolverProfilePage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2.5 mb-1.5">
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
               Contractor Profile & Territory
             </h1>
             <StatusBadge status={profile?.status || 'Approved'} size="sm" />
@@ -163,7 +163,7 @@ export const ResolverProfilePage: React.FC = () => {
               <TrendingUp className="w-3.5 h-3.5" />
             </div>
           </div>
-          <div className="text-2xl font-serif font-bold text-ink font-mono tabular-nums">
+          <div className="text-2xl font-heading font-bold text-ink font-mono tabular-nums">
             ₹{((profile?.totalEarningsPaise || 0) / 100).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </div>
           <div className="text-xs text-secondaryText mt-1 flex items-center gap-1">
@@ -179,7 +179,7 @@ export const ResolverProfilePage: React.FC = () => {
               <Clock className="w-3.5 h-3.5" />
             </div>
           </div>
-          <div className="text-2xl font-serif font-bold text-amber-800 font-mono tabular-nums">
+          <div className="text-2xl font-heading font-bold text-amber-800 font-mono tabular-nums">
             ₹{((profile?.pendingPayoutPaise || 0) / 100).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </div>
           <div className="text-xs text-secondaryText mt-1">Pending citizen balance settlement</div>
@@ -192,7 +192,7 @@ export const ResolverProfilePage: React.FC = () => {
               <CheckCircle2 className="w-3.5 h-3.5" />
             </div>
           </div>
-          <div className="text-2xl font-serif font-bold text-ink font-mono tabular-nums">
+          <div className="text-2xl font-heading font-bold text-ink font-mono tabular-nums">
             {profile?.completedTasksCount || 0}
           </div>
           <div className="text-xs text-secondaryText mt-1">100% photographic proof rate</div>
@@ -204,7 +204,7 @@ export const ResolverProfilePage: React.FC = () => {
         <Card className="border border-border/80 bg-card rounded-card shadow-card p-6 space-y-5">
           <div className="border-b border-border pb-3 flex items-center justify-between">
             <div>
-              <h2 className="font-serif font-bold text-base text-ink">
+              <h2 className="font-heading font-bold text-base text-ink">
                 Territory & Operating Radius
               </h2>
               <p className="text-xs text-secondaryText">
@@ -261,7 +261,7 @@ export const ResolverProfilePage: React.FC = () => {
         <Card className="border border-border/80 bg-card rounded-card shadow-card p-6 space-y-4">
           <div className="border-b border-border pb-3 flex items-center justify-between">
             <div>
-              <h2 className="font-serif font-bold text-base text-ink">
+              <h2 className="font-heading font-bold text-base text-ink">
                 Qualified Trade Skills
               </h2>
               <p className="text-xs text-secondaryText">

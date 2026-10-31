@@ -148,7 +148,7 @@ export const ResolverRequestsPage: React.FC = () => {
       header: 'Contractor',
       render: (row) => (
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center font-bold text-sm shrink-0 font-serif">
+          <div className="w-9 h-9 rounded-xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center font-bold text-sm shrink-0 font-heading">
             {row.user?.name ? row.user.name.charAt(0).toUpperCase() : 'R'}
           </div>
           <div>
@@ -267,7 +267,7 @@ export const ResolverRequestsPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
               Resolver Accreditation Queue
             </h1>
             <span className="text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
@@ -414,7 +414,7 @@ export const ResolverRequestsPage: React.FC = () => {
             <div className="flex items-start justify-between p-4 bg-canvas rounded-xl border border-border">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="font-serif font-bold text-base text-ink">
+                  <span className="font-heading font-bold text-base text-ink">
                     {selectedResolver.user?.name}
                   </span>
                   <StatusBadge status={selectedResolver.status} size="sm" />

@@ -164,7 +164,7 @@ export const ResolverTaskDetailsPage: React.FC = () => {
         <div className="w-16 h-16 rounded-2xl bg-rose-50 border border-rose-200 text-rose-600 flex items-center justify-center mx-auto mb-4">
           <AlertTriangle className="w-8 h-8" />
         </div>
-        <h2 className="text-2xl font-serif font-bold text-ink mb-2">Task Not Found</h2>
+        <h2 className="text-2xl font-heading font-bold text-ink mb-2">Task Not Found</h2>
         <p className="text-sm text-secondaryText mb-6 max-w-md mx-auto">
           The requested task could not be located, or is not allocated to your certified contractor account.
         </p>
@@ -327,7 +327,7 @@ export const ResolverTaskDetailsPage: React.FC = () => {
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
               {task.title}
             </h1>
             <p className="text-xs text-secondaryText mt-1.5 flex items-center gap-1.5">
@@ -356,7 +356,7 @@ export const ResolverTaskDetailsPage: React.FC = () => {
         <div className="lg:col-span-2 space-y-6">
           {/* Issue Description & Citizen Uploaded Evidence */}
           <Card className="border border-border/80 bg-card rounded-card shadow-card p-6">
-            <h3 className="font-serif font-bold text-lg text-ink mb-2">Description & Incident Context</h3>
+            <h3 className="font-heading font-bold text-lg text-ink mb-2">Description & Incident Context</h3>
             <p className="text-sm text-secondaryText whitespace-pre-line leading-relaxed mb-6">
               {task.description}
             </p>
@@ -409,7 +409,7 @@ export const ResolverTaskDetailsPage: React.FC = () => {
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
                   <div>
-                    <h3 className="font-serif font-bold text-base text-ink">Verified Completion Proof</h3>
+                    <h3 className="font-heading font-bold text-base text-ink">Verified Completion Proof</h3>
                     <p className="text-xs text-secondaryText">Submitted photographic evidence of on-site repair</p>
                   </div>
                 </div>
@@ -473,7 +473,7 @@ export const ResolverTaskDetailsPage: React.FC = () => {
 
           {/* Audit Timeline */}
           <Card className="border border-border/80 bg-card rounded-card shadow-card p-6">
-            <h3 className="font-serif font-bold text-lg text-ink mb-1">
+            <h3 className="font-heading font-bold text-lg text-ink mb-1">
               Task Execution History & Audit Trail
             </h3>
             <p className="text-xs text-secondaryText mb-5">
@@ -492,7 +492,7 @@ export const ResolverTaskDetailsPage: React.FC = () => {
                 <User className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="font-serif font-bold text-base text-ink">Citizen Contact</h3>
+                <h3 className="font-heading font-bold text-base text-ink">Citizen Contact</h3>
                 <p className="text-xs text-secondaryText">Reporter identification & coordinate details</p>
               </div>
             </div>
@@ -542,7 +542,7 @@ export const ResolverTaskDetailsPage: React.FC = () => {
                 <MapPin className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="font-serif font-bold text-base text-ink">Site Location</h3>
+                <h3 className="font-heading font-bold text-base text-ink">Site Location</h3>
                 <p className="text-xs text-secondaryText">Dispatch destination & GPS routing</p>
               </div>
             </div>

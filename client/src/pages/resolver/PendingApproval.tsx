@@ -75,11 +75,11 @@ export const PendingApproval: React.FC = () => {
       {/* Top Bar */}
       <header className="h-16 bg-card border-b border-border/80 px-4 sm:px-8 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center font-serif font-bold text-base shadow-xs">
+          <div className="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center font-heading font-bold text-base shadow-xs">
             CR
           </div>
           <div>
-            <span className="font-serif font-bold text-lg text-ink tracking-tight">
+            <span className="font-heading font-bold text-lg text-ink tracking-tight">
               Crowd Report
             </span>
             <span className="hidden sm:inline-block ml-2 text-xs font-mono font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
@@ -121,7 +121,7 @@ export const PendingApproval: React.FC = () => {
               <CheckCircle2 className="w-10 h-10" />
             </div>
             <div>
-              <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink">
+              <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink">
                 Contractor Credentials Approved!
               </h1>
               <p className="text-sm text-secondaryText mt-2 max-w-md mx-auto leading-relaxed">
@@ -140,7 +140,7 @@ export const PendingApproval: React.FC = () => {
               </div>
               <div>
                 <div className="flex items-center gap-2.5">
-                  <h1 className="text-xl sm:text-2xl font-serif font-bold text-ink">
+                  <h1 className="text-xl sm:text-2xl font-heading font-bold text-ink">
                     Application Not Approved
                   </h1>
                   <StatusBadge status="Rejected" size="sm" />
@@ -195,7 +195,7 @@ export const PendingApproval: React.FC = () => {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2.5">
-                    <h1 className="text-xl sm:text-2xl font-serif font-bold text-ink">
+                    <h1 className="text-xl sm:text-2xl font-heading font-bold text-ink">
                       Contractor Credentials Under Review
                     </h1>
                     <StatusBadge status="Pending" size="sm" />

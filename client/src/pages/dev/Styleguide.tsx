@@ -267,23 +267,23 @@ export const Styleguide: React.FC = () => {
 
         {/* 2. Typography Scale */}
         <section className="space-y-6">
-          <h2 className="text-2xl font-heading font-semibold text-ink">2. Typography Hierarchy (Fraunces & Manrope)</h2>
+          <h2 className="text-2xl font-heading font-semibold text-ink">2. Typography Hierarchy (Plus Jakarta Sans & Manrope)</h2>
           <Card variant="base" className="space-y-6 p-6">
             <div>
-              <p className="text-xs font-mono text-muted uppercase">Display (Fraunces Variable - 36px to 60px)</p>
-              <h1 className="text-4xl sm:text-5xl font-heading font-bold text-ink">
+              <p className="text-xs font-mono text-muted uppercase">Display (Plus Jakarta Sans Variable - 36px to 60px)</p>
+              <h1 className="text-4xl sm:text-5xl font-heading font-extrabold text-ink tracking-tight">
                 Empowering Citizens, Restoring Neighborhoods
               </h1>
             </div>
             <div>
-              <p className="text-xs font-mono text-muted uppercase">H1 (Fraunces Variable - 30px to 44px)</p>
-              <h1 className="text-3xl sm:text-4xl font-heading font-bold text-ink">
+              <p className="text-xs font-mono text-muted uppercase">H1 (Plus Jakarta Sans Variable - 30px to 44px)</p>
+              <h1 className="text-3xl sm:text-4xl font-heading font-extrabold text-ink tracking-tight">
                 Municipal Defect Remediation & Milestone Dispatch
               </h1>
             </div>
             <div>
-              <p className="text-xs font-mono text-muted uppercase">H2 (Fraunces Variable - 24px to 34px)</p>
-              <h2 className="text-2xl sm:text-3xl font-heading font-semibold text-ink">
+              <p className="text-xs font-mono text-muted uppercase">H2 (Plus Jakarta Sans Variable - 24px to 34px)</p>
+              <h2 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
                 36 States & Union Territories Coverage
               </h2>
             </div>

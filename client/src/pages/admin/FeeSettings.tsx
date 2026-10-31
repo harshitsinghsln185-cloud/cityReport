@@ -168,7 +168,7 @@ export const FeeSettingsPage: React.FC = () => {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink flex items-center gap-2.5">
+        <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink flex items-center gap-2.5">
           <Sliders className="w-7 h-7 text-primary" />
           Pricing & Schedule of Rates (SOR)
         </h1>
@@ -201,7 +201,7 @@ export const FeeSettingsPage: React.FC = () => {
               <div className="flex items-center gap-2.5 pb-4 border-b border-border/60 mb-4">
                 <MapPin className="w-5 h-5 text-primary" />
                 <div>
-                  <h3 className="font-serif font-bold text-ink text-base">
+                  <h3 className="font-heading font-bold text-ink text-base">
                     Distance Parameters
                   </h3>
                   <p className="text-xs text-secondaryText">
@@ -266,7 +266,7 @@ export const FeeSettingsPage: React.FC = () => {
               <div className="flex items-center gap-2.5 pb-4 border-b border-border/60 mb-4">
                 <ShieldCheck className="w-5 h-5 text-primary" />
                 <div>
-                  <h3 className="font-serif font-bold text-ink text-base">
+                  <h3 className="font-heading font-bold text-ink text-base">
                     Clamp Thresholds (Min & Max Bounds)
                   </h3>
                   <p className="text-xs text-secondaryText">
@@ -333,7 +333,7 @@ export const FeeSettingsPage: React.FC = () => {
               <div className="flex items-center gap-2.5 pb-4 border-b border-border/60 mb-4">
                 <TrendingUp className="w-5 h-5 text-primary" />
                 <div>
-                  <h3 className="font-serif font-bold text-ink text-base">
+                  <h3 className="font-heading font-bold text-ink text-base">
                     AI Severity Multipliers
                   </h3>
                   <p className="text-xs text-secondaryText">
@@ -440,7 +440,7 @@ export const FeeSettingsPage: React.FC = () => {
               <div className="flex items-center gap-2.5 pb-4 border-b border-border/60 mb-4">
                 <Percent className="w-5 h-5 text-primary" />
                 <div>
-                  <h3 className="font-serif font-bold text-ink text-base">
+                  <h3 className="font-heading font-bold text-ink text-base">
                     Platform Commission
                   </h3>
                   <p className="text-xs text-secondaryText">
@@ -499,7 +499,7 @@ export const FeeSettingsPage: React.FC = () => {
             <div className="flex items-center gap-2.5 pb-4 border-b border-border/60 mb-4">
               <Calculator className="w-5 h-5 text-primary" />
               <div>
-                <h3 className="font-serif font-bold text-ink text-base">
+                <h3 className="font-heading font-bold text-ink text-base">
                   Live Fee Simulation
                 </h3>
                 <p className="text-xs text-secondaryText">
@@ -605,7 +605,7 @@ export const FeeSettingsPage: React.FC = () => {
                 <div className="text-xs font-semibold text-primary uppercase tracking-wider">
                   Final Calculated Quote
                 </div>
-                <div className="text-2xl font-serif font-bold text-ink mt-0.5 font-mono tabular-nums">
+                <div className="text-2xl font-heading font-bold text-ink mt-0.5 font-mono tabular-nums">
                   ₹{simulation.totalRupees.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                 </div>
 

@@ -325,7 +325,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
               {issue.title}
             </h1>
             <p className="text-xs text-secondaryText mt-1 flex items-center gap-1.5">
@@ -403,7 +403,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
         <div className="lg:col-span-2 space-y-6">
           {/* Issue Description & Evidence Photos */}
           <Card className="border border-border/80 bg-card rounded-card shadow-card p-6">
-            <h3 className="font-serif font-bold text-lg text-ink mb-2">Description & Incident Evidence</h3>
+            <h3 className="font-heading font-bold text-lg text-ink mb-2">Description & Incident Evidence</h3>
             <p className="text-sm text-secondaryText whitespace-pre-line leading-relaxed mb-6">
               {issue.description}
             </p>
@@ -451,7 +451,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-serif font-bold text-lg text-ink">
+                    <h3 className="font-heading font-bold text-lg text-ink">
                       Contractor Completion Proof & Quality Inspection
                     </h3>
                     <p className="text-xs text-secondaryText font-mono">
@@ -553,7 +553,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
                     <Wrench className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-serif font-bold text-sm text-ink">Active Certified Contractor</h3>
+                    <h3 className="font-heading font-bold text-sm text-ink">Active Certified Contractor</h3>
                     <p className="text-xs text-secondaryText">Assigned to resolve this civic incident</p>
                   </div>
                 </div>
@@ -593,7 +593,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
                     <Wrench className="w-4 h-4" />
                   </div>
                   <div>
-                    <h3 className="font-serif font-bold text-base text-ink">
+                    <h3 className="font-heading font-bold text-base text-ink">
                       Territory Contractor Assignment
                     </h3>
                     <p className="text-xs text-secondaryText">
@@ -625,7 +625,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
 
           {/* Issue Audit Timeline */}
           <Card className="border border-border/80 bg-card rounded-card shadow-card p-6">
-            <h3 className="font-serif font-bold text-base text-ink mb-1">
+            <h3 className="font-heading font-bold text-base text-ink mb-1">
               Operational Audit Timeline
             </h3>
             <p className="text-xs text-secondaryText mb-4">
@@ -642,7 +642,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
           <Card className="border border-border/80 bg-card rounded-card shadow-card p-6">
             <div className="flex items-center gap-2 mb-3">
               <ShieldAlert className="w-4 h-4 text-primary" />
-              <h3 className="font-serif font-bold text-sm text-ink">Priority Override</h3>
+              <h3 className="font-heading font-bold text-sm text-ink">Priority Override</h3>
             </div>
             <p className="text-xs text-secondaryText mb-4">
               Override machine suggested severity with operational administrative priority.
@@ -680,7 +680,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
           <Card className="border border-border/80 bg-card rounded-card shadow-card p-6">
             <div className="flex items-center gap-2 mb-3">
               <User className="w-4 h-4 text-primary" />
-              <h3 className="font-serif font-bold text-sm text-ink">Citizen Reporter</h3>
+              <h3 className="font-heading font-bold text-sm text-ink">Citizen Reporter</h3>
             </div>
 
             <div className="space-y-2.5 text-xs">
@@ -711,7 +711,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
           <Card className="border border-border/80 bg-card rounded-card shadow-card p-6">
             <div className="flex items-center gap-2 mb-3">
               <MapPin className="w-4 h-4 text-primary" />
-              <h3 className="font-serif font-bold text-sm text-ink">Incident Location</h3>
+              <h3 className="font-heading font-bold text-sm text-ink">Incident Location</h3>
             </div>
 
             <div className="space-y-2 text-xs">
@@ -743,7 +743,7 @@ export const AdminIssueDetailsPage: React.FC = () => {
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
                 <DollarSign className="w-4 h-4 text-primary" />
-                <h3 className="font-serif font-bold text-sm text-ink">Financial Ledger</h3>
+                <h3 className="font-heading font-bold text-sm text-ink">Financial Ledger</h3>
               </div>
               {issue.fee?.isManualQuote && (
                 <span className="text-xs font-bold px-2 py-0.5 rounded bg-primary/10 text-primary">

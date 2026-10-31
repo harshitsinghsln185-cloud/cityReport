@@ -59,7 +59,7 @@ export const ResolverEarnings: React.FC = () => {
             </span>
             <span className="text-xs font-mono text-secondaryText">Direct Bank Settlements</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
             Earnings & Disbursements Ledger
           </h1>
           <p className="mt-1 text-sm text-secondaryText">
@@ -103,7 +103,7 @@ export const ResolverEarnings: React.FC = () => {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-3xl font-serif font-bold text-ink font-mono tabular-nums">
+            <span className="text-3xl font-heading font-bold text-ink font-mono tabular-nums">
               {summary ? `₹${summary.totalEarningsINR}` : '₹0.00'}
             </span>
           </div>
@@ -123,7 +123,7 @@ export const ResolverEarnings: React.FC = () => {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-3xl font-serif font-bold text-amber-800 font-mono tabular-nums">
+            <span className="text-3xl font-heading font-bold text-amber-800 font-mono tabular-nums">
               {summary ? `₹${summary.pendingPayoutINR}` : '₹0.00'}
             </span>
           </div>
@@ -143,7 +143,7 @@ export const ResolverEarnings: React.FC = () => {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-3xl font-serif font-bold text-ink font-mono tabular-nums">
+            <span className="text-3xl font-heading font-bold text-ink font-mono tabular-nums">
               {summary?.completedTasksCount ?? 0}
             </span>
           </div>
@@ -162,7 +162,7 @@ export const ResolverEarnings: React.FC = () => {
                 <Receipt className="h-4 w-4" />
               </div>
               <div>
-                <h2 className="text-base font-serif font-bold text-ink">Disbursement Ledger</h2>
+                <h2 className="text-base font-heading font-bold text-ink">Disbursement Ledger</h2>
                 <p className="text-xs text-secondaryText">Individual transaction breakdowns and commission deductions</p>
               </div>
             </div>

@@ -66,7 +66,7 @@ export const FinanceOverview: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink">
+          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink">
             Municipal Finance & Operations Overview
           </h1>
           <p className="mt-1 text-sm text-secondaryText">
@@ -149,7 +149,7 @@ export const FinanceOverview: React.FC = () => {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-3xl font-serif font-bold text-ink font-mono tabular-nums">
+            <span className="text-3xl font-heading font-bold text-ink font-mono tabular-nums">
               {metrics ? `₹${metrics.gmvINR}` : '₹0.00'}
             </span>
           </div>
@@ -169,7 +169,7 @@ export const FinanceOverview: React.FC = () => {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-3xl font-serif font-bold text-emerald-700 font-mono tabular-nums">
+            <span className="text-3xl font-heading font-bold text-emerald-700 font-mono tabular-nums">
               {metrics ? `₹${metrics.commissionEarnedINR}` : '₹0.00'}
             </span>
           </div>
@@ -189,7 +189,7 @@ export const FinanceOverview: React.FC = () => {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-3xl font-serif font-bold text-amber-700 font-mono tabular-nums">
+            <span className="text-3xl font-heading font-bold text-amber-700 font-mono tabular-nums">
               {metrics ? `₹${metrics.pendingPayoutsINR}` : '₹0.00'}
             </span>
           </div>
@@ -209,7 +209,7 @@ export const FinanceOverview: React.FC = () => {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-3xl font-serif font-bold text-ink font-mono tabular-nums">
+            <span className="text-3xl font-heading font-bold text-ink font-mono tabular-nums">
               {metrics ? `₹${metrics.paidPayoutsINR}` : '₹0.00'}
             </span>
           </div>
@@ -225,7 +225,7 @@ export const FinanceOverview: React.FC = () => {
           <div className="flex items-center justify-between border-b border-border/60 pb-4">
             <div className="flex items-center gap-2">
               <CreditCard className="h-5 w-5 text-primary" />
-              <h3 className="font-serif font-bold text-ink">Payment Collection Breakdown</h3>
+              <h3 className="font-heading font-bold text-ink">Payment Collection Breakdown</h3>
             </div>
             <Link
               to="/admin/finance/payments"
@@ -280,7 +280,7 @@ export const FinanceOverview: React.FC = () => {
           <div className="flex items-center justify-between border-b border-border/60 pb-4">
             <div className="flex items-center gap-2">
               <Receipt className="h-5 w-5 text-primary" />
-              <h3 className="font-serif font-bold text-ink">Contractor Payout Status</h3>
+              <h3 className="font-heading font-bold text-ink">Contractor Payout Status</h3>
             </div>
             <Link
               to="/admin/finance/payouts"

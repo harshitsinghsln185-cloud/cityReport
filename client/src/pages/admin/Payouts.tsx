@@ -83,7 +83,7 @@ export const AdminPayouts: React.FC = () => {
             <span className="text-xs text-secondaryText">/</span>
             <span className="text-xs text-secondaryText font-mono">Payouts</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink mt-1">
+          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink mt-1">
             Contractor Payouts & Disbursal
           </h1>
           <p className="text-sm text-secondaryText">

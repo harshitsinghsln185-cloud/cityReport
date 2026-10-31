@@ -135,7 +135,7 @@ export const AdminUsersPage: React.FC = () => {
             </span>
             <span className="text-xs text-secondaryText font-mono">Total: {meta.total} registered users</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink">
+          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink">
             User & Account Directory
           </h1>
           <p className="text-sm text-secondaryText mt-0.5">

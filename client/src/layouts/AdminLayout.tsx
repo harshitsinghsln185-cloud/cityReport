@@ -179,7 +179,7 @@ export const AdminLayout: React.FC = () => {
                 Secretariat Admin
               </div>
             </div>
-            <div className="w-8 h-8 rounded-xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center font-bold text-xs font-serif">
+            <div className="w-8 h-8 rounded-xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center font-bold text-xs font-heading">
               {user?.name ? user.name.charAt(0).toUpperCase() : 'A'}
             </div>
           </div>

@@ -52,7 +52,7 @@ export const ResolverCompletedHistoryPage: React.FC = () => {
               Repairs Logged: {tasks.length}
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink tracking-tight">
             Completed Repairs History
           </h1>
           <p className="text-sm text-secondaryText mt-1">
@@ -127,7 +127,7 @@ export const ResolverCompletedHistoryPage: React.FC = () => {
                       </span>
                     </div>
 
-                    <h2 className="font-serif font-bold text-xl text-ink group-hover:text-primary transition-colors">
+                    <h2 className="font-heading font-bold text-xl text-ink group-hover:text-primary transition-colors">
                       {task.title}
                     </h2>
 

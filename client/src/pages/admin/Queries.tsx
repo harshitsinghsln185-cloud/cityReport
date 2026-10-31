@@ -90,7 +90,7 @@ export const Queries: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-ink">
+          <h1 className="text-2xl sm:text-3xl font-heading font-bold text-ink">
             Citizen Inquiries & Queries
           </h1>
           <p className="text-sm text-secondaryText">
@@ -212,7 +212,7 @@ export const Queries: React.FC = () => {
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-bold text-sm text-ink">
+                  <h3 className="font-heading font-bold text-sm text-ink">
                     {activeReplyQuery.status === 'Replied' ? 'Inquiry Details' : 'Reply to Citizen'}
                   </h3>
                   <p className="text-xs text-secondaryText font-mono">{activeReplyQuery.email}</p>
