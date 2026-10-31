@@ -103,17 +103,17 @@ export const Home: React.FC = () => {
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <MapPin className="w-4 h-4 text-primary" />
-                <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                <span className="font-body text-xs font-bold uppercase tracking-wider text-primary">
                   Pan-India Coverage
                 </span>
               </div>
-              <h2 className="font-heading font-extrabold text-2xl text-ink tracking-tight">
+              <h2 className="font-body font-bold text-2xl text-ink tracking-tight">
                 Select Your State or Territory
               </h2>
             </div>
             <Button
               to="/states"
-              variant="outline"
+              variant="gold"
               size="sm"
               rightIcon={<ArrowRight className="w-4 h-4" />}
             >
@@ -137,7 +137,7 @@ export const Home: React.FC = () => {
                   </span>
                   <ExternalLink className="w-3 h-3 text-muted" />
                 </div>
-                <span className="font-heading font-bold text-sm text-ink truncate w-full">
+                <span className="font-body font-bold text-sm text-ink truncate w-full">
                   {st.name}
                 </span>
               </Button>
