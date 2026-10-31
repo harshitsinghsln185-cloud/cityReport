@@ -259,9 +259,12 @@ export const StateDetail: React.FC = () => {
                 </span>
               </div>
 
-              {/* State Name Heading */}
-              <h1 className="text-3xl sm:text-5xl font-heading font-extrabold text-white mb-2 tracking-tight leading-[1.12]">
-                {stateData.name}
+              {/* State Name Heading with Balanced Dual-Color */}
+              <h1 className="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight leading-[1.14] mb-3 text-white">
+                <span className="block">{stateData.name}</span>
+                <span className="block bg-gradient-to-r from-accent via-[#F2D399] to-white bg-clip-text text-transparent text-2xl sm:text-4xl mt-1">
+                  Civic Infrastructure & Resolution
+                </span>
               </h1>
 
               {/* Capital City Line with MapPin Icon */}

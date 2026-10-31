@@ -176,7 +176,8 @@ export const StatesDirectory: React.FC = () => {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'States & Union Territories' }]}
         eyebrow="Nationwide Civic Infrastructure"
         eyebrowIcon={<MapPin className="w-3.5 h-3.5" />}
-        title="Monitor Municipal Health Across 36 Indian Regions"
+        title="Monitor Municipal Health"
+        highlightedTitle="Across 36 Indian Regions"
         description="Access certified resolver networks, localized civic priorities, landmark photographic banners, and verified proof in all 28 states and 8 union territories with standardized pricing lists."
         primaryAction={
           <a href="#zone-switcher">

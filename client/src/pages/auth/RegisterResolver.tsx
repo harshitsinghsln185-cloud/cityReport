@@ -212,7 +212,8 @@ export const RegisterResolver: React.FC = () => {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Contractor Accreditation' }]}
         eyebrow="Municipal Contractor Accreditation"
         eyebrowIcon={<Wrench className="w-3.5 h-3.5" />}
-        title="Join the Certified Municipal Resolver Network"
+        title="Join the Certified"
+        highlightedTitle="Municipal Resolver Network"
         description="Receive proximity-dispatched municipal work orders, guaranteed 50% advance milestone payouts, and verifiable public reputation in your local district."
         visual={
           <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">

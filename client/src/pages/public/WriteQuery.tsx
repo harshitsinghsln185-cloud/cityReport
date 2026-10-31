@@ -107,7 +107,8 @@ export const WriteQuery: React.FC = () => {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Help Desk & Inquiries' }]}
         eyebrow="Official Civic Liaison Office"
         eyebrowIcon={<Mail className="w-3.5 h-3.5" />}
-        title="Direct Inquiries to Municipal Secretariat"
+        title="Direct Civic Inquiries"
+        highlightedTitle="to Municipal Secretariat"
         description="Submit formal inquiries regarding ward jurisdiction coverage, contractor accreditation standards, fee tariffs, or commercial tax invoices with guaranteed 24-48h response SLA."
         visual={
           <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">

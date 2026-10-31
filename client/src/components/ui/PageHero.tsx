@@ -101,19 +101,72 @@ export const PageHero: React.FC<PageHeroProps> = ({
     </div>
   );
 
-  // Title rendering with optional gold highlight
+  // Title rendering with dual-color styling (pure white + signature warm gold gradient)
+  const renderTitleContent = () => {
+    if (highlightedTitle) {
+      return (
+        <>
+          <span className="block">{title}</span>
+          <span
+            className={`block mt-1 ${
+              isNavy
+                ? 'bg-gradient-to-r from-accent via-[#F2D399] to-white bg-clip-text text-transparent'
+                : 'text-gold-text'
+            }`}
+          >
+            {highlightedTitle}
+          </span>
+        </>
+      );
+    }
+
+    if (typeof title === 'string' && isNavy) {
+      // Automatic split for dual color if natural separator exists
+      let primary = title;
+      let secondary: string | null = null;
+
+      if (title.includes(' & ')) {
+        const parts = title.split(' & ');
+        primary = parts[0];
+        secondary = `& ${parts.slice(1).join(' & ')}`;
+      } else if (title.includes(', ')) {
+        const idx = title.indexOf(', ');
+        primary = title.slice(0, idx + 1);
+        secondary = title.slice(idx + 2);
+      } else if (title.includes(' Across ')) {
+        const parts = title.split(' Across ');
+        primary = parts[0];
+        secondary = `Across ${parts.slice(1).join(' Across ')}`;
+      } else if (title.includes(' to ')) {
+        const parts = title.split(' to ');
+        primary = parts[0];
+        secondary = `to ${parts.slice(1).join(' to ')}`;
+      }
+
+      if (secondary) {
+        return (
+          <>
+            <span className="block">{primary}</span>
+            <span className="block bg-gradient-to-r from-accent via-[#F2D399] to-white bg-clip-text text-transparent mt-1">
+              {secondary}
+            </span>
+          </>
+        );
+      }
+    }
+
+    return title;
+  };
+
   const titleEl = (
     <h1
       className={`font-heading font-extrabold tracking-tight ${
         variant === 'compact'
           ? 'text-2xl sm:text-3xl lg:text-4xl'
-          : 'text-3xl sm:text-4xl lg:text-5xl leading-[1.12]'
+          : 'text-3xl sm:text-4xl lg:text-5xl leading-[1.14]'
       } ${isNavy ? 'text-white' : 'text-ink'}`}
     >
-      {title}
-      {highlightedTitle && (
-        <span className="block text-gold mt-1">{highlightedTitle}</span>
-      )}
+      {renderTitleContent()}
     </h1>
   );
 

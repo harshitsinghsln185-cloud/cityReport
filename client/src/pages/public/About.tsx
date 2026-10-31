@@ -71,7 +71,8 @@ export const About: React.FC = () => {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About & Governance' }]}
         eyebrow="Civic Problem Reporting"
         eyebrowIcon={<Lock className="w-3.5 h-3.5" />}
-        title="Built for Transparency, Backed by Milestone Payments"
+        title="Built for Transparency,"
+        highlightedTitle="Backed by Milestone Payments"
         description="Crowd Report bridges the divide between citizens dealing with hazardous neighborhood defects and certified local contractors through transparent pricing and double-verified photographic proof."
         primaryAction={
           <a href="#operating-model">

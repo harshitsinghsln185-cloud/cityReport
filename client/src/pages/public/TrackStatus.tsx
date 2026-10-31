@@ -131,7 +131,8 @@ export const TrackStatus: React.FC = () => {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Track Issue Status' }]}
         eyebrow="Public Verification Ledger"
         eyebrowIcon={<Clock className="w-3.5 h-3.5" />}
-        title="Inspect Live Remediation & Milestone Progress"
+        title="Inspect Live Remediation"
+        highlightedTitle="& Milestone Progress"
         description="Enter your unique tracking reference code to audit contractor dispatch timestamps, before/after photographic proof, and milestone completion receipts in real time."
         visual={
           <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">

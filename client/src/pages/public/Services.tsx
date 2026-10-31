@@ -124,7 +124,8 @@ export const Services: React.FC = () => {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Services Directory' }]}
         eyebrow="Certified Municipal Catalog"
         eyebrowIcon={<Wrench className="w-3.5 h-3.5" />}
-        title="Public Infrastructure Repair & Tariff Directory"
+        title="Public Infrastructure Repair"
+        highlightedTitle="& Standard Tariff Directory"
         description="Transparent base tariffs, 48h response SLAs, and direct contractor dispatch for road repairs, streetlights, drainage, and waste management across 36 Indian regions."
         primaryAction={
           <Button to="/user/report-issue" variant="gold" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
