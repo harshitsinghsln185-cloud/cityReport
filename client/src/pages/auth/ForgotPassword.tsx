@@ -68,19 +68,20 @@ export const ForgotPassword: React.FC = () => {
       ) : (
         <>
           {errorMessage && (
-            <div className="mb-6 p-3.5 rounded-card bg-red-50 border border-red-200 flex items-start gap-2.5 text-xs text-red-900 animate-fadeIn">
+            <div className="mb-6 p-4 rounded-xl bg-red-50/90 border border-red-200 flex items-start gap-3 text-xs sm:text-sm text-red-900 animate-fadeIn">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />
               <span className="leading-relaxed">{errorMessage}</span>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <Input
               label="Registered Email Address"
               type="email"
               required
-              placeholder="name@example.com"
-              leftIcon={<Mail className="w-4 h-4 text-muted" />}
+              placeholder="you@company.com"
+              helperText="We will send a secure password reset link to this address"
+              leftIcon={<Mail className="w-4 h-4 text-slate-400" />}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -88,7 +89,7 @@ export const ForgotPassword: React.FC = () => {
             <Button
               type="submit"
               variant="primary"
-              className="w-full mt-2"
+              className="w-full h-12 rounded-xl text-base font-bold shadow-md shadow-primary/20 hover:shadow-lg transition-all mt-3"
               isLoading={isLoading}
               rightIcon={<Send className="w-4 h-4" />}
             >
@@ -96,10 +97,10 @@ export const ForgotPassword: React.FC = () => {
             </Button>
           </form>
 
-          <div className="mt-8 pt-6 border-t border-border text-center">
+          <div className="mt-8 pt-6 border-t border-slate-100 text-center">
             <Link
               to="/login"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primaryDark transition-colors"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-primary hover:underline transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Sign In</span>

@@ -79,7 +79,7 @@ export const ResetPassword: React.FC = () => {
       ) : (
         <>
           {(!token || errorMessage) && (
-            <div className="mb-6 p-3.5 rounded-card bg-red-50 border border-red-200 flex items-start gap-2.5 text-xs text-red-900 animate-fadeIn">
+            <div className="mb-6 p-4 rounded-xl bg-red-50/90 border border-red-200 flex items-start gap-3 text-xs sm:text-sm text-red-900 animate-fadeIn">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />
               <span className="leading-relaxed">
                 {!token
@@ -89,14 +89,14 @@ export const ResetPassword: React.FC = () => {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <Input
               label="New Password"
               type="password"
               required
               showPasswordToggle
               placeholder="Min 8 characters"
-              leftIcon={<Lock className="w-4 h-4 text-muted" />}
+              leftIcon={<Lock className="w-4 h-4 text-slate-400" />}
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
             />
@@ -107,7 +107,7 @@ export const ResetPassword: React.FC = () => {
               required
               showPasswordToggle
               placeholder="Re-enter new password"
-              leftIcon={<Lock className="w-4 h-4 text-muted" />}
+              leftIcon={<Lock className="w-4 h-4 text-slate-400" />}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
@@ -115,7 +115,7 @@ export const ResetPassword: React.FC = () => {
             <Button
               type="submit"
               variant="primary"
-              className="w-full mt-2"
+              className="w-full h-12 rounded-xl text-base font-bold shadow-md shadow-primary/20 hover:shadow-lg transition-all mt-3"
               isLoading={isLoading}
               disabled={!token}
               rightIcon={<ArrowRight className="w-4 h-4" />}
@@ -124,12 +124,12 @@ export const ResetPassword: React.FC = () => {
             </Button>
           </form>
 
-          <div className="mt-8 pt-6 border-t border-border text-center">
+          <div className="mt-8 pt-6 border-t border-slate-100 text-center">
             <Link
               to="/login"
-              className="text-xs font-semibold text-primary hover:text-primaryDark transition-colors"
+              className="text-xs sm:text-sm font-bold text-primary hover:underline transition-colors"
             >
-              Return to Sign In
+              Back to Sign In
             </Link>
           </div>
         </>

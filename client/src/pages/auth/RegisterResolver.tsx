@@ -17,7 +17,6 @@ import categoryService, { Category, DEFAULT_CIVIC_CATEGORIES } from '../../servi
 import resolverService from '../../services/resolver.service';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
-import Card from '../../components/ui/Card';
 import Badge from '../../components/ui/Badge';
 import MapPicker from '../../components/MapPicker';
 import ImageUploader from '../../components/ImageUploader';
@@ -239,10 +238,10 @@ export const RegisterResolver: React.FC = () => {
         }
       />
 
-      <div className="max-w-3xl mx-auto py-10 sm:py-14 px-4 sm:px-6 lg:px-8 space-y-8">
+      <div className="max-w-4xl mx-auto py-10 sm:py-14 px-4 sm:px-6 lg:px-8 space-y-8">
 
         {/* Step Progress Bar */}
-        <div className="grid grid-cols-4 gap-2 sm:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4">
           {steps.map((st) => {
             const Icon = st.icon;
             const isCompleted = currentStep > st.number;
@@ -250,26 +249,26 @@ export const RegisterResolver: React.FC = () => {
             return (
               <div
                 key={st.number}
-                className={`flex flex-col sm:flex-row items-center gap-2 p-3 rounded-card border text-xs font-semibold transition-all ${
+                className={`flex items-center gap-2.5 p-3 sm:p-3.5 rounded-xl border text-xs font-bold transition-all ${
                   isCurrent
-                    ? 'border-primary bg-white text-primary shadow-xs ring-1 ring-primary/20'
+                    ? 'border-primary bg-primary text-white shadow-sm shadow-primary/25'
                     : isCompleted
-                    ? 'border-emerald-300 bg-emerald-50/60 text-emerald-700'
-                    : 'border-border bg-white/70 text-secondaryText'
+                    ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
+                    : 'border-slate-200 bg-white text-slate-500'
                 }`}
               >
                 <div
                   className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 ${
                     isCurrent
-                      ? 'bg-primary text-white shadow-xs'
+                      ? 'bg-white text-primary'
                       : isCompleted
                       ? 'bg-emerald-600 text-white'
-                      : 'bg-primary/10 text-primary'
+                      : 'bg-slate-100 text-slate-600'
                   }`}
                 >
                   {isCompleted ? <CheckCircle2 className="w-4 h-4" /> : <Icon className="w-3.5 h-3.5" />}
                 </div>
-                <span className="hidden sm:inline">{st.title}</span>
+                <span className="truncate">{st.title}</span>
               </div>
             );
           })}
@@ -277,23 +276,23 @@ export const RegisterResolver: React.FC = () => {
 
         {/* Error Notification */}
         {errorMessage && (
-          <div className="p-4 bg-red-50 border border-red-200 text-red-900 rounded-card text-xs flex items-center gap-2.5 animate-fadeIn">
-            <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
-            <span>{errorMessage}</span>
+          <div className="p-4 bg-red-50/90 border border-red-200 text-red-900 rounded-xl text-xs sm:text-sm flex items-start gap-3 animate-fadeIn">
+            <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+            <span className="leading-relaxed">{errorMessage}</span>
           </div>
         )}
 
         {/* Form Container */}
-        <Card className="p-6 sm:p-10 shadow-card">
+        <div className="bg-white rounded-2xl sm:rounded-[24px] border border-slate-200/90 shadow-xl shadow-slate-200/50 p-6 sm:p-10">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Step 1: Personal Credentials */}
             {currentStep === 1 && (
               <div className="space-y-4">
-                <div className="border-b border-border pb-3 mb-4">
-                  <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
+                <div className="border-b border-slate-100 pb-3 mb-4">
+                  <h2 className="font-heading font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight">
                     Step 1: Contractor Credentials
                   </h2>
-                  <p className="text-xs text-secondaryText">
+                  <p className="text-xs text-slate-500 mt-1">
                     Enter your contact details and secure login password.
                   </p>
                 </div>
@@ -352,51 +351,53 @@ export const RegisterResolver: React.FC = () => {
             {/* Step 2: Skill Categories */}
             {currentStep === 2 && (
               <div className="space-y-4">
-                <div className="border-b border-border pb-3 mb-4">
-                  <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
+                <div className="border-b border-slate-100 pb-3 mb-4">
+                  <h2 className="font-heading font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight">
                     Step 2: Skills & Trade Classifications
                   </h2>
-                  <p className="text-xs text-secondaryText">
+                  <p className="text-xs text-slate-500 mt-1">
                     Select all civic issue types you and your crew are equipped to repair.
                   </p>
                 </div>
 
                 {categoriesLoading ? (
-                  <div className="py-8 text-center text-xs text-secondaryText">
+                  <div className="py-8 text-center text-xs text-slate-500">
                     Loading registered categories...
                   </div>
                 ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-h-[380px] overflow-y-auto pr-1">
                     {categories.map((cat) => {
                       const isSelected = formData.selectedSkills.includes(cat._id);
                       return (
                         <div
                           key={cat._id}
                           onClick={() => handleSkillToggle(cat._id)}
-                          className={`p-4 rounded-card border cursor-pointer transition-all flex items-start gap-3 select-none ${
+                          className={`p-4 rounded-xl border cursor-pointer transition-all flex items-start gap-3 select-none ${
                             isSelected
-                              ? 'border-primary bg-primary/5 shadow-xs ring-1 ring-primary/20'
-                              : 'border-border bg-white hover:border-borderHover hover:bg-canvas'
+                              ? 'border-primary bg-primary/5 shadow-sm ring-2 ring-primary/20'
+                              : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-xs'
                           }`}
                         >
                           <input
                             type="checkbox"
                             checked={isSelected}
                             onChange={() => {}}
-                            className="w-4 h-4 mt-0.5 accent-primary rounded"
+                            className="w-4 h-4 mt-0.5 accent-primary rounded cursor-pointer shrink-0"
                           />
-                          <div>
-                            <div className="font-semibold text-xs sm:text-sm text-ink">
+                          <div className="flex-1 min-w-0">
+                            <div className="font-bold text-sm text-slate-900 truncate">
                               {cat.name}
                             </div>
-                            <div className="text-xs text-secondaryText mt-0.5 line-clamp-2">
+                            <div className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
                               {cat.description}
                             </div>
-                            <div className="text-xs font-bold text-primary mt-1.5 flex items-center gap-1">
-                              <span>Base tariff: ₹{(cat.baseFeePaise / 100).toLocaleString('en-IN')}</span>
-                              <span className="text-muted">•</span>
-                              <span className="text-muted font-normal flex items-center gap-1">
-                                <Clock className="w-3 h-3" />
+                            <div className="text-xs font-bold text-slate-700 mt-2.5 flex items-center gap-2">
+                              <span className="bg-slate-100 text-slate-800 px-2 py-0.5 rounded text-[11px]">
+                                Base tariff: ₹{(cat.baseFeePaise / 100).toLocaleString('en-IN')}
+                              </span>
+                              <span className="text-slate-300">•</span>
+                              <span className="text-slate-500 font-medium flex items-center gap-1 text-[11px]">
+                                <Clock className="w-3 h-3 text-slate-400" />
                                 {cat.estimatedResolutionHours || 48}h SLA
                               </span>
                             </div>
@@ -412,11 +413,11 @@ export const RegisterResolver: React.FC = () => {
             {/* Step 3: Map Pin & Coverage Area */}
             {currentStep === 3 && (
               <div className="space-y-4">
-                <div className="border-b border-border pb-3 mb-4">
-                  <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
+                <div className="border-b border-slate-100 pb-3 mb-4">
+                  <h2 className="font-heading font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight">
                     Step 3: Service Territory & Coverage Radius
                   </h2>
-                  <p className="text-xs text-secondaryText">
+                  <p className="text-xs text-slate-500 mt-1">
                     Drop a pin at your operational headquarters and calibrate your maximum dispatch radius.
                   </p>
                 </div>
@@ -429,10 +430,10 @@ export const RegisterResolver: React.FC = () => {
                   required
                 />
 
-                <div className="space-y-2 p-4 bg-canvas rounded-card border border-border">
-                  <div className="flex justify-between text-xs font-semibold text-ink">
+                <div className="space-y-3 p-5 bg-slate-50 rounded-2xl border border-slate-200">
+                  <div className="flex justify-between items-center text-xs sm:text-sm font-bold text-slate-900">
                     <span>Coverage Radius</span>
-                    <span className="text-primary font-bold">
+                    <span className="text-primary font-black text-sm sm:text-base bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
                       {formData.serviceRadiusKm} km radius
                     </span>
                   </div>
@@ -448,9 +449,9 @@ export const RegisterResolver: React.FC = () => {
                         serviceRadiusKm: parseInt(e.target.value, 10) || 10,
                       }))
                     }
-                    className="w-full accent-primary"
+                    className="w-full accent-primary h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                   />
-                  <div className="flex justify-between text-xs text-muted">
+                  <div className="flex justify-between text-xs text-slate-500 font-medium">
                     <span>1 km (Hyperlocal)</span>
                     <span>25 km (Ward)</span>
                     <span>50 km (Metropolitan)</span>
@@ -458,7 +459,7 @@ export const RegisterResolver: React.FC = () => {
                 </div>
 
                 <div className="pt-2">
-                  <label className="block text-xs font-semibold text-ink mb-1.5">
+                  <label className="block text-sm font-bold text-slate-900 tracking-tight mb-2 select-none">
                     Interactive Headquarters Pin (Geospatial 2dsphere)
                   </label>
                   <MapPicker
@@ -470,7 +471,7 @@ export const RegisterResolver: React.FC = () => {
                     }
                     height="320px"
                   />
-                  <p className="text-xs text-muted mt-1 tabular-nums">
+                  <p className="text-xs text-slate-500 mt-1.5 tabular-nums">
                     Lat/Lng: {formData.lat.toFixed(5)}, {formData.lng.toFixed(5)}
                   </p>
                 </div>
@@ -480,16 +481,16 @@ export const RegisterResolver: React.FC = () => {
             {/* Step 4: ID Verification */}
             {currentStep === 4 && (
               <div className="space-y-5">
-                <div className="border-b border-border pb-3 mb-4">
-                  <h2 className="font-heading font-bold text-base sm:text-lg text-ink">
+                <div className="border-b border-slate-100 pb-3 mb-4">
+                  <h2 className="font-heading font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight">
                     Step 4: Government ID Proof & Credential Verification
                   </h2>
-                  <p className="text-xs text-secondaryText">
+                  <p className="text-xs text-slate-500 mt-1">
                     Upload an authentic government identification document (Aadhaar, Voter ID, or Trade License).
                   </p>
                 </div>
 
-                <div className="p-4 bg-amber-50 border border-amber-200 rounded-card text-amber-900 text-xs flex items-start gap-2.5">
+                <div className="p-4 bg-amber-50/90 border border-amber-200 rounded-xl text-amber-900 text-xs sm:text-sm flex items-start gap-3">
                   <ShieldCheck className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                   <div>
                     <strong>Data Privacy & Storage Security:</strong> Government ID proofs are stored in authenticated Cloudinary vaults and are only accessible by platform administrators through time-limited cryptographic signed URLs.
@@ -497,7 +498,7 @@ export const RegisterResolver: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-ink mb-1.5">
+                  <label className="block text-sm font-bold text-slate-900 tracking-tight mb-2 select-none">
                     Government ID Document (Required, Max 5MB)
                   </label>
                   <ImageUploader
@@ -514,7 +515,7 @@ export const RegisterResolver: React.FC = () => {
                 </div>
 
                 <div className="pt-2">
-                  <label className="block text-xs font-semibold text-ink mb-1.5">
+                  <label className="block text-sm font-bold text-slate-900 tracking-tight mb-2 select-none">
                     Contractor Profile Photo / Company Logo (Optional)
                   </label>
                   <ImageUploader
@@ -527,18 +528,19 @@ export const RegisterResolver: React.FC = () => {
             )}
 
             {/* Navigation Buttons */}
-            <div className="flex items-center justify-between pt-4 border-t border-border">
+            <div className="flex items-center justify-between pt-4 border-t border-slate-100">
               {currentStep > 1 ? (
                 <Button
                   type="button"
                   variant="outline"
+                  className="h-12 px-5 rounded-xl font-bold text-slate-700 border-slate-200 hover:bg-slate-50"
                   onClick={handleBack}
                   leftIcon={<ArrowLeft className="w-4 h-4" />}
                 >
                   Back
                 </Button>
               ) : (
-                <Link to="/login" className="text-xs font-semibold text-primary hover:text-primaryDark transition-colors">
+                <Link to="/login" className="text-xs sm:text-sm font-bold text-primary hover:underline transition-colors">
                   Already registered? Sign In
                 </Link>
               )}
@@ -547,6 +549,7 @@ export const RegisterResolver: React.FC = () => {
                 <Button
                   type="button"
                   variant="primary"
+                  className="h-12 px-6 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-primary/20 hover:shadow-lg transition-all"
                   onClick={handleNext}
                   rightIcon={<ArrowRight className="w-4 h-4" />}
                 >
@@ -559,14 +562,14 @@ export const RegisterResolver: React.FC = () => {
                   isLoading={loading}
                   disabled={!idProofFile}
                   leftIcon={<ShieldCheck className="w-4 h-4" />}
-                  className="px-6 shadow-xs"
+                  className="h-12 px-6 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-primary/20 hover:shadow-lg transition-all"
                 >
                   Submit Application for Review
                 </Button>
               )}
             </div>
           </form>
-        </Card>
+        </div>
       </div>
     </div>
   );

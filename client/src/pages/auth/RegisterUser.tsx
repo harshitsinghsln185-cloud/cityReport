@@ -146,23 +146,24 @@ export const RegisterUser: React.FC = () => {
         robots="noindex, follow"
       />
       {errorMessage && (
-        <div className="mb-6 p-3.5 rounded-card bg-red-50 border border-red-200 flex items-start gap-2.5 text-xs text-red-900 animate-fadeIn">
+        <div className="mb-6 p-4 rounded-xl bg-red-50/90 border border-red-200 flex items-start gap-3 text-xs sm:text-sm text-red-900 animate-fadeIn">
           <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />
           <span className="leading-relaxed">{errorMessage}</span>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <div className="text-xs font-bold text-muted uppercase tracking-wider mb-2.5">
-            1. Personal Credentials
+          <div className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3 flex items-center gap-2">
+            <User className="w-4 h-4 text-primary" />
+            <span>1. Personal Credentials</span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
               label="Full Legal Name"
               required
               placeholder="e.g. Ramesh Kumar"
-              leftIcon={<User className="w-4 h-4 text-muted" />}
+              leftIcon={<User className="w-4 h-4 text-slate-400" />}
               value={formData.name}
               error={fieldErrors.name}
               onChange={(e) => handleChange('name', e.target.value)}
@@ -171,7 +172,7 @@ export const RegisterUser: React.FC = () => {
               label="Mobile Number"
               required
               placeholder="10-digit number"
-              leftIcon={<Phone className="w-4 h-4 text-muted" />}
+              leftIcon={<Phone className="w-4 h-4 text-slate-400" />}
               value={formData.phone}
               error={fieldErrors.phone}
               onChange={(e) => handleChange('phone', e.target.value)}
@@ -181,7 +182,7 @@ export const RegisterUser: React.FC = () => {
               type="email"
               required
               placeholder="name@example.com"
-              leftIcon={<Mail className="w-4 h-4 text-muted" />}
+              leftIcon={<Mail className="w-4 h-4 text-slate-400" />}
               value={formData.email}
               error={fieldErrors.email}
               onChange={(e) => handleChange('email', e.target.value)}
@@ -192,7 +193,7 @@ export const RegisterUser: React.FC = () => {
               required
               showPasswordToggle
               placeholder="Min 8 characters"
-              leftIcon={<Lock className="w-4 h-4 text-muted" />}
+              leftIcon={<Lock className="w-4 h-4 text-slate-400" />}
               value={formData.password}
               error={fieldErrors.password}
               onChange={(e) => handleChange('password', e.target.value)}
@@ -200,22 +201,23 @@ export const RegisterUser: React.FC = () => {
           </div>
         </div>
 
-        <div className="pt-2 border-t border-border">
-          <div className="text-xs font-bold text-muted uppercase tracking-wider mb-2.5">
-            2. Residential Ward Address
+        <div className="pt-2 border-t border-slate-100">
+          <div className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3 flex items-center gap-2">
+            <MapPin className="w-4 h-4 text-primary" />
+            <span>2. Residential Ward Address</span>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-4">
             <Input
               label="Street Address / House No. / Landmark"
               required
               placeholder="e.g. 42, 4th Cross, 8th Main Road, Indiranagar"
-              leftIcon={<MapPin className="w-4 h-4 text-muted" />}
+              leftIcon={<MapPin className="w-4 h-4 text-slate-400" />}
               value={formData.address.street}
               error={fieldErrors['address.street']}
               onChange={(e) => handleChange('address.street', e.target.value)}
             />
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <Input
                 label="City / Town"
                 required
@@ -247,7 +249,7 @@ export const RegisterUser: React.FC = () => {
         <Button
           type="submit"
           variant="primary"
-          className="w-full mt-2"
+          className="w-full h-12 rounded-xl text-base font-bold shadow-md shadow-primary/20 hover:shadow-lg transition-all mt-4"
           isLoading={isLoading}
           rightIcon={<ArrowRight className="w-4 h-4" />}
         >
@@ -255,16 +257,16 @@ export const RegisterUser: React.FC = () => {
         </Button>
       </form>
 
-      <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between text-xs text-secondaryText gap-2 text-center sm:text-left">
+      <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm text-slate-500 gap-2 text-center sm:text-left">
         <div>
           Already registered?{' '}
-          <Link to="/login" className="font-bold text-primary hover:text-primaryDark transition-colors">
+          <Link to="/login" className="font-bold text-primary hover:underline transition-colors">
             Sign In
           </Link>
         </div>
         <div>
           Licensed contractor?{' '}
-          <Link to="/register-resolver" className="font-bold text-primary hover:text-primaryDark transition-colors">
+          <Link to="/register-resolver" className="font-bold text-primary hover:underline transition-colors">
             Register as Resolver
           </Link>
         </div>

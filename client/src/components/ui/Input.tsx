@@ -38,15 +38,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
       {label && (
         <label
           htmlFor={inputId}
-          className="block text-xs font-semibold text-ink mb-1.5"
+          className="block text-sm font-bold text-slate-900 tracking-tight mb-2 select-none"
         >
-          {label} {required && <span className="text-red-700">*</span>}
+          {label} {required && <span className="text-red-600 font-semibold">*</span>}
         </label>
       )}
 
-      <div className="relative rounded-lg shadow-xs">
+      <div className="relative rounded-xl">
         {leftIcon && (
-          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-muted">
+          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
             {leftIcon}
           </div>
         )}
@@ -60,15 +60,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
           aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : helperText ? helperId : undefined}
           className={`
-            block w-full rounded-xl text-xs sm:text-sm bg-white border transition-all duration-150 h-12 min-h-[48px]
-            focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-0 disabled:bg-canvas disabled:text-muted disabled:cursor-not-allowed
+            block w-full rounded-xl text-sm sm:text-base bg-white border transition-all duration-200 h-12 min-h-[48px]
+            placeholder:text-slate-400 text-slate-900 font-medium
+            focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 disabled:bg-slate-50 disabled:text-slate-400 disabled:cursor-not-allowed
             ${leftIcon ? 'pl-11' : 'pl-4'}
             ${rightIcon || (isPassword && showPasswordToggle) ? 'pr-11' : 'pr-4'}
             py-3
             ${
               error
-                ? 'border-red-600 text-red-900 focus:border-red-600 focus-visible:ring-red-200'
-                : 'border-border text-ink focus:border-primary focus-visible:ring-primary/20'
+                ? 'border-red-500 text-red-900 focus:border-red-600 focus:ring-red-100'
+                : 'border-slate-200 hover:border-slate-300'
             }
           `.trim()}
           {...props}
@@ -79,24 +80,24 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
             type="button"
             tabIndex={-1}
             onClick={() => setShowPassword((prev) => !prev)}
-            className="absolute inset-y-0 right-0 pr-3 flex items-center text-muted hover:text-ink focus:outline-none"
+            className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-700 transition-colors focus:outline-none"
             aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
             {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </button>
         ) : rightIcon ? (
-          <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-muted">
+          <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400">
             {rightIcon}
           </div>
         ) : null}
       </div>
 
       {error ? (
-        <p id={errorId} role="alert" className="mt-1 text-xs text-red-700 font-medium">
+        <p id={errorId} role="alert" className="mt-1.5 text-xs text-red-600 font-medium">
           {error}
         </p>
       ) : helperText ? (
-        <p id={helperId} className="mt-1 text-xs text-muted">
+        <p id={helperId} className="mt-1.5 text-xs text-slate-500 font-normal">
           {helperText}
         </p>
       ) : null}

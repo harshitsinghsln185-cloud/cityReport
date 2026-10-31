@@ -25,29 +25,29 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
   return (
     <div className="min-h-screen bg-canvas flex flex-col justify-center py-6 sm:py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 rounded-cardLg overflow-hidden border border-border shadow-modal bg-white">
+        <div className="grid grid-cols-1 lg:grid-cols-12 rounded-2xl sm:rounded-[24px] overflow-hidden border border-slate-200/90 shadow-xl shadow-slate-200/50 bg-white">
           {/* Left Column: Auth Form */}
           <div className="lg:col-span-6 p-6 sm:p-10 lg:p-12 flex flex-col justify-between">
             <div>
               {/* Brand Logo */}
               <Link to="/" className="inline-flex items-center gap-2.5 mb-8 group">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo to-primary flex items-center justify-center text-white shadow-md shadow-primary/20 group-hover:scale-105 transition-transform">
-                  <ShieldCheck className="w-5 h-5" />
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo to-primary flex items-center justify-center text-white shadow-md shadow-primary/20 group-hover:scale-105 transition-transform">
+                  <ShieldCheck className="w-5 h-5 text-gold" />
                 </div>
-                <span className="font-heading font-bold text-xl text-ink tracking-tight">
+                <span className="font-heading font-extrabold text-xl text-slate-900 tracking-tight">
                   Crowd Report
                 </span>
               </Link>
 
               {/* Title & Subtitle */}
               <div className="mb-8">
-                <Badge variant="primary" size="sm" className="mb-3 font-semibold uppercase tracking-wider">
+                <Badge variant="primary" size="sm" className="mb-3 font-bold uppercase tracking-wider">
                   {badgeText}
                 </Badge>
-                <h1 className="font-heading font-bold text-2xl sm:text-3xl text-ink tracking-tight mb-2">
+                <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight mb-2">
                   {title}
                 </h1>
-                <p className="text-xs sm:text-sm text-secondaryText leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                   {subtitle}
                 </p>
               </div>
@@ -57,7 +57,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
             </div>
 
             {/* Micro Trust Footer */}
-            <div className="mt-8 pt-6 border-t border-border flex items-center justify-between text-xs text-muted">
+            <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
               <span>Encrypted Session</span>
               <span>•</span>
               <span>50% Advance & Milestone Protection</span>

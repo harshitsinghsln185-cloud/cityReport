@@ -144,25 +144,25 @@ export const RegisterUserModal: React.FC<RegisterUserModalProps> = ({
           ? 'Verification link dispatched'
           : 'Create your account to file civic hazard reports and track verified repairs'
       }
-      maxWidth="max-w-xl"
+      maxWidth="max-w-2xl"
     >
       {isSuccess ? (
-        <div className="text-center py-6 space-y-4">
-          <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center mx-auto shadow-xs">
-            <CheckCircle2 className="w-8 h-8" />
+        <div className="text-center py-8 space-y-4">
+          <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center mx-auto shadow-xs">
+            <CheckCircle2 className="w-9 h-9" />
           </div>
-          <h3 className="font-heading font-bold text-xl text-ink">
+          <h3 className="font-heading font-extrabold text-2xl text-slate-900 tracking-tight">
             Citizen Profile Created!
           </h3>
-          <p className="text-xs sm:text-sm text-secondaryText leading-relaxed max-w-md mx-auto">
+          <p className="text-sm text-slate-500 leading-relaxed max-w-md mx-auto">
             We have sent an authentication link to{' '}
-            <strong className="text-ink font-semibold">{formData.email}</strong>. Please check your inbox and confirm your address to start reporting civic issues.
+            <strong className="text-slate-900 font-semibold">{formData.email}</strong>. Please check your inbox and confirm your address to start reporting civic issues.
           </p>
-          <div className="pt-3 space-y-2">
+          <div className="pt-4 space-y-3 max-w-sm mx-auto">
             <Button
               type="button"
               variant="primary"
-              className="w-full"
+              className="w-full h-12 rounded-xl text-base font-bold shadow-md shadow-primary/20 hover:shadow-lg transition-all"
               onClick={() => {
                 handleClose();
                 if (onSwitchToLogin) onSwitchToLogin();
@@ -173,7 +173,7 @@ export const RegisterUserModal: React.FC<RegisterUserModalProps> = ({
             <Button
               type="button"
               variant="ghost"
-              className="w-full text-xs text-muted"
+              className="w-full h-10 text-sm text-slate-500 hover:text-slate-900"
               onClick={handleClose}
             >
               Close Dialog
@@ -181,25 +181,26 @@ export const RegisterUserModal: React.FC<RegisterUserModalProps> = ({
           </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-4 pt-1">
+        <form onSubmit={handleSubmit} className="space-y-6 pt-1">
           {errorMessage && (
-            <div className="p-3 rounded-lg bg-red-50 border border-red-200 flex items-start gap-2.5 text-xs text-red-900 animate-fadeIn">
+            <div className="p-4 rounded-xl bg-red-50/90 border border-red-200 flex items-start gap-3 text-xs sm:text-sm text-red-900 animate-fadeIn">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />
               <span className="leading-relaxed">{errorMessage}</span>
             </div>
           )}
 
           <div>
-            <div className="text-[11px] font-bold text-muted uppercase tracking-wider mb-2">
-              1. Personal Credentials
+            <div className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3 flex items-center gap-2">
+              <User className="w-4 h-4 text-primary" />
+              <span>1. Personal Credentials</span>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Input
                 label="Full Legal Name"
                 name="name"
                 required
                 placeholder="Ramesh Sharma"
-                leftIcon={<User className="w-4 h-4 text-muted" />}
+                leftIcon={<User className="w-4 h-4 text-slate-400" />}
                 value={formData.name}
                 onChange={(e) => handleChange('name', e.target.value)}
                 error={fieldErrors.name}
@@ -211,7 +212,7 @@ export const RegisterUserModal: React.FC<RegisterUserModalProps> = ({
                 name="email"
                 required
                 placeholder="ramesh@example.com"
-                leftIcon={<Mail className="w-4 h-4 text-muted" />}
+                leftIcon={<Mail className="w-4 h-4 text-slate-400" />}
                 value={formData.email}
                 onChange={(e) => handleChange('email', e.target.value)}
                 error={fieldErrors.email}
@@ -219,14 +220,14 @@ export const RegisterUserModal: React.FC<RegisterUserModalProps> = ({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
               label="Mobile Number"
               type="tel"
               name="phone"
               required
               placeholder="9876543210"
-              leftIcon={<Phone className="w-4 h-4 text-muted" />}
+              leftIcon={<Phone className="w-4 h-4 text-slate-400" />}
               value={formData.phone}
               onChange={(e) => handleChange('phone', e.target.value)}
               error={fieldErrors.phone}
@@ -239,7 +240,7 @@ export const RegisterUserModal: React.FC<RegisterUserModalProps> = ({
               required
               showPasswordToggle
               placeholder="••••••••"
-              leftIcon={<Lock className="w-4 h-4 text-muted" />}
+              leftIcon={<Lock className="w-4 h-4 text-slate-400" />}
               value={formData.password}
               onChange={(e) => handleChange('password', e.target.value)}
               error={fieldErrors.password}
@@ -247,22 +248,23 @@ export const RegisterUserModal: React.FC<RegisterUserModalProps> = ({
           </div>
 
           <div className="pt-2">
-            <div className="text-[11px] font-bold text-muted uppercase tracking-wider mb-2">
-              2. Ward & Residential Address
+            <div className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3 flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-primary" />
+              <span>2. Ward & Residential Address</span>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-4">
               <Input
                 label="Street / House No. / Landmark"
                 name="address.street"
                 required
                 placeholder="Flat 4B, Shanti Enclave, Sector 14"
-                leftIcon={<MapPin className="w-4 h-4 text-muted" />}
+                leftIcon={<MapPin className="w-4 h-4 text-slate-400" />}
                 value={formData.address.street}
                 onChange={(e) => handleChange('address.street', e.target.value)}
                 error={fieldErrors['address.street']}
               />
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <Input
                   label="City"
                   name="address.city"
@@ -296,11 +298,11 @@ export const RegisterUserModal: React.FC<RegisterUserModalProps> = ({
             </div>
           </div>
 
-          <div className="pt-3">
+          <div className="pt-4">
             <Button
               type="submit"
               variant="primary"
-              className="w-full shadow-md shadow-primary/20 font-semibold"
+              className="w-full h-12 rounded-xl shadow-md shadow-primary/20 font-bold text-base hover:shadow-lg transition-all"
               isLoading={isLoading}
               rightIcon={<ArrowRight className="w-4 h-4" />}
             >
@@ -308,7 +310,7 @@ export const RegisterUserModal: React.FC<RegisterUserModalProps> = ({
             </Button>
           </div>
 
-          <div className="pt-2 text-center text-xs text-secondaryText">
+          <div className="pt-2 text-center text-xs sm:text-sm text-slate-500">
             Already have an account?{' '}
             <button
               type="button"
@@ -328,3 +330,4 @@ export const RegisterUserModal: React.FC<RegisterUserModalProps> = ({
 };
 
 export default RegisterUserModal;
+

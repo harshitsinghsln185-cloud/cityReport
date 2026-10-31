@@ -19,5 +19,7 @@ export * from './ErrorBoundary';
 export * from './Logo';
 export * from './PageHero';
 export * from './AnimatedCounter';
+export * from './Select';
+export * from './Textarea';
 
 

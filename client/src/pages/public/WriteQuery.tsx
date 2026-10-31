@@ -15,6 +15,8 @@ import publicService from '../../services/public.service';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
+import Select from '../../components/ui/Select';
+import Textarea from '../../components/ui/Textarea';
 import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
 import PageHero from '../../components/ui/PageHero';
@@ -204,26 +206,17 @@ export const WriteQuery: React.FC = () => {
                         placeholder="+91 98765 43210"
                       />
 
-                      <div>
-                        <label className="block text-xs font-semibold text-ink mb-1.5">
-                          Query Department / Category *
-                        </label>
-                        <select
-                          value={formData.category}
-                          onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white rounded-lg border border-border focus:outline-none focus-visible:ring-2 focus-visible:ring-primary text-ink cursor-pointer"
-                        >
-                          {queryCategories.map((c) => (
-                            <option key={c} value={c}>
-                              {c}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
+                      <Select
+                        label="Query Department / Category"
+                        required
+                        value={formData.category}
+                        onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                        options={queryCategories.map((c) => ({ value: c, label: c }))}
+                      />
                     </div>
 
                     <Input
-                      label="Subject Summary *"
+                      label="Subject Summary"
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       placeholder="Brief topic of your inquiry"
@@ -231,25 +224,20 @@ export const WriteQuery: React.FC = () => {
                     />
 
                     <div>
-                      <label className="block text-xs font-semibold text-ink mb-1.5">
-                        Detailed Message / Context *
-                      </label>
-                      <textarea
+                      <Textarea
+                        label="Detailed Message / Context"
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         rows={5}
                         placeholder="Provide relevant ward details, reference numbers, or municipal documentation questions..."
                         maxLength={2000}
                         required
-                        className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white rounded-xl border border-border focus:outline-none focus-visible:ring-2 focus-visible:ring-primary text-ink placeholder:text-muted transition-all"
+                        helperText={`${formData.message.length} / 2000 characters`}
                       />
-                      <div className="text-xs text-muted text-right mt-1">
-                        {formData.message.length} / 2000 characters
-                      </div>
                     </div>
 
                     <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                      <p className="text-xs text-muted flex items-center gap-1.5">
+                      <p className="text-xs text-slate-500 flex items-center gap-1.5 font-normal">
                         <Clock className="w-3.5 h-3.5 text-primary" />
                         <span>Signed administrative response within 24–48 hours</span>
                       </p>
@@ -260,7 +248,7 @@ export const WriteQuery: React.FC = () => {
                         disabled={isSubmitting}
                         isLoading={isSubmitting}
                         leftIcon={<Send className="w-4 h-4" />}
-                        className="shadow-sm"
+                        className="h-12 px-6 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-primary/20 hover:shadow-lg transition-all"
                       >
                         Submit Query
                       </Button>

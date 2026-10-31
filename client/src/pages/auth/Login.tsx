@@ -82,55 +82,56 @@ export const Login: React.FC = () => {
         robots="noindex, follow"
       />
 
-      <div className="max-w-md w-full mx-auto">
+      <div className="max-w-xl w-full mx-auto">
         {/* Brand Header */}
         <div className="text-center mb-8">
-          <Link to="/" className="inline-flex items-center gap-2.5 mb-4 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo to-primary flex items-center justify-center text-white shadow-md shadow-primary/20 group-hover:scale-105 transition-transform">
-              <ShieldCheck className="w-6 h-6" />
+          <Link to="/" className="inline-flex items-center gap-3 mb-4 group">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo to-primary flex items-center justify-center text-white shadow-lg shadow-primary/25 group-hover:scale-105 transition-transform">
+              <ShieldCheck className="w-6 h-6 text-gold" />
             </div>
-            <span className="font-heading font-bold text-2xl text-ink tracking-tight">
+            <span className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
               Crowd Report
             </span>
           </Link>
-          <h1 className="font-heading font-bold text-2xl sm:text-3xl text-ink tracking-tight">
+          <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
             Sign In to Portal
           </h1>
-          <p className="text-xs sm:text-sm text-secondaryText mt-1.5">
+          <p className="text-sm text-slate-500 mt-2 font-normal">
             Access citizen reports, contractor dispatch, or ward operations
           </p>
         </div>
 
-        {/* Clean Centered Normal Card */}
-        <div className="bg-white rounded-cardLg border border-border shadow-modal p-6 sm:p-8">
+        {/* Clean Centered Normal Card with Expanded Width & Modern SaaS Controls */}
+        <div className="bg-white rounded-2xl sm:rounded-[24px] border border-slate-200/90 shadow-xl shadow-slate-200/50 p-7 sm:p-10">
           {errorMessage && (
-            <div className="mb-6 p-3.5 rounded-card bg-red-50 border border-red-200 flex items-start gap-2.5 text-xs text-red-900 animate-fadeIn">
+            <div className="mb-6 p-4 rounded-xl bg-red-50/90 border border-red-200 flex items-start gap-3 text-xs sm:text-sm text-red-900 animate-fadeIn">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />
               <span className="leading-relaxed">{errorMessage}</span>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <Input
               label="Registered Email Address"
               type="email"
               name="email"
               autoComplete="email"
               required
-              placeholder="name@example.com"
-              leftIcon={<Mail className="w-4 h-4 text-muted" />}
+              placeholder="you@company.com"
+              helperText="Inputs should have clear labels and comfortable touch targets"
+              leftIcon={<Mail className="w-4 h-4 text-slate-400" />}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
 
             <div>
-              <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-semibold text-ink">
-                  Password <span className="text-red-700">*</span>
+              <div className="flex items-center justify-between mb-2">
+                <label className="block text-sm font-bold text-slate-900 tracking-tight">
+                  Password <span className="text-red-600 font-semibold">*</span>
                 </label>
                 <Link
                   to="/forgot-password"
-                  className="text-xs font-semibold text-primary hover:text-primaryDark transition-colors"
+                  className="text-xs font-semibold text-primary hover:underline transition-colors"
                 >
                   Forgot password?
                 </Link>
@@ -142,7 +143,7 @@ export const Login: React.FC = () => {
                 required
                 showPasswordToggle
                 placeholder="••••••••"
-                leftIcon={<Lock className="w-4 h-4 text-muted" />}
+                leftIcon={<Lock className="w-4 h-4 text-slate-400" />}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -151,7 +152,7 @@ export const Login: React.FC = () => {
             <Button
               type="submit"
               variant="primary"
-              className="w-full mt-2 font-semibold shadow-md shadow-primary/20"
+              className="w-full h-12 rounded-xl mt-3 font-semibold text-sm sm:text-base shadow-md shadow-primary/20 hover:shadow-lg transition-all"
               isLoading={isLoading}
               rightIcon={<ArrowRight className="w-4 h-4" />}
             >
@@ -160,24 +161,24 @@ export const Login: React.FC = () => {
           </form>
 
           {/* Pop-up Registration Triggers */}
-          <div className="mt-8 pt-6 border-t border-border space-y-3.5 text-xs text-center">
-            <p className="text-secondaryText font-medium">New to Crowd Report?</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <div className="mt-8 pt-6 border-t border-slate-100 space-y-3.5 text-center">
+            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">New to Crowd Report?</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <button
                 type="button"
                 onClick={() => setActiveModal('user')}
-                className="w-full px-3 py-2.5 rounded-xl bg-primary/10 hover:bg-primary/15 text-primary font-bold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer border border-primary/20"
+                className="w-full h-12 px-4 rounded-xl bg-primary/10 hover:bg-primary/15 text-primary font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer border border-primary/20 shadow-xs hover:shadow"
               >
-                <User className="w-4 h-4 shrink-0" />
+                <User className="w-4 h-4 shrink-0 text-primary" />
                 <span>Register as Citizen</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setActiveModal('resolver')}
-                className="w-full px-3 py-2.5 rounded-xl bg-canvas hover:bg-slate-200 text-ink font-bold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer border border-border"
+                className="w-full h-12 px-4 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-800 font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer border border-slate-200 shadow-xs hover:shadow"
               >
-                <Wrench className="w-4 h-4 text-indigo shrink-0" />
+                <Wrench className="w-4 h-4 text-primary shrink-0" />
                 <span>Apply as Resolver</span>
               </button>
             </div>

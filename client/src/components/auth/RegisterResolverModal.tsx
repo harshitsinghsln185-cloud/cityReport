@@ -6,6 +6,10 @@ import {
   AlertCircle,
   Clock,
   Upload,
+  User,
+  Wrench,
+  MapPin,
+  FileCheck,
 } from 'lucide-react';
 import categoryService, { Category, DEFAULT_CIVIC_CATEGORIES } from '../../services/category.service';
 import resolverService from '../../services/resolver.service';
@@ -222,29 +226,29 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
           ? 'Contractor vetting initiated'
           : 'Join the verified ward contractor network with 50% milestone advance protections'
       }
-      maxWidth="max-w-2xl"
+      maxWidth="max-w-3xl"
     >
       {isSuccess ? (
-        <div className="text-center py-6 space-y-4">
-          <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center mx-auto shadow-xs">
-            <CheckCircle2 className="w-8 h-8" />
+        <div className="text-center py-8 space-y-4">
+          <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center mx-auto shadow-xs">
+            <CheckCircle2 className="w-9 h-9" />
           </div>
-          <h3 className="font-heading font-bold text-xl text-ink">
+          <h3 className="font-heading font-extrabold text-2xl text-slate-900 tracking-tight">
             Application Submitted for Review!
           </h3>
-          <p className="text-xs sm:text-sm text-secondaryText leading-relaxed max-w-lg mx-auto">
+          <p className="text-sm text-slate-500 leading-relaxed max-w-lg mx-auto">
             Your contractor profile and trade documentation have been submitted to our ward administrative desk. We verify licenses and GST compliance within 24 to 48 business hours.
           </p>
-          <div className="p-3.5 rounded-xl bg-canvas border border-border text-xs text-left text-muted space-y-1 max-w-md mx-auto">
-            <div>• Registered Email: <strong className="text-ink">{formData.email}</strong></div>
-            <div>• Selected Categories: <strong className="text-ink">{formData.selectedSkills.length} Trade Skills</strong></div>
-            <div>• Coverage Radius: <strong className="text-ink">{formData.serviceRadiusKm} km</strong></div>
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-left text-slate-600 space-y-1.5 max-w-md mx-auto">
+            <div>• Registered Email: <strong className="text-slate-900 font-semibold">{formData.email}</strong></div>
+            <div>• Selected Categories: <strong className="text-slate-900 font-semibold">{formData.selectedSkills.length} Trade Skills</strong></div>
+            <div>• Coverage Radius: <strong className="text-slate-900 font-semibold">{formData.serviceRadiusKm} km</strong></div>
           </div>
-          <div className="pt-3">
+          <div className="pt-4 max-w-sm mx-auto">
             <Button
               type="button"
               variant="primary"
-              className="w-full"
+              className="w-full h-12 rounded-xl text-base font-bold shadow-md shadow-primary/20 hover:shadow-lg transition-all"
               onClick={() => {
                 handleClose();
                 if (onSwitchToLogin) onSwitchToLogin();
@@ -255,35 +259,42 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
           </div>
         </div>
       ) : (
-        <div className="space-y-5 pt-1">
+        <div className="space-y-6 pt-1">
           {/* Step Progress Pills */}
-          <div className="flex items-center justify-between border-b border-border pb-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 border-b border-slate-100 pb-4">
             {STEPS.map((s) => {
               const isActive = currentStep === s.num;
               const isPast = currentStep > s.num;
               return (
-                <div key={s.num} className="flex items-center gap-1.5 text-xs font-semibold">
+                <div
+                  key={s.num}
+                  className={`flex items-center gap-2 px-3 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                    isActive
+                      ? 'bg-primary text-white shadow-sm shadow-primary/20'
+                      : isPast
+                      ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+                      : 'bg-slate-50 text-slate-500 border border-slate-200'
+                  }`}
+                >
                   <div
-                    className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold transition-colors ${
+                    className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black shrink-0 ${
                       isActive
-                        ? 'bg-primary text-white shadow-xs'
+                        ? 'bg-white text-primary'
                         : isPast
                         ? 'bg-emerald-600 text-white'
-                        : 'bg-slate-200 text-secondaryText'
+                        : 'bg-slate-200 text-slate-600'
                     }`}
                   >
                     {isPast ? '✓' : s.num}
                   </div>
-                  <span className={`hidden sm:inline ${isActive ? 'text-ink' : 'text-muted'}`}>
-                    {s.label}
-                  </span>
+                  <span className="truncate">{s.label}</span>
                 </div>
               );
             })}
           </div>
 
           {errorMessage && (
-            <div className="p-3 rounded-lg bg-red-50 border border-red-200 flex items-start gap-2.5 text-xs text-red-900 animate-fadeIn">
+            <div className="p-4 rounded-xl bg-red-50/90 border border-red-200 flex items-start gap-3 text-xs sm:text-sm text-red-900 animate-fadeIn">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />
               <span className="leading-relaxed">{errorMessage}</span>
             </div>
@@ -291,9 +302,10 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
 
           {/* Step 1: Personal Info */}
           {currentStep === 1 && (
-            <div className="space-y-3.5 animate-fadeIn">
-              <div className="text-xs font-bold text-muted uppercase tracking-wider">
-                Step 1: Contractor / Resolver Credentials
+            <div className="space-y-4 animate-fadeIn">
+              <div className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-2">
+                <User className="w-4 h-4 text-primary" />
+                <span>Step 1: Contractor / Resolver Credentials</span>
               </div>
               <Input
                 label="Full Legal Name (as per Govt ID)"
@@ -303,7 +315,7 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
                 required
               />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Business / Registered Email"
                   type="email"
@@ -322,7 +334,7 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Account Password"
                   type="password"
@@ -347,57 +359,60 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
 
           {/* Step 2: Skill Categories */}
           {currentStep === 2 && (
-            <div className="space-y-3.5 animate-fadeIn">
+            <div className="space-y-4 animate-fadeIn">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-xs font-bold text-muted uppercase tracking-wider">
-                    Step 2: Skills & Trade Classifications
+                  <div className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+                    <Wrench className="w-4 h-4 text-primary" />
+                    <span>Step 2: Skills & Trade Classifications</span>
                   </div>
-                  <p className="text-xs text-secondaryText mt-0.5">
+                  <p className="text-xs text-slate-500 mt-1">
                     Select all civic issue types your crew is qualified and equipped to repair:
                   </p>
                 </div>
-                <span className="text-xs font-bold text-primary bg-primary/10 px-2.5 py-1 rounded-full">
+                <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20">
                   {formData.selectedSkills.length} Selected
                 </span>
               </div>
 
               {categoriesLoading ? (
-                <div className="py-12 text-center text-xs text-secondaryText">
+                <div className="py-12 text-center text-xs text-slate-500">
                   Loading registered categories...
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[300px] overflow-y-auto pr-1">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-h-[340px] overflow-y-auto pr-1">
                   {categories.map((cat) => {
                     const isSelected = formData.selectedSkills.includes(cat._id);
                     return (
                       <div
                         key={cat._id}
                         onClick={() => handleSkillToggle(cat._id)}
-                        className={`p-3.5 rounded-xl border cursor-pointer transition-all flex items-start gap-3 select-none ${
+                        className={`p-4 rounded-xl border cursor-pointer transition-all flex items-start gap-3 select-none ${
                           isSelected
-                            ? 'border-primary bg-primary/5 shadow-xs ring-1 ring-primary/20'
-                            : 'border-border bg-white hover:border-borderHover hover:bg-canvas'
+                            ? 'border-primary bg-primary/5 shadow-sm ring-2 ring-primary/20'
+                            : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-xs'
                         }`}
                       >
                         <input
                           type="checkbox"
                           checked={isSelected}
                           onChange={() => {}}
-                          className="w-4 h-4 mt-0.5 accent-primary rounded cursor-pointer"
+                          className="w-4 h-4 mt-0.5 accent-primary rounded cursor-pointer shrink-0"
                         />
                         <div className="flex-1 min-w-0">
-                          <div className="font-semibold text-xs text-ink truncate">
+                          <div className="font-bold text-sm text-slate-900 truncate">
                             {cat.name}
                           </div>
-                          <p className="text-[11px] text-secondaryText mt-0.5 line-clamp-2 leading-tight">
+                          <p className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
                             {cat.description}
                           </p>
-                          <div className="text-[11px] font-bold text-primary mt-1.5 flex items-center gap-1.5">
-                            <span>Base: ₹{((cat.baseFeePaise || 30000) / 100).toLocaleString('en-IN')}</span>
-                            <span className="text-muted">•</span>
-                            <span className="text-muted font-normal flex items-center gap-1">
-                              <Clock className="w-3 h-3" />
+                          <div className="text-xs font-bold text-slate-700 mt-2.5 flex items-center gap-2">
+                            <span className="bg-slate-100 text-slate-800 px-2 py-0.5 rounded text-[11px]">
+                              Base: ₹{((cat.baseFeePaise || 30000) / 100).toLocaleString('en-IN')}
+                            </span>
+                            <span className="text-slate-300">•</span>
+                            <span className="text-slate-500 font-medium flex items-center gap-1 text-[11px]">
+                              <Clock className="w-3 h-3 text-slate-400" />
                               {cat.estimatedResolutionHours || 24}h SLA
                             </span>
                           </div>
@@ -412,9 +427,10 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
 
           {/* Step 3: Service Address & Coverage Radius */}
           {currentStep === 3 && (
-            <div className="space-y-3.5 animate-fadeIn">
-              <div className="text-xs font-bold text-muted uppercase tracking-wider">
-                Step 3: Service Base & Coverage Radius
+            <div className="space-y-4 animate-fadeIn">
+              <div className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-primary" />
+                <span>Step 3: Service Base & Coverage Radius</span>
               </div>
 
               <Input
@@ -425,7 +441,7 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
                 required
               />
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <Input
                   label="City"
                   value={formData.city}
@@ -446,10 +462,12 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
                 />
               </div>
 
-              <div className="p-4 rounded-xl bg-canvas border border-border space-y-2">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-semibold text-ink">Max Dispatch Radius</span>
-                  <strong className="text-primary font-bold">{formData.serviceRadiusKm} Kilometers</strong>
+              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                <div className="flex items-center justify-between text-xs sm:text-sm">
+                  <span className="font-bold text-slate-900">Max Dispatch Radius</span>
+                  <strong className="text-primary font-black text-sm sm:text-base bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+                    {formData.serviceRadiusKm} Kilometers
+                  </strong>
                 </div>
                 <input
                   type="range"
@@ -458,9 +476,9 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
                   step="1"
                   value={formData.serviceRadiusKm}
                   onChange={(e) => setFormData((p) => ({ ...p, serviceRadiusKm: Number(e.target.value) }))}
-                  className="w-full accent-primary cursor-pointer"
+                  className="w-full accent-primary h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                 />
-                <p className="text-[11px] text-muted">
+                <p className="text-xs text-slate-500 font-normal">
                   Wards falling within {formData.serviceRadiusKm} km of your base address will be routed to your dispatch dashboard.
                 </p>
               </div>
@@ -469,17 +487,20 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
 
           {/* Step 4: Verification Document Upload */}
           {currentStep === 4 && (
-            <div className="space-y-3.5 animate-fadeIn">
-              <div className="text-xs font-bold text-muted uppercase tracking-wider">
-                Step 4: Government Verification Document
+            <div className="space-y-4 animate-fadeIn">
+              <div className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+                <FileCheck className="w-4 h-4 text-primary" />
+                <span>Step 4: Government Verification Document</span>
               </div>
 
-              <div className="p-5 rounded-xl border-2 border-dashed border-border hover:border-primary/40 bg-canvas text-center space-y-2">
-                <Upload className="w-8 h-8 text-primary mx-auto" />
-                <div className="text-xs font-semibold text-ink">
+              <div className="p-7 rounded-2xl border-2 border-dashed border-slate-300 hover:border-primary/50 bg-slate-50/70 text-center space-y-3 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-white border border-slate-200 text-primary flex items-center justify-center mx-auto shadow-xs">
+                  <Upload className="w-6 h-6" />
+                </div>
+                <div className="text-sm font-bold text-slate-900">
                   {idProofFile ? idProofFile.name : 'Upload Government ID / Trade License'}
                 </div>
-                <p className="text-[11px] text-muted">
+                <p className="text-xs text-slate-500 max-w-md mx-auto">
                   Aadhaar Card, Voter ID, PAN, Municipal Contractor License or GST Certificate (PDF, PNG, JPG up to 10MB)
                 </p>
                 <input
@@ -494,29 +515,31 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
                   }}
                   className="hidden"
                 />
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  onClick={() => document.getElementById('resolver-id-proof')?.click()}
-                >
-                  {idProofFile ? 'Change File' : 'Browse File'}
-                </Button>
+                <div className="pt-1">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="h-10 px-5 rounded-xl font-bold text-xs sm:text-sm border-slate-300 hover:bg-white"
+                    onClick={() => document.getElementById('resolver-id-proof')?.click()}
+                  >
+                    {idProofFile ? 'Change File' : 'Browse File'}
+                  </Button>
+                </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 leading-relaxed">
+              <div className="p-4 rounded-xl bg-amber-50/90 border border-amber-200 text-xs text-amber-900 leading-relaxed">
                 <strong>Vetting Policy:</strong> All documents are strictly verified for identity integrity. You will receive assignments with 50% advance milestone escrow security upon approval.
               </div>
             </div>
           )}
 
           {/* Modal Action Controls */}
-          <div className="flex items-center justify-between pt-3 border-t border-border">
+          <div className="flex items-center justify-between pt-4 border-t border-slate-100">
             {currentStep > 1 ? (
               <Button
                 type="button"
                 variant="outline"
-                size="sm"
+                className="h-12 px-5 rounded-xl font-bold text-slate-700 border-slate-200 hover:bg-slate-50"
                 onClick={handleBack}
                 disabled={loading}
                 leftIcon={<ArrowLeft className="w-4 h-4" />}
@@ -527,7 +550,7 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
               <button
                 type="button"
                 onClick={handleClose}
-                className="text-xs text-muted hover:text-ink cursor-pointer font-medium"
+                className="text-xs sm:text-sm text-slate-500 hover:text-slate-900 cursor-pointer font-bold px-3 py-2"
               >
                 Cancel
               </button>
@@ -537,7 +560,7 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
               <Button
                 type="button"
                 variant="primary"
-                size="sm"
+                className="h-12 px-6 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-primary/20 hover:shadow-lg transition-all"
                 onClick={handleNext}
                 rightIcon={<ArrowRight className="w-4 h-4" />}
               >
@@ -547,7 +570,7 @@ export const RegisterResolverModal: React.FC<RegisterResolverModalProps> = ({
               <Button
                 type="button"
                 variant="primary"
-                size="sm"
+                className="h-12 px-6 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-primary/20 hover:shadow-lg transition-all"
                 onClick={handleSubmit}
                 isLoading={loading}
                 rightIcon={<CheckCircle2 className="w-4 h-4" />}
