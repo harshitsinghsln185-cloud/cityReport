@@ -94,6 +94,9 @@
   --radius-badge: 9999px;
 
   /* Section 1 Component Heights & Targets */
+  --logo-h-sm: 28px;
+  --logo-h-md: 34px;
+  --logo-h-lg: 44px;
   --button-height-md: 44px;
   --button-pad-x: clamp(1.25rem, 2vw, 1.5rem); /* 20px mobile/tablet, 24px desktop */
   --input-height: 48px;

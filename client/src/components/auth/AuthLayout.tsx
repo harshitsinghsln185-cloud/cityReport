@@ -5,6 +5,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import Badge from '../ui/Badge';
+import Logo from '../ui/Logo';
 
 export interface AuthLayoutProps {
   children: React.ReactNode;
@@ -30,13 +31,8 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
           <div className="lg:col-span-6 p-6 sm:p-10 lg:p-12 flex flex-col justify-between">
             <div>
               {/* Brand Logo */}
-              <Link to="/" className="inline-flex items-center gap-2.5 mb-8 group">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo to-primary flex items-center justify-center text-white shadow-md shadow-primary/20 group-hover:scale-105 transition-transform">
-                  <ShieldCheck className="w-5 h-5 text-gold" />
-                </div>
-                <span className="font-heading font-extrabold text-xl text-slate-900 tracking-tight">
-                  Crowd Report
-                </span>
+              <Link to="/" className="inline-flex items-center mb-8 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg">
+                <Logo variant="horizontal" size="md" />
               </Link>
 
               {/* Title & Subtitle */}

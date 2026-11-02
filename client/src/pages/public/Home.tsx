@@ -114,7 +114,7 @@ export const Home: React.FC = () => {
             '@type': 'Organization',
             name: 'Crowd Report',
             url: SITE_URL,
-            logo: `${SITE_URL}/favicon.svg`,
+            logo: `${SITE_URL}/icon-512.png`,
           },
           areaServed: {
             '@type': 'Country',

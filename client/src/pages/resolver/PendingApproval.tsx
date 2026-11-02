@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
+import Logo from '../../components/ui/Logo';
 import {
   Clock,
   AlertTriangle,
@@ -74,19 +75,9 @@ export const PendingApproval: React.FC = () => {
     <div className="min-h-screen bg-canvas flex flex-col justify-between">
       {/* Top Bar */}
       <header className="h-16 bg-card border-b border-border/80 px-4 sm:px-8 flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center font-heading font-bold text-base shadow-xs">
-            CR
-          </div>
-          <div>
-            <span className="font-heading font-bold text-lg text-ink tracking-tight">
-              Crowd Report
-            </span>
-            <span className="hidden sm:inline-block ml-2 text-xs font-mono font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
-              Resolver Verification Portal
-            </span>
-          </div>
-        </div>
+        <Link to="/" className="flex items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg">
+          <Logo variant="horizontal" size="sm" subtitle="Resolver Verification Portal" />
+        </Link>
 
         {user && (
           <Button

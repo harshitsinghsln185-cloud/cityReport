@@ -112,6 +112,7 @@ export const Services: React.FC = () => {
               '@type': 'Organization',
               name: 'Crowd Report',
               url: SITE_URL,
+              logo: `${SITE_URL}/icon-512.png`,
             },
           },
         ]}

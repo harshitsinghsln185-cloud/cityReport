@@ -1,4 +1,6 @@
 import React from 'react';
+import logoLight from '../../assets/logo/logo.svg';
+import logoWhite from '../../assets/logo/logo-white.svg';
 
 export interface LogoProps {
   variant?: 'mark' | 'horizontal' | 'stacked';
@@ -8,42 +10,74 @@ export interface LogoProps {
   className?: string;
 }
 
-export const LogoMark: React.FC<{ sizeClass?: string; theme?: 'light' | 'dark' }> = ({
-  sizeClass = 'w-9 h-9',
+const SIZE_STYLES: Record<'sm' | 'md' | 'lg', {
+  heightVar: string;
+  textClass: string;
+  subClass: string;
+}> = {
+  sm: {
+    heightVar: 'var(--logo-h-sm, 28px)',
+    textClass: 'text-[1.125rem] sm:text-[1.25rem]',
+    subClass: 'text-[10px]',
+  },
+  md: {
+    heightVar: 'var(--logo-h-md, 34px)',
+    textClass: 'text-[1.25rem] sm:text-[1.45rem]',
+    subClass: 'text-[11px]',
+  },
+  lg: {
+    heightVar: 'var(--logo-h-lg, 44px)',
+    textClass: 'text-[1.5rem] sm:text-[1.75rem]',
+    subClass: 'text-xs',
+  },
+};
+
+/**
+ * LogoMark: The standalone vector mark (Location Pin + Community Silhouettes + Verified Checkmark).
+ */
+export const LogoMark: React.FC<{
+  size?: 'sm' | 'md' | 'lg';
+  theme?: 'light' | 'dark';
+  className?: string;
+  alt?: string;
+}> = ({
+  size = 'md',
   theme = 'light',
+  className = '',
+  alt = 'Crowd Report',
 }) => {
   const isDark = theme === 'dark';
+  const logoSrc = isDark ? logoWhite : logoLight;
+  const config = SIZE_STYLES[size];
+
   return (
-    <svg
-      viewBox="0 0 48 48"
-      className={`${sizeClass} shrink-0`}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      {/* Outer Hexagon Seal */}
-      <path
-        d="M24 4L42 14.5V33.5L24 44L6 33.5V14.5L24 4Z"
-        fill={isDark ? '#12306A' : '#0A1F44'}
-        stroke={isDark ? '#C8A24A' : '#0A1F44'}
-        strokeWidth={isDark ? '1.5' : '1'}
-      />
-      {/* Inner Chamber */}
-      <path
-        d="M24 12L34 18V30L24 36L14 30V18L24 12Z"
-        fill={isDark ? '#0A1F44' : '#06132B'}
-      />
-      {/* Warm Gold Keystone */}
-      <path
-        d="M24 16L30 20V28L24 32L18 28V20L24 16Z"
-        fill="#C8A24A"
-      />
-      {/* Civic Core */}
-      <circle cx="24" cy="24" r="3" fill="#FAF8F3" />
-    </svg>
+    <img
+      src={logoSrc}
+      alt={alt}
+      width={268}
+      height={327}
+      className={`shrink-0 select-none ${className}`}
+      style={{
+        height: config.heightVar,
+        width: 'auto',
+        objectFit: 'contain',
+        display: 'block',
+      }}
+    />
   );
 };
 
+/**
+ * Logo: Official Crowd Report Brand Lockup.
+ * Variants:
+ *  - 'mark': Icon only
+ *  - 'horizontal': Icon + live Fraunces wordmark
+ *  - 'stacked': Icon above live Fraunces wordmark
+ *
+ * Responsiveness:
+ *  - Below 640px: horizontal logo scales text down cleanly
+ *  - Below 360px: wordmark text hides automatically, displaying mark only
+ */
 export const Logo: React.FC<LogoProps> = ({
   variant = 'horizontal',
   theme = 'light',
@@ -52,74 +86,64 @@ export const Logo: React.FC<LogoProps> = ({
   className = '',
 }) => {
   const isDark = theme === 'dark';
-
-  const markSizeMap = {
-    sm: 'w-7 h-7',
-    md: 'w-9 h-9',
-    lg: 'w-11 h-11',
-  };
-
-  const titleSizeMap = {
-    sm: 'text-lg',
-    md: 'text-xl',
-    lg: 'text-2xl',
-  };
+  const config = SIZE_STYLES[size];
 
   if (variant === 'mark') {
     return (
-      <div
-        className={`inline-flex items-center justify-center ${className}`}
-        role="img"
-        aria-label="Crowd Report Logo Mark"
-      >
-        <LogoMark sizeClass={markSizeMap[size]} theme={theme} />
+      <div className={`inline-flex items-center justify-center ${className}`}>
+        <LogoMark size={size} theme={theme} alt="Crowd Report" />
       </div>
     );
   }
+
+  const wordmark = (
+    <div className="flex flex-col justify-center leading-none">
+      <div
+        className={`font-fraunces font-semibold tracking-tight inline-flex items-baseline gap-1 ${config.textClass} select-none`}
+      >
+        <span className={isDark ? 'text-white' : 'text-primary'}>
+          Crowd
+        </span>
+        <span className="text-accent">
+          Report
+        </span>
+      </div>
+      {subtitle && (
+        <span
+          className={`font-sans uppercase font-medium tracking-wider mt-0.5 select-none ${config.subClass} ${
+            isDark ? 'text-slate-300' : 'text-secondaryText'
+          }`}
+        >
+          {subtitle}
+        </span>
+      )}
+    </div>
+  );
 
   if (variant === 'stacked') {
     return (
       <div
         className={`inline-flex flex-col items-center text-center gap-2 ${className}`}
         role="img"
-        aria-label="Crowd Report Logo"
+        aria-label="Crowd Report"
       >
-        <LogoMark sizeClass={markSizeMap[size]} theme={theme} />
-        <div>
-          <div className="flex items-center justify-center gap-1 font-heading font-bold text-lg tracking-tight">
-            <span className={isDark ? 'text-canvas' : 'text-primary'}>Crowd</span>
-            <span className={isDark ? 'text-slate-200' : 'text-ink'}>Report</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-          </div>
-          {subtitle && (
-            <div className="text-xs uppercase font-mono tracking-widest text-gold font-semibold mt-0.5">
-              {subtitle}
-            </div>
-          )}
-        </div>
+        <LogoMark size={size} theme={theme} alt="" />
+        {wordmark}
       </div>
     );
   }
 
   // Default: Horizontal Lockup
+  // Below 360px: wordmark is hidden to fit ultra-compact viewports without breaking navigation.
   return (
     <div
-      className={`inline-flex items-center gap-2.5 ${className}`}
+      className={`inline-flex items-center gap-2.5 sm:gap-3 ${className}`}
       role="img"
       aria-label="Crowd Report"
     >
-      <LogoMark sizeClass={markSizeMap[size]} theme={theme} />
-      <div className="flex flex-col">
-        <div className={`flex items-baseline gap-1 font-heading font-bold ${titleSizeMap[size]} tracking-tight leading-none`}>
-          <span className={isDark ? 'text-canvas' : 'text-primary'}>Crowd</span>
-          <span className={isDark ? 'text-slate-200' : 'text-ink font-semibold'}>Report</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block translate-y-[-2px]" />
-        </div>
-        {subtitle && (
-          <span className={`text-xs uppercase tracking-wider font-semibold leading-tight mt-1 ${isDark ? 'text-gold' : 'text-gold-text'}`}>
-            {subtitle}
-          </span>
-        )}
+      <LogoMark size={size} theme={theme} alt="" />
+      <div className="hidden min-[360px]:flex flex-col justify-center">
+        {wordmark}
       </div>
     </div>
   );

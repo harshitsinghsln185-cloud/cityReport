@@ -88,6 +88,7 @@ export default {
         display: ['"Plus Jakarta Sans Variable"', '"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
         body: ['"Manrope Variable"', 'Manrope', 'system-ui', '-apple-system', 'sans-serif'],
         serif: ['"Plus Jakarta Sans Variable"', '"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+        fraunces: ['"Fraunces Variable"', 'Fraunces', 'serif'],
       },
       borderRadius: {
         xl: '12px',
