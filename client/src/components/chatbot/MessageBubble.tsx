@@ -26,7 +26,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       // Header ###
       if (line.startsWith('### ')) {
         return (
-          <h4 key={idx} className="font-heading font-bold text-sm text-[#1E293B] mt-1 mb-1">
+          <h4 key={idx} className="font-heading font-bold text-sm text-ink mt-1 mb-1">
             {line.replace('### ', '')}
           </h4>
         );

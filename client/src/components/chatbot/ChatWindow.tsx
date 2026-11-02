@@ -147,10 +147,10 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
       <div
         role="dialog"
         aria-label="Civic AI Assistant"
-        className="fixed bottom-20 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[390px] h-[560px] max-h-[85vh] bg-white rounded-2xl shadow-2xl border border-card-border flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-200"
+        className="fixed bottom-20 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[390px] h-[560px] max-h-[85dvh] bg-white rounded-2xl shadow-2xl border border-card-border flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-200"
       >
         {/* Header */}
-        <div className="px-4 py-3 bg-gradient-to-r from-[#071329] via-primary to-primary-hover text-white flex items-center justify-between shadow-xs">
+        <div className="px-4 py-3 bg-gradient-to-r from-navy via-primary to-primary-hover text-white flex items-center justify-between shadow-xs">
           <div className="flex items-center gap-2.5">
             <div className="relative">
               <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
@@ -174,6 +174,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
               type="button"
               onClick={onReset}
               title="Reset Conversation"
+              aria-label="Reset Conversation"
               className="p-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
             >
               <RotateCcw className="w-4 h-4" />
@@ -182,6 +183,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
               type="button"
               onClick={onClose}
               title="Close Assistant"
+              aria-label="Close Assistant"
               className="p-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
             >
               <X className="w-4 h-4" />
@@ -243,11 +245,36 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
             </div>
           )}
 
-          {/* Error Alert */}
+          {/* Error Alert & Guest Auth Card */}
           {error && (
-            <div className="my-2 p-2.5 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 shrink-0" />
-              <span>{error}</span>
+            <div className="my-2 space-y-2">
+              <div className="p-2.5 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 shrink-0" />
+                <span>{error}</span>
+              </div>
+
+              {error.toLowerCase().includes('sign in') && (
+                <div className="p-3 rounded-xl bg-accent/15 border border-accent/40 text-ink text-xs">
+                  <div className="flex items-center gap-1.5 font-bold text-navy mb-1">
+                    <Sparkles className="w-4 h-4 text-accent" />
+                    <span>Authentication Required</span>
+                  </div>
+                  <p className="text-muted mb-2">
+                    Your issue report and location are safely saved. Please sign in to submit your civic report.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onClose();
+                      navigate('/login');
+                    }}
+                    className="w-full py-2 px-3 bg-accent hover:bg-accent-hover text-navy font-bold rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-xs"
+                  >
+                    <span>Sign In to Continue</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              )}
             </div>
           )}
 
@@ -256,7 +283,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
 
         {/* Quick Replies Bar */}
         {latestQuickReplies.length > 0 && !isLoading && (
-          <div className="border-t border-[#E2E8F0]/80 bg-white/95 px-3 py-1">
+          <div className="border-t border-card-border bg-white/95 px-3 py-1">
             <QuickReplies
               options={latestQuickReplies}
               onSelect={handleQuickReplySelect}
@@ -282,6 +309,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
             type="button"
             onClick={() => fileInputRef.current?.click()}
             title="Attach Photo"
+            aria-label="Attach Photo"
             disabled={isLoading || isSubmitting || session?.state === 'SUBMITTED'}
             className="p-2 rounded-xl text-muted hover:text-primary hover:bg-primary-light transition-colors disabled:opacity-40"
           >
@@ -292,6 +320,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
             type="button"
             onClick={() => setIsLocationModalOpen(true)}
             title="Pin Location on Map"
+            aria-label="Pin Location on Map"
             disabled={isLoading || isSubmitting || session?.state === 'SUBMITTED'}
             className="p-2 rounded-xl text-muted hover:text-primary hover:bg-primary-light transition-colors disabled:opacity-40"
           >
@@ -306,6 +335,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
             placeholder={
               session?.state === 'SUBMITTED' ? 'Issue submitted' : 'Type your message or query...'
             }
+            aria-label="Chat message"
             disabled={isLoading || isSubmitting || session?.state === 'SUBMITTED'}
             maxLength={500}
             className="flex-1 px-3 py-2 text-xs bg-canvas rounded-xl border border-card-border focus:outline-none focus:border-primary focus:bg-white transition-all text-ink disabled:opacity-60"
@@ -315,6 +345,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
             type="submit"
             variant="primary"
             size="sm"
+            aria-label="Send message"
             disabled={!inputText.trim() || isLoading || isSubmitting || session?.state === 'SUBMITTED'}
             className="p-2 rounded-xl"
           >
