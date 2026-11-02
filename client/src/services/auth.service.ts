@@ -39,7 +39,7 @@ export interface RegisterPayload {
 }
 
 export const authService = {
-  login: async (credentials: LoginPayload): Promise<ApiResponse<{ user: AuthUser }>> => {
+  login: async (credentials: LoginPayload): Promise<ApiResponse<{ user: AuthUser; token?: string; csrfToken?: string }>> => {
     return api.post('/auth/login', credentials);
   },
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { api, ApiResponse, API_BASE_URL } from './api';
+import { api, ApiResponse, API_BASE_URL, getStoredToken } from './api';
 
 export interface InvoiceItem {
   _id: string;
@@ -57,9 +57,16 @@ export const invoiceService = {
 
   downloadPdf: async (invoiceId: string, invoiceNumber?: string): Promise<void> => {
     // Authenticated blob request
+    const token = getStoredToken();
+    const headers: Record<string, string> = {};
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
     const response = await axios.get(`${API_BASE_URL}/invoices/${invoiceId}/pdf`, {
       responseType: 'blob',
       withCredentials: true,
+      headers,
     });
 
     const blob = new Blob([response.data], { type: 'application/pdf' });

@@ -14,6 +14,49 @@ export interface ApiResponse<T = unknown> {
   code?: string;
 }
 
+const TOKEN_STORAGE_KEY = 'cr_token';
+const CSRF_STORAGE_KEY = 'cr_csrf';
+
+export const getStoredToken = (): string | null => {
+  try {
+    return localStorage.getItem(TOKEN_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+};
+
+export const setStoredToken = (token: string | null): void => {
+  try {
+    if (token) {
+      localStorage.setItem(TOKEN_STORAGE_KEY, token);
+    } else {
+      localStorage.removeItem(TOKEN_STORAGE_KEY);
+    }
+  } catch {
+    // Storage access may be restricted
+  }
+};
+
+export const getStoredCsrf = (): string | null => {
+  try {
+    return localStorage.getItem(CSRF_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+};
+
+export const setStoredCsrf = (token: string | null): void => {
+  try {
+    if (token) {
+      localStorage.setItem(CSRF_STORAGE_KEY, token);
+    } else {
+      localStorage.removeItem(CSRF_STORAGE_KEY);
+    }
+  } catch {
+    // Storage access may be restricted
+  }
+};
+
 export const getCookie = (name: string): string | null => {
   const match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
   return match ? decodeURIComponent(match[3]) : null;
@@ -29,9 +72,14 @@ export const api: AxiosInstance = axios.create({
   },
 });
 
-// Request interceptor to automatically attach CSRF token header
+// Request interceptor to automatically attach Authorization token and CSRF token header
 api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-  const csrfToken = getCookie('XSRF-TOKEN');
+  const token = getStoredToken();
+  if (token && config.headers) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  const csrfToken = getCookie('XSRF-TOKEN') || getStoredCsrf();
   if (csrfToken && config.headers) {
     config.headers['X-CSRF-Token'] = csrfToken;
   }
@@ -41,13 +89,17 @@ api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
 // Ensure CSRF token is fetched once on client initialization
 export const ensureCsrfToken = async (): Promise<string | null> => {
   try {
-    const existing = getCookie('XSRF-TOKEN');
+    const existing = getCookie('XSRF-TOKEN') || getStoredCsrf();
     if (existing) return existing;
 
     const res = await axios.get<ApiResponse<{ csrfToken: string }>>(`${API_BASE_URL}/auth/csrf-token`, {
       withCredentials: true,
     });
-    return res.data.data?.csrfToken || null;
+    const token = res.data.data?.csrfToken || null;
+    if (token) {
+      setStoredCsrf(token);
+    }
+    return token;
   } catch {
     return null;
   }
@@ -94,10 +146,19 @@ api.interceptors.response.use(
       isRefreshing = true;
 
       try {
-        await axios.post(`${API_BASE_URL}/auth/refresh`, {}, { withCredentials: true });
+        const refreshRes = await axios.post<ApiResponse<{ token?: string }>>(
+          `${API_BASE_URL}/auth/refresh`,
+          {},
+          { withCredentials: true }
+        );
+        const newToken = refreshRes.data?.data?.token;
+        if (newToken) {
+          setStoredToken(newToken);
+        }
         processQueue(null, true);
         return api(originalRequest);
       } catch (refreshErr) {
+        setStoredToken(null);
         processQueue(refreshErr, false);
         return Promise.reject(error.response?.data || error);
       } finally {

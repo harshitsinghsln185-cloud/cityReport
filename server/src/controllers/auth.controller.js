@@ -21,7 +21,7 @@ export const register = asyncHandler(async (req, res) => {
 export const login = asyncHandler(async (req, res) => {
   const { user, tokens } = await authService.loginUser(req.body);
 
-  // Set tokens strictly in httpOnly cookies (never in response JSON)
+  // Set tokens in cookies for same-origin and cookie-supported cross-site clients
   res.cookie('accessToken', tokens.accessToken, cookieOptions.accessToken);
   res.cookie('refreshToken', tokens.refreshToken, cookieOptions.refreshToken);
 
@@ -41,13 +41,15 @@ export const login = asyncHandler(async (req, res) => {
         ...(user.resolverStatus ? { resolverStatus: user.resolverStatus } : {}),
         ...(user.rejectionReason !== undefined ? { rejectionReason: user.rejectionReason } : {}),
       },
+      token: tokens.accessToken,
+      csrfToken,
     },
     'Login successful'
   );
 });
 
 export const logout = asyncHandler(async (req, res) => {
-  const refreshToken = req.cookies?.refreshToken;
+  const refreshToken = req.cookies?.refreshToken || req.body?.refreshToken;
   await authService.logoutUser(refreshToken);
 
   clearAuthCookies(res);
@@ -56,7 +58,7 @@ export const logout = asyncHandler(async (req, res) => {
 });
 
 export const refresh = asyncHandler(async (req, res) => {
-  const currentRefreshToken = req.cookies?.refreshToken;
+  const currentRefreshToken = req.cookies?.refreshToken || req.body?.refreshToken;
   const { user, tokens } = await authService.refreshSession(currentRefreshToken);
 
   res.cookie('accessToken', tokens.accessToken, cookieOptions.accessToken);
@@ -71,6 +73,7 @@ export const refresh = asyncHandler(async (req, res) => {
         email: user.email,
         role: user.role,
       },
+      token: tokens.accessToken,
     },
     'Session refreshed'
   );

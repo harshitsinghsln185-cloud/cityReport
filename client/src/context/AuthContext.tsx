@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 import authService, { AuthUser, LoginPayload } from '../services/auth.service';
-import { ensureCsrfToken } from '../services/api';
+import { ensureCsrfToken, setStoredToken, setStoredCsrf } from '../services/api';
 
 export interface AuthContextType {
   user: AuthUser | null;
@@ -51,6 +51,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (!loggedUser) {
       throw new Error('Authentication succeeded but user profile was not returned.');
     }
+    if (response.data?.token) {
+      setStoredToken(response.data.token);
+    }
+    if (response.data?.csrfToken) {
+      setStoredCsrf(response.data.csrfToken);
+    }
     setUser(loggedUser);
     return loggedUser;
   };
@@ -59,6 +65,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       await authService.logout();
     } finally {
+      setStoredToken(null);
+      setStoredCsrf(null);
       setUser(null);
     }
   };
