@@ -170,3 +170,35 @@
     transform: translateX(100%);
   }
 }
+
+/* Ambient subtle hero image zoom on desktop only */
+@media (min-width: 1024px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+  @keyframes heroAmbientZoom {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.035);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .hero-ambient-zoom {
+    animation: heroAmbientZoom 24s ease-in-out infinite;
+    transform-origin: center center;
+    will-change: transform;
+  }
+}
+
+/* Responsive focal point positioning for hero background image */
+.hero-bg-img {
+  object-position: var(--hero-focal-mobile, 75% 35%);
+}
+
+@media (min-width: 768px) {
+  .hero-bg-img {
+    object-position: var(--hero-focal-desktop, 70% center);
+  }
+}

@@ -86,3 +86,4 @@ This document catalogs the exact text, metadata, badges, and visual card content
 | **Visual Card Header** | `Liaison Office Contacts` |
 | **Visual Card Badge** | Badge: `24-48h SLA` (emerald pill) |
 | **Visual Card Content** | - `Working Hours: Mon – Sat, 9:00 AM – 6:00 PM IST`<br>- `Secretariat: Central Civic Infrastructure Registry`<br>- `Inquiry SLA: Reference ID issued upon submission` |
+

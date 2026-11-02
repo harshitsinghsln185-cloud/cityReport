@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import type { BreadcrumbItem } from './Breadcrumbs';
+import Reveal from './Reveal';
 
 export interface PageHeroStat {
   label: string;
@@ -10,7 +11,7 @@ export interface PageHeroStat {
 }
 
 export interface PageHeroProps {
-  variant?: 'full' | 'split' | 'compact';
+  variant?: 'full' | 'split' | 'compact' | 'image';
   theme?: 'navy' | 'ivory' | 'surface';
   eyebrow?: React.ReactNode | string;
   eyebrowIcon?: React.ReactNode;
@@ -23,6 +24,13 @@ export interface PageHeroProps {
   breadcrumbs?: BreadcrumbItem[];
   stats?: PageHeroStat[];
   className?: string;
+  // Image Hero props (Phase H2 Left-Text Hero)
+  backgroundImage?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  focalPoint?: string | { desktop?: string; mobile?: string };
 }
 
 export const PageHero: React.FC<PageHeroProps> = ({
@@ -39,6 +47,12 @@ export const PageHero: React.FC<PageHeroProps> = ({
   breadcrumbs,
   stats,
   className = '',
+  backgroundImage,
+  imageSrc,
+  imageAlt,
+  imageWidth = 2752,
+  imageHeight = 1536,
+  focalPoint,
 }) => {
   const isNavy = theme === 'navy';
 
@@ -213,6 +227,106 @@ export const PageHero: React.FC<PageHeroProps> = ({
       ))}
     </div>
   );
+
+  // Variant: Left-Text Image Hero (Phase H2: Real background image, left column typography, robust overlay)
+  const heroImage = backgroundImage || imageSrc;
+  if (heroImage || variant === 'image') {
+    if (!heroImage) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn('[PageHero] imageSrc / backgroundImage is missing. Falling back to default theme gradient.');
+      }
+    } else {
+      const focalDesktop =
+        typeof focalPoint === 'object' && focalPoint?.desktop
+          ? focalPoint.desktop
+          : typeof focalPoint === 'string'
+          ? focalPoint
+          : '70% center';
+
+      const focalMobile =
+        typeof focalPoint === 'object' && focalPoint?.mobile
+          ? focalPoint.mobile
+          : '75% 35%';
+
+      return (
+        <section
+          className={`relative overflow-hidden min-h-[380px] md:min-h-[420px] lg:min-h-[480px] flex items-center bg-[#0A1F44] text-white border-b border-slate-800 ${className}`}
+          style={{
+            ['--hero-focal-desktop' as string]: focalDesktop,
+            ['--hero-focal-mobile' as string]: focalMobile,
+          }}
+        >
+          {/* Real <picture> / <img> element for Vite module optimization & cache hashing */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+            <picture>
+              <img
+                src={heroImage}
+                alt={imageAlt || ''}
+                width={imageWidth}
+                height={imageHeight}
+                fetchPriority="high"
+                decoding="async"
+                className="w-full h-full object-cover transition-transform duration-1000 ease-out hero-bg-img hero-ambient-zoom motion-reduce:transform-none"
+              />
+            </picture>
+
+            {/* Readability Overlays:
+                - Desktop (>= 768px): Deep navy gradient from the left (94% -> 88% -> 45% -> 0% at 75% width).
+                  Keeps text at 100% legibility (WCAG AAA contrast) while leaving the right-side subject vivid.
+                - Mobile (< 768px): Vertical top-to-bottom navy gradient (96% at top over text, fading down toward subject).
+            */}
+            <div
+              className="absolute inset-0 hidden md:block pointer-events-none"
+              style={{
+                background:
+                  'linear-gradient(to right, rgba(10, 31, 68, 0.95) 0%, rgba(10, 31, 68, 0.88) 35%, rgba(10, 31, 68, 0.45) 58%, rgba(10, 31, 68, 0) 75%)',
+              }}
+            />
+            <div
+              className="absolute inset-0 md:hidden pointer-events-none"
+              style={{
+                background:
+                  'linear-gradient(to bottom, rgba(10, 31, 68, 0.96) 0%, rgba(10, 31, 68, 0.88) 55%, rgba(10, 31, 68, 0.5) 85%, rgba(10, 31, 68, 0.25) 100%)',
+              }}
+            />
+            {/* Grounding bottom gradient to blend smoothly into page content */}
+            <div
+              className="absolute inset-x-0 bottom-0 h-16 pointer-events-none"
+              style={{
+                background: 'linear-gradient(to top, rgba(10, 31, 68, 0.75) 0%, transparent 100%)',
+              }}
+            />
+          </div>
+
+          {/* Left-Aligned Single Column Text Container (matches container-custom padding) */}
+          <div className="container-custom relative z-10 w-full py-12 sm:py-16 lg:py-20">
+            <div className="max-w-[560px] text-left">
+              <Reveal direction="up" duration={0.4}>
+                {breadcrumbsEl}
+                {eyebrow && (
+                  <div className="mb-3.5 inline-flex items-center">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-gold/15 text-gold border border-gold/30">
+                      {eyebrowIcon && <span className="w-3.5 h-3.5 shrink-0">{eyebrowIcon}</span>}
+                      <span>{eyebrow}</span>
+                    </span>
+                  </div>
+                )}
+                <h1 className="font-fraunces font-semibold text-white tracking-tight leading-[1.14] text-[clamp(2rem,4vw,3.25rem)]">
+                  {renderTitleContent()}
+                </h1>
+                {description && (
+                  <p className="mt-4 font-body text-base sm:text-lg text-slate-100 leading-relaxed max-w-xl">
+                    {description}
+                  </p>
+                )}
+                {actionsEl}
+              </Reveal>
+            </div>
+          </div>
+        </section>
+      );
+    }
+  }
 
   // Variant: Compact (subpages, portals, queries)
   if (variant === 'compact') {
