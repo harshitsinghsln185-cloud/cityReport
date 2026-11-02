@@ -20,6 +20,8 @@ import Textarea from '../../components/ui/Textarea';
 import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
 import PageHero from '../../components/ui/PageHero';
+import contactHeroImg from '../../assets/pages/contact.png';
+import { HERO_FOCAL } from '../../config/heroFocal';
 
 export const WriteQuery: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -100,38 +102,15 @@ export const WriteQuery: React.FC = () => {
         ]}
       />
 
-      {/* Institutional Split Page Hero */}
+      {/* Left-Text Image Page Hero */}
       <PageHero
-        variant="split"
-        theme="navy"
+        backgroundImage={contactHeroImg}
+        imageAlt="Municipal secretariat civic help desk and citizen inquiry coordination"
+        focalPoint={HERO_FOCAL.contact}
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Help Desk & Inquiries' }]}
-        eyebrow="Official Civic Liaison Office"
-        eyebrowIcon={<Mail className="w-3.5 h-3.5" />}
-        title="Direct Civic Inquiries"
-        highlightedTitle="to Municipal Secretariat"
-        description="Submit formal inquiries regarding ward jurisdiction coverage, contractor accreditation standards, fee tariffs, or commercial tax invoices with guaranteed 24-48h response SLA."
-        visual={
-          <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Liaison Office Contacts</span>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 font-bold">24-48h SLA</span>
-            </div>
-            <div className="space-y-3 text-xs text-slate-300">
-              <div className="flex items-center gap-2.5">
-                <Clock className="w-4 h-4 text-gold shrink-0" />
-                <span>Working Hours: Mon – Sat, 9:00 AM – 6:00 PM IST</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Building className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Secretariat: Central Civic Infrastructure Registry</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-blue-400 shrink-0" />
-                <span>Inquiry SLA: Reference ID issued upon submission</span>
-              </div>
-            </div>
-          </div>
-        }
+        eyebrow="Help Desk"
+        title="Citizen Inquiries and Civic Help Desk"
+        description="Submit inquiries regarding ward coverage, contractor accreditation, municipal fee tariffs, or platform assistance."
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">

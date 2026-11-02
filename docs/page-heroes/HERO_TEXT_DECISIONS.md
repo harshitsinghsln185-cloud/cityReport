@@ -63,3 +63,4 @@ This document specifies the approved final copy for the hero sections of all fiv
 - **Buttons in Hero:** None. (The inquiry form is prominently displayed in the main content section below the hero).
 - **Removed from Hero:**
   - Visual side card (`Liaison Office Contacts`, `24-48h SLA` badge, working hours, secretariat registry, inquiry SLA).
+

@@ -19,6 +19,8 @@ import StatusBadge from '../../components/ui/StatusBadge';
 import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
 import PageHero from '../../components/ui/PageHero';
+import trackHeroImg from '../../assets/pages/track.png';
+import { HERO_FOCAL } from '../../config/heroFocal';
 
 export const TrackStatus: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -124,38 +126,15 @@ export const TrackStatus: React.FC = () => {
         ]}
       />
 
-      {/* Institutional Split Page Hero */}
+      {/* Left-Text Image Page Hero */}
       <PageHero
-        variant="split"
-        theme="navy"
+        backgroundImage={trackHeroImg}
+        imageAlt="Mobile civic grievance tracking and verified contractor proof audit"
+        focalPoint={HERO_FOCAL.track}
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Track Issue Status' }]}
-        eyebrow="Public Verification Ledger"
-        eyebrowIcon={<Clock className="w-3.5 h-3.5" />}
-        title="Inspect Live Remediation"
-        highlightedTitle="& Milestone Progress"
-        description="Enter your unique tracking reference code to audit contractor dispatch timestamps, before/after photographic proof, and milestone completion receipts in real time."
-        visual={
-          <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Public Ledger Standards</span>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 font-bold">Live SLA</span>
-            </div>
-            <div className="space-y-2.5 text-xs text-slate-300">
-              <div className="flex items-center justify-between">
-                <span>Standard Dispatch SLA:</span>
-                <span className="font-semibold text-white">Within 48 Hours</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span>Verification Method:</span>
-                <span className="font-semibold text-white">Geotagged Camera EXIF</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span>Balance Release:</span>
-                <span className="font-semibold text-white">Citizen / Admin Sign-off</span>
-              </div>
-            </div>
-          </div>
-        }
+        eyebrow="Issue Tracking"
+        title="Track Civic Issue Resolution Status"
+        description="Enter your unique tracking code to inspect contractor dispatch, photographic resolution proof, and verified milestone progress."
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">

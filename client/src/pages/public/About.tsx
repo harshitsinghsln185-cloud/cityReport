@@ -15,12 +15,13 @@ import {
 } from 'lucide-react';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
-import Badge from '../../components/ui/Badge';
 import SectionHeader from '../../components/ui/SectionHeader';
 import Reveal from '../../components/ui/Reveal';
 import PageHero from '../../components/ui/PageHero';
 import SEO from '../../components/SEO';
 import { SITE_URL } from '../../config/site';
+import aboutHeroImg from '../../assets/pages/about.png';
+import { HERO_FOCAL } from '../../config/heroFocal';
 
 export const About: React.FC = () => {
   return (
@@ -64,49 +65,24 @@ export const About: React.FC = () => {
         ]}
       />
 
-      {/* Institutional Split Page Hero */}
+      {/* Left-Text Image Page Hero */}
       <PageHero
-        variant="split"
-        theme="navy"
+        backgroundImage={aboutHeroImg}
+        imageAlt="Citizens and municipal civil engineering contractor collaborating over public infrastructure plan"
+        focalPoint={HERO_FOCAL.about}
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About & Governance' }]}
-        eyebrow="Civic Problem Reporting"
-        eyebrowIcon={<Lock className="w-3.5 h-3.5" />}
-        title="Built for Transparency,"
-        highlightedTitle="Backed by Milestone Payments"
-        description="Crowd Report bridges the divide between citizens dealing with hazardous neighborhood defects and certified local contractors through transparent pricing and double-verified photographic proof."
+        eyebrow="About Crowd Report"
+        title="Built for Transparent Civic Infrastructure Repair"
+        description="Crowd Report connects citizens reporting public hazards with verified local contractors through upfront pricing and photographic proof."
         primaryAction={
-          <a href="#operating-model">
-            <Button variant="gold" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
-              Read Operating Model
-            </Button>
-          </a>
+          <Button href="#operating-model" variant="accent" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+            Read Operating Model
+          </Button>
         }
         secondaryAction={
-          <Button to="/query" variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10">
-              Contact Secretariat Desk
-            </Button>
-        }
-        visual={
-          <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Milestone Payment Model</span>
-              <Badge variant="gold" size="sm">50% Advance</Badge>
-            </div>
-            <div className="space-y-3 text-xs text-slate-300">
-              <div className="flex items-start gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
-                <span><strong className="text-white">Milestone Advance:</strong> Initial 50% advance mobilization to start work on site.</span>
-              </div>
-              <div className="flex items-start gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5" />
-                <span><strong className="text-white">Photo Verification:</strong> Timestamped Before and After photo comparison reviewed by admin.</span>
-              </div>
-              <div className="flex items-start gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5" />
-                <span><strong className="text-white">Direct Payout:</strong> Balance released to verified resolver upon confirmed completion.</span>
-              </div>
-            </div>
-          </div>
+          <Button to="/query" variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10 hover:text-white">
+            Contact Secretariat Desk
+          </Button>
         }
       />
 

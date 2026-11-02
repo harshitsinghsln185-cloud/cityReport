@@ -8,13 +8,14 @@ import {
 } from 'lucide-react';
 import categoryService, { Category } from '../../services/category.service';
 import ServiceCard from '../../components/public/ServiceCard';
-import Badge from '../../components/ui/Badge';
 import Button from '../../components/ui/Button';
 import PageHero from '../../components/ui/PageHero';
 import Reveal from '../../components/ui/Reveal';
 import EmptyState from '../../components/ui/EmptyState';
 import SEO from '../../components/SEO';
 import { SITE_URL } from '../../config/site';
+import servicesHeroImg from '../../assets/pages/services.png';
+import { HERO_FOCAL } from '../../config/heroFocal';
 
 export const Services: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -118,47 +119,24 @@ export const Services: React.FC = () => {
         ]}
       />
 
-      {/* Institutional Split Page Hero */}
+      {/* Left-Text Image Page Hero */}
       <PageHero
-        variant="split"
-        theme="navy"
+        backgroundImage={servicesHeroImg}
+        imageAlt="Municipal public works technicians and road repair machinery"
+        focalPoint={HERO_FOCAL.services}
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Services Directory' }]}
-        eyebrow="Certified Municipal Catalog"
-        eyebrowIcon={<Wrench className="w-3.5 h-3.5" />}
-        title="Public Infrastructure Repair"
-        highlightedTitle="& Standard Tariff Directory"
-        description="Transparent base tariffs, 48h response SLAs, and direct contractor dispatch for road repairs, streetlights, drainage, and waste management across 36 Indian regions."
+        eyebrow="Municipal Services"
+        title="Public Infrastructure Repair Directory"
+        description="Transparent rates and contractor dispatch for road repairs, streetlights, drainage, and waste management."
         primaryAction={
-          <Button to="/user/report-issue" variant="gold" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
-              Report a Hazard
-            </Button>
+          <Button to="/user/report-issue" variant="accent" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+            Report a Hazard
+          </Button>
         }
         secondaryAction={
-          <Button to="/track" variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10">
-              Track Existing Ticket
-            </Button>
-        }
-        visual={
-          <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Municipal Service Standards</span>
-              <Badge variant="gold" size="sm">SOR Audited</Badge>
-            </div>
-            <div className="space-y-3 text-xs text-slate-300">
-              <div className="flex items-start gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
-                <span><strong className="text-white">50% Advance Payment:</strong> Advance payment confirmed prior to contractor mobilization.</span>
-              </div>
-              <div className="flex items-start gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5" />
-                <span><strong className="text-white">Geotagged Proof:</strong> Verification via GPS-stamped before and after photos.</span>
-              </div>
-              <div className="flex items-start gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5" />
-                <span><strong className="text-white">Pan-India Coverage:</strong> Standardized Schedule of Rates (SOR) across 36 States &amp; UTs.</span>
-              </div>
-            </div>
-          </div>
+          <Button to="/track" variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10 hover:text-white">
+            Track Existing Ticket
+          </Button>
         }
       />
 

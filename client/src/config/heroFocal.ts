@@ -33,3 +33,4 @@ export const HERO_FOCAL: Record<string, HeroFocalSetting> = {
 };
 
 export default HERO_FOCAL;
+

@@ -20,6 +20,8 @@ import EmptyState from '../../components/ui/EmptyState';
 import Reveal from '../../components/ui/Reveal';
 import SEO from '../../components/SEO';
 import { SITE_URL } from '../../config/site';
+import statesHeroImg from '../../assets/pages/states.png';
+import { HERO_FOCAL } from '../../config/heroFocal';
 
 export const ZONE_STYLES: Record<RegionType, { badge: string }> = {
   North: { badge: 'bg-blue-50 text-blue-700 border-blue-200' },
@@ -169,48 +171,24 @@ export const StatesDirectory: React.FC = () => {
         ]}
       />
 
-      {/* Institutional Split Page Hero */}
+      {/* Left-Text Image Page Hero */}
       <PageHero
-        variant="split"
-        theme="navy"
+        backgroundImage={statesHeroImg}
+        imageAlt="India civic infrastructure and municipal state administrative landscape"
+        focalPoint={HERO_FOCAL.states}
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'States & Union Territories' }]}
-        eyebrow="Nationwide Civic Infrastructure"
-        eyebrowIcon={<MapPin className="w-3.5 h-3.5" />}
-        title="Monitor Municipal Health"
-        highlightedTitle="Across 36 Indian Regions"
-        description="Access certified resolver networks, localized civic priorities, landmark photographic banners, and verified proof in all 28 states and 8 union territories with standardized pricing lists."
+        eyebrow="States Directory"
+        title="Civic Directory of States and Union Territories"
+        description="Explore local civic resolution priorities, verified contractor coverage, and infrastructure data across all states and union territories."
         primaryAction={
-          <a href="#zone-switcher">
-            <Button variant="gold" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
-              Filter by Zone
-            </Button>
-          </a>
+          <Button href="#zone-switcher" variant="accent" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
+            Filter by Zone
+          </Button>
         }
         secondaryAction={
-          <Button to="/user/report-issue" variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10">
-              Report Local Defect
-            </Button>
-        }
-        visual={
-          <div className="w-full max-w-sm rounded-[20px] bg-white/5 border border-white/15 p-6 backdrop-blur-md shadow-2xl text-white space-y-4">
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <span className="text-xs uppercase tracking-wider font-semibold text-gold">Pan-India Coverage</span>
-              <Badge variant="gold" size="sm">36 Total</Badge>
-            </div>
-            <div className="grid grid-cols-2 gap-3 pt-1">
-              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="text-2xl sm:text-3xl font-extrabold font-heading tracking-tight text-white">28</div>
-                <div className="text-xs text-slate-300 font-medium">States</div>
-              </div>
-              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="text-2xl sm:text-3xl font-extrabold font-heading tracking-tight text-white">8</div>
-                <div className="text-xs text-slate-300 font-medium">Union Territories</div>
-              </div>
-            </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Every region operates under verified milestone payments (50% advance, 50% balance) and photo verification standards.
-            </p>
-          </div>
+          <Button to="/user/report-issue" variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10 hover:text-white">
+            Report Local Defect
+          </Button>
         }
       />
 
