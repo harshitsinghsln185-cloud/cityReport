@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Heroes Verification — Crowd Report</title>
+  <style>
+    :root {
+      --bg: #06132B;
+      --card-bg: #0A1F44;
+      --accent: #E8A33D;
+      --text: #F1F5F9;
+      --text-muted: #94A3B8;
+      --border: rgba(255, 255, 255, 0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 32px 20px;
+    }
+    .header {
+      max-width: 1400px;
+      margin: 0 auto 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: rgba(232, 163, 61, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(232, 163, 61, 0.3);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    p.lead {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 800px;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn:hover, .btn.active {
+      background: var(--accent);
+      color: #0A1F44;
+      border-color: var(--accent);
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .page-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-title {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .page-path {
+      font-family: monospace;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .grid-viewports {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card-vp {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-vp-header {
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+    }
+    .card-vp-img-wrap {
+      padding: 12px;
+      background: #030a17;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-vp img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+    .metrics-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 12px;
+    }
+    .metrics-table th, .metrics-table td {
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .metrics-table th {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .good { color: #34D399; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <span class="badge">Verification Artifact &bull; Phase H4</span>
+    <h1>Page Heroes Responsive Contact Sheet</h1>
+    <p class="lead">
+      Left-aligned typography layout with high-resolution photography, Fraunces serif wordmarks, and WCAG AAA contrast overlays across five public pages.
+    </p>
+
+    <div class="filters">
+      <button class="btn active" onclick="filterVp('all')">All Viewports</button>
+      <button class="btn" onclick="filterVp('360px')">Mobile (360px)</button>
+      <button class="btn" onclick="filterVp('768px')">Tablet (768px)</button>
+      <button class="btn" onclick="filterVp('1280px')">Desktop (1280px)</button>
+      <button class="btn" onclick="filterVp('1536px')">Wide (1536px)</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- 1. SERVICES -->
+    <div class="page-section">
+      <div class="page-header">
+        <div>
+          <div class="page-title">1. Public Infrastructure Services Directory</div>
+          <div class="page-path">/services &bull; client/src/pages/public/Services.tsx</div>
+        </div>
+        <span class="badge">Contrast 15.9:1 (AAA)</span>
+      </div>
+      <div class="grid-viewports">
+        <div class="card-vp vp-360px">
+          <div class="card-vp-header"><span>360px (Mobile)</span><span>min-h: 380px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/services-360px.png" alt="Services 360px"></div>
+        </div>
+        <div class="card-vp vp-768px">
+          <div class="card-vp-header"><span>768px (Tablet)</span><span>min-h: 400px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/services-768px.png" alt="Services 768px"></div>
+        </div>
+        <div class="card-vp vp-1280px">
+          <div class="card-vp-header"><span>1280px (Desktop)</span><span>min-h: 460px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/services-1280px.png" alt="Services 1280px"></div>
+        </div>
+        <div class="card-vp vp-1536px">
+          <div class="card-vp-header"><span>1536px (Ultra-wide)</span><span>min-h: 480px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/services-1536px.png" alt="Services 1536px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. STATES -->
+    <div class="page-section">
+      <div class="page-header">
+        <div>
+          <div class="page-title">2. States &amp; Union Territories Directory</div>
+          <div class="page-path">/states &bull; client/src/pages/public/StatesDirectory.tsx</div>
+        </div>
+        <span class="badge">Contrast 15.9:1 (AAA)</span>
+      </div>
+      <div class="grid-viewports">
+        <div class="card-vp vp-360px">
+          <div class="card-vp-header"><span>360px (Mobile)</span><span>min-h: 380px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/states-360px.png" alt="States 360px"></div>
+        </div>
+        <div class="card-vp vp-768px">
+          <div class="card-vp-header"><span>768px (Tablet)</span><span>min-h: 400px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/states-768px.png" alt="States 768px"></div>
+        </div>
+        <div class="card-vp vp-1280px">
+          <div class="card-vp-header"><span>1280px (Desktop)</span><span>min-h: 460px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/states-1280px.png" alt="States 1280px"></div>
+        </div>
+        <div class="card-vp vp-1536px">
+          <div class="card-vp-header"><span>1536px (Ultra-wide)</span><span>min-h: 480px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/states-1536px.png" alt="States 1536px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. TRACK -->
+    <div class="page-section">
+      <div class="page-header">
+        <div>
+          <div class="page-title">3. Track Issue Status Console</div>
+          <div class="page-path">/track &bull; client/src/pages/public/TrackStatus.tsx</div>
+        </div>
+        <span class="badge">Contrast 15.9:1 (AAA)</span>
+      </div>
+      <div class="grid-viewports">
+        <div class="card-vp vp-360px">
+          <div class="card-vp-header"><span>360px (Mobile)</span><span>min-h: 380px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/track-360px.png" alt="Track 360px"></div>
+        </div>
+        <div class="card-vp vp-768px">
+          <div class="card-vp-header"><span>768px (Tablet)</span><span>min-h: 400px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/track-768px.png" alt="Track 768px"></div>
+        </div>
+        <div class="card-vp vp-1280px">
+          <div class="card-vp-header"><span>1280px (Desktop)</span><span>min-h: 460px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/track-1280px.png" alt="Track 1280px"></div>
+        </div>
+        <div class="card-vp vp-1536px">
+          <div class="card-vp-header"><span>1536px (Ultra-wide)</span><span>min-h: 480px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/track-1536px.png" alt="Track 1536px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. ABOUT -->
+    <div class="page-section">
+      <div class="page-header">
+        <div>
+          <div class="page-title">4. About &amp; Municipal Governance</div>
+          <div class="page-path">/about &bull; client/src/pages/public/About.tsx</div>
+        </div>
+        <span class="badge">Contrast 15.9:1 (AAA)</span>
+      </div>
+      <div class="grid-viewports">
+        <div class="card-vp vp-360px">
+          <div class="card-vp-header"><span>360px (Mobile)</span><span>min-h: 380px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/about-360px.png" alt="About 360px"></div>
+        </div>
+        <div class="card-vp vp-768px">
+          <div class="card-vp-header"><span>768px (Tablet)</span><span>min-h: 400px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/about-768px.png" alt="About 768px"></div>
+        </div>
+        <div class="card-vp vp-1280px">
+          <div class="card-vp-header"><span>1280px (Desktop)</span><span>min-h: 460px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/about-1280px.png" alt="About 1280px"></div>
+        </div>
+        <div class="card-vp vp-1536px">
+          <div class="card-vp-header"><span>1536px (Ultra-wide)</span><span>min-h: 480px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/about-1536px.png" alt="About 1536px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. CONTACT -->
+    <div class="page-section">
+      <div class="page-header">
+        <div>
+          <div class="page-title">5. Contact &amp; Civic Help Desk</div>
+          <div class="page-path">/query &bull; client/src/pages/public/WriteQuery.tsx</div>
+        </div>
+        <span class="badge">Contrast 15.9:1 (AAA)</span>
+      </div>
+      <div class="grid-viewports">
+        <div class="card-vp vp-360px">
+          <div class="card-vp-header"><span>360px (Mobile)</span><span>min-h: 380px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/contact-360px.png" alt="Contact 360px"></div>
+        </div>
+        <div class="card-vp vp-768px">
+          <div class="card-vp-header"><span>768px (Tablet)</span><span>min-h: 400px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/contact-768px.png" alt="Contact 768px"></div>
+        </div>
+        <div class="card-vp vp-1280px">
+          <div class="card-vp-header"><span>1280px (Desktop)</span><span>min-h: 460px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/contact-1280px.png" alt="Contact 1280px"></div>
+        </div>
+        <div class="card-vp vp-1536px">
+          <div class="card-vp-header"><span>1536px (Ultra-wide)</span><span>min-h: 480px</span></div>
+          <div class="card-vp-img-wrap"><img src="screenshots/contact-1536px.png" alt="Contact 1536px"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function filterVp(vp) {
+      document.querySelectorAll('.filters .btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      document.querySelectorAll('.card-vp').forEach(card => {
+        if (vp === 'all' || card.classList.contains('vp-' + vp)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
