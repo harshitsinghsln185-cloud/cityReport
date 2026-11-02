@@ -4,6 +4,17 @@ import { sendSuccess } from '../utils/response.js';
 import { AppError } from '../utils/AppError.js';
 
 /**
+ * Validates that the caller has authorization to access or mutate the given session.
+ */
+const verifySessionAccess = (session, reqUser) => {
+  if (session.user) {
+    if (!reqUser || (session.user.toString() !== reqUser._id.toString() && reqUser.role !== 'Admin')) {
+      throw new AppError('Unauthorized: You do not have permission to access this chat session.', 403);
+    }
+  }
+};
+
+/**
  * Initializes a new chat session.
  */
 export const createSession = asyncHandler(async (req, res) => {
@@ -18,6 +29,14 @@ export const createSession = asyncHandler(async (req, res) => {
 export const getSession = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const session = await chatbotService.getSession(id);
+  verifySessionAccess(session, req.user);
+
+  // Link anonymous session if caller is now authenticated
+  if (!session.user && req.user?._id) {
+    session.user = req.user._id;
+    await session.save();
+  }
+
   return sendSuccess(res, session, 'Chat session retrieved', 200);
 });
 
@@ -30,6 +49,15 @@ export const postMessage = asyncHandler(async (req, res) => {
 
   if (!message || typeof message !== 'string' || message.trim().length === 0) {
     throw new AppError('Message is required and cannot be empty', 400);
+  }
+
+  const session = await chatbotService.getSession(id);
+  verifySessionAccess(session, req.user);
+
+  // Link anonymous session if caller is now authenticated
+  if (!session.user && req.user?._id) {
+    session.user = req.user._id;
+    await session.save();
   }
 
   const result = await chatbotService.handleUserMessage(id, message);
@@ -45,8 +73,16 @@ export const attachImage = asyncHandler(async (req, res) => {
     throw new AppError('Please provide an image file under key "image"', 400);
   }
 
-  const session = await chatbotService.attachChatImage(id, req.file);
-  return sendSuccess(res, session, 'Image attached to session successfully', 200);
+  const session = await chatbotService.getSession(id);
+  verifySessionAccess(session, req.user);
+
+  if (!session.user && req.user?._id) {
+    session.user = req.user._id;
+    await session.save();
+  }
+
+  const updatedSession = await chatbotService.attachChatImage(id, req.file);
+  return sendSuccess(res, updatedSession, 'Image attached to session successfully', 200);
 });
 
 /**
@@ -59,6 +95,9 @@ export const submitDraft = asyncHandler(async (req, res) => {
   if (!req.user || !req.user._id) {
     throw new AppError('Authentication required. Please sign in to submit your civic report.', 401);
   }
+
+  const session = await chatbotService.getSession(id);
+  verifySessionAccess(session, req.user);
 
   const result = await chatbotService.submitDraftIssue(id, req.user);
   return sendSuccess(res, result, 'Civic issue successfully submitted via AI Assistant', 201);

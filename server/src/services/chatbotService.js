@@ -7,9 +7,67 @@ import chatGuard from '../utils/chatGuard.js';
 import issueService from './issueService.js';
 import cloudinaryService from './cloudinaryService.js';
 import { validateImageBuffer } from '../utils/fileValidation.js';
+import { matchWebsiteKnowledge } from '../utils/chatKnowledge.js';
 import { AppError } from '../utils/AppError.js';
 import { env } from '../config/env.js';
 import { logger } from '../utils/logger.js';
+
+const DEFAULT_CATEGORIES = [
+  {
+    name: 'Road damage & Potholes',
+    slug: 'road-damage',
+    description: 'Potholes, broken roads, damaged pavements, and street surface issues.',
+    baseFeePaise: 60000,
+    estimatedResolutionHours: 48,
+    icon: 'road',
+    isActive: true,
+  },
+  {
+    name: 'Water supply & Pipelines',
+    slug: 'water-supply',
+    description: 'Pipeline leakages, contaminated municipal supply, and low water pressure.',
+    baseFeePaise: 40000,
+    estimatedResolutionHours: 24,
+    icon: 'droplet',
+    isActive: true,
+  },
+  {
+    name: 'Drainage & Sewers',
+    slug: 'drainage',
+    description: 'Blocked sewers, overflowing drains, and rainwater stagnation.',
+    baseFeePaise: 50000,
+    estimatedResolutionHours: 36,
+    icon: 'waves',
+    isActive: true,
+  },
+  {
+    name: 'Streetlight & Electricity',
+    slug: 'streetlight-electricity',
+    description: 'Non-functional streetlights, dangling power cables, and open transformer hazards.',
+    baseFeePaise: 35000,
+    estimatedResolutionHours: 24,
+    icon: 'zap',
+    isActive: true,
+  },
+  {
+    name: 'Garbage & Sanitation',
+    slug: 'garbage',
+    description: 'Uncollected domestic waste, illegal dumping, and overflowing municipal bins.',
+    baseFeePaise: 30000,
+    estimatedResolutionHours: 24,
+    icon: 'trash-2',
+    isActive: true,
+  },
+  {
+    name: 'General Public Works',
+    slug: 'other',
+    description: 'General civic problems, illegal hoardings, park maintenance, and public property hazards.',
+    baseFeePaise: 30000,
+    estimatedResolutionHours: 48,
+    icon: 'help-circle',
+    isActive: true,
+  },
+];
 
 /**
  * Creates a brand new conversational chat session.
@@ -128,28 +186,94 @@ export const handleUserMessage = async (sessionId, rawText) => {
   let quickReplies = [];
   const textLower = cleanText.toLowerCase();
 
-  // Load all active categories for entity resolution & pills
-  const activeCategories = await Category.find({ isActive: true }).select('name slug baseFeePaise');
+  // Load all active categories for entity resolution & pills with fallback
+  let activeCategories = await Category.find({ isActive: true }).select(
+    'name slug description baseFeePaise estimatedResolutionHours icon'
+  );
+  if (!activeCategories || activeCategories.length === 0) {
+    activeCategories = DEFAULT_CATEGORIES;
+  }
   const categoryNames = activeCategories.map((c) => c.name);
 
-  // Helper to match category
-  const matchCategoryInText = (str) => {
-    const s = str.toLowerCase();
-    return activeCategories.find(
-      (c) =>
-        s.includes(c.name.toLowerCase()) ||
-        s.includes(c.slug.toLowerCase()) ||
-        (c.slug === 'pothole-repair' && (s.includes('pothole') || s.includes('road'))) ||
-        (c.slug === 'streetlight-maintenance' && (s.includes('light') || s.includes('lamp'))) ||
-        (c.slug === 'waste-management' && (s.includes('garbage') || s.includes('waste') || s.includes('trash'))) ||
-        (c.slug === 'water-leakage' && (s.includes('water') || s.includes('pipe') || s.includes('leak')))
-    );
+  const formatCategoryList = (cats) => {
+    return cats
+      .map((c) => {
+        const fee = c.baseFeePaise ? ` · Base Fee: ₹${(c.baseFeePaise / 100).toLocaleString('en-IN')}` : '';
+        const eta = c.estimatedResolutionHours ? ` · Response: ~${c.estimatedResolutionHours}h` : '';
+        const desc = c.description ? `\n  *${c.description}*` : '';
+        return `• **${c.name}**${fee}${eta}${desc}`;
+      })
+      .join('\n\n');
   };
+
+  // Helper to match category by name, slug or semantic keywords
+  const matchCategoryInText = (str) => {
+    const s = str.toLowerCase().trim();
+    if (!s) return null;
+
+    // 1. Direct name or slug match
+    for (const c of activeCategories) {
+      const nameLower = c.name.toLowerCase();
+      const slugLower = c.slug.toLowerCase();
+      if (
+        s === nameLower ||
+        s.includes(nameLower) ||
+        nameLower.includes(s) ||
+        s === slugLower ||
+        s.includes(slugLower) ||
+        slugLower.startsWith(s) ||
+        slugLower.includes(s)
+      ) {
+        return c;
+      }
+    }
+
+    // 2. Keyword synonyms mapping
+    const mappings = [
+      { keywords: ['pothole', 'road', 'asphalt', 'crater', 'pavement', 'tar'], slugPart: 'pothole' },
+      { keywords: ['pothole', 'road', 'asphalt', 'crater', 'pavement', 'tar'], slugPart: 'road' },
+      { keywords: ['water', 'pipe', 'leak', 'pipeline', 'contamination', 'seepage', 'pressure'], slugPart: 'water' },
+      { keywords: ['drain', 'sewer', 'gutter', 'stagnant', 'overflow', 'manhole'], slugPart: 'drain' },
+      { keywords: ['light', 'lamp', 'electric', 'wire', 'cable', 'transformer', 'pole', 'darkness', 'bulb'], slugPart: 'light' },
+      { keywords: ['light', 'lamp', 'electric', 'wire', 'cable', 'transformer', 'pole', 'darkness', 'bulb'], slugPart: 'street' },
+      { keywords: ['garbage', 'waste', 'trash', 'debris', 'dump', 'rubbish', 'litter', 'bin', 'clean'], slugPart: 'garbage' },
+      { keywords: ['park', 'public', 'other', 'hoarding', 'encroachment', 'hazard', 'civic'], slugPart: 'other' },
+    ];
+
+    for (const m of mappings) {
+      if (m.keywords.some((kw) => s.includes(kw))) {
+        const found = activeCategories.find((c) => {
+          const sl = c.slug.toLowerCase();
+          const nl = c.name.toLowerCase();
+          return sl.includes(m.slugPart) || m.keywords.some((kw) => sl.includes(kw) || nl.includes(kw));
+        });
+        if (found) return found;
+      }
+    }
+
+    return null;
+  };
+
+  // Omnipresent intents
+  const isViewCategoriesIntent =
+    textLower.includes('view categories') ||
+    textLower.includes('show categories') ||
+    textLower.includes('list categories') ||
+    textLower === 'categories' ||
+    textLower === 'services';
+
+  const knowledgeMatch = matchWebsiteKnowledge(cleanText);
 
   // State Machine Transitions
   switch (session.state) {
     case 'GREETING': {
-      if (
+      if (isViewCategoriesIntent) {
+        replyText = `Here are our supported civic service categories:\n\n${formatCategoryList(activeCategories)}\n\nSelect a category pill below to report an issue, or tell me what needs repair!`;
+        quickReplies = categoryNames.slice(0, 5);
+      } else if (knowledgeMatch.matched) {
+        replyText = knowledgeMatch.answer;
+        quickReplies = knowledgeMatch.quickReplies || ['Report an Issue', 'View Categories', 'Talk to Support'];
+      } else if (
         textLower.includes('report') ||
         textLower.includes('issue') ||
         textLower.includes('problem') ||
@@ -171,11 +295,8 @@ export const handleUserMessage = async (sessionId, rawText) => {
           quickReplies = ['Drop Pin on Map', 'Use Current Location'];
         } else {
           replyText = "Let's report your issue! To help route this to the right certified resolvers, which civic category best fits the problem?";
-          quickReplies = categoryNames.slice(0, 4);
+          quickReplies = categoryNames.slice(0, 5);
         }
-      } else if (textLower.includes('view categories') || textLower.includes('categories')) {
-        replyText = `Here are our supported civic service categories:\n\n${categoryNames.map((n) => `• **${n}**`).join('\n')}\n\nSelect a category to report an issue, or tell me what needs repair!`;
-        quickReplies = categoryNames.slice(0, 4);
       } else if (textLower.includes('support') || textLower.includes('agent') || textLower.includes('human')) {
         session.state = 'HANDOFF';
         replyText =
@@ -189,14 +310,31 @@ export const handleUserMessage = async (sessionId, rawText) => {
     }
 
     case 'COLLECT': {
+      if (isViewCategoriesIntent) {
+        replyText = `Here are our supported civic service categories:\n\n${formatCategoryList(activeCategories)}\n\nSelect a category pill below to assign it to your report:`;
+        quickReplies = categoryNames.slice(0, 5);
+        break;
+      }
+
+      const isExplicitQuestion =
+        /^(what|how|why|who|where|is|can|do|does|tell|explain)\b/i.test(cleanText) || cleanText.includes('?');
+
+      if (knowledgeMatch.matched && isExplicitQuestion) {
+        replyText = `${knowledgeMatch.answer}\n\n*(Whenever you are ready, you can continue providing details for your issue report!)*`;
+        quickReplies = ['Continue Reporting', 'View Categories', 'Talk to Support'];
+        break;
+      }
+
       // 1. Attempt AI Tool Calling (if available)
       let aiHandled = false;
       const aiResult = await aiService.chatWithTools({
         messages: session.messages.slice(-6).map((m) => ({ role: m.role, content: m.content })),
-        systemPrompt: `You are an intelligent municipal civic assistant.
-Your goal is to extract issue details from citizen dialogue into the update_draft tool.
-Available categories: ${categoryNames.join(', ')}.
-Rules:
+        systemPrompt: `You are an intelligent municipal civic assistant for Crowd Report.
+Grounding Knowledge & Platform Rules:
+- Crowd Report is a transparent civic issue reporting platform connecting citizens with certified municipal contractors.
+- 50/50 Milestone Payment: 50% advance upon quote approval held in escrow; 50% balance released only after verified completion.
+- Available categories: ${categoryNames.join(', ')}.
+- Your goal is to extract issue details from citizen dialogue into the update_draft tool, or answer their questions factually using the platform rules above.
 - Call update_draft with any extracted title, description, category, priority, coordinates, address, or contactNumber.
 - Priority must be one of: Low, Medium, High, Critical.
 - Never invent coordinates or phone numbers unless stated by the citizen.
@@ -241,11 +379,13 @@ Rules:
       // 2. Deterministic Form-Mode Fallback & Rule Enrichment
       if (!aiHandled) {
         // Match category if not already set
+        let categoryJustSelected = false;
         if (!session.draft.category) {
           const matched = matchCategoryInText(cleanText);
           if (matched) {
             session.draft.category = matched._id;
             session.draft.categoryName = matched.name;
+            categoryJustSelected = true;
           }
         }
 
@@ -264,14 +404,16 @@ Rules:
           session.draft.contactNumber = phoneMatch[0].replace(/\D/g, '').slice(-10);
         }
 
-        // Set title / description if empty
-        if (!session.draft.description && cleanText.length >= 10 && !matchCategoryInText(cleanText)) {
-          session.draft.description = cleanText;
-          if (!session.draft.title) {
+        // Set title / description if empty (and not just selecting category)
+        if (!categoryJustSelected) {
+          if (!session.draft.description && cleanText.length >= 10) {
+            session.draft.description = cleanText;
+            if (!session.draft.title) {
+              session.draft.title = cleanText.substring(0, 80);
+            }
+          } else if (!session.draft.title && cleanText.length >= 5) {
             session.draft.title = cleanText.substring(0, 80);
           }
-        } else if (!session.draft.title && cleanText.length >= 5) {
-          session.draft.title = cleanText.substring(0, 80);
         }
 
         // Extract location or coordinates if category and description are already set
@@ -301,9 +443,6 @@ Rules:
                 pincode: session.draft.address?.pincode || '110001',
               };
             }
-            if (!session.draft.coordinates) {
-              session.draft.coordinates = [77.209, 28.6139]; // Default Delhi municipal ward
-            }
           }
         }
       }
@@ -318,7 +457,7 @@ Rules:
 
       if (!hasCategory) {
         replyText = replyText || 'Which civic service category does this issue relate to?';
-        quickReplies = categoryNames.slice(0, 4);
+        quickReplies = categoryNames.slice(0, 5);
       } else if (!hasDescription) {
         replyText =
           replyText ||
@@ -471,19 +610,30 @@ export const submitDraftIssue = async (sessionId, user) => {
       ? session.draft.description
       : 'Civic issue reported via conversational AI Assistant with certified municipal routing.';
 
-  // Fallback coordinates: if none provided, default to municipal center [77.2090, 28.6139]
+  // Location verification
   let coordinates = session.draft.coordinates;
-  if (!Array.isArray(coordinates) || coordinates.length !== 2) {
+  const hasCoordinates = Array.isArray(coordinates) && coordinates.length === 2;
+  const hasAddress = Boolean(session.draft.address?.city || session.draft.address?.street);
+
+  if (!hasCoordinates && !hasAddress) {
+    throw new AppError('Please specify an issue location (pin on map or address) before submitting.', 400);
+  }
+
+  if (!hasCoordinates) {
+    // If street/city is provided without map pin, resolve to municipal baseline
     coordinates = [77.209, 28.6139];
   }
 
   const address = {
-    street: session.draft.address?.street || 'Civic Location',
-    city: session.draft.address?.city || 'Municipal District',
-    pincode: session.draft.address?.pincode || '110001',
+    street: session.draft.address?.street || 'Civic Site Area',
+    city: session.draft.address?.city || (user.address?.city || 'Municipal District'),
+    pincode: session.draft.address?.pincode || (user.address?.pincode || '110001'),
   };
 
-  const contactNumber = session.draft.contactNumber || user.phone || '9876543210';
+  const contactNumber = session.draft.contactNumber || user.phone;
+  if (!contactNumber) {
+    throw new AppError('Contact phone number is required to coordinate with certified municipal resolvers.', 400);
+  }
 
   // 1. Create issue using canonical shared creation pipeline (source: 'chatbot')
   const { issue, quote } = await issueService.createIssue({

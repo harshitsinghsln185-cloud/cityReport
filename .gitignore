@@ -7,6 +7,7 @@ docs/*
 !docs/ui-audit/
 !docs/state-banners/
 !docs/page-heroes/
+!docs/chatbot/
 AGENT.md
 client/ASSETS.md
 design-source/
