@@ -107,6 +107,17 @@ const issueSchema = new mongoose.Schema(
       required: true,
       index: true,
     },
+    subCategory: {
+      type: String,
+      trim: true,
+      default: null,
+      index: true,
+    },
+    subCategoryName: {
+      type: String,
+      trim: true,
+      default: null,
+    },
     title: {
       type: String,
       required: true,

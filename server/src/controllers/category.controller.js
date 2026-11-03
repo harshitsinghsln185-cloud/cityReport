@@ -4,13 +4,54 @@ import { AppError } from '../utils/AppError.js';
 export const getActiveCategories = async (req, res, next) => {
   try {
     const categories = await Category.find({ isActive: true })
-      .select('_id name slug description baseFeePaise icon')
-      .sort({ name: 1 })
+      .select('_id name slug description baseFeePaise icon order estimatedResolutionHours freeRadiusKm subCategories')
+      .sort({ order: 1, name: 1 })
       .lean();
+
+    const cleaned = categories.map((cat) => ({
+      ...cat,
+      subCategories: Array.isArray(cat.subCategories)
+        ? cat.subCategories
+            .filter((sub) => sub.isActive !== false)
+            .sort((a, b) => (a.order || 0) - (b.order || 0))
+        : [],
+    }));
 
     res.json({
       success: true,
-      data: categories,
+      data: cleaned,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getCategoryBySlug = async (req, res, next) => {
+  try {
+    const { slug } = req.params;
+    const category = await Category.findOne({
+      slug: slug.toLowerCase(),
+      isActive: true,
+    })
+      .select('_id name slug description baseFeePaise icon order estimatedResolutionHours freeRadiusKm subCategories')
+      .lean();
+
+    if (!category) {
+      throw new AppError('Category not found', 404);
+    }
+
+    const result = {
+      ...category,
+      subCategories: Array.isArray(category.subCategories)
+        ? category.subCategories
+            .filter((sub) => sub.isActive !== false)
+            .sort((a, b) => (a.order || 0) - (b.order || 0))
+        : [],
+    };
+
+    res.json({
+      success: true,
+      data: result,
     });
   } catch (error) {
     next(error);
@@ -91,7 +132,7 @@ export const createCategory = async (req, res, next) => {
 export const updateCategory = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { name, description, baseFeePaise, icon } = req.body;
+    const { name, description, baseFeePaise, icon, order, freeRadiusKm, estimatedResolutionHours, subCategories } = req.body;
 
     const category = await Category.findById(id);
     if (!category) {
@@ -112,6 +153,10 @@ export const updateCategory = async (req, res, next) => {
     if (description !== undefined) category.description = description;
     if (baseFeePaise !== undefined) category.baseFeePaise = baseFeePaise;
     if (icon !== undefined) category.icon = icon;
+    if (order !== undefined) category.order = order;
+    if (freeRadiusKm !== undefined) category.freeRadiusKm = freeRadiusKm;
+    if (estimatedResolutionHours !== undefined) category.estimatedResolutionHours = estimatedResolutionHours;
+    if (Array.isArray(subCategories)) category.subCategories = subCategories;
 
     await category.save();
 
@@ -150,6 +195,7 @@ export const toggleCategoryStatus = async (req, res, next) => {
 
 export default {
   getActiveCategories,
+  getCategoryBySlug,
   getAdminCategories,
   createCategory,
   updateCategory,

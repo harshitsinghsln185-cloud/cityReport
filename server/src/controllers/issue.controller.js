@@ -10,6 +10,7 @@ export const create = async (req, res, next) => {
     const result = await issueService.createIssue({
       reporterId: req.user._id,
       categoryId: validated.category,
+      subCategory: validated.subCategory,
       title: validated.title,
       description: validated.description,
       suggestedPriority: validated.suggestedPriority,
@@ -39,6 +40,7 @@ export const estimateQuote = async (req, res, next) => {
 
     const result = await feeService.calculateQuote({
       categoryId: validated.category,
+      subCategory: validated.subCategory,
       coordinates: [validated.lng, validated.lat],
       suggestedPriority: validated.suggestedPriority,
       description: validated.description,

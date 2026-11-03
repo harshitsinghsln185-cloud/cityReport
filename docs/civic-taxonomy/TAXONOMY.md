@@ -458,3 +458,4 @@ The PDF repeats certain real-world civic issues across multiple operational cont
 3. **Priority Level Storage:**
    * **Recommendation (Recommended):** Store `defaultPriority` (`Critical`, `High`, `Medium`, `Low`) for every sub-issue in `subCategories` schema. This provides an objective hint for AI severity assessment and admin triage, while preserving user input and rule fallback.
    * *Alternative:* Skip storing priority per sub-issue.
+

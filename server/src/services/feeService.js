@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { Category } from '../models/Category.js';
 import { FeeSettings } from '../models/FeeSettings.js';
 import geoService from './geoService.js';
@@ -44,12 +45,21 @@ export const calculateQuote = async ({
   coordinates,
   suggestedPriority = 'Medium',
   description = '',
+  subCategory = null,
+  subCategoryName = null,
+  defaultPriority = null,
   overrideDistanceKm = null,
   overrideSeverityMultiplier = null,
 }) => {
-  const category = await Category.findById(categoryId);
+  let category = null;
+  if (mongoose.Types.ObjectId.isValid(categoryId)) {
+    category = await Category.findById(categoryId);
+  }
+  if (!category) {
+    category = await Category.findOne({ slug: categoryId });
+  }
   if (!category || !category.isActive) {
-    throw new AppError('Civic service category not found or inactive', 404);
+    throw new AppError('Civic service category not found or inactive', 400);
   }
 
   const feeSettings = await FeeSettings.getSettings();
@@ -80,9 +90,23 @@ export const calculateQuote = async ({
     nearestResolver = discovery.resolver;
   }
 
+  // Determine subCategory details for AI hint
+  let finalSubCategoryName = subCategoryName;
+  let finalDefaultPriority = defaultPriority;
+
+  if (subCategory && !finalSubCategoryName && Array.isArray(category.subCategories)) {
+    const matched = category.subCategories.find((s) => s.slug === subCategory);
+    if (matched) {
+      finalSubCategoryName = matched.name;
+      finalDefaultPriority = matched.defaultPriority;
+    }
+  }
+
   // 2. Assess severity
   const aiAssessment = await aiService.assessSeverity({
     categoryName: category.name,
+    subCategoryName: finalSubCategoryName,
+    defaultPriority: finalDefaultPriority,
     description,
     suggestedPriority,
   });

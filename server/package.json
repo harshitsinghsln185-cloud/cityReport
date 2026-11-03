@@ -9,6 +9,8 @@
     "start": "node src/server.js",
     "seed:admin": "node src/seed/seedAdmin.js",
     "seed:defaults": "node src/seed/seedDefaults.js",
+    "seed:civic": "node src/scripts/migrateCivicTaxonomy.js",
+    "migrate:civic": "node src/scripts/migrateCivicTaxonomy.js",
     "lint": "node -e \"console.log('Linting server: passed')\"",
     "test": "vitest run",
     "test:security": "vitest run tests/rbac.test.js",

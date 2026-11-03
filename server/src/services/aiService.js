@@ -60,6 +60,8 @@ export const assessSeverity = async ({
   categoryName = 'Civic Maintenance',
   description = '',
   suggestedPriority = 'Medium',
+  subCategoryName = null,
+  defaultPriority = null,
 }) => {
   const ruleSeverity = computeRuleSeverity(suggestedPriority, description);
   const now = new Date();
@@ -113,7 +115,7 @@ JSON Output Schema:
   const prompt = `Evaluate the following civic issue:
 <USER_DATA>
 Category: ${categoryName}
-Description: ${sanitizedDescription}
+${subCategoryName ? `Sub-category: ${subCategoryName}\n` : ''}${defaultPriority ? `Baseline Priority: ${defaultPriority}\n` : ''}Description: ${sanitizedDescription}
 </USER_DATA>`;
 
   try {

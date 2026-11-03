@@ -13,7 +13,14 @@ export const createIssueSchema = z.object({
     .max(2000, 'Description cannot exceed 2000 characters'),
   category: z
     .string({ required_error: 'Category is required' })
-    .regex(/^[0-9a-fA-F]{24}$/, 'Invalid Category ID'),
+    .trim()
+    .refine((val) => /^[0-9a-fA-F]{24}$/.test(val) || /^[a-z0-9-]+$/.test(val), {
+      message: 'Category must be a valid ID or slug',
+    }),
+  subCategory: z
+    .string()
+    .trim()
+    .optional(),
   suggestedPriority: z
     .enum(['Low', 'Medium', 'High', 'Critical'])
     .default('Medium'),
@@ -47,7 +54,11 @@ export const createIssueSchema = z.object({
 export const estimateQuoteSchema = z.object({
   category: z
     .string({ required_error: 'Category is required' })
-    .regex(/^[0-9a-fA-F]{24}$/, 'Invalid Category ID'),
+    .trim()
+    .refine((val) => /^[0-9a-fA-F]{24}$/.test(val) || /^[a-z0-9-]+$/.test(val), {
+      message: 'Category must be a valid ID or slug',
+    }),
+  subCategory: z.string().trim().optional(),
   lat: z.union([z.string().transform(Number), z.number()]).refine((val) => val >= -90 && val <= 90, {
     message: 'Latitude must be between -90 and 90',
   }),

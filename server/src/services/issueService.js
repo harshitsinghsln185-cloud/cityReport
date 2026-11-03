@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { Issue } from '../models/Issue.js';
 import { IssueTimeline } from '../models/IssueTimeline.js';
 import { Category } from '../models/Category.js';
@@ -30,6 +31,7 @@ import { logger } from '../utils/logger.js';
 export const createIssue = async ({
   reporterId,
   categoryId,
+  subCategory,
   title,
   description,
   suggestedPriority = 'Medium',
@@ -45,17 +47,43 @@ export const createIssue = async ({
     throw new AppError('Reporter user not found', 404);
   }
 
-  const category = await Category.findById(categoryId);
+  let category = null;
+  if (mongoose.Types.ObjectId.isValid(categoryId)) {
+    category = await Category.findById(categoryId);
+  }
+  if (!category) {
+    category = await Category.findOne({ slug: categoryId });
+  }
   if (!category || !category.isActive) {
-    throw new AppError('Civic service category not found or inactive', 404);
+    throw new AppError('Civic service category not found or inactive', 400);
+  }
+
+  // Validate subCategory if category defines active sub-issues
+  const activeSubCategories = (category.subCategories || []).filter((s) => s.isActive !== false);
+  let subCategoryName = null;
+  let defaultPriority = null;
+
+  if (activeSubCategories.length > 0) {
+    if (!subCategory) {
+      throw new AppError(`Sub-category is required for category '${category.name}'`, 400);
+    }
+    const matchedSub = activeSubCategories.find((s) => s.slug === subCategory);
+    if (!matchedSub) {
+      throw new AppError(`Invalid or inactive sub-category '${subCategory}' for category '${category.name}'`, 400);
+    }
+    subCategoryName = matchedSub.name;
+    defaultPriority = matchedSub.defaultPriority;
   }
 
   // 1. Calculate fee quote and discover nearest certified resolver
   const quoteResult = await feeService.calculateQuote({
-    categoryId,
+    categoryId: category._id,
     coordinates,
     suggestedPriority,
     description,
+    subCategory,
+    subCategoryName,
+    defaultPriority,
   });
 
   // 2. Determine initial status and snapshot fee
@@ -91,7 +119,9 @@ export const createIssue = async ({
   const issue = new Issue({
     issueCode,
     reporter: reporterId,
-    category: categoryId,
+    category: category._id,
+    subCategory: subCategory || null,
+    subCategoryName: subCategoryName || null,
     title,
     description,
     suggestedPriority,
