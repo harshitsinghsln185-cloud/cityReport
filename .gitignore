@@ -8,6 +8,9 @@ docs/*
 !docs/state-banners/
 !docs/page-heroes/
 !docs/chatbot/
+!docs/civic-taxonomy/
+!docs/reference/
+!docs/credits/
 AGENT.md
 client/ASSETS.md
 design-source/
