@@ -49,6 +49,44 @@ async function runTestSuite() {
   const page = await browser.newPage();
   await page.setViewportSize({ width: 1280, height: 900 });
 
+  // Route /api requests so tests are instant, deterministic, and isolated from external network latency
+  await page.route('**/api/categories/**', async (route) => {
+    const url = route.request().url();
+    const parts = url.split('/categories/');
+    const slug = parts[1] ? parts[1].split('?')[0].split('/')[0] : '';
+    if (slug && slug !== 'active') {
+      const found = CIVIC_TAXONOMY.find((c) => c.slug === slug);
+      if (found) {
+        return route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify({ success: true, data: found }),
+        });
+      }
+    }
+    return route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ success: true, data: CIVIC_TAXONOMY }),
+    });
+  });
+
+  await page.route('**/api/categories', async (route) => {
+    return route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ success: true, data: CIVIC_TAXONOMY }),
+    });
+  });
+
+  await page.route('**/api/**', async (route) => {
+    return route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ success: true, data: [] }),
+    });
+  });
+
   // Helper to scroll page completely and ensure all images are decoded
   async function scrollPage() {
     await page.evaluate(async () => {
@@ -156,12 +194,12 @@ async function runTestSuite() {
       const heroImg = document.querySelector('section img');
       const heroNaturalWidth = heroImg ? heroImg.naturalWidth : 0;
 
-      const subCards = Array.from(document.querySelectorAll('.grid h3')).map((h3) => {
-        const card = h3.closest('.group') || h3.parentElement?.parentElement;
-        const img = card?.querySelector('img');
-        const fallback = card?.querySelector('.bg-navy\\/90');
+      const subCards = Array.from(document.querySelectorAll('[data-testid="sub-issue-card"]')).map((card) => {
+        const h3 = card.querySelector('h3');
+        const img = card.querySelector('img');
+        const fallback = card.querySelector('.bg-navy\\/90');
         return {
-          name: h3.textContent?.trim(),
+          name: h3 ? h3.textContent?.trim() : 'Unknown Sub-issue',
           hasImg: !!img,
           naturalWidth: img ? img.naturalWidth : 0,
           hasFallback: !!fallback,
