@@ -92,3 +92,21 @@ All photographic assets utilized across the Crowd Report platform adhere strictl
 | **Illegal water connections** | `illegal-water-connections` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
 | **Sewer line blockage** | `sewer-line-blockage` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
 | **Overflowing septic tanks** | `overflowing-septic-tanks` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+
+
+## Sub-Issues: Electricity & Lighting (12 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Streetlights not working** | `streetlights-not-working` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-streetlight-defect` |
+| **Damaged electric poles** | `damaged-electric-poles` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Exposed electrical wires** | `exposed-electrical-wires` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Fallen electric wires** | `fallen-electric-wires` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged transformers** | `damaged-transformers` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Electricity supply interruption** | `electricity-supply-interruption` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Sparking electrical connections** | `sparking-electrical-connections` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Open electrical junction boxes** | `open-electrical-junction-boxes` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Broken streetlight poles** | `broken-streetlight-poles` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Dark public areas** | `dark-public-areas` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-streetlight-defect` |
+| **Illegal electricity connections** | `illegal-electricity-connections` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Electrical safety hazards** | `electrical-safety-hazards` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
