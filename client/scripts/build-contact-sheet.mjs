@@ -1,331 +1,284 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const { CIVIC_TAXONOMY } = require('../../server/src/seed/civicTaxonomy.js');
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const landmarksPath = path.resolve(__dirname, '../src/data/landmarks.ts');
-const statesDataPath = path.resolve(__dirname, '../src/data/statesData.ts');
-const targetHtml = path.resolve(__dirname, '../../docs/state-banners/CONTACT_SHEET.html');
+const designSourceDir = path.resolve(__dirname, '../design-source/civic');
+const outHtmlPath = path.resolve(__dirname, '../../docs/civic-taxonomy/CONTACT_SHEET.html');
+const artifactDir = 'C:\\Users\\harsh\\.gemini\\antigravity\\brain\\9eb4bfc1-0be4-495f-b008-5ea5d465a930';
 
-const landmarksContent = fs.readFileSync(landmarksPath, 'utf8').replace(/\r\n/g, '\n');
-const statesContent = fs.readFileSync(statesDataPath, 'utf8').replace(/\r\n/g, '\n');
-
-// Parse landmarks
-const blocks = landmarksContent.split(/\n\s*'([a-z0-9-]+)':\s*\{/);
-const landmarksMap = {};
-for (let i = 1; i < blocks.length; i += 2) {
-  const slug = blocks[i];
-  const block = blocks[i + 1];
-  const landmarkMatch = block.match(/landmark:\s*'([^']+)'/);
-  const altMatch = block.match(/bannerAlt:\s*'([^']+)'/);
-  const promptMatch = block.match(/bannerPrompt:\s*(?:'([^']+)'|`([^`]+)`)/);
-  landmarksMap[slug] = {
-    landmark: landmarkMatch ? landmarkMatch[1] : '',
-    alt: altMatch ? altMatch[1] : '',
-    prompt: promptMatch ? (promptMatch[1] || promptMatch[2]).trim() : ''
-  };
+function escapeXml(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
-// Parse statesData
-const stateMatches = [...statesContent.matchAll(/name:\s*'([^']+)',\s*slug:\s*'([^']+)',\s*type:\s*'([^']+)',\s*capital:\s*'([^']+)',\s*region:\s*'([^']+)'/g)];
+async function buildContactSheet() {
+  console.log('Generating updated dynamic CONTACT_SHEET.html...');
 
-const zones = {};
-for (const m of stateMatches) {
-  const region = m[5];
-  zones[region] = zones[region] || [];
-  zones[region].push({
-    name: m[1],
-    slug: m[2],
-    type: m[3],
-    capital: m[4],
-    region: region,
-    landmark: landmarksMap[m[2]]?.landmark || '',
-    alt: landmarksMap[m[2]]?.alt || '',
-  });
-}
+  let totalCategories = CIVIC_TAXONOMY.length;
+  let totalSubIssues = 0;
+  let generatedCovers = 0;
+  let generatedSubs = 0;
 
-// Check which images exist
-const imagesDir = path.resolve(__dirname, '../src/assets/images/states');
-const existingImages = new Set();
-if (fs.existsSync(imagesDir)) {
-  for (const s of fs.readdirSync(imagesDir)) {
-    if (fs.existsSync(path.join(imagesDir, s, '800.webp')) || fs.existsSync(path.join(imagesDir, s, '1600.webp'))) {
-      existingImages.add(s);
+  for (const cat of CIVIC_TAXONOMY) {
+    totalSubIssues += cat.subCategories.length;
+    if (fs.existsSync(path.join(designSourceDir, cat.slug, '_category.png'))) {
+      generatedCovers++;
+    }
+    for (const sub of cat.subCategories) {
+      if (fs.existsSync(path.join(designSourceDir, cat.slug, `${sub.slug}.png`))) {
+        generatedSubs++;
+      }
     }
   }
-}
 
-let totalGenerated = 0;
-let totalStates = 0;
-
-let htmlCards = '';
-for (const [region, states] of Object.entries(zones)) {
-  htmlCards += `
-  <section class="region-section">
-    <div class="region-header">
-      <h2>${region} Zone</h2>
-      <span class="region-count">${states.filter(s => existingImages.has(s.slug)).length} / ${states.length} Generated</span>
-    </div>
-    <div class="grid">
-  `;
-
-  for (const state of states) {
-    totalStates++;
-    const hasImage = existingImages.has(state.slug);
-    if (hasImage) totalGenerated++;
-
-    const imgRelPath = `../../client/src/assets/images/states/${state.slug}/800.webp`;
-
-    htmlCards += `
-      <article class="state-card ${hasImage ? 'has-image' : 'is-fallback'}">
-        <div class="image-wrapper">
-          ${hasImage 
-            ? `<img src="${imgRelPath}" alt="${state.alt || state.name}" loading="lazy" />` 
-            : `<div class="gradient-fallback"><span>Gradient Fallback (Awaiting Quota Reset)</span></div>`
-          }
-          <div class="status-badge ${hasImage ? 'badge-ok' : 'badge-fallback'}">
-            ${hasImage ? 'Photorealistic Banner' : 'Gradient Fallback'}
-          </div>
-        </div>
-        <div class="card-content">
-          <div class="card-top">
-            <span class="state-type">${state.type}</span>
-            <span class="state-capital">Cap: ${state.capital}</span>
-          </div>
-          <h3>${state.name}</h3>
-          <p class="landmark-line"><strong>Landmark:</strong> ${state.landmark}</p>
-          ${state.alt ? `<p class="alt-line"><strong>Alt:</strong> ${state.alt}</p>` : ''}
-          
-          <div class="checklist">
-            <label><input type="checkbox" ${hasImage ? 'checked' : ''} disabled /> Recognizable Landmark</label>
-            <label><input type="checkbox" ${hasImage ? 'checked' : ''} disabled /> Calm Left 40% (Text Area)</label>
-            <label><input type="checkbox" ${hasImage ? 'checked' : ''} disabled /> Calm Top 12%</label>
-            <label><input type="checkbox" ${hasImage ? 'checked' : ''} disabled /> 16:9 Ratio & Clean Detail</label>
-            <label><input type="checkbox" ${hasImage ? 'checked' : ''} disabled /> Amber/Teal/Ivory Palette</label>
-          </div>
-        </div>
-      </article>
-    `;
-  }
-
-  htmlCards += `
-    </div>
-  </section>
-  `;
-}
-
-const fullHtml = `<!DOCTYPE html>
+  let html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>State Banners Contact Sheet | Crowd Report</title>
+  <title>Civic Taxonomy Art Direction Contact Sheet | Crowd Report</title>
   <style>
     :root {
-      --navy: #0A1F44;
-      --navy-light: #162B55;
-      --amber: #E8A33D;
+      --primary: #0A1F44;
+      --accent: #E8A33D;
       --canvas: #FAF8F3;
       --card-bg: #FFFFFF;
-      --border: #E2E8F0;
-      --text-main: #1E293B;
-      --text-muted: #64748B;
+      --border: #E7E2D6;
+      --ink: #101828;
+      --muted: #5B6577;
+      --critical: #B42318;
+      --high: #B54708;
+      --medium: #0A1F44;
+      --low: #475467;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--canvas);
-      color: var(--text-main);
-      padding: 40px 24px;
+      background: var(--canvas);
+      color: var(--ink);
+      padding: 32px 24px;
       line-height: 1.5;
     }
     header {
       max-width: 1400px;
-      margin: 0 auto 40px auto;
-      border-bottom: 2px solid var(--border);
+      margin: 0 auto 36px;
       padding-bottom: 24px;
-    }
-    .brand {
-      color: var(--amber);
-      text-transform: uppercase;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
+      border-bottom: 2px solid var(--border);
     }
     h1 {
-      font-size: 32px;
-      color: var(--navy);
-      margin-top: 6px;
-      font-family: Georgia, serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
     }
-    .summary-bar {
+    p.lead {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 900px;
+      margin-bottom: 16px;
+    }
+    .stats-bar {
       display: flex;
       gap: 20px;
-      margin-top: 16px;
-      flex-wrap: wrap;
+      background: #FFFFFF;
+      padding: 16px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
     }
     .stat-pill {
-      background: white;
-      border: 1px solid var(--border);
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 14px;
+      font-size: 13px;
+      color: var(--muted);
     }
     .stat-pill strong {
-      color: var(--navy);
+      color: var(--primary);
       font-size: 16px;
     }
-    .container {
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 40px auto 20px;
+      max-width: 1400px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-critical { background: #FEE4E2; color: var(--critical); }
+    .badge-high { background: #FEF0C7; color: var(--high); }
+    .badge-medium { background: #EEF2FF; color: var(--primary); }
+    .badge-low { background: #F2F4F7; color: var(--low); }
+
+    .grid-container {
       max-width: 1400px;
       margin: 0 auto;
-    }
-    .region-section {
-      margin-bottom: 48px;
-    }
-    .region-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #CBD5E1;
-    }
-    .region-header h2 {
-      font-size: 22px;
-      color: var(--navy);
-    }
-    .region-count {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-muted);
-      background: #E2E8F0;
-      padding: 4px 10px;
-      border-radius: 12px;
-    }
-    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 24px;
     }
-    .state-card {
+    .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(10, 31, 68, 0.04);
       display: flex;
       flex-direction: column;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
-    .image-wrapper {
+    .card-img-wrap {
       position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #0A1F44;
+      background: #101828;
       overflow: hidden;
     }
-    .image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    .card-img-wrap.aspect-16-9 {
+      padding-top: 56.25%;
     }
-    .gradient-fallback {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #0A1F44 0%, #162B55 60%, #1e3a8a 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #94A3B8;
-      font-size: 13px;
-      padding: 16px;
-      text-align: center;
+    .card-img-wrap.aspect-4-3 {
+      padding-top: 75%;
     }
-    .status-badge {
+    .card-img-wrap img {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
     }
-    .badge-ok {
-      background: #10B981;
-      color: white;
-    }
-    .badge-fallback {
-      background: rgba(15, 23, 42, 0.85);
-      color: #CBD5E1;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .card-content {
+    .card-body {
       padding: 16px;
       display: flex;
       flex-direction: column;
-      flex: 1;
+      flex-grow: 1;
+      gap: 8px;
     }
-    .card-top {
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .card-slug {
+      font-family: monospace;
+      font-size: 12px;
+      color: var(--muted);
+      background: #F8F9FC;
+      padding: 2px 6px;
+      border-radius: 4px;
+      align-self: flex-start;
+    }
+    .meta-row {
+      font-size: 12px;
+      color: var(--muted);
       display: flex;
       justify-content: space-between;
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-    .state-card h3 {
-      font-size: 18px;
-      color: var(--navy);
-      margin-bottom: 6px;
-    }
-    .landmark-line {
-      font-size: 13px;
-      color: var(--text-main);
-      margin-bottom: 6px;
-    }
-    .alt-line {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-      font-style: italic;
-    }
-    .checklist {
+      border-top: 1px solid #F2F4F7;
+      padding-top: 8px;
       margin-top: auto;
-      padding-top: 12px;
-      border-top: 1px dashed var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      font-size: 11.5px;
-      color: var(--text-muted);
-    }
-    .checklist label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="brand">Crowd Report Platform</div>
-    <h1>State & UT Detail Banner Contact Sheet</h1>
-    <div class="summary-bar">
-      <div class="stat-pill">Generated Banners: <strong>${totalGenerated} / ${totalStates}</strong></div>
-      <div class="stat-pill">Completed Zones: <strong>West (4/4), Central (2/2), East (4/4)</strong></div>
-      <div class="stat-pill">Partial Zones: <strong>South (2/8)</strong></div>
-      <div class="stat-pill">Fallback Mode: <strong>100% Graceful Gradient Support</strong></div>
+    <h1>Civic Taxonomy Art Direction Contact Sheet</h1>
+    <p class="lead">Audit interface for Crowd Report civic infrastructure category covers (16:9) and sub-issue cards (4:3). Grounded in the CroudReport Complete Civic Issues List reference specification.</p>
+    <div class="stats-bar">
+      <div class="stat-pill">Category Covers: <strong>${generatedCovers} / ${totalCategories}</strong></div>
+      <div class="stat-pill">Sub-Issues Produced: <strong>${generatedSubs} / ${totalSubIssues}</strong></div>
+      <div class="stat-pill">Progress: <strong>${Math.round((generatedSubs / totalSubIssues) * 100)}%</strong></div>
+      <div class="stat-pill">Target Standards: <strong>16:9 / 4:3, EXIF-stripped, CC-licensed</strong></div>
     </div>
   </header>
-  <main class="container">
-    ${htmlCards}
-  </main>
-</body>
-</html>
+
+  <h2 class="section-title">Section 1: 16 Main Category Covers (16:9)</h2>
+  <div class="grid-container">
 `;
 
-fs.mkdirSync(path.dirname(targetHtml), { recursive: true });
-fs.writeFileSync(targetHtml, fullHtml, 'utf8');
-console.log('Contact sheet written to', targetHtml);
+  // Render Category Covers
+  for (const cat of CIVIC_TAXONOMY) {
+    const relImgPath = `../../client/design-source/civic/${cat.slug}/_category.png`;
+    html += `
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="${relImgPath}" alt="${escapeXml(cat.name)}" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">${escapeXml(cat.name)}</div>
+        <div class="card-slug">${escapeXml(cat.slug)}</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>${cat.subCategories.length} Sub-Issues</span>
+        </div>
+      </div>
+    </div>`;
+  }
 
+  html += `</div>`;
+
+  // Render Sub-Issue Categories that have generated images
+  for (const cat of CIVIC_TAXONOMY) {
+    const subsWithImages = cat.subCategories.filter(s => {
+      return fs.existsSync(path.join(designSourceDir, cat.slug, `${s.slug}.png`));
+    });
+
+    if (subsWithImages.length === 0) continue;
+
+    html += `
+    <h2 class="section-title">Section: ${escapeXml(cat.name)} (${subsWithImages.length} / ${cat.subCategories.length} Sub-Issues)</h2>
+    <div class="grid-container">
+    `;
+
+    for (const sub of subsWithImages) {
+      const relImgPath = `../../client/design-source/civic/${cat.slug}/${sub.slug}.png`;
+      const priorityClass = `badge-${(sub.defaultPriority || 'medium').toLowerCase()}`;
+
+      html += `
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="${relImgPath}" alt="${escapeXml(sub.name)}" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">${escapeXml(sub.name)}</div>
+            <span class="badge ${priorityClass}">${escapeXml(sub.defaultPriority || 'Medium')}</span>
+          </div>
+          <div class="card-slug">${escapeXml(sub.slug)}</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>${sub.imageKey ? 'Shared: ' + escapeXml(sub.imageKey) : 'Unique Asset'}</span>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    html += `</div>`;
+  }
+
+  html += `
+</body>
+</html>`;
+
+  fs.writeFileSync(outHtmlPath, html, 'utf8');
+  console.log(`✓ Wrote ${outHtmlPath}`);
+
+  if (fs.existsSync(artifactDir)) {
+    fs.copyFileSync(outHtmlPath, path.join(artifactDir, 'CONTACT_SHEET.html'));
+    console.log(`✓ Copied to artifacts directory: ${artifactDir}`);
+  }
+}
+
+buildContactSheet().catch(err => {
+  console.error('Fatal error building contact sheet:', err);
+  process.exit(1);
+});

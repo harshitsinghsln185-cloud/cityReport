@@ -13,6 +13,10 @@
       --border: #E7E2D6;
       --ink: #101828;
       --muted: #5B6577;
+      --critical: #B42318;
+      --high: #B54708;
+      --medium: #0A1F44;
+      --low: #475467;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -38,646 +42,1517 @@
       color: var(--muted);
       font-size: 15px;
       max-width: 900px;
+      margin-bottom: 16px;
+    }
+    .stats-bar {
+      display: flex;
+      gap: 20px;
+      background: #FFFFFF;
+      padding: 16px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .stat-pill {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .stat-pill strong {
+      color: var(--primary);
+      font-size: 16px;
     }
     .section-title {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 800;
       color: var(--primary);
-      margin: 36px 0 16px;
+      margin: 40px auto 20px;
+      max-width: 1400px;
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    .count-badge {
-      font-size: 12px;
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 11px;
       font-weight: 700;
-      background: var(--primary);
-      color: #FFFFFF;
-      padding: 3px 10px;
-      border-radius: 12px;
+      border-radius: 4px;
+      text-transform: uppercase;
     }
-    .grid {
+    .badge-critical { background: #FEE4E2; color: var(--critical); }
+    .badge-high { background: #FEF0C7; color: var(--high); }
+    .badge-medium { background: #EEF2FF; color: var(--primary); }
+    .badge-low { background: #F2F4F7; color: var(--low); }
+
+    .grid-container {
+      max-width: 1400px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 24px;
-      max-width: 1400px;
-      margin: 0 auto;
     }
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(10, 31, 68, 0.05);
-      transition: transform 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(10, 31, 68, 0.08);
-    }
-    .img-wrap {
-      width: 100%;
-      height: 180px;
-      background: #E2E8F0;
+    .card-img-wrap {
       position: relative;
+      background: #101828;
       overflow: hidden;
     }
-    .img-wrap img {
-      width: 100%;
-      height: 100%;
+    .card-img-wrap.aspect-16-9 {
+      padding-top: 56.25%;
+    }
+    .card-img-wrap.aspect-4-3 {
+      padding-top: 75%;
+    }
+    .card-img-wrap img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
     }
-    .badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .badge-real { background: #0E6E4C; color: #FFFFFF; }
-    .badge-ai { background: #1D4ED8; color: #FFFFFF; }
-    .badge-critical { background: #B42318; color: #FFFFFF; }
-    .badge-high { background: #B54708; color: #FFFFFF; }
-    .badge-medium { background: #0A1F44; color: #FFFFFF; }
-    .badge-low { background: #475569; color: #FFFFFF; }
-    .content {
+    .card-body {
       padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: 8px;
     }
     .card-title {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 4px;
     }
     .card-slug {
       font-family: monospace;
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-    .desc {
       font-size: 12px;
-      color: #334155;
-      margin-bottom: 12px;
-      line-height: 1.4;
-    }
-    .credit-box {
-      font-size: 11px;
       color: var(--muted);
-      border-top: 1px solid var(--border);
+      background: #F8F9FC;
+      padding: 2px 6px;
+      border-radius: 4px;
+      align-self: flex-start;
+    }
+    .meta-row {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #F2F4F7;
       padding-top: 8px;
-    }
-    .credit-box a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .credit-box a:hover {
-      text-decoration: underline;
+      margin-top: auto;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Civic Taxonomy Art Direction: Pilot Contact Sheet</h1>
-    <p class="lead">
-      Verified photographic assets for the 16 main categories and the 17 pilot sub-issues of <strong>Roads & Transportation</strong>.
-      Images are curated under permissive open-access licenses (Wikimedia Commons CC BY-SA / GODL) and supplemented with realistic municipal documentary photography.
-    </p>
+    <h1>Civic Taxonomy Art Direction Contact Sheet</h1>
+    <p class="lead">Audit interface for Crowd Report civic infrastructure category covers (16:9) and sub-issue cards (4:3). Grounded in the CroudReport Complete Civic Issues List reference specification.</p>
+    <div class="stats-bar">
+      <div class="stat-pill">Category Covers: <strong>16 / 16</strong></div>
+      <div class="stat-pill">Sub-Issues Produced: <strong>73 / 208</strong></div>
+      <div class="stat-pill">Progress: <strong>35%</strong></div>
+      <div class="stat-pill">Target Standards: <strong>16:9 / 4:3, EXIF-stripped, CC-licensed</strong></div>
+    </div>
   </header>
 
-  <main style="max-width: 1400px; margin: 0 auto;">
-    <div class="section-title">
-      <span>16 Main Category Hero Covers</span>
-      <span class="count-badge">16 Covers (1920 &times; 1080)</span>
-    </div>
-    <div class="grid">
+  <h2 class="section-title">Section 1: 16 Main Category Covers (16:9)</h2>
+  <div class="grid-container">
 
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/_category.png" alt="Roads & Transportation">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Roads & Transportation</div>
-          <div class="card-slug">slug: roads-transportation</div>
-          <div class="desc">Elevated multi-lane urban flyover corridor with concrete median barriers and civic traffic.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/User:Srvkumar09" target="_blank" rel="noopener">Srvkumar09</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a>
-          </div>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/roads-transportation/_category.png" alt="Roads &amp; Transportation" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Roads &amp; Transportation</div>
+        <div class="card-slug">roads-transportation</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>17 Sub-Issues</span>
         </div>
       </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/garbage-management/_category.png" alt="Garbage Management">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Garbage Management</div>
-          <div class="card-slug">slug: garbage-management</div>
-          <div class="desc">Municipal corporation solid waste collection vehicle and urban waste management depot.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/File:City_kolkata_Municipal_Corporation.jpg" target="_blank" rel="noopener">Pradip Paswan</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/water-drainage/_category.png" alt="Water & Drainage">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Water & Drainage</div>
-          <div class="card-slug">slug: water-drainage</div>
-          <div class="desc">Municipal drinking water supply pipeline network and civic valve distribution station.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/File:Water_dripping_out_of_an_urban_water_supply_pipeline_in_India_20120311.jpg" target="_blank" rel="noopener">Ganesh Dhamodkar</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/electricity-lighting/_category.png" alt="Electricity & Lighting">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Electricity & Lighting</div>
-          <div class="card-slug">slug: electricity-lighting</div>
-          <div class="desc">High mast municipal streetlight luminaire on an urban road corridor.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/User:Joydeep" target="_blank" rel="noopener">Joydeep</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/public-health/_category.png" alt="Public Health">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Public Health</div>
-          <div class="card-slug">slug: public-health</div>
-          <div class="desc">Public health dispensary and community municipal medical care center.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/User:Sukanta_Sarkar" target="_blank" rel="noopener">Sukanta Sarkar</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/environment/_category.png" alt="Environment">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Environment</div>
-          <div class="card-slug">slug: environment</div>
-          <div class="desc">Urban water body conservation, green tree canopy, and city ecological sanctuary.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/File:Hauz_Khas_Lake_-_panoramio.jpg" target="_blank" rel="noopener">Panoramio Contributor / A.Savin</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/parks-greenery/_category.png" alt="Parks & Greenery">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Parks & Greenery</div>
-          <div class="card-slug">slug: parks-greenery</div>
-          <div class="desc">Municipal park grounds with manicured public lawns, walking paths, and mature trees.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/User:A.Savin" target="_blank" rel="noopener">A.Savin</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">FAL / CC BY-SA 3.0</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/public-safety/_category.png" alt="Public Safety">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Public Safety</div>
-          <div class="card-slug">slug: public-safety</div>
-          <div class="desc">Civic police assistance booth and urban safety outpost at a major road junction.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/User:Marcin_Bia%C5%82ek" target="_blank" rel="noopener">Marcin Białek</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/public-transport/_category.png" alt="Public Transport">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Public Transport</div>
-          <div class="card-slug">slug: public-transport</div>
-          <div class="desc">City public transit bus fleet providing urban passenger connectivity.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/User:Ramesh_NG" target="_blank" rel="noopener">Ramesh NG</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener">CC BY-SA 2.0</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/animal-welfare/_category.png" alt="Animal Welfare">
-          <span class="badge badge-ai">AI Generated</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Animal Welfare</div>
-          <div class="card-slug">slug: animal-welfare</div>
-          <div class="desc">Community veterinary dispensary and municipal stray animal care shelter.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/encroachment/_category.png" alt="Encroachment">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Encroachment</div>
-          <div class="card-slug">slug: encroachment</div>
-          <div class="desc">Pedestrian sidewalk with bollards ensuring cleared right-of-way along public street.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/File:Roads_in_New_Delhi_09.jpg" target="_blank" rel="noopener">V.K. Singh</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/public-amenities/_category.png" alt="Public Amenities">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Public Amenities</div>
-          <div class="card-slug">slug: public-amenities</div>
-          <div class="desc">Municipal public toilet block with dedicated sanitation facilities and water station.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/Category:Public_toilets_in_India" target="_blank" rel="noopener">Swachh Bharat / Ministry of Housing & Urban Affairs</a> &bull; <a href="https://data.gov.in/sites/default/files/Gazette_Notification_OGDL.pdf" target="_blank" rel="noopener">GODL-India</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/fire-emergency/_category.png" alt="Fire & Emergency">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Fire & Emergency</div>
-          <div class="card-slug">slug: fire-emergency</div>
-          <div class="desc">Municipal fire and emergency service station ready for disaster dispatch.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/File:Mumbai_Fire_Brigade_Headquarters.jpg" target="_blank" rel="noopener">Mumbai Fire Brigade / Contributor</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/urban-planning/_category.png" alt="Urban Planning">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Urban Planning</div>
-          <div class="card-slug">slug: urban-planning</div>
-          <div class="desc">Planned arterial transport cloverleaf interchange and municipal transit corridor.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/File:Dhaula_Kuan_interchange_Delhi.jpg" target="_blank" rel="noopener">Pradeep717</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/commercial-areas/_category.png" alt="Commercial Areas">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Commercial Areas</div>
-          <div class="card-slug">slug: commercial-areas</div>
-          <div class="desc">Heritage commercial high-street shopping arcade and pedestrian arcade zone.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/User:Marcin_Bia%C5%82ek" target="_blank" rel="noopener">Marcin Białek</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/public-property/_category.png" alt="Public Property">
-          <span class="badge badge-real">Real Photo</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Public Property</div>
-          <div class="card-slug">slug: public-property</div>
-          <div class="desc">Civic Centre administrative skyscraper housing municipal government offices.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/User:Hemant_Shesh" target="_blank" rel="noopener">Hemant Shesh</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a>
-          </div>
-        </div>
-      </div>
-    
     </div>
-
-    <div class="section-title">
-      <span>Pilot Category: Roads & Transportation Sub-Issues</span>
-      <span class="count-badge">17 Sub-Issues (800 &times; 600)</span>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/garbage-management/_category.png" alt="Garbage Management" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Garbage Management</div>
+        <div class="card-slug">garbage-management</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>15 Sub-Issues</span>
+        </div>
+      </div>
     </div>
-    <div class="grid">
-  
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/road-potholes.png" alt="Road potholes">
-          <span class="badge badge-real" style="top: 10px; left: 10px;">Real</span>
-          <span class="badge badge-high" style="top: 10px; right: 10px; left: auto;">High</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Road potholes</div>
-          <div class="card-slug">slug: road-potholes </div>
-          <div class="desc">Deep road depression and asphalt crater exposing gravel sub-base on arterial road.</div>
-          <div class="credit-box">
-            By <a href="https://commons.wikimedia.org/wiki/File:Big_fatal_hole_in_a_Delhi_road.jpg" target="_blank" rel="noopener">Tarun Shukla</a> &bull; <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a>
-          </div>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/water-drainage/_category.png" alt="Water &amp; Drainage" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Water &amp; Drainage</div>
+        <div class="card-slug">water-drainage</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>17 Sub-Issues</span>
         </div>
       </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/damaged-roads.png" alt="Damaged roads">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-high" style="top: 10px; right: 10px; left: auto;">High</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Damaged roads</div>
-          <div class="card-slug">slug: damaged-roads </div>
-          <div class="desc">Extensive surface alligator cracking and crumbling bitumen pavement.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/broken-footpaths.png" alt="Broken footpaths">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-medium" style="top: 10px; right: 10px; left: auto;">Medium</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Broken footpaths</div>
-          <div class="card-slug">slug: broken-footpaths </div>
-          <div class="desc">Displaced and cracked interlocking concrete pavers along pedestrian sidewalk.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/footpath-encroachment.png" alt="Footpath encroachment">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-medium" style="top: 10px; right: 10px; left: auto;">Medium</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Footpath encroachment</div>
-          <div class="card-slug">slug: footpath-encroachment &bull; key: shared-footpath-encroachment</div>
-          <div class="desc">Sidewalk corridor blocked by illegal commercial extensions and parked vehicles.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/missing-road-dividers.png" alt="Missing road dividers">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-medium" style="top: 10px; right: 10px; left: auto;">Medium</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Missing road dividers</div>
-          <div class="card-slug">slug: missing-road-dividers </div>
-          <div class="desc">Busy two-way carriageway lacking central median barrier or physical separator.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/damaged-speed-breakers.png" alt="Damaged speed breakers">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-low" style="top: 10px; right: 10px; left: auto;">Low</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Damaged speed breakers</div>
-          <div class="card-slug">slug: damaged-speed-breakers </div>
-          <div class="desc">Chipped asphalt speed hump with eroded retroreflective warning stripes.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/traffic-signal-not-working.png" alt="Traffic signal not working">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-critical" style="top: 10px; right: 10px; left: auto;">Critical</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Traffic signal not working</div>
-          <div class="card-slug">slug: traffic-signal-not-working &bull; key: shared-traffic-signal-defect</div>
-          <div class="desc">Completely unlit traffic light signal head at a high-volume road intersection.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/missing-street-signboards.png" alt="Missing street signboards">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-low" style="top: 10px; right: 10px; left: auto;">Low</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Missing street signboards</div>
-          <div class="card-slug">slug: missing-street-signboards &bull; key: shared-street-sign-defect</div>
-          <div class="desc">Empty municipal signpost with missing directional or street name plate.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/illegal-parking.png" alt="Illegal parking">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-low" style="top: 10px; right: 10px; left: auto;">Low</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Illegal parking</div>
-          <div class="card-slug">slug: illegal-parking &bull; key: shared-illegal-parking</div>
-          <div class="desc">Motor vehicles parked along a designated yellow-curb No Stopping zone.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/traffic-congestion.png" alt="Traffic congestion">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-medium" style="top: 10px; right: 10px; left: auto;">Medium</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Traffic congestion</div>
-          <div class="card-slug">slug: traffic-congestion </div>
-          <div class="desc">Prolonged vehicular gridlock and queue at a major signalized intersection.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/waterlogging-on-roads.png" alt="Waterlogging on roads">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-high" style="top: 10px; right: 10px; left: auto;">High</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Waterlogging on roads</div>
-          <div class="card-slug">slug: waterlogging-on-roads &bull; key: shared-waterlogging</div>
-          <div class="desc">Standing stormwater pool submerging multiple road lanes following rainfall.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/broken-manhole-covers.png" alt="Broken manhole covers">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-critical" style="top: 10px; right: 10px; left: auto;">Critical</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Broken manhole covers</div>
-          <div class="card-slug">slug: broken-manhole-covers &bull; key: shared-manhole-defect</div>
-          <div class="desc">Fractured circular drainage chamber cover presenting a fatal fall hazard.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/damaged-bridges.png" alt="Damaged bridges">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-critical" style="top: 10px; right: 10px; left: auto;">Critical</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Damaged bridges</div>
-          <div class="card-slug">slug: damaged-bridges </div>
-          <div class="desc">Structural concrete spalling and deteriorated expansion joint on an elevated flyover.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/roadside-construction-debris.png" alt="Roadside construction debris">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-medium" style="top: 10px; right: 10px; left: auto;">Medium</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Roadside construction debris</div>
-          <div class="card-slug">slug: roadside-construction-debris </div>
-          <div class="desc">Piles of dumped masonry debris and construction aggregate encroaching the curb.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/missing-zebra-crossings.png" alt="Missing zebra crossings">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-low" style="top: 10px; right: 10px; left: auto;">Low</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Missing zebra crossings</div>
-          <div class="card-slug">slug: missing-zebra-crossings </div>
-          <div class="desc">Faded white thermoplastic pedestrian crossing stripes at an active intersection.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/damaged-bus-stops.png" alt="Damaged bus stops">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-medium" style="top: 10px; right: 10px; left: auto;">Medium</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Damaged bus stops</div>
-          <div class="card-slug">slug: damaged-bus-stops &bull; key: shared-bus-stop-defect</div>
-          <div class="desc">Weathered passenger bus shelter with fractured roof canopy and broken seating.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="card">
-        <div class="img-wrap">
-          <img src="../../client/design-source/civic/roads-transportation/streetlights-not-working.png" alt="Streetlights not working">
-          <span class="badge badge-ai" style="top: 10px; left: 10px;">AI</span>
-          <span class="badge badge-high" style="top: 10px; right: 10px; left: auto;">High</span>
-        </div>
-        <div class="content">
-          <div class="card-title">Streetlights not working</div>
-          <div class="card-slug">slug: streetlights-not-working &bull; key: shared-streetlight-defect</div>
-          <div class="desc">Inoperative municipal street luminaire leaving the carriageway in darkness after dusk.</div>
-          <div class="credit-box">
-            By <a href="https://croudreport.local" target="_blank" rel="noopener">Crowd Report AI (Nano Banana)</a> &bull; <a href="https://croudreport.local/credits" target="_blank" rel="noopener">Proprietary Open Assets (CroudReport Platform)</a>
-          </div>
-        </div>
-      </div>
-    
     </div>
-  </main>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/electricity-lighting/_category.png" alt="Electricity &amp; Lighting" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Electricity &amp; Lighting</div>
+        <div class="card-slug">electricity-lighting</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>12 Sub-Issues</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/public-health/_category.png" alt="Public Health" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Public Health</div>
+        <div class="card-slug">public-health</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>12 Sub-Issues</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/environment/_category.png" alt="Environment" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Environment</div>
+        <div class="card-slug">environment</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>15 Sub-Issues</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/parks-greenery/_category.png" alt="Parks &amp; Greenery" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Parks &amp; Greenery</div>
+        <div class="card-slug">parks-greenery</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>14 Sub-Issues</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/public-safety/_category.png" alt="Public Safety" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Public Safety</div>
+        <div class="card-slug">public-safety</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>15 Sub-Issues</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/public-transport/_category.png" alt="Public Transport" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Public Transport</div>
+        <div class="card-slug">public-transport</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>14 Sub-Issues</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/animal-welfare/_category.png" alt="Animal Welfare" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Animal Welfare</div>
+        <div class="card-slug">animal-welfare</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>12 Sub-Issues</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/encroachment/_category.png" alt="Encroachment" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Encroachment</div>
+        <div class="card-slug">encroachment</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>12 Sub-Issues</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/public-amenities/_category.png" alt="Public Amenities" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Public Amenities</div>
+        <div class="card-slug">public-amenities</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>12 Sub-Issues</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/fire-emergency/_category.png" alt="Fire &amp; Emergency" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Fire &amp; Emergency</div>
+        <div class="card-slug">fire-emergency</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>9 Sub-Issues</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/urban-planning/_category.png" alt="Urban Planning" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Urban Planning</div>
+        <div class="card-slug">urban-planning</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>12 Sub-Issues</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/commercial-areas/_category.png" alt="Commercial Areas" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Commercial Areas</div>
+        <div class="card-slug">commercial-areas</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>10 Sub-Issues</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img-wrap aspect-16-9">
+        <img src="../../client/design-source/civic/public-property/_category.png" alt="Public Property" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">Public Property</div>
+        <div class="card-slug">public-property</div>
+        <div class="meta-row">
+          <span>16:9 Cover</span>
+          <span>10 Sub-Issues</span>
+        </div>
+      </div>
+    </div></div>
+    <h2 class="section-title">Section: Roads &amp; Transportation (17 / 17 Sub-Issues)</h2>
+    <div class="grid-container">
+    
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/road-potholes.png" alt="Road potholes" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Road potholes</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">road-potholes</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/damaged-roads.png" alt="Damaged roads" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Damaged roads</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">damaged-roads</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/broken-footpaths.png" alt="Broken footpaths" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Broken footpaths</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">broken-footpaths</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/footpath-encroachment.png" alt="Footpath encroachment" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Footpath encroachment</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">footpath-encroachment</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-footpath-encroachment</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/missing-road-dividers.png" alt="Missing road dividers" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Missing road dividers</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">missing-road-dividers</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/damaged-speed-breakers.png" alt="Damaged speed breakers" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Damaged speed breakers</div>
+            <span class="badge badge-low">Low</span>
+          </div>
+          <div class="card-slug">damaged-speed-breakers</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/traffic-signal-not-working.png" alt="Traffic signal not working" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Traffic signal not working</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">traffic-signal-not-working</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-traffic-signal-defect</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/missing-street-signboards.png" alt="Missing street signboards" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Missing street signboards</div>
+            <span class="badge badge-low">Low</span>
+          </div>
+          <div class="card-slug">missing-street-signboards</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-street-sign-defect</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/illegal-parking.png" alt="Illegal parking" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Illegal parking</div>
+            <span class="badge badge-low">Low</span>
+          </div>
+          <div class="card-slug">illegal-parking</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-illegal-parking</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/traffic-congestion.png" alt="Traffic congestion" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Traffic congestion</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">traffic-congestion</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/waterlogging-on-roads.png" alt="Waterlogging on roads" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Waterlogging on roads</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">waterlogging-on-roads</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-waterlogging</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/broken-manhole-covers.png" alt="Broken manhole covers" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Broken manhole covers</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">broken-manhole-covers</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-manhole-defect</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/damaged-bridges.png" alt="Damaged bridges" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Damaged bridges</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">damaged-bridges</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/roadside-construction-debris.png" alt="Roadside construction debris" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Roadside construction debris</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">roadside-construction-debris</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/missing-zebra-crossings.png" alt="Missing zebra crossings" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Missing zebra crossings</div>
+            <span class="badge badge-low">Low</span>
+          </div>
+          <div class="card-slug">missing-zebra-crossings</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/damaged-bus-stops.png" alt="Damaged bus stops" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Damaged bus stops</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">damaged-bus-stops</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-bus-stop-defect</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/roads-transportation/streetlights-not-working.png" alt="Streetlights not working" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Streetlights not working</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">streetlights-not-working</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-streetlight-defect</span>
+          </div>
+        </div>
+      </div></div>
+    <h2 class="section-title">Section: Garbage Management (15 / 15 Sub-Issues)</h2>
+    <div class="grid-container">
+    
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/garbage-overflowing-from-dustbins.png" alt="Garbage overflowing from dustbins" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Garbage overflowing from dustbins</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">garbage-overflowing-from-dustbins</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/garbage-not-collected.png" alt="Garbage not collected" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Garbage not collected</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">garbage-not-collected</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/illegal-garbage-dumping.png" alt="Illegal garbage dumping" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Illegal garbage dumping</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">illegal-garbage-dumping</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/open-garbage-burning.png" alt="Open garbage burning" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Open garbage burning</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">open-garbage-burning</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-garbage-burning</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/plastic-waste-pollution.png" alt="Plastic waste pollution" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Plastic waste pollution</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">plastic-waste-pollution</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/construction-waste-dumping.png" alt="Construction waste dumping" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Construction waste dumping</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">construction-waste-dumping</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/dead-animal-disposal.png" alt="Dead animal disposal" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Dead animal disposal</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">dead-animal-disposal</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-animal-carcass</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/damaged-public-dustbins.png" alt="Damaged public dustbins" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Damaged public dustbins</div>
+            <span class="badge badge-low">Low</span>
+          </div>
+          <div class="card-slug">damaged-public-dustbins</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-dustbin-defect</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/garbage-scattered-on-roads.png" alt="Garbage scattered on roads" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Garbage scattered on roads</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">garbage-scattered-on-roads</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/waste-segregation-problems.png" alt="Waste segregation problems" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Waste segregation problems</div>
+            <span class="badge badge-low">Low</span>
+          </div>
+          <div class="card-slug">waste-segregation-problems</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/biomedical-waste-dumping.png" alt="Biomedical waste dumping" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Biomedical waste dumping</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">biomedical-waste-dumping</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/market-waste-accumulation.png" alt="Market waste accumulation" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Market waste accumulation</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">market-waste-accumulation</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/open-waste-dumping-grounds.png" alt="Open waste dumping grounds" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Open waste dumping grounds</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">open-waste-dumping-grounds</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/garbage-collection-vehicle-not-arriving.png" alt="Garbage collection vehicle not arriving" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Garbage collection vehicle not arriving</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">garbage-collection-vehicle-not-arriving</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/garbage-management/bad-smell-from-garbage-areas.png" alt="Bad smell from garbage areas" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Bad smell from garbage areas</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">bad-smell-from-garbage-areas</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div></div>
+    <h2 class="section-title">Section: Water &amp; Drainage (17 / 17 Sub-Issues)</h2>
+    <div class="grid-container">
+    
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/water-pipeline-leakage.png" alt="Water pipeline leakage" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Water pipeline leakage</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">water-pipeline-leakage</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/no-water-supply.png" alt="No water supply" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">No water supply</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">no-water-supply</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/low-water-pressure.png" alt="Low water pressure" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Low water pressure</div>
+            <span class="badge badge-low">Low</span>
+          </div>
+          <div class="card-slug">low-water-pressure</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/contaminated-drinking-water.png" alt="Contaminated drinking water" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Contaminated drinking water</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">contaminated-drinking-water</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/dirty-water-supply.png" alt="Dirty water supply" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Dirty water supply</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">dirty-water-supply</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/broken-water-pipelines.png" alt="Broken water pipelines" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Broken water pipelines</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">broken-water-pipelines</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/open-drainage.png" alt="Open drainage" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Open drainage</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">open-drainage</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/blocked-drains.png" alt="Blocked drains" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Blocked drains</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">blocked-drains</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/drainage-overflow.png" alt="Drainage overflow" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Drainage overflow</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">drainage-overflow</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/sewage-leakage.png" alt="Sewage leakage" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Sewage leakage</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">sewage-leakage</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/waterlogging.png" alt="Waterlogging" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Waterlogging</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">waterlogging</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-waterlogging</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/flooded-streets.png" alt="Flooded streets" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Flooded streets</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">flooded-streets</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-waterlogging</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/broken-manhole-covers.png" alt="Broken manhole covers" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Broken manhole covers</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">broken-manhole-covers</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-manhole-defect</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/rainwater-drainage-blockage.png" alt="Rainwater drainage blockage" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Rainwater drainage blockage</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">rainwater-drainage-blockage</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/illegal-water-connections.png" alt="Illegal water connections" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Illegal water connections</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">illegal-water-connections</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/sewer-line-blockage.png" alt="Sewer line blockage" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Sewer line blockage</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">sewer-line-blockage</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/water-drainage/overflowing-septic-tanks.png" alt="Overflowing septic tanks" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Overflowing septic tanks</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">overflowing-septic-tanks</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div></div>
+    <h2 class="section-title">Section: Electricity &amp; Lighting (12 / 12 Sub-Issues)</h2>
+    <div class="grid-container">
+    
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/electricity-lighting/streetlights-not-working.png" alt="Streetlights not working" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Streetlights not working</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">streetlights-not-working</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-streetlight-defect</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/electricity-lighting/damaged-electric-poles.png" alt="Damaged electric poles" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Damaged electric poles</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">damaged-electric-poles</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/electricity-lighting/exposed-electrical-wires.png" alt="Exposed electrical wires" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Exposed electrical wires</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">exposed-electrical-wires</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/electricity-lighting/fallen-electric-wires.png" alt="Fallen electric wires" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Fallen electric wires</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">fallen-electric-wires</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/electricity-lighting/damaged-transformers.png" alt="Damaged transformers" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Damaged transformers</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">damaged-transformers</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/electricity-lighting/electricity-supply-interruption.png" alt="Electricity supply interruption" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Electricity supply interruption</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">electricity-supply-interruption</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/electricity-lighting/sparking-electrical-connections.png" alt="Sparking electrical connections" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Sparking electrical connections</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">sparking-electrical-connections</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/electricity-lighting/open-electrical-junction-boxes.png" alt="Open electrical junction boxes" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Open electrical junction boxes</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">open-electrical-junction-boxes</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/electricity-lighting/broken-streetlight-poles.png" alt="Broken streetlight poles" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Broken streetlight poles</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">broken-streetlight-poles</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/electricity-lighting/dark-public-areas.png" alt="Dark public areas" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Dark public areas</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">dark-public-areas</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-streetlight-defect</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/electricity-lighting/illegal-electricity-connections.png" alt="Illegal electricity connections" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Illegal electricity connections</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">illegal-electricity-connections</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/electricity-lighting/electrical-safety-hazards.png" alt="Electrical safety hazards" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Electrical safety hazards</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">electrical-safety-hazards</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div></div>
+    <h2 class="section-title">Section: Public Health (12 / 12 Sub-Issues)</h2>
+    <div class="grid-container">
+    
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/public-health/dirty-public-toilets.png" alt="Dirty public toilets" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Dirty public toilets</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">dirty-public-toilets</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-public-toilet-defect</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/public-health/public-toilets-not-maintained.png" alt="Public toilets not maintained" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Public toilets not maintained</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">public-toilets-not-maintained</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Shared: shared-public-toilet-defect</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/public-health/mosquito-breeding-areas.png" alt="Mosquito breeding areas" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Mosquito breeding areas</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">mosquito-breeding-areas</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/public-health/open-defecation.png" alt="Open defecation" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Open defecation</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">open-defecation</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/public-health/unhygienic-public-places.png" alt="Unhygienic public places" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Unhygienic public places</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">unhygienic-public-places</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/public-health/public-urination.png" alt="Public urination" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Public urination</div>
+            <span class="badge badge-low">Low</span>
+          </div>
+          <div class="card-slug">public-urination</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/public-health/pest-infestation.png" alt="Pest infestation" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Pest infestation</div>
+            <span class="badge badge-medium">Medium</span>
+          </div>
+          <div class="card-slug">pest-infestation</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/public-health/stray-animal-waste.png" alt="Stray animal waste" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Stray animal waste</div>
+            <span class="badge badge-low">Low</span>
+          </div>
+          <div class="card-slug">stray-animal-waste</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/public-health/contaminated-public-water-facilities.png" alt="Contaminated public water facilities" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Contaminated public water facilities</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">contaminated-public-water-facilities</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/public-health/poor-sanitation-in-public-markets.png" alt="Poor sanitation in public markets" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Poor sanitation in public markets</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">poor-sanitation-in-public-markets</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/public-health/unhygienic-food-market-surroundings.png" alt="Unhygienic food market surroundings" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Unhygienic food market surroundings</div>
+            <span class="badge badge-high">High</span>
+          </div>
+          <div class="card-slug">unhygienic-food-market-surroundings</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap aspect-4-3">
+          <img src="../../client/design-source/civic/public-health/public-health-hazards-caused-by-sewage.png" alt="Public health hazards caused by sewage" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-title">Public health hazards caused by sewage</div>
+            <span class="badge badge-critical">Critical</span>
+          </div>
+          <div class="card-slug">public-health-hazards-caused-by-sewage</div>
+          <div class="meta-row">
+            <span>4:3 Ratio</span>
+            <span>Unique Asset</span>
+          </div>
+        </div>
+      </div></div>
 </body>
 </html>
