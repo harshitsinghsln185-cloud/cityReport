@@ -1,0 +1,50 @@
+# Crowd Report Civic Infrastructure Image Credits
+
+All photographic assets utilized across the Crowd Report platform adhere strictly to permissible open-access licenses, including CC BY-SA 4.0, CC BY-SA 3.0, CC BY 2.0, GODL-India, and CC0, or are bespoke municipal documentary photo assets generated under the Crowd Report Open Assets License.
+
+---
+
+## 1. Main Category Hero Covers (16 Categories)
+
+| Category Name | Slug | Source | Author / Attribution | License | Original URL |
+|---|---|---|---|---|---|
+| **Roads & Transportation** | `roads-transportation` | wikimedia-commons | [Srvkumar09](https://commons.wikimedia.org/wiki/User:Srvkumar09) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [View Source](https://upload.wikimedia.org/wikipedia/commons/2/29/Flyover_in_Delhi_Near_Akshardham.jpg) |
+| **Garbage Management** | `garbage-management` | wikimedia-commons | [Pradip Paswan](https://commons.wikimedia.org/wiki/File:City_kolkata_Municipal_Corporation.jpg) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [View Source](https://upload.wikimedia.org/wikipedia/commons/9/9a/City_kolkata_Municipal_Corporation.jpg) |
+| **Water & Drainage** | `water-drainage` | wikimedia-commons | [Ganesh Dhamodkar](https://commons.wikimedia.org/wiki/File:Water_dripping_out_of_an_urban_water_supply_pipeline_in_India_20120311.jpg) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) | [View Source](https://upload.wikimedia.org/wikipedia/commons/f/fe/Water_dripping_out_of_an_urban_water_supply_pipeline_in_India_20120311.jpg) |
+| **Electricity & Lighting** | `electricity-lighting` | wikimedia-commons | [Joydeep](https://commons.wikimedia.org/wiki/User:Joydeep) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) | [View Source](https://upload.wikimedia.org/wikipedia/commons/0/0a/Street_light_07092012..jpg) |
+| **Public Health** | `public-health` | wikimedia-commons | [Sukanta Sarkar](https://commons.wikimedia.org/wiki/User:Sukanta_Sarkar) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) | [View Source](https://upload.wikimedia.org/wikipedia/commons/3/3a/Ramakrishna_Mission_Charitable_Dispensary%2CBhubaneswar.JPG) |
+| **Environment** | `environment` | wikimedia-commons | [Panoramio Contributor / A.Savin](https://commons.wikimedia.org/wiki/File:Hauz_Khas_Lake_-_panoramio.jpg) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) | [View Source](https://upload.wikimedia.org/wikipedia/commons/7/7b/Hauz_Khas_Complex%2C_Delhi.jpg) |
+| **Parks & Greenery** | `parks-greenery` | wikimedia-commons | [A.Savin](https://commons.wikimedia.org/wiki/User:A.Savin) | [FAL / CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) | [View Source](https://upload.wikimedia.org/wikipedia/commons/b/b5/New_Delhi_03-2016_img29_Lodi_Gardens.jpg) |
+| **Public Safety** | `public-safety` | wikimedia-commons | [Marcin Białek](https://commons.wikimedia.org/wiki/User:Marcin_Bia%C5%82ek) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [View Source](https://upload.wikimedia.org/wikipedia/commons/a/a2/Delhi_police_booth.jpg) |
+| **Public Transport** | `public-transport` | wikimedia-commons | [Ramesh NG](https://commons.wikimedia.org/wiki/User:Ramesh_NG) | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0) | [View Source](https://upload.wikimedia.org/wikipedia/commons/5/5f/DTC_low_floor_bus.jpg) |
+| **Animal Welfare** | `animal-welfare` | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | [View Source](internal://design-source/civic/animal-welfare/_category.png) |
+| **Encroachment** | `encroachment` | wikimedia-commons | [V.K. Singh](https://commons.wikimedia.org/wiki/File:Roads_in_New_Delhi_09.jpg) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [View Source](https://upload.wikimedia.org/wikipedia/commons/8/87/Pedestrian_walkway_New_Delhi.jpg) |
+| **Public Amenities** | `public-amenities` | wikimedia-commons | [Swachh Bharat / Ministry of Housing & Urban Affairs](https://commons.wikimedia.org/wiki/Category:Public_toilets_in_India) | [GODL-India](https://data.gov.in/sites/default/files/Gazette_Notification_OGDL.pdf) | [View Source](https://upload.wikimedia.org/wikipedia/commons/6/62/Public_toilet_complex_in_India.jpg) |
+| **Fire & Emergency** | `fire-emergency` | wikimedia-commons | [Mumbai Fire Brigade / Contributor](https://commons.wikimedia.org/wiki/File:Mumbai_Fire_Brigade_Headquarters.jpg) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) | [View Source](https://upload.wikimedia.org/wikipedia/commons/a/a1/Mumbai_Fire_Brigade_Headquarters.jpg) |
+| **Urban Planning** | `urban-planning` | wikimedia-commons | [Pradeep717](https://commons.wikimedia.org/wiki/File:Dhaula_Kuan_interchange_Delhi.jpg) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [View Source](https://upload.wikimedia.org/wikipedia/commons/c/c5/Dhaula_Kuan_interchange_Delhi.jpg) |
+| **Commercial Areas** | `commercial-areas` | wikimedia-commons | [Marcin Białek](https://commons.wikimedia.org/wiki/User:Marcin_Bia%C5%82ek) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [View Source](https://upload.wikimedia.org/wikipedia/commons/5/55/Delhi_Connaught_Place.jpg) |
+| **Public Property** | `public-property` | wikimedia-commons | [Hemant Shesh](https://commons.wikimedia.org/wiki/User:Hemant_Shesh) | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [View Source](https://upload.wikimedia.org/wikipedia/commons/d/d3/Delhi_Civic_Centre.jpg) |
+
+---
+
+## 2. Pilot Sub-Issues: Roads & Transportation (17 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Road potholes** | `road-potholes` | High | wikimedia-commons | [Tarun Shukla](https://commons.wikimedia.org/wiki/File:Big_fatal_hole_in_a_Delhi_road.jpg) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) | `unique` |
+| **Damaged roads** | `damaged-roads` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Broken footpaths** | `broken-footpaths` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Footpath encroachment** | `footpath-encroachment` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-footpath-encroachment` |
+| **Missing road dividers** | `missing-road-dividers` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged speed breakers** | `damaged-speed-breakers` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Traffic signal not working** | `traffic-signal-not-working` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-traffic-signal-defect` |
+| **Missing street signboards** | `missing-street-signboards` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-street-sign-defect` |
+| **Illegal parking** | `illegal-parking` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-illegal-parking` |
+| **Traffic congestion** | `traffic-congestion` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Waterlogging on roads** | `waterlogging-on-roads` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-waterlogging` |
+| **Broken manhole covers** | `broken-manhole-covers` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-manhole-defect` |
+| **Damaged bridges** | `damaged-bridges` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Roadside construction debris** | `roadside-construction-debris` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Missing zebra crossings** | `missing-zebra-crossings` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged bus stops** | `damaged-bus-stops` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-bus-stop-defect` |
+| **Streetlights not working** | `streetlights-not-working` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-streetlight-defect` |
