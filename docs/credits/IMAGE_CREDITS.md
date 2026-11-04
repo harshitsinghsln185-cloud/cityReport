@@ -110,3 +110,21 @@ All photographic assets utilized across the Crowd Report platform adhere strictl
 | **Dark public areas** | `dark-public-areas` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-streetlight-defect` |
 | **Illegal electricity connections** | `illegal-electricity-connections` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
 | **Electrical safety hazards** | `electrical-safety-hazards` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+
+
+## Sub-Issues: Public Health (12 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Dirty public toilets** | `dirty-public-toilets` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-public-toilet-defect` |
+| **Public toilets not maintained** | `public-toilets-not-maintained` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-public-toilet-defect` |
+| **Mosquito breeding areas** | `mosquito-breeding-areas` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Open defecation** | `open-defecation` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Unhygienic public places** | `unhygienic-public-places` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Public urination** | `public-urination` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Pest infestation** | `pest-infestation` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Stray animal waste** | `stray-animal-waste` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Contaminated public water facilities** | `contaminated-public-water-facilities` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Poor sanitation in public markets** | `poor-sanitation-in-public-markets` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Unhygienic food market surroundings** | `unhygienic-food-market-surroundings` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Public health hazards caused by sewage** | `public-health-hazards-caused-by-sewage` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
