@@ -80,3 +80,4 @@ The check ensures all taxonomy slugs match, image sizes exist, and credits are r
 2. Delete the corresponding folder in `client/src/assets/images/civic/<category-slug>/<sub-slug>/`.
 3. If the sub-issue remains active in `server/src/seed/civicTaxonomy.js`, the platform cleanly falls back to an accessible icon-on-tint card.
 4. Run `npm run civic:check` to ensure no orphaned references exist.
+

@@ -1,4 +1,5 @@
 import api from './api';
+import { CIVIC_TAXONOMY } from '../data/civicTaxonomy';
 
 export interface SubCategory {
   name: string;
@@ -51,68 +52,26 @@ export interface UpdateCategoryPayload {
   icon?: string;
 }
 
-export const DEFAULT_CIVIC_CATEGORIES: Category[] = [
-  {
-    _id: '67c1c0a00000000000000001',
-    name: 'Road damage & Potholes',
-    slug: 'road-damage',
-    description: 'Potholes, broken roads, damaged pavements, and street surface issues.',
-    baseFeePaise: 60000,
-    isActive: true,
-    icon: 'road',
-    estimatedResolutionHours: 48,
-  },
-  {
-    _id: '67c1c0a00000000000000002',
-    name: 'Water supply & Pipelines',
-    slug: 'water-supply',
-    description: 'Pipeline leakages, contaminated municipal supply, and low water pressure.',
-    baseFeePaise: 40000,
-    isActive: true,
-    icon: 'droplet',
-    estimatedResolutionHours: 24,
-  },
-  {
-    _id: '67c1c0a00000000000000003',
-    name: 'Drainage & Sewers',
-    slug: 'drainage',
-    description: 'Blocked sewers, overflowing drains, and rainwater stagnation.',
-    baseFeePaise: 50000,
-    isActive: true,
-    icon: 'waves',
-    estimatedResolutionHours: 36,
-  },
-  {
-    _id: '67c1c0a00000000000000004',
-    name: 'Streetlight & Electricity',
-    slug: 'streetlight-electricity',
-    description: 'Non-functional streetlights, dangling power cables, and open transformer hazards.',
-    baseFeePaise: 35000,
-    isActive: true,
-    icon: 'zap',
-    estimatedResolutionHours: 24,
-  },
-  {
-    _id: '67c1c0a00000000000000005',
-    name: 'Garbage & Sanitation',
-    slug: 'garbage',
-    description: 'Uncollected domestic waste, illegal dumping, and overflowing municipal bins.',
-    baseFeePaise: 30000,
-    isActive: true,
-    icon: 'trash-2',
-    estimatedResolutionHours: 24,
-  },
-  {
-    _id: '67c1c0a00000000000000006',
-    name: 'General Public Works',
-    slug: 'other',
-    description: 'General civic problems, illegal hoardings, park maintenance, and public property hazards.',
-    baseFeePaise: 30000,
-    isActive: true,
-    icon: 'help-circle',
-    estimatedResolutionHours: 48,
-  },
-];
+export const DEFAULT_CIVIC_CATEGORIES: Category[] = CIVIC_TAXONOMY.map((item, idx) => ({
+  _id: item._id || `civic_cat_${item.slug}`,
+  name: item.name,
+  slug: item.slug,
+  description: item.description,
+  baseFeePaise: item.baseFeePaise,
+  isActive: true,
+  icon: item.icon,
+  order: item.order ?? idx + 1,
+  estimatedResolutionHours: item.estimatedResolutionHours,
+  freeRadiusKm: item.freeRadiusKm,
+  subCategories: item.subCategories.map((s) => ({
+    name: s.name,
+    slug: s.slug,
+    order: s.order,
+    defaultPriority: s.defaultPriority,
+    isActive: s.isActive !== false,
+    imageKey: s.imageKey,
+  })),
+}));
 
 export const categoryService = {
   // Public endpoint for active categories with graceful fallback
@@ -120,8 +79,24 @@ export const categoryService = {
     try {
       const response: any = await api.get('/categories');
       const payload = response?.data !== undefined ? response.data : response;
-      if (Array.isArray(payload) && payload.length > 0) return payload;
-      if (Array.isArray(payload?.data) && payload.data.length > 0) return payload.data;
+      const rawList = Array.isArray(payload) && payload.length > 0
+        ? payload
+        : Array.isArray(payload?.data) && payload.data.length > 0
+        ? payload.data
+        : null;
+
+      if (rawList && rawList.length > 0) {
+        return rawList.map((cat: any) => {
+          const match = CIVIC_TAXONOMY.find((t) => t.slug === cat.slug);
+          const subs = Array.isArray(cat.subCategories) && cat.subCategories.length > 0
+            ? cat.subCategories
+            : match?.subCategories || [];
+          return {
+            ...cat,
+            subCategories: subs,
+          };
+        });
+      }
       return DEFAULT_CIVIC_CATEGORIES;
     } catch (err) {
       console.warn('Failed to get active categories from server, using verified fallback list:', err);
@@ -129,16 +104,57 @@ export const categoryService = {
     }
   },
 
-  // Public endpoint for category detail by slug
+  // Public endpoint for category detail by slug with fallback
   async getCategoryBySlug(slug: string): Promise<Category | null> {
+    if (!slug) return null;
+    const cleanSlug = slug.toLowerCase().trim();
+
     try {
-      const response: any = await api.get(`/categories/${slug}`);
+      const response: any = await api.get(`/categories/${cleanSlug}`);
       const payload = response?.data !== undefined ? response.data : response;
-      return payload || null;
+      if (payload && payload.slug && payload.name) {
+        const match = CIVIC_TAXONOMY.find((t) => t.slug === payload.slug);
+        const subs = Array.isArray(payload.subCategories) && payload.subCategories.length > 0
+          ? payload.subCategories
+          : match?.subCategories || [];
+        return {
+          ...payload,
+          subCategories: subs,
+        };
+      }
     } catch (err) {
-      console.warn(`Failed to get category by slug ${slug}:`, err);
-      return null;
+      // Backend /api/categories/:slug may not be routed or reachable yet
     }
+
+    const all = await this.getActiveCategories();
+    const found = all.find((c) => c.slug === cleanSlug);
+    if (found) return found;
+
+    const taxMatch = CIVIC_TAXONOMY.find((t) => t.slug === cleanSlug);
+    if (taxMatch) {
+      return {
+        _id: `civic_cat_${taxMatch.slug}`,
+        name: taxMatch.name,
+        slug: taxMatch.slug,
+        description: taxMatch.description,
+        baseFeePaise: taxMatch.baseFeePaise,
+        isActive: true,
+        icon: taxMatch.icon,
+        order: taxMatch.order,
+        estimatedResolutionHours: taxMatch.estimatedResolutionHours,
+        freeRadiusKm: taxMatch.freeRadiusKm,
+        subCategories: taxMatch.subCategories.map((s) => ({
+          name: s.name,
+          slug: s.slug,
+          order: s.order,
+          defaultPriority: s.defaultPriority,
+          isActive: s.isActive !== false,
+          imageKey: s.imageKey,
+        })),
+      };
+    }
+
+    return null;
   },
 
   // Admin paginated categories

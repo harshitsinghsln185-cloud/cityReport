@@ -89,6 +89,45 @@ async function runCheck() {
     errors++;
   }
 
+  // 5. Verify programmatic resolution via civicImage.ts in Vite SSR
+  console.log('4. Validating all slugs resolve to real image files via civicImage.ts...');
+  try {
+    const { createServer } = await import('vite');
+    const vite = await createServer({
+      root: path.resolve(__dirname, '..'),
+      server: { middlewareMode: true },
+      logLevel: 'error',
+    });
+    const civicModule = await vite.ssrLoadModule('/src/lib/civicImage.ts');
+    let resolvedCats = 0;
+    let resolvedSubs = 0;
+
+    for (const cat of CIVIC_TAXONOMY) {
+      const cover = civicModule.getCategoryImage(cat.slug);
+      if (!cover || !cover.src) {
+        console.error(`  [FAIL] getCategoryImage failed to resolve for slug: "${cat.slug}"`);
+        errors++;
+      } else {
+        resolvedCats++;
+      }
+
+      for (const sub of cat.subCategories) {
+        const subImg = civicModule.getSubIssueImage(cat.slug, sub.slug);
+        if (!subImg || !subImg.src) {
+          console.error(`  [FAIL] getSubIssueImage failed for: "${cat.slug}/${sub.slug}"`);
+          errors++;
+        } else {
+          resolvedSubs++;
+        }
+      }
+    }
+    await vite.close();
+    console.log(`  ✓ Successfully verified ${resolvedCats}/16 categories and ${resolvedSubs}/208 sub-issues via civicImage.ts`);
+  } catch (err) {
+    console.error('  [FAIL] Failed to run civicImage.ts resolution check:', err);
+    errors++;
+  }
+
   console.log('\n--- Consistency Check Summary ---');
   if (errors > 0) {
     console.error(`❌ Check failed with ${errors} error(s) and ${warnings} warning(s).`);

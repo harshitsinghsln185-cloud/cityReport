@@ -325,14 +325,20 @@ export const CategoryDetail: React.FC = () => {
                         {subImg ? (
                           <picture>
                             {subImg.sources.map((source, sIdx) => (
-                              <source key={sIdx} type={source.type} srcSet={source.srcSet} />
+                              <source
+                                key={sIdx}
+                                type={source.type}
+                                srcSet={source.srcSet}
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                              />
                             ))}
                             <img
                               src={subImg.cardSrc}
                               alt={subImg.alt}
                               width={subImg.width}
                               height={subImg.height}
-                              loading={idx < 4 ? 'eager' : 'lazy'}
+                              loading={idx < 6 ? 'eager' : 'lazy'}
+                              decoding="async"
                               className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 motion-reduce:transform-none"
                             />
                           </picture>

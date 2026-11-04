@@ -121,3 +121,4 @@
 - `7b3b916`: V5: services page grid and category detail page
 - `e05857e`: V6: image credits page and asset documentation
 - `0a141d5`: V7: QA checks, tests and responsive screenshots
+

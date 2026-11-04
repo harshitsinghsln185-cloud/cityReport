@@ -54,13 +54,14 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
   matchingSubIssues = [],
 }) => {
   const [imageError, setImageError] = useState<boolean>(false);
-  const civicImage = category.slug ? getCategoryImage(category.slug) : null;
-  const IconComponent = (category.slug && CATEGORY_ICON_MAP[category.slug]) || Wrench;
+  const cleanSlug = category.slug?.toLowerCase().trim() || '';
+  const civicImage = cleanSlug ? getCategoryImage(cleanSlug) : null;
+  const IconComponent = (cleanSlug && CATEGORY_ICON_MAP[cleanSlug]) || Wrench;
   const stepNumber = String(index + 1).padStart(2, '0');
 
   const subIssueCount = category.subCategories?.length || 0;
-  const targetUrl = category.slug
-    ? `/services/${category.slug}`
+  const targetUrl = cleanSlug
+    ? `/services/${cleanSlug}`
     : `/user/report-issue?category=${encodeURIComponent(category._id)}`;
 
   return (
@@ -74,14 +75,21 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
           {civicImage && !imageError ? (
             <picture>
               {civicImage.sources.map((src, i) => (
-                <source key={i} type={src.type} srcSet={src.srcSet} />
+                <source
+                  key={i}
+                  type={src.type}
+                  srcSet={src.srcSet}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                />
               ))}
               <img
                 src={civicImage.cardSrc}
                 alt={civicImage.alt}
                 width={civicImage.width}
                 height={civicImage.height}
-                loading="lazy"
+                loading={index < 4 ? 'eager' : 'lazy'}
+                fetchPriority={index < 2 ? 'high' : 'auto'}
+                decoding="async"
                 onError={() => setImageError(true)}
                 style={{
                   objectPosition: civicImage.focalPoint

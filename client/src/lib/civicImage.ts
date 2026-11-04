@@ -171,7 +171,7 @@ export function getSubIssueImage(categorySlug: string, subSlug: string): CivicIm
     sources,
     srcsetWebp: webpParts.join(', '),
     srcsetAvif: avifParts.join(', '),
-    cardSrc: src480Webp || src800Webp,
+    cardSrc: src800Webp || src480Webp,
     alt: meta?.alt || `${meta?.name || subSlug} issue illustration`,
     focalPoint: meta?.focal || { x: 0.5, y: 0.5 },
   };
