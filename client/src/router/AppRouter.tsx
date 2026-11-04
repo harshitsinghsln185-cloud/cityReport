@@ -25,6 +25,7 @@ import AdminQueries from '../pages/admin/Queries';
 import Home from '../pages/public/Home';
 import Services from '../pages/public/Services';
 import CategoryDetail from '../pages/public/CategoryDetail';
+import Credits from '../pages/public/Credits';
 import StatesDirectory from '../pages/public/StatesDirectory';
 import StateDetail from '../pages/public/StateDetail';
 import About from '../pages/public/About';
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: 'services/:categorySlug',
         element: <CategoryDetail />,
+      },
+      {
+        path: 'credits',
+        element: <Credits />,
       },
       {
         path: 'states',

@@ -63,6 +63,11 @@ export const Footer: React.FC = () => {
                 Civic Query Desk
               </Link>
             </li>
+            <li>
+              <Link to="/credits" className="hover:text-white transition-colors">
+                Image Credits
+              </Link>
+            </li>
           </ul>
         </div>
 
