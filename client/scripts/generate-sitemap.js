@@ -80,7 +80,8 @@ console.log(`[sitemap] Generated on: ${today}`);
 const coreRoutes = [
   { path: '/', priority: '1.0', changefreq: 'daily' },
   { path: '/states', priority: '0.9', changefreq: 'daily' },
-  { path: '/services', priority: '0.8', changefreq: 'weekly' },
+  { path: '/services', priority: '0.9', changefreq: 'weekly' },
+  { path: '/credits', priority: '0.6', changefreq: 'monthly' },
   { path: '/about', priority: '0.7', changefreq: 'monthly' },
   { path: '/track', priority: '0.8', changefreq: 'daily' },
   { path: '/query', priority: '0.6', changefreq: 'monthly' },
@@ -160,6 +161,22 @@ for (const route of coreRoutes) {
   xml += `  </url>\n`;
 }
 
+xml += `\n  <!-- 16 Municipal Civic Categories -->\n`;
+const civicCategories = [
+  'roads-transportation', 'garbage-management', 'water-drainage', 'electricity-lighting',
+  'public-health', 'environment', 'parks-greenery', 'public-safety',
+  'public-transport', 'animal-welfare', 'encroachment', 'public-amenities',
+  'fire-emergency', 'urban-planning', 'commercial-areas', 'public-property'
+];
+for (const slug of civicCategories) {
+  xml += `  <url>\n`;
+  xml += `    <loc>${domain}/services/${slug}</loc>\n`;
+  xml += `    <lastmod>${today}</lastmod>\n`;
+  xml += `    <changefreq>weekly</changefreq>\n`;
+  xml += `    <priority>0.85</priority>\n`;
+  xml += `  </url>\n`;
+}
+
 xml += `\n  <!-- 36 States & Union Territories of India -->\n`;
 for (const slug of stateSlugs) {
   xml += `  <url>\n`;
@@ -180,7 +197,7 @@ if (!fs.existsSync(publicDir)) {
 
 const sitemapDest = path.join(publicDir, 'sitemap.xml');
 fs.writeFileSync(sitemapDest, xml, 'utf-8');
-console.log(`[sitemap] Successfully wrote ${coreRoutes.length + stateSlugs.length} URLs to: ${sitemapDest}`);
+console.log(`[sitemap] Successfully wrote ${coreRoutes.length + civicCategories.length + stateSlugs.length} URLs to: ${sitemapDest}`);
 
 // 6. Synchronize client/public/robots.txt
 const robotsDest = path.join(publicDir, 'robots.txt');

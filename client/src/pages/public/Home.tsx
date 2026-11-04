@@ -79,7 +79,7 @@ export const Home: React.FC = () => {
       try {
         setLoading(true);
         const data = await categoryService.getActiveCategories();
-        const list = Array.isArray(data) ? data : [];
+        const list = Array.isArray(data) ? [...data].sort((a, b) => (a.order ?? 99) - (b.order ?? 99)) : [];
         setCategories(list.slice(0, 6));
       } catch (err) {
         console.error('Failed to load categories for homepage:', err);

@@ -10,6 +10,9 @@ export interface ImageCredit {
   description: string;
   prompt?: string;
   imageKey?: string;
+  focalPoint?: { x: number; y: number };
+  priority?: string;
+  categorySlug?: string;
 }
 
 export const CATEGORY_IMAGE_CREDITS: Record<string, ImageCredit> = {
