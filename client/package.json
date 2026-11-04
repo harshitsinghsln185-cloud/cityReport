@@ -9,6 +9,8 @@
     "build": "npm run generate:sitemap && tsc -b && vite build",
     "preview": "vite preview",
     "states:images": "node scripts/optimize-states.mjs",
+    "civic:images": "node scripts/optimize-civic.mjs",
+    "civic:check": "node scripts/check-civic.mjs",
     "lint": "tsc --noEmit"
   },
   "dependencies": {

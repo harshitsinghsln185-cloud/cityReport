@@ -210,3 +210,4 @@ renderContactSheet().catch(err => {
   console.error('Error rendering contact sheet:', err);
   process.exit(1);
 });
+
