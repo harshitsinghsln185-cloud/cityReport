@@ -22,7 +22,12 @@ export const Login: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const from = (location.state as { from?: { pathname: string } })?.from?.pathname;
+  const fromState = (location.state as any)?.from;
+  const from = typeof fromState === 'string'
+    ? fromState
+    : fromState?.pathname
+      ? `${fromState.pathname}${fromState.search || ''}${fromState.hash || ''}`
+      : null;
 
   // Auto-open modal if URL specifies ?register=user or ?register=resolver
   useEffect(() => {

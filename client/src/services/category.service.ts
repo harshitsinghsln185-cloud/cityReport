@@ -1,5 +1,14 @@
 import api from './api';
 
+export interface SubCategory {
+  name: string;
+  slug: string;
+  order: number;
+  defaultPriority: 'Critical' | 'High' | 'Medium' | 'Low';
+  isActive: boolean;
+  imageKey?: string;
+}
+
 export interface Category {
   _id: string;
   name: string;
@@ -8,8 +17,10 @@ export interface Category {
   baseFeePaise: number;
   isActive: boolean;
   icon: string;
+  order?: number;
   estimatedResolutionHours?: number;
   freeRadiusKm?: number;
+  subCategories?: SubCategory[];
   createdAt?: string;
   updatedAt?: string;
 }
@@ -115,6 +126,18 @@ export const categoryService = {
     } catch (err) {
       console.warn('Failed to get active categories from server, using verified fallback list:', err);
       return DEFAULT_CIVIC_CATEGORIES;
+    }
+  },
+
+  // Public endpoint for category detail by slug
+  async getCategoryBySlug(slug: string): Promise<Category | null> {
+    try {
+      const response: any = await api.get(`/categories/${slug}`);
+      const payload = response?.data !== undefined ? response.data : response;
+      return payload || null;
+    } catch (err) {
+      console.warn(`Failed to get category by slug ${slug}:`, err);
+      return null;
     }
   },
 

@@ -159,3 +159,4 @@ if (process.argv[1] && process.argv[1].endsWith('migrateCivicTaxonomy.js')) {
 }
 
 export default migrateCivicTaxonomy;
+

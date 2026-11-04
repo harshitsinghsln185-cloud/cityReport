@@ -48,6 +48,8 @@ export interface Issue {
   issueCode: string;
   reporter: AuthUser;
   category: Category;
+  subCategory?: string | null;
+  subCategoryName?: string | null;
   title: string;
   description: string;
   suggestedPriority: 'Low' | 'Medium' | 'High' | 'Critical';
@@ -102,6 +104,7 @@ export interface Issue {
 
 export interface EstimateQuotePayload {
   category: string;
+  subCategory?: string;
   lat: number;
   lng: number;
   suggestedPriority?: 'Low' | 'Medium' | 'High' | 'Critical';

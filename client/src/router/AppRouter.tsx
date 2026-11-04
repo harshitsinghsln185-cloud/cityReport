@@ -113,6 +113,10 @@ const router = createBrowserRouter([
               path: 'styleguide',
               element: <Styleguide />,
             },
+            {
+              path: 'dev-report-issue',
+              element: <ReportIssue />,
+            },
           ]
         : []),
     ],

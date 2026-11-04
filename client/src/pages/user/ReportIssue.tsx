@@ -31,6 +31,7 @@ export const ReportIssue: React.FC = () => {
   const [searchParams] = useSearchParams();
   const prefillState = searchParams.get('state');
   const prefillCategory = searchParams.get('category');
+  const prefillSub = searchParams.get('sub');
   const { user } = useAuth();
 
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -40,6 +41,7 @@ export const ReportIssue: React.FC = () => {
   // Form State
   const [formData, setFormData] = useState({
     category: '',
+    subCategory: '',
     title: '',
     description: '',
     suggestedPriority: 'Medium' as 'Low' | 'Medium' | 'High' | 'Critical',
@@ -61,24 +63,77 @@ export const ReportIssue: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  const triggerInitialQuote = async (
+    categoryId: string,
+    subCategorySlug?: string,
+    priority: 'Low' | 'Medium' | 'High' | 'Critical' = 'Medium'
+  ) => {
+    try {
+      setQuoteLoading(true);
+      const res = await issueService.estimateQuote({
+        category: categoryId,
+        subCategory: subCategorySlug || undefined,
+        lat: formData.lat,
+        lng: formData.lng,
+        suggestedPriority: priority,
+        description: formData.description,
+      });
+      setQuoteEstimate(res);
+    } catch {
+      // Background quote prefetch fails silently if resolvers unavailable
+    } finally {
+      setQuoteLoading(false);
+    }
+  };
+
   useEffect(() => {
     const fetchCats = async () => {
       try {
         setCategoriesLoading(true);
         const data = await categoryService.getActiveCategories();
-        const list = Array.isArray(data) ? data : [];
+        const list = Array.isArray(data) ? [...data] : [];
+        list.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
         setCategories(list);
+
+        let targetCat = '';
+        let targetSub = '';
+        let targetPriority: 'Low' | 'Medium' | 'High' | 'Critical' = 'Medium';
+
         if (prefillCategory) {
           const matched = list.find(
-            (c) => c._id === prefillCategory || c.name.toLowerCase().includes(prefillCategory.toLowerCase())
+            (c) =>
+              c._id === prefillCategory ||
+              c.slug === prefillCategory ||
+              c.name.toLowerCase() === prefillCategory.toLowerCase()
           );
           if (matched) {
-            setFormData((prev) => ({ ...prev, category: matched._id }));
-          } else if (list.length > 0 && !formData.category) {
-            setFormData((prev) => ({ ...prev, category: list[0]._id }));
+            targetCat = matched._id;
+            const subs = (matched.subCategories || []).filter((s) => s.isActive !== false);
+            subs.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+
+            if (prefillSub) {
+              const matchedSub = subs.find(
+                (s) => s.slug === prefillSub || s.name.toLowerCase() === prefillSub.toLowerCase()
+              );
+              if (matchedSub) {
+                targetSub = matchedSub.slug;
+                if (matchedSub.defaultPriority) {
+                  targetPriority = matchedSub.defaultPriority;
+                }
+              }
+            }
           }
-        } else if (list.length > 0 && !formData.category) {
-          setFormData((prev) => ({ ...prev, category: list[0]._id }));
+        }
+
+        if (targetCat) {
+          setFormData((prev) => ({
+            ...prev,
+            category: targetCat,
+            subCategory: targetSub,
+            suggestedPriority: targetSub ? targetPriority : prev.suggestedPriority,
+          }));
+          // Automatically trigger quote calculation on mount when query parameters are present
+          triggerInitialQuote(targetCat, targetSub, targetPriority);
         }
       } catch {
         setErrorMessage('Failed to load civic categories. Please refresh.');
@@ -87,7 +142,7 @@ export const ReportIssue: React.FC = () => {
       }
     };
     fetchCats();
-  }, [prefillCategory]);
+  }, [prefillCategory, prefillSub]);
 
   // Handle Photo Staging
   const handlePhotoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -127,6 +182,10 @@ export const ReportIssue: React.FC = () => {
       setErrorMessage('Please select a civic service category.');
       return false;
     }
+    if (activeSubCategories.length > 0 && !formData.subCategory) {
+      setErrorMessage('Please select a specific sub-category for this issue.');
+      return false;
+    }
     if (!formData.title || formData.title.trim().length < 5) {
       setErrorMessage('Title must be at least 5 characters long.');
       return false;
@@ -157,11 +216,13 @@ export const ReportIssue: React.FC = () => {
   };
 
   const fetchLiveQuote = async () => {
+    if (!formData.category) return;
     try {
       setQuoteLoading(true);
       setErrorMessage(null);
       const res = await issueService.estimateQuote({
         category: formData.category,
+        subCategory: formData.subCategory || undefined,
         lat: formData.lat,
         lng: formData.lng,
         suggestedPriority: formData.suggestedPriority,
@@ -201,6 +262,9 @@ export const ReportIssue: React.FC = () => {
       payload.append('title', formData.title.trim());
       payload.append('description', formData.description.trim());
       payload.append('category', formData.category);
+      if (formData.subCategory) {
+        payload.append('subCategory', formData.subCategory);
+      }
       payload.append('suggestedPriority', formData.suggestedPriority);
       payload.append('contactNumber', formData.contactNumber.trim());
       payload.append('lat', formData.lat.toString());
@@ -235,7 +299,14 @@ export const ReportIssue: React.FC = () => {
     { number: 4, title: 'Quote Review', icon: Calculator },
   ];
 
-  const selectedCategoryObj = categories.find((c) => c._id === formData.category);
+  const selectedCategoryObj = categories.find(
+    (c) => c._id === formData.category || c.slug === formData.category
+  );
+  const activeSubCategories = (selectedCategoryObj?.subCategories || [])
+    .filter((s) => s.isActive !== false)
+    .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+  const selectedSubObj = activeSubCategories.find((s) => s.slug === formData.subCategory);
+  const isCriticalSubIssue = selectedSubObj?.defaultPriority === 'Critical';
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-12">
@@ -309,40 +380,93 @@ export const ReportIssue: React.FC = () => {
                 </p>
               </div>
 
-              {/* Category Selection */}
-              <div>
-                <label className="block text-xs font-semibold text-ink mb-1.5">
-                  Service Category <span className="text-red-700">*</span>
-                </label>
-                {categoriesLoading ? (
-                  <div className="text-xs text-secondaryText py-2">Loading active municipal categories...</div>
-                ) : (
-                  <div className="space-y-2">
+              {/* Category & Dependent Sub-Category Selection */}
+              <div className="space-y-4">
+                <div>
+                  <label htmlFor="civic-category-select" className="block text-xs font-semibold text-ink mb-1.5">
+                    Service Category <span className="text-red-700">*</span>
+                  </label>
+                  {categoriesLoading ? (
+                    <div className="text-xs text-secondaryText py-2">Loading active municipal categories...</div>
+                  ) : (
                     <select
+                      id="civic-category-select"
                       value={formData.category}
-                      onChange={(e) => setFormData((p) => ({ ...p, category: e.target.value }))}
+                      onChange={(e) => {
+                        const newCat = e.target.value;
+                        setFormData((p) => ({
+                          ...p,
+                          category: newCat,
+                          subCategory: '',
+                        }));
+                      }}
                       className="w-full text-xs sm:text-sm p-3 rounded-lg border border-border bg-white text-ink focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none"
                       required
                     >
+                      <option value="">Select a civic service category...</option>
                       {categories.map((c) => (
                         <option key={c._id} value={c._id}>
                           {c.name} &bull; Base: ₹{(c.baseFeePaise / 100).toLocaleString('en-IN')}
                         </option>
                       ))}
                     </select>
+                  )}
+                </div>
 
-                    {selectedCategoryObj && (
-                      <div className="p-3 bg-canvas rounded-lg border border-border text-xs text-secondaryText flex items-center justify-between">
-                        <div>
-                          <span className="font-semibold text-ink">{selectedCategoryObj.name}: </span>
-                          <span>{selectedCategoryObj.description}</span>
-                        </div>
-                        <div className="flex items-center gap-1 font-bold text-primary shrink-0 ml-4">
-                          <Clock className="w-3.5 h-3.5" />
-                          <span>{selectedCategoryObj.estimatedResolutionHours || 48}h Target SLA</span>
-                        </div>
-                      </div>
-                    )}
+                {/* Dependent Sub-Category Selection */}
+                {selectedCategoryObj && activeSubCategories.length > 0 && (
+                  <div className="space-y-1.5 animate-fadeIn">
+                    <label htmlFor="civic-subcategory-select" className="block text-xs font-semibold text-ink">
+                      Sub-Category Issue <span className="text-red-700">*</span>
+                    </label>
+                    <select
+                      id="civic-subcategory-select"
+                      value={formData.subCategory}
+                      onChange={(e) => {
+                        const newSub = e.target.value;
+                        const matched = activeSubCategories.find((s) => s.slug === newSub);
+                        setFormData((p) => ({
+                          ...p,
+                          subCategory: newSub,
+                          suggestedPriority: matched?.defaultPriority || p.suggestedPriority,
+                        }));
+                      }}
+                      className="w-full text-xs sm:text-sm p-3 rounded-lg border border-border bg-white text-ink focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none"
+                      required
+                    >
+                      <option value="">Select a sub-category...</option>
+                      {activeSubCategories.map((s) => (
+                        <option key={s.slug} value={s.slug}>
+                          {s.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+
+                {/* Amber Warning for Critical Sub-Issues */}
+                {isCriticalSubIssue && (
+                  <div
+                    data-testid="critical-priority-warning"
+                    className="p-3.5 bg-amber-50 border border-amber-200 text-amber-900 rounded-card text-xs flex items-start gap-2.5 animate-fadeIn"
+                  >
+                    <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                    <span className="leading-relaxed">
+                      Critical issues are routed with priority. If this is an immediate life-threatening emergency, call 112 instead.
+                    </span>
+                  </div>
+                )}
+
+                {selectedCategoryObj && (
+                  <div className="p-3 bg-canvas rounded-lg border border-border text-xs text-secondaryText flex items-center justify-between">
+                    <div>
+                      <span className="font-semibold text-ink">{selectedCategoryObj.name}: </span>
+                      <span>{selectedCategoryObj.description}</span>
+                    </div>
+                    <div className="flex items-center gap-1 font-bold text-primary shrink-0 ml-4">
+                      <Clock className="w-3.5 h-3.5" />
+                      <span>{selectedCategoryObj.estimatedResolutionHours || 48}h Target SLA</span>
+                    </div>
                   </div>
                 )}
               </div>
@@ -536,6 +660,16 @@ export const ReportIssue: React.FC = () => {
                 <p className="text-xs text-secondaryText">
                   Inspect the proximity quote computed from the SOR schedule and confirm your dispatch request.
                 </p>
+              </div>
+
+              <div className="p-3.5 bg-canvas rounded-card border border-border flex items-center justify-between text-xs">
+                <div>
+                  <span className="font-semibold text-ink">{selectedCategoryObj?.name || 'Category'}</span>
+                  {selectedSubObj && <span className="text-secondaryText"> &bull; {selectedSubObj.name}</span>}
+                </div>
+                <Badge variant={formData.suggestedPriority === 'Critical' ? 'danger' : 'neutral'} size="sm">
+                  {formData.suggestedPriority} Priority
+                </Badge>
               </div>
 
               {quoteLoading ? (
