@@ -128,3 +128,204 @@ All photographic assets utilized across the Crowd Report platform adhere strictl
 | **Poor sanitation in public markets** | `poor-sanitation-in-public-markets` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
 | **Unhygienic food market surroundings** | `unhygienic-food-market-surroundings` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
 | **Public health hazards caused by sewage** | `public-health-hazards-caused-by-sewage` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+
+
+## Sub-Issues: Environment (15 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Air pollution** | `air-pollution` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Water pollution** | `water-pollution` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Noise pollution** | `noise-pollution` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Soil pollution** | `soil-pollution` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Industrial smoke pollution** | `industrial-smoke-pollution` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Burning of garbage** | `burning-of-garbage` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-garbage-burning` |
+| **Illegal tree cutting** | `illegal-tree-cutting` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Tree damage** | `tree-damage` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **River pollution** | `river-pollution` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Pond and lake pollution** | `pond-and-lake-pollution` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Plastic pollution** | `plastic-pollution` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Dust pollution from construction** | `dust-pollution-from-construction` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Chemical waste dumping** | `chemical-waste-dumping` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Encroachment on green spaces** | `encroachment-on-green-spaces` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Loss of urban greenery** | `loss-of-urban-greenery` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+
+
+## Sub-Issues: Parks & Greenery (14 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Poor park maintenance** | `poor-park-maintenance` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged park benches** | `damaged-park-benches` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-public-bench-defect` |
+| **Broken children's swings** | `broken-childrens-swings` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged playground equipment** | `damaged-playground-equipment` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Overgrown grass** | `overgrown-grass` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Trees requiring trimming** | `trees-requiring-trimming` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Dead plants** | `dead-plants` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged walking tracks** | `damaged-walking-tracks` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Broken park lights** | `broken-park-lights` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-streetlight-defect` |
+| **Public park encroachment** | `public-park-encroachment` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Illegal dumping in parks** | `illegal-dumping-in-parks` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged public fountains** | `damaged-public-fountains` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Public garden water supply issue** | `public-garden-water-supply-issue` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Lack of dustbins in parks** | `lack-of-dustbins-in-parks` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-dustbin-defect` |
+
+
+## Sub-Issues: Public Safety (15 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Open manholes** | `open-manholes` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-manhole-defect` |
+| **Damaged manhole covers** | `damaged-manhole-covers` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-manhole-defect` |
+| **Fallen trees blocking roads** | `fallen-trees-blocking-roads` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Dangerous hanging wires** | `dangerous-hanging-wires` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged public structures** | `damaged-public-structures` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Unsafe bridges** | `unsafe-bridges` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged public staircases** | `damaged-public-staircases` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Broken safety railings** | `broken-safety-railings` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Dangerous construction sites** | `dangerous-construction-sites` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Risk of building collapse** | `risk-of-building-collapse` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Uncovered construction pits** | `uncovered-construction-pits` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged public property** | `damaged-public-property` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Fire safety hazards** | `fire-safety-hazards` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-fire-hazard` |
+| **Blocked emergency access** | `blocked-emergency-access` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-emergency-access-blocked` |
+| **Unsafe public buildings** | `unsafe-public-buildings` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+
+
+## Sub-Issues: Public Transport (14 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Damaged bus stops** | `damaged-bus-stops` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-bus-stop-defect` |
+| **Missing bus shelters** | `missing-bus-shelters` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-bus-stop-defect` |
+| **Bus stop cleanliness issues** | `bus-stop-cleanliness-issues` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Illegal roadside parking** | `illegal-roadside-parking` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-illegal-parking` |
+| **Parking space encroachment** | `parking-space-encroachment` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged public parking facilities** | `damaged-public-parking-facilities` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Broken traffic signals** | `broken-traffic-signals` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-traffic-signal-defect` |
+| **Missing traffic signs** | `missing-traffic-signs` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-street-sign-defect` |
+| **Missing bus route information** | `missing-bus-route-information` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Public transport accessibility issues** | `public-transport-accessibility-issues` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Blocked pedestrian crossings** | `blocked-pedestrian-crossings` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Auto and taxi stand encroachment** | `auto-and-taxi-stand-encroachment` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Unsafe pedestrian crossings** | `unsafe-pedestrian-crossings` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged bus terminal facilities** | `damaged-bus-terminal-facilities` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+
+
+## Sub-Issues: Animal Welfare (12 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Stray cattle on roads** | `stray-cattle-on-roads` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Stray dogs** | `stray-dogs` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Injured stray animals** | `injured-stray-animals` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Dead animals on roads** | `dead-animals-on-roads` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-animal-carcass` |
+| **Animal carcass disposal** | `animal-carcass-disposal` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-animal-carcass` |
+| **Illegal animal shelters** | `illegal-animal-shelters` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Animal cruelty** | `animal-cruelty` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Stray animals near schools** | `stray-animals-near-schools` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Cattle blocking traffic** | `cattle-blocking-traffic` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Abandoned animals** | `abandoned-animals` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Unhygienic animal shelters** | `unhygienic-animal-shelters` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Illegal slaughterhouse waste disposal** | `illegal-slaughterhouse-waste-disposal` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+
+
+## Sub-Issues: Encroachment (12 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Illegal roadside shops** | `illegal-roadside-shops` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Footpath encroachment** | `footpath-encroachment` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-footpath-encroachment` |
+| **Road encroachment** | `road-encroachment` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Illegal construction** | `illegal-construction` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Unauthorized building extensions** | `unauthorized-building-extensions` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Illegal hoardings** | `illegal-hoardings` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Unauthorized street vendors blocking roads** | `unauthorized-street-vendors-blocking-roads` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Public land encroachment** | `public-land-encroachment` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Illegal parking structures** | `illegal-parking-structures` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Construction beyond approved limits** | `construction-beyond-approved-limits` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Illegal dumping on public land** | `illegal-dumping-on-public-land` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Encroachment on drainage channels** | `encroachment-on-drainage-channels` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+
+
+## Sub-Issues: Public Amenities (12 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Damaged public benches** | `damaged-public-benches` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-public-bench-defect` |
+| **Broken public drinking water taps** | `broken-public-drinking-water-taps` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Public toilets unavailable** | `public-toilets-unavailable` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-public-toilet-defect` |
+| **Damaged bus shelters** | `damaged-bus-shelters` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-bus-stop-defect` |
+| **Broken public dustbins** | `broken-public-dustbins` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-dustbin-defect` |
+| **Damaged community halls** | `damaged-community-halls` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Poorly maintained public markets** | `poorly-maintained-public-markets` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged public playgrounds** | `damaged-public-playgrounds` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Lack of public seating** | `lack-of-public-seating` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-public-bench-defect` |
+| **Missing disabled-access ramps** | `missing-disabled-access-ramps` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Broken public elevators** | `broken-public-elevators` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Public facility accessibility issues** | `public-facility-accessibility-issues` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+
+
+## Sub-Issues: Fire & Emergency (9 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Damaged fire hydrants** | `damaged-fire-hydrants` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Blocked fire hydrants** | `blocked-fire-hydrants` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Blocked fire exits** | `blocked-fire-exits` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Missing fire extinguishers in public facilities** | `missing-fire-extinguishers-in-public-facilities` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Blocked emergency access roads** | `blocked-emergency-access-roads` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-emergency-access-blocked` |
+| **Fire hazards in public markets** | `fire-hazards-in-public-markets` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-fire-hazard` |
+| **Dangerous electrical short circuits** | `dangerous-electrical-short-circuits` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Fire incidents in public buildings** | `fire-incidents-in-public-buildings` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Obstructed emergency response access** | `obstructed-emergency-response-access` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-emergency-access-blocked` |
+
+
+## Sub-Issues: Urban Planning (12 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Poorly maintained public housing** | `poorly-maintained-public-housing` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Sanitation problems in underserved settlements** | `sanitation-problems-in-underserved-settlements` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Illegal land-use changes** | `illegal-land-use-changes` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Unauthorized building construction** | `unauthorized-building-construction` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Unsafe residential structures** | `unsafe-residential-structures` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Poor street layout** | `poor-street-layout` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Inadequate public infrastructure** | `inadequate-public-infrastructure` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Lack of pedestrian infrastructure** | `lack-of-pedestrian-infrastructure` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Improper drainage planning** | `improper-drainage-planning` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Unplanned urban development** | `unplanned-urban-development` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Public land misuse** | `public-land-misuse` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Inaccessible public infrastructure** | `inaccessible-public-infrastructure` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+
+
+## Sub-Issues: Commercial Areas (10 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Dirty market areas** | `dirty-market-areas` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Garbage accumulation in markets** | `garbage-accumulation-in-markets` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Blocked market drainage** | `blocked-market-drainage` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Illegal market encroachment** | `illegal-market-encroachment` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged market roads** | `damaged-market-roads` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Lack of public toilets** | `lack-of-public-toilets` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-public-toilet-defect` |
+| **Broken market streetlights** | `broken-market-streetlights` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-streetlight-defect` |
+| **Unhygienic meat and fish market surroundings** | `unhygienic-meat-and-fish-market-surroundings` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Illegal waste disposal** | `illegal-waste-disposal` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Poor market parking management** | `poor-market-parking-management` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+
+
+## Sub-Issues: Public Property (10 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Broken public benches** | `broken-public-benches` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-public-bench-defect` |
+| **Damaged street signs** | `damaged-street-signs` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-street-sign-defect` |
+| **Broken bus stop structures** | `broken-bus-stop-structures` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-bus-stop-defect` |
+| **Damaged public toilets** | `damaged-public-toilets` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-public-toilet-defect` |
+| **Wall graffiti** | `wall-graffiti` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damage to public monuments** | `damage-to-public-monuments` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Broken park equipment** | `broken-park-equipment` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Damaged public dustbins** | `damaged-public-dustbins` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-dustbin-defect` |
+| **Theft of public infrastructure** | `theft-of-public-infrastructure` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Vandalism of public property** | `vandalism-of-public-property` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
