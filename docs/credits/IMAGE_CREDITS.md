@@ -69,3 +69,26 @@ All photographic assets utilized across the Crowd Report platform adhere strictl
 | **Open waste dumping grounds** | `open-waste-dumping-grounds` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
 | **Garbage collection vehicle not arriving** | `garbage-collection-vehicle-not-arriving` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
 | **Bad smell from garbage areas** | `bad-smell-from-garbage-areas` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+
+
+## Sub-Issues: Water & Drainage (17 Sub-Issues)
+
+| Sub-Issue Name | Slug | Priority | Source | Author / Attribution | License | Image Key |
+|---|---|---|---|---|---|---|
+| **Water pipeline leakage** | `water-pipeline-leakage` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **No water supply** | `no-water-supply` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Low water pressure** | `low-water-pressure` | Low | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Contaminated drinking water** | `contaminated-drinking-water` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Dirty water supply** | `dirty-water-supply` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Broken water pipelines** | `broken-water-pipelines` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Open drainage** | `open-drainage` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Blocked drains** | `blocked-drains` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Drainage overflow** | `drainage-overflow` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Sewage leakage** | `sewage-leakage` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Waterlogging** | `waterlogging` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-waterlogging` |
+| **Flooded streets** | `flooded-streets` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-waterlogging` |
+| **Broken manhole covers** | `broken-manhole-covers` | Critical | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `shared-manhole-defect` |
+| **Rainwater drainage blockage** | `rainwater-drainage-blockage` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Illegal water connections** | `illegal-water-connections` | Medium | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Sewer line blockage** | `sewer-line-blockage` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
+| **Overflowing septic tanks** | `overflowing-septic-tanks` | High | ai-nano-banana | [Crowd Report AI (Nano Banana)](https://croudreport.local) | [Proprietary Open Assets (CroudReport Platform)](https://croudreport.local/credits) | `unique` |
