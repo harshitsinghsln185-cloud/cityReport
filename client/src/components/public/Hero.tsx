@@ -190,7 +190,7 @@ export const Hero: React.FC = () => {
         {/* Tiny blurred placeholder to eliminate layout shift */}
         <img
           src={heroBlurWebp}
-          alt=""
+          alt="Decorative city street blur placeholder"
           aria-hidden="true"
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 blur-xl scale-105 ${
             isImageLoaded ? 'opacity-0' : 'opacity-100'

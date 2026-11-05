@@ -188,27 +188,37 @@ async function runNavigationTests() {
     });
   });
 
-  if (servicesCardCheck.length < 16) {
+  if (servicesCardCheck.length !== 16) {
     console.error(`  ❌ [FAIL] Expected 16 cards on /services, found ${servicesCardCheck.length}`);
     failures++;
   } else {
-    const allHavePill = servicesCardCheck.every((c) => c.pillText.includes('issue type'));
+    const allHaveArrow = servicesCardCheck.every((c) => c.hasArrow);
     const allHaveImg = servicesCardCheck.every((c) => c.hasImg);
-    if (!allHavePill) {
-      console.error(`  ❌ [FAIL] Some cards on /services are missing the subtle issue count pill.`);
+    const allHavePill = servicesCardCheck.every((c) => c.pillText.includes('issue types'));
+    if (!allHaveArrow) {
+      console.error(`  ❌ [FAIL] Some Services cards missing round action arrow button.`);
       failures++;
     } else if (!allHaveImg) {
-      console.error(`  ❌ [FAIL] Some cards on /services have missing or broken images.`);
+      console.error(`  ❌ [FAIL] Some Services cards have missing or broken images.`);
+      failures++;
+    } else if (!allHavePill) {
+      console.error(`  ❌ [FAIL] Services cards should show subtle sub-issue count pill.`);
       failures++;
     } else {
-      console.log(`  ✓ All ${servicesCardCheck.length} Services cards have clean 4:3 image, name, action arrow, and subtle count pill.`);
+      console.log(`  ✓ All 16 Services cards have clean 4:3 image, name, action arrow, and subtle count pill.`);
     }
   }
 
-  // TEST 2: Home Page Category Cards (State-card feel, NO count pill)
+  // TEST 2: Home Page Category Grid (State-card feel, NO sub-issue count pill)
   console.log('\nTEST 2: Verifying Home page cards styling...');
   await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded' });
   await page.waitForTimeout(600);
+
+  // Scroll to category grid
+  await page.evaluate(() => {
+    const el = document.getElementById('categories') || document.querySelector('.grid');
+    if (el) el.scrollIntoView({ block: 'center' });
+  });
   await scrollPage();
 
   const homeCardCheck = await page.evaluate(() => {
@@ -216,17 +226,19 @@ async function runNavigationTests() {
     return cards.map((c) => {
       const heading = c.querySelector('h3')?.textContent?.trim() || '';
       const img = c.querySelector('img');
+      const arrow = c.querySelector('svg');
       const pill = c.querySelector('span.rounded-full');
       return {
         heading,
         hasImg: !!img && img.naturalWidth > 0,
-        hasPill: !!pill,
+        hasArrow: !!arrow,
+        hasPill: !!pill && pill.textContent?.includes('issue types'),
       };
     });
   });
 
   if (homeCardCheck.length < 6) {
-    console.error(`  ❌ [FAIL] Expected at least 6 category cards on Home, found ${homeCardCheck.length}`);
+    console.error(`  ❌ [FAIL] Expected at least 6 category cards on Home page, found ${homeCardCheck.length}`);
     failures++;
   } else {
     const anyHasPill = homeCardCheck.some((c) => c.hasPill);

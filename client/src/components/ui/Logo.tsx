@@ -127,7 +127,7 @@ export const Logo: React.FC<LogoProps> = ({
         role="img"
         aria-label="Crowd Report"
       >
-        <LogoMark size={size} theme={theme} alt="" />
+        <LogoMark size={size} theme={theme} alt="Crowd Report" />
         {wordmark}
       </div>
     );
@@ -141,7 +141,7 @@ export const Logo: React.FC<LogoProps> = ({
       role="img"
       aria-label="Crowd Report"
     >
-      <LogoMark size={size} theme={theme} alt="" />
+      <LogoMark size={size} theme={theme} alt="Crowd Report" />
       <div className="hidden min-[360px]:flex flex-col justify-center">
         {wordmark}
       </div>
