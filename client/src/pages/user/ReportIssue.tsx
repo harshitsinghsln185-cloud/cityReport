@@ -107,7 +107,7 @@ export const ReportIssue: React.FC = () => {
               c.name.toLowerCase() === prefillCategory.toLowerCase()
           );
           if (matched) {
-            targetCat = matched._id;
+            targetCat = matched._id || matched.slug;
             const subs = (matched.subCategories || []).filter((s) => s.isActive !== false);
             subs.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 
@@ -404,11 +404,14 @@ export const ReportIssue: React.FC = () => {
                       required
                     >
                       <option value="">Select a civic service category...</option>
-                      {categories.map((c) => (
-                        <option key={c._id} value={c._id}>
-                          {c.name} &bull; Base: ₹{(c.baseFeePaise / 100).toLocaleString('en-IN')}
-                        </option>
-                      ))}
+                      {categories.map((c) => {
+                        const optVal = c._id || c.slug;
+                        return (
+                          <option key={optVal} value={optVal}>
+                            {c.name} &bull; Base: ₹{(c.baseFeePaise / 100).toLocaleString('en-IN')}
+                          </option>
+                        );
+                      })}
                     </select>
                   )}
                 </div>

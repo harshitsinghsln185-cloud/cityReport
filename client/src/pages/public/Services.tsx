@@ -258,6 +258,7 @@ export const Services: React.FC = () => {
                   category={category}
                   index={idx}
                   matchingSubIssues={matchingSubIssues}
+                  showSubCount={true}
                 />
               </Reveal>
             ))}

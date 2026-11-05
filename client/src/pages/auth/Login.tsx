@@ -23,11 +23,12 @@ export const Login: React.FC = () => {
   const location = useLocation();
 
   const fromState = (location.state as any)?.from;
+  const fromQuery = searchParams.get('returnTo') || searchParams.get('from') || searchParams.get('redirect');
   const from = typeof fromState === 'string'
     ? fromState
     : fromState?.pathname
       ? `${fromState.pathname}${fromState.search || ''}${fromState.hash || ''}`
-      : null;
+      : fromQuery || null;
 
   // Auto-open modal if URL specifies ?register=user or ?register=resolver
   useEffect(() => {
@@ -156,6 +157,7 @@ export const Login: React.FC = () => {
 
             <Button
               type="submit"
+              onClick={handleSubmit}
               variant="primary"
               className="w-full h-12 rounded-xl mt-3 font-bold text-sm sm:text-base shadow-md shadow-accent/25 hover:shadow-lg transition-all"
               isLoading={isLoading}

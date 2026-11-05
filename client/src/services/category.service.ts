@@ -93,6 +93,7 @@ export const categoryService = {
             : match?.subCategories || [];
           return {
             ...cat,
+            _id: cat._id || cat.id || `civic_cat_${cat.slug}`,
             subCategories: subs,
           };
         });

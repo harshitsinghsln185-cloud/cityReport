@@ -20,9 +20,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const refreshUser = useCallback(async () => {
     try {
-      const response = await authService.getMe();
-      if (response.data?.user) {
-        setUser(response.data.user);
+      const response: any = await authService.getMe();
+      const user = response?.data?.user || response?.user || (response?.data?.email ? response.data : null);
+      if (user) {
+        setUser(user);
       } else {
         setUser(null);
       }
@@ -46,16 +47,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (credentials: LoginPayload): Promise<AuthUser> => {
     // Ensure CSRF token is in place before state-changing login
     await ensureCsrfToken();
-    const response = await authService.login(credentials);
-    const loggedUser = response.data?.user;
+    const rawRes: any = await authService.login(credentials);
+    let res = rawRes;
+    if (typeof res === 'string') {
+      try { res = JSON.parse(res); } catch {}
+    }
+    const dataObj = typeof res?.data === 'string' ? (() => { try { return JSON.parse(res.data); } catch { return res.data; } })() : res?.data;
+    const loggedUser = dataObj?.user || res?.user || (dataObj?.email ? dataObj : null) || (res?.email ? res : null);
     if (!loggedUser) {
       throw new Error('Authentication succeeded but user profile was not returned.');
     }
-    if (response.data?.token) {
-      setStoredToken(response.data.token);
+    const token = dataObj?.token || res?.token;
+    if (token) {
+      setStoredToken(token);
     }
-    if (response.data?.csrfToken) {
-      setStoredCsrf(response.data.csrfToken);
+    const csrfToken = dataObj?.csrfToken || res?.csrfToken;
+    if (csrfToken) {
+      setStoredCsrf(csrfToken);
     }
     setUser(loggedUser);
     return loggedUser;

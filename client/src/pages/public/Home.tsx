@@ -231,7 +231,7 @@ export const Home: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {(Array.isArray(categories) ? categories : []).map((cat, idx) => (
                 <Reveal key={cat._id} delay={idx * 0.05}>
-                  <ServiceCard category={cat} index={idx} />
+                  <ServiceCard category={cat} index={idx} showSubCount={false} />
                 </Reveal>
               ))}
             </div>

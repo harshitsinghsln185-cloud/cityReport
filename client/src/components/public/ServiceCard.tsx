@@ -1,25 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ArrowUpRight,
-  Car,
-  Trash2,
-  Droplets,
-  Zap,
-  HeartPulse,
-  Trees,
-  Flower2,
-  ShieldAlert,
-  Bus,
-  PawPrint,
-  Building,
-  Sparkles,
-  Flame,
-  Compass,
-  Store,
-  Landmark,
-  Wrench,
-} from 'lucide-react';
+import { ArrowUpRight, Wrench } from 'lucide-react';
 import { Category } from '../../services/category.service';
 import { getCategoryImage } from '../../lib/civicImage';
 
@@ -27,47 +8,25 @@ interface ServiceCardProps {
   category: Category;
   index?: number;
   matchingSubIssues?: string[];
+  showSubCount?: boolean;
 }
-
-const CATEGORY_ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
-  'roads-transportation': Car,
-  'garbage-management': Trash2,
-  'water-drainage': Droplets,
-  'electricity-lighting': Zap,
-  'public-health': HeartPulse,
-  'environment': Trees,
-  'parks-greenery': Flower2,
-  'public-safety': ShieldAlert,
-  'public-transport': Bus,
-  'animal-welfare': PawPrint,
-  'encroachment': Building,
-  'public-amenities': Sparkles,
-  'fire-emergency': Flame,
-  'urban-planning': Compass,
-  'commercial-areas': Store,
-  'public-property': Landmark,
-};
 
 export const ServiceCard: React.FC<ServiceCardProps> = ({
   category,
   index = 0,
   matchingSubIssues = [],
+  showSubCount = false,
 }) => {
   const [imageError, setImageError] = useState<boolean>(false);
   const cleanSlug = category.slug?.toLowerCase().trim() || '';
   const civicImage = cleanSlug ? getCategoryImage(cleanSlug) : null;
-  const IconComponent = (cleanSlug && CATEGORY_ICON_MAP[cleanSlug]) || Wrench;
-  const stepNumber = String(index + 1).padStart(2, '0');
-
   const subIssueCount = category.subCategories?.length || 0;
-  const targetUrl = cleanSlug
-    ? `/services/${cleanSlug}`
-    : `/user/report-issue?category=${encodeURIComponent(category._id)}`;
+  const targetUrl = cleanSlug ? `/services/${cleanSlug}` : '/services';
 
   return (
     <Link
       to={targetUrl}
-      className="group block h-full rounded-2xl bg-white border border-border hover:border-accent/80 hover:shadow-cardHover hover:-translate-y-[3px] transition-all duration-300 motion-reduce:transform-none overflow-hidden flex flex-col justify-between"
+      className="group block h-full rounded-2xl bg-white border border-border hover:border-accent/80 hover:shadow-cardHover hover:-translate-y-[2px] transition-all duration-200 overflow-hidden flex flex-col justify-between"
     >
       <div>
         {/* Top Image Container (4:3 ratio) */}
@@ -96,72 +55,50 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
                     ? `${civicImage.focalPoint.x * 100}% ${civicImage.focalPoint.y * 100}%`
                     : 'center',
                 }}
-                className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 motion-reduce:transform-none"
+                className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-300 motion-reduce:transform-none"
               />
             </picture>
           ) : (
             <div className="w-full h-full bg-navy/90 flex flex-col items-center justify-center p-6 text-center">
               <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-2">
-                <IconComponent className="w-6 h-6 text-accent" />
+                <Wrench className="w-6 h-6 text-accent" />
               </div>
               <span className="font-heading font-bold text-white text-base tracking-wider uppercase opacity-90">
                 {category.name}
               </span>
             </div>
           )}
-
-          {/* Dark gradient overlay for bottom badge contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-
-          {/* Step Number on Bottom-Left */}
-          <span className="absolute bottom-3 left-4 text-xs font-mono font-bold text-accent tracking-wider drop-shadow-sm">
-            {stepNumber}
-          </span>
-
-          {/* Icon chip on Top-Left */}
-          <div className="absolute top-3.5 left-3.5 w-8 h-8 rounded-lg bg-navy/80 backdrop-blur-xs text-white flex items-center justify-center shadow-md">
-            <IconComponent className="w-4 h-4 text-accent" />
-          </div>
-
-          {/* Floating Action Arrow on Top-Right */}
-          <div className="absolute top-3.5 right-3.5 w-9 h-9 rounded-xl bg-white/95 group-hover:bg-accent text-navy flex items-center justify-center shadow-md backdrop-blur-xs transition-all duration-200">
-            <ArrowUpRight className="w-4 h-4 stroke-[2.5] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform motion-reduce:transform-none" />
-          </div>
         </div>
 
-        {/* Content Area */}
-        <div className="p-5 sm:p-6">
-          <div className="flex items-center justify-between gap-2 mb-2">
-            <h3 className="font-heading font-extrabold text-base sm:text-lg text-ink uppercase tracking-wide group-hover:text-primary transition-colors">
+        {/* Content Area below photo: name + action arrow */}
+        <div className="p-4 sm:p-5">
+          <div className="flex items-center justify-between gap-3">
+            <h3 className="font-heading font-bold text-sm sm:text-base text-ink group-hover:text-primary transition-colors leading-snug line-clamp-2">
               {category.name}
             </h3>
+            <div className="w-7 h-7 rounded-full bg-slate-100 text-slate-400 group-hover:bg-primary group-hover:text-white transition-all flex items-center justify-center shrink-0">
+              <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform motion-reduce:transform-none" />
+            </div>
           </div>
 
-          {/* Description */}
-          <p className="text-xs sm:text-sm text-secondaryText leading-relaxed line-clamp-2 mb-3">
-            {category.description || 'Certified municipal remediation with geo-proximity contractor dispatch.'}
-          </p>
+          {/* Sub-issue count subtle pill on Services page only */}
+          {showSubCount && subIssueCount > 0 && (
+            <div className="mt-2.5">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200/80">
+                {subIssueCount} {subIssueCount === 1 ? 'issue type' : 'issue types'}
+              </span>
+            </div>
+          )}
 
           {/* Matched Sub-Issues snippet when searching */}
           {matchingSubIssues.length > 0 && (
-            <div className="mb-2 p-2 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-900">
-              <span className="font-semibold">Matching sub-issues: </span>
+            <div className="mt-2.5 p-2 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-900">
+              <span className="font-semibold">Matching: </span>
               <span>{matchingSubIssues.slice(0, 3).join(', ')}</span>
               {matchingSubIssues.length > 3 && <span> +{matchingSubIssues.length - 3} more</span>}
             </div>
           )}
         </div>
-      </div>
-
-      {/* Footer Area with Sub-Issue Count & Link */}
-      <div className="px-5 sm:px-6 pb-5 pt-3 border-t border-border/60 flex items-center justify-between mt-auto">
-        <span className="text-xs font-medium text-muted">
-          {subIssueCount} {subIssueCount === 1 ? 'issue type' : 'issue types'}
-        </span>
-        <span className="inline-flex items-center gap-1 text-xs font-bold text-ink group-hover:text-accent transition-colors">
-          <span>Explore category</span>
-          <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform motion-reduce:transform-none" />
-        </span>
       </div>
     </Link>
   );

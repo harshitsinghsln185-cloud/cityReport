@@ -12,7 +12,8 @@
     "civic:images": "node scripts/optimize-civic.mjs",
     "civic:check": "node scripts/check-civic.mjs",
     "lint": "tsc --noEmit",
-    "test:civic": "node tests/civic-images.spec.ts"
+    "test:civic": "node tests/civic-images.spec.ts",
+    "test:nav": "node tests/navigation-flow.spec.ts"
   },
   "dependencies": {
     "@fontsource-variable/fraunces": "^5.3.0",

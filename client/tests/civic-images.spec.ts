@@ -3,6 +3,7 @@ import { preview } from 'vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
+import { CIVIC_TAXONOMY } from '../../server/src/seed/civicTaxonomy.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
