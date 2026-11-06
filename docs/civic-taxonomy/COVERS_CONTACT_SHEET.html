@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crowd Report — Civic Category Covers Contact Sheet (M1 Review)</title>
+  <style>
+    :root {
+      --navy: #0A1F44;
+      --navy-light: #162B55;
+      --amber: #D97706;
+      --amber-light: #F59E0B;
+      --ivory: #FDFBF7;
+      --slate-50: #F8FAFC;
+      --slate-100: #F1F5F9;
+      --slate-200: #E2E8F0;
+      --slate-300: #CBD5E1;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-900: #0F172A;
+      --green-600: #16A34A;
+      --green-50: #F0FDF4;
+      --green-200: #BBF7D0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--slate-100);
+      color: var(--slate-900);
+      padding: 32px 24px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1720px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--navy);
+      color: var(--ivory);
+      padding: 32px 40px;
+      border-radius: 16px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 20px rgba(10, 31, 68, 0.15);
+    }
+
+    header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      color: #FFFFFF;
+    }
+
+    header p {
+      color: #CBD5E1;
+      font-size: 15px;
+      max-width: 1000px;
+    }
+
+    .meta-pills {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #F8FAFC;
+    }
+
+    .pill-amber {
+      background: rgba(217, 119, 6, 0.25);
+      border-color: var(--amber);
+      color: #FDE68A;
+    }
+
+    .category-section {
+      background: #FFFFFF;
+      border: 1px solid var(--slate-200);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 36px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--slate-200);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .category-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .category-slug {
+      font-family: monospace;
+      font-size: 13px;
+      background: var(--slate-100);
+      padding: 4px 10px;
+      border-radius: 6px;
+      color: var(--slate-700);
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    @media (max-width: 1200px) {
+      .preview-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .column-title {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--slate-600);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Column A: 16:9 Hero Preview Container */
+    .hero-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--navy);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .hero-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Matching PageHero text overlay: Left-aligned with subtle gradient */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(10, 31, 68, 0.94) 0%, rgba(10, 31, 68, 0.78) 40%, rgba(10, 31, 68, 0.25) 65%, rgba(10, 31, 68, 0) 85%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 48px;
+      pointer-events: none;
+    }
+
+    .hero-text-content {
+      max-width: 520px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--amber-light);
+      margin-bottom: 8px;
+    }
+
+    .hero-heading {
+      font-size: 26px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-description {
+      font-size: 14px;
+      color: #E2E8F0;
+      line-height: 1.45;
+    }
+
+    /* Column B: 4:3 Card Crop Preview */
+    .card-container {
+      background: #FFFFFF;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      max-width: 440px;
+    }
+
+    .card-img-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--slate-100);
+    }
+
+    .card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body {
+      padding: 16px 20px;
+      background: #FFFFFF;
+    }
+
+    .card-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .card-subtext {
+      font-size: 13px;
+      color: var(--slate-600);
+      line-height: 1.4;
+    }
+
+    /* Info & Evaluation Strip */
+    .details-strip {
+      margin-top: 20px;
+      padding: 16px;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .details-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .prompt-box {
+      color: var(--slate-700);
+    }
+
+    .prompt-label {
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .prompt-text {
+      font-family: inherit;
+      color: var(--slate-600);
+      line-height: 1.4;
+    }
+
+    .evaluation-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .rule-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .badge-pass {
+      display: inline-block;
+      background: var(--green-200);
+      color: #14532D;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Crowd Report — Civic Category Covers Contact Sheet</h1>
+      <p>Phase M1 Review: 16 premium documentary cover images generated with Nano Banana (Gemini) under shared art direction. Evaluated for dual-use across 16:9 hero headers (with text overlay) and 4:3 cropped service cards.</p>
+      <div class="meta-pills">
+        <span class="pill pill-amber">All 16 Generated via Nano Banana</span>
+        <span class="pill">Documentary Photography</span>
+        <span class="pill">Golden Hour Palette (Navy / Amber / Ivory)</span>
+        <span class="pill">Right-Centre Subject (50%–80%)</span>
+        <span class="pill">Calm Left 40% Text Zone</span>
+        <span class="pill">0 Text / 0 Faces / 0 Logos</span>
+      </div>
+    </header>
+
+    <!-- 1. ROADS & TRANSPORTATION -->
+    <div class="category-section" id="roads-transportation">
+      <div class="category-header">
+        <div>
+          <span class="category-title">1. Roads & Transportation</span>
+        </div>
+        <span class="category-slug">roads-transportation</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/roads-transportation/_category.png" alt="Roads & Transportation" style="object-position: 68% 55%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Roads & Transportation</h2>
+                <p class="hero-description">Municipal road surfacing, pedestrian footpaths, traffic signals, and bridge structural safety.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.68, y: 0.55 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/roads-transportation/_category.png" alt="Roads & Transportation" style="object-position: 68% 55%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Roads & Transportation</div>
+              <div class="card-subtext">Municipal road surfacing, pedestrian footpaths, traffic signals...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at golden hour (soft warm light, cool navy-teal shadows), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian urban setting. Palette leans navy blue shadows, warm amber highlights, soft ivory sky. Main subject situated in the right-centre (between 50% and 80% width): A damaged asphalt road with several water-filled potholes and cracked edges on a busy city street, a few two-wheelers and an auto-rickshaw far in the background. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (55%–80%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Golden Hour / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. GARBAGE MANAGEMENT -->
+    <div class="category-section" id="garbage-management">
+      <div class="category-header">
+        <div>
+          <span class="category-title">2. Garbage Management</span>
+        </div>
+        <span class="category-slug">garbage-management</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/garbage-management/_category.png" alt="Garbage Management" style="object-position: 72% 50%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Garbage Management</h2>
+                <p class="hero-description">Domestic waste collection, municipal dustbin overflows, illegal dumping, and sanitary clearance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.72, y: 0.50 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/garbage-management/_category.png" alt="Garbage Management" style="object-position: 72% 50%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Garbage Management</div>
+              <div class="card-subtext">Domestic waste collection, municipal dustbin overflows...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at golden hour (soft warm light, cool navy-teal shadows), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian urban setting. Palette leans navy blue shadows, warm amber highlights, soft ivory sky. Main subject situated in the right-centre (between 50% and 80% width): An overflowing green municipal dustbin on a footpath with garbage bags and litter spilling onto the road, a collection tricycle far in the background. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (60%–85%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Golden Hour / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. WATER & DRAINAGE -->
+    <div class="category-section" id="water-drainage">
+      <div class="category-header">
+        <div>
+          <span class="category-title">3. Water & Drainage</span>
+        </div>
+        <span class="category-slug">water-drainage</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/water-drainage/_category.png" alt="Water & Drainage" style="object-position: 70% 55%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Water & Drainage</h2>
+                <p class="hero-description">Drinking water pipelines, sewer blockages, drainage overflow, and municipal water pressure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.70, y: 0.55 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/water-drainage/_category.png" alt="Water & Drainage" style="object-position: 70% 55%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Water & Drainage</div>
+              <div class="card-subtext">Drinking water pipelines, sewer blockages, drainage overflow...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at golden hour (soft warm light, cool navy-teal shadows), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian urban setting. Palette leans navy blue shadows, warm amber highlights, soft ivory sky. Main subject situated in the right-centre (between 50% and 80% width): A leaking underground water pipe pushing clean drinking water up through cracked road asphalt, the water flowing along a waterlogged street gutter with an open broken drainage grill beside it. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (55%–85%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Golden Hour / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. ELECTRICITY & LIGHTING -->
+    <div class="category-section" id="electricity-lighting">
+      <div class="category-header">
+        <div>
+          <span class="category-title">4. Electricity & Lighting</span>
+        </div>
+        <span class="category-slug">electricity-lighting</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/electricity-lighting/_category.png" alt="Electricity & Lighting" style="object-position: 68% 50%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Electricity & Lighting</h2>
+                <p class="hero-description">Public street illumination, fallen power lines, hazardous transformers, and junction boxes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.68, y: 0.50 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/electricity-lighting/_category.png" alt="Electricity & Lighting" style="object-position: 68% 50%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Electricity & Lighting</div>
+              <div class="card-subtext">Public street illumination, fallen power lines, hazardous transformers...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at dusk/late golden hour (deep navy-blue shadows, warm amber street glow), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian city street. Palette leans navy blue shadows, warm amber highlights, soft dusk sky. Main subject situated in the right-centre (between 50% and 80% width): A visibly leaning weathered concrete electric utility pole with a dark, broken glass streetlight fixture and a chaotic tangle of loose sagging black cables hanging down, with residential buildings blurred in the background. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (60%–75%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Dusk / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. PUBLIC HEALTH -->
+    <div class="category-section" id="public-health">
+      <div class="category-header">
+        <div>
+          <span class="category-title">5. Public Health</span>
+        </div>
+        <span class="category-slug">public-health</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/public-health/_category.png" alt="Public Health" style="object-position: 70% 52%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Public Health</h2>
+                <p class="hero-description">Community sanitation, public restroom hygiene, vector breeding containment, and market cleanliness.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.70, y: 0.52 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/public-health/_category.png" alt="Public Health" style="object-position: 70% 52%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Public Health</div>
+              <div class="card-subtext">Community sanitation, public restroom hygiene, vector breeding...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at golden hour (soft warm light, cool navy-teal shadows), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian urban lane. Palette leans navy blue shadows, warm amber highlights, soft ivory sky. Main subject situated in the right-centre (between 50% and 80% width): A neglected municipal public toilet block with weathered stained tiles, closed rusted door, and standing puddle of water beside it, weeds growing along the foundation. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (55%–85%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Golden Hour / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. ENVIRONMENT -->
+    <div class="category-section" id="environment">
+      <div class="category-header">
+        <div>
+          <span class="category-title">6. Environment</span>
+        </div>
+        <span class="category-slug">environment</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/environment/_category.png" alt="Environment" style="object-position: 65% 55%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Environment</h2>
+                <p class="hero-description">Ambient air quality, urban water bodies, industrial emissions, construction dust, and tree protection.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.65, y: 0.55 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/environment/_category.png" alt="Environment" style="object-position: 65% 55%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Environment</div>
+              <div class="card-subtext">Ambient air quality, urban water bodies, industrial emissions...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at golden hour (soft warm light, cool navy-teal shadows), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian urban periphery setting. Palette leans navy blue shadows, warm amber highlights, soft ivory sky. Main subject situated in the right-centre (between 50% and 80% width): A dried-up urban pond or canal bed with deeply cracked mud, scattered plastic waste, dry silt and low parched scrub under a hazy sky. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (50%–85%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Golden Hour / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. PARKS & GREENERY -->
+    <div class="category-section" id="parks-greenery">
+      <div class="category-header">
+        <div>
+          <span class="category-title">7. Parks & Greenery</span>
+        </div>
+        <span class="category-slug">parks-greenery</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/parks-greenery/_category.png" alt="Parks & Greenery" style="object-position: 68% 50%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Parks & Greenery</h2>
+                <p class="hero-description">Neighborhood park upkeep, children play equipment, horticulture, pathways, and green space lighting.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.68, y: 0.50 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/parks-greenery/_category.png" alt="Parks & Greenery" style="object-position: 68% 50%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Parks & Greenery</div>
+              <div class="card-subtext">Neighborhood park upkeep, children play equipment, horticulture...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at golden hour (soft warm light, cool navy-teal shadows), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian public municipal park setting. Palette leans navy blue shadows, warm amber highlights, soft ivory sky. Main subject situated in the right-centre (between 50% and 80% width): An overgrown, neglected municipal park corner with a dilapidated broken concrete/wooden park bench with missing slats, unpruned wild thorny bushes and tall weeds aggressively bursting through a cracked stone walking path. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (55%–80%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Golden Hour / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. PUBLIC SAFETY -->
+    <div class="category-section" id="public-safety">
+      <div class="category-header">
+        <div>
+          <span class="category-title">8. Public Safety</span>
+        </div>
+        <span class="category-slug">public-safety</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/public-safety/_category.png" alt="Public Safety" style="object-position: 68% 55%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Public Safety</h2>
+                <p class="hero-description">Hazardous trenches, structural instability, fallen trees, building collapse risks, and emergency access.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.68, y: 0.55 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/public-safety/_category.png" alt="Public Safety" style="object-position: 68% 55%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Public Safety</div>
+              <div class="card-subtext">Hazardous trenches, structural instability, fallen trees...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight transitioning to dusk/early evening (deep navy-teal shadows, subtle amber glow in the distance), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian urban alleyway or underpass entrance. Palette leans navy blue shadows, warm amber highlights, soft twilight sky. Main subject situated in the right-centre (between 50% and 80% width): A dim, unlit pedestrian passage or alleyway corner with broken pavement pavers, dark alcoves, weathered peeling plaster walls with no graffiti, and an unlit dead street light bracket, with warm municipal street light visible only in the far background. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (52%–85%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Dusk / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. PUBLIC TRANSPORT -->
+    <div class="category-section" id="public-transport">
+      <div class="category-header">
+        <div>
+          <span class="category-title">9. Public Transport</span>
+        </div>
+        <span class="category-slug">public-transport</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/public-transport/_category.png" alt="Public Transport" style="object-position: 65% 50%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Public Transport</h2>
+                <p class="hero-description">Transit shelters, bus stops, pedestrian crossing safety, traffic signals, and parking facility order.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.65, y: 0.50 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/public-transport/_category.png" alt="Public Transport" style="object-position: 65% 50%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Public Transport</div>
+              <div class="card-subtext">Transit shelters, bus stops, pedestrian crossing safety...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at golden hour (soft warm light, cool navy-teal shadows), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian urban corridor. Palette leans navy blue shadows, warm amber highlights, soft ivory sky. Main subject situated in the right-centre (between 50% and 80% width): A damaged municipal bus shelter with a bent corrugated metal roof and rusted iron support frame, with an empty cracked concrete platform. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (50%–80%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Golden Hour / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. ANIMAL WELFARE -->
+    <div class="category-section" id="animal-welfare">
+      <div class="category-header">
+        <div>
+          <span class="category-title">10. Animal Welfare</span>
+        </div>
+        <span class="category-slug">animal-welfare</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/animal-welfare/_category.png" alt="Animal Welfare" style="object-position: 70% 55%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Animal Welfare</h2>
+                <p class="hero-description">Stray animal safety, traffic obstruction by cattle, carcass disposal, and veterinary sanitization.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.70, y: 0.55 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/animal-welfare/_category.png" alt="Animal Welfare" style="object-position: 0.70% 55%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Animal Welfare</div>
+              <div class="card-subtext">Stray animal safety, traffic obstruction by cattle, carcass disposal...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at golden hour (soft warm light, cool navy-teal shadows), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian urban street corner. Palette leans navy blue shadows, warm amber highlights, soft ivory sky. Main subject situated in the right-centre (between 50% and 80% width): A pack of three stray Indian native street dogs resting near an overturned wooden food cart on a quiet street corner, with an ear-notched stray dog visible. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up human faces, no injury.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (55%–85%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Golden Hour / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. ENCROACHMENT -->
+    <div class="category-section" id="encroachment">
+      <div class="category-header">
+        <div>
+          <span class="category-title">11. Encroachment</span>
+        </div>
+        <span class="category-slug">encroachment</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/encroachment/_category.png" alt="Encroachment" style="object-position: 72% 50%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Encroachment</h2>
+                <p class="hero-description">Footpath obstruction, illegal street vending, unauthorized construction, and public land misuse.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.72, y: 0.50 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/encroachment/_category.png" alt="Encroachment" style="object-position: 72% 50%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Encroachment</div>
+              <div class="card-subtext">Footpath obstruction, illegal street vending, unauthorized construction...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at golden hour (soft warm light, cool navy-teal shadows), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian city street. Palette leans navy blue shadows, warm amber highlights, soft ivory sky. Main subject situated in the right-centre (between 50% and 80% width): Makeshift wooden vendor stalls, crates, and blue/orange tarpaulin awnings completely occupying the pedestrian footpath, showing footpath encroachment. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (50%–90%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Golden Hour / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. PUBLIC AMENITIES -->
+    <div class="category-section" id="public-amenities">
+      <div class="category-header">
+        <div>
+          <span class="category-title">12. Public Amenities</span>
+        </div>
+        <span class="category-slug">public-amenities</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/public-amenities/_category.png" alt="Public Amenities" style="object-position: 68% 50%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Public Amenities</h2>
+                <p class="hero-description">Drinking water taps, public seating, community halls, disabled ramps, and municipal elevators.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.68, y: 0.50 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/public-amenities/_category.png" alt="Public Amenities" style="object-position: 68% 50%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Public Amenities</div>
+              <div class="card-subtext">Drinking water taps, public seating, community halls...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at golden hour (soft warm light, cool navy-teal shadows), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian public town square. Palette leans navy blue shadows, warm amber highlights, soft ivory sky. Main subject situated in the right-centre (between 50% and 80% width): A damaged public municipal drinking water booth with a broken corroded brass tap dripping into an algae-stained cracked stone basin, missing drain grate, and rusted dry water pipes. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (50%–85%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Golden Hour / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. FIRE & EMERGENCY -->
+    <div class="category-section" id="fire-emergency">
+      <div class="category-header">
+        <div>
+          <span class="category-title">13. Fire & Emergency</span>
+        </div>
+        <span class="category-slug">fire-emergency</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/fire-emergency/_category.png" alt="Fire & Emergency" style="object-position: 68% 55%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Fire & Emergency</h2>
+                <p class="hero-description">Fire hydrants, emergency evacuation routes, public extinguisher stations, and fire hazard prevention.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.68, y: 0.55 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/fire-emergency/_category.png" alt="Fire & Emergency" style="object-position: 68% 55%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Fire & Emergency</div>
+              <div class="card-subtext">Fire hydrants, emergency evacuation routes, public extinguisher stations...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at golden hour (soft warm light, cool navy-teal shadows), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian urban neighborhood lane. Palette leans navy blue shadows, warm amber highlights, soft ivory sky. Main subject situated in the right-centre (between 50% and 80% width): An official red municipal fire hydrant partly obstructed by tightly parked scooters, bicycles, and stacked wooden construction timber against an aged brick wall with an emergency hose box. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces, no fire, no smoke.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (60%–75%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Golden Hour / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No fire, text, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. URBAN PLANNING -->
+    <div class="category-section" id="urban-planning">
+      <div class="category-header">
+        <div>
+          <span class="category-title">14. Urban Planning</span>
+        </div>
+        <span class="category-slug">urban-planning</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/urban-planning/_category.png" alt="Urban Planning" style="object-position: 68% 50%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Urban Planning</h2>
+                <p class="hero-description">Master plan compliance, underserved settlements, drainage planning, and pedestrian infrastructure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.68, y: 0.50 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/urban-planning/_category.png" alt="Urban Planning" style="object-position: 68% 50%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Urban Planning</div>
+              <div class="card-subtext">Master plan compliance, underserved settlements, drainage planning...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at golden hour (soft warm light, cool navy-teal shadows), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian urban city corridor. Palette leans navy blue shadows, warm amber highlights, soft ivory sky. Main subject situated in the right-centre (between 50% and 80% width): An unfinished elevated flyover concrete pillar standing in the middle of a messy construction corridor, with faded yellow/black construction barricades, gravel, rebar, and concrete rubble around its base. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (50%–85%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Golden Hour / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15. COMMERCIAL AREAS -->
+    <div class="category-section" id="commercial-areas">
+      <div class="category-header">
+        <div>
+          <span class="category-title">15. Commercial Areas</span>
+        </div>
+        <span class="category-slug">commercial-areas</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/commercial-areas/_category.png" alt="Commercial Areas" style="object-position: 70% 50%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Commercial Areas</h2>
+                <p class="hero-description">Public market sanitation, commercial waste removal, market parking, and vendor corridor order.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.70, y: 0.50 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/commercial-areas/_category.png" alt="Commercial Areas" style="object-position: 70% 50%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Commercial Areas</div>
+              <div class="card-subtext">Public market sanitation, commercial waste removal, market parking...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at golden hour (soft warm light, cool navy-teal shadows), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian commercial bazaar lane. Palette leans navy blue shadows, warm amber highlights, soft ivory sky. Main subject situated in the right-centre (between 50% and 80% width): A crowded commercial market street corner where shop displays, clothing racks, plastic goods, and cartons spill out excessively onto the walkway beneath a dense tangle of overhead electrical cabling. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (52%–85%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Golden Hour / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 16. PUBLIC PROPERTY -->
+    <div class="category-section" id="public-property">
+      <div class="category-header">
+        <div>
+          <span class="category-title">16. Public Property</span>
+        </div>
+        <span class="category-slug">public-property</span>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <div class="column-title">
+            <span>Column A: 16:9 Hero Banner Preview</span>
+            <span>1280 × 720 Viewport</span>
+          </div>
+          <div class="hero-container">
+            <img src="../../client/design-source/civic/public-property/_category.png" alt="Public Property" style="object-position: 70% 55%;" />
+            <div class="hero-overlay">
+              <div class="hero-text-content">
+                <span class="hero-badge">Civic Category</span>
+                <h2 class="hero-heading">Public Property</h2>
+                <p class="hero-description">Municipal asset protection, heritage monument upkeep, street furniture repair, and anti-vandalism.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="column-title">
+            <span>Column B: 4:3 Service Card Crop</span>
+            <span>Focal: { x: 0.70, y: 0.55 }</span>
+          </div>
+          <div class="card-container">
+            <div class="card-img-wrapper">
+              <img src="../../client/design-source/civic/public-property/_category.png" alt="Public Property" style="object-position: 70% 55%;" />
+            </div>
+            <div class="card-body">
+              <div class="card-name">Public Property</div>
+              <div class="card-subtext">Municipal asset protection, heritage monument upkeep, street furniture...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="details-strip">
+        <div class="prompt-box">
+          <span class="prompt-label">Prompt Used:</span>
+          <div class="prompt-text">Photorealistic documentary-style photograph, 16:9, natural daylight at golden hour (soft warm light, cool navy-teal shadows), 35mm lens, slightly elevated eye-level angle, shallow depth of field, crisp detail on the main subject, realistic Indian municipal public square or park. Palette leans navy blue shadows, warm amber highlights, soft ivory sky. Main subject situated in the right-centre (between 50% and 80% width): A neglected and vandalized public park pavilion structure with broken wrought-iron railings, chipped stone pillars, missing corrugated roofing sheets, and peeling paint. Calm left 40%, calm top 12%. No text, no logos, no license plates, no close-up faces.</div>
+        </div>
+        <div class="evaluation-grid">
+          <div class="rule-check"><span class="badge-pass">PASS</span> Main Subject Right-Centre (52%–88%)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Calm Left 40% (Text Readability)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Golden Hour / Navy Shadows Palette</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> Strict Exclusions (No text, logos, faces)</div>
+          <div class="rule-check"><span class="badge-pass">PASS</span> 4:3 Card Crop Framing Verified</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
