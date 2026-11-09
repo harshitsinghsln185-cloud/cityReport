@@ -13,6 +13,8 @@ const SUB_WIDTHS = [800, 480];
 const QUALITY_WEBP = 80;
 const QUALITY_AVIF = 75;
 
+const onlyCovers = process.argv.includes('--only-covers');
+
 // Blur placeholder: 20px wide with high blur
 async function generateBlurPlaceholder(inputPath, outPath) {
   await sharp(inputPath)
@@ -80,6 +82,9 @@ async function optimizeAll() {
       }
 
       const isCover = file === '_category.png';
+      if (onlyCovers && !isCover) {
+        continue;
+      }
       const subSlug = isCover ? '_category' : path.basename(file, path.extname(file));
       const inputFilePath = path.join(catDir, file);
       const targetOutDir = path.join(outAssetsDir, catSlug, subSlug);

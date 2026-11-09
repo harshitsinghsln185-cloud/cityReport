@@ -29,10 +29,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "roads-transportation",
     "name": "Roads & Transportation",
     "description": "Municipal road surfacing, pedestrian footpaths, traffic signals, and bridge structural safety.",
-    "alt": "Roads & Transportation urban civic infrastructure and community maintenance",
+    "alt": "Damaged asphalt road with deep water-filled potholes and cracked edges during golden hour",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.68,
+      "y": 0.55
     },
     "introParagraph": "Road networks and traffic corridors form the backbone of urban mobility across Indian cities. This category covers potholes, surface wear, missing signage, traffic signals, and pedestrian footpath obstructions. Prompt reporting helps road departments and transit authorities identify defects and schedule maintenance.",
     "responsibleAgencyNote": "The responsible municipal corporation, development authority, or utility provider can differ by city.",
@@ -48,10 +48,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "garbage-management",
     "name": "Garbage Management",
     "description": "Domestic waste collection, municipal dustbin overflows, illegal dumping, and sanitary clearance.",
-    "alt": "Garbage Management urban civic infrastructure and community maintenance",
+    "alt": "Overflowing municipal dumpster on a sidewalk curb with spilled garbage bags under warm sunlight",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.72,
+      "y": 0.50
     },
     "introParagraph": "Municipal solid waste management encompasses daily neighborhood cleaning, community dustbins, and disposal facilities. Issues in this section include overflowing containers, uncollected domestic refuse, open dumping, and littering on public land. Swift notifications enable sanitation teams to clear blockages and prevent environmental hazards.",
     "responsibleAgencyNote": "The responsible municipal corporation, development authority, or utility provider can differ by city.",
@@ -67,10 +67,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "water-drainage",
     "name": "Water & Drainage",
     "description": "Drinking water pipelines, sewer blockages, drainage overflow, and municipal water pressure.",
-    "alt": "Water & Drainage urban civic infrastructure and community maintenance",
+    "alt": "Ruptured underground water pipe leaking through cracked road asphalt into an open roadside drain",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.70,
+      "y": 0.55
     },
     "introParagraph": "Stormwater networks and municipal water supply systems prevent urban flooding and supply drinking water to households. This section covers pipeline leakages, contaminated water, clogged drains, open manholes, and street waterlogging. Early alerts assist water supply and sewerage boards in undertaking repairs.",
     "responsibleAgencyNote": "The responsible municipal corporation, development authority, or utility provider can differ by city.",
@@ -86,10 +86,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "electricity-lighting",
     "name": "Electricity & Lighting",
     "description": "Public street illumination, fallen power lines, hazardous transformers, and junction boxes.",
-    "alt": "Electricity & Lighting urban civic infrastructure and community maintenance",
+    "alt": "Leaning concrete electric utility pole with a broken streetlight fixture and tangled overhead cables at dusk",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.68,
+      "y": 0.50
     },
     "introParagraph": "Public electrical infrastructure powers roadway lighting, traffic control, and neighborhood safety after dark. Sub-issues include burnt streetlights, damaged poles, open junction boxes, and low-hanging cables. Notifying distribution companies and municipal lighting cells helps eliminate electrocution hazards.",
     "responsibleAgencyNote": "In case of sparking cables, fallen live wires, or active electrical hazards, keep a safe distance and call emergency services at 112 immediately. The responsible electricity distribution company or municipal lighting department can differ by city.",
@@ -105,10 +105,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "public-health",
     "name": "Public Health",
     "description": "Community sanitation, public restroom hygiene, vector breeding containment, and market cleanliness.",
-    "alt": "Public Health urban civic infrastructure and community maintenance",
+    "alt": "Neglected municipal public toilet block with weathered tiles, rusted door, and standing puddle in an urban lane",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.70,
+      "y": 0.52
     },
     "introParagraph": "Public health maintenance centers on sanitary surroundings, disease vector control, and hygienic food environments. Citizens can report mosquito breeding grounds, open defecation, medical waste dumping, and unsanitary food vendors. Reports support health inspectorates and municipal epidemiology units.",
     "responsibleAgencyNote": "The responsible municipal corporation, development authority, or utility provider can differ by city.",
@@ -124,10 +124,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "environment",
     "name": "Environment",
     "description": "Ambient air quality, urban water bodies, industrial emissions, construction dust, and tree protection.",
-    "alt": "Environment urban civic infrastructure and community maintenance",
+    "alt": "Dried-up urban canal bed with cracked parched mud, scattered plastic waste, and dry scrub under hazy sky",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.65,
+      "y": 0.55
     },
     "introParagraph": "Urban ecological health depends on air quality protection, water body conservation, and green buffer management. This category tracks tree felling, garbage burning, industrial smoke, lake contamination, and plastic waste accumulation. Reports assist pollution control committees and urban foresters.",
     "responsibleAgencyNote": "The responsible municipal corporation, development authority, or utility provider can differ by city.",
@@ -143,10 +143,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "parks-greenery",
     "name": "Parks & Greenery",
     "description": "Neighborhood park upkeep, children play equipment, horticulture, pathways, and green space lighting.",
-    "alt": "Parks & Greenery urban civic infrastructure and community maintenance",
+    "alt": "Overgrown municipal park corner with a broken bench and wild thorny weeds bursting through a stone walking path",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.68,
+      "y": 0.50
     },
     "introParagraph": "Public parks, botanical gardens, and roadside green strips provide recreational open space in urban clusters. Issues include broken play equipment, dying plant beds, damaged walking tracks, missing lighting, and park encroachment. Reports guide horticulture departments in maintaining urban green spaces.",
     "responsibleAgencyNote": "The responsible municipal corporation, development authority, or utility provider can differ by city.",
@@ -162,10 +162,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "public-safety",
     "name": "Public Safety",
     "description": "Hazardous trenches, structural instability, fallen trees, building collapse risks, and emergency access.",
-    "alt": "Public Safety urban civic infrastructure and community maintenance",
+    "alt": "Dim unlit pedestrian corridor entrance with peeling plaster walls, broken flagstones, and defunct streetlamp bracket",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.68,
+      "y": 0.55
     },
     "introParagraph": "Public safety covers physical security risks, dark streets, hazardous structures, and anti-social behavior in civic spaces. Documenting unlit corners, missing police booths, open construction pits, and dilapidated buildings aids municipal enforcement and local police jurisdictions.",
     "responsibleAgencyNote": "If someone is in immediate danger or an active crime is taking place, dial 112 immediately. The responsible municipal or law enforcement agency can differ by city.",
@@ -181,10 +181,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "public-transport",
     "name": "Public Transport",
     "description": "Transit shelters, bus stops, pedestrian crossing safety, traffic signals, and parking facility order.",
-    "alt": "Public Transport urban civic infrastructure and community maintenance",
+    "alt": "Dilapidated municipal transit bus shelter with a bent corrugated metal roof and rusted frame beside an open road",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.65,
+      "y": 0.50
     },
     "introParagraph": "Public transport networks comprise city buses, metro stations, auto stands, and transit interchanges. This section covers broken bus shelters, missing route charts, overcrowded stops, and reckless commercial driving. Civic reporting provides field feedback to municipal transport undertakings.",
     "responsibleAgencyNote": "The responsible municipal corporation, development authority, or utility provider can differ by city.",
@@ -200,10 +200,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "animal-welfare",
     "name": "Animal Welfare",
     "description": "Stray animal safety, traffic obstruction by cattle, carcass disposal, and veterinary sanitization.",
-    "alt": "Animal Welfare urban civic infrastructure and community maintenance",
+    "alt": "Indie street dog with an ear-notch resting near an overturned wooden cart on a quiet sunlit street corner",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.70,
+      "y": 0.55
     },
     "introParagraph": "Urban animal management balances public safety with humane treatment of stray and injured animals. This category includes aggressive stray packs, injured cattle, dead animal carcass removal, and rabies concerns. Submissions help municipal veterinary departments and partner animal welfare organizations.",
     "responsibleAgencyNote": "The responsible municipal corporation, development authority, or utility provider can differ by city.",
@@ -219,10 +219,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "encroachment",
     "name": "Encroachment",
     "description": "Footpath obstruction, illegal street vending, unauthorized construction, and public land misuse.",
-    "alt": "Encroachment urban civic infrastructure and community maintenance",
+    "alt": "Makeshift wooden vendor stalls, stacked crates, and tarpaulin awnings completely occupying a pedestrian footpath",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.72,
+      "y": 0.50
     },
     "introParagraph": "Encroachment concerns the unauthorized occupation of public roads, pedestrian walkways, and government land. Issues include street vendor blockages, unauthorized construction, illegal parking structures, and occupied pavements. Timely notices support anti-encroachment squads and town planning enforcement.",
     "responsibleAgencyNote": "The responsible municipal corporation, development authority, or utility provider can differ by city.",
@@ -238,10 +238,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "public-amenities",
     "name": "Public Amenities",
     "description": "Drinking water taps, public seating, community halls, disabled ramps, and municipal elevators.",
-    "alt": "Public Amenities urban civic infrastructure and community maintenance",
+    "alt": "Damaged municipal drinking water booth with a broken brass tap dripping into an algae-stained cracked stone basin",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.68,
+      "y": 0.50
     },
     "introParagraph": "Public amenities provide essential civic conveniences including community toilets, drinking water stations, benches, and public libraries. Issues include non-functional toilets, damaged water taps, vandalized bus shelters, and broken public clocks. Reports assist maintenance contractors and ward committees.",
     "responsibleAgencyNote": "The responsible municipal corporation, development authority, or utility provider can differ by city.",
@@ -257,10 +257,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "fire-emergency",
     "name": "Fire & Emergency",
     "description": "Fire hydrants, emergency evacuation routes, public extinguisher stations, and fire hazard prevention.",
-    "alt": "Fire & Emergency urban civic infrastructure and community maintenance",
+    "alt": "Red municipal fire hydrant obstructed by parked two-wheelers and stacked timber against a brick wall with emergency hose box",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.68,
+      "y": 0.55
     },
     "introParagraph": "Fire safety and disaster readiness safeguard lives and commercial assets during civic emergencies. Issues include blocked fire hydrants, narrow emergency access lanes, missing fire exits, and electrical transformer hazards. Alerting agencies assists disaster management units and municipal fire brigades.",
     "responsibleAgencyNote": "For active fires, gas leaks, or life-threatening emergencies, call the Fire Service at 101 or emergency helpline 112 without delay. The responsible municipal fire brigade or disaster management authority can differ by city.",
@@ -276,10 +276,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "urban-planning",
     "name": "Urban Planning",
     "description": "Master plan compliance, underserved settlements, drainage planning, and pedestrian infrastructure.",
-    "alt": "Urban Planning urban civic infrastructure and community maintenance",
+    "alt": "Unfinished elevated flyover concrete pillar with exposed rebar and construction barricades in a dusty urban corridor",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.68,
+      "y": 0.50
     },
     "introParagraph": "Urban planning monitors zoning compliance, construction permissions, stormwater drainage reservation, and infrastructure setbacks. This section tracks illegal building additions, lack of rainwater harvesting, missing pedestrian corridors, and unauthorized land use changes. Feedback aids urban development authorities.",
     "responsibleAgencyNote": "The responsible municipal corporation, development authority, or utility provider can differ by city.",
@@ -295,10 +295,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "commercial-areas",
     "name": "Commercial Areas",
     "description": "Public market sanitation, commercial waste removal, market parking, and vendor corridor order.",
-    "alt": "Commercial Areas urban civic infrastructure and community maintenance",
+    "alt": "Crowded market bazaar lane with shop goods and cartons spilling onto the walkway under tangled overhead wiring",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.70,
+      "y": 0.50
     },
     "introParagraph": "Commercial hubs and local bazaars experience high footfall, trade waste, loading congestion, and signage proliferation. Issues include blocked shopping lanes, illegal advertising hoardings, unregulated loading vehicles, and poor market sanitation. Reports help market associations and commercial licensing inspectorates.",
     "responsibleAgencyNote": "The responsible municipal corporation, development authority, or utility provider can differ by city.",
@@ -314,10 +314,10 @@ export const CATEGORY_CONTENT: Record<string, CategoryContentItem> = {
     "slug": "public-property",
     "name": "Public Property",
     "description": "Municipal asset protection, heritage monument upkeep, street furniture repair, and anti-vandalism.",
-    "alt": "Public Property urban civic infrastructure and community maintenance",
+    "alt": "Vandalized municipal park pavilion with chipped stone pillars, broken iron railings, and missing roof sheets",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.70,
+      "y": 0.55
     },
     "introParagraph": "Public property includes municipal buildings, historic monuments, civic statues, boundary walls, and public furniture. Reports cover graffiti, vandalism, broken boundary walls, damaged commemorative plaques, and neglected public offices. Submissions support municipal asset management and heritage conservation units.",
     "responsibleAgencyNote": "The responsible municipal corporation, development authority, or utility provider can differ by city.",

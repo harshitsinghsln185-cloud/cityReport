@@ -22,57 +22,62 @@ export const CATEGORY_IMAGE_CREDITS: Record<string, ImageCredit> = {
   "roads-transportation": {
     "slug": "roads-transportation",
     "name": "Roads & Transportation",
-    "source": "wikimedia-commons",
-    "author": "Srvkumar09",
-    "authorUrl": "https://commons.wikimedia.org/wiki/File:Flyover_in_Delhi_Near_Akshardham.jpg",
-    "photoUrl": "https://commons.wikimedia.org/wiki/File:Flyover_in_Delhi_Near_Akshardham.jpg",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "description": "Roads & Transportation photographic cover asset"
+    "source": "ai-nano-banana",
+    "author": "Crowd Report AI (Nano Banana)",
+    "authorUrl": "https://croudreport.local",
+    "photoUrl": "https://croudreport.local",
+    "license": "Proprietary Open Assets (CroudReport Platform)",
+    "licenseUrl": "https://croudreport.local/credits",
+    "description": "Roads & Transportation synthetic documentary cover asset",
+    "prompt": "Damaged asphalt road with severe water-filled potholes and cracked edges on a busy city street, 16:9 documentary photograph at golden hour, calm left 40%"
   },
   "garbage-management": {
     "slug": "garbage-management",
     "name": "Garbage Management",
-    "source": "wikimedia-commons",
-    "author": "Pradip Paswan",
-    "authorUrl": "https://commons.wikimedia.org/wiki/File:City_kolkata_Municipal_Corporation.jpg",
-    "photoUrl": "https://commons.wikimedia.org/wiki/File:City_kolkata_Municipal_Corporation.jpg",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "description": "Garbage Management photographic cover asset"
+    "source": "ai-nano-banana",
+    "author": "Crowd Report AI (Nano Banana)",
+    "authorUrl": "https://croudreport.local",
+    "photoUrl": "https://croudreport.local",
+    "license": "Proprietary Open Assets (CroudReport Platform)",
+    "licenseUrl": "https://croudreport.local/credits",
+    "description": "Garbage Management synthetic documentary cover asset",
+    "prompt": "Overflowing green municipal dustbin on a sidewalk curb with spilled garbage bags onto the road, 16:9 documentary photograph at golden hour, calm left 40%"
   },
   "water-drainage": {
     "slug": "water-drainage",
     "name": "Water & Drainage",
-    "source": "wikimedia-commons",
-    "author": "Ganesh Dhamodkar",
-    "authorUrl": "https://commons.wikimedia.org/wiki/File:Water_canal_in_Pune_suburbs.jpg",
-    "photoUrl": "https://commons.wikimedia.org/wiki/File:Water_canal_in_Pune_suburbs.jpg",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "description": "Water & Drainage photographic cover asset"
+    "source": "ai-nano-banana",
+    "author": "Crowd Report AI (Nano Banana)",
+    "authorUrl": "https://croudreport.local",
+    "photoUrl": "https://croudreport.local",
+    "license": "Proprietary Open Assets (CroudReport Platform)",
+    "licenseUrl": "https://croudreport.local/credits",
+    "description": "Water & Drainage synthetic documentary cover asset",
+    "prompt": "Leaking underground water pipe pushing water through cracked road surface into open roadside drain, 16:9 documentary photograph at golden hour, calm left 40%"
   },
   "electricity-lighting": {
     "slug": "electricity-lighting",
     "name": "Electricity & Lighting",
-    "source": "wikimedia-commons",
-    "author": "Subhashish Panigrahi",
-    "authorUrl": "https://commons.wikimedia.org/wiki/File:Street_lights_at_night_in_Gurgaon.jpg",
-    "photoUrl": "https://commons.wikimedia.org/wiki/File:Street_lights_at_night_in_Gurgaon.jpg",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "description": "Electricity & Lighting photographic cover asset"
+    "source": "ai-nano-banana",
+    "author": "Crowd Report AI (Nano Banana)",
+    "authorUrl": "https://croudreport.local",
+    "photoUrl": "https://croudreport.local",
+    "license": "Proprietary Open Assets (CroudReport Platform)",
+    "licenseUrl": "https://croudreport.local/credits",
+    "description": "Electricity & Lighting synthetic documentary cover asset",
+    "prompt": "Leaning concrete electric utility pole with dark broken streetlight and tangled loose wires overhead at dusk, 16:9 documentary photograph, calm left 40%"
   },
   "public-health": {
     "slug": "public-health",
     "name": "Public Health",
-    "source": "wikimedia-commons",
-    "author": "Pradeep Mohandas",
-    "authorUrl": "https://commons.wikimedia.org/wiki/File:Municipal_sanitation_worker_in_Bangalore.jpg",
-    "photoUrl": "https://commons.wikimedia.org/wiki/File:Municipal_sanitation_worker_in_Bangalore.jpg",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "description": "Public Health photographic cover asset"
+    "source": "ai-nano-banana",
+    "author": "Crowd Report AI (Nano Banana)",
+    "authorUrl": "https://croudreport.local",
+    "photoUrl": "https://croudreport.local",
+    "license": "Proprietary Open Assets (CroudReport Platform)",
+    "licenseUrl": "https://croudreport.local/credits",
+    "description": "Public Health synthetic documentary cover asset",
+    "prompt": "Neglected municipal public toilet block with weathered stained tiles, closed rusted door, and standing puddle in urban lane, 16:9 golden hour, calm left 40%"
   },
   "environment": {
     "slug": "environment",
@@ -83,7 +88,8 @@ export const CATEGORY_IMAGE_CREDITS: Record<string, ImageCredit> = {
     "photoUrl": "https://croudreport.local",
     "license": "Proprietary Open Assets (CroudReport Platform)",
     "licenseUrl": "https://croudreport.local/credits",
-    "description": "Environment synthetic documentary cover asset"
+    "description": "Environment synthetic documentary cover asset",
+    "prompt": "Dried-up urban canal bed with cracked parched mud, scattered plastic waste, and dry scrub under hazy sky, 16:9 golden hour, calm left 40%"
   },
   "parks-greenery": {
     "slug": "parks-greenery",
@@ -94,7 +100,8 @@ export const CATEGORY_IMAGE_CREDITS: Record<string, ImageCredit> = {
     "photoUrl": "https://croudreport.local",
     "license": "Proprietary Open Assets (CroudReport Platform)",
     "licenseUrl": "https://croudreport.local/credits",
-    "description": "Parks & Greenery synthetic documentary cover asset"
+    "description": "Parks & Greenery synthetic documentary cover asset",
+    "prompt": "Overgrown municipal park corner with broken concrete/wooden bench and wild thorny weeds bursting through stone path, 16:9 golden hour, calm left 40%"
   },
   "public-safety": {
     "slug": "public-safety",
@@ -105,7 +112,8 @@ export const CATEGORY_IMAGE_CREDITS: Record<string, ImageCredit> = {
     "photoUrl": "https://croudreport.local",
     "license": "Proprietary Open Assets (CroudReport Platform)",
     "licenseUrl": "https://croudreport.local/credits",
-    "description": "Public Safety synthetic documentary cover asset"
+    "description": "Public Safety synthetic documentary cover asset",
+    "prompt": "Dim unlit pedestrian corridor entrance with peeling plaster walls, broken flagstones, and defunct streetlamp bracket at dusk, 16:9, calm left 40%"
   },
   "public-transport": {
     "slug": "public-transport",
@@ -116,7 +124,8 @@ export const CATEGORY_IMAGE_CREDITS: Record<string, ImageCredit> = {
     "photoUrl": "https://croudreport.local",
     "license": "Proprietary Open Assets (CroudReport Platform)",
     "licenseUrl": "https://croudreport.local/credits",
-    "description": "Public Transport synthetic documentary cover asset"
+    "description": "Public Transport synthetic documentary cover asset",
+    "prompt": "Dilapidated municipal bus shelter with bent corrugated metal roof and rusted iron support frame beside an open road, 16:9 golden hour, calm left 40%"
   },
   "animal-welfare": {
     "slug": "animal-welfare",
@@ -127,7 +136,8 @@ export const CATEGORY_IMAGE_CREDITS: Record<string, ImageCredit> = {
     "photoUrl": "https://croudreport.local",
     "license": "Proprietary Open Assets (CroudReport Platform)",
     "licenseUrl": "https://croudreport.local/credits",
-    "description": "Animal Welfare synthetic documentary cover asset"
+    "description": "Animal Welfare synthetic documentary cover asset",
+    "prompt": "Indie street dog with ear-notch resting near an empty terracotta water bowl along sunlit street curb, 16:9 golden hour, calm left 40%"
   },
   "encroachment": {
     "slug": "encroachment",
@@ -138,7 +148,8 @@ export const CATEGORY_IMAGE_CREDITS: Record<string, ImageCredit> = {
     "photoUrl": "https://croudreport.local",
     "license": "Proprietary Open Assets (CroudReport Platform)",
     "licenseUrl": "https://croudreport.local/credits",
-    "description": "Encroachment synthetic documentary cover asset"
+    "description": "Encroachment synthetic documentary cover asset",
+    "prompt": "Makeshift wooden vendor stalls, stacked crates, and tarpaulin awnings completely occupying a pedestrian footpath, 16:9 golden hour, calm left 40%"
   },
   "public-amenities": {
     "slug": "public-amenities",
@@ -149,7 +160,8 @@ export const CATEGORY_IMAGE_CREDITS: Record<string, ImageCredit> = {
     "photoUrl": "https://croudreport.local",
     "license": "Proprietary Open Assets (CroudReport Platform)",
     "licenseUrl": "https://croudreport.local/credits",
-    "description": "Public Amenities synthetic documentary cover asset"
+    "description": "Public Amenities synthetic documentary cover asset",
+    "prompt": "Damaged municipal drinking water booth with broken brass tap dripping into algae-stained cracked stone basin, 16:9 golden hour, calm left 40%"
   },
   "fire-emergency": {
     "slug": "fire-emergency",
@@ -160,7 +172,8 @@ export const CATEGORY_IMAGE_CREDITS: Record<string, ImageCredit> = {
     "photoUrl": "https://croudreport.local",
     "license": "Proprietary Open Assets (CroudReport Platform)",
     "licenseUrl": "https://croudreport.local/credits",
-    "description": "Fire & Emergency synthetic documentary cover asset"
+    "description": "Fire & Emergency synthetic documentary cover asset",
+    "prompt": "Red municipal fire hydrant obstructed by parked scooters, bicycle, and stacked timber against brick wall with hose box, 16:9 golden hour, calm left 40%"
   },
   "urban-planning": {
     "slug": "urban-planning",
@@ -171,7 +184,8 @@ export const CATEGORY_IMAGE_CREDITS: Record<string, ImageCredit> = {
     "photoUrl": "https://croudreport.local",
     "license": "Proprietary Open Assets (CroudReport Platform)",
     "licenseUrl": "https://croudreport.local/credits",
-    "description": "Urban Planning synthetic documentary cover asset"
+    "description": "Urban Planning synthetic documentary cover asset",
+    "prompt": "Unfinished elevated flyover concrete pillar with exposed rebar and yellow/black caution barricades in dusty corridor, 16:9 golden hour, calm left 40%"
   },
   "commercial-areas": {
     "slug": "commercial-areas",
@@ -182,7 +196,8 @@ export const CATEGORY_IMAGE_CREDITS: Record<string, ImageCredit> = {
     "photoUrl": "https://croudreport.local",
     "license": "Proprietary Open Assets (CroudReport Platform)",
     "licenseUrl": "https://croudreport.local/credits",
-    "description": "Commercial Areas synthetic documentary cover asset"
+    "description": "Commercial Areas synthetic documentary cover asset",
+    "prompt": "Crowded commercial market bazaar lane with shop displays and cartons spilling onto walkway under tangled overhead wiring, 16:9 golden hour, calm left 40%"
   },
   "public-property": {
     "slug": "public-property",
@@ -193,7 +208,8 @@ export const CATEGORY_IMAGE_CREDITS: Record<string, ImageCredit> = {
     "photoUrl": "https://croudreport.local",
     "license": "Proprietary Open Assets (CroudReport Platform)",
     "licenseUrl": "https://croudreport.local/credits",
-    "description": "Public Property synthetic documentary cover asset"
+    "description": "Public Property synthetic documentary cover asset",
+    "prompt": "Vandalized municipal park pavilion with chipped stone pillars, broken iron railings, and missing roof sheets, 16:9 golden hour, calm left 40%"
   }
 };
 
