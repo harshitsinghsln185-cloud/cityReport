@@ -2084,10 +2084,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Illegal roadside shops",
     "categorySlug": "encroachment",
     "description": "Illegal roadside shops reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Illegal roadside shops in an urban setting",
+    "alt": "Roadside vegetable stall and wooden crates encroaching along a public street in India",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.52,
+      "y": 0.52
     },
     "defaultPriority": "Medium"
   },
@@ -2096,23 +2096,22 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Footpath encroachment",
     "categorySlug": "encroachment",
     "description": "Footpath encroachment reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Footpath encroachment in an urban setting",
+    "alt": "Handcart, goods, and merchandise obstructing a pedestrian sidewalk in an Indian city",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
-    "defaultPriority": "Medium",
-    "imageKey": "shared-footpath-encroachment"
+    "defaultPriority": "Medium"
   },
   "encroachment/road-encroachment": {
     "slug": "road-encroachment",
     "name": "Road encroachment",
     "categorySlug": "encroachment",
     "description": "Road encroachment reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Road encroachment in an urban setting",
+    "alt": "Commercial market stalls and parked vehicles encroaching onto active driving lanes of a busy road",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.55,
+      "y": 0.52
     },
     "defaultPriority": "High"
   },
@@ -2121,7 +2120,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Illegal construction",
     "categorySlug": "encroachment",
     "description": "Illegal construction reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Illegal construction in an urban setting",
+    "alt": "Multi-story concrete building under construction with exposed framework and missing setbacks",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2133,7 +2132,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Unauthorized building extensions",
     "categorySlug": "encroachment",
     "description": "Unauthorized building extensions reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Unauthorized building extensions in an urban setting",
+    "alt": "Overhanging building extensions and upper balconies protruding into public street airspace in Chandni Chowk",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2145,9 +2144,9 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Illegal hoardings",
     "categorySlug": "encroachment",
     "description": "Illegal hoardings reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Illegal hoardings in an urban setting",
+    "alt": "Towering iron billboard advertising hoarding erected over a public city roadway in Bangalore",
     "focal": {
-      "x": 0.5,
+      "x": 0.52,
       "y": 0.5
     },
     "defaultPriority": "Low"
@@ -2157,10 +2156,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Unauthorized street vendors blocking roads",
     "categorySlug": "encroachment",
     "description": "Unauthorized street vendors blocking roads reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Unauthorized street vendors blocking roads in an urban setting",
+    "alt": "Mobile street vegetable vendor with pushcart set up along the road margin creating traffic bottleneck",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.52,
+      "y": 0.55
     },
     "defaultPriority": "Medium"
   },
@@ -2169,10 +2168,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Public land encroachment",
     "categorySlug": "encroachment",
     "description": "Public land encroachment reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Public land encroachment in an urban setting",
+    "alt": "Temporary makeshift huts and informal structures occupying vacant municipal reserve land",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.52
     },
     "defaultPriority": "High"
   },
@@ -2181,10 +2180,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Illegal parking structures",
     "categorySlug": "encroachment",
     "description": "Illegal parking structures reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Illegal parking structures in an urban setting",
+    "alt": "Makeshift parking barriers, chains, and vehicles crowding a paved pedestrian pavement border",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.52,
+      "y": 0.52
     },
     "defaultPriority": "Medium"
   },
@@ -2193,10 +2192,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Construction beyond approved limits",
     "categorySlug": "encroachment",
     "description": "Construction beyond approved limits reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Construction beyond approved limits in an urban setting",
+    "alt": "Extensive bamboo scaffolding extending outward from a building facade across the public street corridor",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.52
     },
     "defaultPriority": "High"
   },
@@ -2205,10 +2204,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Illegal dumping on public land",
     "categorySlug": "encroachment",
     "description": "Illegal dumping on public land reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Illegal dumping on public land in an urban setting",
+    "alt": "Piles of dumped solid waste, construction rubble, and refuse scattered along open public roadside land",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.52
     },
     "defaultPriority": "Medium"
   },
@@ -2217,7 +2216,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Encroachment on drainage channels",
     "categorySlug": "encroachment",
     "description": "Encroachment on drainage channels reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Encroachment on drainage channels in an urban setting",
+    "alt": "Open roadside stormwater drainage canal alignment showing ground encroachments and obstructions",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2229,23 +2228,22 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Damaged public benches",
     "categorySlug": "public-amenities",
     "description": "Damaged public benches reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Damaged public benches in an urban setting",
+    "alt": "Damaged public park bench with splintered wooden slats and worn weathered iron frame",
     "focal": {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Low",
-    "imageKey": "shared-public-bench-defect"
+    "defaultPriority": "Low"
   },
   "public-amenities/broken-public-drinking-water-taps": {
     "slug": "broken-public-drinking-water-taps",
     "name": "Broken public drinking water taps",
     "categorySlug": "public-amenities",
     "description": "Broken public drinking water taps reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Broken public drinking water taps in an urban setting",
+    "alt": "Public community drinking water standpost tap with concrete basin requiring municipal repair",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.52
     },
     "defaultPriority": "Medium"
   },
@@ -2254,49 +2252,46 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Public toilets unavailable",
     "categorySlug": "public-amenities",
     "description": "Public toilets unavailable reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Public toilets unavailable in an urban setting",
+    "alt": "Municipal public toilet block exterior in an urban neighborhood requiring sanitation maintenance",
     "focal": {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Medium",
-    "imageKey": "shared-public-toilet-defect"
+    "defaultPriority": "Medium"
   },
   "public-amenities/damaged-bus-shelters": {
     "slug": "damaged-bus-shelters",
     "name": "Damaged bus shelters",
     "categorySlug": "public-amenities",
     "description": "Damaged bus shelters reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Damaged bus shelters in an urban setting",
+    "alt": "Weathered roadside commuter bus stop shelter with aging corrugated roof and worn platform",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.52
     },
-    "defaultPriority": "Medium",
-    "imageKey": "shared-bus-stop-defect"
+    "defaultPriority": "Medium"
   },
   "public-amenities/broken-public-dustbins": {
     "slug": "broken-public-dustbins",
     "name": "Broken public dustbins",
     "categorySlug": "public-amenities",
     "description": "Broken public dustbins reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Broken public dustbins in an urban setting",
+    "alt": "Cylindrical public street litter bin mounted along a paved sidewalk requiring municipal attention",
     "focal": {
-      "x": 0.5,
+      "x": 0.52,
       "y": 0.5
     },
-    "defaultPriority": "Low",
-    "imageKey": "shared-dustbin-defect"
+    "defaultPriority": "Low"
   },
   "public-amenities/damaged-community-halls": {
     "slug": "damaged-community-halls",
     "name": "Damaged community halls",
     "categorySlug": "public-amenities",
     "description": "Damaged community halls reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Damaged community halls in an urban setting",
+    "alt": "Aging weathered public civic community building with peeling paint, weathered roof, and exterior wear",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.52
     },
     "defaultPriority": "Low"
   },
@@ -2305,7 +2300,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Poorly maintained public markets",
     "categorySlug": "public-amenities",
     "description": "Poorly maintained public markets reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Poorly maintained public markets in an urban setting",
+    "alt": "Traditional municipal public market arcade with weathered stall structures in Hyderabad",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2317,10 +2312,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Damaged public playgrounds",
     "categorySlug": "public-amenities",
     "description": "Damaged public playgrounds reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Damaged public playgrounds in an urban setting",
+    "alt": "Outdoor children playground swings in a public civic nature park requiring equipment maintenance",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "Medium"
   },
@@ -2329,23 +2324,22 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Lack of public seating",
     "categorySlug": "public-amenities",
     "description": "Lack of public seating reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Lack of public seating in an urban setting",
+    "alt": "Broad paved public pedestrian plaza completely devoid of benches or seating facilities for citizens",
     "focal": {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Low",
-    "imageKey": "shared-public-bench-defect"
+    "defaultPriority": "Low"
   },
   "public-amenities/missing-disabled-access-ramps": {
     "slug": "missing-disabled-access-ramps",
     "name": "Missing disabled-access ramps",
     "categorySlug": "public-amenities",
     "description": "Missing disabled-access ramps reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Missing disabled-access ramps in an urban setting",
+    "alt": "Steep grand public entrance flight of stairs presenting physical access barriers for wheelchair users",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.52
     },
     "defaultPriority": "High"
   },
@@ -2354,7 +2348,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Broken public elevators",
     "categorySlug": "public-amenities",
     "description": "Broken public elevators reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Broken public elevators in an urban setting",
+    "alt": "Public passenger lift tower structure displaying out of order maintenance status",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2366,7 +2360,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Public facility accessibility issues",
     "categorySlug": "public-amenities",
     "description": "Public facility accessibility issues reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Public facility accessibility issues in an urban setting",
+    "alt": "Wheelchair access ramp installation at public facility entrance in Tamil Nadu requiring accessibility audit",
     "focal": {
       "x": 0.5,
       "y": 0.5

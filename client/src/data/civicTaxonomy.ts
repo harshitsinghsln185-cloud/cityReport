@@ -1051,8 +1051,7 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Footpath encroachment",
         "slug": "footpath-encroachment",
         "order": 2,
-        "defaultPriority": "Medium",
-        "imageKey": "shared-footpath-encroachment"
+        "defaultPriority": "Medium"
       },
       {
         "name": "Road encroachment",
@@ -1130,8 +1129,7 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Damaged public benches",
         "slug": "damaged-public-benches",
         "order": 1,
-        "defaultPriority": "Low",
-        "imageKey": "shared-public-bench-defect"
+        "defaultPriority": "Low"
       },
       {
         "name": "Broken public drinking water taps",
@@ -1143,22 +1141,19 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Public toilets unavailable",
         "slug": "public-toilets-unavailable",
         "order": 3,
-        "defaultPriority": "Medium",
-        "imageKey": "shared-public-toilet-defect"
+        "defaultPriority": "Medium"
       },
       {
         "name": "Damaged bus shelters",
         "slug": "damaged-bus-shelters",
         "order": 4,
-        "defaultPriority": "Medium",
-        "imageKey": "shared-bus-stop-defect"
+        "defaultPriority": "Medium"
       },
       {
         "name": "Broken public dustbins",
         "slug": "broken-public-dustbins",
         "order": 5,
-        "defaultPriority": "Low",
-        "imageKey": "shared-dustbin-defect"
+        "defaultPriority": "Low"
       },
       {
         "name": "Damaged community halls",
@@ -1182,8 +1177,7 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Lack of public seating",
         "slug": "lack-of-public-seating",
         "order": 9,
-        "defaultPriority": "Low",
-        "imageKey": "shared-public-bench-defect"
+        "defaultPriority": "Low"
       },
       {
         "name": "Missing disabled-access ramps",
