@@ -2100,7 +2100,7 @@ export const SUB_ISSUE_IMAGE_CREDITS: Record<string, ImageCredit> = {
     "license": "Proprietary Open Assets (CroudReport Platform)",
     "licenseUrl": "https://croudreport.local/credits",
     "description": "Dead animals on roads synthetic documentary sub-issue asset",
-    "imageKey": "shared-animal-carcass",
+    "imageKey": "unique",
     "priority": "High"
   },
   "animal-welfare/animal-carcass-disposal": {
@@ -2114,7 +2114,7 @@ export const SUB_ISSUE_IMAGE_CREDITS: Record<string, ImageCredit> = {
     "license": "Proprietary Open Assets (CroudReport Platform)",
     "licenseUrl": "https://croudreport.local/credits",
     "description": "Animal carcass disposal synthetic documentary sub-issue asset",
-    "imageKey": "shared-animal-carcass",
+    "imageKey": "unique",
     "priority": "High"
   },
   "animal-welfare/illegal-animal-shelters": {

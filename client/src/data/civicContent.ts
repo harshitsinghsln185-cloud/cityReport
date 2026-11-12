@@ -1940,10 +1940,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Stray cattle on roads",
     "categorySlug": "animal-welfare",
     "description": "Stray cattle on roads reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Stray cattle on roads in an urban setting",
+    "alt": "Stray cattle and a bull resting along an asphalt road kerb at an Indian street corner with traffic slowing down",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.55,
+      "y": 0.52
     },
     "defaultPriority": "Medium"
   },
@@ -1952,10 +1952,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Stray dogs",
     "categorySlug": "animal-welfare",
     "description": "Stray dogs reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Stray dogs in an urban setting",
+    "alt": "Group of native Indian stray dogs resting peacefully along an urban street curb and paved sidewalk",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "Medium"
   },
@@ -1964,10 +1964,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Injured stray animals",
     "categorySlug": "animal-welfare",
     "description": "Injured stray animals reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Injured stray animals in an urban setting",
+    "alt": "Rescued stray indie dog resting on a paved sidewalk with a neat white medical bandage on its leg",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "High"
   },
@@ -1976,36 +1976,34 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Dead animals on roads",
     "categorySlug": "animal-welfare",
     "description": "Dead animals on roads reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Dead animals on roads in an urban setting",
+    "alt": "Municipal emergency hazard service truck parked alongside a cordoned roadside clearance zone with cones",
     "focal": {
-      "x": 0.5,
+      "x": 0.55,
       "y": 0.5
     },
-    "defaultPriority": "High",
-    "imageKey": "shared-animal-carcass"
+    "defaultPriority": "High"
   },
   "animal-welfare/animal-carcass-disposal": {
     "slug": "animal-carcass-disposal",
     "name": "Animal carcass disposal",
     "categorySlug": "animal-welfare",
     "description": "Animal carcass disposal reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Animal carcass disposal in an urban setting",
+    "alt": "White municipal sanitation utility pickup truck with covered waste containment units and safety cones",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.52,
+      "y": 0.52
     },
-    "defaultPriority": "High",
-    "imageKey": "shared-animal-carcass"
+    "defaultPriority": "High"
   },
   "animal-welfare/illegal-animal-shelters": {
     "slug": "illegal-animal-shelters",
     "name": "Illegal animal shelters",
     "categorySlug": "animal-welfare",
     "description": "Illegal animal shelters reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Illegal animal shelters in an urban setting",
+    "alt": "Makeshift unauthorized animal enclosure constructed from corrugated tin sheets and wire mesh on public land",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.52
     },
     "defaultPriority": "Low"
   },
@@ -2014,10 +2012,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Animal cruelty",
     "categorySlug": "animal-welfare",
     "description": "Animal cruelty reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Animal cruelty in an urban setting",
+    "alt": "Overloaded wooden cart stacked with heavy gunny sacks pulled along an urban road by a draught ox",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.55,
+      "y": 0.52
     },
     "defaultPriority": "High"
   },
@@ -2026,10 +2024,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Stray animals near schools",
     "categorySlug": "animal-welfare",
     "description": "Stray animals near schools reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Stray animals near schools in an urban setting",
+    "alt": "Stray cow and dogs wandering along the road verge outside a public school perimeter wall and gate",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.52,
+      "y": 0.55
     },
     "defaultPriority": "Medium"
   },
@@ -2038,9 +2036,9 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Cattle blocking traffic",
     "categorySlug": "animal-welfare",
     "description": "Cattle blocking traffic reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Cattle blocking traffic in an urban setting",
+    "alt": "Three stray cattle sitting in the center lane of an Indian city roadway causing traffic to slow down",
     "focal": {
-      "x": 0.5,
+      "x": 0.52,
       "y": 0.5
     },
     "defaultPriority": "Medium"
@@ -2050,10 +2048,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Abandoned animals",
     "categorySlug": "animal-welfare",
     "description": "Abandoned animals reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Abandoned animals in an urban setting",
+    "alt": "Abandoned mixed-breed pet dog with a faded collar sitting patiently near a sidewalk curb next to a water bowl",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "Low"
   },
@@ -2062,7 +2060,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Unhygienic animal shelters",
     "categorySlug": "animal-welfare",
     "description": "Unhygienic animal shelters reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Unhygienic animal shelters in an urban setting",
+    "alt": "Unhygienic animal shelter yard with muddy ground, stagnant water puddles, scattered straw, and rusted fencing",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2074,10 +2072,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Illegal slaughterhouse waste disposal",
     "categorySlug": "animal-welfare",
     "description": "Illegal slaughterhouse waste disposal reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Illegal slaughterhouse waste disposal in an urban setting",
+    "alt": "Discarded heavy black municipal waste sacks and bagged organic refuse dumped near a roadside drain ditch",
     "focal": {
-      "x": 0.5,
-      "y": 0.5
+      "x": 0.52,
+      "y": 0.52
     },
     "defaultPriority": "Critical"
   },

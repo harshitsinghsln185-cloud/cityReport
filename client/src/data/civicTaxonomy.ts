@@ -979,15 +979,13 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Dead animals on roads",
         "slug": "dead-animals-on-roads",
         "order": 4,
-        "defaultPriority": "High",
-        "imageKey": "shared-animal-carcass"
+        "defaultPriority": "High"
       },
       {
         "name": "Animal carcass disposal",
         "slug": "animal-carcass-disposal",
         "order": 5,
-        "defaultPriority": "High",
-        "imageKey": "shared-animal-carcass"
+        "defaultPriority": "High"
       },
       {
         "name": "Illegal animal shelters",
