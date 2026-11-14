@@ -2372,10 +2372,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Damaged fire hydrants",
     "categorySlug": "fire-emergency",
     "description": "Damaged fire hydrants reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Damaged fire hydrants in an urban setting",
+    "alt": "Weathered red municipal fire hydrant with cracked base and leaking brass valve onto curb asphalt",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.6
     },
     "defaultPriority": "Critical"
   },
@@ -2384,10 +2384,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Blocked fire hydrants",
     "categorySlug": "fire-emergency",
     "description": "Blocked fire hydrants reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Blocked fire hydrants in an urban setting",
+    "alt": "Red street fire hydrant obstructed by stacked wooden fruit crates, cardboard boxes, and a parked scooter",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "Critical"
   },
@@ -2396,7 +2396,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Blocked fire exits",
     "categorySlug": "fire-emergency",
     "description": "Blocked fire exits reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Blocked fire exits in an urban setting",
+    "alt": "Exterior emergency fire exit door blocked by stacked plastic crates, broken furniture, and rolled tarpaulins",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2408,7 +2408,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Missing fire extinguishers in public facilities",
     "categorySlug": "fire-emergency",
     "description": "Missing fire extinguishers in public facilities reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Missing fire extinguishers in public facilities in an urban setting",
+    "alt": "Empty red wall-mounted fire safety box with broken glass and missing extinguisher in a government hallway",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2420,33 +2420,31 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Blocked emergency access roads",
     "categorySlug": "fire-emergency",
     "description": "Blocked emergency access roads reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Blocked emergency access roads in an urban setting",
+    "alt": "Narrow commercial lane congested by double-parked delivery vans, scooters, and low bamboo canopies",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
-    "defaultPriority": "Critical",
-    "imageKey": "shared-emergency-access-blocked"
+    "defaultPriority": "Critical"
   },
   "fire-emergency/fire-hazards-in-public-markets": {
     "slug": "fire-hazards-in-public-markets",
     "name": "Fire hazards in public markets",
     "categorySlug": "fire-emergency",
     "description": "Fire hazards in public markets reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Fire hazards in public markets in an urban setting",
+    "alt": "Tangled exposed electrical wires, cardboard crates, and congested stalls creating acute fire hazards in an urban market",
     "focal": {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Critical",
-    "imageKey": "shared-fire-hazard"
+    "defaultPriority": "Critical"
   },
   "fire-emergency/dangerous-electrical-short-circuits": {
     "slug": "dangerous-electrical-short-circuits",
     "name": "Dangerous electrical short circuits",
     "categorySlug": "fire-emergency",
     "description": "Dangerous electrical short circuits reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Dangerous electrical short circuits in an urban setting",
+    "alt": "Scorched electrical distribution box with melted fuse casings, heavy soot, and hanging wires on an urban wall",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2458,7 +2456,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Fire incidents in public buildings",
     "categorySlug": "fire-emergency",
     "description": "Fire incidents in public buildings reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Fire incidents in public buildings in an urban setting",
+    "alt": "Post-fire structural damage on a civic building with soot-stained upper windows and cordoned street pavement",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2470,20 +2468,19 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Obstructed emergency response access",
     "categorySlug": "fire-emergency",
     "description": "Obstructed emergency response access reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Obstructed emergency response access in an urban setting",
+    "alt": "Municipal entrance gate blocked by parked auto-rickshaws, chained bollards, and construction sand mounds",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
-    "defaultPriority": "Critical",
-    "imageKey": "shared-emergency-access-blocked"
+    "defaultPriority": "Critical"
   },
   "urban-planning/poorly-maintained-public-housing": {
     "slug": "poorly-maintained-public-housing",
     "name": "Poorly maintained public housing",
     "categorySlug": "urban-planning",
     "description": "Poorly maintained public housing reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Poorly maintained public housing in an urban setting",
+    "alt": "Multi-storey public housing block with severe exterior paint peeling, damp seepage streaks, and rusted balcony railings",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2495,10 +2492,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Sanitation problems in underserved settlements",
     "categorySlug": "urban-planning",
     "description": "Sanitation problems in underserved settlements reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Sanitation problems in underserved settlements in an urban setting",
+    "alt": "Narrow brick alleyway with an overflowing open sewer drain and stagnant murky water running beside homes",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "High"
   },
@@ -2507,10 +2504,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Illegal land-use changes",
     "categorySlug": "urban-planning",
     "description": "Illegal land-use changes reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Illegal land-use changes in an urban setting",
+    "alt": "Open municipal plot illegally converted into a heavy truck repair and scrap yard with iron girders and oil-soaked earth",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "Medium"
   },
@@ -2519,7 +2516,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Unauthorized building construction",
     "categorySlug": "urban-planning",
     "description": "Unauthorized building construction reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Unauthorized building construction in an urban setting",
+    "alt": "Active building construction site with exposed concrete columns and brickwork built without mandatory setbacks",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2531,7 +2528,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Unsafe residential structures",
     "categorySlug": "urban-planning",
     "description": "Unsafe residential structures reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Unsafe residential structures in an urban setting",
+    "alt": "Dilapidated multi-storey residential building with crumbling plaster, exposed masonry, and structural deterioration",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2543,7 +2540,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Poor street layout",
     "categorySlug": "urban-planning",
     "description": "Poor street layout reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Poor street layout in an urban setting",
+    "alt": "Dense, narrow, winding historic street alleyway with overhead cables and tight bottlenecks between buildings",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2555,10 +2552,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Inadequate public infrastructure",
     "categorySlug": "urban-planning",
     "description": "Inadequate public infrastructure reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Inadequate public infrastructure in an urban setting",
+    "alt": "Unpaved dirt and gravel street lacking drainage channels, sidewalks, and municipal utility infrastructure",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "Medium"
   },
@@ -2567,7 +2564,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Lack of pedestrian infrastructure",
     "categorySlug": "urban-planning",
     "description": "Lack of pedestrian infrastructure reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Lack of pedestrian infrastructure in an urban setting",
+    "alt": "Busy multi-lane road lacking sidewalks or pedestrian crossings, forcing people to walk directly beside vehicle traffic",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2579,10 +2576,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Improper drainage planning",
     "categorySlug": "urban-planning",
     "description": "Improper drainage planning reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Improper drainage planning in an urban setting",
+    "alt": "Severe street waterlogging after rain submerging roadway curbs due to improper stormwater drainage grade",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.6
     },
     "defaultPriority": "High"
   },
@@ -2591,7 +2588,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Unplanned urban development",
     "categorySlug": "urban-planning",
     "description": "Unplanned urban development reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Unplanned urban development in an urban setting",
+    "alt": "Dense, unplanned urban settlement of tightly packed multi-story informal houses with corrugated roofs",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2603,10 +2600,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Public land misuse",
     "categorySlug": "urban-planning",
     "description": "Public land misuse reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Public land misuse in an urban setting",
+    "alt": "Open civic municipal land misused as an uncontrolled garbage and solid waste dumping ground",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "Medium"
   },
@@ -2615,10 +2612,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Inaccessible public infrastructure",
     "categorySlug": "urban-planning",
     "description": "Inaccessible public infrastructure reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Inaccessible public infrastructure in an urban setting",
+    "alt": "Severely cracked, uneven, and broken sidewalk pavement presenting severe barriers to wheelchair users and pedestrians",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "High"
   },

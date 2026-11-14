@@ -1237,15 +1237,13 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Blocked emergency access roads",
         "slug": "blocked-emergency-access-roads",
         "order": 5,
-        "defaultPriority": "Critical",
-        "imageKey": "shared-emergency-access-blocked"
+        "defaultPriority": "Critical"
       },
       {
         "name": "Fire hazards in public markets",
         "slug": "fire-hazards-in-public-markets",
         "order": 6,
-        "defaultPriority": "Critical",
-        "imageKey": "shared-fire-hazard"
+        "defaultPriority": "Critical"
       },
       {
         "name": "Dangerous electrical short circuits",
@@ -1263,8 +1261,7 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Obstructed emergency response access",
         "slug": "obstructed-emergency-response-access",
         "order": 9,
-        "defaultPriority": "Critical",
-        "imageKey": "shared-emergency-access-blocked"
+        "defaultPriority": "Critical"
       }
     ]
   },
