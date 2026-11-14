@@ -2624,10 +2624,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Dirty market areas",
     "categorySlug": "commercial-areas",
     "description": "Dirty market areas reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Dirty market areas in an urban setting",
+    "alt": "Littered paved alleyway in an Indian commercial market with discarded produce, plastic packing bags, and grime",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "Medium"
   },
@@ -2636,10 +2636,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Garbage accumulation in markets",
     "categorySlug": "commercial-areas",
     "description": "Garbage accumulation in markets reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Garbage accumulation in markets in an urban setting",
+    "alt": "Large pile of rotting organic produce and market garbage dumped on the corner of a busy commercial street",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "High"
   },
@@ -2648,10 +2648,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Blocked market drainage",
     "categorySlug": "commercial-areas",
     "description": "Blocked market drainage reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Blocked market drainage in an urban setting",
+    "alt": "Open concrete drainage gutter clogged with black sludge, plastic sacks, and decomposing vegetable waste in a marketplace",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.6
     },
     "defaultPriority": "High"
   },
@@ -2660,7 +2660,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Illegal market encroachment",
     "categorySlug": "commercial-areas",
     "description": "Illegal market encroachment reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Illegal market encroachment in an urban setting",
+    "alt": "Makeshift vendor tarpaulin stalls, wooden tables, and fruit crates completely encroaching upon a public market footpath",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2672,10 +2672,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Damaged market roads",
     "categorySlug": "commercial-areas",
     "description": "Damaged market roads reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Damaged market roads in an urban setting",
+    "alt": "Broken asphalt roadway riddled with deep waterlogged potholes and loose gravel cutting through an urban market corridor",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "Medium"
   },
@@ -2684,36 +2684,34 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Lack of public toilets",
     "categorySlug": "commercial-areas",
     "description": "Lack of public toilets reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Lack of public toilets in an urban setting",
+    "alt": "Dirty, unhygienic narrow service lane in a commercial zone showing unsanitary conditions due to lack of municipal public restrooms",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
-    "defaultPriority": "Medium",
-    "imageKey": "shared-public-toilet-defect"
+    "defaultPriority": "Medium"
   },
   "commercial-areas/broken-market-streetlights": {
     "slug": "broken-market-streetlights",
     "name": "Broken market streetlights",
     "categorySlug": "commercial-areas",
     "description": "Broken market streetlights reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Broken market streetlights in an urban setting",
+    "alt": "Damaged municipal streetlight pole with broken glass luminaire and dangling electrical wires over a commercial bazaar lane",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.45
     },
-    "defaultPriority": "High",
-    "imageKey": "shared-streetlight-defect"
+    "defaultPriority": "High"
   },
   "commercial-areas/unhygienic-meat-and-fish-market-surroundings": {
     "slug": "unhygienic-meat-and-fish-market-surroundings",
     "name": "Unhygienic meat and fish market surroundings",
     "categorySlug": "commercial-areas",
     "description": "Unhygienic meat and fish market surroundings reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Unhygienic meat and fish market surroundings in an urban setting",
+    "alt": "Open municipal stormwater drain flooded with murky wastewater, offal residue, and biological waste beside market butcher stalls",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "High"
   },
@@ -2722,10 +2720,10 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Illegal waste disposal",
     "categorySlug": "commercial-areas",
     "description": "Illegal waste disposal reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Illegal waste disposal in an urban setting",
+    "alt": "Commercial packaging waste, discarded wooden crates, and synthetic sacks dumped illegally along a public drainage channel",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "High"
   },
@@ -2734,7 +2732,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Poor market parking management",
     "categorySlug": "commercial-areas",
     "description": "Poor market parking management reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Poor market parking management in an urban setting",
+    "alt": "Chaotic and haphazard parking of two-wheelers, auto-rickshaws, and handcarts obstructing traffic in a narrow market bazaar",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2746,59 +2744,55 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Broken public benches",
     "categorySlug": "public-property",
     "description": "Broken public benches reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Broken public benches in an urban setting",
+    "alt": "Broken municipal park bench with fractured concrete supports and snapped wooden seat slats beside a footpath",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
-    "defaultPriority": "Low",
-    "imageKey": "shared-public-bench-defect"
+    "defaultPriority": "Low"
   },
   "public-property/damaged-street-signs": {
     "slug": "damaged-street-signs",
     "name": "Damaged street signs",
     "categorySlug": "public-property",
     "description": "Damaged street signs reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Damaged street signs in an urban setting",
+    "alt": "Severely bent and twisted metal traffic signage post with cracked base anchored in broken sidewalk pavement",
     "focal": {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Low",
-    "imageKey": "shared-street-sign-defect"
+    "defaultPriority": "Low"
   },
   "public-property/broken-bus-stop-structures": {
     "slug": "broken-bus-stop-structures",
     "name": "Broken bus stop structures",
     "categorySlug": "public-property",
     "description": "Broken bus stop structures reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Broken bus stop structures in an urban setting",
+    "alt": "Damaged roadside municipal bus shelter featuring bent rusted corrugated metal roof, broken glass panels, and peeling paint",
     "focal": {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Medium",
-    "imageKey": "shared-bus-stop-defect"
+    "defaultPriority": "Medium"
   },
   "public-property/damaged-public-toilets": {
     "slug": "damaged-public-toilets",
     "name": "Damaged public toilets",
     "categorySlug": "public-property",
     "description": "Damaged public toilets reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Damaged public toilets in an urban setting",
+    "alt": "Derelict and vandalized municipal public toilet block exterior with boarded-up openings, peeling paint, and weathered brickwork",
     "focal": {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Medium",
-    "imageKey": "shared-public-toilet-defect"
+    "defaultPriority": "Medium"
   },
   "public-property/wall-graffiti": {
     "slug": "wall-graffiti",
     "name": "Wall graffiti",
     "categorySlug": "public-property",
     "description": "Wall graffiti reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Wall graffiti in an urban setting",
+    "alt": "Old urban brick wall heavily defaced with sprayed graffiti tags, scrawls, and illegal marker vandalism along a city street",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2810,7 +2804,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Damage to public monuments",
     "categorySlug": "public-property",
     "description": "Damage to public monuments reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Damage to public monuments in an urban setting",
+    "alt": "Weathered and damaged stone plinth and public civic monument structure in need of municipal restoration",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2822,7 +2816,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Broken park equipment",
     "categorySlug": "public-property",
     "description": "Broken park equipment reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Broken park equipment in an urban setting",
+    "alt": "Broken and damaged outdoor playground play equipment with bent metal framing and detached fixtures in a public park",
     "focal": {
       "x": 0.5,
       "y": 0.5
@@ -2834,23 +2828,22 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Damaged public dustbins",
     "categorySlug": "public-property",
     "description": "Damaged public dustbins reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Damaged public dustbins in an urban setting",
+    "alt": "Severely damaged and dented public street litter bin with cracked municipal signage and broken fixture along a sidewalk",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
-    "defaultPriority": "Low",
-    "imageKey": "shared-dustbin-defect"
+    "defaultPriority": "Low"
   },
   "public-property/theft-of-public-infrastructure": {
     "slug": "theft-of-public-infrastructure",
     "name": "Theft of public infrastructure",
     "categorySlug": "public-property",
     "description": "Theft of public infrastructure reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Theft of public infrastructure in an urban setting",
+    "alt": "Hazardous open manhole in the middle of an urban public road where the heavy metal cover was stolen",
     "focal": {
       "x": 0.5,
-      "y": 0.5
+      "y": 0.55
     },
     "defaultPriority": "Critical"
   },
@@ -2859,7 +2852,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
     "name": "Vandalism of public property",
     "categorySlug": "public-property",
     "description": "Vandalism of public property reported in public areas requiring municipal inspection and remedial action.",
-    "alt": "Vandalism of public property in an urban setting",
+    "alt": "Vandalized public transit electronic ticket vending kiosk with smashed glass screen and defaced control casing",
     "focal": {
       "x": 0.5,
       "y": 0.5

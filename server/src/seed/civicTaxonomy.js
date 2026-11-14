@@ -1387,15 +1387,13 @@ export const CIVIC_TAXONOMY = [
         "name": "Lack of public toilets",
         "slug": "lack-of-public-toilets",
         "order": 6,
-        "defaultPriority": "Medium",
-        "imageKey": "shared-public-toilet-defect"
+        "defaultPriority": "Medium"
       },
       {
         "name": "Broken market streetlights",
         "slug": "broken-market-streetlights",
         "order": 7,
-        "defaultPriority": "High",
-        "imageKey": "shared-streetlight-defect"
+        "defaultPriority": "High"
       },
       {
         "name": "Unhygienic meat and fish market surroundings",
@@ -1431,29 +1429,25 @@ export const CIVIC_TAXONOMY = [
         "name": "Broken public benches",
         "slug": "broken-public-benches",
         "order": 1,
-        "defaultPriority": "Low",
-        "imageKey": "shared-public-bench-defect"
+        "defaultPriority": "Low"
       },
       {
         "name": "Damaged street signs",
         "slug": "damaged-street-signs",
         "order": 2,
-        "defaultPriority": "Low",
-        "imageKey": "shared-street-sign-defect"
+        "defaultPriority": "Low"
       },
       {
         "name": "Broken bus stop structures",
         "slug": "broken-bus-stop-structures",
         "order": 3,
-        "defaultPriority": "Medium",
-        "imageKey": "shared-bus-stop-defect"
+        "defaultPriority": "Medium"
       },
       {
         "name": "Damaged public toilets",
         "slug": "damaged-public-toilets",
         "order": 4,
-        "defaultPriority": "Medium",
-        "imageKey": "shared-public-toilet-defect"
+        "defaultPriority": "Medium"
       },
       {
         "name": "Wall graffiti",
@@ -1477,8 +1471,7 @@ export const CIVIC_TAXONOMY = [
         "name": "Damaged public dustbins",
         "slug": "damaged-public-dustbins",
         "order": 8,
-        "defaultPriority": "Low",
-        "imageKey": "shared-dustbin-defect"
+        "defaultPriority": "Low"
       },
       {
         "name": "Theft of public infrastructure",
