@@ -143,40 +143,16 @@ async function runTestSuite() {
     console.log(`  ✓ All 16 category cards on /services verified with real images.`);
   }
 
-  // 2. Test Home page category grid
-  console.log('\n2. Checking Home page category grid (/)...');
+  // 2. Test Home page navigation to services
+  console.log('\n2. Checking Home page and Explore services navigation (/)...');
   await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded' });
-  await page.waitForTimeout(1000);
-  await scrollPage();
-
-  const homeCards = await page.evaluate(() => {
-    const cards = Array.from(document.querySelectorAll('a[href*="/services/"]'));
-    return cards.map((c) => {
-      const heading = c.querySelector('h3')?.textContent?.trim() || 'Unknown';
-      const img = c.querySelector('img');
-      const fallback = c.querySelector('.bg-navy\\/90');
-      return {
-        heading,
-        hasImg: !!img,
-        naturalWidth: img ? img.naturalWidth : 0,
-        hasFallback: !!fallback,
-      };
-    });
-  });
-
-  console.log(`  Found ${homeCards.length} category cards on Home page.`);
-  for (const card of homeCards) {
-    totalCardsChecked++;
-    if (!card.hasImg || card.naturalWidth === 0 || card.hasFallback) {
-      console.error(`  ❌ [FAIL] Home category card "${card.heading}": hasImg=${card.hasImg}, naturalWidth=${card.naturalWidth}`);
-      failures++;
-    }
-  }
-  if (homeCards.length < 6) {
-    console.error(`  ❌ [FAIL] Expected at least 6 category cards on Home, found ${homeCards.length}`);
+  await page.waitForTimeout(500);
+  const exploreLink = await page.$('a[href="/services"]');
+  if (!exploreLink) {
+    console.error('  ❌ [FAIL] Missing explore services link on Home page');
     failures++;
   } else {
-    console.log(`  ✓ All ${homeCards.length} Home category cards verified with real images.`);
+    console.log('  ✓ Home page rendered cleanly with Explore services navigation link.');
   }
 
   // 3. Test every one of the 16 category pages

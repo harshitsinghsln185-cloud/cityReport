@@ -507,7 +507,7 @@ export const Hero: React.FC = () => {
       {/* 4. Subtle Bottom Scroll Cue */}
       <div className="relative z-20 mx-auto pt-4 pb-1 text-center">
         <a
-          href="#categories-section"
+          href="/services"
           className="inline-flex items-center gap-1.5 text-xs text-slate-300 hover:text-white transition-colors py-1 px-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10"
         >
           <span>Explore civic services</span>

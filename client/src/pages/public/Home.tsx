@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -12,12 +12,10 @@ import {
 import Hero from '../../components/public/Hero';
 import LiveTicker from '../../components/public/LiveTicker';
 import HowItWorks from '../../components/public/HowItWorks';
-import ServiceCard from '../../components/public/ServiceCard';
 import BeforeAfterSlider from '../../components/public/BeforeAfterSlider';
 import TestimonialsTrust from '../../components/public/TestimonialsTrust';
 import FaqSection from '../../components/public/FaqSection';
 import MobileBottomBar from '../../components/public/MobileBottomBar';
-import categoryService, { Category } from '../../services/category.service';
 import Button from '../../components/ui/Button';
 import SectionHeader from '../../components/ui/SectionHeader';
 import Reveal from '../../components/ui/Reveal';
@@ -71,26 +69,6 @@ const FEATURED_STATES = [
 ];
 
 export const Home: React.FC = () => {
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        setLoading(true);
-        const data = await categoryService.getActiveCategories();
-        const list = Array.isArray(data) ? [...data].sort((a, b) => (a.order ?? 99) - (b.order ?? 99)) : [];
-        setCategories(list.slice(0, 6));
-      } catch (err) {
-        console.error('Failed to load categories for homepage:', err);
-        setCategories([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCategories();
-  }, []);
-
   return (
     <div className="flex flex-col min-h-screen">
       <SEO
@@ -201,41 +179,6 @@ export const Home: React.FC = () => {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* SECTION 3: White Surface Service Categories Grid (#FFFFFF) */}
-      <section id="categories-section" className="py-20 bg-white border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <SectionHeader
-              eyebrow="Civic Directory"
-              eyebrowVariant="primary"
-              title="Supported Public Hazard Categories"
-              subtitle="Certified municipal categories ready for immediate citizen reporting, transparent pricing computation, and proximity contractor assignment."
-              actions={
-                <Button to="/services" variant="primary" size="sm" rightIcon={<ArrowRight className="w-4 h-4" />}>
-                  View All Categories
-                </Button>
-              }
-            />
-          </Reveal>
-
-          {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="h-48 rounded-2xl bg-canvas border border-card-border p-6 animate-pulse" />
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {(Array.isArray(categories) ? categories : []).map((cat, idx) => (
-                <Reveal key={cat._id} delay={idx * 0.05}>
-                  <ServiceCard category={cat} index={idx} showSubCount={false} />
-                </Reveal>
-              ))}
-            </div>
-          )}
         </div>
       </section>
 

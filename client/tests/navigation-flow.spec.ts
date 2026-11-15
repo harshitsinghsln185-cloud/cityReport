@@ -209,49 +209,17 @@ async function runNavigationTests() {
     }
   }
 
-  // TEST 2: Home Page Category Grid (State-card feel, NO sub-issue count pill)
-  console.log('\nTEST 2: Verifying Home page cards styling...');
+  // TEST 2: Home Page Navigation to Services
+  console.log('\nTEST 2: Verifying Home page navigation to Services...');
   await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded' });
   await page.waitForTimeout(600);
 
-  // Scroll to category grid
-  await page.evaluate(() => {
-    const el = document.getElementById('categories') || document.querySelector('.grid');
-    if (el) el.scrollIntoView({ block: 'center' });
-  });
-  await scrollPage();
-
-  const homeCardCheck = await page.evaluate(() => {
-    const cards = Array.from(document.querySelectorAll('a[href*="/services/"]'));
-    return cards.map((c) => {
-      const heading = c.querySelector('h3')?.textContent?.trim() || '';
-      const img = c.querySelector('img');
-      const arrow = c.querySelector('svg');
-      const pill = c.querySelector('span.rounded-full');
-      return {
-        heading,
-        hasImg: !!img && img.naturalWidth > 0,
-        hasArrow: !!arrow,
-        hasPill: !!pill && pill.textContent?.includes('issue types'),
-      };
-    });
-  });
-
-  if (homeCardCheck.length < 6) {
-    console.error(`  ❌ [FAIL] Expected at least 6 category cards on Home page, found ${homeCardCheck.length}`);
+  const exploreLink = await page.$('a[href="/services"]');
+  if (!exploreLink) {
+    console.error(`  ❌ [FAIL] Missing /services link on Home page`);
     failures++;
   } else {
-    const anyHasPill = homeCardCheck.some((c) => c.hasPill);
-    const allHaveImg = homeCardCheck.every((c) => c.hasImg);
-    if (anyHasPill) {
-      console.error(`  ❌ [FAIL] Home category cards should NOT show the sub-issue count pill.`);
-      failures++;
-    } else if (!allHaveImg) {
-      console.error(`  ❌ [FAIL] Some Home category cards have missing or broken images.`);
-      failures++;
-    } else {
-      console.log(`  ✓ All ${homeCardCheck.length} Home cards have clean 4:3 image, name, and NO clutter/pill.`);
-    }
+    console.log(`  ✓ Home page has valid /services explore link.`);
   }
 
   // TEST 3: Authenticated user sub-issue card click -> direct to report form
