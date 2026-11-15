@@ -54,8 +54,7 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Footpath encroachment",
         "slug": "footpath-encroachment",
         "order": 4,
-        "defaultPriority": "Medium",
-        "imageKey": "shared-footpath-encroachment"
+        "defaultPriority": "Medium"
       },
       {
         "name": "Missing road dividers",
@@ -73,22 +72,19 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Traffic signal not working",
         "slug": "traffic-signal-not-working",
         "order": 7,
-        "defaultPriority": "Critical",
-        "imageKey": "shared-traffic-signal-defect"
+        "defaultPriority": "Critical"
       },
       {
         "name": "Missing street signboards",
         "slug": "missing-street-signboards",
         "order": 8,
-        "defaultPriority": "Low",
-        "imageKey": "shared-street-sign-defect"
+        "defaultPriority": "Low"
       },
       {
         "name": "Illegal parking",
         "slug": "illegal-parking",
         "order": 9,
-        "defaultPriority": "Low",
-        "imageKey": "shared-illegal-parking"
+        "defaultPriority": "Low"
       },
       {
         "name": "Traffic congestion",
@@ -100,15 +96,13 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Waterlogging on roads",
         "slug": "waterlogging-on-roads",
         "order": 11,
-        "defaultPriority": "High",
-        "imageKey": "shared-waterlogging"
+        "defaultPriority": "High"
       },
       {
         "name": "Broken manhole covers",
         "slug": "broken-manhole-covers",
         "order": 12,
-        "defaultPriority": "Critical",
-        "imageKey": "shared-manhole-defect"
+        "defaultPriority": "Critical"
       },
       {
         "name": "Damaged bridges",
@@ -132,15 +126,13 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Damaged bus stops",
         "slug": "damaged-bus-stops",
         "order": 16,
-        "defaultPriority": "Medium",
-        "imageKey": "shared-bus-stop-defect"
+        "defaultPriority": "Medium"
       },
       {
         "name": "Streetlights not working",
         "slug": "streetlights-not-working",
         "order": 17,
-        "defaultPriority": "High",
-        "imageKey": "shared-streetlight-defect"
+        "defaultPriority": "High"
       }
     ]
   },
@@ -176,8 +168,7 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Open garbage burning",
         "slug": "open-garbage-burning",
         "order": 4,
-        "defaultPriority": "High",
-        "imageKey": "shared-garbage-burning"
+        "defaultPriority": "High"
       },
       {
         "name": "Plastic waste pollution",
@@ -195,15 +186,13 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Dead animal disposal",
         "slug": "dead-animal-disposal",
         "order": 7,
-        "defaultPriority": "High",
-        "imageKey": "shared-animal-carcass"
+        "defaultPriority": "High"
       },
       {
         "name": "Damaged public dustbins",
         "slug": "damaged-public-dustbins",
         "order": 8,
-        "defaultPriority": "Low",
-        "imageKey": "shared-dustbin-defect"
+        "defaultPriority": "Low"
       },
       {
         "name": "Garbage scattered on roads",
@@ -323,22 +312,19 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Waterlogging",
         "slug": "waterlogging",
         "order": 11,
-        "defaultPriority": "High",
-        "imageKey": "shared-waterlogging"
+        "defaultPriority": "High"
       },
       {
         "name": "Flooded streets",
         "slug": "flooded-streets",
         "order": 12,
-        "defaultPriority": "High",
-        "imageKey": "shared-waterlogging"
+        "defaultPriority": "High"
       },
       {
         "name": "Broken manhole covers",
         "slug": "broken-manhole-covers",
         "order": 13,
-        "defaultPriority": "Critical",
-        "imageKey": "shared-manhole-defect"
+        "defaultPriority": "Critical"
       },
       {
         "name": "Rainwater drainage blockage",
@@ -380,8 +366,7 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Streetlights not working",
         "slug": "streetlights-not-working",
         "order": 1,
-        "defaultPriority": "High",
-        "imageKey": "shared-streetlight-defect"
+        "defaultPriority": "High"
       },
       {
         "name": "Damaged electric poles",
@@ -435,8 +420,7 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Dark public areas",
         "slug": "dark-public-areas",
         "order": 10,
-        "defaultPriority": "High",
-        "imageKey": "shared-streetlight-defect"
+        "defaultPriority": "High"
       },
       {
         "name": "Illegal electricity connections",
@@ -466,15 +450,13 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Dirty public toilets",
         "slug": "dirty-public-toilets",
         "order": 1,
-        "defaultPriority": "Medium",
-        "imageKey": "shared-public-toilet-defect"
+        "defaultPriority": "Medium"
       },
       {
         "name": "Public toilets not maintained",
         "slug": "public-toilets-not-maintained",
         "order": 2,
-        "defaultPriority": "Medium",
-        "imageKey": "shared-public-toilet-defect"
+        "defaultPriority": "Medium"
       },
       {
         "name": "Mosquito breeding areas",
@@ -582,8 +564,7 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Burning of garbage",
         "slug": "burning-of-garbage",
         "order": 6,
-        "defaultPriority": "High",
-        "imageKey": "shared-garbage-burning"
+        "defaultPriority": "High"
       },
       {
         "name": "Illegal tree cutting",
@@ -661,8 +642,7 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Damaged park benches",
         "slug": "damaged-park-benches",
         "order": 2,
-        "defaultPriority": "Low",
-        "imageKey": "shared-public-bench-defect"
+        "defaultPriority": "Low"
       },
       {
         "name": "Broken children's swings",
@@ -704,8 +684,7 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Broken park lights",
         "slug": "broken-park-lights",
         "order": 9,
-        "defaultPriority": "Medium",
-        "imageKey": "shared-streetlight-defect"
+        "defaultPriority": "Medium"
       },
       {
         "name": "Public park encroachment",
@@ -735,8 +714,7 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Lack of dustbins in parks",
         "slug": "lack-of-dustbins-in-parks",
         "order": 14,
-        "defaultPriority": "Low",
-        "imageKey": "shared-dustbin-defect"
+        "defaultPriority": "Low"
       }
     ]
   },
@@ -754,15 +732,13 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Open manholes",
         "slug": "open-manholes",
         "order": 1,
-        "defaultPriority": "Critical",
-        "imageKey": "shared-manhole-defect"
+        "defaultPriority": "Critical"
       },
       {
         "name": "Damaged manhole covers",
         "slug": "damaged-manhole-covers",
         "order": 2,
-        "defaultPriority": "Critical",
-        "imageKey": "shared-manhole-defect"
+        "defaultPriority": "Critical"
       },
       {
         "name": "Fallen trees blocking roads",
@@ -828,15 +804,13 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Fire safety hazards",
         "slug": "fire-safety-hazards",
         "order": 13,
-        "defaultPriority": "Critical",
-        "imageKey": "shared-fire-hazard"
+        "defaultPriority": "Critical"
       },
       {
         "name": "Blocked emergency access",
         "slug": "blocked-emergency-access",
         "order": 14,
-        "defaultPriority": "Critical",
-        "imageKey": "shared-emergency-access-blocked"
+        "defaultPriority": "Critical"
       },
       {
         "name": "Unsafe public buildings",
@@ -860,15 +834,13 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Damaged bus stops",
         "slug": "damaged-bus-stops",
         "order": 1,
-        "defaultPriority": "Medium",
-        "imageKey": "shared-bus-stop-defect"
+        "defaultPriority": "Medium"
       },
       {
         "name": "Missing bus shelters",
         "slug": "missing-bus-shelters",
         "order": 2,
-        "defaultPriority": "Medium",
-        "imageKey": "shared-bus-stop-defect"
+        "defaultPriority": "Medium"
       },
       {
         "name": "Bus stop cleanliness issues",
@@ -880,8 +852,7 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Illegal roadside parking",
         "slug": "illegal-roadside-parking",
         "order": 4,
-        "defaultPriority": "Medium",
-        "imageKey": "shared-illegal-parking"
+        "defaultPriority": "Medium"
       },
       {
         "name": "Parking space encroachment",
@@ -899,15 +870,13 @@ export const CIVIC_TAXONOMY: CivicCategoryTaxonomy[] = [
         "name": "Broken traffic signals",
         "slug": "broken-traffic-signals",
         "order": 7,
-        "defaultPriority": "Critical",
-        "imageKey": "shared-traffic-signal-defect"
+        "defaultPriority": "Critical"
       },
       {
         "name": "Missing traffic signs",
         "slug": "missing-traffic-signs",
         "order": 8,
-        "defaultPriority": "Low",
-        "imageKey": "shared-street-sign-defect"
+        "defaultPriority": "Low"
       },
       {
         "name": "Missing bus route information",

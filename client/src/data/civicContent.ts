@@ -378,8 +378,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Medium",
-    "imageKey": "shared-footpath-encroachment"
+    "defaultPriority": "Medium"
   },
   "roads-transportation/missing-road-dividers": {
     "slug": "missing-road-dividers",
@@ -415,8 +414,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Critical",
-    "imageKey": "shared-traffic-signal-defect"
+    "defaultPriority": "Critical"
   },
   "roads-transportation/missing-street-signboards": {
     "slug": "missing-street-signboards",
@@ -428,8 +426,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Low",
-    "imageKey": "shared-street-sign-defect"
+    "defaultPriority": "Low"
   },
   "roads-transportation/illegal-parking": {
     "slug": "illegal-parking",
@@ -441,8 +438,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Low",
-    "imageKey": "shared-illegal-parking"
+    "defaultPriority": "Low"
   },
   "roads-transportation/traffic-congestion": {
     "slug": "traffic-congestion",
@@ -466,8 +462,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "High",
-    "imageKey": "shared-waterlogging"
+    "defaultPriority": "High"
   },
   "roads-transportation/broken-manhole-covers": {
     "slug": "broken-manhole-covers",
@@ -479,8 +474,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Critical",
-    "imageKey": "shared-manhole-defect"
+    "defaultPriority": "Critical"
   },
   "roads-transportation/damaged-bridges": {
     "slug": "damaged-bridges",
@@ -528,8 +522,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Medium",
-    "imageKey": "shared-bus-stop-defect"
+    "defaultPriority": "Medium"
   },
   "roads-transportation/streetlights-not-working": {
     "slug": "streetlights-not-working",
@@ -541,8 +534,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "High",
-    "imageKey": "shared-streetlight-defect"
+    "defaultPriority": "High"
   },
   "garbage-management/garbage-overflowing-from-dustbins": {
     "slug": "garbage-overflowing-from-dustbins",
@@ -590,8 +582,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "High",
-    "imageKey": "shared-garbage-burning"
+    "defaultPriority": "High"
   },
   "garbage-management/plastic-waste-pollution": {
     "slug": "plastic-waste-pollution",
@@ -627,8 +618,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "High",
-    "imageKey": "shared-animal-carcass"
+    "defaultPriority": "High"
   },
   "garbage-management/damaged-public-dustbins": {
     "slug": "damaged-public-dustbins",
@@ -640,8 +630,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Low",
-    "imageKey": "shared-dustbin-defect"
+    "defaultPriority": "Low"
   },
   "garbage-management/garbage-scattered-on-roads": {
     "slug": "garbage-scattered-on-roads",
@@ -857,8 +846,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "High",
-    "imageKey": "shared-waterlogging"
+    "defaultPriority": "High"
   },
   "water-drainage/flooded-streets": {
     "slug": "flooded-streets",
@@ -870,8 +858,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "High",
-    "imageKey": "shared-waterlogging"
+    "defaultPriority": "High"
   },
   "water-drainage/broken-manhole-covers": {
     "slug": "broken-manhole-covers",
@@ -883,8 +870,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Critical",
-    "imageKey": "shared-manhole-defect"
+    "defaultPriority": "Critical"
   },
   "water-drainage/rainwater-drainage-blockage": {
     "slug": "rainwater-drainage-blockage",
@@ -944,8 +930,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "High",
-    "imageKey": "shared-streetlight-defect"
+    "defaultPriority": "High"
   },
   "electricity-lighting/damaged-electric-poles": {
     "slug": "damaged-electric-poles",
@@ -1053,8 +1038,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "High",
-    "imageKey": "shared-streetlight-defect"
+    "defaultPriority": "High"
   },
   "electricity-lighting/illegal-electricity-connections": {
     "slug": "illegal-electricity-connections",
@@ -1090,8 +1074,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Medium",
-    "imageKey": "shared-public-toilet-defect"
+    "defaultPriority": "Medium"
   },
   "public-health/public-toilets-not-maintained": {
     "slug": "public-toilets-not-maintained",
@@ -1103,8 +1086,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Medium",
-    "imageKey": "shared-public-toilet-defect"
+    "defaultPriority": "Medium"
   },
   "public-health/mosquito-breeding-areas": {
     "slug": "mosquito-breeding-areas",
@@ -1296,8 +1278,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "High",
-    "imageKey": "shared-garbage-burning"
+    "defaultPriority": "High"
   },
   "environment/illegal-tree-cutting": {
     "slug": "illegal-tree-cutting",
@@ -1429,8 +1410,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Low",
-    "imageKey": "shared-public-bench-defect"
+    "defaultPriority": "Low"
   },
   "parks-greenery/broken-childrens-swings": {
     "slug": "broken-childrens-swings",
@@ -1514,8 +1494,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Medium",
-    "imageKey": "shared-streetlight-defect"
+    "defaultPriority": "Medium"
   },
   "parks-greenery/public-park-encroachment": {
     "slug": "public-park-encroachment",
@@ -1575,8 +1554,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Low",
-    "imageKey": "shared-dustbin-defect"
+    "defaultPriority": "Low"
   },
   "public-safety/open-manholes": {
     "slug": "open-manholes",
@@ -1588,8 +1566,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Critical",
-    "imageKey": "shared-manhole-defect"
+    "defaultPriority": "Critical"
   },
   "public-safety/damaged-manhole-covers": {
     "slug": "damaged-manhole-covers",
@@ -1601,8 +1578,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Critical",
-    "imageKey": "shared-manhole-defect"
+    "defaultPriority": "Critical"
   },
   "public-safety/fallen-trees-blocking-roads": {
     "slug": "fallen-trees-blocking-roads",
@@ -1734,8 +1710,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Critical",
-    "imageKey": "shared-fire-hazard"
+    "defaultPriority": "Critical"
   },
   "public-safety/blocked-emergency-access": {
     "slug": "blocked-emergency-access",
@@ -1747,8 +1722,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Critical",
-    "imageKey": "shared-emergency-access-blocked"
+    "defaultPriority": "Critical"
   },
   "public-safety/unsafe-public-buildings": {
     "slug": "unsafe-public-buildings",
@@ -1772,8 +1746,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Medium",
-    "imageKey": "shared-bus-stop-defect"
+    "defaultPriority": "Medium"
   },
   "public-transport/missing-bus-shelters": {
     "slug": "missing-bus-shelters",
@@ -1785,8 +1758,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Medium",
-    "imageKey": "shared-bus-stop-defect"
+    "defaultPriority": "Medium"
   },
   "public-transport/bus-stop-cleanliness-issues": {
     "slug": "bus-stop-cleanliness-issues",
@@ -1810,8 +1782,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Medium",
-    "imageKey": "shared-illegal-parking"
+    "defaultPriority": "Medium"
   },
   "public-transport/parking-space-encroachment": {
     "slug": "parking-space-encroachment",
@@ -1847,8 +1818,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Critical",
-    "imageKey": "shared-traffic-signal-defect"
+    "defaultPriority": "Critical"
   },
   "public-transport/missing-traffic-signs": {
     "slug": "missing-traffic-signs",
@@ -1860,8 +1830,7 @@ export const CIVIC_CONTENT: Record<string, CivicContentItem> = {
       "x": 0.5,
       "y": 0.5
     },
-    "defaultPriority": "Low",
-    "imageKey": "shared-street-sign-defect"
+    "defaultPriority": "Low"
   },
   "public-transport/missing-bus-route-information": {
     "slug": "missing-bus-route-information",
