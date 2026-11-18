@@ -20,7 +20,9 @@ export const createIssueSchema = z.object({
   subCategory: z
     .string()
     .trim()
-    .optional(),
+    .optional()
+    .nullable()
+    .or(z.literal('')),
   suggestedPriority: z
     .enum(['Low', 'Medium', 'High', 'Critical'])
     .default('Medium'),
@@ -58,7 +60,12 @@ export const estimateQuoteSchema = z.object({
     .refine((val) => /^[0-9a-fA-F]{24}$/.test(val) || /^[a-z0-9-]+$/.test(val), {
       message: 'Category must be a valid ID or slug',
     }),
-  subCategory: z.string().trim().optional(),
+  subCategory: z
+    .string()
+    .trim()
+    .optional()
+    .nullable()
+    .or(z.literal('')),
   lat: z.union([z.string().transform(Number), z.number()]).refine((val) => val >= -90 && val <= 90, {
     message: 'Latitude must be between -90 and 90',
   }),

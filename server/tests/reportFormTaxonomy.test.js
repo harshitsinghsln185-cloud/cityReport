@@ -65,10 +65,35 @@ export const resolveLoginRedirect = (locationState) => {
 };
 
 describe('V2 Report Form: Dependent Dropdowns, Query Params, & Login Redirect', () => {
+  const mockCategoriesWithSubs = [
+    {
+      name: 'Roads & Transportation',
+      slug: 'roads-transportation',
+      order: 1,
+      subCategories: [
+        { name: 'Road potholes', slug: 'road-potholes', defaultPriority: 'High', isActive: true },
+        { name: 'Broken manhole covers', slug: 'broken-manhole-covers', defaultPriority: 'Critical', isActive: true },
+      ],
+    },
+  ];
+
   describe('Report Form Query Param Pre-filling', () => {
-    it('pre-selects category and sub-category from slugs', () => {
+    it('pre-selects category directly from category query param with CIVIC_TAXONOMY', () => {
       const result = resolveReportPrefill({
         categories: CIVIC_TAXONOMY,
+        prefillCategory: 'roads-transportation',
+        prefillSub: null,
+      });
+
+      expect(result.category).toBe('roads-transportation');
+      expect(result.subCategory).toBe('');
+      expect(result.suggestedPriority).toBe('Medium');
+      expect(result.isCritical).toBe(false);
+    });
+
+    it('pre-selects category and sub-category from slugs when sub-categories are present', () => {
+      const result = resolveReportPrefill({
+        categories: mockCategoriesWithSubs,
         prefillCategory: 'roads-transportation',
         prefillSub: 'road-potholes',
       });
@@ -80,9 +105,8 @@ describe('V2 Report Form: Dependent Dropdowns, Query Params, & Login Redirect', 
     });
 
     it('identifies critical sub-issue and sets isCritical flag', () => {
-      // Find a critical issue in Roads & Transportation: e.g., broken-manhole-covers
       const result = resolveReportPrefill({
-        categories: CIVIC_TAXONOMY,
+        categories: mockCategoriesWithSubs,
         prefillCategory: 'roads-transportation',
         prefillSub: 'broken-manhole-covers',
       });

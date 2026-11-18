@@ -14,14 +14,13 @@ interface ServiceCardProps {
 export const ServiceCard: React.FC<ServiceCardProps> = ({
   category,
   index = 0,
-  matchingSubIssues = [],
-  showSubCount = false,
 }) => {
   const [imageError, setImageError] = useState<boolean>(false);
   const cleanSlug = category.slug?.toLowerCase().trim() || '';
   const civicImage = cleanSlug ? getCategoryImage(cleanSlug) : null;
-  const subIssueCount = category.subCategories?.length || 0;
-  const targetUrl = cleanSlug ? `/services/${cleanSlug}` : '/services';
+  const targetUrl = cleanSlug
+    ? `/user/report-issue?category=${encodeURIComponent(cleanSlug)}`
+    : '/user/report-issue';
 
   return (
     <Link
@@ -80,24 +79,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform motion-reduce:transform-none" />
             </div>
           </div>
-
-          {/* Sub-issue count subtle pill on Services page only */}
-          {showSubCount && subIssueCount > 0 && (
-            <div className="mt-2.5">
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200/80">
-                {subIssueCount} {subIssueCount === 1 ? 'issue type' : 'issue types'}
-              </span>
-            </div>
-          )}
-
-          {/* Matched Sub-Issues snippet when searching */}
-          {matchingSubIssues.length > 0 && (
-            <div className="mt-2.5 p-2 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-900">
-              <span className="font-semibold">Matching: </span>
-              <span>{matchingSubIssues.slice(0, 3).join(', ')}</span>
-              {matchingSubIssues.length > 3 && <span> +{matchingSubIssues.length - 3} more</span>}
-            </div>
-          )}
         </div>
       </div>
     </Link>

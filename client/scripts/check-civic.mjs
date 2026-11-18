@@ -40,42 +40,22 @@ async function runCheck() {
   }
 
   // 2. Check image folders in assetsDir have taxonomy entry
-  console.log('2. Validating asset image folders against taxonomy...');
+  console.log('2. Validating category cover asset folders against taxonomy...');
   if (fs.existsSync(assetsDir)) {
-    const assetCats = fs.readdirSync(assetsDir);
-    const validCatSlugs = new Set(CIVIC_TAXONOMY.map(c => c.slug));
-
-    for (const cat of assetCats) {
-      if (!validCatSlugs.has(cat)) {
-        console.error(`  [FAIL] Asset directory contains unknown category folder: "${cat}"`);
+    for (const cat of CIVIC_TAXONOMY) {
+      const catFolder = path.join(assetsDir, cat.slug);
+      const coverFolder = path.join(catFolder, '_category');
+      if (!fs.existsSync(coverFolder)) {
+        console.error(`  [FAIL] Missing _category cover folder for "${cat.slug}"`);
         errors++;
+        continue;
       }
 
-      const catFolder = path.join(assetsDir, cat);
-      const subFolders = fs.readdirSync(catFolder);
-      const catTaxonomy = CIVIC_TAXONOMY.find(c => c.slug === cat);
-      const validSubSlugs = new Set([
-        '_category',
-        ...(catTaxonomy ? catTaxonomy.subCategories.map(s => s.slug) : [])
-      ]);
-
-      for (const sub of subFolders) {
-        if (!validSubSlugs.has(sub)) {
-          console.error(`  [FAIL] Unknown sub-issue folder in assets: "${cat}/${sub}"`);
+      for (const sizeFile of COVER_SIZES) {
+        const filePath = path.join(coverFolder, sizeFile);
+        if (!fs.existsSync(filePath)) {
+          console.error(`  [FAIL] Missing expected cover responsive size: "${cat.slug}/_category/${sizeFile}"`);
           errors++;
-        }
-
-        // 3. Verify required responsive sizes exist
-        const isCover = sub === '_category';
-        const expectedSizes = isCover ? COVER_SIZES : SUB_SIZES;
-        const subFolder = path.join(catFolder, sub);
-
-        for (const sizeFile of expectedSizes) {
-          const filePath = path.join(subFolder, sizeFile);
-          if (!fs.existsSync(filePath)) {
-            console.error(`  [FAIL] Missing expected responsive size: "${cat}/${sub}/${sizeFile}"`);
-            errors++;
-          }
         }
       }
     }
@@ -100,7 +80,6 @@ async function runCheck() {
     });
     const civicModule = await vite.ssrLoadModule('/src/lib/civicImage.ts');
     let resolvedCats = 0;
-    let resolvedSubs = 0;
 
     for (const cat of CIVIC_TAXONOMY) {
       const cover = civicModule.getCategoryImage(cat.slug);
@@ -110,19 +89,9 @@ async function runCheck() {
       } else {
         resolvedCats++;
       }
-
-      for (const sub of cat.subCategories) {
-        const subImg = civicModule.getSubIssueImage(cat.slug, sub.slug);
-        if (!subImg || !subImg.src) {
-          console.error(`  [FAIL] getSubIssueImage failed for: "${cat.slug}/${sub.slug}"`);
-          errors++;
-        } else {
-          resolvedSubs++;
-        }
-      }
     }
     await vite.close();
-    console.log(`  ✓ Successfully verified ${resolvedCats}/16 categories and ${resolvedSubs}/208 sub-issues via civicImage.ts`);
+    console.log(`  ✓ Successfully verified ${resolvedCats}/16 categories via civicImage.ts`);
   } catch (err) {
     console.error('  [FAIL] Failed to run civicImage.ts resolution check:', err);
     errors++;

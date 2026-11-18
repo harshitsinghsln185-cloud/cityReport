@@ -12,17 +12,16 @@ describe('V1 Civic Taxonomy: Data Model, Validation, and Seed Integrity', () => 
       expect(CIVIC_TAXONOMY).toHaveLength(16);
     });
 
-    it('contains exactly 208 total sub-issues across all 16 categories', () => {
+    it('contains exactly 16 main categories with empty subCategories', () => {
       const totalSubCategories = CIVIC_TAXONOMY.reduce(
         (sum, cat) => sum + (cat.subCategories ? cat.subCategories.length : 0),
         0
       );
-      expect(totalSubCategories).toBe(208);
+      expect(totalSubCategories).toBe(0);
     });
 
-    it('each category has valid properties and unique sub-issue slugs', () => {
+    it('each category has valid properties and unique slugs', () => {
       const categorySlugs = new Set();
-      const validPriorities = new Set(['Critical', 'High', 'Medium', 'Low']);
 
       for (const cat of CIVIC_TAXONOMY) {
         expect(cat.name).toBeTruthy();
@@ -33,17 +32,6 @@ describe('V1 Civic Taxonomy: Data Model, Validation, and Seed Integrity', () => 
         expect(typeof cat.order).toBe('number');
         expect(cat.description).toBeTruthy();
         expect(Array.isArray(cat.subCategories)).toBe(true);
-
-        const subSlugs = new Set();
-        for (const sub of cat.subCategories) {
-          expect(sub.name).toBeTruthy();
-          expect(sub.slug).toMatch(/^[a-z0-9-]+$/);
-          expect(subSlugs.has(sub.slug)).toBe(false);
-          subSlugs.add(sub.slug);
-
-          expect(typeof sub.order).toBe('number');
-          expect(validPriorities.has(sub.defaultPriority)).toBe(true);
-        }
       }
     });
   });

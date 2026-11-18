@@ -166,46 +166,42 @@ async function runNavigationTests() {
     });
   });
 
-  // TEST 1: Services Page Cards (State-card feel + subtle sub-issue count pill)
-  console.log('TEST 1: Verifying Services page cards styling...');
+  // TEST 1: Services Page Cards (Category Cards with Direct Report Issue Link)
+  console.log('TEST 1: Verifying Services page category cards styling & target links...');
   await page.goto(`${baseUrl}/services`, { waitUntil: 'domcontentloaded' });
   await page.waitForTimeout(600);
   await scrollPage();
 
   const servicesCardCheck = await page.evaluate(() => {
-    const cards = Array.from(document.querySelectorAll('a[href*="/services/"]'));
+    const cards = Array.from(document.querySelectorAll('a[href*="/user/report-issue?category="]'));
     return cards.map((c) => {
       const heading = c.querySelector('h3')?.textContent?.trim() || '';
       const img = c.querySelector('img');
       const arrow = c.querySelector('svg');
-      const pill = c.querySelector('span.rounded-full');
+      const href = c.getAttribute('href') || '';
       return {
         heading,
         hasImg: !!img && img.naturalWidth > 0,
         hasArrow: !!arrow,
-        pillText: pill?.textContent?.trim() || '',
+        href,
       };
     });
   });
 
   if (servicesCardCheck.length !== 16) {
-    console.error(`  ❌ [FAIL] Expected 16 cards on /services, found ${servicesCardCheck.length}`);
+    console.error(`  ❌ [FAIL] Expected 16 cards on /services linking directly to /user/report-issue?category=, found ${servicesCardCheck.length}`);
     failures++;
   } else {
     const allHaveArrow = servicesCardCheck.every((c) => c.hasArrow);
     const allHaveImg = servicesCardCheck.every((c) => c.hasImg);
-    const allHavePill = servicesCardCheck.every((c) => c.pillText.includes('issue types'));
     if (!allHaveArrow) {
       console.error(`  ❌ [FAIL] Some Services cards missing round action arrow button.`);
       failures++;
     } else if (!allHaveImg) {
       console.error(`  ❌ [FAIL] Some Services cards have missing or broken images.`);
       failures++;
-    } else if (!allHavePill) {
-      console.error(`  ❌ [FAIL] Services cards should show subtle sub-issue count pill.`);
-      failures++;
     } else {
-      console.log(`  ✓ All 16 Services cards have clean 4:3 image, name, action arrow, and subtle count pill.`);
+      console.log(`  ✓ All 16 Services cards have clean 4:3 image, name, action arrow, and direct report-issue link.`);
     }
   }
 
@@ -222,8 +218,8 @@ async function runNavigationTests() {
     console.log(`  ✓ Home page has valid /services explore link.`);
   }
 
-  // TEST 3: Authenticated user sub-issue card click -> direct to report form
-  console.log('\nTEST 3: Authenticated user sub-issue card click...');
+  // TEST 3: Authenticated user category card click -> direct to report form
+  console.log('\nTEST 3: Authenticated user category card click directly to report form...');
   mockAuthenticatedUser = {
     _id: 'citizen_123',
     name: 'Priya Sharma',
@@ -239,56 +235,53 @@ async function runNavigationTests() {
   await page.click('button[type="submit"]');
   await page.waitForFunction(() => !window.location.pathname.includes('/login'), { timeout: 10000 });
 
-  // Navigate to category page
-  await page.goto(`${baseUrl}/services/roads-transportation`, { waitUntil: 'domcontentloaded' });
-  await page.waitForSelector('[data-testid="sub-issue-card"]', { timeout: 10000 });
+  // Navigate to Services page and click Roads category card
+  await page.goto(`${baseUrl}/services`, { waitUntil: 'domcontentloaded' });
+  await page.waitForSelector('a[href*="category=roads-transportation"]', { timeout: 10000 });
 
-  // Click sub-issue card for "road-potholes"
-  const potholeCard = page.locator('a[href*="sub=road-potholes"]').first();
-  await potholeCard.click();
+  const roadsCard = page.locator('a[href*="category=roads-transportation"]').first();
+  await roadsCard.click();
 
-  // Should navigate directly to report issue form WITHOUT going to login
-  await page.waitForFunction(() => window.location.pathname.includes('/user/report-issue') && window.location.search.includes('sub=road-potholes'), { timeout: 10000 });
+  // Should navigate directly to report issue form with category prefilled
+  await page.waitForFunction(
+    () => window.location.pathname.includes('/user/report-issue') && window.location.search.includes('category=roads-transportation'),
+    { timeout: 10000 }
+  );
   await page.waitForSelector('#civic-category-select', { timeout: 10000 });
 
-  // Wait until category select and subcategory select have populated values
+  // Wait until category select has populated value
   await page.waitForFunction(() => {
     const cat = (document.getElementById('civic-category-select') as any)?.value;
-    const sub = (document.getElementById('civic-subcategory-select') as any)?.value;
-    return Boolean(cat) && Boolean(sub);
+    return Boolean(cat);
   }, { timeout: 10000 });
 
   const selectedCategoryValue = await page.$eval('#civic-category-select', (el: any) => el.value);
-  const selectedSubCategoryValue = await page.$eval('#civic-subcategory-select', (el: any) => el.value);
-
   const roadsCat = CIVIC_TAXONOMY.find((c) => c.slug === 'roads-transportation');
   const catMatches = selectedCategoryValue === `civic_cat_roads-transportation` || selectedCategoryValue === 'roads-transportation';
-  const subMatches = selectedSubCategoryValue === 'road-potholes';
 
-  if (!catMatches || !subMatches) {
-    console.error(`  ❌ [FAIL] Dropdowns not pre-selected correctly: category=${selectedCategoryValue}, subCategory=${selectedSubCategoryValue}`);
+  if (!catMatches) {
+    console.error(`  ❌ [FAIL] Category not pre-selected correctly: category=${selectedCategoryValue}`);
     failures++;
   } else {
-    console.log(`  ✓ Authenticated click navigated directly and pre-selected category "${roadsCat?.name}" and sub-issue "road-potholes".`);
+    console.log(`  ✓ Authenticated click navigated directly and pre-selected category "${roadsCat?.name}".`);
   }
 
-  // TEST 4: Unauthenticated user sub-issue card click -> login -> return to pre-selected report form
-  console.log('\nTEST 4: Unauthenticated user click -> login -> report form return flow...');
+  // TEST 4: Unauthenticated user category card click -> login -> return to pre-selected report form
+  console.log('\nTEST 4: Unauthenticated user category card click -> login -> report form return flow...');
   mockAuthenticatedUser = null;
   await page.evaluate(() => {
     localStorage.clear();
   });
   await context.clearCookies();
 
-  // Navigate to category page as anonymous user
-  await page.goto(`${baseUrl}/services/water-drainage`, { waitUntil: 'domcontentloaded' });
-  await page.waitForSelector('text=Sign In', { timeout: 10000 });
-  await page.waitForSelector('[data-testid="sub-issue-card"]', { timeout: 10000 });
+  // Navigate to Services as anonymous user and click Water & Drainage
+  await page.goto(`${baseUrl}/services`, { waitUntil: 'domcontentloaded' });
+  await page.waitForSelector('a[href*="category=water-drainage"]', { timeout: 10000 });
 
-  const drainCard = page.locator('a[href*="sub=water-pipeline-leakage"]').first();
+  const drainCard = page.locator('a[href*="category=water-drainage"]').first();
   await drainCard.click();
 
-  // Anonymous user must be redirected to /login
+  // Anonymous user must be redirected to /login preserving the return URL
   await page.waitForFunction(() => window.location.pathname.includes('/login'), { timeout: 10000 });
   console.log(`  ✓ Unauthenticated user redirected to login: ${page.url()}`);
 
@@ -306,30 +299,37 @@ async function runNavigationTests() {
   await page.fill('input[type="password"]', 'Password123!');
   await page.click('button[type="submit"]');
 
-  // Should return to the report form with category and sub query params
-  await page.waitForFunction(() => window.location.pathname.includes('/user/report-issue') && window.location.search.includes('sub=water-pipeline-leakage'), { timeout: 10000 });
+  // Should return to the report form with category query param
+  await page.waitForFunction(
+    () => window.location.pathname.includes('/user/report-issue') && window.location.search.includes('category=water-drainage'),
+    { timeout: 10000 }
+  );
   await page.waitForSelector('#civic-category-select', { timeout: 10000 });
 
-  // Wait until category select and subcategory select have populated values
   await page.waitForFunction(() => {
     const cat = (document.getElementById('civic-category-select') as any)?.value;
-    const sub = (document.getElementById('civic-subcategory-select') as any)?.value;
-    return Boolean(cat) && Boolean(sub);
+    return Boolean(cat);
   }, { timeout: 10000 });
 
   const postLoginCat = await page.$eval('#civic-category-select', (el: any) => el.value);
-  const postLoginSub = await page.$eval('#civic-subcategory-select', (el: any) => el.value);
-
   const waterCat = CIVIC_TAXONOMY.find((c) => c.slug === 'water-drainage');
   const postLoginCatMatches = postLoginCat === `civic_cat_water-drainage` || postLoginCat === 'water-drainage';
-  const postLoginSubMatches = postLoginSub === 'water-pipeline-leakage';
 
-  if (!postLoginCatMatches || !postLoginSubMatches) {
-    console.error(`  ❌ [FAIL] Post-login form did not restore pre-selected dropdowns: category=${postLoginCat}, subCategory=${postLoginSub}`);
+  if (!postLoginCatMatches) {
+    console.error(`  ❌ [FAIL] Post-login form did not restore pre-selected category: category=${postLoginCat}`);
     failures++;
   } else {
-    console.log(`  ✓ Post-login redirect preserved returnTo URL and pre-selected category "${waterCat?.name}" and sub-issue "water-pipeline-leakage".`);
+    console.log(`  ✓ Post-login redirect preserved returnTo URL and pre-selected category "${waterCat?.name}".`);
   }
+
+  // TEST 5: Direct legacy URL redirect /services/:categorySlug -> /user/report-issue?category=:categorySlug
+  console.log('\nTEST 5: Direct URL redirect /services/electricity-lighting -> /user/report-issue?category=electricity-lighting...');
+  await page.goto(`${baseUrl}/services/electricity-lighting`, { waitUntil: 'domcontentloaded' });
+  await page.waitForFunction(
+    () => window.location.pathname.includes('/user/report-issue') && window.location.search.includes('category=electricity-lighting'),
+    { timeout: 10000 }
+  );
+  console.log(`  ✓ Route /services/electricity-lighting redirected directly to /user/report-issue?category=electricity-lighting`);
 
   await browser.close();
   await previewServer.close();
@@ -339,7 +339,7 @@ async function runNavigationTests() {
     console.error(`❌ Test suite failed with ${failures} error(s).`);
     process.exit(1);
   } else {
-    console.log(`✓ All 4 navigation and card tests passed cleanly with 0 failures.`);
+    console.log(`✓ All 5 navigation, redirect, and card tests passed cleanly with 0 failures.`);
   }
 }
 

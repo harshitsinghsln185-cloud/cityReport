@@ -31,7 +31,6 @@ export const ReportIssue: React.FC = () => {
   const [searchParams] = useSearchParams();
   const prefillState = searchParams.get('state');
   const prefillCategory = searchParams.get('category');
-  const prefillSub = searchParams.get('sub');
   const { user } = useAuth();
 
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -96,8 +95,6 @@ export const ReportIssue: React.FC = () => {
         setCategories(list);
 
         let targetCat = '';
-        let targetSub = '';
-        let targetPriority: 'Low' | 'Medium' | 'High' | 'Critical' = 'Medium';
 
         if (prefillCategory) {
           const matched = list.find(
@@ -108,20 +105,6 @@ export const ReportIssue: React.FC = () => {
           );
           if (matched) {
             targetCat = matched._id || matched.slug;
-            const subs = (matched.subCategories || []).filter((s) => s.isActive !== false);
-            subs.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
-
-            if (prefillSub) {
-              const matchedSub = subs.find(
-                (s) => s.slug === prefillSub || s.name.toLowerCase() === prefillSub.toLowerCase()
-              );
-              if (matchedSub) {
-                targetSub = matchedSub.slug;
-                if (matchedSub.defaultPriority) {
-                  targetPriority = matchedSub.defaultPriority;
-                }
-              }
-            }
           }
         }
 
@@ -129,11 +112,10 @@ export const ReportIssue: React.FC = () => {
           setFormData((prev) => ({
             ...prev,
             category: targetCat,
-            subCategory: targetSub,
-            suggestedPriority: targetSub ? targetPriority : prev.suggestedPriority,
+            subCategory: '',
           }));
-          // Automatically trigger quote calculation on mount when query parameters are present
-          triggerInitialQuote(targetCat, targetSub, targetPriority);
+          // Automatically trigger quote calculation on mount when category is prefilled
+          triggerInitialQuote(targetCat, undefined, 'Medium');
         }
       } catch {
         setErrorMessage('Failed to load civic categories. Please refresh.');
@@ -142,7 +124,7 @@ export const ReportIssue: React.FC = () => {
       }
     };
     fetchCats();
-  }, [prefillCategory, prefillSub]);
+  }, [prefillCategory]);
 
   // Handle Photo Staging
   const handlePhotoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -180,10 +162,6 @@ export const ReportIssue: React.FC = () => {
   const validateStep1 = () => {
     if (!formData.category) {
       setErrorMessage('Please select a civic service category.');
-      return false;
-    }
-    if (activeSubCategories.length > 0 && !formData.subCategory) {
-      setErrorMessage('Please select a specific sub-category for this issue.');
       return false;
     }
     if (!formData.title || formData.title.trim().length < 5) {
@@ -302,11 +280,6 @@ export const ReportIssue: React.FC = () => {
   const selectedCategoryObj = categories.find(
     (c) => c._id === formData.category || c.slug === formData.category
   );
-  const activeSubCategories = (selectedCategoryObj?.subCategories || [])
-    .filter((s) => s.isActive !== false)
-    .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
-  const selectedSubObj = activeSubCategories.find((s) => s.slug === formData.subCategory);
-  const isCriticalSubIssue = selectedSubObj?.defaultPriority === 'Critical';
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-12">
@@ -380,7 +353,7 @@ export const ReportIssue: React.FC = () => {
                 </p>
               </div>
 
-              {/* Category & Dependent Sub-Category Selection */}
+              {/* Category Selection */}
               <div className="space-y-4">
                 <div>
                   <label htmlFor="civic-category-select" className="block text-xs font-semibold text-ink mb-1.5">
@@ -399,6 +372,9 @@ export const ReportIssue: React.FC = () => {
                           category: newCat,
                           subCategory: '',
                         }));
+                        if (newCat) {
+                          triggerInitialQuote(newCat, undefined, formData.suggestedPriority);
+                        }
                       }}
                       className="w-full text-xs sm:text-sm p-3 rounded-lg border border-border bg-white text-ink focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none"
                       required
@@ -415,50 +391,6 @@ export const ReportIssue: React.FC = () => {
                     </select>
                   )}
                 </div>
-
-                {/* Dependent Sub-Category Selection */}
-                {selectedCategoryObj && activeSubCategories.length > 0 && (
-                  <div className="space-y-1.5 animate-fadeIn">
-                    <label htmlFor="civic-subcategory-select" className="block text-xs font-semibold text-ink">
-                      Sub-Category Issue <span className="text-red-700">*</span>
-                    </label>
-                    <select
-                      id="civic-subcategory-select"
-                      value={formData.subCategory}
-                      onChange={(e) => {
-                        const newSub = e.target.value;
-                        const matched = activeSubCategories.find((s) => s.slug === newSub);
-                        setFormData((p) => ({
-                          ...p,
-                          subCategory: newSub,
-                          suggestedPriority: matched?.defaultPriority || p.suggestedPriority,
-                        }));
-                      }}
-                      className="w-full text-xs sm:text-sm p-3 rounded-lg border border-border bg-white text-ink focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none"
-                      required
-                    >
-                      <option value="">Select a sub-category...</option>
-                      {activeSubCategories.map((s) => (
-                        <option key={s.slug} value={s.slug}>
-                          {s.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                )}
-
-                {/* Amber Warning for Critical Sub-Issues */}
-                {isCriticalSubIssue && (
-                  <div
-                    data-testid="critical-priority-warning"
-                    className="p-3.5 bg-amber-50 border border-amber-200 text-amber-900 rounded-card text-xs flex items-start gap-2.5 animate-fadeIn"
-                  >
-                    <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                    <span className="leading-relaxed">
-                      Critical issues are routed with priority. If this is an immediate life-threatening emergency, call 112 instead.
-                    </span>
-                  </div>
-                )}
 
                 {selectedCategoryObj && (
                   <div className="p-3 bg-canvas rounded-lg border border-border text-xs text-secondaryText flex items-center justify-between">
@@ -668,7 +600,6 @@ export const ReportIssue: React.FC = () => {
               <div className="p-3.5 bg-canvas rounded-card border border-border flex items-center justify-between text-xs">
                 <div>
                   <span className="font-semibold text-ink">{selectedCategoryObj?.name || 'Category'}</span>
-                  {selectedSubObj && <span className="text-secondaryText"> &bull; {selectedSubObj.name}</span>}
                 </div>
                 <Badge variant={formData.suggestedPriority === 'Critical' ? 'danger' : 'neutral'} size="sm">
                   {formData.suggestedPriority} Priority
