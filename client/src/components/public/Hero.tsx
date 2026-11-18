@@ -398,10 +398,10 @@ export const Hero: React.FC = () => {
           className="hidden md:block absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent pointer-events-none"
           style={{ width: '60%' }}
         />
-        {/* Mobile top-to-bottom gradient overlay */}
+        {/* Mobile top-to-bottom gradient overlay (active only when text is shown on sm screens) */}
         <div
           aria-hidden="true"
-          className="md:hidden absolute inset-0 bg-gradient-to-b from-primary via-primary/85 to-transparent pointer-events-none"
+          className="hidden sm:block md:hidden absolute inset-0 bg-gradient-to-b from-primary via-primary/85 to-transparent pointer-events-none"
           style={{ height: '70%' }}
         />
         {/* Subtle top shade for navbar and bottom shade for section transition */}
@@ -415,8 +415,8 @@ export const Hero: React.FC = () => {
         />
       </div>
 
-      {/* 3. Foreground Content (Left Column) */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-20 my-auto">
+      {/* 3. Foreground Content (Left Column - hidden on mobile, visible from sm up) */}
+      <div className="hidden sm:block relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-20 my-auto">
         <div className="max-w-2xl text-left">
           {/* Eyebrow Label */}
           <Reveal direction="down">

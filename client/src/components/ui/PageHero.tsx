@@ -250,7 +250,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
 
       return (
         <section
-          className={`relative overflow-hidden min-h-[380px] md:min-h-[420px] lg:min-h-[480px] flex items-center bg-[#0A1F44] text-white border-b border-slate-800 ${className}`}
+          className={`relative overflow-hidden min-h-[160px] sm:min-h-[380px] md:min-h-[420px] lg:min-h-[480px] flex items-center bg-[#0A1F44] text-white border-b border-slate-800 ${className}`}
           style={{
             ['--hero-focal-desktop' as string]: focalDesktop,
             ['--hero-focal-mobile' as string]: focalMobile,
@@ -273,7 +273,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
             {/* Readability Overlays:
                 - Desktop (>= 768px): Deep navy gradient from the left (94% -> 88% -> 45% -> 0% at 75% width).
                   Keeps text at 100% legibility (WCAG AAA contrast) while leaving the right-side subject vivid.
-                - Mobile (< 768px): Vertical top-to-bottom navy gradient (96% at top over text, fading down toward subject).
+                - Mobile (< 768px): Scrim active only when hero text is rendered (sm and up).
             */}
             <div
               className="absolute inset-0 hidden md:block pointer-events-none"
@@ -283,7 +283,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
               }}
             />
             <div
-              className="absolute inset-0 md:hidden pointer-events-none"
+              className="absolute inset-0 hidden sm:block md:hidden pointer-events-none"
               style={{
                 background:
                   'linear-gradient(to bottom, rgba(10, 31, 68, 0.96) 0%, rgba(10, 31, 68, 0.88) 55%, rgba(10, 31, 68, 0.5) 85%, rgba(10, 31, 68, 0.25) 100%)',
@@ -298,8 +298,8 @@ export const PageHero: React.FC<PageHeroProps> = ({
             />
           </div>
 
-          {/* Left-Aligned Single Column Text Container (matches container-custom padding) */}
-          <div className="container-custom relative z-10 w-full py-12 sm:py-16 lg:py-20">
+          {/* Left-Aligned Single Column Text Container (hidden on mobile, visible from sm up) */}
+          <div className="hidden sm:block container-custom relative z-10 w-full py-12 sm:py-16 lg:py-20">
             <div className="max-w-[560px] text-left">
               <Reveal direction="up" duration={0.4}>
                 {breadcrumbsEl}

@@ -192,8 +192,8 @@ export const StatesDirectory: React.FC = () => {
         }
       />
 
-      {/* Floating Overlapping 4-Metric Card (Half on Hero, Half Below, Styled in Translucent Yellow/Gold) */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-11 mb-2">
+      {/* Floating Overlapping 4-Metric Card (Half on Hero, Half Below, Styled in Translucent Yellow/Gold - hidden on mobile) */}
+      <div className="hidden sm:block relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-11 mb-2">
         <Reveal delay={0.05}>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 p-3 sm:p-3.5 rounded-2xl bg-accent/30 hover:bg-accent/35 backdrop-blur-xl border border-accent/50 shadow-xl shadow-navy/20 transition-all">
             {/* Regions Active */}

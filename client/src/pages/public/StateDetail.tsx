@@ -202,7 +202,7 @@ export const StateDetail: React.FC = () => {
       />
 
       {/* Cinematic Landmark Visual Hero Banner */}
-      <section className="relative overflow-hidden bg-navy text-white min-h-[560px] md:min-h-[460px] lg:min-h-[520px] flex flex-col justify-between border-b border-navy-muted">
+      <section className="relative overflow-hidden bg-navy text-white min-h-[200px] sm:min-h-[460px] lg:min-h-[520px] flex flex-col justify-between border-b border-navy-muted">
         {/* Background Banner with AVIF / WebP picture or graceful fallback */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
           {banner ? (
@@ -227,13 +227,13 @@ export const StateDetail: React.FC = () => {
             </div>
           )}
 
-          {/* Left-focused Navy Scrim Overlay (Calm left 40% for text, open right for landmark) */}
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-navy/95 md:bg-gradient-to-r md:from-navy md:via-navy/85 md:to-transparent md:w-[68%]" />
+          {/* Left-focused Navy Scrim Overlay (Calm left 40% for text, open right for landmark - only on sm up) */}
+          <div className="hidden sm:block absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/80 to-navy/95 md:bg-gradient-to-r md:from-navy md:via-navy/85 md:to-transparent md:w-[68%]" />
           <div className="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent opacity-80" />
         </div>
 
-        {/* Content container */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 w-full flex-1 flex flex-col justify-between">
+        {/* Content container (hidden on mobile, visible from sm up) */}
+        <div className="hidden sm:flex relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 w-full flex-1 flex-col justify-between">
           <div>
             {/* Breadcrumb Navigation */}
             <Breadcrumbs
@@ -333,8 +333,8 @@ export const StateDetail: React.FC = () => {
         </div>
       </section>
 
-      {/* Floating Overlapping 4-Metric Card (Half on Hero, Half Below, Styled in Translucent Yellow/Gold) */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-11 mb-2">
+      {/* Floating Overlapping 4-Metric Card (Half on Hero, Half Below, Styled in Translucent Yellow/Gold - hidden on mobile) */}
+      <div className="hidden sm:block relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-11 mb-2">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 p-3 sm:p-3.5 rounded-2xl bg-accent/30 hover:bg-accent/35 backdrop-blur-xl border border-accent/50 shadow-xl shadow-navy/20 transition-all">
           {/* Capital */}
           <div className="p-2 sm:p-2.5">
