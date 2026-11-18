@@ -105,7 +105,7 @@ export const Services: React.FC = () => {
     <div className="bg-canvas min-h-screen">
       <SEO
         title="Civic Services & Municipal Category Directory | Crowd Report"
-        description="Comprehensive directory of the 16 core municipal infrastructure categories and 208 civic sub-issues across roads, sanitation, electricity, water, and public health."
+        description="Comprehensive directory of the 16 core municipal infrastructure categories across roads, sanitation, electricity, water, animal welfare, and public health."
         keywords={[
           'civic services directory',
           'municipal repair categories',
@@ -155,7 +155,7 @@ export const Services: React.FC = () => {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Services Directory' }]}
         eyebrow="Municipal Services"
         title="Civic Infrastructure Category Directory"
-        description="Explore the 16 municipal service categories to inspect sub-issues, report neighborhood defects, or request certified civic remedial work."
+        description="Explore the 16 municipal service categories. Select any category card to instantly report a neighborhood defect."
         primaryAction={
           <Button to="/user/report-issue" variant="accent" size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
             Report an Issue
@@ -179,7 +179,7 @@ export const Services: React.FC = () => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search categories and sub-issues (e.g. Potholes, Manhole, Streetlights)..."
+                placeholder="Search civic categories (e.g. Roads, Garbage, Water, Lighting, Animals)..."
                 className="w-full pl-10 pr-4 py-2.5 bg-canvas/40 border border-border rounded-xl text-xs sm:text-sm text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-primary shadow-xs transition-all"
               />
               {searchQuery && (
@@ -258,7 +258,6 @@ export const Services: React.FC = () => {
                   category={category}
                   index={idx}
                   matchingSubIssues={matchingSubIssues}
-                  showSubCount={true}
                 />
               </Reveal>
             ))}

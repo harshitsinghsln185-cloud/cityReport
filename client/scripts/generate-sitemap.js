@@ -162,20 +162,7 @@ for (const route of coreRoutes) {
 }
 
 xml += `\n  <!-- 16 Municipal Civic Categories -->\n`;
-const civicCategories = [
-  'roads-transportation', 'garbage-management', 'water-drainage', 'electricity-lighting',
-  'public-health', 'environment', 'parks-greenery', 'public-safety',
-  'public-transport', 'animal-welfare', 'encroachment', 'public-amenities',
-  'fire-emergency', 'urban-planning', 'commercial-areas', 'public-property'
-];
-for (const slug of civicCategories) {
-  xml += `  <url>\n`;
-  xml += `    <loc>${domain}/services/${slug}</loc>\n`;
-  xml += `    <lastmod>${today}</lastmod>\n`;
-  xml += `    <changefreq>weekly</changefreq>\n`;
-  xml += `    <priority>0.85</priority>\n`;
-  xml += `  </url>\n`;
-}
+// Civic services hub URL is in staticPages. Category cards redirect directly to report-issue.
 
 xml += `\n  <!-- 36 States & Union Territories of India -->\n`;
 for (const slug of stateSlugs) {
@@ -197,7 +184,7 @@ if (!fs.existsSync(publicDir)) {
 
 const sitemapDest = path.join(publicDir, 'sitemap.xml');
 fs.writeFileSync(sitemapDest, xml, 'utf-8');
-console.log(`[sitemap] Successfully wrote ${coreRoutes.length + civicCategories.length + stateSlugs.length} URLs to: ${sitemapDest}`);
+console.log(`[sitemap] Successfully wrote ${coreRoutes.length + stateSlugs.length} URLs to: ${sitemapDest}`);
 
 // 6. Synchronize client/public/robots.txt
 const robotsDest = path.join(publicDir, 'robots.txt');

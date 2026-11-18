@@ -182,10 +182,6 @@ export const ReportIssue: React.FC = () => {
       setErrorMessage('Please select a civic service category.');
       return false;
     }
-    if (activeSubCategories.length > 0 && !formData.subCategory) {
-      setErrorMessage('Please select a specific sub-category for this issue.');
-      return false;
-    }
     if (!formData.title || formData.title.trim().length < 5) {
       setErrorMessage('Title must be at least 5 characters long.');
       return false;
@@ -416,11 +412,11 @@ export const ReportIssue: React.FC = () => {
                   )}
                 </div>
 
-                {/* Dependent Sub-Category Selection */}
+                {/* Optional Sub-Category Issue Selection */}
                 {selectedCategoryObj && activeSubCategories.length > 0 && (
                   <div className="space-y-1.5 animate-fadeIn">
                     <label htmlFor="civic-subcategory-select" className="block text-xs font-semibold text-ink">
-                      Sub-Category Issue <span className="text-red-700">*</span>
+                      Sub-Category Issue <span className="text-secondaryText text-[11px] font-normal">(Optional)</span>
                     </label>
                     <select
                       id="civic-subcategory-select"
@@ -435,9 +431,8 @@ export const ReportIssue: React.FC = () => {
                         }));
                       }}
                       className="w-full text-xs sm:text-sm p-3 rounded-lg border border-border bg-white text-ink focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none"
-                      required
                     >
-                      <option value="">Select a sub-category...</option>
+                      <option value="">Select a specific issue type (Optional)...</option>
                       {activeSubCategories.map((s) => (
                         <option key={s.slug} value={s.slug}>
                           {s.name}
