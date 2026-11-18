@@ -25,10 +25,6 @@ import hero1280Avif from '../../assets/images/home/hero-1280.avif';
 import hero1280Webp from '../../assets/images/home/hero-1280.webp';
 import hero768Avif from '../../assets/images/home/hero-768.avif';
 import hero768Webp from '../../assets/images/home/hero-768.webp';
-import heroM1080Avif from '../../assets/images/home/hero-m-1080.avif';
-import heroM1080Webp from '../../assets/images/home/hero-m-1080.webp';
-import heroM720Avif from '../../assets/images/home/hero-m-720.avif';
-import heroM720Webp from '../../assets/images/home/hero-m-720.webp';
 import heroBlurWebp from '../../assets/images/home/hero-blur.webp';
 
 const HOTSPOT_ICONS: Record<string, React.FC<{ className?: string }>> = {
@@ -183,7 +179,7 @@ export const Hero: React.FC = () => {
       ref={sectionRef}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      className="relative min-h-[max(640px,88svh)] flex flex-col justify-between overflow-hidden bg-primary text-white pt-14 pb-8 sm:pt-20 sm:pb-10 select-none"
+      className="relative min-h-[160px] sm:min-h-[max(640px,88svh)] flex flex-col justify-between overflow-hidden bg-primary text-white py-0 sm:pt-20 sm:pb-10 select-none border-b border-slate-800"
     >
       {/* 1. Background Image Layer with Parallax & Hotspot Pins */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -210,25 +206,11 @@ export const Hero: React.FC = () => {
           {/*
             Exact Aspect Ratio Frame:
             Desktop: 16:9 frame centered over section.
-            Mobile: 4:5 frame centered over section.
-            Ensures Hotspot pins anchored at percentage coordinates stay perfectly on target objects.
+            Mobile: Full width/height cover banner matching PageHero across all other pages.
           */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full min-w-full min-h-full aspect-[4/5] md:aspect-[16/9] overflow-hidden">
+          <div className="absolute inset-0 sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 w-full h-full sm:min-w-full sm:min-h-full sm:aspect-[16/9] overflow-hidden">
             <picture className="w-full h-full block">
-              {/* Mobile Portrait (AVIF & WebP) */}
-              <source
-                media="(max-width: 767px)"
-                type="image/avif"
-                srcSet={`${heroM720Avif} 720w, ${heroM1080Avif} 1080w`}
-                sizes="100vw"
-              />
-              <source
-                media="(max-width: 767px)"
-                type="image/webp"
-                srcSet={`${heroM720Webp} 720w, ${heroM1080Webp} 1080w`}
-                sizes="100vw"
-              />
-              {/* Desktop / Tablet Landscape (AVIF & WebP) */}
+              {/* Responsive Landscape Formats (Matching PageHero across other pages) */}
               <source
                 type="image/avif"
                 srcSet={`${hero768Avif} 768w, ${hero1280Avif} 1280w, ${hero1920Avif} 1920w, ${hero2560Avif} 2560w`}
@@ -248,16 +230,16 @@ export const Hero: React.FC = () => {
                 width={1920}
                 height={1080}
                 onLoad={() => setIsImageLoaded(true)}
-                className={`w-full h-full object-cover transition-opacity duration-500 ${
+                className={`w-full h-full object-cover object-center transition-opacity duration-500 ${
                   isImageLoaded ? 'opacity-100' : 'opacity-0'
                 }`}
               />
             </picture>
 
-            {/* Hotspots Interactive Layer */}
+            {/* Hotspots Interactive Layer (Active on sm+ viewports) */}
             <div
               data-hotspot-container
-              className="absolute inset-0 pointer-events-auto"
+              className="hidden sm:block absolute inset-0 pointer-events-auto"
               aria-label="Interactive street hazard inspection pins"
             >
               {displayedHotspots.map((hotspot, index) => {
