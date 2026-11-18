@@ -37,8 +37,9 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   // Focus rings use warm amber-gold accent for crisp visibility on both dark & light surfaces
+  const hasCustomWhitespace = className.includes('whitespace-');
   const baseStyles =
-    'inline-flex flex-row items-center justify-center whitespace-nowrap font-medium select-none ' +
+    `inline-flex flex-row items-center justify-center ${hasCustomWhitespace ? '' : 'whitespace-nowrap'} font-medium select-none max-w-full ` +
     'transition-all duration-150 ease-out ' +
     'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ' +
     'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none disabled:transform-none ' +
@@ -94,7 +95,7 @@ export const Button: React.FC<ButtonProps> = ({
         leftIcon && <span className="shrink-0 flex items-center">{leftIcon}</span>
       )}
       {children && (
-        <span className="inline-flex flex-row items-center gap-1.5 truncate">
+        <span className={`inline-flex flex-row items-center gap-1.5 ${hasCustomWhitespace ? 'whitespace-normal text-center leading-normal' : 'truncate'}`}>
           {children}
         </span>
       )}

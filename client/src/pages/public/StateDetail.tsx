@@ -396,9 +396,9 @@ export const StateDetail: React.FC = () => {
           />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-          <div className="flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
-            <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="w-full min-w-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+          <div className="w-full min-w-0 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
               {NAV_SECTIONS.map((sec) => {
                 const isActive = activeSection === sec.id;
                 return (

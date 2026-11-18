@@ -93,9 +93,9 @@ export const Credits: React.FC = () => {
                 return (
                   <div
                     key={credit.slug}
-                    className="bg-white rounded-xl border border-border p-4 flex gap-4 items-center shadow-xs"
+                    className="bg-white rounded-xl border border-border p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center shadow-xs"
                   >
-                    <div className="w-24 h-20 rounded-lg overflow-hidden shrink-0 bg-slate-900">
+                    <div className="w-full sm:w-24 h-36 sm:h-20 rounded-lg overflow-hidden shrink-0 bg-slate-900">
                       {img ? (
                         <img
                           src={img.cardSrc}
@@ -147,9 +147,9 @@ export const Credits: React.FC = () => {
                 return (
                   <div
                     key={`${credit.categorySlug}/${credit.slug}`}
-                    className="bg-white rounded-xl border border-border p-4 flex gap-4 items-center shadow-xs"
+                    className="bg-white rounded-xl border border-border p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center shadow-xs"
                   >
-                    <div className="w-24 h-20 rounded-lg overflow-hidden shrink-0 bg-slate-900">
+                    <div className="w-full sm:w-24 h-36 sm:h-20 rounded-lg overflow-hidden shrink-0 bg-slate-900">
                       {img ? (
                         <img
                           src={img.cardSrc}

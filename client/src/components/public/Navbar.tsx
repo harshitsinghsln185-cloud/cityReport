@@ -87,7 +87,7 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Action Controls */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           {isAuthenticated ? (
             <Button to={getDashboardLink()} variant="outline" size="sm">
                 Dashboard

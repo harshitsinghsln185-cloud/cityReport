@@ -66,7 +66,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   // Breadcrumbs element
   const breadcrumbsEl = breadcrumbs && breadcrumbs.length > 0 && (
     <nav aria-label="Breadcrumb" className="mb-4">
-      <ol className="flex items-center gap-1.5 text-xs">
+      <ol className="flex flex-wrap items-center gap-1.5 text-xs">
         {breadcrumbs.map((crumb, idx) => {
           const isLast = idx === breadcrumbs.length - 1;
           return (
@@ -174,7 +174,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
 
   const titleEl = (
     <h1
-      className={`font-heading font-extrabold tracking-tight ${
+      className={`font-heading font-extrabold tracking-tight break-words ${
         variant === 'compact'
           ? 'text-2xl sm:text-3xl lg:text-4xl'
           : 'text-3xl sm:text-4xl lg:text-5xl leading-[1.14]'
@@ -311,7 +311,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
                     </span>
                   </div>
                 )}
-                <h1 className="font-fraunces font-semibold text-white tracking-tight leading-[1.14] text-[clamp(2rem,4vw,3.25rem)]">
+                <h1 className="font-fraunces font-semibold text-white tracking-tight leading-[1.14] text-[clamp(2rem,4vw,3.25rem)] break-words">
                   {renderTitleContent()}
                 </h1>
                 {description && (

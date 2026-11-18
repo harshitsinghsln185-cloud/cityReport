@@ -1,5 +1,4 @@
-import React from 'react';
-import { createBrowserRouter, RouterProvider, useParams, Navigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from '../context/AuthContext';
 import Button from '../components/ui/Button';
 import ProtectedRoute from '../components/ProtectedRoute';
@@ -25,6 +24,7 @@ import AdminPayouts from '../pages/admin/Payouts';
 import AdminQueries from '../pages/admin/Queries';
 import Home from '../pages/public/Home';
 import Services from '../pages/public/Services';
+import CategoryDetail from '../pages/public/CategoryDetail';
 import Credits from '../pages/public/Credits';
 import StatesDirectory from '../pages/public/StatesDirectory';
 import StateDetail from '../pages/public/StateDetail';
@@ -51,17 +51,6 @@ import NotificationsPage from '../pages/shared/Notifications';
 import ErrorBoundary from '../components/ui/ErrorBoundary';
 import Styleguide from '../pages/dev/Styleguide';
 
-// Category direct redirect component to seamlessly forward to issue reporting
-const CategoryRedirect: React.FC = () => {
-  const { categorySlug } = useParams<{ categorySlug: string }>();
-  return (
-    <Navigate
-      to={categorySlug ? `/user/report-issue?category=${encodeURIComponent(categorySlug)}` : '/user/report-issue'}
-      replace
-    />
-  );
-};
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -78,7 +67,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'services/:categorySlug',
-        element: <CategoryRedirect />,
+        element: <CategoryDetail />,
       },
       {
         path: 'credits',

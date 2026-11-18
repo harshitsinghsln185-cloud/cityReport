@@ -58,17 +58,21 @@ export const createIssue = async ({
     throw new AppError('Civic service category not found or inactive', 400);
   }
 
-  // Validate subCategory if supplied
+  // Validate subCategory if category defines active sub-issues
   const activeSubCategories = (category.subCategories || []).filter((s) => s.isActive !== false);
   let subCategoryName = null;
   let defaultPriority = null;
 
-  if (activeSubCategories.length > 0 && subCategory) {
-    const matchedSub = activeSubCategories.find((s) => s.slug === subCategory);
-    if (matchedSub) {
-      subCategoryName = matchedSub.name;
-      defaultPriority = matchedSub.defaultPriority;
+  if (activeSubCategories.length > 0) {
+    if (!subCategory) {
+      throw new AppError(`Sub-category is required for category '${category.name}'`, 400);
     }
+    const matchedSub = activeSubCategories.find((s) => s.slug === subCategory);
+    if (!matchedSub) {
+      throw new AppError(`Invalid or inactive sub-category '${subCategory}' for category '${category.name}'`, 400);
+    }
+    subCategoryName = matchedSub.name;
+    defaultPriority = matchedSub.defaultPriority;
   }
 
   // 1. Calculate fee quote and discover nearest certified resolver

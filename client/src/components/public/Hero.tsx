@@ -192,7 +192,7 @@ export const Hero: React.FC = () => {
           src={heroBlurWebp}
           alt="Decorative city street blur placeholder"
           aria-hidden="true"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 blur-xl scale-105 ${
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 blur-xl scale-100 max-w-full ${
             isImageLoaded ? 'opacity-0' : 'opacity-100'
           }`}
         />
@@ -200,7 +200,7 @@ export const Hero: React.FC = () => {
         {/* Parallax & Zoom Container with pure CSS variables */}
         <div
           ref={transformContainerRef}
-          className="absolute inset-0 w-full h-full will-change-transform transition-transform duration-300 ease-out"
+          className="absolute inset-0 w-full h-full overflow-hidden will-change-transform transition-transform duration-300 ease-out"
           style={{
             transform: prefersReducedMotion
               ? 'none'
@@ -213,7 +213,7 @@ export const Hero: React.FC = () => {
             Mobile: 4:5 frame centered over section.
             Ensures Hotspot pins anchored at percentage coordinates stay perfectly on target objects.
           */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full min-w-full min-h-full aspect-[4/5] md:aspect-[16/9]">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full min-w-full min-h-full aspect-[4/5] md:aspect-[16/9] overflow-hidden">
             <picture className="w-full h-full block">
               {/* Mobile Portrait (AVIF & WebP) */}
               <source
@@ -322,11 +322,11 @@ export const Hero: React.FC = () => {
                         role="region"
                         aria-live="polite"
                         className={`
-                          absolute z-40 w-72 max-w-[calc(100vw-32px)] p-4 rounded-2xl
+                          fixed inset-x-4 bottom-20 z-50 sm:absolute sm:inset-auto sm:z-40 sm:w-72 sm:max-w-xs p-4 rounded-2xl
                           bg-primary/95 border border-white/20 backdrop-blur-md shadow-2xl text-left
                           transition-all duration-200 animate-in fade-in zoom-in-95
-                          ${flipHorizontal ? 'right-4' : 'left-4'}
-                          ${flipVertical ? 'bottom-6' : 'top-6'}
+                          ${flipHorizontal ? 'sm:right-4' : 'sm:left-4'}
+                          ${flipVertical ? 'sm:bottom-6' : 'sm:top-6'}
                         `}
                       >
                         {/* Card Header with Icon, Category & Close */}

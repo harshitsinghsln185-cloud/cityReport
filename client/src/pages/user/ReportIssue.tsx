@@ -182,6 +182,10 @@ export const ReportIssue: React.FC = () => {
       setErrorMessage('Please select a civic service category.');
       return false;
     }
+    if (activeSubCategories.length > 0 && !formData.subCategory) {
+      setErrorMessage('Please select a specific sub-category for this issue.');
+      return false;
+    }
     if (!formData.title || formData.title.trim().length < 5) {
       setErrorMessage('Title must be at least 5 characters long.');
       return false;
@@ -412,11 +416,11 @@ export const ReportIssue: React.FC = () => {
                   )}
                 </div>
 
-                {/* Optional Sub-Category Issue Selection */}
+                {/* Dependent Sub-Category Selection */}
                 {selectedCategoryObj && activeSubCategories.length > 0 && (
                   <div className="space-y-1.5 animate-fadeIn">
                     <label htmlFor="civic-subcategory-select" className="block text-xs font-semibold text-ink">
-                      Sub-Category Issue <span className="text-secondaryText text-[11px] font-normal">(Optional)</span>
+                      Sub-Category Issue <span className="text-red-700">*</span>
                     </label>
                     <select
                       id="civic-subcategory-select"
@@ -431,8 +435,9 @@ export const ReportIssue: React.FC = () => {
                         }));
                       }}
                       className="w-full text-xs sm:text-sm p-3 rounded-lg border border-border bg-white text-ink focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none"
+                      required
                     >
-                      <option value="">Select a specific issue type (Optional)...</option>
+                      <option value="">Select a sub-category...</option>
                       {activeSubCategories.map((s) => (
                         <option key={s.slug} value={s.slug}>
                           {s.name}
@@ -694,13 +699,14 @@ export const ReportIssue: React.FC = () => {
           )}
 
           {/* Navigation Buttons */}
-          <div className="flex items-center justify-between pt-4 border-t border-border">
+          <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-3 pt-4 border-t border-border">
             {currentStep > 1 ? (
               <Button
                 type="button"
                 variant="outline"
                 onClick={handleBack}
                 leftIcon={<ArrowLeft className="w-4 h-4" />}
+                className="w-full sm:w-auto justify-center"
               >
                 Back
               </Button>
@@ -714,6 +720,7 @@ export const ReportIssue: React.FC = () => {
                 variant="primary"
                 onClick={handleNext}
                 rightIcon={<ArrowRight className="w-4 h-4" />}
+                className="w-full sm:w-auto justify-center"
               >
                 Continue
               </Button>
@@ -723,7 +730,7 @@ export const ReportIssue: React.FC = () => {
                 variant="primary"
                 isLoading={isSubmitting}
                 leftIcon={<Send className="w-4 h-4" />}
-                className="px-6 shadow-xs"
+                className="w-full sm:w-auto justify-center px-6 shadow-xs whitespace-normal sm:whitespace-nowrap"
               >
                 Confirm & Submit Civic Defect
               </Button>

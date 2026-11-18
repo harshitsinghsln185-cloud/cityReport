@@ -8,19 +8,20 @@ interface ServiceCardProps {
   category: Category;
   index?: number;
   matchingSubIssues?: string[];
+  showSubCount?: boolean;
 }
 
 export const ServiceCard: React.FC<ServiceCardProps> = ({
   category,
   index = 0,
   matchingSubIssues = [],
+  showSubCount = false,
 }) => {
   const [imageError, setImageError] = useState<boolean>(false);
   const cleanSlug = category.slug?.toLowerCase().trim() || '';
   const civicImage = cleanSlug ? getCategoryImage(cleanSlug) : null;
-  const targetUrl = cleanSlug
-    ? `/user/report-issue?category=${encodeURIComponent(cleanSlug)}`
-    : '/user/report-issue';
+  const subIssueCount = category.subCategories?.length || 0;
+  const targetUrl = cleanSlug ? `/services/${cleanSlug}` : '/services';
 
   return (
     <Link
@@ -80,15 +81,14 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
             </div>
           </div>
 
-          {/* Action indicator with base fee */}
-          <div className="mt-2.5 flex items-center justify-between text-xs text-secondaryText">
-            <span className="font-semibold text-primary">
-              Base fee: ₹{(category.baseFeePaise / 100).toLocaleString('en-IN')}
-            </span>
-            <span className="font-medium text-accent group-hover:underline flex items-center gap-0.5">
-              Report Issue &rarr;
-            </span>
-          </div>
+          {/* Sub-issue count subtle pill on Services page only */}
+          {showSubCount && subIssueCount > 0 && (
+            <div className="mt-2.5">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200/80">
+                {subIssueCount} {subIssueCount === 1 ? 'issue type' : 'issue types'}
+              </span>
+            </div>
+          )}
 
           {/* Matched Sub-Issues snippet when searching */}
           {matchingSubIssues.length > 0 && (
