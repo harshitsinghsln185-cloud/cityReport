@@ -17,8 +17,7 @@ export const csrfProtection = (req, res, next) => {
     return next();
   }
 
-  // Exempt unauthenticated public onboarding/auth endpoints from CSRF double-submit deadlock
-  // (Prevents cross-domain login failure where client cannot read cross-site cookie before session exists)
+  // Exempt unauthenticated public onboarding/auth and conversational AI chat endpoints from CSRF double-submit deadlock
   const cleanPath = (req.originalUrl || req.path || '').split('?')[0];
   const isPublicAuthRoute =
     cleanPath.endsWith('/auth/login') ||
@@ -28,7 +27,14 @@ export const csrfProtection = (req, res, next) => {
     cleanPath.endsWith('/auth/verify-email') ||
     cleanPath.endsWith('/auth/refresh');
 
-  if (isPublicAuthRoute) {
+  // Public AI Chatbot conversation endpoints (for both anonymous residents and authenticated citizens)
+  // These create drafts and send AI prompts; final issue dispatch (/chat/sessions/:id/submit) requires strict authentication
+  const isPublicChatRoute =
+    (cleanPath.endsWith('/chat/sessions') && req.method === 'POST') ||
+    (cleanPath.includes('/chat/sessions/') && cleanPath.endsWith('/messages') && req.method === 'POST') ||
+    (cleanPath.includes('/chat/sessions/') && cleanPath.endsWith('/images') && req.method === 'POST');
+
+  if (isPublicAuthRoute || isPublicChatRoute) {
     return next();
   }
 

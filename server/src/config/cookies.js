@@ -1,12 +1,14 @@
 import { env } from './env.js';
 
 const isProduction = env.NODE_ENV === 'production';
+const clientUrl = env.CLIENT_URL || '';
+const isHttps = clientUrl.startsWith('https://');
 
-// For cross-origin production (e.g. Vercel frontend calling Railway backend):
+// For cross-origin HTTPS production (e.g. Vercel frontend calling Railway backend):
 // Cookies require sameSite='none' and secure=true to be sent by browsers.
-// In local development, sameSite='lax' and secure=false allows plain HTTP localhost.
-const sameSitePolicy = isProduction ? 'none' : 'lax';
-const isSecure = isProduction;
+// On plain HTTP (e.g. http://localhost), sameSite='lax' and secure=false allows browsers to store and send cookies without rejection.
+const isSecure = isProduction && isHttps;
+const sameSitePolicy = isSecure ? 'none' : 'lax';
 
 export const cookieOptions = {
   accessToken: {

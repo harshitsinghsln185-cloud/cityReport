@@ -86,11 +86,13 @@ api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   return config;
 });
 
-// Ensure CSRF token is fetched once on client initialization
-export const ensureCsrfToken = async (): Promise<string | null> => {
+// Ensure CSRF token is fetched once on client initialization, or refreshed if forced
+export const ensureCsrfToken = async (force: boolean = false): Promise<string | null> => {
   try {
-    const existing = getCookie('XSRF-TOKEN') || getStoredCsrf();
-    if (existing) return existing;
+    if (!force) {
+      const existing = getCookie('XSRF-TOKEN') || getStoredCsrf();
+      if (existing) return existing;
+    }
 
     const res = await axios.get<ApiResponse<{ csrfToken: string }>>(`${API_BASE_URL}/auth/csrf-token`, {
       withCredentials: true,
@@ -163,6 +165,25 @@ api.interceptors.response.use(
         return Promise.reject(error.response?.data || error);
       } finally {
         isRefreshing = false;
+      }
+    }
+
+    // Auto-recover from CSRF token mismatches or expirations
+    const isCsrfError =
+      error.response?.status === 403 &&
+      (typeof error.response?.data?.message === 'string' &&
+        error.response.data.message.toLowerCase().includes('csrf'));
+
+    if (isCsrfError && !originalRequest._retry) {
+      originalRequest._retry = true;
+      try {
+        const freshCsrf = await ensureCsrfToken(true);
+        if (freshCsrf && originalRequest.headers) {
+          originalRequest.headers['X-CSRF-Token'] = freshCsrf;
+        }
+        return api(originalRequest);
+      } catch (csrfErr) {
+        return Promise.reject(error.response?.data || error);
       }
     }
 

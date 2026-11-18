@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import chatService, { ChatSession, ChatMessage, SubmitResponse } from '../services/chat.service';
+import { ensureCsrfToken } from '../services/api';
 
 const SESSION_STORAGE_KEY = 'crowd_report_chat_session_id';
 
@@ -16,6 +17,7 @@ export const useChat = () => {
     try {
       setIsLoading(true);
       setError(null);
+      await ensureCsrfToken();
       const storedId = localStorage.getItem(SESSION_STORAGE_KEY);
       if (storedId) {
         try {
